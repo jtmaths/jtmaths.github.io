@@ -6,3 +6,14 @@ url: https://jtmaths.org/
 
 aux_links:
   GitHub: https://github.com/jtmaths/jtmaths.github.io
+aux_links_new_tab: true
+
+nav_enabled: true
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "https://github.com/jtmaths/jtmaths.github.io"
+
+#Google Analytics
+#ga_tracking: UA-xxxx
+
+
