@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Quadratic Equations</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+    };
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1, h2 {
+            color: #005a9c;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 0.5em;
+        }
+        .example-box {
+            background-color: #eef7ff;
+            border-left: 5px solid #007bff;
+            padding: 1.5em;
+            margin: 2em 0;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5em auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>An Introduction to Quadratic Equations 📈</h1>
+        <p>Welcome to the world of quadratic equations! You've likely solved linear equations like $x+3=5$, but quadratics are the next step up. They are incredibly useful in fields like physics, engineering, and finance.</p>
+
+        <hr>
+
+        <h2>What is a Quadratic Equation?</h2>
+        <p>A quadratic equation is a polynomial equation of the second degree, meaning the highest power of the variable (usually $x$) is 2. The standard form of a quadratic equation is:</p>
+        $$ax^2 + bx + c = 0$$
+        <p>Here's what the letters mean:</p>
+        <ul>
+            <li>$x$ is the variable.</li>
+            <li>$a$, $b$, and $c$ are known numbers (coefficients and a constant).</li>
+            <li>The one crucial rule is that <b>$a$ cannot be zero</b> ($a \neq 0$). If $a$ were 0, the $x^2$ term would disappear, and it would just be a linear equation!</li>
+        </ul>
+
+        <hr>
+
+        <h2>The Graph of a Quadratic: The Parabola</h2>
+        <p>When you plot a quadratic function like $y = ax^2 + bx + c$, it creates a beautiful, symmetrical U-shaped curve called a <b>parabola</b>.</p>
+        <p>The coefficient '$a$' tells us which way the parabola opens:</p>
+        <ul>
+            <li>If <b>$a > 0$</b> (positive), the parabola opens <b>upwards</b>, like a smile. For example, the graph of $y = x^2 - 4$.</li>
+            <li>If <b>$a < 0$</b> (negative), the parabola opens <b>downwards</b>, like a frown. For example, the graph of $y = -x^2 + 2x + 3$.</li>
+        </ul>
+
+
+
+        <p>When we "solve" the equation $ax^2 + bx + c = 0$, we are finding the <b>roots</b>, which are the x-values where the graph crosses the x-axis (i.e., where $y=0$). A parabola can cross the x-axis twice, once, or not at all.</p>
+
+        <hr>
+
+        <h2>Solving a Simple Quadratic by Factorising</h2>
+        <p>One of the most common ways to solve a quadratic equation is by factorising. Let's walk through an example.</p>
+
+        <div class="example-box">
+            <h3>Example: Solve $x^2 + 5x + 6 = 0$</h3>
+            <p><b>Step 1: The Goal</b><br>
+            We are looking for two numbers that do two things:</p>
+            <ol>
+                <li><b>Multiply</b> to give the constant term, $c$, which is $+6$.</li>
+                <li><b>Add</b> to give the coefficient of $x$, $b$, which is $+5$.</li>
+            </ol>
+
+            <p><b>Step 2: Find the Numbers</b><br>
+            Let's think of pairs of numbers that multiply to make 6:
+            (1 and 6), (2 and 3), (-1 and -6), (-2 and -3).
+            Which pair also adds up to 5? It's <b>2 and 3</b>, since $2+3=5$. We found our numbers!</p>
+
+            <p><b>Step 3: Factorise the Equation</b><br>
+            Now we can rewrite the equation using these numbers in two brackets:</p>
+            $$(x+2)(x+3) = 0$$
+
+            <p><b>Step 4: Find the Solutions</b><br>
+            If two things multiply together to make zero, one of them must be zero. This is a key rule in algebra. So, we can say that either the first bracket is zero, or the second bracket is zero.</p>
+            <p>Either $x+2 = 0 \implies x = -2$</p>
+            <p>Or $x+3 = 0 \implies x = -3$</p>
+
+            <p><b>The solution is $x = -2$ or $x = -3$.</b> These are the two points on the x-axis where the parabola for $y = x^2 + 5x + 6$ would cross.</p>
+        </div>
+
+        <p><a href="factors/questions.html">Factorising</a> is a great method, but it only works for some quadratics. For others, you'll learn about other techniques like "<a href="completing-the-square/completing-the-square.html">completing the square</a>" and the "<a href="formula/formula.html">quadratic formula</a>".</p>
+    </div>
+</body>
+</html>
