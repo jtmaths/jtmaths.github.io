@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenging Completing the Square Solutions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+    };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 2em; background-color: #f4f7f6; color: #333; }
+        .container { max-width: 900px; margin: auto; background-color: #ffffff; padding: 2.5em; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h1, h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 0.5em; margin-bottom: 1em; }
+        .answer { margin-bottom: 2.5em; padding: 1.5em; background-color: #ecf0f1; border-left: 5px solid #27ae60; border-radius: 5px; }
+        .explanation { background-color: #e8f5e9; padding: 1em; border-radius: 5px; margin: 1em 0; border: 1px dashed #27ae60; }
+        p { margin-bottom: 0.8em; }
+        strong { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Solutions: Challenging Completing the Square</h1>
+        <p>Here are the detailed step-by-step solutions for the challenging questions.</p>
+
+        <div class="answer">
+            <h2>Question 1: $3x^2 - 10x + 6 = 0$</h2>
+            <div class="explanation">
+                <p>1. Make the coefficient of $x^2$ equal to 1 by dividing the entire equation by 3:</p>
+                <p>$x^2 - \frac{10}{3}x + 2 = 0$</p>
+                <p>2. Move the constant term to the right side:</p>
+                <p>$x^2 - \frac{10}{3}x = -2$</p>
+                <p>3. Halve the coefficient of $x$ (which is $-\frac{10}{3}$), square it, and add to both sides:</p>
+                <p>Half of $-\frac{10}{3}$ is $-\frac{10}{6} = -\frac{5}{3}$. Squaring this gives $(-\frac{5}{3})^2 = \frac{25}{9}$.</p>
+                <p>$x^2 - \frac{10}{3}x + \frac{25}{9} = -2 + \frac{25}{9}$</p>
+                <p>4. Factor the left side as a perfect square and simplify the right side:</p>
+                <p>$(x - \frac{5}{3})^2 = -\frac{18}{9} + \frac{25}{9} = \frac{7}{9}$</p>
+                <p>5. Take the square root of both sides:</p>
+                <p>$x - \frac{5}{3} = \pm\sqrt{\frac{7}{9}} = \pm\frac{\sqrt{7}}{3}$</p>
+                <p>6. Solve for $x$:</p>
+                <p>$x = \frac{5}{3} \pm \frac{\sqrt{7}}{3}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{5 \pm \sqrt{7}}{3}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 2: $-2x^2 + 7x - 4 = 0$</h2>
+            <div class="explanation">
+                <p>1. Make the coefficient of $x^2$ equal to 1. Divide by -2 (or multiply by -1 then divide by 2):</p>
+                <p>$x^2 - \frac{7}{2}x + 2 = 0$</p>
+                <p>2. Move the constant term:</p>
+                <p>$x^2 - \frac{7}{2}x = -2$</p>
+                <p>3. Halve the coefficient of $x$ (which is $-\frac{7}{2}$), square it, and add to both sides:</p>
+                <p>Half of $-\frac{7}{2}$ is $-\frac{7}{4}$. Squaring this gives $(-\frac{7}{4})^2 = \frac{49}{16}$.</p>
+                <p>$x^2 - \frac{7}{2}x + \frac{49}{16} = -2 + \frac{49}{16}$</p>
+                <p>4. Factor and simplify:</p>
+                <p>$(x - \frac{7}{4})^2 = -\frac{32}{16} + \frac{49}{16} = \frac{17}{16}$</p>
+                <p>5. Take the square root:</p>
+                <p>$x - \frac{7}{4} = \pm\sqrt{\frac{17}{16}} = \pm\frac{\sqrt{17}}{4}$</p>
+                <p>6. Solve for $x$:</p>
+                <p>$x = \frac{7}{4} \pm \frac{\sqrt{17}}{4}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{7 \pm \sqrt{17}}{4}$</strong></p>
+        </div>
+        
+        <div class="answer">
+            <h2>Question 3: $x^2 + \frac{2}{3}x - \frac{1}{4} = 0$</h2>
+            <div class="explanation">
+                <p>1. Move the constant term:</p>
+                <p>$x^2 + \frac{2}{3}x = \frac{1}{4}$</p>
+                <p>2. Halve the coefficient of $x$ (which is $\frac{2}{3}$), square it, and add to both sides:</p>
+                <p>Half of $\frac{2}{3}$ is $\frac{1}{3}$. Squaring this gives $(\frac{1}{3})^2 = \frac{1}{9}$.</p>
+                <p>$x^2 + \frac{2}{3}x + \frac{1}{9} = \frac{1}{4} + \frac{1}{9}$</p>
+                <p>3. Factor and simplify (find a common denominator for the right side, which is 36):</p>
+                <p>$(x + \frac{1}{3})^2 = \frac{9}{36} + \frac{4}{36} = \frac{13}{36}$</p>
+                <p>4. Take the square root:</p>
+                <p>$x + \frac{1}{3} = \pm\sqrt{\frac{13}{36}} = \pm\frac{\sqrt{13}}{6}$</p>
+                <p>5. Solve for $x$:</p>
+                <p>$x = -\frac{1}{3} \pm \frac{\sqrt{13}}{6}$</p>
+                <p>To combine the terms, use a common denominator:</p>
+                <p>$x = -\frac{2}{6} \pm \frac{\sqrt{13}}{6}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{-2 \pm \sqrt{13}}{6}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 4: $5x^2 - 11x + 3 = 0$</h2>
+            <div class="explanation">
+                <p>1. Divide by 5:</p>
+                <p>$x^2 - \frac{11}{5}x + \frac{3}{5} = 0$</p>
+                <p>2. Move the constant term:</p>
+                <p>$x^2 - \frac{11}{5}x = -\frac{3}{5}$</p>
+                <p>3. Halve $-\frac{11}{5}$ to get $-\frac{11}{10}$. Square it to get $\frac{121}{100}$. Add to both sides:</p>
+                <p>$x^2 - \frac{11}{5}x + \frac{121}{100} = -\frac{3}{5} + \frac{121}{100}$</p>
+                <p>4. Factor and simplify (common denominator is 100):</p>
+                <p>$(x - \frac{11}{10})^2 = -\frac{60}{100} + \frac{121}{100} = \frac{61}{100}$</p>
+                <p>5. Take the square root:</p>
+                <p>$x - \frac{11}{10} = \pm\sqrt{\frac{61}{100}} = \pm\frac{\sqrt{61}}{10}$</p>
+                <p>6. Solve for $x$:</p>
+                <p>$x = \frac{11}{10} \pm \frac{\sqrt{61}}{10}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{11 \pm \sqrt{61}}{10}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 5: $ax^2 + bx + c = 0$ (Derive the quadratic formula)</h2>
+            <div class="explanation">
+                <p>1. Divide by $a$ (assuming $a \neq 0$):</p>
+                <p>$x^2 + \frac{b}{a}x + \frac{c}{a} = 0$</p>
+                <p>2. Move the constant term:</p>
+                <p>$x^2 + \frac{b}{a}x = -\frac{c}{a}$</p>
+                <p>3. Halve $\frac{b}{a}$ to get $\frac{b}{2a}$. Square it to get $(\frac{b}{2a})^2 = \frac{b^2}{4a^2}$. Add to both sides:</p>
+                <p>$x^2 + \frac{b}{a}x + \frac{b^2}{4a^2} = -\frac{c}{a} + \frac{b^2}{4a^2}$</p>
+                <p>4. Factor and simplify the right side (common denominator is $4a^2$):</p>
+                <p>$(x + \frac{b}{2a})^2 = -\frac{4ac}{4a^2} + \frac{b^2}{4a^2} = \frac{b^2 - 4ac}{4a^2}$</p>
+                <p>5. Take the square root of both sides:</p>
+                <p>$x + \frac{b}{2a} = \pm\sqrt{\frac{b^2 - 4ac}{4a^2}} = \pm\frac{\sqrt{b^2 - 4ac}}{\sqrt{4a^2}} = \pm\frac{\sqrt{b^2 - 4ac}}{2a}$</p>
+                <p>6. Solve for $x$:</p>
+                <p>$x = -\frac{b}{2a} \pm \frac{\sqrt{b^2 - 4ac}}{2a}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ (The Quadratic Formula)</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 6: $4x^2 - 9x + 2 = 0$</h2>
+            <div class="explanation">
+                <p>1. Divide by 4:</p>
+                <p>$x^2 - \frac{9}{4}x + \frac{2}{4} = 0 \implies x^2 - \frac{9}{4}x + \frac{1}{2} = 0$</p>
+                <p>2. Move the constant term:</p>
+                <p>$x^2 - \frac{9}{4}x = -\frac{1}{2}$</p>
+                <p>3. Halve $-\frac{9}{4}$ to get $-\frac{9}{8}$. Square it to get $\frac{81}{64}$. Add to both sides:</p>
+                <p>$x^2 - \frac{9}{4}x + \frac{81}{64} = -\frac{1}{2} + \frac{81}{64}$</p>
+                <p>4. Factor and simplify (common denominator is 64):</p>
+                <p>$(x - \frac{9}{8})^2 = -\frac{32}{64} + \frac{81}{64} = \frac{49}{64}$</p>
+                <p>5. Take the square root:</p>
+                <p>$x - \frac{9}{8} = \pm\sqrt{\frac{49}{64}} = \pm\frac{7}{8}$</p>
+                <p>6. Solve for $x$:</p>
+                <p>$x = \frac{9}{8} \pm \frac{7}{8}$</p>
+                <p>This gives two distinct solutions:</p>
+                <p>$x = \frac{9+7}{8} = \frac{16}{8} = 2$</p>
+                <p>$x = \frac{9-7}{8} = \frac{2}{8} = \frac{1}{4}$</p>
+            </div>
+            <p><strong>Answer: $x = 2$ or $x = \frac{1}{4}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 7: $x^2 - \sqrt{5}x + 1 = 0$</h2>
+            <div class="explanation">
+                <p>1. Move the constant term:</p>
+                <p>$x^2 - \sqrt{5}x = -1$</p>
+                <p>2. Halve $-\sqrt{5}$ to get $-\frac{\sqrt{5}}{2}$. Square it to get $(-\frac{\sqrt{5}}{2})^2 = \frac{5}{4}$. Add to both sides:</p>
+                <p>$x^2 - \sqrt{5}x + \frac{5}{4} = -1 + \frac{5}{4}$</p>
+                <p>3. Factor and simplify:</p>
+                <p>$(x - \frac{\sqrt{5}}{2})^2 = -\frac{4}{4} + \frac{5}{4} = \frac{1}{4}$</p>
+                <p>4. Take the square root:</p>
+                <p>$x - \frac{\sqrt{5}}{2} = \pm\sqrt{\frac{1}{4}} = \pm\frac{1}{2}$</p>
+                <p>5. Solve for $x$:</p>
+                <p>$x = \frac{\sqrt{5}}{2} \pm \frac{1}{2}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{\sqrt{5} \pm 1}{2}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 8: $(x+1)(x-5) = 1$</h2>
+            <div class="explanation">
+                <p>1. Expand the left side and rearrange to the standard quadratic form $ax^2+bx+c=0$:</p>
+                <p>$x^2 - 5x + x - 5 = 1$</p>
+                <p>$x^2 - 4x - 5 = 1$</p>
+                <p>$x^2 - 4x - 6 = 0$</p>
+                <p>2. Move the constant term:</p>
+                <p>$x^2 - 4x = 6$</p>
+                <p>3. Halve $-4$ to get $-2$. Square it to get $4$. Add to both sides:</p>
+                <p>$x^2 - 4x + 4 = 6 + 4$</p>
+                <p>4. Factor and simplify:</p>
+                <p>$(x-2)^2 = 10$</p>
+                <p>5. Take the square root:</p>
+                <p>$x-2 = \pm\sqrt{10}$</p>
+                <p>6. Solve for $x$:</p>
+                <p>$x = 2 \pm \sqrt{10}$</p>
+            </div>
+            <p><strong>Answer: $x = 2 \pm \sqrt{10}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 9: $\frac{1}{x-1} + \frac{1}{x+2} = 1$</h2>
+            <div class="explanation">
+                <p>1. Combine the fractions on the left side (common denominator is $(x-1)(x+2)$):</p>
+                <p>$\frac{(x+2) + (x-1)}{(x-1)(x+2)} = 1$</p>
+                <p>$\frac{2x+1}{x^2+x-2} = 1$</p>
+                <p>2. Multiply both sides by the denominator to clear the fraction:</p>
+                <p>$2x+1 = x^2+x-2$</p>
+                <p>3. Rearrange into standard quadratic form:</p>
+                <p>$0 = x^2+x-2-2x-1$</p>
+                <p>$0 = x^2-x-3$</p>
+                <p>4. Move the constant term:</p>
+                <p>$x^2 - x = 3$</p>
+                <p>5. Halve $-1$ to get $-\frac{1}{2}$. Square it to get $\frac{1}{4}$. Add to both sides:</p>
+                <p>$x^2 - x + \frac{1}{4} = 3 + \frac{1}{4}$</p>
+                <p>6. Factor and simplify:</p>
+                <p>$(x - \frac{1}{2})^2 = \frac{12}{4} + \frac{1}{4} = \frac{13}{4}$</p>
+                <p>7. Take the square root:</p>
+                <p>$x - \frac{1}{2} = \pm\sqrt{\frac{13}{4}} = \pm\frac{\sqrt{13}}{2}$</p>
+                <p>8. Solve for $x$:</p>
+                <p>$x = \frac{1}{2} \pm \frac{\sqrt{13}}{2}$</p>
+            </div>
+            <p><strong>Answer: $x = \frac{1 \pm \sqrt{13}}{2}$</strong></p>
+        </div>
+
+        <div class="answer">
+            <h2>Question 10: Find the value(s) of $k$ for which the equation $x^2 + (k+2)x + k = 0$ has exactly one real solution.</h2>
+            <div class="explanation">
+                <p>An equation has exactly one real solution when the completed square form results in $(x+A)^2 = 0$. This means the discriminant ($b^2-4ac$) is zero.</p>
+                <p>Let's complete the square:</p>
+                <p>1. Move the constant term:</p>
+                <p>$x^2 + (k+2)x = -k$</p>
+                <p>2. Halve the coefficient of $x$ (which is $k+2$) to get $\frac{k+2}{2}$. Square it to get $(\frac{k+2}{2})^2$. Add to both sides:</p>
+                <p>$x^2 + (k+2)x + (\frac{k+2}{2})^2 = -k + (\frac{k+2}{2})^2$</p>
+                <p>3. Factor the left side:</p>
+                <p>$(x + \frac{k+2}{2})^2 = -k + \frac{(k+2)^2}{4}$</p>
+                <p>For exactly one real solution, the right side must be zero:</p>
+                <p>$-k + \frac{(k+2)^2}{4} = 0$</p>
+                <p>Multiply by 4:</p>
+                <p>$-4k + (k+2)^2 = 0$</p>
+                <p>$-4k + k^2 + 4k + 4 = 0$</p>
+                <p>$k^2 + 4 = 0$</p>
+                <p>This implies $k^2 = -4$. There are no real values of $k$ for which $k^2 = -4$. This means there are no real values of $k$ for which this equation has exactly one real solution if we are strictly completing the square to find $x$.</p>
+                <p><em>Alternative approach (using the discriminant, which is equivalent to the RHS of the completed square):</em></p>
+                <p>For one real solution, the discriminant $b^2 - 4ac$ must be equal to 0.</p>
+                <p>In the equation $x^2 + (k+2)x + k = 0$, we have $a=1$, $b=(k+2)$, and $c=k$.</p>
+                <p>So, $(k+2)^2 - 4(1)(k) = 0$</p>
+                <p>$k^2 + 4k + 4 - 4k = 0$</p>
+                <p>$k^2 + 4 = 0$</p>
+                <p>$k^2 = -4$</p>
+                <p>As before, there are no real values of $k$ for which $k^2 = -4$. If we allow for complex numbers, $k = \pm 2i$. However, typically in these problems, "real solution" implies "real $k$".</p>
+            </div>
+            <p><strong>Answer: There are no real values of $k$ for which the equation has exactly one real solution.</strong></p>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completing the Square Problem</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+    };
+    </script>
+
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #dee2e6;
+        }
+        h2, h3 {
+            color: #005a9c;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        strong {
+            color: #d9534f;
+        }
+        .math-display {
+            text-align: center;
+            margin: 25px 0;
+            font-size: 1.1em;
+            overflow-x: auto;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ced4da;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>The Question 📝</h2>
+        <p>
+            Solve the quadratic equation $2x^2 + 6x - 7 = 0$ by completing the square.
+        </p>
+        <p>
+            Give your answer in exact surd form.
+        </p>
+
+        <hr>
+
+        <h2>The Solution</h2>
+        <p>
+            Here is the step-by-step method to solve the equation.
+        </p>
+
+        <h3>Step 1: Rearrange the Equation</h3>
+        <p>
+            First, move the constant term (the number without an $x$) to the right-hand side of the equation.
+        </p>
+        <div class="math-display">
+            $$2x^2 + 6x = 7$$
+        </div>
+
+        <h3>Step 2: Make the Coefficient of $x^2$ Equal to 1</h3>
+        <p>
+            The method of completing the square requires the coefficient of the $x^2$ term to be 1. To achieve this, divide every term in the equation by the current coefficient of $x^2$, which is <strong>2</strong>.
+        </p>
+        <div class="math-display">
+            $$\frac{2x^2}{2} + \frac{6x}{2} = \frac{7}{2}$$
+        </div>
+        <p>
+            This simplifies to:
+        </p>
+        <div class="math-display">
+            $$x^2 + 3x = \frac{7}{2}$$
+        </div>
+
+        <h3>Step 3: Complete the Square</h3>
+        <p>
+            Now, we need to find the value that "completes the square" on the left-hand side.
+        </p>
+        <ol>
+            <li>Take the coefficient of the $x$ term, which is <strong>3</strong>.</li>
+            <li>Halve it: $\frac{3}{2}$.</li>
+            <li>Square the result: $(\frac{3}{2})^2 = \frac{9}{4}$.</li>
+        </ol>
+        <p>
+            Add this value to <strong>both sides</strong> of the equation to keep it balanced.
+        </p>
+        <div class="math-display">
+            $$x^2 + 3x + \frac{9}{4} = \frac{7}{2} + \frac{9}{4}$$
+        </div>
+
+        <h3>Step 4: Factorise and Simplify</h3>
+        <p>
+            The left-hand side is now a perfect square trinomial and can be factorised. The right-hand side can be simplified by finding a common denominator.
+        </p>
+        <ul>
+            <li><strong>Left-hand side:</strong> $x^2 + 3x + \frac{9}{4}$ factorises to $(x + \frac{3}{2})^2$.</li>
+            <li><strong>Right-hand side:</strong> To add the fractions, change $\frac{7}{2}$ to $\frac{14}{4}$. So, $\frac{14}{4} + \frac{9}{4} = \frac{23}{4}$.</li>
+        </ul>
+        <p>
+            Now the equation looks like this:
+        </p>
+        <div class="math-display">
+            $$(x + \frac{3}{2})^2 = \frac{23}{4}$$
+        </div>
+
+        <h3>Step 5: Solve for $x$</h3>
+        <p>
+            To find $x$, we need to undo the operations.
+        </p>
+        <ol>
+            <li>
+                <strong>Take the square root of both sides</strong>. Remember to include both the positive and negative roots ($\pm$).
+                <div class="math-display">
+                    $$x + \frac{3}{2} = \pm\sqrt{\frac{23}{4}}$$
+                </div>
+            </li>
+            <li>
+                Simplify the square root on the right-hand side.
+                <div class="math-display">
+                    $$x + \frac{3}{2} = \pm\frac{\sqrt{23}}{\sqrt{4}} = \pm\frac{\sqrt{23}}{2}$$
+                </div>
+            </li>
+            <li>
+                <strong>Isolate $x$</strong> by subtracting $\frac{3}{2}$ from both sides.
+                <div class="math-display">
+                    $$x = -\frac{3}{2} \pm \frac{\sqrt{23}}{2}$$
+                </div>
+            </li>
+        </ol>
+        <p>
+            This gives us the two exact solutions:
+        </p>
+        <div class="math-display">
+            $$x = \frac{-3 + \sqrt{23}}{2} \quad \text{and} \quad x = \frac{-3 - \sqrt{23}}{2}$$
+        </div>
+    </div>
+
+</body>
+</html>
