@@ -4,6 +4,8 @@ layout: page
 parent: GCSE Level Maths
 nav_order: 1
 ---
+
+# What are Quadratics?
 * [Overview of Quadratic Equations](overview.html)
 
 # Factorising Quadratics
