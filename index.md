@@ -8,6 +8,7 @@ layout: home
 This website is built as a free resource to help everyone understand school level maths.
 It was started by Jonas Thornhill as part of his [Gold Duke of Edinburgh Award] and developed with the assistance of [Google Gemini AI] on [GitHub] using [Jekyll] and the [Just the Docs] theme.
 
+Help Jonas build the world best free maths resources at https://github.com/jtmaths/jtmaths.github.io
 
 ----
 
