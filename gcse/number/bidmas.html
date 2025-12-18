@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering BIDMAS - Order of Operations</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #333; max-width: 900px; margin: 0 auto; padding: 30px; background-color: #f4f7f6; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; }
+        h2 { color: #c0392b; margin-top: 40px; border-bottom: 1px solid #eee; }
+        
+        .bidmas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 20px 0; text-align: center; }
+        .bidmas-letter { background: #e74c3c; color: white; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 1.2em; }
+        
+        .example { 
+            background-color: #fdf2f2; 
+            padding: 25px; 
+            border-left: 5px solid #e74c3c; 
+            margin: 25px 0; 
+            display: block;
+            clear: both;
+        }
+
+        .sol-card { 
+            background-color: #ffffff; 
+            border: 1px solid #dcdde1; 
+            padding: 25px; 
+            margin: 20px 0; 
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .step { color: #7f8c8d; font-size: 0.9em; font-style: italic; display: block; margin-bottom: 5px; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; border-top: 1px dashed #ddd; margin-top: 10px; padding-top: 5px; }
+        
+        .highlight { background: #fff3cd; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Order of Operations: BIDMAS / BODMAS</h1>
+
+    <p>In mathematics, the order in which you perform calculations is critical. If you perform operations in the wrong order, you will get the wrong answer. We use the acronym <strong>BIDMAS</strong> to remember the hierarchy:</p>
+
+    <div class="bidmas-grid">
+        <div class="bidmas-letter">Brackets<br>\(()\), \([]\)</div>
+        <div class="bidmas-letter">Indices<br>\(x^2\), \(\sqrt{x}\)</div>
+        <div class="bidmas-letter">Division<br>\(\div\)</div>
+        <div class="bidmas-letter">Multiplication<br>\(\times\)</div>
+        <div class="bidmas-letter">Addition<br>\(+\)</div>
+        <div class="bidmas-letter">Subtraction<br>\(-\)</div>
+    </div>
+
+    <div class="example">
+        <strong>Important Note on Priority:</strong> Division and Multiplication have <em>equal</em> priority and should be done from left to right. The same applies to Addition and Subtraction.
+    </div>
+    <div class="example">
+        <strong>BIDMAS</strong> is sometimes referred to as <strong>BODMAS</strong> wih the 'O' meaning Of.
+    </div>
+
+    <h2>1. Complex Indices (Powers and Roots)</h2>
+    <p>Indices include both powers and square roots. Square roots act like a bracket—you must evaluate the expression inside the root before taking the root itself.</p>
+    <div class="example">
+        Calculate: \(5 + \sqrt{20 + 5}\) <br>
+        1. Inside the root: \(20 + 5 = 25\) <br>
+        2. Take the root (Index): \(\sqrt{25} = 5\) <br>
+        3. Addition: \(5 + 5 = 10\)
+    </div>
+
+    <h2>2. Hidden Brackets in Fractions</h2>
+    <p>When you see a large fraction bar, there are <span class="highlight">implied brackets</span> around the entire numerator (top) and the entire denominator (bottom).</p>
+    <div class="example">
+        Calculate: \(\frac{10 + 2 \times 5}{2^2}\) <br>
+        This is treated as: \((10 + (2 \times 5)) \div (2^2)\)
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions</h2>
+    <p>Try solving these on paper before checking the solutions below.</p>
+    <ol>
+        <li>\(12 - 3 \times 2 + 8\)</li>
+        <li>\((5 + 3)^2 \div 4\)</li>
+        <li>\(50 - [2 \times (10 - 3) + 4]\)</li>
+        <li>\(\frac{\sqrt{16} + 2^3}{2 \times 3}\)</li>
+        <li>\(4 \times (2 + 3^2) - \frac{10}{2}\)</li>
+    </ol>
+
+    <h2>Detailed Solutions</h2>
+
+    <div class="sol-card">
+        <strong>1. Solution: \(12 - 3 \times 2 + 8\)</strong><br>
+        <span class="step">Multiplication first: \(3 \times 2 = 6\)</span>
+        <span class="step">Equation is now: \(12 - 6 + 8\)</span>
+        <span class="step">Left to Right: \(12 - 6 = 6\), then \(6 + 8 = 14\)</span>
+        <div class="final-ans">Answer: 14</div>
+    </div>
+
+    <div class="sol-card">
+        <strong>2. Solution: \((5 + 3)^2 \div 4\)</strong><br>
+        <span class="step">Brackets first: \(5 + 3 = 8\)</span>
+        <span class="step">Indices (Power): \(8^2 = 64\)</span>
+        <span class="step">Division: \(64 \div 4 = 16\)</span>
+        <div class="final-ans">Answer: 16</div>
+    </div>
+
+    <div class="sol-card">
+        <strong>3. Solution: \(50 - [2 \times (10 - 3) + 4]\)</strong><br>
+        <span class="step">Inner Bracket: \(10 - 3 = 7\)</span>
+        <span class="step">Outer Bracket (Multiplication): \(2 \times 7 = 14\)</span>
+        <span class="step">Outer Bracket (Addition): \(14 + 4 = 18\)</span>
+        <span class="step">Final Subtraction: \(50 - 18 = 32\)</span>
+        <div class="final-ans">Answer: 32</div>
+    </div>
+
+    <div class="sol-card">
+        <strong>4. Solution: \(\frac{\sqrt{16} + 2^3}{2 \times 3}\)</strong><br>
+        <span class="step">Top Indices: \(\sqrt{16} = 4\) and \(2^3 = 8\)</span>
+        <span class="step">Top Addition: \(4 + 8 = 12\)</span>
+        <span class="step">Bottom Multiplication: \(2 \times 3 = 6\)</span>
+        <span class="step">Final Division: \(12 \div 6 = 2\)</span>
+        <div class="final-ans">Answer: 2</div>
+    </div>
+
+    <div class="sol-card">
+        <strong>5. Solution: \(4 \times (2 + 3^2) - \frac{10}{2}\)</strong><br>
+        <span class="step">Inside Bracket (Index): \(3^2 = 9\)</span>
+        <span class="step">Inside Bracket (Addition): \(2 + 9 = 11\)</span>
+        <span class="step">Multiplication: \(4 \times 11 = 44\)</span>
+        <span class="step">Fraction/Division: \(10 \div 2 = 5\)</span>
+        <span class="step">Subtraction: \(44 - 5 = 39\)</span>
+        <div class="final-ans">Answer: 39</div>
+    </div>
+
+</div>
+
+</body>
+</html>

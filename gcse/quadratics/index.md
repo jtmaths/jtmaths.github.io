@@ -17,6 +17,7 @@ nav_order: 1
 * [Quadratic Formula Cheat Sheet](formula/cheet-sheet.html)
 * [Questions](formula/questions.html)
 * [Answers](formula/answers.html)
+* [Checklist](formula/quiz.html)
 
 # Completing the square
 * [An overview of Completing the Square](completing-the-square/completing-the-square.html)

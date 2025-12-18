@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Mastery: Self-Assessment</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #fdfcf0; }
+        .container { background: white; padding: 40px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        h1 { color: #2d3748; text-align: center; }
+        .check-item { display: flex; align-items: center; margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #edf2f7; }
+        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 15px; }
+        .quiz-box { background: #f7fafc; border: 2px dashed #cbd5e0; padding: 20px; margin-top: 30px; border-radius: 8px; }
+        .badge { display: inline-block; padding: 4px 12px; background: #4a5568; color: white; border-radius: 20px; font-size: 0.8em; margin-bottom: 10px; }
+        .score-box { text-align: center; margin-top: 20px; font-weight: bold; color: #2b6cb0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Quadratic Mastery Checklist</h1>
+    <p>Rate your confidence by checking the boxes below as you complete the 20 practice questions.</p>
+
+    <div class="check-item">
+        <input type="checkbox">
+        <span>I can identify \(a\), \(b\), and \(c\) even when \(b\) or \(c\) are negative.</span>
+    </div>
+    <div class="check-item">
+        <input type="checkbox">
+        <span>I can rearrange an equation to make it equal zero (Standard Form).</span>
+    </div>
+    <div class="check-item">
+        <input type="checkbox">
+        <span>I remember that squaring a negative number (e.g., \(-4^2\)) results in a positive on my calculator.</span>
+    </div>
+    <div class="check-item">
+        <input type="checkbox">
+        <span>I can expand brackets like \(x(x+5)\) before solving.</span>
+    </div>
+    <div class="check-item">
+        <input type="checkbox">
+        <span>I understand why some equations have only 1 solution (Discriminant = 0).</span>
+    </div>
+
+    <div class="quiz-box">
+        <span class="badge">Final Challenge</span>
+        <h3>The "Exam Style" Question</h3>
+        <p>A rectangle has a length of \((x + 3)\) cm and a width of \(x\) cm. The total area is \(20 \text{ cm}^2\).</p>
+        <p><strong>1. Show that:</strong> \(x^2 + 3x - 20 = 0\)</p>
+        <p><strong>2. Solve for \(x\):</strong> (Give your answer to 2 decimal places).</p>
+        
+        <div style="margin-top: 15px; color: #718096; font-size: 0.9em;">
+            <em>Hint: Area = Length \(\times\) Width. Remember that \(x\) must be positive because it represents a physical length!</em>
+        </div>
+    </div>
+
+    <div class="score-box">
+        Progress: ___ / 20 Questions Correct
+    </div>
+</div>
+
+</body>
+</html>
