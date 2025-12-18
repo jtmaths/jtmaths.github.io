@@ -1,2 +1,2 @@
 # jtmaths.github.io
-JTmaths
+JTmaths - Free Maths Help and Worksheets

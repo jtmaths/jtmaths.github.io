@@ -13,7 +13,8 @@ nav_order: 1
 * [Answers](factors/answers.html)
 
 # The Quadratic Formula
-* [The Quadratic Formula Overview](formula/index.md)
+* [The Quadratic Formula Overview](formula/index.html)
+* [Quadratic Formula Cheat Sheet](formula/cheet-sheet.html)
 * [Questions](formula/questions.html)
 * [Answers](formula/answers.html)
 

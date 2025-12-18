@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering the Quadratic Formula</title>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 30px; }
+        .formula-box {
+            background-color: #eef2f7;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .example {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .graph-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #fff;
+            border: 1px dashed #bbb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+        }
+        .step { font-weight: bold; color: #e67e22; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Solving Quadratic Equations</h1>
+    <p>A quadratic equation is any equation that can be rearranged into the standard form:</p>
+    <div class="formula-box">
+        $$ax^2 + bx + c = 0$$
+    </div>
+    <p>Where \(a\), \(b\), and \(c\) are numbers (coefficients) and \(a \neq 0\).</p>
+
+    <h2>1. The Quadratic Formula</h2>
+    <p>When an equation cannot be factored easily, we use the <strong>Quadratic Formula</strong>. It works for every quadratic equation!</p>
+    
+    <div class="formula-box">
+        $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+    </div>
+
+    <h2>2. The Discriminant (\(D\))</h2>
+    <p>The part under the square root, \(b^2 - 4ac\), is called the <strong>discriminant</strong>. It tells us how many solutions (roots) to expect:</p>
+    <ul>
+        <li>If \(b^2 - 4ac > 0\): <strong>Two distinct real roots</strong> (The graph crosses the x-axis twice).</li>
+        <li>If \(b^2 - 4ac = 0\): <strong>One repeated root</strong> (The graph touches the x-axis once).</li>
+        <li>If \(b^2 - 4ac < 0\): <strong>No real roots</strong> (The graph never crosses the x-axis).</li>
+    </ul>
+
+    <hr>
+
+    <h2>Worked Example 1: Two Real Roots</h2>
+    <div class="example">
+        <p><strong>Solve:</strong> \(x^2 - 5x + 6 = 0\)</p>
+        <p>Identify: \(a = 1, b = -5, c = 6\)</p>
+        <p><span class="step">Step 1:</span> Substitute into the formula:<br>
+        $$x = \frac{-(-5) \pm \sqrt{(-5)^2 - 4(1)(6)}}{2(1)}$$</p>
+        <p><span class="step">Step 2:</span> Simplify:<br>
+        $$x = \frac{5 \pm \sqrt{25 - 24}}{2} = \frac{5 \pm \sqrt{1}}{2}$$</p>
+        <p><span class="step">Step 3:</span> Final answers:<br>
+        \(x = \frac{5+1}{2} = 3\) and \(x = \frac{5-1}{2} = 2\)</p>
+        
+        <div class="graph-placeholder">
+            [Visual: A U-shaped parabola crossing the x-axis at 2 and 3]
+        </div>
+    </div>
+
+    <h2>Worked Example 2: One Repeated Root</h2>
+    <div class="example">
+        <p><strong>Solve:</strong> \(x^2 - 4x + 4 = 0\)</p>
+        <p>Identify: \(a = 1, b = -4, c = 4\)</p>
+        <p>Applying the formula:<br>
+        $$x = \frac{4 \pm \sqrt{16 - 16}}{2} = \frac{4 \pm 0}{2}$$</p>
+        <p><strong>Result:</strong> \(x = 2\)</p>
+        
+        <div class="graph-placeholder">
+            [Visual: A U-shaped parabola whose vertex just touches the x-axis at 2]
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
