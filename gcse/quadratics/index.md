@@ -14,7 +14,7 @@ nav_order: 1
 
 # The Quadratic Formula
 * [The Quadratic Formula Overview](formula/index.html)
-* [Quadratic Formula Cheat Sheet](formula/cheet-sheet.html)
+* [Quadratic Formula Cheat Sheet](formula/cheat-sheet.html)
 * [Questions](formula/questions.html)
 * [Answers](formula/answers.html)
 * [Checklist](formula/quiz.html)

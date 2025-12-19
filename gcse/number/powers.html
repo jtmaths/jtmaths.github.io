@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Powers and Roots</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8fafc; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #1e293b; text-align: center; border-bottom: 4px solid #3b82f6; padding-bottom: 10px; }
+        h2 { color: #2563eb; margin-top: 35px; border-left: 5px solid #3b82f6; padding-left: 15px; }
+        .concept-box { background-color: #eff6ff; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #bfdbfe; }
+        .example { background-color: #f0fdf4; padding: 8px; border-left: 4px solid #22c55e; margin: 15px 0; font-family: 'Courier New', Courier, monospace; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 1.1em; }
+        th, td { border: 1px solid #cbd5e1; padding: 12px; text-align: left; }
+        th { background-color: #3b82f6; color: white; }
+        tr:nth-child(even) { background-color: #f1f5f9; }
+        .highlight { color: #d97706; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Powers and Roots: The Complete Guide</h1>
+
+    <h2>1. The Basics: Squares and Cubes</h2>
+    <p>A <strong>power</strong> (or index) tells you how many times to multiply a number by itself.</p>
+    
+    <div class="concept-box">
+        <strong>Squaring:</strong> Multiplying a number by itself once (\(x^2\)).<br>
+        <span class="example">\(5^2 = 5 \times 5 = 25\)</span><br>
+        <strong>Cubing:</strong> Multiplying a number by itself twice (\(x^3\)).<br>
+        <span class="example">\(2^3 = 2 \times 2 \times 2 = 8\)</span>
+    </div>
+
+    <p><strong>Roots</strong> are the opposite of powers. They ask: "What number was multiplied to get this result?"</p>
+    <div class="concept-box">
+        <strong>Square Root:</strong> \(\sqrt{49} = 7\) (because \(7 \times 7 = 49\))<br>
+        <strong>Cube Root:</strong> \(\sqrt[3]{64} = 4\) (because \(4 \times 4 \times 4 = 64\))
+    </div>
+
+    <h2>2. Special Powers: Zero and Negative</h2>
+    <ul>
+        <li><strong>Power of Zero:</strong> Anything (except zero) to the power of 0 is <span class="highlight">1</span>.
+            <div class="example">\(10^0 = 1\), \(x^0 = 1\), \(527^0 = 1\)</div>
+        </li>
+        <li><strong>Negative Powers:</strong> A negative index means "take the reciprocal" (turn it into a fraction).
+            <div class="example">\(x^{-a} = \frac{1}{x^a}\) <br> \(5^{-2} = \frac{1}{5^2} = \frac{1}{25}\)</div>
+        </li>
+    </ul>
+
+    <h2>3. Fractional Powers (Roots in Disguise)</h2>
+    <p>When the index is a fraction, the <strong>bottom number</strong> (denominator) is the root, and the <strong>top number</strong> (numerator) is the power.</p>
+    
+    <div class="concept-box">
+        $$x^{\frac{1}{n}} = \sqrt[n]{x}$$
+        <span class="example">\(16^{\frac{1}{2}} = \sqrt{16} = 4\)</span><br>
+        <span class="example">\(27^{\frac{1}{3}} = \sqrt[3]{27} = 3\)</span>
+    </div>
+
+    <p>If the fraction has a top number other than 1:</p>
+    <div class="example">
+        \(8^{\frac{2}{3}} = (\sqrt[3]{8})^2 = 2^2 = 4\)
+    </div>
+
+    <h2>4. The Laws of Indices</h2>
+    <p>When working with the <strong>same base</strong> (the big number), we can use these rules to simplify:</p>
+
+    <table>
+        <tr>
+            <th>Rule Name</th>
+            <th>Formula</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>Multiplication Rule</td>
+            <td>\(a^m \times a^n = a^{m+n}\)</td>
+            <td>\(2^6 \times 2^4 = 2^{10}\)</td>
+        </tr>
+        <tr>
+            <td>Division Rule</td>
+            <td>\(a^m \div a^n = a^{m-n}\)</td>
+            <td>\(5^7 \div 5^3 = 5^4\)</td>
+        </tr>
+        <tr>
+            <td>Power of a Power</td>
+            <td>\((a^m)^n = a^{m \times n}\)</td>
+            <td>\((3^2)^4 = 3^8\)</td>
+        </tr>
+    </table>
+
+    <h2>5. Combining Integers and Fractions</h2>
+    <p>The rules still apply even if the powers are fractions! Just add or subtract the fractions as normal.</p>
+    
+    <div class="example">
+        <strong>Example 1 (Multiplication):</strong><br>
+        \(3^7 \times 3^{\frac{1}{2}} = 3^{7 + \frac{1}{2}} = 3^{7.5}\) or \(3^{\frac{15}{2}}\)
+    </div>
+
+    <div class="example">
+        <strong>Example 2 (Division):</strong><br>
+        \(x^5 \div x^{\frac{3}{2}} = x^{5 - 1.5} = x^{3.5}\) or \(x^{\frac{7}{2}}\)
+    </div>
+
+    <div class="concept-box" style="border-left: 5px solid #d97706;">
+        <strong>Top Exam Tip:</strong> You can only combine these if the <strong>base</strong> is the same. 
+        <br>\(2^3 \times 5^2\) <strong>cannot</strong> be simplified using index laws!
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ nav_order: 1
 # What are Numbers?
 * [Overview of Numbers](overview.html)
 * [BIDMAS/BODMAS](bidmas.html)
-* [BIDMAS Common Misconceptions)(bidmas2.html)
+* [BIDMAS Common Misconceptions](bidmas2.html)
 * [Powers and Roots](powers.html)
 * [Prime Numbers](primes.html)
 * [Factors and Common Multiples](factors.html)
