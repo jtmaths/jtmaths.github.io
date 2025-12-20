@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Prime Numbers</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #333; max-width: 850px; margin: 0 auto; padding: 30px; background-color: #f4f7f6; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 8px solid #6c5ce7; }
+        h1 { color: #2d3436; text-align: center; margin-bottom: 30px; }
+        h2 { color: #6c5ce7; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 35px; }
+        .definition-box { background-color: #f0edff; padding: 25px; border-radius: 8px; border-left: 5px solid #6c5ce7; margin: 20px 0; }
+        .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .card { background: #fff; border: 1px solid #dfe6e9; padding: 15px; border-radius: 8px; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); border-color: #6c5ce7; }
+        .prime { font-weight: bold; color: #d63031; }
+        .not-prime { font-weight: bold; color: #636e72; }
+        .tip { background: #fff9db; padding: 15px; border-radius: 8px; border: 1px solid #fcc419; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background: #6c5ce7; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Prime Numbers: The Building Blocks of Maths</h1>
+
+    <div class="definition-box">
+        <strong>Definition:</strong> A <strong>Prime Number</strong> is a whole number greater than 1 that has exactly <strong>two factors</strong>: 1 and itself.
+    </div>
+
+    <h2>1. Identifying Prime Numbers</h2>
+    <p>To check if a number is prime, ask yourself: <em>"Can I divide this number by anything other than 1 and itself without leaving a remainder?"</em></p>
+
+    <div class="example-grid">
+        <div class="card">
+            <span class="prime">7 is Prime</span><br>
+            Factors: 1, 7.<br>
+            Reason: Nothing else goes into 7.
+        </div>
+        <div class="card">
+            <span class="not-prime">9 is NOT Prime</span><br>
+            Factors: 1, 3, 9.<br>
+            Reason: It can be divided by 3.
+        </div>
+        <div class="card">
+            <span class="prime">13 is Prime</span><br>
+            Factors: 1, 13.<br>
+            Reason: No even numbers, 3s, or 5s go into it.
+        </div>
+        <div class="card">
+            <span class="not-prime">15 is NOT Prime</span><br>
+            Factors: 1, 3, 5, 15.<br>
+            Reason: It is divisible by 3 and 5.
+        </div>
+    </div>
+
+    <div class="tip">
+        <strong>⚠️ The Number 1 is NOT Prime!</strong><br>
+        By definition, a prime must have <em>exactly</em> two factors. The number 1 only has one factor (itself), so it is not prime. 
+    </div>
+
+    <h2>2. Primes up to 30</h2>
+    <table>
+        <tr>
+            <th>Number</th>
+            <th>Is it Prime?</th>
+            <th>Why?</th>
+        </tr>
+        <tr><td>2</td><td>✅ Yes</td><td>The only <strong>even</strong> prime number.</td></tr>
+        <tr><td>3</td><td>✅ Yes</td><td>Factors are 1 and 3.</td></tr>
+        <tr><td>5</td><td>✅ Yes</td><td>Factors are 1 and 5.</td></tr>
+        <tr><td>21</td><td>❌ No</td><td>\(3 \times 7 = 21\)</td></tr>
+        <tr><td>23</td><td>✅ Yes</td><td>No smaller numbers divide into it.</td></tr>
+        <tr><td>27</td><td>❌ No</td><td>\(3 \times 9 = 27\)</td></tr>
+        <tr><td>29</td><td>✅ Yes</td><td>Factors are 1 and 29.</td></tr>
+    </table>
+
+    <h2>3. The "Fundamental Theorem of Arithmetic"</h2>
+    <p>This sounds fancy, but it just means that every number that isn't prime can be broken down into a product of prime numbers. We call this <strong>Prime Factorization</strong>.</p>
+    
+    <div class="definition-box">
+        <strong>Example: 60</strong><br>
+        \(60 = 2 \times 30\)<br>
+        \(60 = 2 \times 2 \times 15\)<br>
+        \(60 = 2 \times 2 \times 3 \times 5\)<br><br>
+        In index form: \(2^2 \times 3 \times 5\)
+    </div>
+
+    <h2>4. How to Find Large Primes</h2>
+    <p>To test if a number like 101 is prime, you only need to check if it's divisible by primes up to its square root (\(\sqrt{101} \approx 10\)).</p>
+    <ul>
+        <li>Divisible by 2? No (it's odd)</li>
+        <li>Divisible by 3? No (\(1+0+1=2\), not a multiple of 3)</li>
+        <li>Divisible by 5? No (doesn't end in 0 or 5)</li>
+        <li>Divisible by 7? No (\(101 \div 7 = 14.4...\))</li>
+    </ul>
+    <p>Since none of these work, <strong>101 is Prime!</strong></p>
+
+</div>
+
+</body>
+</html>

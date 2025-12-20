@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Fractions & Decimals</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #333; max-width: 900px; margin: 0 auto; padding: 30px; background-color: #f8fafc; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 8px solid #3498db; }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+        h2 { color: #2980b9; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 40px; }
+        .concept-box { background-color: #eef2f7; padding: 20px; border-radius: 8px; border-left: 5px solid #3498db; margin: 20px 0; }
+        .example { background-color: #f0fdf4; padding: 20px; border-left: 4px solid #22c55e; margin: 15px 0; border-radius: 4px; }
+        .method { font-weight: bold; color: #e67e22; margin-top: 10px; display: block; }
+        .step { color: #555; font-style: italic; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #3498db; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fractions and Decimals Mastery</h1>
+
+    <h2>1. The Basics: Types of Fractions</h2>
+    <div class="concept-box">
+        <ul>
+            <li><strong>Proper Fraction:</strong> Numerator < Denominator (e.g., \(\frac{3}{4}\))</li>
+            <li><strong>Improper Fraction:</strong> Numerator > Denominator (e.g., \(\frac{7}{4}\))</li>
+            <li><strong>Mixed Number:</strong> Whole number + Proper fraction (e.g., \(1\frac{3}{4}\))</li>
+        </ul>
+        <strong>Conversion Tip:</strong> To turn \(2\frac{3}{5}\) into an improper fraction, calculate \((2 \times 5) + 3 = 13\). The result is \(\frac{13}{5}\).
+    </div>
+
+    <h2>2. Arithmetic with Fractions</h2>
+
+    <h3>Addition & Subtraction</h3>
+    <p>You <strong>must</strong> have a Common Denominator.</p>
+    <div class="example">
+        <strong>Simple Example:</strong> \(\frac{1}{4} + \frac{2}{3}\)<br>
+        <span class="step">Common Denominator is 12:</span><br>
+        \(\frac{3}{12} + \frac{8}{12} = \frac{11}{12}\)
+    </div>
+    <div class="example">
+        <strong>Mixed Number Subtraction:</strong> \(3\frac{1}{2} - 1\frac{4}{5}\)<br>
+        <span class="step">1. Convert to improper: \(\frac{7}{2} - \frac{9}{5}\)</span><br>
+        <span class="step">2. Common denominator 10: \(\frac{35}{10} - \frac{18}{10}\)</span><br>
+        <span class="step">3. Solve: \(\frac{17}{10} = 1\frac{7}{10}\)</span>
+    </div>
+
+    <h3>Multiplication & Division</h3>
+    <div class="example">
+        <strong>Multiplication:</strong> \(\frac{2}{5} \times \frac{3}{7} = \frac{2 \times 3}{5 \times 7} = \frac{6}{35}\)
+    </div>
+    <div class="example">
+        <strong>Division (Keep, Change, Flip):</strong> \(\frac{3}{4} \div \frac{2}{5}\)<br>
+        \(\frac{3}{4} \times \frac{5}{2} = \frac{15}{8} = 1\frac{7}{8}\)
+    </div>
+
+    <h2>3. Conversions: Fractions & Decimals</h2>
+    <div class="concept-box">
+        <strong>Fraction to Decimal:</strong> Divide the top by the bottom. \(\frac{3}{8} = 3 \div 8 = 0.375\).<br>
+        <strong>Decimal to Fraction:</strong> Use place value. \(0.45 = \frac{45}{100} = \frac{9}{20}\).
+    </div>
+
+    <h2>4. Recurring Decimals to Fractions</h2>
+    <p>This is a high-level skill. We use algebra to cancel out the repeating part.</p>
+
+    <div class="example">
+        <strong>Example 1: Single repeating digit (\(0.\dot{7}\))</strong><br>
+        Let \(x = 0.777...\)<br>
+        \(10x = 7.777...\)<br>
+        Subtract: \(9x = 7 \Rightarrow x = \frac{7}{9}\)
+    </div>
+
+    <div class="example">
+        <strong>Example 2: Two repeating digits (\(0.\dot{4}\dot{1}\))</strong><br>
+        Let \(x = 0.4141...\)<br>
+        \(100x = 41.4141...\)<br>
+        Subtract: \(99x = 41 \Rightarrow x = \frac{41}{99}\)
+    </div>
+
+    <div class="example">
+        <strong>Example 3: Partial repeat (\(0.2\dot{5}\))</strong><br>
+        Let \(x = 0.2555...\)<br>
+        \(10x = 2.555...\)<br>
+        \(100x = 25.555...\)<br>
+        Subtract: \(90x = 23 \Rightarrow x = \frac{23}{90}\)
+    </div>
+
+    <div class="example">
+        <strong>Example 4: Three digits (\(0.\dot{1}2\dot{3}\))</strong><br>
+        Let \(x = 0.123123...\)<br>
+        \(1000x = 123.123...\)<br>
+        Subtract: \(999x = 123 \Rightarrow x = \frac{123}{999} = \frac{41}{333}\)
+    </div>
+
+    <div class="example">
+        <strong>Example 5: Mixed whole numbers (\(1.2\dot{3}\))</strong><br>
+        Let \(x = 1.2333...\)<br>
+        \(10x = 12.333...\)<br>
+        \(100x = 123.333...\)<br>
+        Subtract: \(90x = 111 \Rightarrow x = \frac{111}{90} = 1\frac{21}{90} = 1\frac{7}{30}\)
+    </div>
+
+    <h2>5. Fractions to Recurring Decimals</h2>
+    <p>Use long division until a pattern emerges.</p>
+    <div class="example">
+        <strong>Example 1:</strong> \(\frac{2}{3} = 2 \div 3 = 0.666... = 0.\dot{6}\)
+    </div>
+    <div class="example">
+        <strong>Example 2:</strong> \(\frac{5}{11} = 5 \div 11 = 0.4545... = 0.\dot{4}\dot{5}\)
+    </div>
+    <div class="example">
+        <strong>Example 3:</strong> \(\frac{1}{6} = 1 \div 6 = 0.1666... = 0.1\dot{6}\)
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-by-Step: Recurring Decimals to Fractions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.8; color: #333; max-width: 900px; margin: 0 auto; padding: 30px; background-color: #f4f7f6; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 4px solid #e67e22; padding-bottom: 10px; }
+        h2 { color: #d35400; margin-top: 40px; background: #fff3e0; padding: 10px; border-radius: 5px; }
+        .logic-box { background-color: #f0f4f8; padding: 20px; border-left: 6px solid #2980b9; margin: 20px 0; }
+        .step-container { border: 1px solid #ddd; margin: 20px 0; border-radius: 8px; overflow: hidden; }
+        .step-header { background: #2980b9; color: white; padding: 10px 20px; font-weight: bold; }
+        .step-body { padding: 20px; background: #fff; }
+        .math-display { font-size: 1.2em; text-align: center; margin: 15px 0; background: #f9f9f9; padding: 10px; border-radius: 5px; }
+        .highlight { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Converting Recurring Decimals to Fractions</h1>
+
+    <div class="logic-box">
+        <strong>The Big Idea:</strong> Recurring decimals like \(0.777...\) are hard to work with because they never end. Our goal is to use algebra to <strong>subtract the infinite part away</strong>, leaving us with a simple whole number.
+    </div>
+
+    <h2>The 4-Step Universal Method</h2>
+    
+    <div class="step-container">
+        <div class="step-header">Step 1: Assign 'x'</div>
+        <div class="step-body">
+            Write down your decimal and call it \(x\). Write out at least 4 or 5 of the repeating digits so you can see the pattern clearly.
+            <div class="math-display">\(x = 0.77777...\)</div>
+        </div>
+    </div>
+
+    <div class="step-container">
+        <div class="step-header">Step 2: Multiply to Shift the Pattern</div>
+        <div class="step-body">
+            Multiply \(x\) by 10, 100, or 1000 to "shift" the decimal point until the digits after the decimal point <strong>match</strong> your original equation.
+            <ul>
+                <li>If 1 digit repeats: Multiply by 10</li>
+                <li>If 2 digits repeat: Multiply by 100</li>
+                <li>If 3 digits repeat: Multiply by 1000</li>
+            </ul>
+            <div class="math-display">\(10x = 7.77777...\)</div>
+        </div>
+    </div>
+
+    <div class="step-container">
+        <div class="step-header">Step 3: Subtract the Equations</div>
+        <div class="step-body">
+            Subtract the smaller equation from the larger one. Because the decimals are identical, they cancel each other out!
+            <div class="math-display">
+                \(10x = 7.77777...\) <br>
+                \(-\quad x = 0.77777...\) <hr>
+                \(9x = 7.00000...\)
+            </div>
+        </div>
+    </div>
+
+    <div class="step-container">
+        <div class="step-header">Step 4: Solve for x</div>
+        <div class="step-body">
+            Now just divide to find the fraction.
+            <div class="math-display">\(x = \frac{7}{9}\)</div>
+        </div>
+    </div>
+
+    <h2>A More Difficult Example: \(0.2\dot{5}\)</h2>
+    <p>In this case, only the 5 repeats (it looks like \(0.25555...\)). We need to be careful to make the decimals match.</p>
+    
+    <div class="logic-box">
+        <strong>1. Let \(x = 0.25555...\)</strong> <br>
+        <strong>2. Multiply by 10:</strong> \(10x = 2.5555...\) (This doesn't match \(x\) yet). <br>
+        <strong>3. Multiply by 100:</strong> \(100x = 25.5555...\) <br><br>
+        <em>Look! The decimals for \(100x\) and \(10x\) match perfectly now! Both have infinite 5s after the point.</em>
+    </div>
+
+    <div class="math-display">
+        \(100x = 25.555...\) <br>
+        \(- 10x = 2.555...\) <hr>
+        \(90x = 23\)
+    </div>
+
+    <p>Final Step: <strong>\(x = \frac{23}{90}\)</strong></p>
+
+    <h2>Summary Table</h2>
+    <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+        <tr style="background:#d35400; color:white;">
+            <th style="padding:10px; border:1px solid #ddd;">Decimal</th>
+            <th style="padding:10px; border:1px solid #ddd;">Multiply by...</th>
+            <th style="padding:10px; border:1px solid #ddd;">Subtraction Result</th>
+            <th style="padding:10px; border:1px solid #ddd;">Fraction</th>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ddd;">\(0.\dot{4}\)</td>
+            <td style="padding:10px; border:1px solid #ddd;">\(10x\) and \(x\)</td>
+            <td style="padding:10px; border:1px solid #ddd;">\(9x = 4\)</td>
+            <td style="padding:10px; border:1px solid #ddd;">\(\frac{4}{9}\)</td>
+        </tr>
+        <tr>
+            <td style="padding:10px; border:1px solid #ddd;">\(0.\dot{1}\dot{2}\)</td>
+            <td style="padding:10px; border:1px solid #ddd;">\(100x\) and \(x\)</td>
+            <td style="padding:10px; border:1px solid #ddd;">\(99x = 12\)</td>
+            <td style="padding:10px; border:1px solid #ddd;">\(\frac{12}{99} = \frac{4}{33}\)</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

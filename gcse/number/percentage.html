@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Percentages</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #333; max-width: 900px; margin: 0 auto; padding: 30px; background-color: #f0f9ff; }
+        .container { background-color: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 8px solid #0ea5e9; }
+        h1 { color: #0369a1; text-align: center; margin-bottom: 20px; }
+        h2 { color: #0c4a6e; border-bottom: 2px solid #bae6fd; padding-bottom: 5px; margin-top: 35px; }
+        .explanation-box { background-color: #f8fafc; padding: 20px; border-radius: 10px; border-left: 5px solid #0ea5e9; margin: 20px 0; }
+        .example { background-color: #f0fdf4; padding: 15px; border-left: 4px solid #22c55e; margin: 10px 0; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; background: white; }
+        th, td { border: 1px solid #e2e8f0; padding: 12px; text-align: center; }
+        th { background-color: #0ea5e9; color: white; }
+        tr:nth-child(even) { background-color: #f1f5f9; }
+        .step { font-weight: bold; color: #d97706; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Understanding Percentages</h1>
+
+    <div class="explanation-box">
+        <strong>What is a Percentage?</strong><br>
+        The word "percent" literally means <strong>"per hundred"</strong>. When we talk about 45%, we are really talking about the fraction \(\frac{45}{100}\) or the decimal \(0.45\).
+    </div>
+
+    <h2>1. Decimal to Percentage (and back)</h2>
+    <p>This is the easiest conversion because it only involves moving the decimal point.</p>
+    
+    <div class="example">
+        <strong>Decimal \(\rightarrow\) Percentage:</strong> Multiply by 100 (move decimal 2 places right).<br>
+        <span class="step">Example:</span> \(0.34 \times 100 = 34\%\)<br>
+        <span class="step">Example:</span> \(1.2 \times 100 = 120\%\)
+    </div>
+
+    <div class="example">
+        <strong>Percentage \(\rightarrow\) Decimal:</strong> Divide by 100 (move decimal 2 places left).<br>
+        <span class="step">Example:</span> \(85\% \div 100 = 0.85\)<br>
+        <span class="step">Example:</span> \(4.5\% \div 100 = 0.045\)
+    </div>
+
+    <h2>2. Fraction to Percentage</h2>
+    <div class="explanation-box">
+        <span class="step">Method A:</span> Change the denominator to 100.<br>
+        \(\frac{3}{20} = \frac{15}{100} = 15\%\)<br><br>
+        <span class="step">Method B:</span> Divide the top by the bottom, then multiply by 100.<br>
+        \(\frac{5}{8} = 5 \div 8 = 0.625 \rightarrow 62.5\%\)
+    </div>
+
+    <h2>3. Common Equivalence Table</h2>
+    <p>These are the core values you should memorize for exams:</p>
+    <table>
+        <tr>
+            <th>Fraction</th>
+            <th>Decimal</th>
+            <th>Percentage</th>
+        </tr>
+        <tr><td>\(\frac{1}{2}\)</td><td>0.5</td><td>50%</td></tr>
+        <tr><td>\(\frac{1}{4}\)</td><td>0.25</td><td>25%</td></tr>
+        <tr><td>\(\frac{3}{4}\)</td><td>0.75</td><td>75%</td></tr>
+        <tr><td>\(\frac{1}{5}\)</td><td>0.2</td><td>20%</td></tr>
+        <tr><td>\(\frac{1}{10}\)</td><td>0.1</td><td>10%</td></tr>
+        <tr><td>\(\frac{1}{3}\)</td><td>\(0.\dot{3}\)</td><td>\(33.\dot{3}\%\)</td></tr>
+        <tr><td>\(\frac{2}{3}\)</td><td>\(0.\dot{6}\)</td><td>\(66.\dot{6}\%\)</td></tr>
+        <tr><td>\(\frac{1}{8}\)</td><td>0.125</td><td>12.5%</td></tr>
+    </table>
+
+    <h2>4. Percentage to Fraction</h2>
+    <div class="example">
+        Put the percentage value over 100 and <strong>simplify</strong>.<br><br>
+        <span class="step">Example:</span> \(35\% = \frac{35}{100}\)<br>
+        Divide both by 5 \(\rightarrow \frac{7}{20}\)<br><br>
+        <span class="step">Example:</span> \(125\% = \frac{125}{100} = \frac{5}{4} = 1\frac{1}{4}\)
+    </div>
+
+</div>
+
+</body>
+</html>
