@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factors, Multiples, HCF & LCM</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fcfcfc; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #8e44ad; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #8e44ad; margin-top: 40px; }
+        .def-box { background-color: #f4eff7; padding: 20px; border-left: 5px solid #8e44ad; margin: 20px 0; border-radius: 5px; }
+        .example { background-color: #fff9c4; padding: 15px; border: 1px solid #fbc02d; margin: 15px 0; border-radius: 5px; }
+        .method-title { font-weight: bold; text-transform: uppercase; color: #555; font-size: 0.9em; margin-bottom: 5px; display: block; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #8e44ad; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Factors and Multiples Masterclass</h1>
+
+    <h2>1. Definitions</h2>
+    <div class="def-box">
+        <p><strong>Factor:</strong> A number that divides exactly into another number (no remainder). Factors are usually <em>smaller</em> than the number.</p>
+        <p><strong>Multiple:</strong> The result of multiplying a number by an integer (times tables). Multiples are usually <em>larger</em> than the number.</p>
+    </div>
+
+    <p>Example using the number <strong>12</strong>:</p>
+    <ul>
+        <li><strong>Factors of 12:</strong> \(1, 2, 3, 4, 6, 12\) (Numbers that 12 can be divided by)</li>
+        <li><strong>Multiples of 12:</strong> \(12, 24, 36, 48, 60...\) (The 12 times table)</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. HCF: Highest Common Factor</h2>
+    <p>The largest number that divides exactly into <em>both</em> numbers.</p>
+
+    <h3>Method A: Listing (Small Numbers)</h3>
+    <div class="example">
+        <strong>Find HCF of 12 and 18</strong><br>
+        Factors of 12: \(1, 2, 3, 4, \mathbf{6}, 12\)<br>
+        Factors of 18: \(1, 2, 3, \mathbf{6}, 9, 18\)<br>
+        The biggest number in both lists is <strong>6</strong>.
+    </div>
+
+    <h3>Method B: Prime Factors (Large Numbers)</h3>
+    <div class="example">
+        <strong>Find HCF of 120 and 168</strong><br>
+        <span class="method-title">Step 1: Write as product of primes</span>
+        \(120 = 2 \times 2 \times 2 \times 3 \times 5 = 2^3 \times 3 \times 5\)<br>
+        \(168 = 2 \times 2 \times 2 \times 3 \times 7 = 2^3 \times 3 \times 7\)<br><br>
+        
+        <span class="method-title">Step 2: Multiply the Common Primes</span>
+        Both have three 2s and one 3.<br>
+        $$ \text{HCF} = 2 \times 2 \times 2 \times 3 = 24 $$
+    </div>
+
+    <h2>3. LCM: Lowest Common Multiple</h2>
+    <p>The smallest number that is in the times tables of <em>both</em> numbers.</p>
+
+    <h3>Method A: Listing (Small Numbers)</h3>
+    <div class="example">
+        <strong>Find LCM of 6 and 8</strong><br>
+        Multiples of 6: \(6, 12, 18, \mathbf{24}, 30, 36...\)<br>
+        Multiples of 8: \(8, 16, \mathbf{24}, 32, 40...\)<br>
+        The first number to appear in both lists is <strong>24</strong>.
+    </div>
+
+    <h3>Method B: Prime Factors (Large Numbers)</h3>
+    <div class="example">
+        <strong>Find LCM of 60 and 72</strong><br>
+        \(60 = 2^2 \times 3 \times 5\)<br>
+        \(72 = 2^3 \times 3^2\)<br><br>
+        
+        <span class="method-title">The Rule:</span>
+        Take the <strong>highest power</strong> of every prime number present in either list.<br>
+        - Highest \(2\) is \(2^3\)<br>
+        - Highest \(3\) is \(3^2\)<br>
+        - Highest \(5\) is \(5^1\)<br><br>
+        $$ \text{LCM} = 2^3 \times 3^2 \times 5 = 8 \times 9 \times 5 = 360 $$
+    </div>
+
+    <h2>4. Summary Table</h2>
+    <table>
+        <tr>
+            <th>Concept</th>
+            <th>Think...</th>
+            <th>Result Size</th>
+        </tr>
+        <tr>
+            <td><strong>HCF</strong></td>
+            <td>"What fits into both?"</td>
+            <td>Smaller than (or equal to) numbers given.</td>
+        </tr>
+        <tr>
+            <td><strong>LCM</strong></td>
+            <td>"Where do their times tables meet?"</td>
+            <td>Larger than (or equal to) numbers given.</td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

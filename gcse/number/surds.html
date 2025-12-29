@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surds Masterclass</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fafafa; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #e74c3c; }
+        h1 { color: #c0392b; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #d35400; margin-top: 40px; border-left: 5px solid #e74c3c; padding-left: 15px; }
+        .def-box { background-color: #fdedec; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #fadbd8; }
+        .rule-box { background-color: #eafaf1; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #2ecc71; }
+        .example { background-color: #fdfefe; border: 1px solid #d5dbdb; padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #7f8c8d; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #f4f6f7; border: 1px solid #e5e8e8; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
+        summary { background: #ecf0f1; padding: 15px; cursor: pointer; font-weight: bold; color: #2c3e50; outline: none; }
+        summary:hover { background: #d5dbdb; }
+        .solution-content { padding: 20px; border-top: 1px solid #bdc3c7; background: white; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Surds Masterclass</h1>
+
+    <div class="def-box">
+        <h3>What is a Surd?</h3>
+        <p>A <strong>surd</strong> is a square root that cannot be simplified into a whole number (integer). It is an "irrational number," meaning its decimal form goes on forever without repeating.</p>
+        <ul>
+            <li>\(\sqrt{4} = 2\) (Not a surd, it's a whole number).</li>
+            <li>\(\sqrt{5} = 2.23606...\) (Yes, this is a surd).</li>
+            <li>\(\sqrt{9} = 3\) (Not a surd).</li>
+        </ul>
+        <p><em>In math exams, we leave answers in "surd form" to be exact, rather than rounding a decimal.</em></p>
+    </div>
+
+    <h2>1. The Golden Rules of Surds</h2>
+    <p>There are three main laws you need to memorize to manipulate surds.</p>
+
+    <div class="rule-box">
+        <strong>Rule 1: Multiplication</strong><br>
+        $$ \sqrt{a} \times \sqrt{b} = \sqrt{a \times b} $$
+        <div class="example">
+            Example: \(\sqrt{3} \times \sqrt{5} = \sqrt{15}\)
+        </div>
+    </div>
+
+    <div class="rule-box">
+        <strong>Rule 2: Division</strong><br>
+        $$ \frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}} $$
+        <div class="example">
+            Example: \(\frac{\sqrt{20}}{\sqrt{5}} = \sqrt{4} = 2\)
+        </div>
+    </div>
+
+    <div class="rule-box">
+        <strong>Rule 3: Separation (Simplifying)</strong><br>
+        $$ \sqrt{a \times b} = \sqrt{a} \times \sqrt{b} $$
+        <p>This is the reverse of Rule 1. We use this to simplify large surds by finding <strong>square factors</strong>.</p>
+        <div class="example">
+            <strong>Simplify \(\sqrt{50}\)</strong><br>
+            Think: "What square number goes into 50?" (4, 9, 16, 25...)<br>
+            Answer: 25.<br>
+            $$ \sqrt{50} = \sqrt{25 \times 2} = \sqrt{25} \times \sqrt{2} = 5\sqrt{2} $$
+        </div>
+    </div>
+
+    <h2>2. Adding and Subtracting</h2>
+    <p>You can only add or subtract surds if they are the <strong>same type</strong> (like algebra).</p>
+    <div class="example">
+        <p>Think of \(\sqrt{2}\) like \(x\).</p>
+        <ul>
+            <li>\(2\sqrt{2} + 3\sqrt{2} = 5\sqrt{2}\) (Correct ✅)</li>
+            <li>\(\sqrt{2} + \sqrt{3}\) (Cannot be simplified ❌)</li>
+        </ul>
+    </div>
+
+    <h2>3. Expanding Brackets</h2>
+    <p>Treat this exactly like expanding algebraic brackets \((a+b)(c+d)\).</p>
+    <div class="example">
+        <strong>Expand:</strong> \((2 + \sqrt{3})(4 - \sqrt{3})\)<br>
+        1. First: \(2 \times 4 = 8\)<br>
+        2. Outside: \(2 \times -\sqrt{3} = -2\sqrt{3}\)<br>
+        3. Inside: \(\sqrt{3} \times 4 = +4\sqrt{3}\)<br>
+        4. Last: \(\sqrt{3} \times -\sqrt{3} = -\sqrt{9} = -3\)<br><br>
+        <strong>Collect like terms:</strong><br>
+        Numbers: \(8 - 3 = 5\)<br>
+        Surds: \(-2\sqrt{3} + 4\sqrt{3} = +2\sqrt{3}\)<br>
+        <span class="final-ans">Answer: \(5 + 2\sqrt{3}\)</span>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself, then click to reveal the full working out.</p>
+
+    <details>
+        <summary>Question 1: Simplify \(\sqrt{48}\)</summary>
+        <div class="solution-content">
+            <p>We need the largest square number that goes into 48.</p>
+            <p>Square numbers: 4, 9, 16, 25...</p>
+            <p>16 divides into 48 exactly 3 times.</p>
+            $$ \sqrt{48} = \sqrt{16 \times 3} $$
+            $$ = \sqrt{16} \times \sqrt{3} $$
+            $$ = 4 \times \sqrt{3} $$
+            <span class="final-ans">Answer: \(4\sqrt{3}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 2: Calculate \(\sqrt{75} + \sqrt{12}\)</summary>
+        <div class="solution-content">
+            <p>We cannot add them yet. We must simplify both first so they have a common surd.</p>
+            <p><strong>Step 1: Simplify \(\sqrt{75}\)</strong><br>
+            Largest square factor is 25.<br>
+            \(\sqrt{75} = \sqrt{25 \times 3} = 5\sqrt{3}\)</p>
+            
+            <p><strong>Step 2: Simplify \(\sqrt{12}\)</strong><br>
+            Largest square factor is 4.<br>
+            \(\sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3}\)</p>
+
+            <p><strong>Step 3: Add them</strong><br>
+            \(5\sqrt{3} + 2\sqrt{3} = 7\sqrt{3}\)</p>
+            <span class="final-ans">Answer: \(7\sqrt{3}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 3: Expand and Simplify \((\sqrt{5} + 2)^2\)</summary>
+        <div class="solution-content">
+            <p>Write it out as double brackets:</p>
+            $$ (\sqrt{5} + 2)(\sqrt{5} + 2) $$
+            <p>Use FOIL (First, Outside, Inside, Last):</p>
+            <ul>
+                <li>First: \(\sqrt{5} \times \sqrt{5} = 5\)</li>
+                <li>Outside: \(\sqrt{5} \times 2 = 2\sqrt{5}\)</li>
+                <li>Inside: \(2 \times \sqrt{5} = 2\sqrt{5}\)</li>
+                <li>Last: \(2 \times 2 = 4\)</li>
+            </ul>
+            <p>Combine: \(5 + 4 + 2\sqrt{5} + 2\sqrt{5}\)</p>
+            <span class="final-ans">Answer: \(9 + 4\sqrt{5}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 4: Simplify \(\frac{18}{\sqrt{3}}\) (Rationalizing the Denominator)</summary>
+        <div class="solution-content">
+            <p>We never leave a surd on the bottom of a fraction. To remove it, multiply the top and bottom by \(\sqrt{3}\).</p>
+            $$ \frac{18 \times \sqrt{3}}{\sqrt{3} \times \sqrt{3}} $$
+            <p>The bottom becomes \(\sqrt{9}\), which is just 3.</p>
+            $$ \frac{18\sqrt{3}}{3} $$
+            <p>Now simplify the fraction \(18 \div 3 = 6\).</p>
+            <span class="final-ans">Answer: \(6\sqrt{3}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 5: Solve for \(x\): \(\sqrt{8} \times \sqrt{10} = x\sqrt{5}\)</summary>
+        <div class="solution-content">
+            <p><strong>Step 1: Combine the left side</strong><br>
+            \(\sqrt{8} \times \sqrt{10} = \sqrt{80}\)</p>
+
+            <p><strong>Step 2: Simplify \(\sqrt{80}\)</strong><br>
+            Find the largest square factor of 80. It is 16.<br>
+            \(\sqrt{80} = \sqrt{16 \times 5} = 4\sqrt{5}\)</p>
+
+            <p><strong>Step 3: Compare</strong><br>
+            We have \(4\sqrt{5} = x\sqrt{5}\)</p>
+            <span class="final-ans">Answer: \(x = 4\)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>
