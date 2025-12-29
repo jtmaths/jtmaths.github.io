@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systematic Listing & The Product Rule</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fdfbf7; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #d35400; }
+        h1 { color: #d35400; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #e67e22; margin-top: 40px; border-left: 5px solid #d35400; padding-left: 15px; }
+        .concept-box { background-color: #fff3e0; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #ffe0b2; }
+        .example { background-color: #fff; border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 5px; }
+        .list-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-top: 10px; }
+        .list-item { background: #fbe9e7; padding: 5px; text-align: center; border-radius: 3px; font-weight: bold; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
+        summary { background: #f5f5f5; padding: 15px; cursor: pointer; font-weight: bold; color: #424242; outline: none; }
+        summary:hover { background: #eeeeee; }
+        .solution-content { padding: 20px; border-top: 1px solid #e0e0e0; background: white; }
+        .final-ans { color: #d35400; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Systematic Listing & Counting Strategies</h1>
+
+    <div class="concept-box">
+        <h3>What is Systematic Listing?</h3>
+        <p>Systematic listing means writing down every possible outcome in a logical order. The goal is to ensure you don't <strong>miss any</strong> and don't <strong>double count</strong>.</p>
+        <p>Common strategies include:</p>
+        <ul>
+            <li><strong>Alphabetical Order</strong> (A, B, C...)</li>
+            <li><strong>Numerical Order</strong> (1, 2, 3...)</li>
+            <li><strong>Fixing the First Item:</strong> Keep the first item the same until you exhaust all options, then move to the next.</li>
+        </ul>
+    </div>
+
+    <h2>1. Systematic Listing Example</h2>
+    <div class="example">
+        <p><strong>Question:</strong> You have three cards: 1, 2, and 3. List all the possible 2-digit numbers you can make.</p>
+        <p><strong>Strategy:</strong> Fix the first digit and change the second.</p>
+        
+        <div class="list-grid">
+            <div class="list-item">1 and 1 &#8594; 11</div>
+            <div class="list-item">1 and 2 &#8594; 12</div>
+            <div class="list-item">1 and 3 &#8594; 13</div>
+            <div class="list-item">2 and 1 &#8594; 21</div>
+            <div class="list-item">2 and 2 &#8594; 22</div>
+            <div class="list-item">2 and 3 &#8594; 23</div>
+            <div class="list-item">3 and 1 &#8594; 31</div>
+            <div class="list-item">3 and 2 &#8594; 32</div>
+            <div class="list-item">3 and 3 &#8594; 33</div>
+        </div>
+        <p>Total outcomes: 9</p>
+    </div>
+
+    <h2>2. The Product Rule for Counting</h2>
+    <p>Sometimes listing takes too long. If we only need to know <em>how many</em> outcomes there are (not what they are), we use multiplication.</p>
+
+    <div class="concept-box">
+        <strong>The Rule:</strong> If there are <strong>\(m\)</strong> ways to do Task A, and <strong>\(n\)</strong> ways to do Task B, then there are:
+        $$ m \times n $$
+        ways to do both together.
+    </div>
+
+    <div class="example">
+        <strong>Example: The Restaurant Menu</strong><br>
+        A menu has <strong>4 Starters</strong> and <strong>5 Main Courses</strong>.<br>
+        How many different 2-course meals can you order?<br><br>
+        Calculation: \(4 \times 5 = 20\) different meals.
+    </div>
+
+    <div class="example">
+        <strong>Example: PIN Codes</strong><br>
+        A 4-digit PIN code uses digits 0-9. How many codes are possible?<br>
+        Digit 1: 10 options<br>
+        Digit 2: 10 options<br>
+        Digit 3: 10 options<br>
+        Digit 4: 10 options<br><br>
+        Calculation: \(10 \times 10 \times 10 \times 10 = 10,000\) codes.
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself before clicking to see the answer!</p>
+
+    <details>
+        <summary>Question 1: The Coin and Dice (Listing)</summary>
+        <div class="solution-content">
+            <p><strong>Question:</strong> A fair coin is flipped (Heads/Tails) and a normal 6-sided dice is rolled. List all possible outcomes.</p>
+            <p><strong>Solution:</strong> We will list systematically by fixing the Coin result first.</p>
+            <ul>
+                <li>H1, H2, H3, H4, H5, H6</li>
+                <li>T1, T2, T3, T4, T5, T6</li>
+            </ul>
+            <span class="final-ans">Total: 12 Outcomes</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 2: The Wardrobe (Product Rule)</summary>
+        <div class="solution-content">
+            <p><strong>Question:</strong> Sarah has 3 pairs of jeans, 6 t-shirts, and 2 pairs of sneakers. How many different outfits (Jeans + Shirt + Shoes) can she wear?</p>
+            <p><strong>Solution:</strong> Use the product rule.</p>
+            $$ 3 \times 6 \times 2 $$
+            $$ 18 \times 2 = 36 $$
+            <span class="final-ans">Answer: 36 Outfits</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 3: Restricted Counting (3-Digit Code)</summary>
+        <div class="solution-content">
+            <p><strong>Question:</strong> A 3-digit code is made using the digits 1, 2, 3, 4, 5. The code must be <strong>odd</strong>. How many combinations are possible?</p>
+            <p><strong>Solution:</strong> Draw 3 boxes: [ ][ ][ ]</p>
+            <p><strong>Box 3 (Restriction):</strong> To be odd, the last number must be 1, 3, or 5. (3 options).</p>
+            <p><strong>Box 1:</strong> Can be any of the 5 digits. (5 options).</p>
+            <p><strong>Box 2:</strong> Can be any of the 5 digits. (5 options).</p>
+            <p>Calculation: \(5 \times 5 \times 3\)</p>
+            <span class="final-ans">Answer: 75 Combinations</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 4: Arranging People (Permutations)</summary>
+        <div class="solution-content">
+            <p><strong>Question:</strong> 4 friends (A, B, C, D) want to sit in a row of 4 chairs. How many ways can they sit?</p>
+            <p><strong>Solution:</strong> Think about filling the chairs one by one.</p>
+            <ul>
+                <li>Chair 1: 4 people available.</li>
+                <li>Chair 2: 3 people left.</li>
+                <li>Chair 3: 2 people left.</li>
+                <li>Chair 4: 1 person left.</li>
+            </ul>
+            $$ 4 \times 3 \times 2 \times 1 $$
+            <span class="final-ans">Answer: 24 Ways</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Question 5: Harder Logic (Combinations)</summary>
+        <div class="solution-content">
+            <p><strong>Question:</strong> How many multiples of 5 are there between 1 and 100 that contain the digit '2'?</p>
+            <p><strong>Solution:</strong> Systematic Listing is best here.</p>
+            <p>1. Multiples of 5 must end in 0 or 5.</p>
+            <p>2. Let's list those ending in 0 first: 10, <strong>20</strong>, 30, 40, 50, 60, 70, 80, 90, 100.<br>
+            (Only '20' contains a 2).</p>
+            <p>3. Let's list those ending in 5: 15, <strong>25</strong>, 35, 45, 55, 65, 75, 85, 95.<br>
+            (Only '25' contains a 2).</p>
+            <p>Are there any others? Wait! What about numbers starting with 2?</p>
+            <p>Check the 20s: 20 (already found), 25 (already found).</p>
+            <span class="final-ans">Answer: Just 2 (20 and 25).</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

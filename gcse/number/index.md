@@ -16,15 +16,10 @@ nav_order: 1
 * [Percentages](percentage.html)
 * [Factors and Common Multiples](factors.html)
 * [Prime Factors](primefactors.html)
-* [The Product Rule](productrule/index.md)
-* [More Powers and Roots](roots.html)
+* [Systematic Listing Strategies and The Product Rule](lists.md)
 * [Surds](surds.html)
 * [Standard Form](standardform.html)
+* [Measurement and Estimates](measures.html)
+* [Rounding and Accuracy](rounding.html)
+* [Limits of Accuracy](limits.html)
 
-# BIDMAS/BODMAS
-* [Questions on BIDMAS/BODMAS](bidmas/questions.html)
-* [Answers](bidmas/answers.html)
-
-# The Product Rule
-* [Questions](productrule/questions.html)
-* [Answers](productrule/answers.html)
