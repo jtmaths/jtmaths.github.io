@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Linear Equations</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0fdfa; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #0d9488; }
+        h1 { color: #115e59; text-align: center; border-bottom: 2px solid #ccfbf1; padding-bottom: 15px; }
+        h2 { color: #0f766e; margin-top: 40px; border-left: 5px solid #0d9488; padding-left: 15px; }
+        .rule-box { background-color: #e0f2f1; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #b2dfdb; }
+        .example { background-color: #fff; border: 1px solid #ddd; padding: 20px; margin: 15px 0; border-radius: 5px; border-left: 4px solid #f59e0b; }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        .highlight { color: #d97706; font-weight: bold; }
+        
+        /* Q&A Styling */
+        details { background: #fafafa; border: 1px solid #e5e7eb; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f3f4f6; padding: 15px; cursor: pointer; font-weight: bold; color: #374151; outline: none; border-radius: 6px; }
+        summary:hover { background: #e5e7eb; }
+        .solution-content { padding: 20px; border-top: 1px solid #e5e7eb; background: #ffffff; }
+        .final-ans { color: #059669; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Solving Linear Equations</h1>
+
+    <div class="rule-box">
+        <h3>The Golden Rule: The Balance Method</h3>
+        <p>Think of an equation like a set of weighing scales. The equals sign \(=\) means both sides are perfectly balanced.</p>
+        <p><strong>Whatever operation you do to one side, you MUST do to the other side.</strong></p>
+        <p>Your goal is to isolate \(x\) (get \(x\) on its own) by performing the <strong>opposite</strong> operations in reverse order.</p>
+    </div>
+    
+    
+
+    <h2>1. Two-Step Equations</h2>
+    <p>Usually, you have a multiplication and an addition/subtraction to deal with. Undo the addition/subtraction <strong>first</strong>.</p>
+    
+    <div class="example">
+        <strong>Solve \( 3x + 5 = 17 \)</strong>
+        <span class="step">Step 1: Remove the +5 (Subtract 5 from both sides)</span>
+        \( 3x = 17 - 5 \)<br>
+        \( 3x = 12 \)
+        <span class="step">Step 2: Remove the 3 (Divide both sides by 3)</span>
+        \( x = 12 \div 3 \)
+        <span class="final-ans">\( x = 4 \)</span>
+    </div>
+
+    <h2>2. Unknowns on Both Sides</h2>
+    <p>If \(x\) appears on the left and the right, you need to eliminate the smaller \(x\) term first.</p>
+    
+    <div class="example">
+        <strong>Solve \( 5x - 2 = 3x + 8 \)</strong>
+        <span class="step">Step 1: Eliminate the smallest x term (\(3x\))</span>
+        Subtract \(3x\) from both sides:<br>
+        \( 2x - 2 = 8 \)
+        <span class="step">Step 2: Solve like a normal two-step equation</span>
+        Add 2 to both sides:<br>
+        \( 2x = 10 \)<br>
+        Divide by 2:<br>
+        <span class="final-ans">\( x = 5 \)</span>
+    </div>
+
+    <h2>3. Brackets and Fractions</h2>
+    <p>If the equation looks messy, tidy it up first!</p>
+    <ul>
+        <li><strong>Brackets:</strong> Expand them (multiply them out) first.</li>
+        <li><strong>Fractions:</strong> Multiply to get rid of the denominator.</li>
+    </ul>
+
+    <div class="example">
+        <strong>Solve \( \frac{x + 4}{3} = 5 \)</strong>
+        <span class="step">Step 1: Multiply by 3 to remove the fraction</span>
+        \( x + 4 = 15 \)
+        <span class="step">Step 2: Subtract 4</span>
+        <span class="final-ans">\( x = 11 \)</span>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself, then click to check your working.</p>
+
+    <details>
+        <summary>Q1: \( x + 9 = 20 \)</summary>
+        <div class="solution-content">
+            Subtract 9 from both sides.<br>
+            \( x = 20 - 9 \)<br>
+            <span class="final-ans">\( x = 11 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: \( 4x = 32 \)</summary>
+        <div class="solution-content">
+            Divide both sides by 4.<br>
+            \( x = 32 \div 4 \)<br>
+            <span class="final-ans">\( x = 8 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: \( 2x - 7 = 13 \)</summary>
+        <div class="solution-content">
+            1. Add 7 to both sides.<br>
+            \( 2x = 20 \)<br>
+            2. Divide by 2.<br>
+            <span class="final-ans">\( x = 10 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: \( \frac{x}{5} + 3 = 9 \)</summary>
+        <div class="solution-content">
+            1. Subtract 3 first.<br>
+            \( \frac{x}{5} = 6 \)<br>
+            2. Multiply by 5.<br>
+            \( x = 6 \times 5 \)<br>
+            <span class="final-ans">\( x = 30 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: \( 7x + 4 = 5x + 16 \)</summary>
+        <div class="solution-content">
+            1. Subtract \(5x\) from both sides (remove smaller \(x\)).<br>
+            \( 2x + 4 = 16 \)<br>
+            2. Subtract 4.<br>
+            \( 2x = 12 \)<br>
+            3. Divide by 2.<br>
+            <span class="final-ans">\( x = 6 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: \( 3(x + 5) = 21 \)</summary>
+        <div class="solution-content">
+            1. Expand the bracket: \( 3 \times x \) and \( 3 \times 5 \).<br>
+            \( 3x + 15 = 21 \)<br>
+            2. Subtract 15.<br>
+            \( 3x = 6 \)<br>
+            3. Divide by 3.<br>
+            <span class="final-ans">\( x = 2 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: \( 6x - 10 = 2x + 14 \)</summary>
+        <div class="solution-content">
+            1. Subtract \(2x\) from both sides.<br>
+            \( 4x - 10 = 14 \)<br>
+            2. Add 10 to both sides.<br>
+            \( 4x = 24 \)<br>
+            3. Divide by 4.<br>
+            <span class="final-ans">\( x = 6 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: \( \frac{3x - 2}{4} = 4 \)</summary>
+        <div class="solution-content">
+            1. Multiply by 4 (remove the fraction).<br>
+            \( 3x - 2 = 16 \)<br>
+            2. Add 2.<br>
+            \( 3x = 18 \)<br>
+            3. Divide by 3.<br>
+            <span class="final-ans">\( x = 6 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: \( 2(3x - 1) = 4(x + 2) \)</summary>
+        <div class="solution-content">
+            1. Expand both brackets.<br>
+            \( 6x - 2 = 4x + 8 \)<br>
+            2. Subtract \(4x\) (smallest \(x\)).<br>
+            \( 2x - 2 = 8 \)<br>
+            3. Add 2.<br>
+            \( 2x = 10 \)<br>
+            4. Divide by 2.<br>
+            <span class="final-ans">\( x = 5 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Trick Question - \( \frac{10}{x} = 2 \)</summary>
+        <div class="solution-content">
+            \(x\) is on the bottom! We hate that.<br>
+            1. Multiply both sides by \(x\).<br>
+            \( 10 = 2x \)<br>
+            2. Now it's easy. Divide by 2.<br>
+            <span class="final-ans">\( 5 = x \) (or \( x = 5 \))</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Algebraic Fractions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f7ff; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #0077b6; }
+        h1 { color: #023e8a; text-align: center; border-bottom: 2px solid #caf0f8; padding-bottom: 15px; }
+        h2 { color: #0077b6; margin-top: 40px; border-left: 5px solid #0096c7; padding-left: 15px; background: #e0fbfc; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #e0f7fa; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #b2ebf2; }
+        .warning-box { background-color: #fff3e0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ff9800; color: #e65100; }
+        .example { background-color: #f1f8e9; padding: 20px; border-left: 4px solid #7cb342; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f8f9fa; padding: 15px; cursor: pointer; font-weight: bold; color: #2c3e50; outline: none; border-radius: 6px; }
+        summary:hover { background: #e9ecef; }
+        .solution-content { padding: 20px; border-top: 1px solid #ddd; background: #ffffff; }
+        .final-ans { color: #2e7d32; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Algebraic Fractions Masterclass</h1>
+
+    <h2>1. Simplifying Algebraic Fractions</h2>
+    <p>To simplify a fraction, you need to <strong>cancel common factors</strong> from the numerator (top) and denominator (bottom).</p>
+
+    <div class="warning-box">
+        <strong>The Golden Rule:</strong> You can only cancel things that are being <strong>multiplied</strong>. You cannot cancel terms that are added or subtracted!<br>
+        <br>
+        ❌ <strong>Wrong:</strong> \(\frac{x^2 + 5}{x}\) &rightarrow; Cancel the \(x\)'s to get \(x + 5\). (This is illegal math!)<br>
+        ✅ <strong>Right:</strong> Factorise first, then cancel.
+    </div>
+
+    <div class="rule-box">
+        <strong>Method:</strong>
+        <ol>
+            <li><strong>Factorise</strong> the numerator completely.</li>
+            <li><strong>Factorise</strong> the denominator completely.</li>
+            <li>Cancel any matching brackets or terms.</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <strong>Example: Simplify \(\frac{x^2 + 5x}{x^2 - 25}\)</strong><br>
+        <span class="step">Step 1: Factorise Top</span>
+        Take out \(x\): \(x(x + 5)\)<br>
+        <span class="step">Step 2: Factorise Bottom</span>
+        Difference of Two Squares: \((x + 5)(x - 5)\)<br>
+        <span class="step">Step 3: Cancel</span>
+        \(\frac{x(x + 5)}{(x + 5)(x - 5)}\) (The \((x+5)\) brackets cancel out)<br>
+        <span class="final-ans">Answer: \(\frac{x}{x - 5}\)</span>
+    </div>
+
+    <h2>2. Multiplying & Dividing</h2>
+    <p>This works exactly like normal fractions.</p>
+
+    <div class="rule-box">
+        <ul>
+            <li><strong>Multiplying:</strong> Multiply tops together, multiply bottoms together. Simplify at the end.</li>
+            <li><strong>Dividing:</strong> KEEP the first fraction, CHANGE \(\div\) to \(\times\), FLIP the second fraction.</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <strong>Example: \(\frac{3x}{4} \div \frac{9x^2}{2}\)</strong><br>
+        <span class="step">Step 1: Keep, Change, Flip</span>
+        \(\frac{3x}{4} \times \frac{2}{9x^2}\)<br>
+        <span class="step">Step 2: Multiply Across</span>
+        Top: \(3x \times 2 = 6x\)<br>
+        Bottom: \(4 \times 9x^2 = 36x^2\)<br>
+        <span class="step">Step 3: Simplify</span>
+        \(\frac{6x}{36x^2} = \frac{1}{6x}\)<br>
+        <span class="final-ans">Answer: \(\frac{1}{6x}\)</span>
+    </div>
+
+    <h2>3. Adding & Subtracting</h2>
+    <p>You <strong>must</strong> have a Common Denominator.</p>
+
+    <div class="rule-box">
+        <strong>The "Cross-Multiply" Method (for two fractions):</strong>
+        $$ \frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd} $$
+        1. Multiply diagonally to get the new numerator.<br>
+        2. Multiply the two bottoms to get the new denominator.<br>
+        3. Simplify the result.
+    </div>
+
+    <div class="example">
+        <strong>Example: \(\frac{3}{x} + \frac{2}{x + 1}\)</strong><br>
+        <span class="step">Step 1: Find Common Denominator</span>
+        Multiply bottoms: \(x(x + 1)\)<br>
+        <span class="step">Step 2: Cross Multiply</span>
+        Top becomes: \(3(x + 1) + 2(x)\)<br>
+        <span class="step">Step 3: Expand and Simplify Top</span>
+        \(3x + 3 + 2x = 5x + 3\)<br>
+        <span class="final-ans">Answer: \(\frac{5x + 3}{x(x + 1)}\)</span>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself, then click to reveal the solution.</p>
+
+    <details>
+        <summary>Q1: Simplify \(\frac{15x^3}{5x}\)</summary>
+        <div class="solution-content">
+            Divide the numbers: \(15 \div 5 = 3\)<br>
+            Divide the powers: \(x^3 \div x = x^2\)<br>
+            <span class="final-ans">Answer: \(3x^2\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Simplify \(\frac{4x + 12}{x + 3}\)</summary>
+        <div class="solution-content">
+            Factorise the top: \(4(x + 3)\)<br>
+            The fraction is now: \(\frac{4(x + 3)}{x + 3}\)<br>
+            Cancel the \((x+3)\).<br>
+            <span class="final-ans">Answer: 4</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Simplify \(\frac{x^2 + 3x + 2}{x + 1}\)</summary>
+        <div class="solution-content">
+            Factorise the quadratic on top.<br>
+            Multiplies to 2, Adds to 3? (2 and 1).<br>
+            Top becomes: \((x + 2)(x + 1)\)<br>
+            Cancel the \((x+1)\).<br>
+            <span class="final-ans">Answer: \(x + 2\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Simplify \(\frac{x^2 - 16}{2x + 8}\)</summary>
+        <div class="solution-content">
+            Top (Difference of Squares): \((x + 4)(x - 4)\)<br>
+            Bottom (Common Factor): \(2(x + 4)\)<br>
+            Cancel \((x+4)\).<br>
+            <span class="final-ans">Answer: \(\frac{x - 4}{2}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Calculate \(\frac{2}{x} \times \frac{x^2}{4}\)</summary>
+        <div class="solution-content">
+            Multiply tops: \(2x^2\)<br>
+            Multiply bottoms: \(4x\)<br>
+            Simplify \(\frac{2x^2}{4x}\):<br>
+            \(2/4\) becomes \(1/2\). \(x^2/x\) becomes \(x\).<br>
+            <span class="final-ans">Answer: \(\frac{x}{2}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Calculate \(\frac{x}{3} + \frac{x}{5}\)</summary>
+        <div class="solution-content">
+            Common denominator is \(3 \times 5 = 15\).<br>
+            Cross multiply: \(5(x) + 3(x) = 5x + 3x = 8x\)<br>
+            <span class="final-ans">Answer: \(\frac{8x}{15}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Calculate \(\frac{4}{x} - \frac{2}{x^2}\)</summary>
+        <div class="solution-content">
+            Common denominator needs to be \(x^2\).<br>
+            Multiply the first fraction (top and bottom) by \(x\): \(\frac{4x}{x^2}\).<br>
+            Now subtract: \(\frac{4x}{x^2} - \frac{2}{x^2}\)<br>
+            <span class="final-ans">Answer: \(\frac{4x - 2}{x^2}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Add \(\frac{3}{x+1} + \frac{1}{x-2}\)</summary>
+        <div class="solution-content">
+            Denominator: \((x+1)(x-2)\)<br>
+            Cross multiply top: \(3(x-2) + 1(x+1)\)<br>
+            Expand top: \(3x - 6 + x + 1\)<br>
+            Simplify top: \(4x - 5\)<br>
+            <span class="final-ans">Answer: \(\frac{4x - 5}{(x+1)(x-2)}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Divide \(\frac{x+3}{5} \div \frac{x^2-9}{10}\)</summary>
+        <div class="solution-content">
+            Keep, Change, Flip:<br>
+            \(\frac{x+3}{5} \times \frac{10}{x^2-9}\)<br>
+            Factorise the new bottom right: \(x^2-9 = (x+3)(x-3)\)<br>
+            Expression: \(\frac{x+3}{5} \times \frac{10}{(x+3)(x-3)}\)<br>
+            Cancel \((x+3)\) and simplify \(10/5 = 2\).<br>
+            <span class="final-ans">Answer: \(\frac{2}{x-3}\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge - Subtract \(\frac{5}{x-1} - \frac{2}{x+3}\)</summary>
+        <div class="solution-content">
+            Denominator: \((x-1)(x+3)\)<br>
+            Cross multiply top: \(5(x+3) - 2(x-1)\)<br>
+            <strong>Watch the negative!</strong><br>
+            Expand top: \(5x + 15 - 2x + 2\) (Note: \(-2 \times -1 = +2\))<br>
+            Simplify top: \(3x + 17\)<br>
+            <span class="final-ans">Answer: \(\frac{3x + 17}{(x-1)(x+3)}\)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

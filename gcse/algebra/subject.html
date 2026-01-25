@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing the Subject of a Formula</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f3f0ff; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #845ef7; }
+        h1 { color: #5f3dc4; text-align: center; border-bottom: 2px solid #e5dbff; padding-bottom: 15px; }
+        h2 { color: #7048e8; margin-top: 40px; border-left: 5px solid #845ef7; padding-left: 15px; }
+        .concept-box { background-color: #f8f0fc; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #e9fac8; border-left: 5px solid #d0bfff; }
+        .example { background-color: #fff9db; padding: 15px; border-left: 4px solid #fcc419; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #495057; display: block; margin-top: 10px; }
+        .highlight { color: #d6336c; font-weight: bold; }
+        
+        /* Q&A Styling */
+        details { background: #fff; border: 1px solid #dee2e6; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f1f3f5; padding: 15px; cursor: pointer; font-weight: bold; color: #495057; outline: none; border-radius: 6px; }
+        summary:hover { background: #e9ecef; }
+        .solution-content { padding: 20px; border-top: 1px solid #dee2e6; background: #ffffff; }
+        .final-ans { color: #2b8a3e; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Changing the Subject of a Formula</h1>
+
+    <div class="concept-box">
+        <h3>The Goal</h3>
+        <p>Changing the subject means rearranging a formula so that a specific letter sits <strong>alone</strong> on one side of the equals sign.</p>
+        <p>If we want to "make \(x\) the subject", our final answer must look like:</p>
+        $$ x = \dots $$
+    </div>
+
+    <h2>1. The Golden Rule: Reverse Operations</h2>
+    <p>Think of the subject (let's say \(x\)) as a gift that has been wrapped up in layers. To get to the \(x\), you must unwrap the layers one by one, starting from the outside.</p>
+    <p>You do this by performing the <strong>Opposite Operation</strong>:</p>
+    <ul>
+        <li>If you see <strong>Addition (+)</strong>, you Subtract.</li>
+        <li>If you see <strong>Subtraction (-)</strong>, you Add.</li>
+        <li>If you see <strong>Multiplication (\(\times\))</strong>, you Divide.</li>
+        <li>If you see <strong>Division (\(\div\))</strong>, you Multiply.</li>
+        <li>If you see <strong>Squaring (\(x^2\))</strong>, you Square Root.</li>
+    </ul>
+
+    <h2>2. Reverse SAMDIB</h2>
+    <p>When solving, we usually follow BIDMAS/BODMAS. When rearranging, we usually go in <strong>reverse</strong>:</p>
+    <ol>
+        <li>Undo Addition/Subtraction first.</li>
+        <li>Undo Multiplication/Division next.</li>
+        <li>Undo Indices (Powers/Roots) last.</li>
+    </ol>
+
+    <div class="example">
+        <strong>Example: Make \(x\) the subject of \(y = 2x + 5\)</strong>
+        <span class="step">Step 1: Undo the +5 (Subtract 5 from both sides)</span>
+        $$ y - 5 = 2x $$
+        <span class="step">Step 2: Undo the \(\times 2\) (Divide both sides by 2)</span>
+        $$ \frac{y - 5}{2} = x $$
+        <span class="final-ans">Answer: \( x = \frac{y - 5}{2} \)</span>
+    </div>
+
+    <h2>3. The "Factorising" Trap</h2>
+    <p>Sometimes \(x\) appears twice in the equation. You cannot just move one \(x\) and leave the other. You must collect them on the same side and <strong>factorise</strong>.</p>
+    <div class="example">
+        <strong>Example: Make \(x\) the subject of \(ax - y = bx\)</strong>
+        <span class="step">Step 1: Get all \(x\)'s on one side.</span>
+        $$ ax - bx = y $$
+        <span class="step">Step 2: Factorise out the \(x\).</span>
+        $$ x(a - b) = y $$
+        <span class="step">Step 3: Divide by the bracket.</span>
+        $$ x = \frac{y}{a - b} $$
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try to make \(x\) the subject in each question.</p>
+
+    <details>
+        <summary>Q1: \( y = x - 4 \)</summary>
+        <div class="solution-content">
+            Opposite of minus 4 is plus 4.<br>
+            Add 4 to both sides.<br>
+            <span class="final-ans">\( x = y + 4 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: \( y = 5x \)</summary>
+        <div class="solution-content">
+            This means \(5 \times x\).<br>
+            Opposite of multiply is divide.<br>
+            Divide both sides by 5.<br>
+            <span class="final-ans">\( x = \frac{y}{5} \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: \( y = mx + c \)</summary>
+        <div class="solution-content">
+            1. Move the \(+c\) first (Subtraction).<br>
+            \( y - c = mx \)<br><br>
+            2. Move the \(m\) (Division).<br>
+            <span class="final-ans">\( x = \frac{y - c}{m} \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: \( y = \frac{x}{a} - b \)</summary>
+        <div class="solution-content">
+            1. Move the \(-b\) (Addition).<br>
+            \( y + b = \frac{x}{a} \)<br><br>
+            2. Move the \(\div a\) (Multiplication).<br>
+            Be careful: Multiply the <em>entire</em> left side by \(a\).<br>
+            <span class="final-ans">\( x = a(y + b) \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: \( y = x^2 + 7 \)</summary>
+        <div class="solution-content">
+            1. Move the \(+7\) (Subtraction).<br>
+            \( y - 7 = x^2 \)<br><br>
+            2. Undo the square (Square Root).<br>
+            <span class="final-ans">\( x = \sqrt{y - 7} \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: \( y = \sqrt{x + 3} \)</summary>
+        <div class="solution-content">
+            1. Undo the square root (Square both sides).<br>
+            \( y^2 = x + 3 \)<br><br>
+            2. Move the \(+3\) (Subtraction).<br>
+            <span class="final-ans">\( x = y^2 - 3 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: \( y = \frac{5}{x} \)</summary>
+        <div class="solution-content">
+            <em>Trick Question: \(x\) is on the bottom!</em><br>
+            1. Multiply by \(x\) to get it off the bottom.<br>
+            \( xy = 5 \)<br><br>
+            2. Divide by \(y\) to leave \(x\) alone.<br>
+            <span class="final-ans">\( x = \frac{5}{y} \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: \( P = 2(x + w) \)</summary>
+        <div class="solution-content">
+            1. Divide by 2 (easier than expanding first).<br>
+            \( \frac{P}{2} = x + w \)<br><br>
+            2. Subtract \(w\).<br>
+            <span class="final-ans">\( x = \frac{P}{2} - w \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: \( ax + b = cx + d \)</summary>
+        <div class="solution-content">
+            <em>\(x\) is on both sides.</em><br>
+            1. Subtract \(cx\) to get \(x\)'s on the left.<br>
+            \( ax - cx + b = d \)<br><br>
+            2. Subtract \(b\) to get non-\(x\)'s on the right.<br>
+            \( ax - cx = d - b \)<br><br>
+            3. <strong>Factorise</strong> the left side.<br>
+            \( x(a - c) = d - b \)<br><br>
+            4. Divide by the bracket.<br>
+            <span class="final-ans">\( x = \frac{d - b}{a - c} \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: \( y = \frac{x + a}{x - b} \)</summary>
+        <div class="solution-content">
+            <em>Hardest Type!</em><br>
+            1. Multiply by the denominator \((x - b)\).<br>
+            \( y(x - b) = x + a \)<br><br>
+            2. Expand the bracket.<br>
+            \( xy - by = x + a \)<br><br>
+            3. Collect \(x\) terms on the left, everything else on the right.<br>
+            \( xy - x = a + by \)<br><br>
+            4. Factorise \(x\).<br>
+            \( x(y - 1) = a + by \)<br><br>
+            5. Divide by the bracket.<br>
+            <span class="final-ans">\( x = \frac{a + by}{y - 1} \)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

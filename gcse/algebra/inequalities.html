@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Inequalities</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fff7ed; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #ea580c; }
+        h1 { color: #c2410c; text-align: center; border-bottom: 2px solid #fed7aa; padding-bottom: 15px; }
+        h2 { color: #ea580c; margin-top: 40px; border-left: 5px solid #f97316; padding-left: 15px; background: #fff7ed; padding-top: 8px; padding-bottom: 8px; }
+        .symbol-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .symbol-box { background: #fdf2f8; padding: 15px; border: 1px solid #fbcfe8; border-radius: 8px; text-align: center; }
+        .rule-box { background-color: #ecfccb; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #d9f99d; }
+        .warning-box { background-color: #fef2f2; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ef4444; color: #b91c1c; }
+        .example { background-color: #f8fafc; padding: 20px; border-left: 4px solid #3b82f6; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #fff7ed; padding: 15px; cursor: pointer; font-weight: bold; color: #431407; outline: none; border-radius: 6px; }
+        summary:hover { background: #fed7aa; }
+        .solution-content { padding: 20px; border-top: 1px solid #ddd; background: #ffffff; }
+        .final-ans { color: #16a34a; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Inequalities Masterclass</h1>
+
+    <h2>1. The Symbols</h2>
+    <div class="symbol-grid">
+        <div class="symbol-box"><strong>\( < \)</strong><br>Less than</div>
+        <div class="symbol-box"><strong>\( > \)</strong><br>Greater than</div>
+        <div class="symbol-box"><strong>\( \le \)</strong><br>Less than OR equal to</div>
+        <div class="symbol-box"><strong>\( \ge \)</strong><br>Greater than OR equal to</div>
+    </div>
+
+    <h2>2. How to Solve Inequalities</h2>
+    <p>We solve inequalities exactly like normal equations (using the balance method), with one major exception.</p>
+
+    <div class="rule-box">
+        <strong>Standard Method:</strong> Treat the inequality sign like an equals sign. Move numbers to one side and \(x\) to the other.
+    </div>
+
+    <div class="example">
+        <strong>Solve \( 3x + 4 > 19 \)</strong><br>
+        <span class="step">Step 1: Subtract 4</span>
+        \( 3x > 15 \)<br>
+        <span class="step">Step 2: Divide by 3</span>
+        \( x > 5 \)<br>
+        <em>(Meaning x can be 6, 7, 5.1, etc., but not 5 or less.)</em>
+    </div>
+
+    <div class="warning-box">
+        <strong>THE TRAP: Flipping the Sign</strong><br>
+        If you <strong>multiply or divide by a NEGATIVE number</strong>, you must FLIP the inequality sign.<br><br>
+        Example: \( -2x < 10 \)<br>
+        Divide by -2: \( x > -5 \)<br>
+        <em>(Notice the \(<\) changed to \(>\))</em>
+    </div>
+
+    <h2>3. Number Lines</h2>
+    <p>Visualizing the answer is a common exam question.</p>
+    <ul>
+        <li><strong>Open Circle (&#9675;):</strong> Use for \( < \) or \( > \) (The number is NOT included).</li>
+        <li><strong>Closed/Filled Circle (&#9679;):</strong> Use for \( \le \) or \( \ge \) (The number IS included).</li>
+    </ul>
+
+    
+
+    <h2>4. Double Inequalities</h2>
+    <p>Example: \( -3 < x \le 4 \)<br>
+    This means \(x\) is in the "sandwich" between -3 and 4.</p>
+    <div class="example">
+        <strong>List the integers for \( -2 \le x < 1 \)</strong><br>
+        - It can be -2 (because of the \(\le\)).<br>
+        - It can be -1, 0.<br>
+        - It CANNOT be 1 (because of the \(<\)).<br>
+        <strong>Answer: -2, -1, 0</strong>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself, then click to reveal the solution.</p>
+
+    <details>
+        <summary>Q1: Solve \( x + 5 < 12 \)</summary>
+        <div class="solution-content">
+            Subtract 5 from both sides.<br>
+            \( x < 12 - 5 \)<br>
+            <span class="final-ans">Answer: \( x < 7 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Solve \( 2x \ge 18 \)</summary>
+        <div class="solution-content">
+            Divide both sides by 2.<br>
+            \( x \ge 9 \)<br>
+            <span class="final-ans">Answer: \( x \ge 9 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Solve \( 5x - 3 > 17 \)</summary>
+        <div class="solution-content">
+            1. Add 3 to both sides.<br>
+            \( 5x > 20 \)<br>
+            2. Divide by 5.<br>
+            <span class="final-ans">Answer: \( x > 4 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Solve \( 7x + 2 \le 5x + 10 \)</summary>
+        <div class="solution-content">
+            Unknowns on both sides. Move the smallest \(x\) (\(5x\)).<br>
+            1. Subtract \(5x\) from both sides.<br>
+            \( 2x + 2 \le 10 \)<br>
+            2. Subtract 2.<br>
+            \( 2x \le 8 \)<br>
+            3. Divide by 2.<br>
+            <span class="final-ans">Answer: \( x \le 4 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: The Trap! Solve \( 10 - x > 4 \)</summary>
+        <div class="solution-content">
+            1. Subtract 10.<br>
+            \( -x > -6 \)<br>
+            2. This is really \( -1x > -6 \). We must divide by -1.<br>
+            <strong>FLIP THE SIGN!</strong><br>
+            <span class="final-ans">Answer: \( x < 6 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Solve \( \frac{x}{3} + 1 < 5 \)</summary>
+        <div class="solution-content">
+            1. Subtract 1.<br>
+            \( \frac{x}{3} < 4 \)<br>
+            2. Multiply by 3.<br>
+            <span class="final-ans">Answer: \( x < 12 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: List all integers \(n\) such that \( -1 < n \le 3 \)</summary>
+        <div class="solution-content">
+            Check the left side: \( -1 < n \) means we start at 0 (not -1).<br>
+            Check the right side: \( n \le 3 \) means we stop at 3 (included).<br>
+            <span class="final-ans">Answer: 0, 1, 2, 3</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Solve \( 4(x - 2) \ge 12 \)</summary>
+        <div class="solution-content">
+            1. Expand the bracket.<br>
+            \( 4x - 8 \ge 12 \)<br>
+            2. Add 8.<br>
+            \( 4x \ge 20 \)<br>
+            3. Divide by 4.<br>
+            <span class="final-ans">Answer: \( x \ge 5 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Solve \( -2x < 8 \)</summary>
+        <div class="solution-content">
+            We need to divide by -2.<br>
+            Because we divide by a negative, we <strong>FLIP</strong> the symbol.<br>
+            \( x > \frac{8}{-2} \)<br>
+            <span class="final-ans">Answer: \( x > -4 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Solve \( 3 < 2x + 1 \le 11 \)</summary>
+        <div class="solution-content">
+            This is a double inequality. Do the same thing to all three parts.<br>
+            1. Subtract 1 from everything.<br>
+            \( 2 < 2x \le 10 \)<br>
+            2. Divide everything by 2.<br>
+            \( 1 < x \le 5 \)<br>
+            <span class="final-ans">Answer: \( 1 < x \le 5 \)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

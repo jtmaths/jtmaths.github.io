@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Functions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fdfdfd; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #8e44ad; }
+        h1 { color: #8e44ad; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #9b59b6; margin-top: 40px; border-left: 5px solid #8e44ad; padding-left: 15px; background: #f4eff7; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #f4eff7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #e1bee7; }
+        .example { background-color: #fff; border: 1px solid #ddd; padding: 20px; margin: 15px 0; border-radius: 5px; border-left: 4px solid #f1c40f; }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        .diagram { text-align: center; font-family: monospace; background: #f9f9f9; padding: 10px; border-radius: 5px; margin: 10px 0; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fafafa; border: 1px solid #e5e7eb; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f3f4f6; padding: 15px; cursor: pointer; font-weight: bold; color: #374151; outline: none; border-radius: 6px; }
+        summary:hover { background: #e5e7eb; }
+        .solution-content { padding: 20px; border-top: 1px solid #e5e7eb; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Functions Masterclass</h1>
+
+    <h2>1. What is a Function?</h2>
+    <p>Think of a function as a <strong>machine</strong>. You put a number in (the input, \(x\)), the machine does something to it (the rule), and a new number comes out (the output, \(f(x)\)).</p>
+    
+    <div class="diagram">
+        Input (x) &rightarrow; [ FUNCTION MACHINE ] &rightarrow; Output f(x)
+    </div>
+
+    <div class="example">
+        <strong>The Rule: \( f(x) = 2x + 3 \)</strong><br>
+        This means: "Multiply the input by 2, then add 3."<br><br>
+        <strong>Find \( f(5) \):</strong><br>
+        This means the input is 5.<br>
+        \( f(5) = 2(5) + 3 \)<br>
+        \( f(5) = 10 + 3 = 13 \)
+    </div>
+
+    <h2>2. Inverse Functions: \( f^{-1}(x) \)</h2>
+    <p>An inverse function does the exact opposite. It takes the output and sends it back to the input. We denote this as \( f^{-1}(x) \).</p>
+
+    <div class="rule-box">
+        <strong>How to find \( f^{-1}(x) \):</strong>
+        <ol>
+            <li>Write the function as \( y = \dots \)</li>
+            <li>Rearrange the equation to make \( x \) the subject.</li>
+            <li>Swap \( x \) and \( y \) at the very end to write in correct notation.</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <strong>Find the inverse of \( f(x) = 3x - 5 \)</strong>
+        <span class="step">Step 1: Write as y</span>
+        \( y = 3x - 5 \)
+        <span class="step">Step 2: Rearrange for x</span>
+        Add 5: \( y + 5 = 3x \)<br>
+        Divide by 3: \( \frac{y + 5}{3} = x \)
+        <span class="step">Step 3: Write notation</span>
+        \( f^{-1}(x) = \frac{x + 5}{3} \)
+    </div>
+
+    <h2>3. Compound (Composite) Functions</h2>
+    <p>This is when we stick two function machines together. \( fg(x) \) means you do \( g \) first, and then put the result into \( f \).</p>
+    <div class="diagram">
+        Input &rightarrow; [ g(x) ] &rightarrow; Result &rightarrow; [ f(x) ] &rightarrow; Final Output
+    </div>
+
+    <div class="example">
+        <strong>Let \( f(x) = x^2 \) and \( g(x) = x + 2 \)</strong><br>
+        <strong>Calculate \( fg(3) \):</strong><br>
+        1. Work from the INSIDE out (or Right to Left). Do \( g(3) \) first.<br>
+        \( g(3) = 3 + 2 = 5 \)<br><br>
+        2. Put that result (5) into \( f \).<br>
+        \( f(5) = 5^2 = 25 \)<br>
+        <strong>Answer: 25</strong>
+    </div>
+
+    <div class="example">
+        <strong>Finding an algebraic expression for \( fg(x) \):</strong><br>
+        This means put the <em>whole equation</em> of \( g(x) \) inside \( f(x) \).<br>
+        \( f( \mathbf{x + 2} ) = (\mathbf{x + 2})^2 \)
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself, then click to reveal the solution.</p>
+
+    <details>
+        <summary>Q1: If \( f(x) = 4x - 1 \), calculate \( f(5) \).</summary>
+        <div class="solution-content">
+            Substitute 5 into the expression.<br>
+            \( 4(5) - 1 \)<br>
+            \( 20 - 1 \)<br>
+            <span class="final-ans">Answer: 19</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: If \( g(x) = x^2 + 3 \), calculate \( g(-4) \).</summary>
+        <div class="solution-content">
+            Substitute -4. Be careful with squaring negatives!<br>
+            \( (-4)^2 + 3 \)<br>
+            \( 16 + 3 \)<br>
+            <span class="final-ans">Answer: 19</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Find the inverse function \( f^{-1}(x) \) where \( f(x) = x + 7 \).</summary>
+        <div class="solution-content">
+            \( y = x + 7 \)<br>
+            Rearrange for x: \( y - 7 = x \)<br>
+            Swap notation.<br>
+            <span class="final-ans">Answer: \( f^{-1}(x) = x - 7 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Find the inverse function \( f^{-1}(x) \) where \( f(x) = 5x \).</summary>
+        <div class="solution-content">
+            \( y = 5x \)<br>
+            Divide by 5: \( \frac{y}{5} = x \)<br>
+            <span class="final-ans">Answer: \( f^{-1}(x) = \frac{x}{5} \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Find the inverse of \( h(x) = \frac{x - 2}{4} \).</summary>
+        <div class="solution-content">
+            \( y = \frac{x - 2}{4} \)<br>
+            Multiply by 4: \( 4y = x - 2 \)<br>
+            Add 2: \( 4y + 2 = x \)<br>
+            <span class="final-ans">Answer: \( h^{-1}(x) = 4x + 2 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: \( f(x) = 2x \) and \( g(x) = x + 5 \). Calculate \( fg(3) \).</summary>
+        <div class="solution-content">
+            1. Do \( g(3) \) first: \( 3 + 5 = 8 \).<br>
+            2. Put 8 into \( f \): \( f(8) = 2(8) \).<br>
+            <span class="final-ans">Answer: 16</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Using the same functions as Q6, calculate \( gf(3) \).</summary>
+        <div class="solution-content">
+            1. Do \( f(3) \) first: \( 2(3) = 6 \).<br>
+            2. Put 6 into \( g \): \( g(6) = 6 + 5 \).<br>
+            <span class="final-ans">Answer: 11</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: \( f(x) = x^2 \) and \( g(x) = 3x \). Find the expression for \( fg(x) \).</summary>
+        <div class="solution-content">
+            Put \( g(x) \) inside \( f(x) \).<br>
+            Instead of \( x^2 \), we square the whole of \( g(x) \).<br>
+            \( (3x)^2 \)<br>
+            <span class="final-ans">Answer: \( 9x^2 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: \( f(x) = 2x + 1 \). Find an expression for \( ff(x) \).</summary>
+        <div class="solution-content">
+            Put the function inside itself.<br>
+            \( 2(\mathbf{2x + 1}) + 1 \)<br>
+            Expand: \( 4x + 2 + 1 \)<br>
+            <span class="final-ans">Answer: \( 4x + 3 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge! \( f(x) = \frac{10}{x} \). Solve \( f(x) = 5 \).</summary>
+        <div class="solution-content">
+            Set the equation to 5.<br>
+            \( \frac{10}{x} = 5 \)<br>
+            Multiply by \( x \): \( 10 = 5x \)<br>
+            Divide by 5: \( 2 = x \)<br>
+            <span class="final-ans">Answer: \( x = 2 \)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

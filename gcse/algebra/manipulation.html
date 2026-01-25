@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Algebra Revision Guide</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #4834d4; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #4834d4; margin-top: 40px; border-left: 5px solid #686de0; padding-left: 15px; background: #fdfdfd; padding-top:10px; padding-bottom:10px; }
+        h3 { color: #30336b; margin-top: 25px; }
+        .rule-box { background-color: #eef2f3; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #d1ccc0; }
+        .example { background-color: #f6f8ff; padding: 15px; border-left: 4px solid #4834d4; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #535c68; }
+        
+        /* Navigation Buttons for quick jumping */
+        .nav-links { text-align: center; margin-bottom: 30px; }
+        .nav-links a { display: inline-block; text-decoration: none; background: #686de0; color: white; padding: 8px 15px; margin: 5px; border-radius: 20px; font-size: 0.9em; transition: 0.2s; }
+        .nav-links a:hover { background: #4834d4; }
+
+        /* Q&A Styling */
+        details { background: #ffffff; border: 1px solid #dfe6e9; border-radius: 6px; margin-bottom: 10px; }
+        summary { background: #f1f2f6; padding: 15px; cursor: pointer; font-weight: bold; color: #2f3542; outline: none; border-radius: 6px; }
+        summary:hover { background: #dfe4ea; }
+        .solution-content { padding: 20px; border-top: 1px solid #dfe6e9; background: #fff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Algebraic Manipulation Masterclass</h1>
+    
+    <div class="nav-links">
+        <a href="#basics">Basics</a>
+        <a href="#expanding">Expanding</a>
+        <a href="#factorising">Factorising</a>
+        <a href="#indices">Indices & Surds</a>
+        <a href="#fractions">Fractions</a>
+        <a href="#practice">Practice Questions</a>
+    </div>
+
+    <section id="basics">
+        <h2>1. The Basics: Terms & Brackets</h2>
+        
+        <h3>Collecting Like Terms</h3>
+        <p>You can only add or subtract terms that have exactly the same letters and powers.</p>
+        <div class="example">
+            <strong>Simplify: \( 2x^2 + 5x - x^2 + 3y + 2x \)</strong><br>
+            Group \(x^2\): \(2x^2 - x^2 = x^2\)<br>
+            Group \(x\): \(5x + 2x = 7x\)<br>
+            Group \(y\): \(3y\) (Alone)<br>
+            <strong>Result: \( x^2 + 7x + 3y \)</strong>
+        </div>
+
+        <h3>Multiplying Single Terms</h3>
+        <p>Multiply the term outside by <em>everything</em> inside.</p>
+        <div class="example">
+            <strong>Expand: \( 3x(2x - 5) \)</strong><br>
+            \( 3x \times 2x = 6x^2 \)<br>
+            \( 3x \times -5 = -15x \)<br>
+            <strong>Result: \( 6x^2 - 15x \)</strong>
+        </div>
+
+        <h3>Taking Out Common Factors</h3>
+        <p>This is the reverse of expanding. Find the Highest Common Factor (HCF) of numbers and letters.</p>
+        <div class="example">
+            <strong>Factorise: \( 6x^2 + 9x \)</strong><br>
+            HCF of numbers (6, 9) is <strong>3</strong>.<br>
+            HCF of letters (\(x^2, x\)) is <strong>\(x\)</strong>.<br>
+            Pull \(3x\) outside.<br>
+            <strong>Result: \( 3x(2x + 3) \)</strong>
+        </div>
+    </section>
+
+    <section id="expanding">
+        <h2>2. Expanding Binomials</h2>
+        
+        <h3>Double Brackets</h3>
+        <p>Use the FOIL method (First, Outside, Inside, Last).</p>
+        <div class="example">
+            <strong>Expand: \( (x + 3)(x - 4) \)</strong><br>
+            First: \(x^2\)<br>
+            Outside: \(-4x\)<br>
+            Inside: \(+3x\)<br>
+            Last: \(-12\)<br>
+            Simplify: \(x^2 - 4x + 3x - 12\)<br>
+            <strong>Result: \( x^2 - x - 12 \)</strong>
+        </div>
+
+        <h3>Triple Brackets</h3>
+        <p>Expand two brackets first, simplify, then multiply by the third.</p>
+        <div class="example">
+            <strong>Expand: \( (x+1)(x+2)(x+3) \)</strong><br>
+            1. \((x+1)(x+2) = x^2 + 3x + 2\)<br>
+            2. Multiply by \((x+3)\) &rarr; \( (x^2 + 3x + 2)(x+3) \)<br>
+            Multiply everything by \(x\): \(x^3 + 3x^2 + 2x\)<br>
+            Multiply everything by \(3\): \(+3x^2 + 9x + 6\)<br>
+            <strong>Result: \( x^3 + 6x^2 + 11x + 6 \)</strong>
+        </div>
+    </section>
+
+    <section id="factorising">
+        <h2>3. Factorising Quadratics</h2>
+
+        <h3>Type 1: \( x^2 + bx + c \)</h3>
+        <p>Find two numbers that <strong>multiply to make \(c\)</strong> and <strong>add to make \(b\)</strong>.</p>
+        <div class="example">
+            <strong>Factorise \( x^2 + 7x + 10 \)</strong><br>
+            Multiplies to 10: (1,10) or (2,5).<br>
+            Adds to 7: 2 and 5 work.<br>
+            <strong>Result: \( (x+2)(x+5) \)</strong>
+        </div>
+
+        <h3>Type 2: Difference of Two Squares (DOTS)</h3>
+        <p>If you have \( (\text{Square}) - (\text{Square}) \), it factorises to \( (a+b)(a-b) \).</p>
+        <div class="example">
+            <strong>Factorise \( x^2 - 16 \)</strong><br>
+            \(\sqrt{x^2} = x\), \(\sqrt{16} = 4\).<br>
+            <strong>Result: \( (x+4)(x-4) \)</strong>
+        </div>
+
+        <h3>Type 3: \( ax^2 + bx + c \) (Harder Quadratics)</h3>
+        <p>The "AC Method": Multiply \(a \times c\). Find factors of that number that add to \(b\). Split the middle term.</p>
+        <div class="example">
+            <strong>Factorise \( 2x^2 + 7x + 3 \)</strong><br>
+            \( a \times c = 2 \times 3 = 6 \).<br>
+            Factors of 6 that add to 7? (6 and 1).<br>
+            Split \(7x\) into \(6x + 1x\):<br>
+            \( 2x^2 + 6x + x + 3 \)<br>
+            Factorise in pairs: \( 2x(x+3) + 1(x+3) \)<br>
+            <strong>Result: \( (2x+1)(x+3) \)</strong>
+        </div>
+    </section>
+
+    <section id="indices">
+        <h2>4. Laws of Indices & Surds</h2>
+
+        <div class="rule-box">
+            <strong>Index Laws:</strong>
+            <ul>
+                <li>Multiply: \( x^a \times x^b = x^{a+b} \)</li>
+                <li>Divide: \( x^a \div x^b = x^{a-b} \)</li>
+                <li>Brackets: \( (x^a)^b = x^{ab} \)</li>
+                <li>Negative: \( x^{-a} = \frac{1}{x^a} \)</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <strong>Simplify \( (2x^3)^4 \)</strong><br>
+            Apply power to the number: \(2^4 = 16\).<br>
+            Apply power to the algebra: \( (x^3)^4 = x^{12} \).<br>
+            <strong>Result: \( 16x^{12} \)</strong>
+        </div>
+
+        <h3>Surds</h3>
+        <p>Treat surds like algebra. \(\sqrt{a} \times \sqrt{a} = a\).</p>
+        <div class="example">
+            <strong>Expand \( (2 + \sqrt{3})^2 \)</strong><br>
+            \((2 + \sqrt{3})(2 + \sqrt{3})\)<br>
+            \( 4 + 2\sqrt{3} + 2\sqrt{3} + 3 \)<br>
+            <strong>Result: \( 7 + 4\sqrt{3} \)</strong>
+        </div>
+    </section>
+
+    <section id="fractions">
+        <h2>5. Algebraic Fractions</h2>
+        <p>To simplify, you must <strong>factorise</strong> top and bottom first, then cancel common brackets.</p>
+        <div class="example">
+            <strong>Simplify \( \frac{x^2 - 9}{x^2 + 5x + 6} \)</strong><br>
+            Top (Difference of squares): \( (x+3)(x-3) \)<br>
+            Bottom (Quadratic): \( (x+3)(x+2) \)<br>
+            Cancel the \((x+3)\).<br>
+            <strong>Result: \( \frac{x-3}{x+2} \)</strong>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="practice">
+        <h2>Practice Questions & Solutions</h2>
+        <p>Click on the question to verify your answer.</p>
+
+        <details>
+            <summary>Q1: Expand and simplify \( 4(x + 5) + 2(3x - 1) \)</summary>
+            <div class="solution-content">
+                Expand brackets: \( 4x + 20 + 6x - 2 \)<br>
+                Collect like terms: \( 4x + 6x = 10x \) and \( 20 - 2 = 18 \)<br>
+                <span class="final-ans">Answer: \( 10x + 18 \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q2: Factorise \( 8x^2 - 12x \)</summary>
+            <div class="solution-content">
+                HCF of 8 and 12 is 4.<br>
+                HCF of \(x^2\) and \(x\) is \(x\).<br>
+                Factor is \(4x\).<br>
+                <span class="final-ans">Answer: \( 4x(2x - 3) \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q3: Factorise \( x^2 - 2x - 15 \)</summary>
+            <div class="solution-content">
+                Multiply to -15, Add to -2.<br>
+                Factors of -15: (-5, 3) works because \(-5 + 3 = -2\).<br>
+                <span class="final-ans">Answer: \( (x - 5)(x + 3) \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q4: Factorise fully \( 3x^2 - 27 \)</summary>
+            <div class="solution-content">
+                Step 1: Take out common factor 3.<br>
+                \( 3(x^2 - 9) \)<br>
+                Step 2: Spot the Difference of Two Squares inside.<br>
+                <span class="final-ans">Answer: \( 3(x + 3)(x - 3) \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q5: Factorise \( 3x^2 + 10x + 8 \)</summary>
+            <div class="solution-content">
+                \( a \times c = 3 \times 8 = 24 \).<br>
+                Find factors of 24 that add to 10: (6 and 4).<br>
+                Split middle term: \( 3x^2 + 6x + 4x + 8 \)<br>
+                Factorise pairs: \( 3x(x+2) + 4(x+2) \)<br>
+                <span class="final-ans">Answer: \( (3x + 4)(x + 2) \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q6: Simplify \( \frac{2x^3 \times 6x^5}{4x^2} \)</summary>
+            <div class="solution-content">
+                Top: \( 2 \times 6 = 12 \) and \( x^3 \times x^5 = x^8 \).<br>
+                Expression is \( \frac{12x^8}{4x^2} \).<br>
+                Divide numbers: \( 12 \div 4 = 3 \).<br>
+                Subtract indices: \( 8 - 2 = 6 \).<br>
+                <span class="final-ans">Answer: \( 3x^6 \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q7: Expand \( (2x + 1)(x - 3)(x + 2) \)</summary>
+            <div class="solution-content">
+                1. \((2x+1)(x-3) = 2x^2 - 6x + x - 3 = 2x^2 - 5x - 3\)<br>
+                2. Multiply by \((x+2)\).<br>
+                \( x(2x^2 - 5x - 3) = 2x^3 - 5x^2 - 3x \)<br>
+                \( 2(2x^2 - 5x - 3) = 4x^2 - 10x - 6 \)<br>
+                3. Collect: \( 2x^3 - x^2 - 13x - 6 \)<br>
+                <span class="final-ans">Answer: \( 2x^3 - x^2 - 13x - 6 \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q8: Simplify \( \sqrt{75} + \sqrt{12} \)</summary>
+            <div class="solution-content">
+                Simplify \(\sqrt{75} = \sqrt{25 \times 3} = 5\sqrt{3}\).<br>
+                Simplify \(\sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3}\).<br>
+                Add: \( 5\sqrt{3} + 2\sqrt{3} \).<br>
+                <span class="final-ans">Answer: \( 7\sqrt{3} \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q9: Simplify the algebraic fraction \( \frac{x^2 - x - 20}{x^2 - 16} \)</summary>
+            <div class="solution-content">
+                Factorise Top: Adds to -1, Multiplies to -20 &rarr; \((x-5)(x+4)\).<br>
+                Factorise Bottom (DOTS): \((x+4)(x-4)\).<br>
+                Cancel the \((x+4)\).<br>
+                <span class="final-ans">Answer: \( \frac{x-5}{x-4} \)</span>
+            </div>
+        </details>
+
+        <details>
+            <summary>Q10: Express as a single fraction \( \frac{3}{x+1} + \frac{2}{x-3} \)</summary>
+            <div class="solution-content">
+                Common denominator is \((x+1)(x-3)\).<br>
+                Cross multiply tops: \( 3(x-3) + 2(x+1) \)<br>
+                Expand top: \( 3x - 9 + 2x + 2 = 5x - 7 \)<br>
+                <span class="final-ans">Answer: \( \frac{5x - 7}{(x+1)(x-3)} \)</span>
+            </div>
+        </details>
+
+    </section>
+</div>
+
+</body>
+</html>
