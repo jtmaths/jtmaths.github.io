@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Basics: Terms & Operations</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #6c5ce7; }
+        h1 { color: #2d3436; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #6c5ce7; margin-top: 40px; border-left: 5px solid #6c5ce7; padding-left: 15px; }
+        .concept-box { background-color: #eef2ff; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #c7d2fe; }
+        .example { background-color: #f0fff4; padding: 15px; border-left: 4px solid #2ecc71; margin: 15px 0; border-radius: 4px; }
+        .warning { background-color: #fff5f5; padding: 15px; border-left: 4px solid #e74c3c; margin: 15px 0; color: #c0392b; }
+        .highlight { font-weight: bold; color: #6c5ce7; }
+        
+        /* Q&A Styling */
+        details { background: #fff; border: 1px solid #dfe6e9; border-radius: 6px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        summary { background: #f1f2f6; padding: 15px; cursor: pointer; font-weight: bold; color: #2d3436; outline: none; border-radius: 6px; }
+        summary:hover { background: #dfe4ea; }
+        .solution-content { padding: 20px; border-top: 1px solid #dfe6e9; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Algebra Basics: Manipulation & Simplification</h1>
+
+    <h2>1. What is a "Term"?</h2>
+    <div class="concept-box">
+        <p>In algebra, an expression is made up of parts called <strong>terms</strong>. A term can be a number, a variable, or numbers and variables multiplied together.</p>
+        <p>Consider the term: $$ -5x^2 $$</p>
+        <ul>
+            <li><strong>-5</strong> is the <strong>Coefficient</strong> (The number part, including the sign).</li>
+            <li><strong>x</strong> is the <strong>Variable</strong> (The unknown letter).</li>
+            <li><strong>2</strong> is the <strong>Power/Index</strong>.</li>
+        </ul>
+    </div>
+    
+    
+
+    <h2>2. Multiplying and Dividing</h2>
+    <p>When multiplying or dividing terms, you operate on the <strong>coefficients</strong> (numbers) and the <strong>variables</strong> (letters) separately.</p>
+
+    <h3>Rules for Multiplication</h3>
+    <div class="example">
+        <strong>1. Numbers multiply numbers:</strong> \( 2a \times 3 = 6a \)<br>
+        <strong>2. Letters multiply letters:</strong> \( a \times b = ab \)<br>
+        <strong>3. Same letters add powers:</strong> \( a \times a = a^2 \)<br>
+        <strong>4. Watch the signs:</strong>
+        <ul>
+            <li>Positive \(\times\) Positive = <strong>Positive</strong></li>
+            <li>Negative \(\times\) Negative = <strong>Positive</strong></li>
+            <li>Positive \(\times\) Negative = <strong>Negative</strong></li>
+        </ul>
+    </div>
+
+    <h3>Rules for Division</h3>
+    <div class="example">
+        <strong>Cancel out common factors:</strong> Treat division like a fraction.<br>
+        $$ \frac{12x^2}{4x} $$
+        1. Divide numbers: \(12 \div 4 = 3\)<br>
+        2. Divide letters: \(x^2 \div x = x\)<br>
+        <strong>Result: \(3x\)</strong>
+    </div>
+
+    <h2>3. Collecting Like Terms</h2>
+    <div class="concept-box">
+        <strong>Like Terms</strong> are terms that have exactly the same variable and the same power.
+        <ul>
+            <li>\(2x\) and \(5x\) are like terms (Both are \(x\)).</li>
+            <li>\(3a\) and \(3b\) are <strong>NOT</strong> like terms (Different letters).</li>
+            <li>\(x^2\) and \(x\) are <strong>NOT</strong> like terms (Different powers).</li>
+        </ul>
+    </div>
+
+    <div class="warning">
+        <strong>The Sign Belongs to the Term!</strong><br>
+        When you move a term, take the \(+\) or \(-\) sign directly in front of it with you.<br>
+        In \(3x - 2y\), the \(y\) term is negative (\(-2y\)).
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these yourself, then click to reveal the solution.</p>
+
+    <details>
+        <summary>Q1: Simplify \( 5x + 3x \)</summary>
+        <div class="solution-content">
+            These are like terms (both \(x\)).<br>
+            Just add the coefficients: \(5 + 3 = 8\).<br>
+            <span class="final-ans">Answer: \( 8x \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Simplify \( 7y - 2y + y \)</summary>
+        <div class="solution-content">
+            Remember that \(y\) on its own counts as \(1y\).<br>
+            \(7 - 2 + 1 = 6\)<br>
+            <span class="final-ans">Answer: \( 6y \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Collect like terms: \( 4a + 3b - a + 2b \)</summary>
+        <div class="solution-content">
+            Group the \(a\)'s: \(4a - 1a = 3a\)<br>
+            Group the \(b\)'s: \(+3b + 2b = +5b\)<br>
+            <span class="final-ans">Answer: \( 3a + 5b \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Simplify \( 3 \times 4y \)</summary>
+        <div class="solution-content">
+            Multiply the numbers: \(3 \times 4 = 12\).<br>
+            The variable \(y\) stays attached.<br>
+            <span class="final-ans">Answer: \( 12y \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Multiply \( 2a \times 5a \)</summary>
+        <div class="solution-content">
+            Numbers: \(2 \times 5 = 10\)<br>
+            Letters: \(a \times a = a^2\)<br>
+            <span class="final-ans">Answer: \( 10a^2 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Simplify \( -3x \times 4x \)</summary>
+        <div class="solution-content">
+            Check the signs: Negative \(\times\) Positive = Negative.<br>
+            Numbers: \(3 \times 4 = 12\).<br>
+            Letters: \(x \times x = x^2\).<br>
+            <span class="final-ans">Answer: \( -12x^2 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Simplify \( \frac{15x}{3} \)</summary>
+        <div class="solution-content">
+            Divide the coefficients: \(15 \div 3 = 5\).<br>
+            The \(x\) remains.<br>
+            <span class="final-ans">Answer: \( 5x \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Simplify \( \frac{20x^2}{4x} \)</summary>
+        <div class="solution-content">
+            Numbers: \(20 \div 4 = 5\).<br>
+            Letters: \(x^2\) means \(x \times x\).<br>
+            So, \(\frac{x \times x}{x}\) leaves just \(x\).<br>
+            <span class="final-ans">Answer: \( 5x \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Complicated Collection: \( 2x^2 + 5x - x^2 + 3 \)</summary>
+        <div class="solution-content">
+            Group \(x^2\): \(2x^2 - 1x^2 = x^2\)<br>
+            Group \(x\): \(+5x\) (no other \(x\) terms)<br>
+            Group Numbers: \(+3\) (no other numbers)<br>
+            <span class="final-ans">Answer: \( x^2 + 5x + 3 \)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge - \( 3(2x) - 4(x) \)</summary>
+        <div class="solution-content">
+            First, multiply the brackets out (Multiplication comes before Addition/Subtraction).<br>
+            \(3 \times 2x = 6x\)<br>
+            \(-4 \times x = -4x\)<br>
+            Now collect: \(6x - 4x\)<br>
+            <span class="final-ans">Answer: \( 2x \)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

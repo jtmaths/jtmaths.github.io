@@ -2,7 +2,7 @@
 title: Quadratics
 layout: page
 parent: GCSE Level Maths
-nav_order: 1
+nav_order: 3
 ---
 
 # What are Quadratics?

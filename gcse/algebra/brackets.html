@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Algebraic Expansion</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #2980b9; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #ecf0f1; padding-bottom: 15px; }
+        h2 { color: #2980b9; margin-top: 40px; border-left: 5px solid #2980b9; padding-left: 15px; }
+        .rule-box { background-color: #eafaf1; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #d5f5e3; }
+        .warning-box { background-color: #fdedec; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #e74c3c; color: #c0392b; }
+        .example { background-color: #f8f9fa; padding: 15px; border-left: 4px solid #f1c40f; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+        
+        /* Q&A Styling */
+        details { background: #fff; border: 1px solid #dfe6e9; border-radius: 6px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        summary { background: #f1f2f6; padding: 15px; cursor: pointer; font-weight: bold; color: #2d3436; outline: none; border-radius: 6px; }
+        summary:hover { background: #dfe4ea; }
+        .solution-content { padding: 20px; border-top: 1px solid #dfe6e9; background: #ffffff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Multiplying Out Brackets</h1>
+    <p>In algebra, "expanding" or "multiplying out" means removing the brackets by multiplying every term inside the bracket by the term outside (or by the other bracket).</p>
+
+    <h2>1. Single Brackets</h2>
+    <div class="rule-box">
+        <strong>The Rule:</strong> Multiply the term on the outside by <strong>everything</strong> inside.
+        $$ a(b + c) = ab + ac $$
+    </div>
+    
+    <div class="example">
+        <strong>Example: \(3(2x + 5)\)</strong><br>
+        1. Multiply \(3\) by \(2x\) &rarr; \(6x\)<br>
+        2. Multiply \(3\) by \(+5\) &rarr; \(+15\)<br>
+        <strong>Answer: \(6x + 15\)</strong>
+    </div>
+
+    <div class="warning-box">
+        <strong>Watch Out for Negatives!</strong><br>
+        If the outside number is negative, it changes the signs of the terms inside.<br>
+        \(-2(x - 4) = -2x + 8\) (Because \(-2 \times -4 = +8\)).
+    </div>
+
+    <h2>2. Double Brackets (FOIL)</h2>
+    <div class="rule-box">
+        To expand \((x + a)(x + b)\), calculate 4 products. Many people use <strong>FOIL</strong>:
+        <ul>
+            <li><strong>F</strong>irst (Multiply first terms in each bracket)</li>
+            <li><strong>O</strong>utside (Multiply the outer terms)</li>
+            <li><strong>I</strong>nside (Multiply the inner terms)</li>
+            <li><strong>L</strong>ast (Multiply the last terms)</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <strong>Example: \((x + 3)(x - 2)\)</strong><br>
+        <span class="step">1. First:</span> \(x \times x = x^2\)<br>
+        <span class="step">2. Outside:</span> \(x \times -2 = -2x\)<br>
+        <span class="step">3. Inside:</span> \(3 \times x = +3x\)<br>
+        <span class="step">4. Last:</span> \(3 \times -2 = -6\)<br><br>
+        Combine: \(x^2 - 2x + 3x - 6\)<br>
+        Simplify: <strong>\(x^2 + x - 6\)</strong>
+    </div>
+
+    <h2>3. Squared Brackets</h2>
+    <div class="warning-box">
+        <strong>Common Mistake:</strong><br>
+        \((x + 3)^2\) is <strong>NOT</strong> \(x^2 + 9\).<br>
+        You must write the bracket twice and use FOIL!
+    </div>
+    
+    <div class="example">
+        <strong>Example: \((x + 5)^2\)</strong><br>
+        Rewrite it: \((x + 5)(x + 5)\)<br>
+        Expand: \(x^2 + 5x + 5x + 25\)<br>
+        Simplify: <strong>\(x^2 + 10x + 25\)</strong>
+    </div>
+
+    <h2>4. Triple Brackets & Cubed Brackets</h2>
+    <p>To solve \((x+1)(x+2)(x+3)\), take it step-by-step.</p>
+    <div class="rule-box">
+        <strong>Strategy:</strong>
+        1. Ignore the 3rd bracket for a moment.<br>
+        2. Expand the first two brackets and simplify.<br>
+        3. Multiply that result by the 3rd bracket.
+    </div>
+
+    <div class="example">
+        <strong>Example: \((x+2)(x+3)(x+4)\)</strong><br>
+        <span class="step">Step 1: Expand \((x+2)(x+3)\)</span><br>
+        Result: \(x^2 + 5x + 6\)
+        
+        <span class="step">Step 2: Multiply by \((x+4)\)</span><br>
+        \((x^2 + 5x + 6)(x + 4)\)<br><br>
+        Multiply everything in the left bracket by \(x\): \(x^3 + 5x^2 + 6x\)<br>
+        Multiply everything in the left bracket by \(4\): \(+4x^2 + 20x + 24\)<br><br>
+        <span class="step">Step 3: Add them up</span><br>
+        \(x^3 + 9x^2 + 26x + 24\)
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Attempt these on paper first!</p>
+
+    <details>
+        <summary>Q1: Expand \(4(2x - 3)\)</summary>
+        <div class="solution-content">
+            \(4 \times 2x = 8x\)<br>
+            \(4 \times -3 = -12\)<br>
+            <span class="final-ans">Answer: \(8x - 12\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Expand \(x(x^2 + 5)\)</summary>
+        <div class="solution-content">
+            \(x \times x^2 = x^3\) (Add powers)<br>
+            \(x \times 5 = 5x\)<br>
+            <span class="final-ans">Answer: \(x^3 + 5x\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Expand and Simplify \(-2(3x - 4) - 3(x + 1)\)</summary>
+        <div class="solution-content">
+            First bracket: \(-6x + 8\)<br>
+            Second bracket: \(-3x - 3\)<br>
+            Combine: \(-6x - 3x + 8 - 3\)<br>
+            <span class="final-ans">Answer: \(-9x + 5\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Expand \((x + 4)(x + 7)\)</summary>
+        <div class="solution-content">
+            \(x^2 + 7x + 4x + 28\)<br>
+            Simplify middle terms: \(7x + 4x = 11x\)<br>
+            <span class="final-ans">Answer: \(x^2 + 11x + 28\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Expand \((2x - 3)(x + 5)\)</summary>
+        <div class="solution-content">
+            First: \(2x \times x = 2x^2\)<br>
+            Outside: \(2x \times 5 = 10x\)<br>
+            Inside: \(-3 \times x = -3x\)<br>
+            Last: \(-3 \times 5 = -15\)<br>
+            Simplify: \(10x - 3x = 7x\)<br>
+            <span class="final-ans">Answer: \(2x^2 + 7x - 15\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Expand \((x - 6)^2\)</summary>
+        <div class="solution-content">
+            Write it twice: \((x - 6)(x - 6)\)<br>
+            Expand: \(x^2 - 6x - 6x + 36\)<br>
+            Note: \(-6 \times -6 = +36\)<br>
+            <span class="final-ans">Answer: \(x^2 - 12x + 36\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Expand \((3x + 2)^2\)</summary>
+        <div class="solution-content">
+            Write it twice: \((3x + 2)(3x + 2)\)<br>
+            First: \(3x \times 3x = 9x^2\)<br>
+            Outside: \(3x \times 2 = 6x\)<br>
+            Inside: \(2 \times 3x = 6x\)<br>
+            Last: \(2 \times 2 = 4\)<br>
+            <span class="final-ans">Answer: \(9x^2 + 12x + 4\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Expand \((x + 1)(x + 2)(x + 3)\)</summary>
+        <div class="solution-content">
+            1. \((x+1)(x+2) = x^2 + 3x + 2\)<br>
+            2. Multiply by \((x+3)\):<br>
+            \((x^2 + 3x + 2)(x + 3)\)<br>
+            \(x(x^2 + 3x + 2) = x^3 + 3x^2 + 2x\)<br>
+            \(3(x^2 + 3x + 2) = + 3x^2 + 9x + 6\)<br>
+            Add columns:<br>
+            <span class="final-ans">Answer: \(x^3 + 6x^2 + 11x + 6\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Expand \((x - 2)^3\)</summary>
+        <div class="solution-content">
+            1. Write as \((x-2)(x-2)(x-2)\)<br>
+            2. First two: \(x^2 - 4x + 4\)<br>
+            3. Multiply by last \((x-2)\):<br>
+            \((x^2 - 4x + 4)(x - 2)\)<br>
+            Multiply by \(x\): \(x^3 - 4x^2 + 4x\)<br>
+            Multiply by \(-2\): \(-2x^2 + 8x - 8\)<br>
+            <span class="final-ans">Answer: \(x^3 - 6x^2 + 12x - 8\)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge - Expand \((x + 1)(x - 1)(x^2 + 1)\)</summary>
+        <div class="solution-content">
+            Spot the shortcut! \((x+1)(x-1)\) is the Difference of Two Squares.<br>
+            Result: \(x^2 - 1\)<br><br>
+            Now multiply that by the last bracket:<br>
+            \((x^2 - 1)(x^2 + 1)\)<br>
+            This is another Difference of Two Squares!<br>
+            First: \(x^2 \times x^2 = x^4\)<br>
+            Outside/Inside cancel out (\(+x^2 - x^2\)).<br>
+            Last: \(-1 \times 1 = -1\)<br>
+            <span class="final-ans">Answer: \(x^4 - 1\)</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>
