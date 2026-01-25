@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rounding & Estimation Masterclass</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #fdfdfd; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #8e44ad; }
+        h1 { color: #8e44ad; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: #9b59b6; margin-top: 40px; border-left: 5px solid #8e44ad; padding-left: 15px; }
+        .rule-box { background-color: #f4eff7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #e1bee7; }
+        .example { background-color: #fafafa; padding: 15px; border-left: 4px solid #f1c40f; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #555; }
+        .highlight { color: #d35400; font-weight: bold; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+        summary { background: #eee; padding: 12px; cursor: pointer; font-weight: bold; color: #444; outline: none; }
+        summary:hover { background: #e0e0e0; }
+        .solution-content { padding: 20px; border-top: 1px solid #ddd; background: white; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background: #9b59b6; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Rounding & Estimation Masterclass</h1>
+
+    <div class="rule-box">
+        <h3>The Golden Rule of Rounding</h3>
+        <p>Look at the <strong>next digit</strong> (the "decider").</p>
+        <ul>
+            <li>If it is <strong>5 or more</strong> (5, 6, 7, 8, 9) &rarr; <strong>Round UP</strong>.</li>
+            <li>If it is <strong>4 or less</strong> (0, 1, 2, 3, 4) &rarr; <strong>Stay DOWN</strong> (Keep the digit the same).</li>
+        </ul>
+    </div>
+
+    <h2>1. Decimal Places (d.p.)</h2>
+    <p>We count digits <strong>after</strong> the decimal point.</p>
+    <div class="example">
+        <strong>Round 4.538 to 2 decimal places (2 d.p.)</strong><br>
+        1. Count 2 digits after the point: \(4.53\underline{8}\)<br>
+        2. Look at the 3rd digit (the decider). It is 8.<br>
+        3. Since 8 \(\ge\) 5, we round up the previous digit (3 becomes 4).<br>
+        <span class="final-ans">Answer: 4.54</span>
+    </div>
+
+    <h2>2. Significant Figures (s.f.)</h2>
+    <p>This is about the <strong>importance</strong> of the digits. We start counting from the first <strong>non-zero</strong> digit.</p>
+    
+    <div class="rule-box">
+        <strong>Identifying Significant Figures:</strong>
+        <ul>
+            <li>\(3405\) (4 s.f.) - Zeros in the middle count.</li>
+            <li>\(0.0052\) (2 s.f.) - Leading zeros <strong>never</strong> count.</li>
+            <li>\(5200\) (2 s.f.) - Trailing zeros in whole numbers are usually placeholders (unless specified).</li>
+            <li>\(5.20\) (3 s.f.) - Trailing zeros <strong>after</strong> a decimal count (they show precision).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <strong>Round 0.004592 to 2 significant figures</strong><br>
+        1. Ignore the first zeros. Start at 4.<br>
+        2. Count 2 digits: \(4, 5\). The decider is the next one (9).<br>
+        3. 9 rounds up, so 5 becomes 6.<br>
+        <span class="final-ans">Answer: 0.0046</span>
+    </div>
+
+    <h2>3. Estimation Strategies</h2>
+    <p>When asked to "Estimate", do <strong>not</strong> work out the exact answer. Round every number to <strong>1 Significant Figure</strong> first.</p>
+
+    <h3>Estimating Cylinder Volumes</h3>
+    <p>Formula: \(V = \pi r^2 h\).<br>
+    Strategy: Round \(r\) and \(h\) to 1 s.f. and approximate \(\pi \approx 3\).</p>
+    <div class="example">
+        <strong>Estimate the volume of a cylinder with radius 4.8cm and height 10.2cm.</strong><br>
+        \(\pi \approx 3\)<br>
+        \(r = 4.8 \approx 5\)<br>
+        \(h = 10.2 \approx 10\)<br>
+        Calculate: \(V \approx 3 \times 5^2 \times 10 = 3 \times 25 \times 10 = 750\)<br>
+        <span class="final-ans">Estimate: 750 cm³</span>
+    </div>
+
+    <h3>Estimating Square Roots</h3>
+    <p>Find the two square numbers your number sits between.</p>
+    <div class="example">
+        <strong>Estimate \(\sqrt{53}\)</strong><br>
+        Square numbers nearby: \(\sqrt{49} = 7\) and \(\sqrt{64} = 8\).<br>
+        53 is much closer to 49 than 64.<br>
+        <span class="final-ans">Estimate: 7.3</span>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions (Click to Reveal)</h2>
+
+    <details>
+        <summary>Q1: Round 12.846 to 1 decimal place.</summary>
+        <div class="solution-content">
+            Look at the 1st decimal place: <strong>8</strong>.<br>
+            The next digit (decider) is <strong>4</strong>.<br>
+            4 is low, so the 8 stays the same.<br>
+            <span class="final-ans">Answer: 12.8</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Round 0.007692 to 2 significant figures.</summary>
+        <div class="solution-content">
+            Start counting at the first non-zero: <strong>7</strong>.<br>
+            The 2nd sig fig is <strong>6</strong>.<br>
+            The decider is <strong>9</strong> (round up).<br>
+            The 6 becomes a 7.<br>
+            <span class="final-ans">Answer: 0.0077</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Round 89,520 to 1 significant figure.</summary>
+        <div class="solution-content">
+            The 1st sig fig is <strong>8</strong>.<br>
+            The decider is <strong>9</strong> (round up).<br>
+            8 becomes 9. Replace the rest with placeholder zeros.<br>
+            <span class="final-ans">Answer: 90,000</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Estimate the value of \( \frac{21.4 \times 3.9}{0.48} \)</summary>
+        <div class="solution-content">
+            Round everything to 1 s.f.<br>
+            \(21.4 \approx 20\)<br>
+            \(3.9 \approx 4\)<br>
+            \(0.48 \approx 0.5\)<br>
+            Calculation: \( \frac{20 \times 4}{0.5} = \frac{80}{0.5} \)<br>
+            Dividing by 0.5 is doubling.<br>
+            <span class="final-ans">Answer: 160</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Estimate the square root of 90.</summary>
+        <div class="solution-content">
+            Lower square: \(\sqrt{81} = 9\)<br>
+            Upper square: \(\sqrt{100} = 10\)<br>
+            90 is roughly halfway between 81 and 100.<br>
+            <span class="final-ans">Answer: 9.5 (Accept 9.4 - 9.6)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Round 19.996 to 2 decimal places.</summary>
+        <div class="solution-content">
+            Look at 2nd d.p: <strong>9</strong>.<br>
+            Decider is <strong>6</strong> (Round up).<br>
+            9 becomes 10, so carry the 1...<br>
+            The next 9 becomes 10, carry the 1...<br>
+            19 becomes 20.<br>
+            <span class="final-ans">Answer: 20.00</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Estimate the volume of a cylinder with \(r=2.9\)cm and \(h=21.1\)cm.</summary>
+        <div class="solution-content">
+            Round to 1 s.f:<br>
+            \(\pi \approx 3\), \(r \approx 3\), \(h \approx 20\).<br>
+            \(V = \pi r^2 h \approx 3 \times 3^2 \times 20\)<br>
+            \(V \approx 3 \times 9 \times 20\)<br>
+            \(V \approx 27 \times 20\)<br>
+            <span class="final-ans">Answer: 540 cm³</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Write 504.92 to 2 significant figures.</summary>
+        <div class="solution-content">
+            1st s.f is 5.<br>
+            2nd s.f is 0.<br>
+            Decider is 4 (Stay down).<br>
+            Keep the 5 and 0, add a placeholder zero for the units column.<br>
+            <span class="final-ans">Answer: 500</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Estimate \( \sqrt{5.2 \times 18.9} \)</summary>
+        <div class="solution-content">
+            Round inside the root first:<br>
+            \(5.2 \approx 5\)<br>
+            \(18.9 \approx 20\)<br>
+            Calculation: \(\sqrt{5 \times 20} = \sqrt{100}\)<br>
+            <span class="final-ans">Answer: 10</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Tricky Zero - Round 0.05060 to 3 significant figures.</summary>
+        <div class="solution-content">
+            Start at first non-zero: <strong>5</strong>.<br>
+            Next is <strong>0</strong>.<br>
+            Next is <strong>6</strong> (This is the 3rd s.f).<br>
+            Decider is <strong>0</strong> (Stay down).<br>
+            We must include the trailing zero to show it was measured.<br>
+            <span class="final-ans">Answer: 0.0506</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

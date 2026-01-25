@@ -16,10 +16,10 @@ nav_order: 1
 * [Percentages](percentage.html)
 * [Factors and Common Multiples](factors.html)
 * [Prime Factors](primefactors.html)
-* [Systematic Listing Strategies and The Product Rule](lists.md)
+* [Systematic Listing Strategies and The Product Rule](lists.html)
 * [Surds](surds.html)
 * [Standard Form](standardform.html)
 * [Measurement and Estimates](measures.html)
 * [Rounding and Accuracy](rounding.html)
-* [Limits of Accuracy](limits.html)
+* [Limits of Accuracy (Bounds)](limits.html)
 
