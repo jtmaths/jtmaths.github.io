@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphical Inequalities – GCSE Maths Revision</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-cml.js" id="MathJax-script" async></script>
+  <style>
+    /* ── Reset & base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #1a1a2e;
+      background: #f4f6fb;
+    }
+
+    /* ── Page wrapper ─────────────────────────────────── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    }
+
+    /* ── Hero header ─────────────────────────────────── */
+    .hero {
+      background: #1a1a2e;
+      color: white;
+      padding: 48px 56px 40px;
+      border-bottom: 5px solid #3b82f6;
+    }
+    .hero .label {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7eb3f8;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      color: #b0c4de;
+      max-width: 580px;
+      line-height: 1.6;
+    }
+    .hero .pill-row {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero .pill {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 13px;
+      border-radius: 20px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: #cde;
+    }
+
+    /* ── Contents bar ─────────────────────────────────── */
+    .contents {
+      background: #f0f4ff;
+      border-bottom: 2px solid #c8d8f8;
+      padding: 18px 56px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+    .contents strong { color: #1a1a2e; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .contents ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 24px;
+      list-style: none;
+      margin-top: 8px;
+      padding: 0;
+    }
+    .contents li a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .contents li a:hover { text-decoration: underline; }
+
+    /* ── Main content ─────────────────────────────────── */
+    main { padding: 0 56px 60px; }
+
+    /* ── Section headings ─────────────────────────────── */
+    .section {
+      margin-top: 48px;
+      scroll-margin-top: 20px;
+    }
+    .section-tag {
+      font-family: Arial, sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #3b82f6;
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      border-bottom: 2.5px solid #1a1a2e;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 22px; margin-bottom: 12px; }
+    li { margin-bottom: 5px; }
+
+    /* ── Callout boxes ─────────────────────────────────── */
+    .box {
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-left: 5px solid;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .box-title {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 7px;
+    }
+    .box-key    { background: #eff6ff; border-color: #3b82f6; }
+    .box-key    .box-title { color: #1d4ed8; }
+    .box-rule   { background: #f0fdf4; border-color: #22c55e; }
+    .box-rule   .box-title { color: #15803d; }
+    .box-warn   { background: #fff7ed; border-color: #f97316; }
+    .box-warn   .box-title { color: #c2410c; }
+    .box-tip    { background: #faf5ff; border-color: #a855f7; }
+    .box-tip    .box-title { color: #7e22ce; }
+    .box-def    { background: #f8f9fd; border-color: #6b7280; }
+    .box-def    .box-title { color: #374151; }
+
+    /* ── Symbol table ─────────────────────────────────── */
+    .sym-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin: 14px 0;
+    }
+    .sym-table th {
+      background: #1a1a2e;
+      color: white;
+      padding: 8px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .sym-table td {
+      padding: 8px 14px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .sym-table tr:nth-child(even) td { background: #f8f9fd; }
+    .sym-table .sym { font-size: 16px; font-weight: 700; color: #2563eb; }
+
+    /* ── Step-by-step box ─────────────────────────────── */
+    .steps {
+      counter-reset: step;
+      margin: 16px 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .step-num {
+      counter-increment: step;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #1a1a2e;
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num::before { content: counter(step); }
+    .step-body { flex: 1; padding-top: 4px; }
+    .step-body strong { color: #1a1a2e; }
+
+    /* ── Worked examples ─────────────────────────────── */
+    .worked {
+      border: 2px solid #1a1a2e;
+      border-radius: 10px;
+      margin: 24px 0;
+      overflow: hidden;
+    }
+    .worked-header {
+      background: #1a1a2e;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Arial, sans-serif;
+    }
+    .worked-badge {
+      background: #3b82f6;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+      letter-spacing: 0.3px;
+    }
+    .worked-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .worked-body {
+      padding: 18px 22px;
+    }
+    .worked-q {
+      background: #f0f4ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-family: Arial, sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+    .worked-sol {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .sol-step {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+    .sol-step-label {
+      min-width: 70px;
+      font-weight: 700;
+      color: #2563eb;
+      font-size: 12px;
+      padding-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .sol-step-content { flex: 1; }
+    .answer-box {
+      background: #f0fdf4;
+      border: 2px solid #22c55e;
+      border-radius: 6px;
+      padding: 10px 16px;
+      margin-top: 12px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .answer-box .ab-label {
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #15803d;
+      margin-bottom: 4px;
+    }
+
+    /* ── Graph diagrams ──────────────────────────────── */
+    .graph-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 16px 0;
+    }
+    svg.graph {
+      background: #ffffff;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+    }
+
+    /* ── Practice questions ──────────────────────────── */
+    .pq-section {
+      margin-top: 48px;
+    }
+    .pq-hero {
+      background: #1a1a2e;
+      color: white;
+      padding: 20px 24px;
+      border-radius: 10px 10px 0 0;
+      font-family: Arial, sans-serif;
+    }
+    .pq-hero h2 {
+      color: white;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 4px;
+      font-size: 1.3rem;
+    }
+    .pq-hero p { color: #a8b8d8; font-size: 13px; margin: 0; }
+
+    .pq {
+      border: 2px solid #1a1a2e;
+      border-top: none;
+      margin-bottom: 0;
+    }
+    .pq:last-child { border-radius: 0 0 10px 10px; }
+
+    .pq-question {
+      padding: 18px 24px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      font-family: Arial, sans-serif;
+    }
+    .pq-num {
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .pq-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .pq-marks {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    /* ── Toggle solution ─────────────────────────────── */
+    details {
+      font-family: Arial, sans-serif;
+    }
+    details summary {
+      cursor: pointer;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #2563eb;
+      background: #f0f4ff;
+      border-top: 1px solid #c8d8f8;
+      list-style: none;
+      user-select: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::before {
+      content: '▶  Show worked solution';
+    }
+    details[open] summary::before {
+      content: '▼  Hide worked solution';
+    }
+    details .solution {
+      padding: 18px 24px;
+      background: #fafbff;
+      border-top: 1px solid #e0e8ff;
+      font-size: 14px;
+    }
+    details .sol-step {
+      margin-bottom: 10px;
+    }
+    details .answer-box {
+      margin-top: 14px;
+    }
+
+    /* ── Summary table ────────────────────────────────── */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin: 16px 0;
+    }
+    .summary-table th {
+      background: #1a1a2e;
+      color: white;
+      padding: 9px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .summary-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    .summary-table tr:nth-child(even) td { background: #f8f9fd; }
+    .tag-dash { display: inline-block; background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+    .tag-solid { display: inline-block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      background: #f0f4ff;
+      border-top: 2px solid #c8d8f8;
+      padding: 20px 56px;
+      font-family: Arial, sans-serif;
+      font-size: 12.5px;
+      color: #6b7280;
+    }
+
+    /* ── Print ─────────────────────────────────────────── */
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; }
+      .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      details summary::before { content: 'Worked solution:'; color: #333; }
+      details { border-top: 1px solid #ccc; }
+      .contents { display: none; }
+    }
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .hero, main, .contents, footer { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="label">GCSE Maths · Foundation &amp; Higher</div>
+  <h1>Graphical Inequalities</h1>
+  <p>A complete step-by-step guide to drawing and interpreting regions on a graph, with worked examples and practice questions.</p>
+  <div class="pill-row">
+    <div class="pill">Ages 15–16</div>
+    <div class="pill">Worked Examples</div>
+    <div class="pill">10 Practice Questions</div>
+    <div class="pill">Full Solutions</div>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTENTS ═══════════════ -->
+<nav class="contents">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#s1">What Are Inequalities?</a></li>
+    <li><a href="#s2">Representing on a Graph</a></li>
+    <li><a href="#s3">The Step-by-Step Method</a></li>
+    <li><a href="#s4">Worked Examples</a></li>
+    <li><a href="#s5">Multiple Inequalities</a></li>
+    <li><a href="#s6">Reading Regions</a></li>
+    <li><a href="#s7">Quick Reference</a></li>
+    <li><a href="#s8">Practice Questions</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ═══════════════ SECTION 1 ═══════════════ -->
+<div class="section" id="s1">
+  <div class="section-tag">Section 1</div>
+  <h2>What Are Inequalities?</h2>
+
+  <p>
+    An <strong>inequality</strong> is like an equation, but instead of saying two things are <em>equal</em>,
+    it says one is <em>greater than</em> or <em>less than</em> the other. You have already met
+    inequalities on a number line — graphical inequalities extend this idea into two dimensions,
+    creating <strong>regions on a coordinate grid</strong>.
+  </p>
+
+  <table class="sym-table">
+    <thead>
+      <tr><th>Symbol</th><th>Meaning</th><th>Example</th><th>Line type on graph</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="sym">\(&lt;\)</td><td>strictly less than</td><td>\(y &lt; 3\)</td><td><span class="tag-dash">dashed</span> — boundary not included</td></tr>
+      <tr><td class="sym">\(&gt;\)</td><td>strictly greater than</td><td>\(x &gt; -2\)</td><td><span class="tag-dash">dashed</span> — boundary not included</td></tr>
+      <tr><td class="sym">\(\leq\)</td><td>less than or equal to</td><td>\(y \leq x+1\)</td><td><span class="tag-solid">solid</span> — boundary is included</td></tr>
+      <tr><td class="sym">\(\geq\)</td><td>greater than or equal to</td><td>\(y \geq 2x-3\)</td><td><span class="tag-solid">solid</span> — boundary is included</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-key">
+    <div class="box-title">🔑 Key idea</div>
+    A graphical inequality describes a <strong>region</strong> (an area of the coordinate plane), not just a line.
+    The boundary line separates the plane into two halves — you shade the half that satisfies the inequality.
+  </div>
+
+  <div class="box box-warn">
+    <div class="box-title">⚠ Common mistake: dashed vs solid</div>
+    <strong>Strict inequalities</strong> (\(&lt;\) and \(&gt;\)) use a <strong>dashed</strong> line — the boundary itself is <em>not</em> part of the region.
+    <strong>Non-strict inequalities</strong> (\(\leq\) and \(\geq\)) use a <strong>solid</strong> line — the boundary <em>is</em> included.
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2 ═══════════════ -->
+<div class="section" id="s2">
+  <div class="section-tag">Section 2</div>
+  <h2>Representing Inequalities on a Graph</h2>
+
+  <h3>The boundary line</h3>
+  <p>
+    Every graphical inequality has a <strong>boundary line</strong>. To draw it, replace the inequality
+    symbol with \(=\) and draw that line exactly as you would for a straight-line graph.
+  </p>
+  <ul>
+    <li>For \(y \geq 2x + 1\), draw the line \(y = 2x + 1\) (solid, because \(\geq\)).</li>
+    <li>For \(y &lt; x - 3\), draw the line \(y = x - 3\) (dashed, because \(&lt;\)).</li>
+  </ul>
+
+  <h3>Which side do you shade?</h3>
+  <p>
+    Once you have drawn the boundary line, you need to decide which side to shade.
+    The most reliable method is the <strong>test point method</strong>:
+  </p>
+
+  <div class="box box-rule">
+    <div class="box-title">✅ The test point method</div>
+    Pick any point that is <strong>not on the boundary line</strong> — the origin \((0, 0)\) is usually easiest.
+    Substitute it into the inequality. If it makes the inequality <strong>true</strong>, shade the side containing
+    that point. If it makes it <strong>false</strong>, shade the <em>other</em> side.
+  </div>
+
+  <h3>Shading conventions at GCSE</h3>
+  <p>
+    GCSE questions often ask you to shade the region that does <strong>not</strong> satisfy the inequality
+    (leaving the wanted region clear), or to shade the region that <strong>does</strong> satisfy it — always
+    read the question carefully. In this guide we shade the region that <em>satisfies</em> the inequality.
+  </p>
+
+  <h3>Simple one-line examples</h3>
+
+  <div class="box box-def">
+    <div class="box-title">Example: \(y &gt; 2\)</div>
+    The boundary is the horizontal line \(y = 2\) (dashed). The region \(y &gt; 2\) is <em>above</em> this line.
+    Test \((0,0)\): is \(0 &gt; 2\)? No — so shade above the line, not below.
+  </div>
+
+  <div class="graph-wrap">
+    <svg class="graph" width="260" height="240" viewBox="-30 -20 260 240">
+      <!-- grid -->
+      <g stroke="#e5e7eb" stroke-width="0.8">
+        <line x1="0" y1="0" x2="0" y2="200"/><line x1="40" y1="0" x2="40" y2="200"/>
+        <line x1="80" y1="0" x2="80" y2="200"/><line x1="120" y1="0" x2="120" y2="200"/>
+        <line x1="160" y1="0" x2="160" y2="200"/><line x1="200" y1="0" x2="200" y2="200"/>
+        <line x1="0" y1="0" x2="200" y2="0"/><line x1="0" y1="40" x2="200" y2="40"/>
+        <line x1="0" y1="80" x2="200" y2="80"/><line x1="0" y1="120" x2="200" y2="120"/>
+        <line x1="0" y1="160" x2="200" y2="160"/><line x1="0" y1="200" x2="200" y2="200"/>
+      </g>
+      <!-- shading above y=2 (y=2 is at pixel y=120 when y_world=2, scale 40px/unit, origin at world(0,5)→pixel(0,0)) -->
+      <!-- Let's set: pixel_y = (5 - y_world)*40, pixel_x = (x_world+0)*40 -->
+      <!-- y=2 → pixel_y = (5-2)*40 = 120 -->
+      <rect x="0" y="0" width="200" height="120" fill="#bfdbfe" fill-opacity="0.55"/>
+      <!-- axes -->
+      <line x1="0" y1="200" x2="200" y2="200" stroke="#999" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="200" stroke="#999" stroke-width="1"/>
+      <!-- boundary: y=2 dashed -->
+      <line x1="0" y1="120" x2="200" y2="120" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,4"/>
+      <!-- axis labels -->
+      <text x="204" y="204" font-family="Arial" font-size="11" fill="#555">x</text>
+      <text x="-18" y="4" font-family="Arial" font-size="11" fill="#555">y</text>
+      <!-- y-axis ticks -->
+      <text x="-16" y="124" font-family="Arial" font-size="10" fill="#555">2</text>
+      <text x="-16" y="84" font-family="Arial" font-size="10" fill="#555">3</text>
+      <text x="-16" y="44" font-family="Arial" font-size="10" fill="#555">4</text>
+      <text x="-16" y="164" font-family="Arial" font-size="10" fill="#555">1</text>
+      <text x="-16" y="204" font-family="Arial" font-size="10" fill="#555">0</text>
+      <!-- label -->
+      <text x="105" y="55" font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="700">y &gt; 2</text>
+      <text x="3" y="142" font-family="Arial" font-size="10" fill="#93c5fd" font-style="italic">(not included)</text>
+    </svg>
+  </div>
+
+  <div class="box box-def">
+    <div class="box-title">Example: \(x \leq 3\)</div>
+    The boundary is the vertical line \(x = 3\) (solid). The region \(x \leq 3\) is to the <em>left</em> (and on) this line.
+    Test \((0,0)\): is \(0 \leq 3\)? Yes — shade the side containing the origin, which is the left side.
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3 ═══════════════ -->
+<div class="section" id="s3">
+  <div class="section-tag">Section 3</div>
+  <h2>The Step-by-Step Method</h2>
+
+  <p>Follow these four steps for every graphical inequality question:</p>
+
+  <div class="steps">
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Draw the boundary line.</strong>  Replace the inequality sign with \(=\) and plot the straight line. Make it <strong>dashed</strong> for strict inequalities (\(&lt;\) or \(&gt;\)) and <strong>solid</strong> for non-strict (\(\leq\) or \(\geq\)).</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Choose a test point.</strong>  Pick a point clearly on one side of the line. The origin \((0,0)\) is ideal unless the line passes through the origin — in that case use \((0,1)\) or \((1,0)\).</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Substitute the test point.</strong>  Put the coordinates of your test point into the inequality (using \(x\) and \(y\) values). Check whether the result is <strong>true</strong> or <strong>false</strong>.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Shade the correct region.</strong>  If the test point made the inequality true, shade the region <em>containing</em> the test point. If it was false, shade the region on the <em>other</em> side.</div></div>
+  </div>
+
+  <div class="box box-tip">
+    <div class="box-title">💡 Tip: a quick shortcut for \(y\)-inequalities</div>
+    If the inequality is in the form \(y &gt; \text{something}\) or \(y \geq \text{something}\), the region is <strong>above</strong> the line.
+    If it is \(y &lt; \text{something}\) or \(y \leq \text{something}\), the region is <strong>below</strong> the line.
+    This works as long as the inequality is already solved for \(y\).
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 4 ═══════════════ -->
+<div class="section" id="s4">
+  <div class="section-tag">Section 4</div>
+  <h2>Worked Examples</h2>
+
+  <!-- WE 1 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 1</span>
+      <span class="worked-title">A simple diagonal inequality</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Show the region satisfied by \(y \leq x + 2\). Shade the region.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content"><strong>Draw the boundary line \(y = x + 2\).</strong><br>
+          This has gradient \(1\) and \(y\)-intercept \(2\). Plot points: when \(x=0\), \(y=2\); when \(x=2\), \(y=4\); when \(x=-2\), \(y=0\).<br>
+          The inequality is \(\leq\) (non-strict), so draw a <strong>solid</strong> line.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2</div><div class="sol-step-content"><strong>Choose the test point \((0,0)\).</strong><br>
+          The origin is not on the line \(y=x+2\), so it is a valid test point.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 3</div><div class="sol-step-content"><strong>Substitute \((0,0)\) into \(y \leq x+2\).</strong><br>
+          \(0 \leq 0 + 2\) gives \(0 \leq 2\). This is <strong>TRUE</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content"><strong>Shade the region containing \((0,0)\).</strong><br>
+          Since the test point satisfies the inequality, shade the region <em>below and on</em> the line \(y=x+2\).</div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answer</div>
+          Draw a <strong>solid</strong> line through \(y = x + 2\). Shade the region <strong>below</strong> (and including) the line — this is the set of all points where \(y \leq x+2\).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WE 2 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 2</span>
+      <span class="worked-title">Strict inequality with a negative gradient</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Show the region satisfied by \(y &gt; -2x + 4\).</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content"><strong>Draw the boundary line \(y = -2x + 4\).</strong><br>
+          Gradient \(= -2\), \(y\)-intercept \(= 4\). Points: \((0,4)\), \((1,2)\), \((2,0)\).<br>
+          The inequality is \(&gt;\) (strict), so draw a <strong>dashed</strong> line.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content"><strong>Test \((0,0)\):</strong> is \(0 &gt; -2(0)+4\)?<br>
+          \(0 &gt; 4\) — this is <strong>FALSE</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Since the origin fails the test, shade the region <em>not</em> containing the origin — that is, the region <strong>above</strong> the dashed line.</div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answer</div>
+          <strong>Dashed</strong> line for \(y = -2x+4\). Shade the region <strong>above</strong> the line.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WE 3 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 3</span>
+      <span class="worked-title">Vertical boundary line</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Represent the inequality \(x &gt; -1\) on a coordinate grid.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content"><strong>Draw the vertical line \(x = -1\).</strong><br>
+          This is a vertical line crossing the \(x\)-axis at \(-1\). Because the inequality is strict (\(&gt;\)), the line is <strong>dashed</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content"><strong>Test \((0,0)\):</strong> is \(0 &gt; -1\)? <strong>TRUE</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Shade the region containing the origin — that is, everything <strong>to the right</strong> of the line \(x = -1\).</div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answer</div>
+          <strong>Dashed</strong> vertical line at \(x = -1\). Shade the region to the <strong>right</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WE 4 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 4</span>
+      <span class="worked-title">Line that passes through the origin</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Show the region \(y \geq 3x\).</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content"><strong>Draw the line \(y = 3x\).</strong><br>
+          This passes through the origin with gradient \(3\). Points: \((0,0)\), \((1,3)\), \((-1,-3)\). Use a <strong>solid</strong> line (\(\geq\)).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content">The origin <em>lies on</em> the boundary line, so we can't use \((0,0)\).<br>
+          Use \((0,1)\) instead: is \(1 \geq 3(0)\)? Is \(1 \geq 0\)? <strong>TRUE</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Shade the region containing \((0,1)\) — this is <strong>above and to the left</strong> of the line \(y=3x\).</div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answer</div>
+          <strong>Solid</strong> line \(y=3x\). Shade <strong>above</strong> the line. Note: we needed to avoid the origin as a test point because it lies on the boundary.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ SECTION 5 ═══════════════ -->
+<div class="section" id="s5">
+  <div class="section-tag">Section 5</div>
+  <h2>Multiple Inequalities — Finding a Region</h2>
+
+  <p>
+    Many GCSE questions give you <strong>two or three inequalities</strong> and ask you to identify
+    (or shade) the region that satisfies <em>all of them simultaneously</em>. This region is called the
+    <strong>feasible region</strong> or simply "the required region".
+  </p>
+
+  <div class="box box-rule">
+    <div class="box-title">✅ How to find the intersection region</div>
+    <ol style="margin:0; padding-left:18px;">
+      <li style="margin-bottom:4px;">Draw each boundary line separately (dashed or solid as appropriate).</li>
+      <li style="margin-bottom:4px;">For each inequality, work out which side of its line satisfies it (using the test-point method).</li>
+      <li style="margin-bottom:4px;">The required region is where <strong>all</strong> the satisfied sides overlap.</li>
+      <li>You can label this region <em>R</em>, or shade only this region (leaving the rest unshaded), or shade everything outside it — follow the wording of the question.</li>
+    </ol>
+  </div>
+
+  <!-- WE 5 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 5</span>
+      <span class="worked-title">Two simultaneous inequalities</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Show the region satisfied by <strong>both</strong> \(y &lt; x + 3\) and \(y \geq 1\).</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Inequality 1</div><div class="sol-step-content">
+          \(y &lt; x+3\): draw a <strong>dashed</strong> line \(y=x+3\) (gradient 1, intercept 3).<br>
+          Test \((0,0)\): \(0 &lt; 3\) ✓ — shade <strong>below</strong> the dashed line.
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Inequality 2</div><div class="sol-step-content">
+          \(y \geq 1\): draw a <strong>solid</strong> horizontal line \(y=1\).<br>
+          Test \((0,0)\): \(0 \geq 1\) ✗ — shade <strong>above</strong> the solid line.
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Overlap</div><div class="sol-step-content">
+          The required region is below the dashed line \(y=x+3\) AND above (or on) the solid line \(y=1\).
+          It is the band-shaped region between these two lines.
+        </div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answer</div>
+          The region satisfying <em>both</em> inequalities is the area where \(1 \leq y &lt; x+3\) — above or on the line \(y=1\) and strictly below the line \(y=x+3\).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WE 6 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 6</span>
+      <span class="worked-title">Three simultaneous inequalities</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Identify and label the region \(R\) satisfying all three: \(x \geq 0\), \(y \geq 0\), and \(x + y \leq 5\).</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Ineq. 1</div><div class="sol-step-content">
+          \(x \geq 0\): solid vertical line \(x=0\) (the \(y\)-axis). Region is to the <strong>right</strong>.
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Ineq. 2</div><div class="sol-step-content">
+          \(y \geq 0\): solid horizontal line \(y=0\) (the \(x\)-axis). Region is <strong>above</strong>.
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Ineq. 3</div><div class="sol-step-content">
+          \(x+y \leq 5\): rearrange to \(y \leq -x+5\). Draw a solid line through \((0,5)\) and \((5,0)\).<br>
+          Test \((0,0)\): \(0+0 \leq 5\) ✓ — shade <strong>below</strong> this line.
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Region R</div><div class="sol-step-content">
+          \(R\) is the triangle with vertices at \((0,0)\), \((5,0)\), and \((0,5)\) — the area satisfying all three inequalities simultaneously.
+        </div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answer</div>
+          Label the triangular region bounded by the \(y\)-axis, the \(x\)-axis, and the line \(x+y=5\) as \(R\). All three boundary lines are <strong>solid</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 6 ═══════════════ -->
+<div class="section" id="s6">
+  <div class="section-tag">Section 6</div>
+  <h2>Reading Inequalities from a Graph</h2>
+
+  <p>
+    Sometimes a question shows you a shaded region and asks you to write down the inequalities that describe it.
+    Here is how to approach this:
+  </p>
+
+  <div class="steps">
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Identify each boundary line.</strong>  Find the equation of each line forming the boundary (using \(y=mx+c\) for diagonal lines, or \(x=k\) / \(y=k\) for vertical/horizontal lines).</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Check solid or dashed.</strong>  A solid line means \(\leq\) or \(\geq\). A dashed line means \(&lt;\) or \(&gt;\).</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Use a test point in the shaded region.</strong>  Pick a point clearly inside the shaded region and substitute into the equation of each line to determine whether the inequality is \(&lt;\)/\(\leq\) or \(&gt;\)/\(\geq\).</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Write each inequality.</strong>  Combine the equation with the correct inequality sign. Check your answer by verifying the test point satisfies all the inequalities you have written.</div></div>
+  </div>
+
+  <div class="box box-tip">
+    <div class="box-title">💡 Tip: finding the gradient and intercept</div>
+    For a diagonal boundary line, identify two points on the line from the grid, then use:
+    \[ m = \frac{y_2 - y_1}{x_2 - x_1}, \qquad c = y\text{-intercept} \]
+    Then write the line as \(y = mx + c\) and attach the correct inequality sign.
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 7 ═══════════════ -->
+<div class="section" id="s7">
+  <div class="section-tag">Section 7</div>
+  <h2>Quick Reference Summary</h2>
+
+  <table class="summary-table">
+    <thead>
+      <tr><th>Inequality</th><th>Boundary line type</th><th>Region to shade</th><th>Test point check</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>\(y &gt; k\)</td>
+        <td><span class="tag-dash">dashed</span> horizontal</td>
+        <td>Above the line</td>
+        <td>Substitute \((0,0)\): is \(0 &gt; k\)?</td>
+      </tr>
+      <tr>
+        <td>\(y \leq k\)</td>
+        <td><span class="tag-solid">solid</span> horizontal</td>
+        <td>Below (and on) the line</td>
+        <td>Substitute \((0,0)\): is \(0 \leq k\)?</td>
+      </tr>
+      <tr>
+        <td>\(x &gt; k\)</td>
+        <td><span class="tag-dash">dashed</span> vertical</td>
+        <td>Right of the line</td>
+        <td>Substitute \((0,0)\): is \(0 &gt; k\)?</td>
+      </tr>
+      <tr>
+        <td>\(x \leq k\)</td>
+        <td><span class="tag-solid">solid</span> vertical</td>
+        <td>Left of (and on) the line</td>
+        <td>Substitute \((0,0)\): is \(0 \leq k\)?</td>
+      </tr>
+      <tr>
+        <td>\(y \geq mx+c\)</td>
+        <td><span class="tag-solid">solid</span> diagonal</td>
+        <td>Above (and on) the line</td>
+        <td>Sub \((0,0)\): is \(0 \geq c\)?</td>
+      </tr>
+      <tr>
+        <td>\(y &lt; mx+c\)</td>
+        <td><span class="tag-dash">dashed</span> diagonal</td>
+        <td>Below the line</td>
+        <td>Sub \((0,0)\): is \(0 &lt; c\)?</td>
+      </tr>
+      <tr>
+        <td>Multiple inequalities</td>
+        <td>Draw each separately</td>
+        <td>Overlap of all satisfied sides</td>
+        <td>Test a single point in the overlap region against every inequality</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box box-warn">
+    <div class="box-title">⚠ Watch out: when the line passes through the origin</div>
+    If the boundary line passes through \((0,0)\), the origin cannot be your test point — it lies on the boundary, not on either side. Choose a different point such as \((0, 1)\), \((1, 0)\), or \((2, 0)\).
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 8 – PRACTICE QUESTIONS ═══════════════ -->
+<div class="section pq-section" id="s8">
+  <div class="pq-hero">
+    <h2>Practice Questions</h2>
+    <p>Try each question first. Click "Show worked solution" when you're ready to check your answer.</p>
+  </div>
+
+  <div class="pq">
+
+    <!-- Q1 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 1</div>
+      <div class="pq-text">On a coordinate grid, show the region satisfied by \(y \geq 4\). Label the region \(R\).</div>
+      <div class="pq-marks">[2 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content">Draw the horizontal line \(y = 4\). Because the inequality is \(\geq\) (non-strict), the line is <strong>solid</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content">Test \((0,0)\): is \(0 \geq 4\)? <strong>FALSE.</strong></div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Since the origin fails, shade the region on the other side — <strong>above</strong> the line \(y=4\). Label this region \(R\).</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          A <strong>solid</strong> horizontal line at \(y=4\). Region \(R\) is <strong>above</strong> the line (including the line itself).
+        </div>
+      </div>
+    </details>
+
+    <!-- Q2 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 2</div>
+      <div class="pq-text">Represent the inequality \(x &lt; 2\) on a coordinate grid.</div>
+      <div class="pq-marks">[2 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content">Draw the vertical line \(x = 2\). The inequality is strict (\(&lt;\)), so the line is <strong>dashed</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content">Test \((0,0)\): is \(0 &lt; 2\)? <strong>TRUE.</strong></div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Shade the region containing the origin — everything <strong>to the left</strong> of the line \(x=2\).</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          A <strong>dashed</strong> vertical line at \(x=2\). Shade to the <strong>left</strong> (the boundary line is not included).
+        </div>
+      </div>
+    </details>
+
+    <!-- Q3 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 3</div>
+      <div class="pq-text">On a grid, shade the region satisfied by \(y &lt; 2x - 1\).</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content">Draw the line \(y = 2x - 1\). Gradient \(2\), \(y\)-intercept \(-1\). Plot: \((0,-1)\), \((1,1)\), \((2,3)\). Draw as a <strong>dashed</strong> line (strict inequality).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content">Test \((0,0)\): is \(0 &lt; 2(0)-1\)? Is \(0 &lt; -1\)? <strong>FALSE.</strong></div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Since the origin fails, shade the <strong>other</strong> side — <strong>below</strong> the dashed line.</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          <strong>Dashed</strong> line \(y=2x-1\). Shade <strong>below</strong> the line.
+        </div>
+      </div>
+    </details>
+
+    <!-- Q4 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 4</div>
+      <div class="pq-text">Show the region \(y \geq -x + 3\) on a coordinate grid.</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Step 1</div><div class="sol-step-content">Draw the line \(y = -x+3\). Gradient \(-1\), \(y\)-intercept \(3\). Points: \((0,3)\), \((3,0)\), \((1,2)\). Draw as a <strong>solid</strong> line (\(\geq\)).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 2–3</div><div class="sol-step-content">Test \((0,0)\): is \(0 \geq -0+3\)? Is \(0 \geq 3\)? <strong>FALSE.</strong></div></div>
+        <div class="sol-step"><div class="sol-step-label">Step 4</div><div class="sol-step-content">Shade the region <em>not</em> containing the origin — <strong>above</strong> the solid line \(y=-x+3\).</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          <strong>Solid</strong> line \(y=-x+3\). Shade <strong>above</strong> (and including) the line.
+        </div>
+      </div>
+    </details>
+
+    <!-- Q5 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 5</div>
+      <div class="pq-text">Find the region satisfying <strong>both</strong> \(y \leq x + 1\) and \(y \geq -2\). Label the region \(R\).</div>
+      <div class="pq-marks">[4 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Line 1</div><div class="sol-step-content"><strong>\(y = x+1\)</strong> — draw as a <strong>solid</strong> line. Test \((0,0)\): \(0 \leq 1\) ✓. Region is <strong>below</strong> this line.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Line 2</div><div class="sol-step-content"><strong>\(y = -2\)</strong> — draw as a <strong>solid</strong> horizontal line. Test \((0,0)\): \(0 \geq -2\) ✓. Region is <strong>above</strong> this line.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Overlap</div><div class="sol-step-content">Region \(R\) is the strip between the two solid lines: below \(y=x+1\) and above (or on) \(y=-2\). Check a point in \(R\), say \((0,-1)\): \(-1 \leq 0+1\) ✓ and \(-1 \geq -2\) ✓.</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          Both lines solid. Region \(R\) is <strong>below \(y=x+1\)</strong> and <strong>above \(y=-2\)</strong> (a diagonal strip that widens to the right).
+        </div>
+      </div>
+    </details>
+
+    <!-- Q6 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 6</div>
+      <div class="pq-text">Identify the region \(R\) satisfying all three inequalities: \(x \geq 0\),  \(y \geq 0\),  \(y \leq -\frac{1}{2}x + 3\).</div>
+      <div class="pq-marks">[4 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Line 1</div><div class="sol-step-content">\(x=0\) (the \(y\)-axis) — <strong>solid</strong>. Region: to the right (\(x \geq 0\)).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Line 2</div><div class="sol-step-content">\(y=0\) (the \(x\)-axis) — <strong>solid</strong>. Region: above (\(y \geq 0\)).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Line 3</div><div class="sol-step-content">\(y = -\frac{1}{2}x+3\) — gradient \(-\tfrac{1}{2}\), intercept \(3\). Points: \((0,3)\) and \((6,0)\). Draw <strong>solid</strong>. Test \((0,0)\): \(0 \leq 3\) ✓ — shade <strong>below</strong>.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Region R</div><div class="sol-step-content">A triangle with vertices at \((0,0)\), \((6,0)\), and \((0,3)\).</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          Region \(R\) is the triangle bounded by the \(x\)-axis, the \(y\)-axis, and the line \(y=-\frac{1}{2}x+3\), with vertices at \((0,0)\), \((6,0)\), \((0,3)\). All three boundaries are <strong>solid</strong>.
+        </div>
+      </div>
+    </details>
+
+    <!-- Q7 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 7</div>
+      <div class="pq-text">A shaded region on a grid is bounded by three solid lines: the \(y\)-axis (\(x=0\)), the line \(y=2\), and the line \(y=x+4\). The shaded region contains the point \((1, 3)\). Write down the three inequalities that define this region.</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Line 1: \(x=0\)</div><div class="sol-step-content">Test point \((1,3)\): \(x=1\). Is \(1 \geq 0\)? ✓ So the inequality is \(x \geq 0\).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Line 2: \(y=2\)</div><div class="sol-step-content">Test point \((1,3)\): \(y=3\). Is \(3 \geq 2\)? ✓ So the inequality is \(y \geq 2\).</div></div>
+        <div class="sol-step"><div class="sol-step-label">Line 3: \(y=x+4\)</div><div class="sol-step-content">Test point \((1,3)\): is \(3 \leq 1+4=5\)? ✓ So the inequality is \(y \leq x+4\).</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          \[x \geq 0, \quad y \geq 2, \quad y \leq x + 4\]
+          (All boundary lines are solid, so \(\leq\) and \(\geq\) throughout.)
+        </div>
+      </div>
+    </details>
+
+    <!-- Q8 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 8</div>
+      <div class="pq-text">Find all integer coordinate pairs \((x, y)\) that satisfy <strong>all three</strong> of: \(x \geq 1\),  \(y \geq 1\),  \(x + y \leq 4\).</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Setup</div><div class="sol-step-content">We need integer points with \(x \geq 1\), \(y \geq 1\), and \(x+y \leq 4\). Try each valid \(x\):</div></div>
+        <div class="sol-step"><div class="sol-step-label">\(x=1\)</div><div class="sol-step-content">\(y \geq 1\) and \(1+y \leq 4 \Rightarrow y \leq 3\). Integer \(y\)-values: \(1, 2, 3\). Points: \((1,1)\), \((1,2)\), \((1,3)\).</div></div>
+        <div class="sol-step"><div class="sol-step-label">\(x=2\)</div><div class="sol-step-content">\(y \geq 1\) and \(2+y \leq 4 \Rightarrow y \leq 2\). Points: \((2,1)\), \((2,2)\).</div></div>
+        <div class="sol-step"><div class="sol-step-label">\(x=3\)</div><div class="sol-step-content">\(y \geq 1\) and \(3+y \leq 4 \Rightarrow y \leq 1\). Point: \((3,1)\).</div></div>
+        <div class="sol-step"><div class="sol-step-label">\(x=4\)</div><div class="sol-step-content">\(4+y \leq 4 \Rightarrow y \leq 0\), but \(y \geq 1\) — no solution.</div></div>
+        <div class="answer-box"><div class="ab-label">Answer — 6 integer points</div>
+          \((1,1),\ (1,2),\ (1,3),\ (2,1),\ (2,2),\ (3,1)\)
+        </div>
+      </div>
+    </details>
+
+    <!-- Q9 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 9</div>
+      <div class="pq-text">The region \(R\) is defined by \(y &gt; 2x - 3\) and \(y &lt; 5\). Is the point \((3, 4)\) inside region \(R\)? Show your working.</div>
+      <div class="pq-marks">[2 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Check ineq. 1</div><div class="sol-step-content">Substitute \((3,4)\) into \(y &gt; 2x-3\):<br>
+          \(4 &gt; 2(3)-3 = 6-3 = 3\). Is \(4 &gt; 3\)? <strong>TRUE ✓</strong></div></div>
+        <div class="sol-step"><div class="sol-step-label">Check ineq. 2</div><div class="sol-step-content">Substitute \((3,4)\) into \(y &lt; 5\):<br>
+          Is \(4 &lt; 5\)? <strong>TRUE ✓</strong></div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          Both inequalities are satisfied, so \((3,4)\) <strong>is inside</strong> region \(R\).
+        </div>
+      </div>
+    </details>
+
+    <!-- Q10 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 10</div>
+      <div class="pq-text">On a coordinate grid, draw and label the region \(R\) satisfying all of:
+        \[y \leq 2x + 1, \quad y \geq -x + 2, \quad x \leq 3\]
+        Find the coordinates of the three vertices of region \(R\).</div>
+      <div class="pq-marks">[5 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Three lines</div><div class="sol-step-content">
+          Draw three solid boundary lines (all inequalities are non-strict):<br>
+          — \(y = 2x+1\) (gradient 2, intercept 1)<br>
+          — \(y = -x+2\) (gradient \(-1\), intercept 2)<br>
+          — \(x = 3\) (vertical line)
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Sides</div><div class="sol-step-content">
+          Test \((0,0)\) in each:<br>
+          \(y \leq 2x+1\): \(0 \leq 1\) ✓ → below/on line 1<br>
+          \(y \geq -x+2\): \(0 \geq 2\) ✗ → above/on line 2<br>
+          \(x \leq 3\): \(0 \leq 3\) ✓ → left of/on line 3
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Vertex A</div><div class="sol-step-content">
+          Intersection of \(y=2x+1\) and \(y=-x+2\):<br>
+          \(2x+1 = -x+2 \Rightarrow 3x=1 \Rightarrow x=\tfrac{1}{3}\), \(y=\tfrac{5}{3}\). Vertex: \(\left(\tfrac{1}{3},\, \tfrac{5}{3}\right)\).
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Vertex B</div><div class="sol-step-content">
+          Intersection of \(y=2x+1\) and \(x=3\):<br>
+          \(y=2(3)+1=7\). Vertex: \((3,\ 7)\).
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Vertex C</div><div class="sol-step-content">
+          Intersection of \(y=-x+2\) and \(x=3\):<br>
+          \(y=-3+2=-1\). Vertex: \((3,\ -1)\).
+        </div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>
+          Region \(R\) is the triangle with vertices:
+          \[\left(\tfrac{1}{3},\, \tfrac{5}{3}\right), \quad (3,\ 7), \quad (3,\ -1)\]
+          All three boundary lines are <strong>solid</strong>. Region \(R\) lies below \(y=2x+1\), above \(y=-x+2\), and to the left of \(x=3\).
+        </div>
+      </div>
+    </details>
+
+  </div><!-- end .pq wrapper -->
+</div>
+
+</main>
+
+<footer>
+  <strong>GCSE Maths Revision</strong> — Graphical Inequalities &nbsp;|&nbsp;
+  Foundation &amp; Higher Tier &nbsp;|&nbsp;
+  Covers: boundary lines, shading, test-point method, multiple inequalities, integer solutions, reading regions.
+</footer>
+
+</div><!-- end .page -->
+</body>
+</html>
