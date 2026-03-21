@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Sequences & Geometric Progressions</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #fcfcfc; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 6px solid #e91e63; }
+        h1 { color: #c2185b; text-align: center; border-bottom: 2px solid #f8bbd0; padding-bottom: 15px; }
+        h2 { color: #e91e63; margin-top: 40px; border-left: 5px solid #c2185b; padding-left: 15px; background: #fce4ec; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #fce4ec; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #f8bbd0; }
+        .example { background-color: #fafafa; padding: 20px; border-left: 4px solid #ff9800; margin: 15px 0; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .step { font-weight: bold; color: #c2185b; display: block; margin-top: 15px; border-bottom: 1px dashed #f8bbd0; padding-bottom: 5px;}
+        .seq-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .seq-table th, .seq-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .seq-table th { background-color: #e91e63; color: white; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f9f9f9; padding: 15px; cursor: pointer; font-weight: bold; color: #333; outline: none; border-radius: 6px; }
+        summary:hover { background: #f1f1f1; }
+        .solution-content { padding: 20px; border-top: 1px solid #e0e0e0; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; background: #e9f7ef; padding: 10px; border-radius: 4px; border: 1px solid #c3e6cb;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Special Sequences & Geometric Progressions</h1>
+
+    <h2>1. Special Number Sequences</h2>
+    <p>Examiners love testing if you can recognize these sequences just by looking at them. You should memorize the first few terms of each.</p>
+
+    <div class="rule-box">
+        <h3>Square Numbers</h3>
+        <p>Created by multiplying a number by itself ($n^2$).</p>
+        <p><strong>$1, 4, 9, 16, 25, 36, 49, 64, 81, 100 \dots$</strong></p>
+        
+        <h3>Cube Numbers</h3>
+        <p>Created by multiplying a number by itself three times ($n^3$).</p>
+        <p><strong>$1, 8, 27, 64, 125 \dots$</strong></p>
+
+        <h3>Triangular Numbers</h3>
+        <p>These are the number of dots needed to form an equilateral triangle. You create them by adding 2, then adding 3, then adding 4, etc. The $n^{th}$ term formula is $\frac{n(n+1)}{2}$.</p>
+        <p><strong>$1, 3, 6, 10, 15, 21 \dots$</strong></p>
+    </div>
+    
+    
+
+    <h2>2. Geometric Progressions (G.P.)</h2>
+    <p>In a linear sequence, you <em>add</em> or <em>subtract</em> the same number every time. In a **geometric progression**, you <strong>multiply</strong> or <strong>divide</strong> by the same number every time. We call this multiplier the <strong>Common Ratio ($r$)</strong>.</p>
+
+    <div class="example">
+        <strong>Example 1: Finding the next terms of a geometric sequence</strong><br>
+        Find the next two terms in the sequence: $2, 6, 18, 54 \dots$<br>
+        <span class="step">Step 1: Find the common ratio ($r$)</span>
+        How do we get from 2 to 6? We multiply by 3. Check the next one: $6 \times 3 = 18$. The common ratio $r = 3$.<br>
+        <span class="step">Step 2: Multiply to find the next terms</span>
+        $54 \times 3 = 162$<br>
+        $162 \times 3 = 486$<br>
+        <span class="final-ans">Answer: 162, 486</span>
+    </div>
+
+    <div class="rule-box">
+        <strong>The $n^{th}$ Term of a Geometric Sequence:</strong><br>
+        The formula is: $$ar^{n-1}$$
+        <ul>
+            <li>$a$ is the <strong>first term</strong>.</li>
+            <li>$r$ is the <strong>common ratio</strong>.</li>
+            <li>$n$ is the <strong>position</strong>.</li>
+        </ul>
+        <em>Note: You raise $r$ to the power of $(n-1)$, you DO NOT multiply $a \times r$ first! (Remember BIDMAS: Indices before Multiplication).</em>
+    </div>
+
+    <div class="example">
+        <strong>Example 2: Finding the $n^{th}$ term expression</strong><br>
+        Find the $n^{th}$ term of the sequence $5, 10, 20, 40 \dots$<br>
+        <span class="step">Step 1: Identify $a$ and $r$</span>
+        The first term is 5, so $a = 5$.<br>
+        The sequence is doubling every time, so the common ratio $r = 2$.<br>
+        <span class="step">Step 2: Plug into the formula</span>
+        $$ar^{n-1} = 5 \times 2^{n-1}$$
+        <span class="final-ans">Answer: $5 \times 2^{n-1}$</span>
+    </div>
+
+    <h2>3. Fibonacci-Style Sequences</h2>
+    <p>In a Fibonacci sequence, you add the <strong>two previous terms</strong> together to get the next term.</p>
+    <p>The famous standard Fibonacci sequence starts with 1, 1:<br>
+    $1, 1, 2, 3, 5, 8, 13, 21 \dots$</p>
+
+    <div class="example">
+        <strong>Example 3: Algebraic Fibonacci</strong><br>
+        A Fibonacci sequence starts with the terms $x$ and $y$. Write expressions for the next three terms.<br>
+        <span class="step">Step 1: Add the first two terms</span>
+        3rd term = $x + y$<br>
+        <span class="step">Step 2: Add the 2nd and 3rd terms</span>
+        4th term = $y + (x + y) = x + 2y$<br>
+        <span class="step">Step 3: Add the 3rd and 4th terms</span>
+        5th term = $(x + y) + (x + 2y) = 2x + 3y$<br>
+        <span class="final-ans">Answer: $x+y$, $x+2y$, $2x+3y$</span>
+    </div>
+
+    <hr>
+
+    <h2>10 Practice Questions & Solutions</h2>
+    <p>Try these on paper, showing your steps. Click the question to check your working!</p>
+
+    <details>
+        <summary>Q1: Identify the type of sequence: $1, 8, 27, 64 \dots$</summary>
+        <div class="solution-content">
+            These are numbers multiplied by themselves three times ($1^3, 2^3, 3^3, 4^3$).<br>
+            <span class="final-ans">Answer: Cube Numbers</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Find the next two terms of the triangular sequence: $10, 15, 21 \dots$</summary>
+        <div class="solution-content">
+            Look at the gaps:<br>
+            $10 \rightarrow 15$ (+5)<br>
+            $15 \rightarrow 21$ (+6)<br>
+            The next gap must be +7. So, $21 + 7 = 28$.<br>
+            The next gap must be +8. So, $28 + 8 = 36$.<br>
+            <span class="final-ans">Answer: 28, 36</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Find the next two terms of the geometric sequence: $80, 40, 20 \dots$</summary>
+        <div class="solution-content">
+            The sequence is halving every time. The common ratio $r = 0.5$ (or $\frac{1}{2}$).<br>
+            $20 \times 0.5 = 10$<br>
+            $10 \times 0.5 = 5$<br>
+            <span class="final-ans">Answer: 10, 5</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: A sequence has an $n^{th}$ term of $n^2 + 3$. Find the first 3 terms.</summary>
+        <div class="solution-content">
+            Substitute $n = 1$: $1^2 + 3 = 4$<br>
+            Substitute $n = 2$: $2^2 + 3 = 7$<br>
+            Substitute $n = 3$: $3^2 + 3 = 12$<br>
+            <span class="final-ans">Answer: 4, 7, 12</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Find the $n^{th}$ term of the geometric sequence: $3, 12, 48, 192 \dots$</summary>
+        <div class="solution-content">
+            First term ($a$) = 3.<br>
+            Common ratio ($r$): $12 \div 3 = 4$. So $r = 4$.<br>
+            Formula: $ar^{n-1}$<br>
+            <span class="final-ans">Answer: $3 \times 4^{n-1}$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: A Fibonacci-style sequence starts $3, 7 \dots$ Find the 5th term.</summary>
+        <div class="solution-content">
+            1st: 3<br>
+            2nd: 7<br>
+            3rd: $3 + 7 = 10$<br>
+            4th: $7 + 10 = 17$<br>
+            5th: $10 + 17 = 27$<br>
+            <span class="final-ans">Answer: 27</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: The $n^{th}$ term of a geometric sequence is $2 \times 5^{n-1}$. What is the 4th term?</summary>
+        <div class="solution-content">
+            Substitute $n = 4$ into the formula:<br>
+            $2 \times 5^{4-1}$<br>
+            $= 2 \times 5^3$<br>
+            $= 2 \times 125$<br>
+            <span class="final-ans">Answer: 250</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Find the common ratio ($r$) of the sequence: $400, 100, 25, 6.25 \dots$</summary>
+        <div class="solution-content">
+            To find the ratio, divide any term by the term before it.<br>
+            $100 \div 400 = 0.25$ (or $\frac{1}{4}$)<br>
+            <span class="final-ans">Answer: $r = 0.25$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Word Problem: A population of 100 bacteria doubles every hour. How many bacteria are there after 5 hours?</summary>
+        <div class="solution-content">
+            This is a geometric progression. <br>
+            Hour 0 (Start): 100<br>
+            Hour 1: 200<br>
+            Hour 2: 400<br>
+            Hour 3: 800<br>
+            Hour 4: 1600<br>
+            Hour 5: 3200<br>
+            <em>Alternatively, using the formula: $100 \times 2^5 = 100 \times 32 = 3200$.</em><br>
+            <span class="final-ans">Answer: 3,200 bacteria</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge! An algebraic Fibonacci sequence starts $a, b \dots$ If the 4th term is 19 and the 5th term is 31, find the values of $a$ and $b$.</summary>
+        <div class="solution-content">
+            Let's build the sequence algebraically:<br>
+            1st: $a$<br>
+            2nd: $b$<br>
+            3rd: $a + b$<br>
+            4th: $a + 2b$<br>
+            5th: $2a + 3b$<br><br>
+            Now set up simultaneous equations:<br>
+            (1) $a + 2b = 19$<br>
+            (2) $2a + 3b = 31$<br><br>
+            Multiply (1) by 2: $2a + 4b = 38$<br>
+            Subtract (2) from this new equation:<br>
+            $(2a - 2a) + (4b - 3b) = 38 - 31$<br>
+            $b = 7$<br><br>
+            Sub $b=7$ back into equation (1):<br>
+            $a + 2(7) = 19 \Rightarrow a + 14 = 19 \Rightarrow a = 5$<br>
+            <span class="final-ans">Answer: $a = 5, b = 7$</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

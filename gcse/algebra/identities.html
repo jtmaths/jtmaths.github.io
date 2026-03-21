@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identities and Algebraic Proof Masterclass</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #fdfdfd; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #2980b9; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #ecf0f1; padding-bottom: 15px; }
+        h2 { color: #2980b9; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 15px; background: #f4f8fb; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #eaf2f8; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #d4e6f1; }
+        .warning-box { background-color: #fdedec; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #e74c3c; color: #c0392b; }
+        .example { background-color: #fcfcfc; padding: 20px; border-left: 4px solid #2ecc71; margin: 15px 0; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f8f9fa; padding: 15px; cursor: pointer; font-weight: bold; color: #2c3e50; outline: none; border-radius: 6px; }
+        summary:hover { background: #e9ecef; }
+        .solution-content { padding: 20px; border-top: 1px solid #ddd; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+        .proof-box { font-family: 'Courier New', Courier, monospace; background: #f9f9f9; padding: 10px; border-radius: 5px; margin-top: 10px;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Identities and Algebraic Proof</h1>
+
+    <h2>1. Equations vs. Identities</h2>
+    
+    <div class="rule-box">
+        <p><strong>Equation:</strong> Only true for <em>specific</em> values of $x$. You solve it to find out what $x$ is.</p>
+        <p>Example: $2x + 1 = 7$ (This is only true when $x = 3$).</p>
+        
+        <p><strong>Identity:</strong> True for <em>all</em> values of $x$. It just means two expressions are written differently but mean the exact same thing. We use the $\equiv$ symbol to show this.</p>
+        <p>Example: $2(x + 3) \equiv 2x + 6$ (This is true whether $x$ is 1, 10, or a million).</p>
+    </div>
+
+    <h2>2. Proving Equivalent Expressions</h2>
+    <p>When an exam asks you to "Show that..." two expressions are equivalent, you must pick one side and manipulate it until it looks exactly like the other side.</p>
+
+    <div class="warning-box">
+        <strong>The Golden Rule of Proofs:</strong><br>
+        DO NOT move things across the equals sign like you are solving an equation! Treat the left side and the right side as two completely separate islands. Work on the "messiest" side until it matches the neat side.
+    </div>
+
+    <div class="example">
+        <strong>Example: Show that $(x+4)^2 - 16 \equiv x(x+8)$</strong><br>
+        <span class="step">Step 1: Start with the Left Hand Side (LHS)</span>
+        LHS = $(x+4)(x+4) - 16$<br>
+        <span class="step">Step 2: Expand the brackets</span>
+        LHS = $x^2 + 4x + 4x + 16 - 16$<br>
+        <span class="step">Step 3: Simplify</span>
+        LHS = $x^2 + 8x$<br>
+        <span class="step">Step 4: Factorise to match the Right Hand Side (RHS)</span>
+        LHS = $x(x+8)$<br>
+        <br>Since LHS = RHS, the identity is proven.
+    </div>
+
+    <h2>3. Constructing Algebraic Proofs</h2>
+    <p>To prove something is <em>always</em> true for numbers, we can't just test a few numbers (like 2, 3, and 4) because we haven't proven it works for 1,000,000. We must use algebra!</p>
+
+    <div class="rule-box">
+        <strong>The Core Vocabulary of Proof:</strong><br>
+        Let $n$ be any integer (whole number).
+        <ul>
+            <li><strong>An Even Number:</strong> $2n$ (because multiplying by 2 always makes it even).</li>
+            <li><strong>An Odd Number:</strong> $2n + 1$ (an even number plus 1 is always odd).</li>
+            <li><strong>Consecutive Integers:</strong> $n$, $n+1$, $n+2$, $n+3$...</li>
+            <li><strong>Consecutive Even Integers:</strong> $2n$, $2n+2$, $2n+4$...</li>
+            <li><strong>A Multiple of 3:</strong> $3n$ (or $3(\text{something})$).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <strong>Example: Prove that the sum of two consecutive integers is always odd.</strong><br>
+        <span class="step">Step 1: Define the numbers</span>
+        Let the first integer be $n$.<br>
+        Let the second consecutive integer be $n+1$.<br>
+        <span class="step">Step 2: Do the math (find the sum)</span>
+        Sum = $n + (n+1)$<br>
+        Sum = $2n + 1$<br>
+        <span class="step">Step 3: Write a concluding sentence</span>
+        Since $2n$ is always even, $2n+1$ must always be odd. Therefore, the sum is always odd.
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these on paper first. Remember: write clear steps!</p>
+
+    <details>
+        <summary>Q1: Is $3x + 4x \equiv 7x$ an equation or an identity?</summary>
+        <div class="solution-content">
+            It is true for <em>every</em> value of $x$ you could possibly choose.<br>
+            <span class="final-ans">Answer: It is an identity.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Show that $5(x+2) - 3(x+1) \equiv 2x + 7$</summary>
+        <div class="solution-content">
+            Start with the LHS and expand the brackets:<br>
+            $= 5x + 10 - 3x - 3$<br>
+            Collect like terms ($5x - 3x$ and $10 - 3$):<br>
+            $= 2x + 7$<br>
+            <span class="final-ans">This matches the RHS, so it is proven.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Prove that the sum of three consecutive integers is always a multiple of 3.</summary>
+        <div class="solution-content">
+            Let the integers be $n$, $n+1$, and $n+2$.<br>
+            Sum $= n + (n+1) + (n+2)$<br>
+            Sum $= 3n + 3$<br>
+            Factorise out the 3 to prove it's a multiple of 3:<br>
+            $= 3(n + 1)$<br>
+            <span class="final-ans">Since the expression is a multiple of 3, the proof is complete.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Prove that the sum of two odd numbers is always even.</summary>
+        <div class="solution-content">
+            Let the first odd number be $2n+1$.<br>
+            Let the second odd number be $2m+1$. (We use $m$ because it might be a <em>different</em> odd number).<br>
+            Sum $= (2n+1) + (2m+1)$<br>
+            Sum $= 2n + 2m + 2$<br>
+            Factorise out a 2:<br>
+            $= 2(n + m + 1)$<br>
+            <span class="final-ans">Because it is a multiple of 2, the result is always even.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Show that $(x+3)^2 \equiv x^2 + 6x + 9$</summary>
+        <div class="solution-content">
+            Expand the LHS using double brackets:<br>
+            $(x+3)(x+3)$<br>
+            $= x^2 + 3x + 3x + 9$<br>
+            $= x^2 + 6x + 9$<br>
+            <span class="final-ans">This exactly matches the RHS.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Prove algebraically that the square of an even number is always a multiple of 4.</summary>
+        <div class="solution-content">
+            Let the even number be $2n$.<br>
+            Square it: $(2n)^2$<br>
+            $= (2n) \times (2n)$<br>
+            $= 4n^2$<br>
+            <span class="final-ans">Since $4n^2$ is a multiple of 4 ($4 \times n^2$), the proof is complete.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Show that $(n+2)^2 - n^2 \equiv 4n + 4$</summary>
+        <div class="solution-content">
+            Expand the LHS:<br>
+            $(n+2)(n+2) - n^2$<br>
+            $= (n^2 + 2n + 2n + 4) - n^2$<br>
+            $= n^2 + 4n + 4 - n^2$<br>
+            The $n^2$ terms cancel out:<br>
+            $= 4n + 4$<br>
+            <span class="final-ans">This matches the RHS.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Prove that the product of two even numbers is always a multiple of 4.</summary>
+        <div class="solution-content">
+            Let the two even numbers be $2n$ and $2m$.<br>
+            Product (multiply them): $(2n) \times (2m)$<br>
+            $= 4nm$<br>
+            <span class="final-ans">Since there is a factor of 4, the result is always a multiple of 4.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Show that $\frac{6x+12}{3} \equiv 2(x+2)$</summary>
+        <div class="solution-content">
+            Start with the LHS. Divide both terms on the top by 3:<br>
+            $\frac{6x}{3} + \frac{12}{3}$<br>
+            $= 2x + 4$<br>
+            Now factorise this expression:<br>
+            $= 2(x + 2)$<br>
+            <span class="final-ans">This matches the RHS.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge! Prove that the difference between the squares of two consecutive integers is always an odd number.</summary>
+        <div class="solution-content">
+            Let the integers be $n$ and $n+1$.<br>
+            Their squares are $n^2$ and $(n+1)^2$.<br>
+            Difference (biggest minus smallest):<br>
+            $(n+1)^2 - n^2$<br>
+            Expand the bracket:<br>
+            $(n^2 + 2n + 1) - n^2$<br>
+            Simplify:<br>
+            $= 2n + 1$<br>
+            <span class="final-ans">Since $2n$ is always even, $2n+1$ is always odd. Proof complete.</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

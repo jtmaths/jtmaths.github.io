@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequences Masterclass: Linear & Quadratic</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f3f8fa; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 6px solid #2980b9; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #e1ebf2; padding-bottom: 15px; }
+        h2 { color: #2980b9; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 15px; background: #eef5f9; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #eef5f9; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #bcdcfa; }
+        .warning-box { background-color: #fef5e7; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #f39c12; color: #d35400; }
+        .example { background-color: #fdfdfd; padding: 20px; border-left: 4px solid #27ae60; margin: 15px 0; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .step { font-weight: bold; color: #2980b9; display: block; margin-top: 15px; border-bottom: 1px dashed #bcdcfa; padding-bottom: 5px;}
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f9f9f9; padding: 15px; cursor: pointer; font-weight: bold; color: #2c3e50; outline: none; border-radius: 6px; }
+        summary:hover { background: #f1f1f1; }
+        .solution-content { padding: 20px; border-top: 1px solid #e0e0e0; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; background: #e9f7ef; padding: 10px; border-radius: 4px; border: 1px solid #c3e6cb;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sequences: Linear & Quadratic</h1>
+
+    <h2>1. What is the $n^{th}$ term?</h2>
+    <p>The $n^{th}$ term is a magic formula that generates the sequence. The letter $n$ stands for the <strong>position</strong> of the term in the sequence.</p>
+    <ul>
+        <li>If you want the 1st term, substitute $n = 1$.</li>
+        <li>If you want the 5th term, substitute $n = 5$.</li>
+        <li>If you want the 100th term, substitute $n = 100$.</li>
+    </ul>
+
+    <h2>2. Linear (Arithmetic) Sequences</h2>
+    <p>A linear sequence goes up or down by the <strong>same amount</strong> every time. It has a constant <em>first difference</em>.</p>
+
+    
+
+    <div class="rule-box">
+        <strong>The "Dino" Method ($dn + c$):</strong>
+        <ol>
+            <li>Find the common difference (the gap). This is the number that goes in front of $n$ (let's call it $d$). So you have $dn$.</li>
+            <li>Work backward to find the "zeroth" term. What number would come <em>before</em> the first term? Add this at the end ($+ c$).</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <strong>Example 1: Finding the $n^{th}$ term</strong><br>
+        Find the $n^{th}$ term of the sequence: 5, 8, 11, 14...<br>
+        <span class="step">Step 1: Find the difference</span>
+        The sequence goes up by 3 each time. So the first part of our rule is $3n$.<br>
+        <span class="step">Step 2: Find the "zeroth" term</span>
+        To find what comes before 5, subtract 3. $5 - 3 = 2$.<br>
+        <span class="final-ans">Answer: $3n + 2$</span>
+    </div>
+
+    <h2>3. Deciding if a term is in a sequence</h2>
+    <p>To check if a number belongs in a sequence, set your $n^{th}$ term expression equal to that number and solve it like an equation to find $n$.</p>
+
+    <div class="warning-box">
+        <strong>The Integer Rule:</strong><br>
+        Because $n$ represents a position (1st, 2nd, 3rd...), $n$ <strong>must</strong> be a positive whole number (an integer). If you solve the equation and get a decimal or fraction, the number is <strong>not</strong> in the sequence.
+    </div>
+
+    <div class="example">
+        <strong>Example 2: Is the number in the sequence?</strong><br>
+        Is 65 a term in the sequence $4n - 3$?<br>
+        <span class="step">Step 1: Set up the equation</span>
+        $$4n - 3 = 65$$
+        <span class="step">Step 2: Solve for n</span>
+        Add 3: $4n = 68$<br>
+        Divide by 4: $n = 17$<br>
+        <span class="final-ans">Conclusion: Since 17 is a whole number, YES, 65 is the 17th term in the sequence.</span>
+    </div>
+
+    <h2>4. Quadratic Sequences</h2>
+    <p>A quadratic sequence does not have a constant first difference. Instead, the <strong>second difference</strong> is constant. The formula always looks like $an^2 + bn + c$.</p>
+
+    
+
+    <div class="rule-box">
+        <strong>The $2a, 3a+b, a+b+c$ Method:</strong>
+        <p>Write out the sequence, the first differences, and the second difference. Then use these three mini-equations:</p>
+        <ul>
+            <li>$2a$ = the second difference</li>
+            <li>$3a + b$ = the first number of the first difference</li>
+            <li>$a + b + c$ = the first term of the sequence</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <strong>Example 3: Finding a Quadratic $n^{th}$ Term</strong><br>
+        Find the $n^{th}$ term for: 3, 9, 19, 33...<br>
+        
+        <span class="step">Step 1: Find the differences</span>
+        Sequence: &nbsp;&nbsp;&nbsp;&nbsp; 3 &nbsp;&nbsp;&nbsp;&nbsp; 9 &nbsp;&nbsp;&nbsp;&nbsp; 19 &nbsp;&nbsp;&nbsp;&nbsp; 33<br>
+        1st Diff: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 &nbsp;&nbsp;&nbsp;&nbsp; 10 &nbsp;&nbsp;&nbsp;&nbsp; 14<br>
+        2nd Diff: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4<br>
+
+        <span class="step">Step 2: Use the mini-equations</span>
+        <strong>1) Find a:</strong><br>
+        $2a = 4 \Rightarrow a = 2$<br><br>
+        <strong>2) Find b:</strong><br>
+        $3a + b = 6$<br>
+        Substitute $a=2$: $3(2) + b = 6$<br>
+        $6 + b = 6 \Rightarrow b = 0$<br><br>
+        <strong>3) Find c:</strong><br>
+        $a + b + c = 3$<br>
+        Substitute $a=2, b=0$: $2 + 0 + c = 3 \Rightarrow c = 1$<br>
+
+        <span class="step">Step 3: Put it all together</span>
+        The format is $an^2 + bn + c$.<br>
+        $2n^2 + 0n + 1$<br>
+        <span class="final-ans">Answer: $2n^2 + 1$</span>
+    </div>
+
+    <hr>
+
+    <h2>10 Practice Questions & Solutions</h2>
+    <p>Try these on paper, showing your steps. Click the question to check your working!</p>
+
+    <details>
+        <summary>Q1: Find the $n^{th}$ term of the sequence: 7, 11, 15, 19...</summary>
+        <div class="solution-content">
+            1. Difference is $+4$. So it starts with $4n$.<br>
+            2. The term before 7 would be $7 - 4 = 3$.<br>
+            <span class="final-ans">Answer: $4n + 3$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Find the $n^{th}$ term of the sequence: 20, 14, 8, 2...</summary>
+        <div class="solution-content">
+            1. Difference is going DOWN by 6 ($-6$). Starts with $-6n$.<br>
+            2. Term before 20: $20 - (-6) = 26$.<br>
+            <span class="final-ans">Answer: $-6n + 26$ (or $26 - 6n$)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: The $n^{th}$ term of a sequence is $5n - 2$. Find the 50th term.</summary>
+        <div class="solution-content">
+            Substitute $n = 50$ into the formula:<br>
+            $5(50) - 2$<br>
+            $250 - 2 = 248$<br>
+            <span class="final-ans">Answer: 248</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Is 88 a term in the sequence $6n + 4$?</summary>
+        <div class="solution-content">
+            Set up the equation: $6n + 4 = 88$<br>
+            Subtract 4: $6n = 84$<br>
+            Divide by 6: $n = 14$<br>
+            <span class="final-ans">Answer: Yes, because 14 is a positive whole number (it is the 14th term).</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Is 45 a term in the sequence $7n - 2$?</summary>
+        <div class="solution-content">
+            Set up the equation: $7n - 2 = 45$<br>
+            Add 2: $7n = 47$<br>
+            Divide by 7: $n = 6.71...$<br>
+            <span class="final-ans">Answer: No, because $n$ is not a whole number.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Find the $n^{th}$ term for the quadratic sequence: 2, 5, 10, 17...</summary>
+        <div class="solution-content">
+            1st diff: 3, 5, 7<br>
+            2nd diff: 2<br><br>
+            $2a = 2 \Rightarrow a = 1$<br>
+            $3a + b = 3 \Rightarrow 3(1) + b = 3 \Rightarrow b = 0$<br>
+            $a + b + c = 2 \Rightarrow 1 + 0 + c = 2 \Rightarrow c = 1$<br>
+            <span class="final-ans">Answer: $n^2 + 1$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Find the $n^{th}$ term for the quadratic sequence: 1, 8, 21, 40...</summary>
+        <div class="solution-content">
+            1st diff: 7, 13, 19<br>
+            2nd diff: 6<br><br>
+            $2a = 6 \Rightarrow a = 3$<br>
+            $3a + b = 7 \Rightarrow 3(3) + b = 7 \Rightarrow 9 + b = 7 \Rightarrow b = -2$<br>
+            $a + b + c = 1 \Rightarrow 3 + (-2) + c = 1 \Rightarrow 1 + c = 1 \Rightarrow c = 0$<br>
+            <span class="final-ans">Answer: $3n^2 - 2n$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Find the $n^{th}$ term for: 4, 15, 32, 55...</summary>
+        <div class="solution-content">
+            1st diff: 11, 17, 23<br>
+            2nd diff: 6<br><br>
+            $2a = 6 \Rightarrow a = 3$<br>
+            $3a + b = 11 \Rightarrow 9 + b = 11 \Rightarrow b = 2$<br>
+            $a + b + c = 4 \Rightarrow 3 + 2 + c = 4 \Rightarrow 5 + c = 4 \Rightarrow c = -1$<br>
+            <span class="final-ans">Answer: $3n^2 + 2n - 1$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: The $n^{th}$ term of a sequence is $n^2 + 4n - 5$. Find the 10th term.</summary>
+        <div class="solution-content">
+            Substitute $n = 10$ into the expression:<br>
+            $(10)^2 + 4(10) - 5$<br>
+            $100 + 40 - 5$<br>
+            $140 - 5 = 135$<br>
+            <span class="final-ans">Answer: 135</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge! Is 150 a term in the sequence $n^2 + 5$? Prove your answer.</summary>
+        <div class="solution-content">
+            Set up the equation: $n^2 + 5 = 150$<br>
+            Subtract 5: $n^2 = 145$<br>
+            Square root both sides: $n = \sqrt{145}$<br>
+            $\sqrt{145} = 12.041...$<br>
+            <span class="final-ans">Answer: No. Because 145 is not a perfect square, $n$ is not an integer. Therefore, 150 is not in the sequence.</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

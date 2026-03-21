@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions, Inverses and Composite Functions</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f5f7fa; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid #8e44ad; }
+        h1 { color: #8e44ad; text-align: center; border-bottom: 2px solid #f4eff7; padding-bottom: 15px; }
+        h2 { color: #9b59b6; margin-top: 40px; border-left: 5px solid #8e44ad; padding-left: 15px; background: #faf5fc; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #f4eff7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #e1bee7; }
+        .warning-box { background-color: #fdedec; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #e74c3c; color: #c0392b; }
+        .example { background-color: #fdfdfd; padding: 20px; border-left: 4px solid #f39c12; margin: 15px 0; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f8f9fa; padding: 15px; cursor: pointer; font-weight: bold; color: #2c3e50; outline: none; border-radius: 6px; }
+        summary:hover { background: #e9ecef; }
+        .solution-content { padding: 20px; border-top: 1px solid #ddd; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Functions Masterclass</h1>
+
+    <h2>1. Inputs and Outputs: What is a Function?</h2>
+    <p>A function is like a mathematical machine. You put a number in (the <strong>input</strong>, usually $x$), the machine applies a mathematical rule to it, and spits a new number out (the <strong>output</strong>, usually written as $f(x)$).</p>
+
+    
+
+    <div class="rule-box">
+        <strong>Function Notation:</strong><br>
+        $f(x) = 3x + 2$<br>
+        This is read as "f of x equals 3x plus 2". The rule is: multiply the input by 3, then add 2.
+    </div>
+
+    <div class="example">
+        <strong>Example 1: Finding an output</strong><br>
+        If $f(x) = 5x - 4$, find the value of $f(3)$.<br>
+        <span class="step">Step 1: Replace every $x$ with the number 3.</span>
+        $f(3) = 5(3) - 4$<br>
+        <span class="step">Step 2: Calculate.</span>
+        $f(3) = 15 - 4$<br>
+        $f(3) = 11$
+    </div>
+
+    <div class="warning-box">
+        <strong>Watch out for negative inputs!</strong><br>
+        If $g(x) = x^2$ and you need to find $g(-4)$, remember that a negative times a negative is a positive.<br>
+        $g(-4) = (-4)^2 = 16$.
+    </div>
+
+    <h2>2. Inverse Functions $f^{-1}(x)$</h2>
+    <p>An inverse function reverses the process. If a function turns a 2 into a 10, the <em>inverse</em> function will turn the 10 back into a 2. We write the inverse of $f(x)$ as $f^{-1}(x)$.</p>
+
+    
+
+    <div class="rule-box">
+        <strong>The 4-Step Method to find an Inverse Function:</strong>
+        <ol>
+            <li>Write the equation with $y$ instead of $f(x)$.</li>
+            <li>Rearrange the equation to make $x$ the subject.</li>
+            <li>Swap the $x$ and the $y$ around.</li>
+            <li>Replace $y$ with $f^{-1}(x)$.</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <strong>Example 2: Find the inverse of $f(x) = \frac{x + 5}{2}$</strong><br>
+        <span class="step">Step 1: Write with y</span>
+        $y = \frac{x + 5}{2}$<br>
+        <span class="step">Step 2: Rearrange to make x the subject</span>
+        Multiply both sides by 2: $2y = x + 5$<br>
+        Subtract 5 from both sides: $2y - 5 = x$<br>
+        <span class="step">Step 3 & 4: Swap and rewrite notation</span>
+        $y = 2x - 5$<br>
+        $f^{-1}(x) = 2x - 5$
+    </div>
+
+    <h2>3. Compound (Composite) Functions $fg(x)$</h2>
+    <p>A compound function is what happens when you link two function machines together. The output of the first machine immediately becomes the input for the second machine.</p>
+
+    
+
+    <div class="warning-box">
+        <strong>The Right-to-Left Rule:</strong><br>
+        For $fg(x)$, you must work from the inside out (right to left). You apply function $g$ <strong>first</strong>, and then put that answer into function $f$.
+    </div>
+
+    <div class="example">
+        <strong>Example 3: Working out a value for $fg(x)$</strong><br>
+        Let $f(x) = 2x$ and $g(x) = x + 4$. Find the value of $fg(3)$.<br>
+        <span class="step">Step 1: Do the inner function first. Find $g(3)$.</span>
+        $g(3) = 3 + 4 = 7$<br>
+        <span class="step">Step 2: Put that answer into the outer function. Find $f(7)$.</span>
+        $f(7) = 2(7) = 14$<br>
+        <span class="final-ans">Answer: $fg(3) = 14$</span>
+    </div>
+
+    <div class="example">
+        <strong>Example 4: Finding an algebraic expression for $fg(x)$</strong><br>
+        Using the same functions: $f(x) = 2x$ and $g(x) = x + 4$. Find an expression for $fg(x)$.<br>
+        <span class="step">Method: Substitute the entirety of $g(x)$ into the $x$ of $f(x)$.</span>
+        $f(g(x)) = 2(g(x))$<br>
+        $f(x+4) = 2(x + 4)$<br>
+        Expand the bracket: $2x + 8$<br>
+        <span class="final-ans">Answer: $fg(x) = 2x + 8$</span>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these on a piece of paper first. Click the question to check your step-by-step solution!</p>
+
+    <details>
+        <summary>Q1: If $f(x) = 4x - 7$, find the value of $f(5)$.</summary>
+        <div class="solution-content">
+            Substitute 5 in place of $x$.<br>
+            $f(5) = 4(5) - 7$<br>
+            $f(5) = 20 - 7$<br>
+            <span class="final-ans">Answer: 13</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: If $g(x) = x^2 + 3x$, find the value of $g(-2)$.</summary>
+        <div class="solution-content">
+            Substitute -2 carefully, using brackets for the negative number.<br>
+            $g(-2) = (-2)^2 + 3(-2)$<br>
+            $g(-2) = 4 - 6$<br>
+            <span class="final-ans">Answer: -2</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Find the inverse function, $f^{-1}(x)$, for $f(x) = 3x + 8$.</summary>
+        <div class="solution-content">
+            Let $y = 3x + 8$<br>
+            Subtract 8: $y - 8 = 3x$<br>
+            Divide by 3: $\frac{y - 8}{3} = x$<br>
+            Swap variables and rewrite notation:<br>
+            <span class="final-ans">Answer: $f^{-1}(x) = \frac{x - 8}{3}$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Find $h^{-1}(x)$ if $h(x) = \frac{x}{5} - 2$.</summary>
+        <div class="solution-content">
+            Let $y = \frac{x}{5} - 2$<br>
+            Add 2: $y + 2 = \frac{x}{5}$<br>
+            Multiply all by 5: $5(y + 2) = x$<br>
+            Expand: $5y + 10 = x$<br>
+            <span class="final-ans">Answer: $h^{-1}(x) = 5x + 10$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Find the inverse of $f(x) = \frac{10}{x}$.</summary>
+        <div class="solution-content">
+            Let $y = \frac{10}{x}$<br>
+            Multiply by $x$: $xy = 10$<br>
+            Divide by $y$: $x = \frac{10}{y}$<br>
+            Swap variables: $y = \frac{10}{x}$<br>
+            <em>Notice that this function is its own inverse!</em><br>
+            <span class="final-ans">Answer: $f^{-1}(x) = \frac{10}{x}$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Given $f(x) = 3x$ and $g(x) = x - 5$, calculate the value of $fg(8)$.</summary>
+        <div class="solution-content">
+            1. Find $g(8)$ first: $8 - 5 = 3$.<br>
+            2. Put that result into $f$: find $f(3)$.<br>
+            $f(3) = 3(3) = 9$.<br>
+            <span class="final-ans">Answer: 9</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Using $f(x) = 3x$ and $g(x) = x - 5$, find the algebraic expression for $gf(x)$.</summary>
+        <div class="solution-content">
+            Notice this is $gf(x)$, not $fg(x)$. We must put $f$ into $g$.<br>
+            $g(f(x)) = (f(x)) - 5$<br>
+            Substitute $3x$ in place of $f(x)$.<br>
+            <span class="final-ans">Answer: $gf(x) = 3x - 5$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Let $f(x) = 2x + 1$. Find an expression for $ff(x)$.</summary>
+        <div class="solution-content">
+            This means putting the function into itself.<br>
+            $f(f(x)) = 2(f(x)) + 1$<br>
+            $f(2x + 1) = 2(2x + 1) + 1$<br>
+            Expand the bracket: $4x + 2 + 1$<br>
+            Simplify.<br>
+            <span class="final-ans">Answer: $ff(x) = 4x + 3$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Solve the equation $f(x) = 19$, where $f(x) = 5x - 6$.</summary>
+        <div class="solution-content">
+            Set the expression equal to 19 and solve for $x$.<br>
+            $5x - 6 = 19$<br>
+            Add 6: $5x = 25$<br>
+            Divide by 5: $x = 5$<br>
+            <span class="final-ans">Answer: $x = 5$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Challenge! $f(x) = x^2$ and $g(x) = x + 3$. Solve the equation $fg(x) = 49$.</summary>
+        <div class="solution-content">
+            Step 1: Find the expression for $fg(x)$.<br>
+            Put $g$ into $f$: $(x+3)^2$<br>
+            Step 2: Set the equation to 49.<br>
+            $(x+3)^2 = 49$<br>
+            Step 3: Solve by square rooting both sides.<br>
+            $x + 3 = 7$  OR  $x + 3 = -7$<br>
+            $x = 4$ OR $x = -10$<br>
+            <span class="final-ans">Answer: $x = 4$ or $x = -10$</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

@@ -19,7 +19,6 @@ nav_order: 1
 * [Systematic Listing Strategies and The Product Rule](lists.html)
 * [Surds](surds.html)
 * [Standard Form](standardform.html)
-* [Measurement and Estimates](measures.html)
+* [Standard Units of Measurement](units.html)
 * [Rounding and Accuracy](rounding.html)
 * [Limits of Accuracy (Bounds)](limits.html)
-

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simultaneous Equations Masterclass</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f0f4f8; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 6px solid #3b82f6; }
+        h1 { color: #1d4ed8; text-align: center; border-bottom: 2px solid #dbeafe; padding-bottom: 15px; }
+        h2 { color: #2563eb; margin-top: 40px; border-left: 5px solid #3b82f6; padding-left: 15px; background: #eff6ff; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #eff6ff; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #bfdbfe; }
+        .warning-box { background-color: #fef2f2; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ef4444; color: #b91c1c; }
+        .example { background-color: #f8fafc; padding: 20px; border-left: 4px solid #10b981; margin: 15px 0; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .step { font-weight: bold; color: #4b5563; display: block; margin-top: 10px; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f9fafb; padding: 15px; cursor: pointer; font-weight: bold; color: #1f2937; outline: none; border-radius: 6px; }
+        summary:hover { background: #f3f4f6; }
+        .solution-content { padding: 20px; border-top: 1px solid #e5e7eb; background: #ffffff; }
+        .final-ans { color: #059669; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Simultaneous Equations Masterclass</h1>
+
+    <h2>1. What are Simultaneous Equations?</h2>
+    <p>A normal equation like $2x = 10$ has one unknown ($x$) and one answer ($x = 5$).</p>
+    <p>Simultaneous equations have <strong>two unknowns</strong> (usually $x$ and $y$). Because there are two unknowns, we need <strong>two equations</strong> to solve them. "Simultaneous" means we are finding the specific value of $x$ and $y$ that makes <em>both</em> equations true at the exact same time.</p>
+
+    <div class="rule-box">
+        <strong>The Visual Meaning:</strong><br>
+        If you draw a linear equation on a graph, it makes a straight line. If you draw two equations, they make two lines. The solution to the simultaneous equations is the exact coordinate $(x, y)$ where those two lines cross!
+    </div>
+    
+    
+
+    <h2>2. The Elimination Method</h2>
+    <p>This is the most common method. The goal is to add or subtract the two equations together to make one of the letters "vanish" (eliminate).</p>
+
+    <div class="warning-box">
+        <strong>The "SSS" Rule:</strong><br>
+        Look at the coefficients (the numbers in front) of the letter you want to eliminate.<br>
+        If the signs are the <strong>S</strong>ame, <strong>S</strong>ubtract the equations.<br>
+        If the signs are different, Add the equations.
+    </div>
+
+    <div class="example">
+        <strong>Example 1: Simple Elimination (Adding)</strong><br>
+        Solve: <br>
+        (1) $3x + y = 11$<br>
+        (2) $2x - y = 4$<br><br>
+        <span class="step">Step 1: Eliminate</span>
+        The $y$ in eq (1) is $+y$ and the $y$ in eq (2) is $-y$. The signs are different, so we <strong>Add</strong> the equations together.<br>
+        $3x + 2x = 5x$<br>
+        $+y + -y = 0$ (The $y$ vanishes!)<br>
+        $11 + 4 = 15$<br>
+        So, $5x = 15$. Divide by 5 to get <strong>$x = 3$</strong>.
+        
+        <span class="step">Step 2: Substitute Back</span>
+        Now we know $x = 3$, put it back into either original equation to find $y$. Let's use (1):<br>
+        $3(3) + y = 11$<br>
+        $9 + y = 11$<br>
+        <strong>$y = 2$</strong>.
+
+        <span class="step">Step 3: Check (Crucial!)</span>
+        Put $x=3$ and $y=2$ into equation (2): $2(3) - 2 = 6 - 2 = 4$. It works!
+        <span class="final-ans">Solution: $x = 3, y = 2$</span>
+    </div>
+
+    <div class="example">
+        <strong>Example 2: Scaling Equations First</strong><br>
+        Solve:<br>
+        (1) $3x + 2y = 16$<br>
+        (2) $x + 2y = 8$<br><br>
+        The numbers in front of $y$ are both exactly $+2$. Since the signs are the <strong>S</strong>ame, we <strong>S</strong>ubtract eq (2) from eq (1).<br>
+        $3x - x = 2x$<br>
+        $2y - 2y = 0$<br>
+        $16 - 8 = 8$<br>
+        So, $2x = 8$, which means <strong>$x = 4$</strong>.<br><br>
+        Substitute back into (2):<br>
+        $4 + 2y = 8 \Rightarrow 2y = 4 \Rightarrow$ <strong>$y = 2$</strong>.
+        <span class="final-ans">Solution: $x = 4, y = 2$</span>
+    </div>
+
+    <h2>3. The Substitution Method</h2>
+    <p>This method is great when one of your equations already says $y = \dots$ or $x = \dots$</p>
+
+    <div class="example">
+        <strong>Example 3: Substitution</strong><br>
+        Solve:<br>
+        (1) $y = 2x - 1$<br>
+        (2) $3x + 2y = 12$<br><br>
+        <span class="step">Step 1: Substitute</span>
+        Since eq (1) tells us exactly what $y$ is, we can replace the $y$ in eq (2) with $(2x - 1)$.<br>
+        $3x + 2(2x - 1) = 12$<br>
+        
+        <span class="step">Step 2: Solve for x</span>
+        Expand the bracket: $3x + 4x - 2 = 12$<br>
+        Collect terms: $7x - 2 = 12$<br>
+        Add 2: $7x = 14$<br>
+        Divide by 7: <strong>$x = 2$</strong>.<br>
+
+        <span class="step">Step 3: Substitute back</span>
+        Put $x = 2$ into eq (1):<br>
+        $y = 2(2) - 1 \Rightarrow y = 4 - 1 \Rightarrow$ <strong>$y = 3$</strong>.
+        <span class="final-ans">Solution: $x = 2, y = 3$</span>
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these on paper. Remember to write out your steps neatly and label your equations (1) and (2)! Click to reveal the solutions.</p>
+
+    <details>
+        <summary>Q1: Solve $x + y = 10$ and $x - y = 2$</summary>
+        <div class="solution-content">
+            Add the equations to eliminate $y$ (since signs are different: $+y$ and $-y$).<br>
+            $(x + x) = 2x$<br>
+            $(10 + 2) = 12$<br>
+            $2x = 12 \Rightarrow x = 6$<br><br>
+            Sub back into eq 1: $6 + y = 10 \Rightarrow y = 4$<br>
+            <span class="final-ans">Answer: $x = 6, y = 4$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Solve $2x + y = 7$ and $x + y = 5$</summary>
+        <div class="solution-content">
+            Subtract eq 2 from eq 1 to eliminate $y$ (Same signs subtract).<br>
+            $(2x - x) = x$<br>
+            $(y - y) = 0$<br>
+            $(7 - 5) = 2$<br>
+            $x = 2$<br><br>
+            Sub back into eq 2: $2 + y = 5 \Rightarrow y = 3$<br>
+            <span class="final-ans">Answer: $x = 2, y = 3$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Solve $3x + 2y = 12$ and $x - 2y = 4$</summary>
+        <div class="solution-content">
+            Add the equations to eliminate $y$ ($+2y$ and $-2y$).<br>
+            $4x = 16 \Rightarrow x = 4$<br><br>
+            Sub back into eq 1: $3(4) + 2y = 12$<br>
+            $12 + 2y = 12 \Rightarrow 2y = 0 \Rightarrow y = 0$<br>
+            <span class="final-ans">Answer: $x = 4, y = 0$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: Solve $4x + 3y = 17$ and $4x - y = 5$</summary>
+        <div class="solution-content">
+            The $x$'s have the same coefficient (+4). Same Signs Subtract.<br>
+            $(4x - 4x) = 0$<br>
+            Be careful here! $3y - (-y) = 3y + y = 4y$<br>
+            $17 - 5 = 12$<br>
+            $4y = 12 \Rightarrow y = 3$<br><br>
+            Sub back into eq 2: $4x - 3 = 5 \Rightarrow 4x = 8 \Rightarrow x = 2$<br>
+            <span class="final-ans">Answer: $x = 2, y = 3$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: Solve $2x + 3y = 11$ and $3x + y = 13$ (Scaling required)</summary>
+        <div class="solution-content">
+            We need to make the coefficients match. Let's multiply eq 2 by 3 to match the $y$'s.<br>
+            Eq 2 becomes: $9x + 3y = 39$<br>
+            Eq 1 is: $2x + 3y = 11$<br><br>
+            Subtract Eq 1 from the new Eq 2:<br>
+            $7x = 28 \Rightarrow x = 4$<br><br>
+            Sub back into original eq 2: $3(4) + y = 13 \Rightarrow 12 + y = 13 \Rightarrow y = 1$<br>
+            <span class="final-ans">Answer: $x = 4, y = 1$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: Solve $5x - 2y = 16$ and $3x + y = 14$</summary>
+        <div class="solution-content">
+            Multiply eq 2 by 2 to match the $y$'s.<br>
+            Eq 2 becomes: $6x + 2y = 28$<br>
+            Eq 1 is: $5x - 2y = 16$<br><br>
+            Signs are different ($+2y$ and $-2y$), so ADD them:<br>
+            $11x = 44 \Rightarrow x = 4$<br><br>
+            Sub back into original eq 2: $3(4) + y = 14 \Rightarrow 12 + y = 14 \Rightarrow y = 2$<br>
+            <span class="final-ans">Answer: $x = 4, y = 2$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: Use substitution: $y = x + 3$ and $2x + y = 15$</summary>
+        <div class="solution-content">
+            Sub the first equation into the $y$ of the second equation:<br>
+            $2x + (x + 3) = 15$<br>
+            $3x + 3 = 15$<br>
+            $3x = 12 \Rightarrow x = 4$<br><br>
+            Sub back into eq 1: $y = 4 + 3 \Rightarrow y = 7$<br>
+            <span class="final-ans">Answer: $x = 4, y = 7$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: Word Problem - 2 apples and 3 bananas cost 80p. 2 apples and 1 banana cost 50p. Find the cost of each.</summary>
+        <div class="solution-content">
+            Let $a$ = apples and $b$ = bananas.<br>
+            (1) $2a + 3b = 80$<br>
+            (2) $2a + b = 50$<br><br>
+            Subtract eq 2 from eq 1 to eliminate $a$:<br>
+            $2b = 30 \Rightarrow b = 15$<br><br>
+            Sub back into eq 2: $2a + 15 = 50 \Rightarrow 2a = 35 \Rightarrow a = 17.5$<br>
+            <span class="final-ans">Answer: Apples are 17.5p, Bananas are 15p.</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Solve $y = 2x$ and $x + y = 18$</summary>
+        <div class="solution-content">
+            Use substitution. Replace $y$ with $2x$ in the second equation.<br>
+            $x + (2x) = 18$<br>
+            $3x = 18 \Rightarrow x = 6$<br><br>
+            Sub back into eq 1: $y = 2(6) \Rightarrow y = 12$<br>
+            <span class="final-ans">Answer: $x = 6, y = 12$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: Harder Scaling - Solve $3x + 4y = 24$ and $2x + 3y = 17$</summary>
+        <div class="solution-content">
+            We need to scale BOTH equations to make a coefficient match. Let's eliminate $x$ by making them both $6x$.<br>
+            Multiply eq 1 by 2: $6x + 8y = 48$<br>
+            Multiply eq 2 by 3: $6x + 9y = 51$<br><br>
+            Subtract the top from the bottom:<br>
+            $y = 3$<br><br>
+            Sub back into original eq 1: $3x + 4(3) = 24$<br>
+            $3x + 12 = 24 \Rightarrow 3x = 12 \Rightarrow x = 4$<br>
+            <span class="final-ans">Answer: $x = 4, y = 3$</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>

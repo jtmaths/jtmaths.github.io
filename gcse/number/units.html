@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Units & Conversions Masterclass</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f4f6f9; }
+        .container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 6px solid #e74c3c; }
+        h1 { color: #c0392b; text-align: center; border-bottom: 2px solid #fadbd8; padding-bottom: 15px; }
+        h2 { color: #e74c3c; margin-top: 40px; border-left: 5px solid #c0392b; padding-left: 15px; background: #fdf2f0; padding-top: 8px; padding-bottom: 8px; }
+        .rule-box { background-color: #e8f8f5; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #a3e4d7; }
+        .warning-box { background-color: #fef9e7; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #f1c40f; color: #b7950b; }
+        .example { background-color: #f9ebea; padding: 20px; border-left: 4px solid #e74c3c; margin: 15px 0; border-radius: 4px; }
+        .step { font-weight: bold; color: #555; display: block; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #e74c3c; color: white; }
+        tr:nth-child(even) { background-color: #fdf2f0; }
+        
+        /* Interactive Q&A Styles */
+        details { background: #fff; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 12px; }
+        summary { background: #f8f9fa; padding: 15px; cursor: pointer; font-weight: bold; color: #2c3e50; outline: none; border-radius: 6px; }
+        summary:hover { background: #e9ecef; }
+        .solution-content { padding: 20px; border-top: 1px solid #ddd; background: #ffffff; }
+        .final-ans { color: #27ae60; font-weight: bold; font-size: 1.1em; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Standard Units & Conversions</h1>
+
+    <h2>1. The Standard (SI) Units</h2>
+    <p>Scientists and mathematicians around the world use the <strong>International System of Units (SI)</strong> to avoid confusion. You should always aim to convert your values into these units before calculating.</p>
+    
+    <table>
+        <tr>
+            <th>Quantity</th>
+            <th>Standard Unit</th>
+            <th>Symbol</th>
+            <th>Important Note</th>
+        </tr>
+        <tr>
+            <td><strong>Length / Distance</strong></td>
+            <td>Metre</td>
+            <td>m</td>
+            <td>Base unit for area ($m^2$) and volume ($m^3$).</td>
+        </tr>
+        <tr>
+            <td><strong>Mass</strong></td>
+            <td>Kilogram</td>
+            <td>kg</td>
+            <td>How much "stuff" is in an object.</td>
+        </tr>
+        <tr>
+            <td><strong>Time</strong></td>
+            <td>Second</td>
+            <td>s</td>
+            <td>Convert hours and minutes to seconds for Physics formulas!</td>
+        </tr>
+        <tr>
+            <td><strong>Weight (Force)</strong></td>
+            <td>Newton</td>
+            <td>N</td>
+            <td>Weight is a force caused by gravity. Weight = mass $\times$ gravity.</td>
+        </tr>
+        <tr>
+            <td><strong>Temperature</strong></td>
+            <td>Celsius / Kelvin</td>
+            <td>$^\circ\text{C}$ / K</td>
+            <td>Everyday maths uses Celsius. Physics often uses Kelvin.</td>
+        </tr>
+    </table>
+
+    <div class="warning-box">
+        <strong>Mass vs. Weight Trap!</strong><br>
+        In everyday life, we say "I weigh 60 kg". Mathematically, this is wrong! <br>
+        Your <strong>Mass</strong> is 60 kg. Your <strong>Weight</strong> is the force of gravity pulling you down.<br>
+        Formula: $W = m \times g$ (where $g \approx 9.8$ or $10 \text{ N/kg}$ on Earth).<br>
+        So, your weight is actually $60 \times 10 = 600 \text{ N}$.
+    </div>
+
+    <h2>2. The Common Prefixes</h2>
+    <p>Prefixes are put in front of standard units to make them bigger or smaller without writing lots of zeros.</p>
+    
+    <table>
+        <tr>
+            <th>Prefix</th>
+            <th>Symbol</th>
+            <th>Meaning</th>
+            <th>Multiplier (Standard Form)</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><strong>Kilo</strong></td>
+            <td>k</td>
+            <td>Thousand (1,000)</td>
+            <td>$\times 10^3$</td>
+            <td>1 km = 1,000 m</td>
+        </tr>
+        <tr>
+            <td><strong>Centi</strong></td>
+            <td>c</td>
+            <td>Hundredth ($\frac{1}{100}$)</td>
+            <td>$\times 10^{-2}$</td>
+            <td>100 cm = 1 m</td>
+        </tr>
+        <tr>
+            <td><strong>Milli</strong></td>
+            <td>m</td>
+            <td>Thousandth ($\frac{1}{1000}$)</td>
+            <td>$\times 10^{-3}$</td>
+            <td>1,000 mm = 1 m</td>
+        </tr>
+        <tr>
+            <td><strong>Micro</strong></td>
+            <td>$\mu$</td>
+            <td>Millionth ($\frac{1}{1,000,000}$)</td>
+            <td>$\times 10^{-6}$</td>
+            <td>$1,000,000 \mu\text{m}$ = 1 m</td>
+        </tr>
+    </table>
+
+    <h2>3. The Golden Rule: Convert First!</h2>
+    <div class="rule-box">
+        <strong>Convert before you calculate.</strong> If a question gives you distance in km and time in minutes, but asks for speed in m/s, change the distance to metres and the time to seconds <em>before</em> you divide.
+    </div>
+
+    <div class="example">
+        <strong>Example 1: Time Conversion</strong><br>
+        Convert 2 hours and 15 minutes into seconds.<br>
+        <span class="step">Step 1: Hours to minutes</span>
+        $2 \text{ hours} = 2 \times 60 = 120 \text{ mins}$<br>
+        Total minutes = $120 + 15 = 135 \text{ mins}$.<br>
+        <span class="step">Step 2: Minutes to seconds</span>
+        $135 \times 60 = 8,100 \text{ seconds}$
+    </div>
+
+    <div class="example">
+        <strong>Example 2: Mass Conversion</strong><br>
+        Convert 4.5 grams (g) into kilograms (kg).<br>
+        <span class="step">Logic:</span>
+        We are going from small (g) to big (kg), so the number gets smaller. Divide by 1,000.<br>
+        $4.5 \div 1000 = 0.0045 \text{ kg}$
+    </div>
+
+    <h2>4. Compound Measures</h2>
+    <p>Compound measures are made by combining two or more standard units.</p>
+    <ul>
+        <li><strong>Speed:</strong> Distance $\div$ Time (e.g., m/s or km/h)</li>
+        <li><strong>Density:</strong> Mass $\div$ Volume (e.g., kg/m$^3$ or g/cm$^3$)</li>
+        <li><strong>Pressure:</strong> Force $\div$ Area (e.g., N/m$^2$)</li>
+    </ul>
+
+    <div class="example">
+        <strong>Example 3: Compound Measure Calculation</strong><br>
+        A block has a mass of 450 g and a volume of $0.05 \text{ m}^3$. Calculate its density in kg/m$^3$.<br>
+        <span class="step">Step 1: Check units!</span>
+        Volume is in $m^3$ (Good!). Mass is in g (Bad! We need kg).<br>
+        $450 \text{ g} \div 1000 = 0.45 \text{ kg}$.<br>
+        <span class="step">Step 2: Calculate Density</span>
+        $$\text{Density} = \frac{\text{Mass}}{\text{Volume}} = \frac{0.45}{0.05} = 9 \text{ kg/m}^3$$
+    </div>
+
+    <hr>
+
+    <h2>Practice Questions & Solutions</h2>
+    <p>Try these questions on paper, making sure to convert your units first, then click to reveal the worked solutions!</p>
+
+    <details>
+        <summary>Q1: Convert 3.2 kilometres into metres.</summary>
+        <div class="solution-content">
+            "Kilo" means 1,000.<br>
+            To go from km to m, multiply by 1,000.<br>
+            $3.2 \times 1000 = 3200$<br>
+            <span class="final-ans">Answer: 3,200 m</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q2: Convert 450 milligrams (mg) into grams (g).</summary>
+        <div class="solution-content">
+            "Milli" means thousandth. There are 1,000 mg in 1 g.<br>
+            To go from mg to g, divide by 1,000.<br>
+            $450 \div 1000 = 0.45$<br>
+            <span class="final-ans">Answer: 0.45 g</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q3: Convert 1 hour and 40 minutes into seconds.</summary>
+        <div class="solution-content">
+            1 hour = 60 minutes.<br>
+            Total minutes = $60 + 40 = 100 \text{ minutes}$.<br>
+            There are 60 seconds in a minute.<br>
+            $100 \times 60 = 6000$<br>
+            <span class="final-ans">Answer: 6,000 s</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q4: A car travels 12 km in 15 minutes. Calculate its speed in km/h.</summary>
+        <div class="solution-content">
+            Distance is already in km (12 km).<br>
+            Time must be in hours. 15 minutes is $\frac{15}{60}$ hours, which is $0.25$ hours (or $\frac{1}{4}$ of an hour).<br>
+            $\text{Speed} = \frac{\text{Distance}}{\text{Time}}$<br>
+            $\text{Speed} = \frac{12}{0.25} = 48$<br>
+            <span class="final-ans">Answer: 48 km/h</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q5: A gold bar has a volume of $50 \text{ cm}^3$ and a density of $19.3 \text{ g/cm}^3$. Calculate its mass.</summary>
+        <div class="solution-content">
+            Formula: $\text{Mass} = \text{Density} \times \text{Volume}$<br>
+            The units match up perfectly (cm$^3$ and g/cm$^3$), so no conversion is needed yet.<br>
+            $\text{Mass} = 19.3 \times 50 = 965 \text{ g}$<br>
+            <span class="final-ans">Answer: 965 g (or 0.965 kg)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q6: A biological cell has a diameter of 25 micrometres ($\mu\text{m}$). What is this in metres?</summary>
+        <div class="solution-content">
+            "Micro" means one millionth ($10^{-6}$).<br>
+            To convert $\mu\text{m}$ to m, divide by 1,000,000.<br>
+            $25 \div 1,000,000 = 0.000025$<br>
+            In standard form: $2.5 \times 10^{-5}$<br>
+            <span class="final-ans">Answer: 0.000025 m (or $2.5 \times 10^{-5}$ m)</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q7: An astronaut has a mass of 75 kg. Calculate his weight on Earth (where $g = 9.8 \text{ N/kg}$).</summary>
+        <div class="solution-content">
+            Formula: $\text{Weight} = \text{mass} \times \text{gravity}$<br>
+            $W = 75 \times 9.8$<br>
+            $W = 735$<br>
+            <span class="final-ans">Answer: 735 N</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q8: TRICK QUESTION! Convert $2 \text{ m}^2$ into $\text{cm}^2$.</summary>
+        <div class="solution-content">
+            <strong>Warning:</strong> You do NOT just multiply by 100 for areas!<br>
+            Think of a square that is $1\text{m} \times 1\text{m}$. Its area is $1 \text{ m}^2$.<br>
+            In cm, that same square is $100\text{cm} \times 100\text{cm}$.<br>
+            $100 \times 100 = 10,000 \text{ cm}^2$.<br>
+            Therefore, $1 \text{ m}^2 = 10,000 \text{ cm}^2$.<br>
+            So, $2 \text{ m}^2 = 2 \times 10,000 = 20,000$<br>
+            <span class="final-ans">Answer: 20,000 cm$^2$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q9: Calculate the pressure exerted by a force of 600 N acting on an area of $5000 \text{ cm}^2$. Give your answer in N/m$^2$.</summary>
+        <div class="solution-content">
+            We want the answer in $\text{N/m}^2$, so we must convert the area from $\text{cm}^2$ to $\text{m}^2$ first.<br>
+            From Q8, we know $1 \text{ m}^2 = 10,000 \text{ cm}^2$.<br>
+            Area = $5000 \div 10,000 = 0.5 \text{ m}^2$.<br>
+            $\text{Pressure} = \frac{\text{Force}}{\text{Area}}$<br>
+            $\text{Pressure} = \frac{600}{0.5} = 1200$<br>
+            <span class="final-ans">Answer: 1,200 N/m$^2$</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Q10: A cheetah runs 450 metres in 15 seconds. Calculate its speed in km/h.</summary>
+        <div class="solution-content">
+            <strong>Step 1: Convert units first.</strong><br>
+            Distance: $450 \text{ m} \div 1000 = 0.45 \text{ km}$.<br>
+            Time: We need 15 seconds in hours. <br>
+            Seconds to minutes: $15 \div 60 = 0.25 \text{ mins}$.<br>
+            Minutes to hours: $0.25 \div 60 \approx 0.004166... \text{ hours}$ (It's easier to keep it as a fraction: $\frac{15}{3600}$ hours).<br><br>
+            <strong>Step 2: Calculate Speed</strong><br>
+            $\text{Speed} = \frac{\text{Distance}}{\text{Time}}$<br>
+            $\text{Speed} = 0.45 \div (\frac{15}{3600})$<br>
+            $\text{Speed} = 0.45 \times \frac{3600}{15}$<br>
+            $\text{Speed} = 108$<br>
+            <br><em>Alternative method: Find speed in m/s first ($450 \div 15 = 30 \text{ m/s}$). Then multiply by 3.6 to get km/h ($30 \times 3.6 = 108$).</em><br>
+            <span class="final-ans">Answer: 108 km/h</span>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>
