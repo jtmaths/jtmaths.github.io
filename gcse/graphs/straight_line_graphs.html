@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Straight Line Graphs – GCSE Maths Revision</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #1a1a2e;
+      background: #f4f6fb;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: #1a1a2e;
+      color: white;
+      padding: 48px 56px 40px;
+      border-bottom: 5px solid #22c55e;
+    }
+    .hero .label {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #86efac;
+      margin-bottom: 12px;
+    }
+    .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 14px; }
+    .hero p { font-family: Arial, sans-serif; font-size: 15px; color: #b0c4de; max-width: 580px; line-height: 1.6; }
+    .hero .pill-row { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero .pill { font-family: Arial, sans-serif; font-size: 11px; font-weight: 600; padding: 4px 13px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.3); color: #cde; }
+
+    /* ── Contents ── */
+    .contents {
+      background: #f0fdf4;
+      border-bottom: 2px solid #bbf7d0;
+      padding: 18px 56px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+    .contents strong { color: #1a1a2e; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .contents ol { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; margin-top: 8px; padding: 0; }
+    .contents li a { color: #15803d; text-decoration: none; }
+    .contents li a:hover { text-decoration: underline; }
+
+    /* ── Main ── */
+    main { padding: 0 56px 60px; }
+
+    .section { margin-top: 48px; scroll-margin-top: 20px; }
+    .section-tag { font-family: Arial, sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #15803d; margin-bottom: 6px; }
+
+    h2 { font-size: 1.55rem; font-weight: 700; color: #1a1a2e; border-bottom: 2.5px solid #1a1a2e; padding-bottom: 8px; margin-bottom: 18px; }
+    h3 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin-top: 22px; margin-bottom: 10px; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 22px; margin-bottom: 12px; }
+    li { margin-bottom: 5px; }
+
+    /* ── Callout boxes ── */
+    .box { border-radius: 8px; padding: 16px 20px; margin: 16px 0; border-left: 5px solid; font-family: Arial, sans-serif; font-size: 14px; }
+    .box-title { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 7px; }
+    .box-key  { background: #f0fdf4; border-color: #22c55e; }
+    .box-key  .box-title { color: #15803d; }
+    .box-rule { background: #eff6ff; border-color: #3b82f6; }
+    .box-rule .box-title { color: #1d4ed8; }
+    .box-warn { background: #fff7ed; border-color: #f97316; }
+    .box-warn .box-title { color: #c2410c; }
+    .box-tip  { background: #faf5ff; border-color: #a855f7; }
+    .box-tip  .box-title { color: #7e22ce; }
+    .box-def  { background: #f8f9fd; border-color: #6b7280; }
+    .box-def  .box-title { color: #374151; }
+    .box-eg   { background: #fefce8; border-color: #eab308; }
+    .box-eg   .box-title { color: #854d0e; }
+
+    /* ── Formula display ── */
+    .formula-hero {
+      background: #1a1a2e;
+      color: #e2e8f0;
+      border-radius: 10px;
+      padding: 20px 28px;
+      margin: 20px 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .formula-hero .fh-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #86efac; margin-bottom: 8px; }
+    .formula-hero .fh-math { font-size: 1.5rem; color: white; margin-bottom: 6px; }
+    .formula-hero .fh-parts { display: flex; justify-content: center; gap: 32px; margin-top: 12px; flex-wrap: wrap; }
+    .formula-hero .fh-part { font-size: 13px; color: #94a3b8; }
+    .formula-hero .fh-part strong { color: #86efac; }
+
+    /* ── Gradient visual ── */
+    .gradient-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+    .grad-card { border: 1.5px solid #ccc; border-radius: 8px; padding: 12px 16px; width: 170px; font-family: Arial, sans-serif; font-size: 13px; text-align: center; background: #fff; }
+    .grad-card .gc-label { font-weight: 700; margin-bottom: 6px; font-size: 12px; }
+    .grad-card svg { display: block; margin: 0 auto 6px; }
+    .grad-card .gc-note { font-size: 11.5px; color: #555; }
+
+    /* ── Steps ── */
+    .steps { counter-reset: step; margin: 16px 0; }
+    .step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 14px; font-family: Arial, sans-serif; font-size: 14px; }
+    .step-num { counter-increment: step; min-width: 30px; height: 30px; border-radius: 50%; background: #1a1a2e; color: white; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-num::before { content: counter(step); }
+    .step-body { flex: 1; padding-top: 4px; }
+    .step-body strong { color: #1a1a2e; }
+
+    /* ── Two-column layout ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+
+    /* ── Worked examples ── */
+    .worked { border: 2px solid #1a1a2e; border-radius: 10px; margin: 24px 0; overflow: hidden; }
+    .worked-header { background: #1a1a2e; color: white; padding: 10px 20px; display: flex; align-items: center; gap: 12px; font-family: Arial, sans-serif; }
+    .worked-badge { background: #22c55e; color: white; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 12px; letter-spacing: 0.3px; }
+    .worked-title { font-size: 14px; font-weight: 600; }
+    .worked-body { padding: 18px 22px; }
+    .worked-q { background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 16px; font-family: Arial, sans-serif; font-size: 14.5px; font-weight: 600; color: #14532d; }
+    .worked-sol { font-family: Arial, sans-serif; font-size: 14px; }
+    .sol-step { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+    .sol-step-label { min-width: 70px; font-weight: 700; color: #15803d; font-size: 12px; padding-top: 2px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .sol-step-content { flex: 1; }
+    .answer-box { background: #f0fdf4; border: 2px solid #22c55e; border-radius: 6px; padding: 10px 16px; margin-top: 12px; font-family: Arial, sans-serif; font-size: 14px; }
+    .answer-box .ab-label { font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #15803d; margin-bottom: 4px; }
+
+    /* ── Inline formula ── */
+    .ibox { display: inline-block; background: #f5f5f5; border: 1px solid #bbb; border-left: 3px solid #555; border-radius: 4px; padding: 3px 10px; font-family: 'Courier New', monospace; font-size: 13px; margin: 2px 0; }
+
+    /* ── SVG graphs ── */
+    .graph-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 20px 0; }
+    svg.graph { background: #fff; border: 1.5px solid #ccc; border-radius: 8px; }
+
+    /* ── Summary table ── */
+    .sum-table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; margin: 16px 0; }
+    .sum-table th { background: #1a1a2e; color: white; padding: 9px 14px; text-align: left; font-weight: 600; }
+    .sum-table td { padding: 9px 14px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .sum-table tr:nth-child(even) td { background: #f8f9fd; }
+
+    /* ── Practice questions ── */
+    .pq-section { margin-top: 48px; }
+    .pq-hero { background: #1a1a2e; color: white; padding: 20px 24px; border-radius: 10px 10px 0 0; font-family: Arial, sans-serif; }
+    .pq-hero h2 { color: white; border-bottom: none; padding-bottom: 0; margin-bottom: 4px; font-size: 1.3rem; }
+    .pq-hero p { color: #a8b8d8; font-size: 13px; margin: 0; }
+    .pq { border: 2px solid #1a1a2e; border-top: none; }
+    .pq:last-child { border-radius: 0 0 10px 10px; }
+    .pq-question { padding: 18px 24px 14px; border-bottom: 1px solid #e5e7eb; font-family: Arial, sans-serif; }
+    .pq-num { font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-bottom: 6px; }
+    .pq-text { font-size: 15px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; }
+    .pq-hint { font-size: 12.5px; color: #6b7280; font-style: italic; margin-top: 4px; }
+    .pq-marks { font-size: 12px; color: #6b7280; }
+
+    /* ── Toggle solution ── */
+    details { font-family: Arial, sans-serif; }
+    details summary { cursor: pointer; padding: 10px 24px; font-size: 13px; font-weight: 700; color: #15803d; background: #f0fdf4; border-top: 1px solid #bbf7d0; list-style: none; user-select: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::before { content: '▶  Show worked solution'; }
+    details[open] summary::before { content: '▼  Hide worked solution'; }
+    details .solution { padding: 18px 24px; background: #fafbff; border-top: 1px solid #e0e8ff; font-size: 14px; }
+    details .answer-box { margin-top: 14px; }
+
+    /* ── Footer ── */
+    footer { background: #f0fdf4; border-top: 2px solid #bbf7d0; padding: 20px 56px; font-family: Arial, sans-serif; font-size: 12.5px; color: #6b7280; }
+
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; }
+      .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      details summary::before { content: 'Worked solution:'; color: #333; }
+      .contents { display: none; }
+      .two-col { display: block; }
+      .two-col > * { margin-bottom: 12px; }
+    }
+    @media (max-width: 700px) {
+      .hero, main, .contents, footer { padding-left: 20px; padding-right: 20px; }
+      .two-col { grid-template-columns: 1fr; }
+      .formula-hero .fh-parts { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<div class="hero">
+  <div class="label">GCSE Maths · Foundation &amp; Higher</div>
+  <h1>Straight Line Graphs</h1>
+  <p>A complete guide to $y = mx + c$, gradients, and finding the equation of a line — with step-by-step methods, worked examples and practice questions.</p>
+  <div class="pill-row">
+    <div class="pill">Ages 15–16</div>
+    <div class="pill">6 Worked Examples</div>
+    <div class="pill">10 Practice Questions</div>
+    <div class="pill">Full Solutions</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ CONTENTS ══════════════════════ -->
+<nav class="contents">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#s1">The Equation $y = mx + c$</a></li>
+    <li><a href="#s2">Gradient</a></li>
+    <li><a href="#s3">The $y$-intercept</a></li>
+    <li><a href="#s4">Plotting a Line</a></li>
+    <li><a href="#s5">Finding the Equation</a></li>
+    <li><a href="#s6">Parallel &amp; Perpendicular</a></li>
+    <li><a href="#s7">Special Lines</a></li>
+    <li><a href="#s8">Quick Reference</a></li>
+    <li><a href="#s9">Practice Questions</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ══════════════════════ S1: y = mx + c ══════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-tag">Section 1</div>
+  <h2>The Equation $y = mx + c$</h2>
+
+  <p>
+    Every straight line on a coordinate grid can be described by the equation
+    $y = mx + c$. This is the most important formula in this topic, and once you
+    understand what $m$ and $c$ mean, you can read almost everything about a line
+    directly from its equation.
+  </p>
+
+  <div class="formula-hero">
+    <div class="fh-label">The Straight Line Equation</div>
+    <div class="fh-math">$y = mx + c$</div>
+    <div class="fh-parts">
+      <div class="fh-part"><strong>$m$</strong> = gradient (steepness &amp; direction)</div>
+      <div class="fh-part"><strong>$c$</strong> = $y$-intercept (where line crosses $y$-axis)</div>
+      <div class="fh-part"><strong>$x$, $y$</strong> = coordinates of any point on the line</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="box box-eg">
+      <div class="box-title">📌 Reading off $m$ and $c$</div>
+      From $y = 3x + 5$:<br>
+      &bull; Gradient $m = 3$ (line goes up $3$ for every $1$ across)<br>
+      &bull; $y$-intercept $c = 5$ (crosses $y$-axis at $(0, 5)$)
+    </div>
+    <div class="box box-eg">
+      <div class="box-title">📌 Another example</div>
+      From $y = -2x + 1$:<br>
+      &bull; Gradient $m = -2$ (line slopes downward)<br>
+      &bull; $y$-intercept $c = 1$ (crosses $y$-axis at $(0, 1)$)
+    </div>
+  </div>
+
+  <div class="box box-warn">
+    <div class="box-title">⚠ Equations not in standard form</div>
+    Sometimes equations are given in a different form, like $2y = 4x + 6$ or $3x + y = 7$.
+    Always <strong>rearrange to $y = mx + c$</strong> first by making $y$ the subject:<br><br>
+    $2y = 4x + 6 \;\Rightarrow\; y = 2x + 3$ &nbsp; (divide everything by 2)<br>
+    $3x + y = 7 \;\Rightarrow\; y = -3x + 7$ &nbsp; (subtract $3x$ from both sides)
+  </div>
+</div>
+
+<!-- ══════════════════════ S2: GRADIENT ══════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-tag">Section 2</div>
+  <h2>Gradient</h2>
+
+  <p>
+    The <strong>gradient</strong> tells you how steep a line is and which direction it slopes.
+    It is defined as how much the line goes <em>up</em> (or down) for every one unit it moves <em>across</em>.
+  </p>
+
+  <div class="formula-hero">
+    <div class="fh-label">Gradient Formula</div>
+    <div class="fh-math">$$m = \frac{\text{rise}}{\text{run}} = \frac{y_2 - y_1}{x_2 - x_1}$$</div>
+    <div class="fh-parts">
+      <div class="fh-part">where $(x_1, y_1)$ and $(x_2, y_2)$ are <strong>any two points</strong> on the line</div>
+    </div>
+  </div>
+
+  <h3>What does the gradient tell you?</h3>
+
+  <div class="gradient-row">
+    <div class="grad-card">
+      <div class="gc-label" style="color:#15803d;">Positive gradient</div>
+      <svg width="80" height="70" viewBox="0 0 80 70">
+        <line x1="5" y1="65" x2="75" y2="65" stroke="#ccc" stroke-width="1"/>
+        <line x1="5" y1="65" x2="5" y2="5"  stroke="#ccc" stroke-width="1"/>
+        <line x1="10" y1="60" x2="70" y2="10" stroke="#15803d" stroke-width="2.5"/>
+        <polygon points="70,10 60,14 66,20" fill="#15803d"/>
+      </svg>
+      <div class="gc-note">$m &gt; 0$<br>Slopes upward (left to right)</div>
+    </div>
+    <div class="grad-card">
+      <div class="gc-label" style="color:#dc2626;">Negative gradient</div>
+      <svg width="80" height="70" viewBox="0 0 80 70">
+        <line x1="5" y1="65" x2="75" y2="65" stroke="#ccc" stroke-width="1"/>
+        <line x1="5" y1="65" x2="5" y2="5"  stroke="#ccc" stroke-width="1"/>
+        <line x1="10" y1="10" x2="70" y2="60" stroke="#dc2626" stroke-width="2.5"/>
+        <polygon points="70,60 58,52 64,58" fill="#dc2626"/>
+      </svg>
+      <div class="gc-note">$m &lt; 0$<br>Slopes downward</div>
+    </div>
+    <div class="grad-card">
+      <div class="gc-label" style="color:#2563eb;">Zero gradient</div>
+      <svg width="80" height="70" viewBox="0 0 80 70">
+        <line x1="5" y1="65" x2="75" y2="65" stroke="#ccc" stroke-width="1"/>
+        <line x1="5" y1="65" x2="5" y2="5"  stroke="#ccc" stroke-width="1"/>
+        <line x1="10" y1="35" x2="70" y2="35" stroke="#2563eb" stroke-width="2.5"/>
+        <polygon points="70,35 60,31 60,39" fill="#2563eb"/>
+      </svg>
+      <div class="gc-note">$m = 0$<br>Horizontal line</div>
+    </div>
+    <div class="grad-card">
+      <div class="gc-label" style="color:#7e22ce;">Steep gradient</div>
+      <svg width="80" height="70" viewBox="0 0 80 70">
+        <line x1="5" y1="65" x2="75" y2="65" stroke="#ccc" stroke-width="1"/>
+        <line x1="5" y1="65" x2="5" y2="5"  stroke="#ccc" stroke-width="1"/>
+        <line x1="35" y1="62" x2="45" y2="8" stroke="#7e22ce" stroke-width="2.5"/>
+        <polygon points="45,8 39,18 47,17" fill="#7e22ce"/>
+      </svg>
+      <div class="gc-note">$|m|$ large<br>Very steep</div>
+    </div>
+  </div>
+
+  <h3>Calculating the gradient from two points</h3>
+  <p>Always subtract in the <strong>same order</strong>: $(x_2 - x_1)$ on the bottom and $(y_2 - y_1)$ on the top.
+  It doesn't matter which point you call "1" and which you call "2", as long as you're consistent.</p>
+
+  <div class="box box-key">
+    <div class="box-title">🔑 Step by step: gradient from two points</div>
+    <strong>Given points $(1, 3)$ and $(5, 11)$:</strong><br>
+    <div style="margin-top:8px;">
+      Label: $x_1 = 1,\; y_1 = 3,\; x_2 = 5,\; y_2 = 11$<br>
+      Apply formula: $m = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{11 - 3}{5 - 1} = \dfrac{8}{4} = 2$
+    </div>
+  </div>
+
+  <div class="box box-warn">
+    <div class="box-title">⚠ Don't mix up the order!</div>
+    $\dfrac{y_2 - y_1}{x_2 - x_1}$ is correct. &nbsp; $\dfrac{y_2 - y_1}{x_1 - x_2}$ is <strong>wrong</strong> (gives the wrong sign).
+    Make sure $x$ and $y$ are subtracted in the same order — both "2 minus 1" or both "1 minus 2".
+  </div>
+
+  <h3>Reading gradient from a graph</h3>
+  <p>
+    Pick two points on the line where it crosses grid intersections (so you can read off exact values).
+    Draw a right-angled triangle and count the squares:
+  </p>
+  <ul>
+    <li><strong>Rise</strong> = vertical distance (count squares up or down)</li>
+    <li><strong>Run</strong> = horizontal distance (count squares across)</li>
+    <li>$m = \dfrac{\text{rise}}{\text{run}}$ — remember to make it negative if the line goes downward left-to-right.</li>
+  </ul>
+
+  <div class="graph-row">
+    <svg class="graph" width="220" height="210" viewBox="-30 -20 220 210">
+      <g stroke="#e5e7eb" stroke-width="0.8">
+        <line x1="0"   y1="0"   x2="0"   y2="180"/><line x1="40"  y1="0"   x2="40"  y2="180"/>
+        <line x1="80"  y1="0"   x2="80"  y2="180"/><line x1="120" y1="0"   x2="120" y2="180"/>
+        <line x1="160" y1="0"   x2="160" y2="180"/><line x1="0"   y1="0"   x2="160" y2="0"/>
+        <line x1="0"   y1="40"  x2="160" y2="40"/><line x1="0"   y1="80"  x2="160" y2="80"/>
+        <line x1="0"   y1="120" x2="160" y2="120"/><line x1="0"   y1="160" x2="160" y2="160"/>
+      </g>
+      <!-- axes -->
+      <line x1="0" y1="180" x2="160" y2="180" stroke="#999" stroke-width="1.2"/>
+      <line x1="0" y1="0"   x2="0"   y2="180" stroke="#999" stroke-width="1.2"/>
+      <!-- line y=2x (pixel: py=(4-y)*40, px=x*40; y=2x → two pts: x=0→py=160,px=0; x=3→py=40,px=120) -->
+      <!-- scale: x_world in [0,4], y_world in [0,4]; px=x*40, py=(4-y)*40 -->
+      <line x1="0" y1="160" x2="120" y2="40" stroke="#15803d" stroke-width="2.5"/>
+      <!-- triangle: A(40,160), B(120,160), C(120,40) = x_world=1→3, y_world=0→2... wait let me recalc -->
+      <!-- Two clean pts: (1,2) and (3,6). But y_world max=4 so use (0,0) to (2,4): px=0,py=160 and px=80,py=0 -->
+      <!-- rise triangle: (40,120) to (80,120) to (80,40) — points (1,1) and (2,3) -->
+      <!-- Let me use pts (0,0) → px=0,py=160 and (2,4) → px=80,py=0 -->
+      <!-- rise triangle from (1,2)→px40,py120 to (2,2)→px80,py120 to (2,4)→px80,py40 -->
+      <polyline points="40,120 80,120 80,40" stroke="#2563eb" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+      <!-- labels -->
+      <text x="55" y="138" font-family="Arial" font-size="11" fill="#2563eb">run=1</text>
+      <text x="84" y="86"  font-family="Arial" font-size="11" fill="#2563eb">rise=2</text>
+      <text x="90" y="30"  font-family="Arial" font-size="12" fill="#15803d" font-weight="700">m=2</text>
+      <!-- axis labels -->
+      <text x="165" y="184" font-family="Arial" font-size="11" fill="#555">x</text>
+      <text x="-18" y="4"   font-family="Arial" font-size="11" fill="#555">y</text>
+      <text x="-12" y="164" font-family="Arial" font-size="10" fill="#555">0</text>
+      <text x="-12" y="124" font-family="Arial" font-size="10" fill="#555">1</text>
+      <text x="-12" y="84"  font-family="Arial" font-size="10" fill="#555">2</text>
+      <text x="-12" y="44"  font-family="Arial" font-size="10" fill="#555">3</text>
+      <text x="37"  y="194" font-family="Arial" font-size="10" fill="#555">1</text>
+      <text x="77"  y="194" font-family="Arial" font-size="10" fill="#555">2</text>
+      <text x="117" y="194" font-family="Arial" font-size="10" fill="#555">3</text>
+    </svg>
+  </div>
+  <p style="text-align:center; font-family:Arial; font-size:13px; color:#555; margin-top:-10px;">
+    The right-angle triangle shows rise = 2, run = 1, so $m = \frac{2}{1} = 2$.
+  </p>
+</div>
+
+<!-- ══════════════════════ S3: y-INTERCEPT ══════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-tag">Section 3</div>
+  <h2>The $y$-intercept</h2>
+
+  <p>
+    The <strong>$y$-intercept</strong> is the value of $c$ in $y = mx + c$. It is the point where
+    the line crosses the <strong>$y$-axis</strong>. At this point, $x = 0$, so you can always find it
+    by substituting $x = 0$ into the equation.
+  </p>
+
+  <div class="two-col">
+    <div class="box box-key">
+      <div class="box-title">🔑 Finding the $y$-intercept</div>
+      Given $y = 4x - 3$:<br>
+      Set $x = 0$: $y = 4(0) - 3 = -3$<br>
+      $y$-intercept is $(0, -3)$.
+    </div>
+    <div class="box box-key">
+      <div class="box-title">🔑 The $x$-intercept too</div>
+      The $x$-intercept is where the line crosses the $x$-axis. At that point $y = 0$:<br>
+      $0 = 4x - 3 \Rightarrow x = \tfrac{3}{4}$<br>
+      $x$-intercept is $\!\left(\tfrac{3}{4}, 0\right)$.
+    </div>
+  </div>
+
+  <p>
+    A quick way to sketch any line is to find these two intercepts and join them with a straight line.
+    This is especially useful when $m$ is a fraction.
+  </p>
+</div>
+
+<!-- ══════════════════════ S4: PLOTTING ══════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-tag">Section 4</div>
+  <h2>Plotting a Straight Line Graph</h2>
+
+  <p>There are two main methods for plotting a line from its equation.</p>
+
+  <h3>Method 1: Table of values</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num"></div><div class="step-body">Choose 3 or more values of $x$ (e.g. $-2,\; 0,\; 2$).</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body">Substitute each into the equation to find the corresponding $y$ value.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body">Write the $(x, y)$ pairs in a table, plot each point, and draw a straight line through them.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body">Always extend the line slightly beyond your plotted points and label it with its equation.</div></div>
+  </div>
+
+  <div class="box box-eg">
+    <div class="box-title">Example: plot $y = 2x + 1$</div>
+    <table style="width:auto; margin-top:8px;">
+      <thead><tr><th>$x$</th><th>$-2$</th><th>$0$</th><th>$2$</th></tr></thead>
+      <tbody>
+        <tr><td>$y = 2x+1$</td><td>$2(-2)+1=-3$</td><td>$2(0)+1=1$</td><td>$2(2)+1=5$</td></tr>
+      </tbody>
+    </table>
+    Plot $(-2,-3)$, $(0,1)$, $(2,5)$ and draw a straight line through them.
+  </div>
+
+  <h3>Method 2: Gradient and $y$-intercept</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num"></div><div class="step-body">Mark the <strong>$y$-intercept</strong> — plot the point $(0, c)$ on the $y$-axis.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body">Use the <strong>gradient</strong> to find the next point: from $(0,c)$, go <em>across 1</em> and <em>up $m$</em> (or down if $m$ is negative). Plot this new point.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body">Draw a straight line through your two points. Extend and label it.</div></div>
+  </div>
+
+  <div class="box box-tip">
+    <div class="box-title">💡 Tip: fractional gradients</div>
+    If $m = \dfrac{3}{4}$, go <strong>across 4</strong> and <strong>up 3</strong> to find your next point — this avoids fractions and keeps everything on grid points.
+  </div>
+
+  <!-- WE 1 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 1</span>
+      <span class="worked-title">Plotting a line using the gradient and intercept</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Draw the graph of $y = \dfrac{1}{2}x - 2$ for $-4 \leq x \leq 6$.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Intercept</div><div class="sol-step-content">$c = -2$, so the line crosses the $y$-axis at $(0, -2)$. Plot this point.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Gradient</div><div class="sol-step-content">$m = \dfrac{1}{2}$. From $(0,-2)$, go <strong>right 2</strong> and <strong>up 1</strong> to reach $(2, -1)$. Plot this point. Repeat to get $(4, 0)$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">Verify with a table: $x=-4 \Rightarrow y=\frac{1}{2}(-4)-2=-4$ and $x=6 \Rightarrow y=\frac{1}{2}(6)-2=1$. Plot $(-4,-4)$ and $(6,1)$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Draw</div><div class="sol-step-content">Draw a straight line through all plotted points and label it $y = \frac{1}{2}x - 2$.</div></div>
+        <div class="answer-box">
+          <div class="ab-label">Key points to plot</div>
+          $(-4,\,-4)$, $(0,\,-2)$, $(2,\,-1)$, $(4,\,0)$, $(6,\,1)$ — all lie on a straight line.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ S5: FINDING THE EQUATION ══════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-tag">Section 5</div>
+  <h2>Finding the Equation of a Line</h2>
+
+  <h3>From a graph</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Read off the $y$-intercept.</strong> This is where the line crosses the $y$-axis — this gives you $c$.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Find the gradient.</strong> Choose two clear grid-crossing points, draw a right-angle triangle, and calculate $m = \dfrac{\text{rise}}{\text{run}}$. Make it negative if the line slopes downward.</div></div>
+    <div class="step"><div class="step-num"></div><div class="step-body"><strong>Write the equation</strong> as $y = mx + c$.</div></div>
+  </div>
+
+  <!-- WE 2 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 2</span>
+      <span class="worked-title">Finding the equation from a graph</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">A straight line passes through $(0, 3)$ and $(4, 1)$. Find its equation.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">$c$</div><div class="sol-step-content">The line crosses the $y$-axis at $(0, 3)$, so $c = 3$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">$m$</div><div class="sol-step-content">Using $(x_1,y_1)=(0,3)$ and $(x_2,y_2)=(4,1)$:
+          $$m = \frac{1-3}{4-0} = \frac{-2}{4} = -\frac{1}{2}$$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Equation</div><div class="sol-step-content">$y = -\dfrac{1}{2}x + 3$</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = -\dfrac{1}{2}x + 3$</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>From two points (neither on the $y$-axis)</h3>
+  <p>
+    When neither point is the $y$-intercept, calculate the gradient first, then use
+    one of the points to find $c$.
+  </p>
+
+  <div class="box box-rule">
+    <div class="box-title">📐 Method: find $c$ by substituting a known point</div>
+    Once you have $m$, substitute one of the given points $(x_1, y_1)$ into $y = mx + c$
+    and solve for $c$:
+    $$c = y_1 - m x_1$$
+  </div>
+
+  <!-- WE 3 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 3</span>
+      <span class="worked-title">Finding the equation given two points</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Find the equation of the line passing through $(2, 5)$ and $(6, 13)$.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Gradient</div><div class="sol-step-content">
+          $$m = \frac{13 - 5}{6 - 2} = \frac{8}{4} = 2$$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Find $c$</div><div class="sol-step-content">
+          Substitute $(2, 5)$ and $m = 2$ into $y = mx + c$:<br>
+          $5 = 2(2) + c \;\Rightarrow\; 5 = 4 + c \;\Rightarrow\; c = 1$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">
+          Check with the other point $(6, 13)$: $y = 2(6)+1 = 13$ ✓
+        </div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = 2x + 1$</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Given the gradient and one point</h3>
+  <p>
+    If you are told the gradient $m$ and one point $(x_1, y_1)$ on the line, you can use the
+    <strong>point-gradient form</strong>:
+  </p>
+  <div class="box box-rule">
+    <div class="box-title">📐 Point-gradient form</div>
+    $$y - y_1 = m(x - x_1)$$
+    Expand and rearrange to get $y = mx + c$.
+  </div>
+
+  <!-- WE 4 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 4</span>
+      <span class="worked-title">Using gradient and one point</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Find the equation of the line with gradient $3$ passing through $(1, -2)$.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Substitute</div><div class="sol-step-content">
+          $m = 3$, $(x_1, y_1) = (1, -2)$.<br>
+          $y - (-2) = 3(x - 1)$<br>
+          $y + 2 = 3x - 3$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Rearrange</div><div class="sol-step-content">
+          $y = 3x - 3 - 2 = 3x - 5$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">
+          Substitute $(1, -2)$: $y = 3(1) - 5 = -2$ ✓
+        </div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = 3x - 5$</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ S6: PARALLEL & PERPENDICULAR ══════════════════════ -->
+<div class="section" id="s6">
+  <div class="section-tag">Section 6</div>
+  <h2>Parallel and Perpendicular Lines</h2>
+
+  <h3>Parallel lines</h3>
+  <p>
+    Two lines are <strong>parallel</strong> if they never meet — they go in exactly the same direction.
+    Parallel lines have <strong>equal gradients</strong>.
+  </p>
+  <div class="box box-key">
+    <div class="box-title">🔑 Parallel lines rule</div>
+    If line 1 has equation $y = m_1 x + c_1$ and line 2 has equation $y = m_2 x + c_2$, then:<br>
+    Lines are parallel $\;\Longleftrightarrow\; m_1 = m_2$ (and $c_1 \neq c_2$)
+  </div>
+  <div class="box box-eg">
+    <div class="box-title">📌 Example</div>
+    $y = 4x + 7$ and $y = 4x - 3$ are parallel (both have gradient $4$, different intercepts).<br>
+    $y = 4x + 7$ and $y = 2x + 7$ are <strong>not</strong> parallel (different gradients).
+  </div>
+
+  <h3>Perpendicular lines</h3>
+  <p>
+    Two lines are <strong>perpendicular</strong> if they meet at a right angle (90°).
+    Their gradients multiply to give $-1$.
+  </p>
+  <div class="box box-key">
+    <div class="box-title">🔑 Perpendicular lines rule</div>
+    $$m_1 \times m_2 = -1 \quad\Longleftrightarrow\quad m_2 = -\frac{1}{m_1}$$
+    To find the perpendicular gradient: <strong>flip the fraction and change the sign</strong>.
+  </div>
+
+  <div class="two-col">
+    <div class="box box-eg">
+      <div class="box-title">📌 Perpendicular gradient examples</div>
+      If $m = 2$, perpendicular gradient $= -\dfrac{1}{2}$<br>
+      If $m = -3$, perpendicular gradient $= +\dfrac{1}{3}$<br>
+      If $m = \dfrac{3}{4}$, perpendicular gradient $= -\dfrac{4}{3}$
+    </div>
+    <div class="box box-warn">
+      <div class="box-title">⚠ Check: horizontal &amp; vertical</div>
+      A horizontal line ($m = 0$) is perpendicular to a <strong>vertical</strong> line ($x = k$, undefined gradient) — this is the one exception to the $m_1 \times m_2 = -1$ rule.
+    </div>
+  </div>
+
+  <!-- WE 5 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 5</span>
+      <span class="worked-title">Finding a perpendicular line</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Find the equation of the line perpendicular to $y = 3x - 1$ that passes through $(6, 2)$.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Gradient</div><div class="sol-step-content">
+          Gradient of $y = 3x - 1$ is $m_1 = 3$.<br>
+          Perpendicular gradient: $m_2 = -\dfrac{1}{3}$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Equation</div><div class="sol-step-content">
+          Use point-gradient form with $(6, 2)$ and $m = -\dfrac{1}{3}$:<br>
+          $y - 2 = -\dfrac{1}{3}(x - 6)$<br>
+          $y - 2 = -\dfrac{1}{3}x + 2$<br>
+          $y = -\dfrac{1}{3}x + 4$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">
+          At $x=6$: $y = -2 + 4 = 2$ ✓ &nbsp; Also: $3 \times \left(-\dfrac{1}{3}\right) = -1$ ✓
+        </div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = -\dfrac{1}{3}x + 4$</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ S7: SPECIAL LINES ══════════════════════ -->
+<div class="section" id="s7">
+  <div class="section-tag">Section 7</div>
+  <h2>Special Lines &amp; Extra Skills</h2>
+
+  <h3>Horizontal and vertical lines</h3>
+  <div class="box box-def">
+    <div class="box-title">Horizontal lines: $y = k$</div>
+    The equation $y = k$ (where $k$ is a constant) describes a <strong>horizontal line</strong> at height $k$.
+    Gradient $= 0$. &nbsp; Example: $y = -3$ is a horizontal line crossing the $y$-axis at $-3$.
+  </div>
+  <div class="box box-def">
+    <div class="box-title">Vertical lines: $x = k$</div>
+    The equation $x = k$ (where $k$ is a constant) describes a <strong>vertical line</strong> at position $k$.
+    Gradient is <strong>undefined</strong> (infinite). &nbsp; Example: $x = 4$ is a vertical line crossing the $x$-axis at $4$.
+    Note: vertical lines <strong>cannot</strong> be written in $y = mx + c$ form.
+  </div>
+
+  <h3>Midpoint of a line segment</h3>
+  <p>The midpoint of the segment joining $(x_1, y_1)$ and $(x_2, y_2)$ is:</p>
+  <div class="box box-rule">
+    <div class="box-title">📐 Midpoint formula</div>
+    $$\text{Midpoint} = \left(\frac{x_1 + x_2}{2},\; \frac{y_1 + y_2}{2}\right)$$
+    Simply average the $x$-values and average the $y$-values.
+  </div>
+
+  <div class="box box-eg">
+    <div class="box-title">📌 Example</div>
+    Midpoint of $(2, 1)$ and $(8, 5)$:
+    $$\left(\frac{2+8}{2},\; \frac{1+5}{2}\right) = (5,\; 3)$$
+  </div>
+
+  <h3>Checking whether a point lies on a line</h3>
+  <p>
+    To check if point $(a, b)$ lies on the line $y = mx + c$, substitute $x = a$ and check
+    if the result equals $b$.
+  </p>
+  <div class="box box-eg">
+    <div class="box-title">📌 Example: does $(3, 7)$ lie on $y = 2x + 1$?</div>
+    Substitute $x = 3$: $y = 2(3) + 1 = 7$. &nbsp; Since $y = 7$ matches, yes — $(3, 7)$ <strong>is</strong> on the line. ✓
+  </div>
+
+  <!-- WE 6 -->
+  <div class="worked">
+    <div class="worked-header">
+      <span class="worked-badge">Worked Example 6</span>
+      <span class="worked-title">Mixed skills — midpoint, gradient, and equation</span>
+    </div>
+    <div class="worked-body">
+      <div class="worked-q">Points $A = (-2, 1)$ and $B = (4, 9)$. Find: (a) the gradient of $AB$, (b) the midpoint $M$ of $AB$, (c) the equation of $AB$.</div>
+      <div class="worked-sol">
+        <div class="sol-step"><div class="sol-step-label">Part (a)</div><div class="sol-step-content">
+          $$m = \frac{9-1}{4-(-2)} = \frac{8}{6} = \frac{4}{3}$$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Part (b)</div><div class="sol-step-content">
+          $$M = \left(\frac{-2+4}{2},\; \frac{1+9}{2}\right) = \left(1,\; 5\right)$$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Part (c)</div><div class="sol-step-content">
+          Use $m = \dfrac{4}{3}$ and point $A(-2, 1)$:<br>
+          $y - 1 = \dfrac{4}{3}(x - (-2)) = \dfrac{4}{3}(x + 2)$<br>
+          $y - 1 = \dfrac{4}{3}x + \dfrac{8}{3}$<br>
+          $y = \dfrac{4}{3}x + \dfrac{8}{3} + 1 = \dfrac{4}{3}x + \dfrac{11}{3}$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">
+          At $x=4$: $y = \dfrac{16}{3} + \dfrac{11}{3} = \dfrac{27}{3} = 9$ ✓
+        </div></div>
+        <div class="answer-box">
+          <div class="ab-label">Answers</div>
+          (a) $m = \dfrac{4}{3}$ &nbsp; (b) $M = (1, 5)$ &nbsp; (c) $y = \dfrac{4}{3}x + \dfrac{11}{3}$
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ S8: QUICK REFERENCE ══════════════════════ -->
+<div class="section" id="s8">
+  <div class="section-tag">Section 8</div>
+  <h2>Quick Reference Summary</h2>
+
+  <table class="sum-table">
+    <thead>
+      <tr><th>Skill</th><th>Formula / Rule</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gradient from two points</strong></td>
+        <td>$m = \dfrac{y_2 - y_1}{x_2 - x_1}$</td>
+        <td>Subtract in the same order top and bottom</td>
+      </tr>
+      <tr>
+        <td><strong>$y$-intercept</strong></td>
+        <td>Set $x = 0$ in the equation</td>
+        <td>Gives the point $(0, c)$</td>
+      </tr>
+      <tr>
+        <td><strong>$x$-intercept</strong></td>
+        <td>Set $y = 0$ in the equation and solve</td>
+        <td>Gives the point $(k, 0)$</td>
+      </tr>
+      <tr>
+        <td><strong>Equation from graph</strong></td>
+        <td>Read $c$, then calculate $m = \frac{\text{rise}}{\text{run}}$</td>
+        <td>Use clearly visible grid points</td>
+      </tr>
+      <tr>
+        <td><strong>Equation from gradient + point</strong></td>
+        <td>$y - y_1 = m(x - x_1)$</td>
+        <td>Rearrange to $y = mx + c$</td>
+      </tr>
+      <tr>
+        <td><strong>Parallel lines</strong></td>
+        <td>Equal gradients: $m_1 = m_2$</td>
+        <td>Different $y$-intercepts</td>
+      </tr>
+      <tr>
+        <td><strong>Perpendicular lines</strong></td>
+        <td>$m_1 \times m_2 = -1$, so $m_2 = -\dfrac{1}{m_1}$</td>
+        <td>Flip and negate the gradient</td>
+      </tr>
+      <tr>
+        <td><strong>Midpoint</strong></td>
+        <td>$\left(\dfrac{x_1+x_2}{2},\; \dfrac{y_1+y_2}{2}\right)$</td>
+        <td>Average the coordinates</td>
+      </tr>
+      <tr>
+        <td><strong>Horizontal line</strong></td>
+        <td>$y = k$, gradient $= 0$</td>
+        <td>All points have the same $y$-value</td>
+      </tr>
+      <tr>
+        <td><strong>Vertical line</strong></td>
+        <td>$x = k$, gradient undefined</td>
+        <td>Cannot be written as $y = mx + c$</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box box-warn" style="margin-top:20px;">
+    <div class="box-title">⚠ Watch-outs to remember</div>
+    <ul style="margin:0; padding-left:18px;">
+      <li style="margin-bottom:4px;">Rearrange to $y = mx + c$ <strong>before</strong> reading off $m$ and $c$.</li>
+      <li style="margin-bottom:4px;">Negative gradient → line slopes <strong>downward</strong> from left to right.</li>
+      <li style="margin-bottom:4px;">Perpendicular means <strong>flip and negate</strong> the gradient — not just negate.</li>
+      <li>The gradient is the same <strong>everywhere</strong> on a straight line — it doesn't change.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════ S9: PRACTICE QUESTIONS ══════════════════════ -->
+<div class="section pq-section" id="s9">
+  <div class="pq-hero">
+    <h2>Practice Questions</h2>
+    <p>Try each question before clicking "Show worked solution".</p>
+  </div>
+
+  <div class="pq">
+
+    <!-- Q1 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 1</div>
+      <div class="pq-text">Write down the gradient and $y$-intercept of each line:<br>
+        (a) $y = 5x - 3$ &nbsp;&nbsp; (b) $y = -2x + 7$ &nbsp;&nbsp; (c) $y = \dfrac{3}{4}x$ &nbsp;&nbsp; (d) $2y = 8x + 6$
+      </div>
+      <div class="pq-marks">[4 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">(a)</div><div class="sol-step-content">$y = 5x - 3$: gradient $m = 5$, $y$-intercept $c = -3$, point $(0,-3)$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">(b)</div><div class="sol-step-content">$y = -2x + 7$: gradient $m = -2$, $y$-intercept $c = 7$, point $(0,7)$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">(c)</div><div class="sol-step-content">$y = \frac{3}{4}x = \frac{3}{4}x + 0$: gradient $m = \frac{3}{4}$, $y$-intercept $c = 0$, point $(0,0)$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">(d)</div><div class="sol-step-content">Divide both sides by 2: $y = 4x + 3$. Gradient $m = 4$, $y$-intercept $c = 3$, point $(0,3)$.</div></div>
+        <div class="answer-box"><div class="ab-label">Answers</div>
+          (a) $m=5$, $(0,-3)$ &nbsp; (b) $m=-2$, $(0,7)$ &nbsp; (c) $m=\frac{3}{4}$, $(0,0)$ &nbsp; (d) $m=4$, $(0,3)$
+        </div>
+      </div>
+    </details>
+
+    <!-- Q2 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 2</div>
+      <div class="pq-text">Calculate the gradient of the line segment joining each pair of points:<br>
+        (a) $(1, 4)$ and $(5, 12)$ &nbsp;&nbsp; (b) $(0, 6)$ and $(3, 0)$ &nbsp;&nbsp; (c) $(-2, -1)$ and $(4, 2)$
+      </div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">(a)</div><div class="sol-step-content">$m = \dfrac{12-4}{5-1} = \dfrac{8}{4} = 2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">(b)</div><div class="sol-step-content">$m = \dfrac{0-6}{3-0} = \dfrac{-6}{3} = -2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">(c)</div><div class="sol-step-content">$m = \dfrac{2-(-1)}{4-(-2)} = \dfrac{3}{6} = \dfrac{1}{2}$</div></div>
+        <div class="answer-box"><div class="ab-label">Answers</div>(a) $m=2$ &nbsp; (b) $m=-2$ &nbsp; (c) $m=\dfrac{1}{2}$</div>
+      </div>
+    </details>
+
+    <!-- Q3 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 3</div>
+      <div class="pq-text">Complete a table of values and draw the graph of $y = 3x - 2$ for $x = -2, -1, 0, 1, 2$.</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Table</div><div class="sol-step-content">
+          Substitute each $x$ into $y = 3x - 2$:<br>
+          $x=-2$: $y=3(-2)-2=-8$ &nbsp; $x=-1$: $y=-5$ &nbsp; $x=0$: $y=-2$ &nbsp; $x=1$: $y=1$ &nbsp; $x=2$: $y=4$
+        </div></div>
+        <div class="sol-step"><div class="sol-step-label">Draw</div><div class="sol-step-content">Plot $(-2,-8)$, $(-1,-5)$, $(0,-2)$, $(1,1)$, $(2,4)$ and draw a straight line through them. Label it $y=3x-2$.</div></div>
+        <div class="answer-box"><div class="ab-label">Key values</div>
+          <table style="width:auto;">
+            <thead><tr><th>$x$</th><th>$-2$</th><th>$-1$</th><th>$0$</th><th>$1$</th><th>$2$</th></tr></thead>
+            <tbody><tr><td>$y$</td><td>$-8$</td><td>$-5$</td><td>$-2$</td><td>$1$</td><td>$4$</td></tr></tbody>
+          </table>
+          The gradient is $3$ (steep, upward) and the line crosses the $y$-axis at $(0,-2)$.
+        </div>
+      </div>
+    </details>
+
+    <!-- Q4 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 4</div>
+      <div class="pq-text">A straight line has the equation $y = -\dfrac{1}{3}x + 4$. Find the coordinates of the points where it crosses the $x$-axis and the $y$-axis.</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">$y$-intercept</div><div class="sol-step-content">Set $x=0$: $y = -\frac{1}{3}(0)+4 = 4$. Crosses $y$-axis at $(0, 4)$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">$x$-intercept</div><div class="sol-step-content">Set $y=0$: $0 = -\frac{1}{3}x+4 \Rightarrow \frac{1}{3}x=4 \Rightarrow x=12$. Crosses $x$-axis at $(12, 0)$.</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>Crosses the $y$-axis at $(0, 4)$ and the $x$-axis at $(12, 0)$.</div>
+      </div>
+    </details>
+
+    <!-- Q5 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 5</div>
+      <div class="pq-text">Find the equation of the straight line that passes through $(0, -1)$ and $(4, 7)$.</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">$c$</div><div class="sol-step-content">The line passes through $(0,-1)$, which is on the $y$-axis. So $c = -1$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">$m$</div><div class="sol-step-content">$m = \dfrac{7-(-1)}{4-0} = \dfrac{8}{4} = 2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">Equation</div><div class="sol-step-content">$y = 2x - 1$</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = 2x - 1$</div>
+      </div>
+    </details>
+
+    <!-- Q6 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 6</div>
+      <div class="pq-text">Find the equation of the line passing through $(3, 4)$ and $(7, 12)$.</div>
+      <div class="pq-hint">Hint: neither point is on the $y$-axis, so find $m$ first, then substitute to get $c$.</div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Gradient</div><div class="sol-step-content">$m = \dfrac{12-4}{7-3} = \dfrac{8}{4} = 2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">Find $c$</div><div class="sol-step-content">Substitute $(3, 4)$ into $y = 2x + c$:<br>$4 = 2(3) + c = 6 + c \;\Rightarrow\; c = -2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">At $(7,12)$: $y = 2(7) - 2 = 12$ ✓</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = 2x - 2$</div>
+      </div>
+    </details>
+
+    <!-- Q7 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 7</div>
+      <div class="pq-text">Line $L_1$ has equation $y = 4x - 5$.<br>
+        (a) Write down the equation of a line parallel to $L_1$ that crosses the $y$-axis at $(0, 3)$.<br>
+        (b) Does the point $(2, 3)$ lie on $L_1$? Show your working.
+      </div>
+      <div class="pq-marks">[3 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">(a)</div><div class="sol-step-content">Parallel lines have the same gradient. Gradient of $L_1 = 4$. New $y$-intercept $= 3$. Equation: $y = 4x + 3$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">(b)</div><div class="sol-step-content">Substitute $(2,3)$ into $y = 4x - 5$: $y = 4(2)-5 = 3$. This gives $y=3$, which matches. <strong>Yes</strong>, $(2,3)$ lies on $L_1$. ✓</div></div>
+        <div class="answer-box"><div class="ab-label">Answers</div>(a) $y = 4x + 3$ &nbsp; (b) Yes — substituting $x=2$ gives $y=3$.</div>
+      </div>
+    </details>
+
+    <!-- Q8 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 8</div>
+      <div class="pq-text">Find the equation of the line perpendicular to $y = 2x + 5$ that passes through the point $(4, 1)$.</div>
+      <div class="pq-marks">[4 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">Gradient</div><div class="sol-step-content">Gradient of $y = 2x+5$ is $2$. Perpendicular gradient $= -\dfrac{1}{2}$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">Equation</div><div class="sol-step-content">Using point-gradient form with $(4,1)$ and $m=-\frac{1}{2}$:<br>$y - 1 = -\frac{1}{2}(x-4)$<br>$y - 1 = -\frac{1}{2}x + 2$<br>$y = -\frac{1}{2}x + 3$</div></div>
+        <div class="sol-step"><div class="sol-step-label">Check</div><div class="sol-step-content">At $x=4$: $y = -2+3=1$ ✓ &nbsp; Also: $2 \times (-\frac{1}{2}) = -1$ ✓</div></div>
+        <div class="answer-box"><div class="ab-label">Answer</div>$y = -\dfrac{1}{2}x + 3$</div>
+      </div>
+    </details>
+
+    <!-- Q9 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 9</div>
+      <div class="pq-text">Points $P = (1, -3)$ and $Q = (7, 9)$.<br>
+        (a) Find the midpoint $M$ of $PQ$.<br>
+        (b) Find the gradient of $PQ$.<br>
+        (c) Find the equation of the perpendicular bisector of $PQ$ (the line perpendicular to $PQ$ passing through $M$).
+      </div>
+      <div class="pq-marks">[5 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">(a) Midpoint</div><div class="sol-step-content">$M = \left(\dfrac{1+7}{2},\; \dfrac{-3+9}{2}\right) = (4,\; 3)$</div></div>
+        <div class="sol-step"><div class="sol-step-label">(b) Gradient</div><div class="sol-step-content">$m_{PQ} = \dfrac{9-(-3)}{7-1} = \dfrac{12}{6} = 2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">(c) Perp. grad.</div><div class="sol-step-content">Perpendicular gradient $= -\dfrac{1}{2}$</div></div>
+        <div class="sol-step"><div class="sol-step-label">(c) Equation</div><div class="sol-step-content">Line through $M(4,3)$ with $m=-\frac{1}{2}$:<br>$y - 3 = -\frac{1}{2}(x-4) = -\frac{1}{2}x + 2$<br>$y = -\frac{1}{2}x + 5$</div></div>
+        <div class="answer-box"><div class="ab-label">Answers</div>
+          (a) $M = (4, 3)$ &nbsp; (b) $m=2$ &nbsp; (c) $y = -\dfrac{1}{2}x + 5$
+        </div>
+      </div>
+    </details>
+
+    <!-- Q10 -->
+    <div class="pq-question">
+      <div class="pq-num">Question 10</div>
+      <div class="pq-text">Line $L_1$: $3x + y = 9$. &nbsp; Line $L_2$ passes through $(-1, 5)$ and is parallel to $L_1$.<br>
+        (a) Rearrange $L_1$ into the form $y = mx + c$.<br>
+        (b) Find the equation of $L_2$.<br>
+        (c) Find the coordinates where $L_2$ crosses the $x$-axis.
+      </div>
+      <div class="pq-marks">[5 marks]</div>
+    </div>
+    <details>
+      <summary></summary>
+      <div class="solution">
+        <div class="sol-step"><div class="sol-step-label">(a)</div><div class="sol-step-content">$3x + y = 9 \;\Rightarrow\; y = -3x + 9$. So $m = -3$, $c = 9$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">(b) Gradient</div><div class="sol-step-content">$L_2$ is parallel to $L_1$, so it also has gradient $m = -3$.</div></div>
+        <div class="sol-step"><div class="sol-step-label">(b) Equation</div><div class="sol-step-content">Through $(-1, 5)$ with $m=-3$:<br>$y - 5 = -3(x-(-1)) = -3(x+1) = -3x - 3$<br>$y = -3x - 3 + 5 = -3x + 2$</div></div>
+        <div class="sol-step"><div class="sol-step-label">(c)</div><div class="sol-step-content">Set $y=0$ in $L_2$: $0 = -3x + 2 \;\Rightarrow\; 3x = 2 \;\Rightarrow\; x = \dfrac{2}{3}$.</div></div>
+        <div class="answer-box"><div class="ab-label">Answers</div>
+          (a) $y = -3x + 9$ &nbsp; (b) $y = -3x + 2$ &nbsp; (c) $\left(\dfrac{2}{3},\; 0\right)$
+        </div>
+      </div>
+    </details>
+
+  </div><!-- end .pq -->
+</div>
+
+</main>
+
+<footer>
+  <strong>GCSE Maths Revision</strong> — Straight Line Graphs &nbsp;|&nbsp;
+  Foundation &amp; Higher Tier &nbsp;|&nbsp;
+  Covers: $y=mx+c$ · gradient · plotting · finding equations · parallel &amp; perpendicular lines · midpoints
+</footer>
+
+</div><!-- end .page -->
+</body>
+</html>
