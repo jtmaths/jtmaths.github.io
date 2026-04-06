@@ -19,4 +19,4 @@ Help Jonas build the world best free maths resources at [github.com/jtmaths](htt
 [GitHub Pages]: https://docs.github.com/en/pages
 [README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
 [Jekyll]: https://jekyllrb.com
-[Gold Duke of Edinburgh Award]: https://www.dofe.org
+[Duke of Edinburgh Award]: https://www.dofe.org
