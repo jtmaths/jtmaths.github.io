@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratified Sampling - A Level Maths</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .formula-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+        .example-box {
+            background-color: #fcf3cf;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Stratified Sampling: A Level Maths Revision Guide</h1>
+        
+        <p>Stratified sampling is a key data collection method in A Level Maths. It is a type of <strong>random sampling</strong> used when your population naturally divides into distinct, non-overlapping groups (called <strong>strata</strong>), and you want your sample to accurately reflect the proportions of these groups in the overall population.</p>
+        
+        <p>Common examples of strata include age groups, year groups in a school, or genders.</p>
+
+        <hr>
+
+        <h2>How It Works</h2>
+        <p>To carry out stratified sampling, you follow these steps:</p>
+        <ol>
+            <li><strong>Divide the population</strong> into mutually exclusive strata.</li>
+            <li><strong>Calculate the proportion</strong> of the population that each stratum represents.</li>
+            <li><strong>Determine the sample size</strong> needed from each stratum using a specific formula so that the proportions in the sample match the proportions in the population.</li>
+            <li><strong>Use simple random sampling</strong> to select the individuals from each stratum.</li>
+        </ol>
+
+        <hr>
+
+        <h2>The Formula</h2>
+        <p>In A Level Maths, you will frequently need to calculate how many people/items to sample from a specific stratum. The formula you need is:</p>
+        
+        <div class="formula-box">
+            Sample size from stratum = (Size of stratum / Total population size) &times; Total overall sample size
+        </div>
+
+        <hr>
+
+        <h2>A Practical Example</h2>
+        <div class="example-box">
+            <p>Imagine a school has 1000 students in total, divided into three year groups. You want to take a stratified sample of 50 students to survey them about school lunches.</p>
+            
+            <p>Here is the population breakdown:</p>
+            <ul>
+                <li><strong>Year 11:</strong> 300 students</li>
+                <li><strong>Year 12:</strong> 500 students</li>
+                <li><strong>Year 13:</strong> 200 students</li>
+            </ul>
+
+            <p>To find out how many students to survey from each year group, apply the formula:</p>
+            <ul>
+                <li><strong>Year 11 Sample:</strong> (300 / 1000) &times; 50 = 15 students</li>
+                <li><strong>Year 12 Sample:</strong> (500 / 1000) &times; 50 = 25 students</li>
+                <li><strong>Year 13 Sample:</strong> (200 / 1000) &times; 50 = 10 students</li>
+            </ul>
+
+            <p><em>Check your working:</em> 15 + 25 + 10 = 50, which is your exact target sample size. Once you know these numbers, you would use a random number generator to pick 15 specific Year 11s, 25 Year 12s, and 10 Year 13s from the school register (the sampling frame).</p>
+        </div>
+
+        <hr>
+
+        <h2>Advantages and Disadvantages</h2>
+        <p>Exam boards love to ask you to evaluate sampling methods. Here is what you need to know for stratified sampling:</p>
+        
+        <h3>Advantages:</h3>
+        <ul>
+            <li>It perfectly reflects the population structure.</li>
+            <li>It guarantees proportional representation of all groups (unlike simple random sampling, where you might accidentally pick only Year 12 students by pure chance).</li>
+        </ul>
+
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>You must have a complete sampling frame (a list of the whole population) that also details which stratum every single individual belongs to.</li>
+            <li>The population must clearly divide into distinct strata, which isn't always naturally possible.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

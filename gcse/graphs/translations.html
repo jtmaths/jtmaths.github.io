@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph Transformations – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1a0a0f;
+      background: #fff1f2;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.1rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .92; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: .85rem;
+      margin-top: 10px;
+    }
+    main { max-width: 900px; margin: 0 auto; padding: 28px 20px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e11d48;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 13px 20px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-top: 36px;
+    }
+    .section-title .num {
+      background: rgba(255,255,255,.25);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .section-body {
+      background: #fff;
+      border: 1px solid #fecdd3;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 22px 24px;
+    }
+
+    .concept {
+      background: #fff1f2;
+      border-left: 4px solid #e11d48;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .concept strong { color: #9f1239; }
+
+    .formula-box {
+      background: #fff1f2;
+      border: 2px solid #e11d48;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    .formula-box .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #be123c;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .key {
+      background: #fef9c3;
+      border-left: 4px solid #eab308;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .key strong { color: #713f12; }
+
+    .tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .tip strong { color: #15803d; }
+
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .steps li::before {
+      content: counter(step);
+      background: #e11d48;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .example {
+      background: #fff8f9;
+      border: 1px solid #fecdd3;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .example-header {
+      background: #e11d48;
+      color: #fff;
+      padding: 9px 18px;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .example-body { padding: 16px 20px; }
+    .step-row {
+      display: flex; gap: 10px;
+      background: #ffe4e6;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .step-row .arrow { color: #9f1239; font-weight: 800; flex-shrink: 0; min-width: 22px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95rem; }
+    th { background: #e11d48; color: #fff; padding: 9px 14px; text-align: left; }
+    td { padding: 9px 14px; border-bottom: 1px solid #fecdd3; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fff1f2; }
+
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .svg-caption { font-size: .83rem; color: #666; margin-top: 5px; }
+
+    /* two-graph side-by-side layout */
+    .graph-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; justify-content: center; }
+    .graph-panel {
+      flex: 1; min-width: 280px; max-width: 400px;
+      border: 2px solid #fecdd3;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff8f9;
+      text-align: center;
+    }
+    .graph-panel h4 { color: #e11d48; font-size: .95rem; margin-bottom: 8px; }
+
+    .question {
+      background: #fff;
+      border: 1px solid #fecdd3;
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .question-header {
+      background: #fff1f2;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: #9f1239;
+      font-size: .95rem;
+      border-bottom: 1px solid #fecdd3;
+    }
+    .question-body { padding: 10px 16px 14px; }
+    details summary {
+      cursor: pointer;
+      color: #e11d48;
+      font-weight: 600;
+      padding: 8px 0 4px;
+      font-size: .9rem;
+      user-select: none;
+    }
+    details summary:hover { color: #9f1239; }
+    .solution {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: .93rem;
+    }
+    .solution p { margin-bottom: 6px; }
+
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card {
+      flex: 1; min-width: 190px;
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: 8px;
+      padding: 13px 15px;
+    }
+    .ref-card h4 { color: #e11d48; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .85rem; line-height: 1.6; }
+
+    /* notation box */
+    .notation-box {
+      background: #f8fafc;
+      border: 2px dashed #e11d48;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .notation-box p { font-size: .95rem; margin-bottom: 6px; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .graph-row, .ref-grid { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔄 Graph Transformations</h1>
+  <p>Translations and Reflections of Functions</p>
+  <div class="badge">GCSE Maths · Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1 – FUNCTION NOTATION
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Function Notation — $f(x)$</div>
+<div class="section-body">
+
+  <div class="concept">
+    We write $y = f(x)$ to mean "the function of $x$". This is a shorthand for any equation in $x$, for example $f(x) = x^2 - 3$ or $f(x) = \sin x$. Using $f(x)$ lets us describe transformations <em>generally</em> — the rules apply to any graph, not just one specific equation.
+  </div>
+
+  <div class="notation-box">
+    <p><strong>$f(x)$</strong> — the original function (the starting graph)</p>
+    <p><strong>$f(x) + a$</strong> — add $a$ to every output (y-value) of $f$</p>
+    <p><strong>$f(x + a)$</strong> — replace every $x$ input with $x + a$ before applying $f$</p>
+    <p><strong>$-f(x)$</strong> — negate every output (flip all y-values)</p>
+    <p><strong>$f(-x)$</strong> — replace every $x$ input with $-x$ before applying $f$</p>
+  </div>
+
+  <div class="key"><strong>🔑 Key idea:</strong> Transformations <em>outside</em> the function — e.g. $f(x) + a$ — affect <strong>y-values</strong> (vertical effects). Transformations <em>inside</em> the function — e.g. $f(x + a)$ — affect <strong>x-values</strong> (horizontal effects), and horizontal effects are often the <strong>opposite direction</strong> to what you might expect!</div>
+
+  <table>
+    <tr><th>Transformation</th><th>Notation</th><th>Type</th><th>Direction</th></tr>
+    <tr><td>Shift up by $a$</td><td>$f(x) + a$</td><td>Translation</td><td>Vertical (outside)</td></tr>
+    <tr><td>Shift right by $a$</td><td>$f(x - a)$</td><td>Translation</td><td>Horizontal (inside)</td></tr>
+    <tr><td>Reflection in x-axis</td><td>$-f(x)$</td><td>Reflection</td><td>Vertical (outside)</td></tr>
+    <tr><td>Reflection in y-axis</td><td>$f(-x)$</td><td>Reflection</td><td>Horizontal (inside)</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 2 – VERTICAL TRANSLATIONS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Vertical Translations — $f(x) + a$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Vertical Translation</div>
+    $$y = f(x) + a$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">
+      Shifts the graph <strong>up</strong> by $a$ units if $a > 0$, or <strong>down</strong> by $|a|$ units if $a < 0$.<br>
+      Every point $(x,\ y)$ on $f(x)$ moves to $(x,\ y + a)$.
+    </p>
+  </div>
+
+  <!-- Vertical translation diagram
+       Setup: ViewBox 0 0 380 250, Origin(190,175), sx=40, sy=15
+       px = 190 + x*40,  py = 175 - y*15
+
+       y=x² (original, grey):
+       x=-3: px=70,  py=175-135=40
+       x=-2.5: px=90,  py=175-93.75≈81
+       x=-2: px=110, py=175-60=115
+       x=-1.5: px=130, py=175-33.75≈141
+       x=-1: px=150, py=175-15=160
+       x=-0.5: px=170, py=175-3.75≈171
+       x=0: px=190, py=175
+       x=0.5: px=210, py=171
+       x=1: px=230, py=160
+       x=1.5: px=250, py=141
+       x=2: px=270, py=115
+       x=2.5: px=290, py=81
+       x=3: px=310, py=40
+
+       y=x²+3 (up 3): py - 3*15 = py - 45
+       x=-3: 40-45=-5 (clip) → start x=-2.5: 81-45=36
+       x=-2: 115-45=70; x=-1.5: 141-45=96; x=-1: 160-45=115; x=-0.5: 171-45=126
+       x=0: 175-45=130; x=0.5: 126; x=1: 115; x=1.5: 96; x=2: 70; x=2.5: 36
+
+       y=x²-3 (down 3): py + 45
+       x=-2.5: 81+45=126; x=-2: 115+45=160; x=-1.5: 141+45=186; x=-1: 160+45=205
+       x=-0.5: 171+45=216; x=0: 175+45=220; x=0.5: 216; x=1: 205; x=1.5: 186; x=2: 160; x=2.5: 126
+  -->
+  <div class="svg-block">
+    <svg width="380" height="255" viewBox="0 0 380 255" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#fecdd3" stroke-width=".8">
+        <line x1="30" y1="40"  x2="360" y2="40"/>
+        <line x1="30" y1="85"  x2="360" y2="85"/>
+        <line x1="30" y1="130" x2="360" y2="130"/>
+        <line x1="30" y1="175" x2="360" y2="175"/>
+        <line x1="30" y1="220" x2="360" y2="220"/>
+        <line x1="70"  y1="10" x2="70"  y2="245"/>
+        <line x1="110" y1="10" x2="110" y2="245"/>
+        <line x1="150" y1="10" x2="150" y2="245"/>
+        <line x1="190" y1="10" x2="190" y2="245"/>
+        <line x1="230" y1="10" x2="230" y2="245"/>
+        <line x1="270" y1="10" x2="270" y2="245"/>
+        <line x1="310" y1="10" x2="310" y2="245"/>
+      </g>
+      <!-- axes: origin(190,175) -->
+      <line x1="30"  y1="175" x2="370" y2="175" stroke="#e11d48" stroke-width="2"/>
+      <line x1="190" y1="250" x2="190" y2="8"   stroke="#e11d48" stroke-width="2"/>
+      <!-- axis labels -->
+      <g font-family="Arial" font-size="11" fill="#9f1239" text-anchor="middle">
+        <text x="70"  y="190">-3</text><text x="110" y="190">-2</text>
+        <text x="150" y="190">-1</text><text x="230" y="190">1</text>
+        <text x="270" y="190">2</text><text x="310" y="190">3</text>
+        <text x="178" y="133">3</text><text x="178" y="178">0</text>
+        <text x="178" y="223">-3</text>
+      </g>
+      <text x="363" y="172" font-family="Arial" font-size="12" fill="#e11d48" font-weight="bold">x</text>
+      <text x="194" y="8"   font-family="Arial" font-size="12" fill="#e11d48" font-weight="bold">y</text>
+
+      <!-- y=x² original (grey dashed), Origin(190,175) sx=40 sy=15, points every 0.25 -->
+      <polyline
+        points="70,40 80,62 90,81 100,99 110,115 120,129 130,141 140,152 150,160 160,167 170,171 180,174 190,175 200,174 210,171 220,167 230,160 240,152 250,141 260,129 270,115 280,99 290,81 300,62 310,40"
+        fill="none" stroke="#aaa" stroke-width="2" stroke-dasharray="6,4" stroke-linejoin="round"/>
+      <text x="315" y="38" font-family="Arial" font-size="12" fill="#aaa" font-weight="bold">y=f(x)</text>
+
+      <!-- y=x²+3 (up 3, crimson) — py shifted up 45 -->
+      <polyline
+        points="90,36 100,54 110,70 120,84 130,96 140,107 150,115 160,122 170,126 180,129 190,130 200,129 210,126 220,122 230,115 240,107 250,96 260,84 270,70 280,54 290,36"
+        fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="292" y="34" font-family="Arial" font-size="12" fill="#e11d48" font-weight="bold">f(x)+3</text>
+
+      <!-- y=x²-3 (down 3, blue) — py shifted down 45 -->
+      <polyline
+        points="90,126 100,144 110,160 120,174 130,186 140,197 150,205 160,212 170,216 180,219 190,220 200,219 210,216 220,212 230,205 240,197 250,186 260,174 270,160 280,144 290,126"
+        fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="292" y="130" font-family="Arial" font-size="12" fill="#2563eb" font-weight="bold">f(x)−3</text>
+
+      <!-- arrows showing vertical shift -->
+      <line x1="190" y1="175" x2="190" y2="133" stroke="#e11d48" stroke-width="1.5" marker-end="url(#arU)"/>
+      <line x1="190" y1="175" x2="190" y2="217" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arD)"/>
+      <defs>
+        <marker id="arU" markerWidth="6" markerHeight="6" refX="3" refY="6" orient="auto"><path d="M0,6 L3,0 L6,6" fill="none" stroke="#e11d48" stroke-width="1.5"/></marker>
+        <marker id="arD" markerWidth="6" markerHeight="6" refX="3" refY="0" orient="auto"><path d="M0,0 L3,6 L6,0" fill="none" stroke="#2563eb" stroke-width="1.5"/></marker>
+      </defs>
+      <text x="196" y="155" font-family="Arial" font-size="10" fill="#e11d48">+3</text>
+      <text x="196" y="198" font-family="Arial" font-size="10" fill="#2563eb">−3</text>
+    </svg>
+    <p class="svg-caption">$f(x)+3$ (red) shifts up 3; $f(x)-3$ (blue) shifts down 3. Original $f(x)=x^2$ shown dashed.</p>
+  </div>
+
+  <h3 style="margin:14px 0 8px;color:#9f1239;">How to apply a vertical translation</h3>
+  <ol class="steps">
+    <li>Identify the value of $a$ (positive = up, negative = down).</li>
+    <li>Add $a$ to the y-coordinate of every key point (roots, turning point, intercepts).</li>
+    <li>x-coordinates of all points stay the same — only y-values change.</li>
+    <li>Draw the same shape curve, shifted vertically.</li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Vertical Translation: $f(x) = x^2 - 1$, find $f(x) + 4$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>The original curve $y = x^2 - 1$ has vertex $(0, -1)$, roots at $x = \pm 1$, y-intercept $(0, -1)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$f(x) + 4$ shifts every y-value up by $4$. New equation: $y = x^2 - 1 + 4 = x^2 + 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Key points transformed: vertex $(0,-1) \to (0,\ 3)$. Roots: solve $x^2+3=0$ — no real solutions (curve now above x-axis).</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>$y = x^2 + 3$</strong> — same U-shape, lifted 4 units, no longer crosses x-axis.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 – HORIZONTAL TRANSLATIONS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Horizontal Translations — $f(x + a)$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Horizontal Translation</div>
+    $$y = f(x + a)$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">
+      Shifts the graph <strong>left</strong> by $a$ units if $a > 0$, or <strong>right</strong> by $|a|$ units if $a < 0$.<br>
+      Every point $(x,\ y)$ on $f(x)$ moves to $(x - a,\ y)$.
+    </p>
+  </div>
+
+  <div class="key">
+    <strong>⚠️ The most common mistake in GCSE:</strong><br>
+    $f(x + 3)$ moves the graph <strong>LEFT</strong> by 3, NOT right.<br>
+    $f(x - 3)$ moves the graph <strong>RIGHT</strong> by 3, NOT left.<br>
+    Think of it this way: $f(x+3)$ reaches the same $y$-value when $x$ is <strong>3 less</strong> than before — so the graph moves left.
+  </div>
+
+  <!-- Horizontal translation diagram
+       Setup: ViewBox 0 0 420 250, Origin(210,175), sx=40, sy=15
+       px = 210 + x*40, py = 175 - y*15
+
+       y=x² (original, grey dashed):
+       x=-3: px=90,  py=40
+       x=-2: px=130, py=115
+       x=-1: px=170, py=160
+       x=0:  px=210, py=175
+       x=1:  px=250, py=160
+       x=2:  px=290, py=115
+       x=3:  px=330, py=40
+       (with half steps)
+       x=-2.5: px=110, py=81
+       x=-1.5: px=150, py=141
+       x=-0.5: px=190, py=171
+       x=0.5:  px=230, py=171
+       x=1.5:  px=270, py=141
+       x=2.5:  px=310, py=81
+
+       y=(x-2)² shifted right 2, vertex at x=2:
+       px = 210 + x*40, py = 175 - (x-2)²*15
+       x=-1: py=175-135=40; px=170
+       x=0:  py=175-60=115; px=210
+       x=0.5: (x-2)²=2.25, py=175-33.75=141; px=230
+       x=1:  py=175-15=160; px=250
+       x=1.5: (x-2)²=0.25, py=171; px=270
+       x=2:  py=175 (vertex); px=290
+       x=2.5: py=171; px=310
+       x=3:  py=160; px=330
+       x=3.5: py=141; px=350
+       x=4:  py=115; px=370
+       x=5:  py=40; px=410
+
+       y=(x+2)² shifted left 2, vertex at x=-2:
+       px = 210 + x*40, py = 175 - (x+2)²*15
+       x=-5: py=40; px=10
+       x=-4: py=115; px=50
+       x=-3.5: py=141; px=70
+       x=-3: py=160; px=90
+       x=-2.5: py=171; px=110
+       x=-2: py=175 (vertex); px=130
+       x=-1.5: py=171; px=150
+       x=-1: py=160; px=170
+       x=0: py=115; px=210
+       x=1: py=40; px=250
+  -->
+  <div class="svg-block">
+    <svg width="420" height="250" viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#fecdd3" stroke-width=".8">
+        <line x1="30" y1="40"  x2="405" y2="40"/>
+        <line x1="30" y1="85"  x2="405" y2="85"/>
+        <line x1="30" y1="130" x2="405" y2="130"/>
+        <line x1="30" y1="175" x2="405" y2="175"/>
+        <line x1="30" y1="220" x2="405" y2="220"/>
+        <line x1="50"  y1="10" x2="50"  y2="240"/>
+        <line x1="90"  y1="10" x2="90"  y2="240"/>
+        <line x1="130" y1="10" x2="130" y2="240"/>
+        <line x1="170" y1="10" x2="170" y2="240"/>
+        <line x1="210" y1="10" x2="210" y2="240"/>
+        <line x1="250" y1="10" x2="250" y2="240"/>
+        <line x1="290" y1="10" x2="290" y2="240"/>
+        <line x1="330" y1="10" x2="330" y2="240"/>
+        <line x1="370" y1="10" x2="370" y2="240"/>
+      </g>
+      <!-- axes -->
+      <line x1="30"  y1="175" x2="410" y2="175" stroke="#e11d48" stroke-width="2"/>
+      <line x1="210" y1="245" x2="210" y2="8"   stroke="#e11d48" stroke-width="2"/>
+      <!-- labels -->
+      <g font-family="Arial" font-size="11" fill="#9f1239" text-anchor="middle">
+        <text x="90"  y="190">-3</text><text x="130" y="190">-2</text>
+        <text x="170" y="190">-1</text><text x="250" y="190">1</text>
+        <text x="290" y="190">2</text><text x="330" y="190">3</text>
+        <text x="370" y="190">4</text>
+      </g>
+      <text x="403" y="172" font-family="Arial" font-size="12" fill="#e11d48" font-weight="bold">x</text>
+      <text x="214" y="8"   font-family="Arial" font-size="12" fill="#e11d48" font-weight="bold">y</text>
+
+      <!-- y=x² original (grey dashed), Origin(210,175) sx=40 sy=15, points every 0.25 -->
+      <polyline
+        points="90,40 100,62 110,81 120,99 130,115 140,129 150,141 160,152 170,160 180,167 190,171 200,174 210,175 220,174 230,171 240,167 250,160 260,152 270,141 280,129 290,115 300,99 310,81 320,62 330,40"
+        fill="none" stroke="#aaa" stroke-width="2" stroke-dasharray="6,4" stroke-linejoin="round"/>
+      <text x="332" y="38" font-family="Arial" font-size="12" fill="#aaa" font-weight="bold">f(x)</text>
+
+      <!-- y=(x-2)² shifted right 2 (red), vertex at px=290 -->
+      <polyline
+        points="170,40 180,62 190,81 200,99 210,115 220,129 230,141 240,152 250,160 260,167 270,171 280,174 290,175 300,174 310,171 320,167 330,160 340,152 350,141 360,129 370,115 380,99 390,81 400,62 410,40"
+        fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="360" y="170" font-family="Arial" font-size="12" fill="#e11d48" font-weight="bold">f(x−2)</text>
+      <!-- vertex dot -->
+      <circle cx="290" cy="175" r="5" fill="#e11d48" stroke="white" stroke-width="1.5"/>
+
+      <!-- y=(x+2)² shifted left 2 (blue), vertex at px=130 -->
+      <polyline
+        points="10,40 20,62 30,81 40,99 50,115 60,129 70,141 80,152 90,160 100,167 110,171 120,174 130,175 140,174 150,171 160,167 170,160 180,152 190,141 200,129 210,115 220,99 230,81 240,62 250,40"
+        fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="10" y="38" font-family="Arial" font-size="12" fill="#2563eb" font-weight="bold">f(x+2)</text>
+      <!-- vertex dot -->
+      <circle cx="130" cy="175" r="5" fill="#2563eb" stroke="white" stroke-width="1.5"/>
+
+      <!-- original vertex dot -->
+      <circle cx="210" cy="175" r="5" fill="#aaa" stroke="white" stroke-width="1.5"/>
+
+      <!-- arrows showing horizontal shift at y=115 level -->
+      <line x1="210" y1="115" x2="254" y2="115" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arR)"/>
+      <line x1="210" y1="105" x2="166" y2="105" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arL)"/>
+      <defs>
+        <marker id="arR" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#e11d48" stroke-width="1.5"/></marker>
+        <marker id="arL" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6" fill="none" stroke="#2563eb" stroke-width="1.5"/></marker>
+      </defs>
+      <text x="224" y="112" font-family="Arial" font-size="10" fill="#e11d48">+2→</text>
+      <text x="166" y="103" font-family="Arial" font-size="10" fill="#2563eb">←+2</text>
+    </svg>
+    <p class="svg-caption">$f(x-2)$ (red) shifts right 2; $f(x+2)$ (blue) shifts left 2. Note: vertices marked with dots.</p>
+  </div>
+
+  <h3 style="margin:14px 0 8px;color:#9f1239;">How to apply a horizontal translation</h3>
+  <ol class="steps">
+    <li>Identify the value of $a$ in $f(x + a)$.</li>
+    <li>Every point $(x, y)$ moves to $(x - a,\ y)$ — subtract $a$ from every x-coordinate.</li>
+    <li>y-coordinates of all points stay the same — only x-values change.</li>
+    <li>Draw the same shape curve, shifted horizontally.</li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Horizontal Translation: $f(x) = x^2$, sketch $f(x - 3)$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$f(x-3)$ means shift the graph of $f(x) = x^2$ to the <strong>right</strong> by 3 (because $a = -3$, so we move in the direction $-a = +3$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>New equation: $y = (x-3)^2$. Vertex moves from $(0, 0)$ to $(3, 0)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>All key points shift right by 3: any point $(x, y)$ on $y=x^2$ becomes $(x+3, y)$ on $y=(x-3)^2$.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Same U-shape, vertex now at $(3, 0)$, y-intercept now at $(0, 9)$ since $(0-3)^2 = 9$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 – COMBINED TRANSLATION
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Combined Translation — $f(x + a) + b$</div>
+<div class="section-body">
+
+  <div class="concept">
+    You can combine a horizontal and a vertical translation in one step. The transformation $y = f(x + a) + b$ shifts the graph <strong>left by $a$</strong> (or right if $a$ is negative) and <strong>up by $b$</strong> (or down if $b$ is negative).
+    Every point $(x,\ y)$ moves to $(x - a,\ y + b)$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Combined Translation</div>
+    $$y = f(x + a) + b \quad \text{— vector } \begin{pmatrix} -a \\ b \end{pmatrix}$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">The translation vector shows the shift: $-a$ in the x-direction, $+b$ in the y-direction.</p>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Combined: $f(x) = x^2$, describe the transformation to $y = (x + 1)^2 - 4$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Write in the form $f(x+a)+b$: here $a = +1$ and $b = -4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Horizontal shift: $a = +1$, so move <strong>left by 1</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Vertical shift: $b = -4$, so move <strong>down by 4</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Translation vector: $\begin{pmatrix} -1 \\ -4 \end{pmatrix}$. Vertex moves from $(0,0)$ to $(-1, -4)$.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>New vertex: $(-1,\ -4)$. Roots: $(x+1)^2 = 4 \Rightarrow x+1 = \pm 2 \Rightarrow x = 1$ or $x = -3$.</span></div>
+    </div>
+  </div>
+
+  <div class="tip"><strong>💡 Link to completing the square:</strong> When a quadratic is written in completed-square form $y = (x+p)^2 + q$, it describes a translation of $y = x^2$ by vector $\begin{pmatrix}-p\\q\end{pmatrix}$. The vertex is at $(-p, q)$.</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 5 – REFLECTION IN X-AXIS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Reflection in the x-axis — $-f(x)$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Reflection in the x-axis</div>
+    $$y = -f(x)$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">
+      Every y-value is negated. Points on the x-axis stay fixed.<br>
+      Each point $(x,\ y)$ maps to $(x,\ -y)$.
+    </p>
+  </div>
+
+  <!-- Reflection in x-axis diagram
+       Using f(x) = x² - 2x (roots at 0 and 2, vertex at (1,-1))
+       Setup: ViewBox 0 0 380 260, Origin(130,130), sx=50, sy=40
+       px = 130 + x*50, py = 130 - y*40
+
+       f(x) = x²-2x:
+       x=-1: y=3, px=80, py=130-120=10
+       x=-0.5: y=1.25, px=105, py=130-50=80
+       x=0: y=0, px=130, py=130
+       x=0.5: y=-0.75, px=155, py=130+30=160
+       x=1: y=-1, px=180, py=130+40=170 (vertex)
+       x=1.5: y=-0.75, px=205, py=160
+       x=2: y=0, px=230, py=130
+       x=2.5: y=1.25, px=255, py=80
+       x=3: y=3, px=280, py=10
+       x=-0.25: y=0.5625, px=117.5≈118, py=130-22.5=107.5≈108
+       x=0.25: y=-0.4375, px=142.5≈143, py=130+17.5=147.5≈148
+       x=0.75: y=-0.9375, px=167.5≈168, py=130+37.5=167.5≈168
+       x=1.25: y=-0.9375, px=192.5≈193, py=168
+       x=1.75: y=-0.4375, px=217.5≈218, py=148
+       x=2.25: y=0.5625, px=242.5≈243, py=108
+       x=2.75: y=1.9375, px=267.5≈268, py=130-77.5=52.5≈53 (approx, use x=2.5 above)
+
+       -f(x) = -(x²-2x) = -x²+2x:
+       Just negate all y-coords: py becomes 130 - (-y)*40 = 130 + y*40 → so new_py = 260 - py:
+       x=-1: py=260-10=250 (off if viewbox 260)→ clip
+       x=-0.5: py=260-80=180→ barely
+       Hmm. Let me reconsider the origin placement.
+
+       Let me center the diagram with more space. Origin(130,130):
+       x=-1: f=-1 wait: f(-1) = (-1)²-2(-1) = 1+2=3, py=130-120=10 ✓
+       -f(-1) = -3, py=130+120=250 → very near bottom of 260 viewbox ✓ just
+
+       So viewbox 0 0 320 260 should work with some clipping at extremes.
+       Let me use a wider but shorter curve. Show x=-0.5 to 3:
+
+       f(x): "105,80 118,108 130,130 143,148 155,160 168,168 180,170 193,168 205,160 218,148 230,130 243,108 255,80"
+
+       -f(x): negate y from origin, so new_py = 130 - (-y)*40 = 130 + y*40
+       At same x-values, just reflect:
+       x=-0.5: y=1.25→-f=-1.25, py=130+50=180; px=105
+       x=0: y=0→-f=0, py=130; px=130 (same, on x-axis)
+       x=0.25: y=-0.4375→-f=0.4375, py=130-17.5=112.5≈113; px=143
+       x=0.5: y=-0.75→-f=0.75, py=130-30=100; px=155
+       x=1: y=-1→-f=1, py=130-40=90; px=180 (vertex now a maximum at y=1)
+       x=1.5: py=100; px=205
+       x=2: y=0→py=130 (root); px=230 (same)
+       x=2.5: y=1.25→-f=-1.25, py=180; px=255
+       x=3: y=3→-f=-3, py=130+120=250; px=280
+
+       -f(x) points: "105,180 118,152 130,130 143,112 155,100 168,92 180,90 193,92 205,100 218,112 230,130 243,152 255,180"
+  -->
+  <div class="graph-row">
+    <div class="graph-panel">
+      <h4>$y = f(x) = x^2 - 2x$ (original)</h4>
+      <!-- Origin(130,130), sx=50, sy=30 → gridlines at py=100(y=1), py=160(y=-1) align with curve -->
+      <svg width="300" height="220" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fecdd3" stroke-width=".8">
+          <line x1="10" y1="40"  x2="290" y2="40"/>
+          <line x1="10" y1="100" x2="290" y2="100"/>
+          <line x1="10" y1="130" x2="290" y2="130"/>
+          <line x1="10" y1="160" x2="290" y2="160"/>
+          <line x1="10" y1="210" x2="290" y2="210"/>
+          <line x1="80"  y1="5" x2="80"  y2="215"/>
+          <line x1="130" y1="5" x2="130" y2="215"/>
+          <line x1="180" y1="5" x2="180" y2="215"/>
+          <line x1="230" y1="5" x2="230" y2="215"/>
+        </g>
+        <line x1="10" y1="130" x2="285" y2="130" stroke="#e11d48" stroke-width="1.8"/>
+        <line x1="130" y1="215" x2="130" y2="5" stroke="#e11d48" stroke-width="1.8"/>
+        <g font-family="Arial" font-size="10" fill="#9f1239" text-anchor="middle">
+          <text x="80"  y="143">-1</text><text x="180" y="143">1</text><text x="230" y="143">2</text>
+          <text x="118" y="133">0</text><text x="118" y="103">1</text><text x="118" y="43">3</text>
+          <text x="118" y="163">-1</text>
+        </g>
+        <text x="278" y="127" font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">x</text>
+        <text x="134" y="8"  font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">y</text>
+        <!-- f(x)=x²-2x, sy=30, points every 0.25 -->
+        <polyline
+          points="80,40 93,68 105,93 118,113 130,130 143,143 155,153 168,158 180,160 193,158 205,153 218,143 230,130 243,113 255,93 268,68 280,40"
+          fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- roots at x=0 (px=130) and x=2 (px=230) -->
+        <circle cx="130" cy="130" r="5" fill="#e11d48" stroke="white" stroke-width="1.5"/>
+        <circle cx="230" cy="130" r="5" fill="#e11d48" stroke="white" stroke-width="1.5"/>
+        <!-- vertex at (1,-1): py=130+30=160 — sits exactly on y=-1 gridline -->
+        <circle cx="180" cy="160" r="5" fill="#9f1239" stroke="white" stroke-width="1.5"/>
+        <text x="185" y="175" font-family="Arial" font-size="9" fill="#9f1239">min(1,−1)</text>
+      </svg>
+    </div>
+
+    <div class="graph-panel">
+      <h4>$y = -f(x) = -(x^2 - 2x)$ (reflected)</h4>
+      <!-- Origin(130,130), sx=50, sy=30 — vertex at py=100 sits on y=1 gridline -->
+      <svg width="300" height="220" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fecdd3" stroke-width=".8">
+          <line x1="10" y1="40"  x2="290" y2="40"/>
+          <line x1="10" y1="100" x2="290" y2="100"/>
+          <line x1="10" y1="130" x2="290" y2="130"/>
+          <line x1="10" y1="160" x2="290" y2="160"/>
+          <line x1="10" y1="210" x2="290" y2="210"/>
+          <line x1="80"  y1="5" x2="80"  y2="215"/>
+          <line x1="130" y1="5" x2="130" y2="215"/>
+          <line x1="180" y1="5" x2="180" y2="215"/>
+          <line x1="230" y1="5" x2="230" y2="215"/>
+        </g>
+        <line x1="10" y1="130" x2="285" y2="130" stroke="#e11d48" stroke-width="1.8"/>
+        <line x1="130" y1="215" x2="130" y2="5" stroke="#e11d48" stroke-width="1.8"/>
+        <g font-family="Arial" font-size="10" fill="#9f1239" text-anchor="middle">
+          <text x="80"  y="143">-1</text><text x="180" y="143">1</text><text x="230" y="143">2</text>
+          <text x="118" y="133">0</text><text x="118" y="103">1</text><text x="118" y="163">-1</text>
+          <text x="118" y="213">-3</text>
+        </g>
+        <text x="278" y="127" font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">x</text>
+        <text x="134" y="8"  font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">y</text>
+        <!-- -f(x) = -x²+2x, sy=30, points every 0.25 (py = 260 − py_of_f) -->
+        <polyline
+          points="80,220 93,192 105,167 118,147 130,130 143,117 155,107 168,102 180,100 193,102 205,107 218,117 230,130 243,147 255,167 268,192 280,220"
+          fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- roots stay at x=0 and x=2 (y=0 unchanged) -->
+        <circle cx="130" cy="130" r="5" fill="#7c3aed" stroke="white" stroke-width="1.5"/>
+        <circle cx="230" cy="130" r="5" fill="#7c3aed" stroke="white" stroke-width="1.5"/>
+        <!-- vertex max at (1,1): py=130-30=100 — sits exactly on y=1 gridline -->
+        <circle cx="180" cy="100" r="5" fill="#7c3aed" stroke="white" stroke-width="1.5"/>
+        <text x="185" y="95" font-family="Arial" font-size="9" fill="#6d28d9">max(1, 1)</text>
+      </svg>
+    </div>
+  </div>
+  <p class="svg-caption" style="text-align:center;">$-f(x)$ flips the curve in the x-axis: roots stay fixed, the minimum $(1,-1)$ becomes a maximum $(1, 1)$, and U-shape becomes ∩-shape.</p>
+
+  <div class="concept">
+    <strong>What stays the same:</strong> Any point where $y = 0$ (i.e. where the curve crosses the x-axis) does not move — because $-(0) = 0$.<br>
+    <strong>What changes:</strong> Maxima become minima, minima become maxima. U-shapes become ∩-shapes and vice versa.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Reflection in x-axis: $f(x) = \sin x$, describe $-f(x)$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$-f(x) = -\sin x$ reflects $y = \sin x$ in the x-axis.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Points where $\sin x = 0$ (at $0°, 180°, 360°, \ldots$) stay the same.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The maximum at $(90°, 1)$ becomes a minimum at $(90°, -1)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The minimum at $(270°, -1)$ becomes a maximum at $(270°, 1)$.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>$y = -\sin x$ is a sine wave that starts going <em>down</em> instead of up, with the same period and amplitude.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 6 – REFLECTION IN Y-AXIS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Reflection in the y-axis — $f(-x)$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Reflection in the y-axis</div>
+    $$y = f(-x)$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">
+      Every x-value is negated. Points on the y-axis stay fixed.<br>
+      Each point $(x,\ y)$ maps to $(-x,\ y)$.
+    </p>
+  </div>
+
+  <!--
+    Using f(x) = x² - 2x again.
+    f(-x) = (-x)² - 2(-x) = x² + 2x
+    Roots at x=0 and x=-2, vertex at (-1,-1)
+
+    Setup: ViewBox 0 0 320 220, Origin(160,130), sx=50, sy=40
+
+    f(x)=x²-2x: px=160+x*50, py=130-y*40
+    x=-1: y=3, px=110, py=130-120=10
+    x=0: y=0, px=160, py=130
+    x=0.5: y=-0.75, px=185, py=130+30=160
+    x=1: y=-1, px=210, py=130+40=170
+    x=1.5: y=-0.75, px=235, py=160
+    x=2: y=0, px=260, py=130
+    x=2.5: y=1.25, px=285, py=130-50=80
+    (and x=-0.5: y=1.25, px=135, py=80)
+
+    f(-x)=x²+2x: px=160+x*50, py=130-(x²+2x)*40
+    x=-3: y=3, px=10, py=10
+    x=-2.5: y=1.25, px=35, py=80
+    x=-2: y=0, px=60, py=130
+    x=-1.5: y=-0.75, px=85, py=160
+    x=-1: y=-1, px=110, py=170 (vertex)
+    x=-0.5: y=-0.75, px=135, py=160
+    x=0: y=0, px=160, py=130
+    x=0.5: y=1.25, px=185, py=80
+    x=1: y=3, px=210, py=10
+  -->
+  <div class="graph-row">
+    <div class="graph-panel">
+      <h4>$y = f(x) = x^2 - 2x$ (original)</h4>
+      <!-- Origin(160,120), sx=50, sy=40. Gridlines at py=40(y=2),80(y=1),120(y=0),160(y=-1),200(y=-2) -->
+      <svg width="300" height="215" viewBox="0 0 300 215" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fecdd3" stroke-width=".8">
+          <line x1="10" y1="40"  x2="290" y2="40"/>
+          <line x1="10" y1="80"  x2="290" y2="80"/>
+          <line x1="10" y1="120" x2="290" y2="120"/>
+          <line x1="10" y1="160" x2="290" y2="160"/>
+          <line x1="10" y1="200" x2="290" y2="200"/>
+          <line x1="60"  y1="5" x2="60"  y2="210"/>
+          <line x1="110" y1="5" x2="110" y2="210"/>
+          <line x1="160" y1="5" x2="160" y2="210"/>
+          <line x1="210" y1="5" x2="210" y2="210"/>
+          <line x1="260" y1="5" x2="260" y2="210"/>
+        </g>
+        <line x1="10" y1="120" x2="290" y2="120" stroke="#e11d48" stroke-width="1.8"/>
+        <line x1="160" y1="210" x2="160" y2="5" stroke="#e11d48" stroke-width="1.8"/>
+        <g font-family="Arial" font-size="10" fill="#9f1239" text-anchor="middle">
+          <text x="110" y="133">-1</text><text x="210" y="133">1</text><text x="260" y="133">2</text>
+          <text x="148" y="123">0</text><text x="148" y="83">1</text><text x="148" y="43">2</text>
+          <text x="148" y="163">-1</text><text x="148" y="203">-2</text>
+        </g>
+        <text x="282" y="117" font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">x</text>
+        <text x="164" y="8"  font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">y</text>
+        <!-- f(x)=x²-2x, points every 0.25 -->
+        <polyline
+          points="123,38 135,70 148,98 160,120 173,138 185,150 198,158 210,160 223,158 235,150 248,138 260,120 273,98 285,70 298,38"
+          fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="160" cy="120" r="5" fill="#e11d48" stroke="white" stroke-width="1.5"/>
+        <circle cx="260" cy="120" r="5" fill="#e11d48" stroke="white" stroke-width="1.5"/>
+        <!-- vertex at (1,-1): px=210, py=160 — on y=-1 gridline -->
+        <circle cx="210" cy="160" r="5" fill="#9f1239" stroke="white" stroke-width="1.5"/>
+        <text x="214" y="175" font-family="Arial" font-size="9" fill="#9f1239">min(1,−1)</text>
+      </svg>
+    </div>
+
+    <div class="graph-panel">
+      <h4>$y = f(-x) = x^2 + 2x$ (reflected)</h4>
+      <!-- Origin(160,120), sx=50, sy=40. f(-x) is mirror image: vertex at (-1,-1) -->
+      <svg width="300" height="215" viewBox="0 0 300 215" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fecdd3" stroke-width=".8">
+          <line x1="10" y1="40"  x2="290" y2="40"/>
+          <line x1="10" y1="80"  x2="290" y2="80"/>
+          <line x1="10" y1="120" x2="290" y2="120"/>
+          <line x1="10" y1="160" x2="290" y2="160"/>
+          <line x1="10" y1="200" x2="290" y2="200"/>
+          <line x1="60"  y1="5" x2="60"  y2="210"/>
+          <line x1="110" y1="5" x2="110" y2="210"/>
+          <line x1="160" y1="5" x2="160" y2="210"/>
+          <line x1="210" y1="5" x2="210" y2="210"/>
+          <line x1="260" y1="5" x2="260" y2="210"/>
+        </g>
+        <line x1="10" y1="120" x2="290" y2="120" stroke="#e11d48" stroke-width="1.8"/>
+        <line x1="160" y1="210" x2="160" y2="5" stroke="#e11d48" stroke-width="1.8"/>
+        <g font-family="Arial" font-size="10" fill="#9f1239" text-anchor="middle">
+          <text x="60"  y="133">-2</text><text x="110" y="133">-1</text><text x="210" y="133">1</text>
+          <text x="148" y="123">0</text><text x="148" y="83">1</text><text x="148" y="43">2</text>
+          <text x="148" y="163">-1</text><text x="148" y="203">-2</text>
+        </g>
+        <text x="282" y="117" font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">x</text>
+        <text x="164" y="8"  font-family="Arial" font-size="11" fill="#e11d48" font-weight="bold">y</text>
+        <!-- f(-x)=x²+2x, points every 0.25 — mirror of f(x) about y-axis -->
+        <polyline
+          points="23,38 35,70 48,98 60,120 73,138 85,150 98,158 110,160 123,158 135,150 148,138 160,120 173,98 185,70 198,38"
+          fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- roots at x=0 (px=160) and x=-2 (px=60) -->
+        <circle cx="160" cy="120" r="5" fill="#0891b2" stroke="white" stroke-width="1.5"/>
+        <circle cx="60"  cy="120" r="5" fill="#0891b2" stroke="white" stroke-width="1.5"/>
+        <!-- vertex at (-1,-1): px=110, py=160 — on y=-1 gridline -->
+        <circle cx="110" cy="160" r="5" fill="#0369a1" stroke="white" stroke-width="1.5"/>
+        <text x="55" y="175" font-family="Arial" font-size="9" fill="#0369a1">min(−1,−1)</text>
+      </svg>
+    </div>
+  </div>
+  <p class="svg-caption" style="text-align:center;">$f(-x)$ reflects in the y-axis: the curve is mirrored left↔right. Root at $x=2$ moves to $x=-2$; vertex at $(1,-1)$ moves to $(-1,-1)$.</p>
+
+  <div class="concept">
+    <strong>What stays the same:</strong> Any point on the y-axis (where $x = 0$) stays fixed — because $-0 = 0$.<br>
+    <strong>What changes:</strong> Every root at $x = r$ moves to $x = -r$. The shape is mirrored left to right.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Reflection in y-axis: $f(x) = 2^x$, describe $f(-x)$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$f(-x) = 2^{-x} = \left(\frac{1}{2}\right)^x$ reflects $y = 2^x$ in the y-axis.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The y-intercept $(0, 1)$ stays fixed (it's on the y-axis).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The point $(3, 8)$ on $f(x)$ maps to $(-3, 8)$ on $f(-x)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = 2^x$ is a growth curve (rising right); $y = 2^{-x}$ is a decay curve (falling right).</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>The reflection of an exponential growth curve in the y-axis gives an exponential decay curve.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 7 – EFFECT ON KEY POINTS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Effect on Key Points</div>
+<div class="section-body">
+
+  <p>It's very efficient to track how transformations move specific coordinates. In the exam you will often be given a point on $f(x)$ and asked for its image under a transformation.</p>
+
+  <table>
+    <tr>
+      <th>Transformation</th>
+      <th>Point $(x,\ y)$ maps to…</th>
+      <th>x changes?</th>
+      <th>y changes?</th>
+    </tr>
+    <tr><td>$f(x) + a$</td><td>$(x,\ y + a)$</td><td>No</td><td>Yes, add $a$</td></tr>
+    <tr><td>$f(x - a)$</td><td>$(x + a,\ y)$</td><td>Yes, add $a$</td><td>No</td></tr>
+    <tr><td>$f(x + a)$</td><td>$(x - a,\ y)$</td><td>Yes, subtract $a$</td><td>No</td></tr>
+    <tr><td>$f(x+a)+b$</td><td>$(x - a,\ y + b)$</td><td>Yes, subtract $a$</td><td>Yes, add $b$</td></tr>
+    <tr><td>$-f(x)$</td><td>$(x,\ -y)$</td><td>No</td><td>Yes, negate</td></tr>
+    <tr><td>$f(-x)$</td><td>$(-x,\ y)$</td><td>Yes, negate</td><td>No</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Tracking a point: $f(x)$ passes through $(4,\ 5)$</div>
+    <div class="example-body">
+      <p>Find the image of $(4, 5)$ under each transformation:</p>
+      <div class="step-row"><span class="arrow">①</span><span>$f(x) + 2$: y increases by 2 → $(4,\ 7)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$f(x - 3)$: x increases by 3 → $(7,\ 5)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$f(x + 1)$: x decreases by 1 → $(3,\ 5)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$-f(x)$: y negated → $(4,\ -5)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$f(-x)$: x negated → $(-4,\ 5)$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$f(x+2)-1$: x decreases by 2, y decreases by 1 → $(2,\ 4)$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 8 – QUICK REFERENCE
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card">
+      <h4>$f(x) + a$</h4>
+      <p>Vertical shift<br>$a>0$: up by $a$<br>$a<0$: down by $|a|$<br>$(x,y) \to (x, y+a)$</p>
+    </div>
+    <div class="ref-card">
+      <h4>$f(x - a)$</h4>
+      <p>Horizontal shift right by $a$<br>$a>0$: right<br>$a<0$: left<br>$(x,y) \to (x+a, y)$</p>
+    </div>
+    <div class="ref-card">
+      <h4>$f(x + a)$</h4>
+      <p>Horizontal shift LEFT by $a$<br>⚠️ Opposite to sign!<br>$(x,y) \to (x-a, y)$</p>
+    </div>
+    <div class="ref-card">
+      <h4>$f(x+a)+b$</h4>
+      <p>Combined translation<br>Vector $\begin{pmatrix}-a\\b\end{pmatrix}$<br>$(x,y) \to (x-a, y+b)$</p>
+    </div>
+    <div class="ref-card">
+      <h4>$-f(x)$</h4>
+      <p>Reflect in x-axis<br>y-values negated<br>$(x,y) \to (x, -y)$<br>Roots stay fixed</p>
+    </div>
+    <div class="ref-card">
+      <h4>$f(-x)$</h4>
+      <p>Reflect in y-axis<br>x-values negated<br>$(x,y) \to (-x, y)$<br>y-intercept stays fixed</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 9 – PRACTICE QUESTIONS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">9</span> Practice Questions</div>
+<div class="section-body">
+
+  <!-- Q1 -->
+  <div class="question">
+    <div class="question-header">Question 1 — Identifying transformations</div>
+    <div class="question-body">
+      <p>Describe the transformation that maps $y = f(x)$ onto each of the following:</p>
+      <p>(a) $y = f(x) + 5$ &nbsp;&nbsp; (b) $y = f(x - 4)$ &nbsp;&nbsp; (c) $y = -f(x)$ &nbsp;&nbsp; (d) $y = f(x + 2) - 1$ &nbsp;&nbsp; (e) $y = f(-x)$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $y = f(x) + 5$: <strong>Translation up by 5</strong>. Vector $\begin{pmatrix}0\\5\end{pmatrix}$.</p>
+          <p>(b) $y = f(x-4)$: <strong>Translation right by 4</strong>. Vector $\begin{pmatrix}4\\0\end{pmatrix}$.</p>
+          <p>(c) $y = -f(x)$: <strong>Reflection in the x-axis</strong>.</p>
+          <p>(d) $y = f(x+2)-1$: <strong>Translation left 2 and down 1</strong>. Vector $\begin{pmatrix}-2\\-1\end{pmatrix}$.</p>
+          <p>(e) $y = f(-x)$: <strong>Reflection in the y-axis</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question">
+    <div class="question-header">Question 2 — Translating a specific function</div>
+    <div class="question-body">
+      <p>The graph of $y = x^2$ is transformed. Write the equation of the new graph after each transformation:</p>
+      <p>(a) Translate up by 6 &nbsp;&nbsp; (b) Translate right by 5 &nbsp;&nbsp; (c) Translate left 2, down 3 &nbsp;&nbsp; (d) Translate by vector $\begin{pmatrix}4\\-1\end{pmatrix}$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $y = x^2 + 6$</p>
+          <p>(b) $y = (x-5)^2$</p>
+          <p>(c) Translate left 2 → $f(x+2)$; down 3 → $-3$. So: $y = (x+2)^2 - 3$</p>
+          <p>(d) Vector $\begin{pmatrix}4\\-1\end{pmatrix}$ means right 4, down 1: $y = (x-4)^2 - 1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question">
+    <div class="question-header">Question 3 — Tracking a point</div>
+    <div class="question-body">
+      <p>The point $(3, -2)$ lies on the graph of $y = f(x)$. Find the coordinates of the image of this point on the graph of:</p>
+      <p>(a) $y = f(x) - 5$ &nbsp;&nbsp; (b) $y = f(x + 4)$ &nbsp;&nbsp; (c) $y = -f(x)$ &nbsp;&nbsp; (d) $y = f(-x)$ &nbsp;&nbsp; (e) $y = f(x-1) + 3$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $f(x)-5$: $y$ decreases by 5 → $(3,\ -7)$</p>
+          <p>(b) $f(x+4)$: $x$ decreases by 4 → $(-1,\ -2)$</p>
+          <p>(c) $-f(x)$: $y$ negated → $(3,\ 2)$</p>
+          <p>(d) $f(-x)$: $x$ negated → $(-3,\ -2)$</p>
+          <p>(e) $f(x-1)+3$: $x$ increases by 1, $y$ increases by 3 → $(4,\ 1)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question">
+    <div class="question-header">Question 4 — Translation vector</div>
+    <div class="question-body">
+      <p>The graph of $y = \sin x$ is translated by vector $\begin{pmatrix}90\\0\end{pmatrix}$. Write the equation of the resulting graph and describe how it relates to $y = \cos x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A translation right by 90° is achieved by replacing $x$ with $x - 90°$:</p>
+          <p>$$y = \sin(x - 90°)$$</p>
+          <p>Since $\sin(x - 90°) = -\cos x$, the resulting graph is $y = -\cos x$.</p>
+          <p>Alternatively, $y = \cos x$ is $y = \sin x$ translated <em>left</em> by 90°: $\sin(x + 90°) = \cos x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question">
+    <div class="question-header">Question 5 — Reflections of a quadratic</div>
+    <div class="question-body">
+      <p>The graph of $y = x^2 - 6x + 5$ has roots at $x = 1$ and $x = 5$, and a minimum at $(3, -4)$.</p>
+      <p>(a) Write the equation of its reflection in the x-axis. State the new turning point and roots.</p>
+      <p>(b) Write the equation of its reflection in the y-axis. State the new roots.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a) Reflection in x-axis</strong> → $y = -(x^2 - 6x + 5) = -x^2 + 6x - 5$</p>
+          <p>Turning point: $(3, -4) \to (3, 4)$ — becomes a maximum at $(3, 4)$.</p>
+          <p>Roots: unchanged at $x = 1$ and $x = 5$ (y-values were already 0).</p>
+          <p><strong>(b) Reflection in y-axis</strong> → replace $x$ with $-x$: $y = (-x)^2 - 6(-x) + 5 = x^2 + 6x + 5$</p>
+          <p>New roots: solve $x^2 + 6x + 5 = 0 \Rightarrow (x+1)(x+5) = 0 \Rightarrow x = -1$ and $x = -5$.</p>
+          <p>(These are the negatives of the original roots $1$ and $5$, as expected.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question">
+    <div class="question-header">Question 6 — Completed square and transformation</div>
+    <div class="question-body">
+      <p>Show that $y = x^2 + 4x + 7$ can be written as $y = (x+2)^2 + 3$. Hence describe the transformation that maps $y = x^2$ onto $y = x^2 + 4x + 7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Complete the square: $y = (x+2)^2 - 4 + 7 = (x+2)^2 + 3$ ✓</p>
+          <p>This is in the form $f(x+2)+3$ where $f(x) = x^2$.</p>
+          <p>So the transformation is: <strong>translation left 2, up 3</strong>.</p>
+          <p>Translation vector: $\begin{pmatrix}-2\\3\end{pmatrix}$.</p>
+          <p>The vertex moves from $(0,0)$ to $(-2, 3)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question">
+    <div class="question-header">Question 7 — Describing a transformation from two graphs</div>
+    <div class="question-body">
+      <p>Graph A has the equation $y = f(x)$ and passes through the points $(-2, 0)$, $(0, -4)$, $(2, 0)$ and has minimum at $(0, -4)$.</p>
+      <p>Graph B passes through $(-2, 4)$, $(0, 0)$, $(2, 4)$ with minimum at $(0, 0)$.</p>
+      <p>Describe the transformation that maps Graph A to Graph B.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Compare key points. Minimum of A is $(0,-4)$; minimum of B is $(0,0)$.</p>
+          <p>The x-coordinate of the minimum hasn't changed, but y went from $-4$ to $0$ — an increase of $4$.</p>
+          <p>Check another point: $(-2, 0)$ on A maps to $(-2, 4)$ on B — y increased by 4. ✓</p>
+          <p><strong>Transformation: $y = f(x) + 4$ — a vertical translation up by 4.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question">
+    <div class="question-header">Question 8 — Reflection of exponential</div>
+    <div class="question-body">
+      <p>The graph of $y = 3^x$ passes through $(0, 1)$, $(1, 3)$ and $(2, 9)$.</p>
+      <p>(a) Write the equation of its reflection in the x-axis. Find three points on this reflected graph.</p>
+      <p>(b) Write the equation of its reflection in the y-axis. Find three points on this reflected graph.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a) Reflection in x-axis</strong>: $y = -3^x$</p>
+          <p>Points: $(0,-1)$, $(1,-3)$, $(2,-9)$ — all y-values negated.</p>
+          <p><strong>(b) Reflection in y-axis</strong>: $y = 3^{-x} = \left(\frac{1}{3}\right)^x$</p>
+          <p>Points: $(0,1)$, $(-1,3)$, $(-2,9)$ — all x-values negated.</p>
+          <p>Note: $(0,1)$ stays fixed in both reflections (it lies on both axes).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question">
+    <div class="question-header">Question 9 — Combined transformation</div>
+    <div class="question-body">
+      <p>The graph of $y = f(x)$ has a maximum at $(2, 7)$ and crosses the x-axis at $x = -1$ and $x = 5$.</p>
+      <p>The graph of $y = f(x + 3) + 2$ is drawn. Find:</p>
+      <p>(a) The coordinates of the maximum on the new graph.</p>
+      <p>(b) The x-coordinates where the new graph crosses the x-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The transformation is: left 3 (subtract 3 from x), up 2 (add 2 to y).</p>
+          <p><strong>(a) Maximum:</strong> $(2, 7) \to (2-3,\ 7+2) = (-1,\ 9)$</p>
+          <p><strong>(b) x-intercepts of $f(x)$ are at $x=-1$ and $x=5$, where $y=0$.</strong><br>
+          After transformation: x-values shift left by 3.<br>
+          $x=-1 \to x=-4$; $x=5 \to x=2$.<br>
+          But the y-values also shift up by 2, so $y=0$ on $f$ becomes $y=2$ on the new graph.<br>
+          So the new graph does NOT cross the x-axis at these points — it crosses where $f(x+3) = -2$.</p>
+          <p>These cannot be found without more information about $f$. <strong>The new x-intercepts are not simply at $x=-4$ and $x=2$</strong> — this is a common error.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question">
+    <div class="question-header">Question 10 — Full description and sketch</div>
+    <div class="question-body">
+      <p>$f(x) = x^2 - 4$.</p>
+      <p>(a) Sketch $y = f(x)$, labelling the roots and y-intercept.</p>
+      <p>(b) On the same axes, sketch $y = -f(x)$, labelling the turning point.</p>
+      <p>(c) On a new set of axes, sketch $y = f(x - 2)$, labelling the vertex and roots.</p>
+      <p>(d) Write down the equation of the graph produced when $y = f(x)$ is reflected in the y-axis. Is it different from $f(x)$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a) $y = x^2 - 4$:</strong> roots at $x = \pm 2$ (i.e. $(-2,0)$ and $(2,0)$); y-intercept at $(0,-4)$; vertex (minimum) at $(0,-4)$. U-shaped parabola.</p>
+          <p><strong>(b) $y = -f(x) = -(x^2-4) = -x^2+4$:</strong> Same roots at $x = \pm 2$; turning point flips to maximum at $(0, 4)$. ∩-shaped parabola.</p>
+          <p><strong>(c) $y = f(x-2) = (x-2)^2-4$:</strong> Shift right 2. Vertex moves from $(0,-4)$ to $(2,-4)$. New roots: $(x-2)^2 = 4 \Rightarrow x-2 = \pm 2 \Rightarrow x=0$ or $x=4$.</p>
+          <p><strong>(d) $y = f(-x) = (-x)^2-4 = x^2-4$</strong>. This is identical to $f(x)$! Since $y=x^2-4$ is symmetric about the y-axis (it only contains even powers of $x$), reflecting it in the y-axis gives the same graph.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Graph Transformations · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

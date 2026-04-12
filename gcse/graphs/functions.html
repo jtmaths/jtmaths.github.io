@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphs of Functions – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1c1917;
+      background: #fffbf5;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, #d97706 0%, #ea580c 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.1rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .92; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: .85rem;
+      margin-top: 10px;
+    }
+    main { max-width: 900px; margin: 0 auto; padding: 28px 20px; }
+
+    /* ── section headers ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #d97706;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 13px 20px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-top: 36px;
+    }
+    .section-title .num {
+      background: rgba(255,255,255,.25);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .section-body {
+      background: #fff;
+      border: 1px solid #fed7aa;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 22px 24px;
+    }
+
+    /* ── concept / key boxes ── */
+    .concept {
+      background: #fff7ed;
+      border-left: 4px solid #d97706;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .concept strong { color: #92400e; }
+    .key {
+      background: #fef9c3;
+      border-left: 4px solid #eab308;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .key strong { color: #713f12; }
+    .tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .tip strong { color: #15803d; }
+
+    /* ── formula box ── */
+    .formula-box {
+      background: #fff7ed;
+      border: 2px solid #d97706;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    .formula-box .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #b45309;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    /* ── step list ── */
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .steps li::before {
+      content: counter(step);
+      background: #d97706;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── worked example ── */
+    .example {
+      background: #fffbf0;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .example-header {
+      background: #d97706;
+      color: #fff;
+      padding: 9px 18px;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .example-body { padding: 16px 20px; }
+    .step-row {
+      display: flex; gap: 10px;
+      background: #fef3c7;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .step-row .arrow { color: #b45309; font-weight: 800; flex-shrink: 0; min-width: 22px; }
+
+    /* ── table ── */
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95rem; }
+    th { background: #d97706; color: #fff; padding: 9px 14px; text-align: left; }
+    td { padding: 9px 14px; border-bottom: 1px solid #fed7aa; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fff7ed; }
+
+    /* ── svg ── */
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .svg-caption { font-size: .83rem; color: #666; margin-top: 5px; }
+
+    /* ── feature cards ── */
+    .card-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; }
+    .func-card {
+      flex: 1; min-width: 150px;
+      border: 2px solid #fed7aa;
+      border-radius: 10px;
+      padding: 13px 15px;
+      background: #fffbf5;
+    }
+    .func-card h4 { color: #d97706; font-size: .9rem; margin-bottom: 6px; }
+    .func-card p { font-size: .83rem; line-height: 1.5; }
+
+    /* ── two-column layout for graph + text ── */
+    .side-by-side {
+      display: flex; flex-wrap: wrap; gap: 18px; margin: 14px 0; align-items: flex-start;
+    }
+    .side-svg { flex: 0 0 auto; }
+    .side-text { flex: 1; min-width: 200px; }
+
+    /* ── trig section ── */
+    .trig-label {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    /* ── practice questions ── */
+    .question {
+      background: #fff;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .question-header {
+      background: #fff7ed;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: #92400e;
+      font-size: .95rem;
+      border-bottom: 1px solid #fed7aa;
+    }
+    .question-body { padding: 10px 16px 14px; }
+    details summary {
+      cursor: pointer;
+      color: #d97706;
+      font-weight: 600;
+      padding: 8px 0 4px;
+      font-size: .9rem;
+      user-select: none;
+    }
+    details summary:hover { color: #92400e; }
+    .solution {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: .93rem;
+    }
+    .solution p { margin-bottom: 6px; }
+
+    /* ── quick ref ── */
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card {
+      flex: 1; min-width: 170px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 13px 15px;
+    }
+    .ref-card h4 { color: #d97706; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .85rem; line-height: 1.55; }
+
+    /* ── trig values table ── */
+    .trig-table th { background: #7c3aed; }
+    .trig-table tr:nth-child(even) td { background: #faf5ff; }
+    .trig-table td { border-bottom: 1px solid #e9d5ff; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .card-row, .ref-grid, .side-by-side { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Graphs of Functions</h1>
+  <p>Linear · Quadratic · Cubic · Reciprocal · Exponential · Trigonometric</p>
+  <div class="badge">GCSE Maths · Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ════════════════════════════════════════════
+     SECTION 1 – OVERVIEW
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Overview of Function Types</div>
+<div class="section-body">
+
+  <p>At GCSE you need to recognise, sketch and interpret six types of function graph. Each has a characteristic shape you must learn.</p>
+
+  <div class="card-row">
+    <div class="func-card">
+      <h4>Linear</h4>
+      <p>$y = mx + c$<br>Straight line — constant gradient</p>
+    </div>
+    <div class="func-card">
+      <h4>Quadratic</h4>
+      <p>$y = ax^2 + bx + c$<br>Parabola — U or ∩ shape</p>
+    </div>
+    <div class="func-card">
+      <h4>Cubic</h4>
+      <p>$y = ax^3 + \ldots$<br>S-shaped curve</p>
+    </div>
+    <div class="func-card">
+      <h4>Reciprocal</h4>
+      <p>$y = \dfrac{k}{x}$<br>Two-branch hyperbola</p>
+    </div>
+    <div class="func-card">
+      <h4>Exponential</h4>
+      <p>$y = k^x$, $k > 0$<br>Rapid growth or decay</p>
+    </div>
+    <div class="func-card">
+      <h4>Trigonometric</h4>
+      <p>$y = \sin x$, $\cos x$, $\tan x$<br>Wave / periodic</p>
+    </div>
+  </div>
+
+  <div class="key"><strong>🔑 Key skill:</strong> From the shape of a graph alone you should be able to identify which family of function it belongs to — and vice versa, from the equation you should be able to sketch the correct shape.</div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 2 – LINEAR FUNCTIONS
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Linear Functions — $y = mx + c$</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>linear function</strong> produces a <em>straight line</em> when plotted. The gradient $m$ gives the slope; $c$ is the y-intercept. Every point on the line satisfies the equation exactly.
+  </div>
+
+  <div class="side-by-side">
+    <div class="side-svg">
+      <svg width="240" height="220" viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- grid -->
+        <g stroke="#fde68a" stroke-width=".8">
+          <line x1="0" y1="40" x2="240" y2="40"/><line x1="0" y1="80" x2="240" y2="80"/>
+          <line x1="0" y1="120" x2="240" y2="120"/><line x1="0" y1="160" x2="240" y2="160"/>
+          <line x1="0" y1="200" x2="240" y2="200"/>
+          <line x1="40" y1="0" x2="40" y2="220"/><line x1="80" y1="0" x2="80" y2="220"/>
+          <line x1="120" y1="0" x2="120" y2="220"/><line x1="160" y1="0" x2="160" y2="220"/>
+          <line x1="200" y1="0" x2="200" y2="220"/>
+        </g>
+        <!-- axes: origin(80,160), sx=40, sy=40 -->
+        <line x1="5" y1="160" x2="235" y2="160" stroke="#d97706" stroke-width="2"/>
+        <line x1="80" y1="215" x2="80" y2="5" stroke="#d97706" stroke-width="2"/>
+        <!-- axis labels -->
+        <g font-family="Arial" font-size="11" fill="#92400e" text-anchor="middle">
+          <text x="40"  y="175">-1</text><text x="120" y="175">1</text>
+          <text x="160" y="175">2</text><text x="200" y="175">3</text>
+          <text x="67" y="164">0</text>
+          <text x="67" y="124">1</text><text x="67" y="84">2</text><text x="67" y="44">3</text>
+          <text x="67" y="204">-1</text>
+        </g>
+        <text x="228" y="158" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">x</text>
+        <text x="84" y="10" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">y</text>
+        <!-- y=x+1: passes through (-1,0) and (0,1) and (2,3) and (3,4) off top
+             px=80+x*40, py=160-y*40
+             x=-1: px=40,py=160; x=0: px=80,py=120; x=1: px=120,py=80; x=2: px=160,py=40; x=2.5: px=180,py=20 -->
+        <line x1="20" y1="180" x2="190" y2="10" stroke="#2563eb" stroke-width="2.5"/>
+        <text x="192" y="15" font-family="Arial" font-size="12" fill="#2563eb" font-weight="bold">y=x+1</text>
+        <!-- y=-0.5x+2: x=0→py=80; x=4→y=0 off canvas; x=-1→y=2.5 px=40,py=60 -->
+        <!-- x=0: px=80,py=80; x=2: px=160,py=120+... y=-1+2=1→py=120; x=4: px=240,py=160 (y=0) -->
+        <line x1="0" y1="60" x2="240" y2="180" stroke="#dc2626" stroke-width="2.5"/>
+        <text x="5" y="56" font-family="Arial" font-size="12" fill="#dc2626" font-weight="bold">y=−½x+2</text>
+        <!-- y=2: horizontal line; py=160-2*40=80 -->
+        <line x1="5" y1="80" x2="235" y2="80" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="6,3"/>
+        <text x="205" y="76" font-family="Arial" font-size="12" fill="#16a34a" font-weight="bold">y=2</text>
+      </svg>
+      <p class="svg-caption">Three linear functions</p>
+    </div>
+    <div class="side-text">
+      <h3 style="color:#92400e;margin-bottom:8px;">Key features</h3>
+      <ul style="margin-left:18px;margin-bottom:10px;">
+        <li>Positive $m$ → slopes upward (↗)</li>
+        <li>Negative $m$ → slopes downward (↘)</li>
+        <li>$m = 0$ → horizontal line $y = c$</li>
+        <li>$|m|$ larger → steeper slope</li>
+        <li>y-intercept always at $(0,\ c)$</li>
+        <li>x-intercept (root): set $y=0$, solve for $x$</li>
+      </ul>
+      <div class="tip"><strong>How to draw:</strong> Plot the y-intercept, then use the gradient to find a second point (right 1, up $m$), draw the line.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Sketching $y = 3x - 2$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>y-intercept: $c = -2$, so plot $(0,\ -2)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Gradient: $m = 3$. From $(0,-2)$ go 1 right, 3 up → $(1,\ 1)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>x-intercept: set $y=0 \Rightarrow 3x-2=0 \Rightarrow x = \tfrac{2}{3}$. Mark $(\tfrac{2}{3}, 0)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Draw a straight line through all three points.</span></div>
+    </div>
+  </div>
+
+</div><!-- /linear -->
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 3 – QUADRATIC FUNCTIONS
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Quadratic Functions — $y = ax^2 + bx + c$</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>quadratic</strong> gives a smooth symmetrical curve called a <strong>parabola</strong>. When $a > 0$ it is U-shaped (minimum); when $a < 0$ it is ∩-shaped (maximum).
+  </div>
+
+  <div class="side-by-side">
+    <div class="side-svg">
+      <!-- Parabola y=x²-2x-3: roots at x=-1 and x=3, vertex at (1,-4), y-int=-3 -->
+      <!-- origin(140,200), sx=40, sy=25 -->
+      <svg width="280" height="240" viewBox="0 0 280 240" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fde68a" stroke-width=".8">
+          <line x1="0" y1="50" x2="280" y2="50"/><line x1="0" y1="100" x2="280" y2="100"/>
+          <line x1="0" y1="150" x2="280" y2="150"/><line x1="0" y1="200" x2="280" y2="200"/>
+          <line x1="60" y1="0" x2="60" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/>
+          <line x1="140" y1="0" x2="140" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/>
+          <line x1="220" y1="0" x2="220" y2="240"/>
+        </g>
+        <!-- axes: origin(140,200), sx=40,sy=25 -->
+        <line x1="5" y1="200" x2="275" y2="200" stroke="#d97706" stroke-width="1.8"/>
+        <line x1="140" y1="235" x2="140" y2="5" stroke="#d97706" stroke-width="1.8"/>
+        <!-- axis labels -->
+        <g font-family="Arial" font-size="10" fill="#92400e" text-anchor="middle">
+          <text x="60"  y="213">-2</text><text x="100" y="213">-1</text>
+          <text x="180" y="213">1</text><text x="220" y="213">2</text>
+          <text x="260" y="213">3</text>
+          <text x="128" y="153">2</text><text x="128" y="103">4</text>
+          <text x="128" y="228">-2</text>
+        </g>
+        <!-- y=x²-2x-3: px=140+x*40, py=200-y*25
+             x=-1: y=0  → 100,200
+             x=0:  y=-3 → 140,275 (off) — use py=200-(-3)*25=275 but viewbox 240
+             Actually py=200-(-3)*25=200+75=275 off. Let's use sy=20:
+             x=-1: y=0  → 100,200
+             x=0:  y=-3 → 140,260 off. sy=15:
+             x=-1: 100,200; x=0: y=-3→py=200+45=245 off; x=1: y=-4→py=260 off
+             Hmm the vertex at (1,-4) is always going to be below origin by 4 units.
+             I need enough y-space below. Let me move origin up:
+             origin(140,170), sy=15
+             x=1: y=-4→py=170+60=230 ✓ (in 240 viewbox)
+             x=0: y=-3→py=170+45=215 ✓
+             x=-1: y=0→py=170; x=3:y=0→py=170
+             x=-2: y=5→py=170-75=95 ✓
+             x=4: y=5→py=95 ✓
+             px=140+x*40
+             x=-2: px=60; x=-1: px=100; x=0: px=140; x=1: px=180; x=2: px=220; x=3: px=260; x=4: px=300(off)
+             Half points:
+             x=-1.5: y=(-1.5)²-2(-1.5)-3=2.25+3-3=2.25→py=170-33.75=136; px=80
+             x=-0.5: y=0.25+1-3=-1.75→py=170+26=196; px=120
+             x=0.5: y=0.25-1-3=-3.75→py=170+56=226; px=160
+             x=1.5: y=2.25-3-3=-3.75→py=226; px=200
+             x=2.5: y=6.25-5-3=-1.75→py=196; px=240
+             x=3.5: y=12.25-7-3=2.25→py=136; px=260+... 3.5*40=140+140=280 (edge) px=280
+        -->
+        <line x1="140" y1="170" x2="140" y2="235" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="143" y="12" font-family="Arial" font-size="9" fill="#7c3aed" font-style="italic">x=1</text>
+        <polyline
+          points="60,95 80,136 100,170 120,196 140,215 160,226 180,230 200,226 220,215 240,196 260,170 275,148"
+          fill="none" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- roots at (-1,0) and (3,0): px=100,170 and px=260,170 -->
+        <circle cx="100" cy="170" r="5" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+        <circle cx="260" cy="170" r="5" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+        <!-- vertex (1,-4): px=180, py=230 -->
+        <circle cx="180" cy="230" r="5" fill="#7c3aed" stroke="white" stroke-width="1.5"/>
+        <!-- y-intercept (0,-3): px=140, py=215 -->
+        <circle cx="140" cy="215" r="5" fill="#f97316" stroke="white" stroke-width="1.5"/>
+        <!-- labels -->
+        <text x="82"  y="162" font-family="Arial" font-size="9" fill="#dc2626">(-1,0)</text>
+        <text x="263" y="162" font-family="Arial" font-size="9" fill="#dc2626">(3,0)</text>
+        <text x="185" y="228" font-family="Arial" font-size="9" fill="#6d28d9">min(1,−4)</text>
+        <text x="145" y="213" font-family="Arial" font-size="9" fill="#ea580c">(0,−3)</text>
+        <text x="5"   y="90"  font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">y=x²−2x−3</text>
+        <text x="270" y="197" font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">x</text>
+        <text x="144" y="10" font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">y</text>
+      </svg>
+      <p class="svg-caption">$y = x^2 - 2x - 3$ with key features labelled</p>
+    </div>
+    <div class="side-text">
+      <h3 style="color:#92400e;margin-bottom:8px;">Key features</h3>
+      <ul style="margin-left:18px;margin-bottom:10px;">
+        <li><strong>Roots:</strong> where curve meets x-axis ($y=0$)</li>
+        <li><strong>y-intercept:</strong> the constant $c$ at $(0,c)$</li>
+        <li><strong>Vertex:</strong> highest/lowest point; x-coord $= -\tfrac{b}{2a}$</li>
+        <li><strong>Axis of symmetry:</strong> $x = -\tfrac{b}{2a}$</li>
+        <li>0, 1 or 2 real roots possible</li>
+      </ul>
+      <div class="tip"><strong>To sketch:</strong> Find y-intercept, roots (factorise or formula), then vertex. Decide U or ∩ from sign of $a$.</div>
+    </div>
+  </div>
+
+</div><!-- /quadratic -->
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 4 – CUBIC FUNCTIONS
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Cubic Functions — $y = ax^3 + \ldots$</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>cubic function</strong> contains an $x^3$ term as its highest power. Its graph has a characteristic <strong>S-shape</strong> (or reverse-S). Unlike a parabola it has no line of symmetry.
+  </div>
+
+  <div class="side-by-side">
+    <div class="side-svg">
+      <!-- y=x³: origin(160,140), sx=50, sy=8
+           x=-2: y=-8→py=140+64=204; px=60
+           x=-1.5: y=-3.375→py=167; px=85
+           x=-1: y=-1→py=148; px=110
+           x=-0.5: y=-0.125→py=141; px=135
+           x=0: y=0→py=140; px=160
+           x=0.5: y=0.125→py=139; px=185
+           x=1: y=1→py=132; px=210
+           x=1.5: y=3.375→py=113; px=235
+           x=2: y=8→py=76; px=260
+           x=2.5: y=15.6→py=15; px=285
+           x=-2.5: y=-15.6→py=265; px=35
+      -->
+      <svg width="310" height="280" viewBox="0 0 310 280" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fde68a" stroke-width=".8">
+          <line x1="0" y1="40" x2="310" y2="40"/><line x1="0" y1="90" x2="310" y2="90"/>
+          <line x1="0" y1="140" x2="310" y2="140"/><line x1="0" y1="190" x2="310" y2="190"/>
+          <line x1="0" y1="240" x2="310" y2="240"/>
+          <line x1="60" y1="0" x2="60" y2="280"/><line x1="110" y1="0" x2="110" y2="280"/>
+          <line x1="160" y1="0" x2="160" y2="280"/><line x1="210" y1="0" x2="210" y2="280"/>
+          <line x1="260" y1="0" x2="260" y2="280"/>
+        </g>
+        <!-- axes -->
+        <line x1="5" y1="140" x2="305" y2="140" stroke="#d97706" stroke-width="2"/>
+        <line x1="160" y1="275" x2="160" y2="5" stroke="#d97706" stroke-width="2"/>
+        <g font-family="Arial" font-size="11" fill="#92400e" text-anchor="middle">
+          <text x="60"  y="156">-2</text><text x="110" y="156">-1</text>
+          <text x="210" y="156">1</text><text x="260" y="156">2</text>
+          <text x="146" y="44">8</text><text x="146" y="94">4</text>
+          <text x="146" y="194">-4</text><text x="146" y="244">-8</text>
+        </g>
+        <text x="298" y="137" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">x</text>
+        <text x="164" y="10" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">y</text>
+        <!-- y=x³ curve -->
+        <polyline
+          points="35,265 60,204 85,167 110,148 135,141 160,140 185,139 210,132 235,113 260,76 285,15"
+          fill="none" stroke="#d97706" stroke-width="2.8" stroke-linejoin="round"/>
+        <!-- origin point -->
+        <circle cx="160" cy="140" r="4" fill="#d97706"/>
+        <text x="20"  y="272" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">y = x³</text>
+        <!-- arrows indicating behaviour -->
+        <text x="280" y="15"  font-family="Arial" font-size="11" fill="#666" font-style="italic">→ ∞</text>
+        <text x="20"  y="275" font-family="Arial" font-size="11" fill="#666" font-style="italic">→ −∞</text>
+      </svg>
+      <p class="svg-caption">$y = x^3$ — the basic cubic S-curve</p>
+    </div>
+    <div class="side-text">
+      <h3 style="color:#92400e;margin-bottom:8px;">Key features of $y = x^3$</h3>
+      <ul style="margin-left:18px;margin-bottom:10px;">
+        <li>Passes through the <strong>origin</strong> $(0, 0)$</li>
+        <li>S-shaped: rises steeply for large $|x|$</li>
+        <li>As $x \to +\infty$, $y \to +\infty$</li>
+        <li>As $x \to -\infty$, $y \to -\infty$</li>
+        <li>Rotational symmetry about origin</li>
+      </ul>
+      <h3 style="color:#92400e;margin:10px 0 6px;">Variations</h3>
+      <table>
+        <tr><th>Equation</th><th>Effect</th></tr>
+        <tr><td>$y = x^3 + c$</td><td>Shift up/down by $c$</td></tr>
+        <tr><td>$y = -x^3$</td><td>Reflects in x-axis</td></tr>
+        <tr><td>$y = 2x^3$</td><td>Steeper S-curve</td></tr>
+        <tr><td>$y = (x-a)^3$</td><td>Shift right by $a$</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Plotting $y = x^3 - 4x$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span><strong>Build a table of values</strong> for $x = -3$ to $3$:</span></div>
+      <table style="margin:8px 0;">
+        <tr><th>$x$</th><th>-3</th><th>-2</th><th>-1</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+        <tr><td>$x^3$</td><td>-27</td><td>-8</td><td>-1</td><td>0</td><td>1</td><td>8</td><td>27</td></tr>
+        <tr><td>$-4x$</td><td>12</td><td>8</td><td>4</td><td>0</td><td>-4</td><td>-8</td><td>-12</td></tr>
+        <tr><td>$y$</td><td>-15</td><td>0</td><td>3</td><td>0</td><td>-3</td><td>0</td><td>15</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">②</span><span>Plot points and join with a smooth S-shaped curve.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Roots:</strong> The graph crosses the x-axis at $x = -2,\ 0,\ 2$ (where $y = 0$). A cubic can have up to 3 roots.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Note the S-shape: down-left, up through roots, up-right.</span></div>
+    </div>
+  </div>
+
+</div><!-- /cubic -->
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 5 – RECIPROCAL FUNCTION
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Reciprocal Function — $y = \dfrac{k}{x}$ ($x \neq 0$)</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>reciprocal function</strong> has two separate curved branches. It is <em>never defined</em> when $x = 0$ (division by zero is undefined). Both axes act as <strong>asymptotes</strong> — lines the curve approaches but never touches.
+  </div>
+
+  <div class="side-by-side">
+    <div class="side-svg">
+      <!-- y=1/x: origin(160,140), sx=40, sy=40
+           Branch 1 (x>0): px=160+x*40, py=140-(1/x)*40
+           x=0.3: px=172, py=140-133=7
+           x=0.4: px=176, py=140-100=40
+           x=0.5: px=180, py=140-80=60
+           x=0.75: px=190, py=140-53=87
+           x=1: px=200, py=100
+           x=1.5: px=220, py=113
+           x=2: px=240, py=120
+           x=3: px=280, py=127
+           x=4: px=320(off), clip
+           Branch 2 (x<0): py=140-(1/x)*40 = 140+|1/x|*40
+           x=-0.3: px=148, py=140+133=273
+           x=-0.4: px=144, py=240
+           x=-0.5: px=140, py=220
+           x=-0.75: px=130, py=193
+           x=-1: px=120, py=180
+           x=-1.5: px=100, py=167
+           x=-2: px=80, py=160
+           x=-3: px=40, py=153
+           x=-4: px=0, py=150
+      -->
+      <svg width="320" height="280" viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fde68a" stroke-width=".8">
+          <line x1="0" y1="60" x2="320" y2="60"/><line x1="0" y1="100" x2="320" y2="100"/>
+          <line x1="0" y1="140" x2="320" y2="140"/><line x1="0" y1="180" x2="320" y2="180"/>
+          <line x1="0" y1="220" x2="320" y2="220"/>
+          <line x1="40" y1="0" x2="40" y2="280"/><line x1="80" y1="0" x2="80" y2="280"/>
+          <line x1="120" y1="0" x2="120" y2="280"/><line x1="160" y1="0" x2="160" y2="280"/>
+          <line x1="200" y1="0" x2="200" y2="280"/><line x1="240" y1="0" x2="240" y2="280"/>
+          <line x1="280" y1="0" x2="280" y2="280"/>
+        </g>
+        <!-- asymptotes (dashed) -->
+        <line x1="160" y1="5" x2="160" y2="275" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="5" y1="140" x2="315" y2="140" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <!-- axes labels -->
+        <g font-family="Arial" font-size="10" fill="#92400e" text-anchor="middle">
+          <text x="40" y="154">-3</text><text x="80" y="154">-2</text><text x="120" y="154">-1</text>
+          <text x="200" y="154">1</text><text x="240" y="154">2</text><text x="280" y="154">3</text>
+          <text x="147" y="104">3</text><text x="147" y="64">5</text>
+          <text x="147" y="184">-3</text><text x="147" y="224">-5</text>
+        </g>
+        <text x="308" y="137" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">x</text>
+        <text x="164" y="10" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">y</text>
+        <!-- Branch 1 (x>0) -->
+        <polyline
+          points="172,7 176,40 180,60 190,87 200,100 220,113 240,120 280,127"
+          fill="none" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- Branch 2 (x<0) -->
+        <polyline
+          points="40,153 80,160 100,167 120,180 130,193 140,220 144,240 148,273"
+          fill="none" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- asymptote labels -->
+        <text x="163" y="272" font-family="Arial" font-size="9" fill="#ef4444" font-style="italic">x=0</text>
+        <text x="5"   y="138" font-family="Arial" font-size="9" fill="#ef4444" font-style="italic">y=0</text>
+        <text x="248" y="105" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">y=1/x</text>
+      </svg>
+      <p class="svg-caption">$y = \frac{1}{x}$ — two branches, axes are asymptotes</p>
+    </div>
+    <div class="side-text">
+      <h3 style="color:#92400e;margin-bottom:8px;">Key features</h3>
+      <ul style="margin-left:18px;margin-bottom:10px;">
+        <li><strong>Two branches</strong> — one for $x>0$, one for $x<0$</li>
+        <li><strong>Asymptotes:</strong> $x = 0$ (y-axis) and $y = 0$ (x-axis)</li>
+        <li>Never crosses either axis</li>
+        <li>Rotational symmetry of order 2 about origin</li>
+        <li>If $k>0$: branches in Q1 and Q3</li>
+        <li>If $k<0$: branches in Q2 and Q4</li>
+      </ul>
+      <div class="concept">
+        <strong>Asymptote:</strong> A line that the curve gets closer and closer to but <em>never reaches</em>. For $y = \frac{1}{x}$, as $x \to 0$ the $y$-value grows without limit; as $x \to \infty$, $y \to 0$.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /reciprocal -->
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 6 – EXPONENTIAL FUNCTIONS
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Exponential Functions — $y = k^x$ ($k > 0$)</div>
+<div class="section-body">
+
+  <div class="concept">
+    An <strong>exponential function</strong> has the variable in the <em>exponent (power)</em>. When $k > 1$ the function grows rapidly; when $0 < k < 1$ it decays. All exponential functions of the form $y = k^x$ pass through $(0, 1)$ since $k^0 = 1$.
+  </div>
+
+  <div class="side-by-side">
+    <div class="side-svg">
+      <!-- y=2^x: origin(130,240), sx=50, sy=20
+           x=-2: y=0.25→py=240-5=235; px=30
+           x=-1: y=0.5→py=230; px=80
+           x=0: y=1→py=220; px=130
+           x=1: y=2→py=200; px=180
+           x=2: y=4→py=160; px=230
+           x=3: y=8→py=80; px=280
+           x=-3: y=0.125→py=237; px=-20 off; use px=5,py=237 as start
+
+           y=0.5^x (decay): py=240-0.5^x*20
+           x=-3: y=8→py=80; px=-20 off
+           x=-2: y=4→py=160; px=30
+           x=-1: y=2→py=200; px=80
+           x=0: y=1→py=220; px=130
+           x=1: y=0.5→py=230; px=180
+           x=2: y=0.25→py=235; px=230
+           x=3: y=0.125→py=237; px=280
+      -->
+      <svg width="310" height="270" viewBox="0 0 310 270" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#fde68a" stroke-width=".8">
+          <line x1="0" y1="40" x2="310" y2="40"/><line x1="0" y1="80" x2="310" y2="80"/>
+          <line x1="0" y1="120" x2="310" y2="120"/><line x1="0" y1="160" x2="310" y2="160"/>
+          <line x1="0" y1="200" x2="310" y2="200"/><line x1="0" y1="240" x2="310" y2="240"/>
+          <line x1="30" y1="0" x2="30" y2="270"/><line x1="80" y1="0" x2="80" y2="270"/>
+          <line x1="130" y1="0" x2="130" y2="270"/><line x1="180" y1="0" x2="180" y2="270"/>
+          <line x1="230" y1="0" x2="230" y2="270"/><line x1="280" y1="0" x2="280" y2="270"/>
+        </g>
+        <!-- asymptote y=0 -->
+        <line x1="5" y1="240" x2="305" y2="240" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="5,4"/>
+        <!-- axes -->
+        <line x1="5" y1="240" x2="305" y2="240" stroke="#d97706" stroke-width="2"/>
+        <line x1="130" y1="265" x2="130" y2="5" stroke="#d97706" stroke-width="2"/>
+        <g font-family="Arial" font-size="10" fill="#92400e" text-anchor="middle">
+          <text x="30"  y="255">-2</text><text x="80"  y="255">-1</text>
+          <text x="180" y="255">1</text><text x="230" y="255">2</text><text x="280" y="255">3</text>
+          <text x="117" y="204">1</text><text x="117" y="164">2</text>
+          <text x="117" y="124">4</text><text x="117" y="84">8</text>
+        </g>
+        <text x="298" y="237" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">x</text>
+        <text x="134" y="10" font-family="Arial" font-size="12" fill="#d97706" font-weight="bold">y</text>
+        <!-- y=2^x (growth): origin(130,240), sx=50, sy=20
+             px=130+x*50, py=240-2^x*20, points every 0.25 units -->
+        <polyline
+          points="5,237 18,236 30,235 43,234 55,233 68,232 80,230 93,228 105,226 118,223 130,220 143,216 155,212 168,206 180,200 193,192 205,183 218,173 230,160 243,145 255,127 268,106 280,80 293,50 305,14"
+          fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="283" y="78" font-family="Arial" font-size="12" fill="#2563eb" font-weight="bold">y=2ˣ</text>
+        <!-- y=(0.5)^x (decay) = 2^(-x): points every 0.25 units -->
+        <polyline
+          points="5,127 18,145 30,160 43,173 55,183 68,192 80,200 93,206 105,212 118,216 130,220 143,223 155,226 168,228 180,230 193,232 205,233 218,234 230,235 243,236 255,237 280,238"
+          fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="5" y="80" font-family="Arial" font-size="12" fill="#dc2626" font-weight="bold">y=(½)ˣ</text>
+        <!-- intersection point (0,1) -->
+        <circle cx="130" cy="220" r="5" fill="#d97706" stroke="white" stroke-width="1.5"/>
+        <text x="138" y="218" font-family="Arial" font-size="9" fill="#92400e" font-weight="bold">(0,1)</text>
+        <!-- asymptote label -->
+        <text x="5" y="238" font-family="Arial" font-size="9" fill="#ef4444" font-style="italic">y=0 (asymptote)</text>
+      </svg>
+      <p class="svg-caption">$y=2^x$ (growth) and $y=\left(\tfrac{1}{2}\right)^x$ (decay)</p>
+    </div>
+    <div class="side-text">
+      <h3 style="color:#92400e;margin-bottom:8px;">Key features</h3>
+      <ul style="margin-left:18px;margin-bottom:10px;">
+        <li>Always passes through $(0,\ 1)$ since $k^0 = 1$</li>
+        <li>Horizontal asymptote: $y = 0$ (x-axis)</li>
+        <li>Never negative (always $y > 0$)</li>
+        <li>$k > 1$: <em>exponential growth</em> — rises steeply to the right</li>
+        <li>$0 < k < 1$: <em>exponential decay</em> — falls toward zero</li>
+        <li>Passes through $(1,\ k)$ always</li>
+      </ul>
+      <table>
+        <tr><th>$x$</th><th>$y=2^x$</th><th>$y=3^x$</th></tr>
+        <tr><td>$-2$</td><td>$0.25$</td><td>$0.11$</td></tr>
+        <tr><td>$0$</td><td>$1$</td><td>$1$</td></tr>
+        <tr><td>$2$</td><td>$4$</td><td>$9$</td></tr>
+        <tr><td>$3$</td><td>$8$</td><td>$27$</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Sketching $y = 3^x$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Since $k = 3 > 1$, this is an exponential <strong>growth</strong> curve.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Mark the fixed point: $(0,\ 1)$ — all exponential graphs cross here.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Calculate a few points: $3^1 = 3$, $3^2 = 9$, $3^{-1} = \frac{1}{3}$, $3^{-2} = \frac{1}{9}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The curve rises steeply to the right, flattens toward $y = 0$ on the left (asymptote).</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Draw a smooth increasing curve through $(-1, \tfrac{1}{3})$, $(0, 1)$, $(1, 3)$, $(2, 9)$.</span></div>
+    </div>
+  </div>
+
+</div><!-- /exponential -->
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 7 – TRIGONOMETRIC FUNCTIONS
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Trigonometric Functions — $\sin$, $\cos$, $\tan$</div>
+<div class="section-body">
+
+  <div class="concept">
+    The sine, cosine and tangent functions are <strong>periodic</strong> — they repeat their pattern at regular intervals. At GCSE you work with angles in <strong>degrees</strong> and need to recognise and sketch their graphs from $0°$ to $360°$.
+  </div>
+
+  <!-- ── SIN & COS ── -->
+  <h3 style="margin:14px 0 8px;color:#92400e;">Sine and Cosine — $y = \sin x$ and $y = \cos x$</h3>
+
+  <!-- Sin curve: px=20+deg*(380/360), py=100-70*sin(deg°)
+       Points computed every 15°:
+       Sin:
+       0: 20,100   15: 36,82   30: 52,65   45: 67,51   60: 83,39
+       75: 99,32   90: 115,30  105: 131,32  120: 146,39  135: 162,51
+       150: 178,65  165: 194,82  180: 210,100  195: 226,118  210: 241,135
+       225: 257,150  240: 273,161  255: 289,168  270: 305,170  285: 321,168
+       300: 336,161  315: 352,150  330: 368,135  345: 383,118  360: 399,100
+
+       Cos:
+       0: 20,30   15: 36,32   30: 52,39   45: 67,51   60: 83,65
+       75: 99,82  90: 115,100  105: 131,118  120: 146,135  135: 162,150
+       150: 178,161  165: 194,168  180: 210,170  195: 226,168  210: 241,161
+       225: 257,150  240: 273,135  255: 289,118  270: 305,100  285: 321,82
+       300: 336,65  315: 352,51  330: 368,39  345: 383,32  360: 399,30
+  -->
+  <div class="svg-block">
+    <svg width="430" height="210" viewBox="0 0 430 210" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#fde68a" stroke-width=".8">
+        <line x1="20" y1="30"  x2="410" y2="30"/>
+        <line x1="20" y1="100" x2="410" y2="100"/>
+        <line x1="20" y1="170" x2="410" y2="170"/>
+        <line x1="115" y1="5" x2="115" y2="200"/>
+        <line x1="210" y1="5" x2="210" y2="200"/>
+        <line x1="305" y1="5" x2="305" y2="200"/>
+        <line x1="399" y1="5" x2="399" y2="200"/>
+      </g>
+      <!-- x-axis -->
+      <line x1="15" y1="100" x2="415" y2="100" stroke="#d97706" stroke-width="1.8"/>
+      <!-- y-axis -->
+      <line x1="20" y1="200" x2="20" y2="5" stroke="#d97706" stroke-width="1.8"/>
+      <!-- tick labels on x-axis -->
+      <g font-family="Arial" font-size="10" fill="#92400e" text-anchor="middle">
+        <text x="115" y="115">90°</text>
+        <text x="210" y="115">180°</text>
+        <text x="305" y="115">270°</text>
+        <text x="399" y="115">360°</text>
+        <text x="8"   y="34">1</text>
+        <text x="8"   y="104">0</text>
+        <text x="5"   y="174">−1</text>
+      </g>
+      <text x="417" y="103" font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">x</text>
+      <text x="24"  y="8"   font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">y</text>
+      <!-- dashed grid lines at y=1 and y=-1 -->
+      <line x1="15" y1="30"  x2="415" y2="30"  stroke="#aaa" stroke-width=".7" stroke-dasharray="3,3"/>
+      <line x1="15" y1="170" x2="415" y2="170" stroke="#aaa" stroke-width=".7" stroke-dasharray="3,3"/>
+      <!-- vertical dashes at 90°,180°,270°,360° -->
+      <line x1="115" y1="20" x2="115" y2="185" stroke="#ccc" stroke-width=".7" stroke-dasharray="3,3"/>
+      <line x1="210" y1="20" x2="210" y2="185" stroke="#ccc" stroke-width=".7" stroke-dasharray="3,3"/>
+      <line x1="305" y1="20" x2="305" y2="185" stroke="#ccc" stroke-width=".7" stroke-dasharray="3,3"/>
+      <line x1="399" y1="20" x2="399" y2="185" stroke="#ccc" stroke-width=".7" stroke-dasharray="3,3"/>
+      <!-- sin curve (blue) -->
+      <polyline
+        points="20,100 36,82 52,65 67,51 83,39 99,32 115,30 131,32 146,39 162,51 178,65 194,82 210,100 226,118 241,135 257,150 273,161 289,168 305,170 321,168 336,161 352,150 368,135 383,118 399,100"
+        fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round"/>
+      <!-- cos curve (red) -->
+      <polyline
+        points="20,30 36,32 52,39 67,51 83,65 99,82 115,100 131,118 146,135 162,150 178,161 194,168 210,170 226,168 241,161 257,150 273,135 289,118 305,100 321,82 336,65 352,51 368,39 383,32 399,30"
+        fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round"/>
+      <!-- legend -->
+      <line x1="25" y1="192" x2="55" y2="192" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="60" y="196" font-family="Arial" font-size="11" fill="#2563eb" font-weight="bold">y = sin x</text>
+      <line x1="140" y1="192" x2="170" y2="192" stroke="#dc2626" stroke-width="2.5"/>
+      <text x="175" y="196" font-family="Arial" font-size="11" fill="#dc2626" font-weight="bold">y = cos x</text>
+    </svg>
+    <p class="svg-caption">$y = \sin x$ and $y = \cos x$ for $0° \leq x \leq 360°$</p>
+  </div>
+
+  <div class="card-row">
+    <div class="func-card">
+      <h4>$y = \sin x$</h4>
+      <p>• Starts at $(0°, 0)$<br>• Maximum $1$ at $90°$<br>• Crosses zero at $0°$, $180°$, $360°$<br>• Minimum $-1$ at $270°$<br>• Period: $360°$</p>
+    </div>
+    <div class="func-card">
+      <h4>$y = \cos x$</h4>
+      <p>• Starts at $(0°, 1)$<br>• Maximum $1$ at $0°$ and $360°$<br>• Crosses zero at $90°$ and $270°$<br>• Minimum $-1$ at $180°$<br>• Period: $360°$<br>• Same shape as sin, shifted $90°$ left</p>
+    </div>
+    <div class="func-card">
+      <h4>Key values</h4>
+      <table class="trig-table" style="font-size:.82rem;">
+        <tr><th>Angle</th><th>sin</th><th>cos</th></tr>
+        <tr><td>$0°$</td><td>$0$</td><td>$1$</td></tr>
+        <tr><td>$30°$</td><td>$\frac{1}{2}$</td><td>$\frac{\sqrt{3}}{2}$</td></tr>
+        <tr><td>$45°$</td><td>$\frac{\sqrt{2}}{2}$</td><td>$\frac{\sqrt{2}}{2}$</td></tr>
+        <tr><td>$60°$</td><td>$\frac{\sqrt{3}}{2}$</td><td>$\frac{1}{2}$</td></tr>
+        <tr><td>$90°$</td><td>$1$</td><td>$0$</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── TAN ── -->
+  <h3 style="margin:20px 0 8px;color:#92400e;">Tangent — $y = \tan x$</h3>
+
+  <div class="concept">
+    The tangent function behaves very differently from sine and cosine. It has <strong>vertical asymptotes</strong> at $x = 90°$ and $x = 270°$ (and every $180°$ thereafter) because $\tan x = \frac{\sin x}{\cos x}$ and $\cos x = 0$ at these angles. Its period is $180°$ (half that of sin/cos).
+  </div>
+
+  <!-- Tan graph: viewBox 0 0 430 220, x-axis at y=110
+       px = 20 + deg*(390/360) = 20 + deg*1.0833
+       py = 110 - 25*tan(deg_rad), clamped to [8, 212]
+       Segment 1: 0° to ~83° (tan getting large)
+       0: 20, 110    15: 36, 103    30: 53, 96    45: 69, 85    60: 85, 67    70: 96, 42    75: 101, 17   → stop
+       Asymptote 90°: px=118
+       Segment 2: 97° to 173°
+       105: 134, 203    120: 150, 153    135: 166, 135    150: 182, 124    165: 199, 117    180: 214, 110
+       195: 231, 103    210: 247, 96    225: 264, 85    240: 280, 67    255: 296, 42    260: 302, 17  → stop
+       Asymptote 270°: px=313
+       Segment 3: 277° to 355°
+       285: 329, 203    300: 345, 153    315: 361, 135    330: 378, 124    345: 394, 117    360: 410, 110
+  -->
+  <div class="svg-block">
+    <svg width="430" height="225" viewBox="0 0 430 225" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#fde68a" stroke-width=".8">
+        <line x1="20" y1="35"  x2="415" y2="35"/>
+        <line x1="20" y1="110" x2="415" y2="110"/>
+        <line x1="20" y1="185" x2="415" y2="185"/>
+      </g>
+      <!-- x-axis -->
+      <line x1="15" y1="110" x2="418" y2="110" stroke="#d97706" stroke-width="1.8"/>
+      <!-- y-axis -->
+      <line x1="20" y1="220" x2="20" y2="5" stroke="#d97706" stroke-width="1.8"/>
+      <!-- asymptotes (dashed red) at 90° (px=118) and 270° (px=313) -->
+      <line x1="118" y1="8" x2="118" y2="217" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="313" y1="8" x2="313" y2="217" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <!-- degree labels -->
+      <g font-family="Arial" font-size="10" fill="#92400e" text-anchor="middle">
+        <text x="118" y="222">90°</text>
+        <text x="215" y="122">180°</text>
+        <text x="313" y="222">270°</text>
+        <text x="410" y="122">360°</text>
+        <text x="8" y="113">0</text>
+        <text x="8" y="39">3</text>
+        <text x="5" y="189">−3</text>
+      </g>
+      <!-- 0° and 180° tick lines -->
+      <line x1="215" y1="5" x2="215" y2="220" stroke="#ccc" stroke-width=".7" stroke-dasharray="3,3"/>
+      <line x1="410" y1="5" x2="410" y2="220" stroke="#ccc" stroke-width=".7" stroke-dasharray="3,3"/>
+      <!-- y=3 and y=-3 dashes -->
+      <line x1="15" y1="35"  x2="415" y2="35"  stroke="#aaa" stroke-width=".6" stroke-dasharray="3,3"/>
+      <line x1="15" y1="185" x2="415" y2="185" stroke="#aaa" stroke-width=".6" stroke-dasharray="3,3"/>
+      <!-- Tan curves: px=20+deg*1.0833, py=110-25*tan(deg°), every 5°
+           Segment 1: 0° to 77° (approaching asymptote at 90°) -->
+      <polyline
+        points="20,110 25,108 31,106 36,103 42,101 47,98 53,96 58,93 63,89 69,85 74,80 80,74 85,67 90,56 96,41 99,28 101,17 103,2"
+        fill="none" stroke="#16a34a" stroke-width="2.3" stroke-linejoin="round"/>
+      <!-- Segment 2: ~103° to ~257° (from just after 90° asymptote through 180° to just before 270°) -->
+      <polyline
+        points="103,218 134,203 139,179 145,164 150,153 155,146 161,140 166,135 172,131 177,128 183,124 188,122 193,119 199,117 204,114 210,112 215,110 220,108 226,106 231,103 237,101 242,98 248,96 253,93 258,89 264,85 269,80 275,74 280,67 285,56 291,41 294,28 296,17 298,2"
+        fill="none" stroke="#16a34a" stroke-width="2.3" stroke-linejoin="round"/>
+      <!-- Segment 3: ~283° to 360° (from just after 270° asymptote to end) -->
+      <polyline
+        points="327,218 329,203 334,179 340,164 345,153 350,146 356,140 361,135 367,131 372,128 378,124 383,122 388,119 394,117 399,114 405,112 410,110"
+        fill="none" stroke="#16a34a" stroke-width="2.3" stroke-linejoin="round"/>
+      <!-- asymptote labels -->
+      <text x="121" y="15" font-family="Arial" font-size="9" fill="#ef4444" font-style="italic">x=90°</text>
+      <text x="316" y="15" font-family="Arial" font-size="9" fill="#ef4444" font-style="italic">x=270°</text>
+      <!-- legend -->
+      <line x1="25" y1="215" x2="55" y2="215" stroke="#16a34a" stroke-width="2.5"/>
+      <text x="60" y="218" font-family="Arial" font-size="11" fill="#16a34a" font-weight="bold">y = tan x</text>
+      <text x="420" y="107" font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">x</text>
+      <text x="24"  y="8"   font-family="Arial" font-size="11" fill="#d97706" font-weight="bold">y</text>
+    </svg>
+    <p class="svg-caption">$y = \tan x$ for $0° \leq x \leq 360°$ — asymptotes at $90°$ and $270°$</p>
+  </div>
+
+  <div class="card-row">
+    <div class="func-card">
+      <h4>$y = \tan x$ — key facts</h4>
+      <p>• $\tan x = \dfrac{\sin x}{\cos x}$<br>• Period: $180°$<br>• Undefined at $90°$, $270°$, …<br>• Passes through $(0°,0)$, $(180°,0)$, $(360°,0)$<br>• $\tan 45° = 1$, $\tan 135° = -1$</p>
+    </div>
+    <div class="func-card">
+      <h4>Using graphs to find angles</h4>
+      <p>If $\sin \theta = 0.5$, the graph of $y = \sin x$ shows this at $\theta = 30°$ <em>and</em> $\theta = 150°$ in $0°$–$360°$. Always check for a second solution using the graph's symmetry.</p>
+    </div>
+    <div class="func-card">
+      <h4>Symmetry rules</h4>
+      <p>$\sin(180° - x) = \sin x$<br>$\cos(360° - x) = \cos x$<br>$\tan(180° + x) = \tan x$<br><br>These help you find all solutions in $0°$–$360°$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Finding all angles where $\sin \theta = 0.6$ for $0° \leq \theta \leq 360°$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Use your calculator: $\sin^{-1}(0.6) = 36.87°$ (the principal value in the first quadrant).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>From the sin graph, sin is also positive in the <strong>second quadrant</strong> (90°–180°). Use symmetry: second solution $= 180° - 36.87° = 143.13°$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>In 0°–360°, sin is negative in the third and fourth quadrants, so there are no further positive solutions.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>$\theta \approx 36.9°$ and $\theta \approx 143.1°$</strong></span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Finding all angles where $\cos \theta = -0.5$ for $0° \leq \theta \leq 360°$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$\cos^{-1}(0.5) = 60°$ — this gives the reference angle.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cosine is negative in the <strong>second</strong> and <strong>third</strong> quadrants. Second quadrant: $180° - 60° = 120°$. Third quadrant: $180° + 60° = 240°$.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>$\theta = 120°$ and $\theta = 240°$</strong></span></div>
+    </div>
+  </div>
+
+</div><!-- /trig -->
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 8 – QUICK REFERENCE
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Quick Reference</div>
+<div class="section-body">
+  <table>
+    <tr>
+      <th>Function</th>
+      <th>Equation</th>
+      <th>Shape</th>
+      <th>Key features</th>
+    </tr>
+    <tr>
+      <td><strong>Linear</strong></td>
+      <td>$y = mx + c$</td>
+      <td>Straight line</td>
+      <td>Gradient $m$; y-intercept $c$</td>
+    </tr>
+    <tr>
+      <td><strong>Quadratic</strong></td>
+      <td>$y = ax^2 + bx + c$</td>
+      <td>U or ∩ (parabola)</td>
+      <td>Roots, vertex, axis of symmetry</td>
+    </tr>
+    <tr>
+      <td><strong>Cubic</strong></td>
+      <td>$y = ax^3 + \ldots$</td>
+      <td>S-curve</td>
+      <td>Up to 3 roots; $a>0$ rises right</td>
+    </tr>
+    <tr>
+      <td><strong>Reciprocal</strong></td>
+      <td>$y = k/x$</td>
+      <td>Two-branch hyperbola</td>
+      <td>Asymptotes $x=0$, $y=0$; never crosses axes</td>
+    </tr>
+    <tr>
+      <td><strong>Exponential</strong></td>
+      <td>$y = k^x$, $k>0$</td>
+      <td>Steep curve</td>
+      <td>Passes through $(0,1)$; asymptote $y=0$</td>
+    </tr>
+    <tr>
+      <td><strong>Sine</strong></td>
+      <td>$y = \sin x$</td>
+      <td>Wave</td>
+      <td>$(0,0)$; max $1$ at $90°$; period $360°$</td>
+    </tr>
+    <tr>
+      <td><strong>Cosine</strong></td>
+      <td>$y = \cos x$</td>
+      <td>Wave (sin shifted)</td>
+      <td>$(0,1)$; max $1$ at $0°$, $360°$; period $360°$</td>
+    </tr>
+    <tr>
+      <td><strong>Tangent</strong></td>
+      <td>$y = \tan x$</td>
+      <td>Repeating branches</td>
+      <td>Asymptotes at $90°$, $270°$; period $180°$</td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     SECTION 9 – PRACTICE QUESTIONS
+════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">9</span> Practice Questions</div>
+<div class="section-body">
+
+  <!-- Q1 -->
+  <div class="question">
+    <div class="question-header">Question 1 — Identifying functions from equations</div>
+    <div class="question-body">
+      <p>State the type of function for each of the following:</p>
+      <p>(a) $y = 5x - 3$ &nbsp;&nbsp; (b) $y = \dfrac{4}{x}$ &nbsp;&nbsp; (c) $y = x^3 - 2x$ &nbsp;&nbsp; (d) $y = 3^x$ &nbsp;&nbsp; (e) $y = x^2 - 4x + 1$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $y = 5x - 3$ — <strong>Linear</strong> (highest power of $x$ is 1, in the form $y=mx+c$)</p>
+          <p>(b) $y = \frac{4}{x}$ — <strong>Reciprocal</strong> (form $y = k/x$)</p>
+          <p>(c) $y = x^3 - 2x$ — <strong>Cubic</strong> (highest power is 3)</p>
+          <p>(d) $y = 3^x$ — <strong>Exponential</strong> (variable is in the exponent, $k=3>0$)</p>
+          <p>(e) $y = x^2 - 4x + 1$ — <strong>Quadratic</strong> (highest power is 2)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question">
+    <div class="question-header">Question 2 — Features of a linear graph</div>
+    <div class="question-body">
+      <p>For the line $y = -4x + 6$:</p>
+      <p>(a) State the gradient and y-intercept. &nbsp; (b) Find the x-intercept. &nbsp; (c) Sketch the line.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient $m = -4$; y-intercept $c = 6$, so the line crosses the y-axis at $(0, 6)$.</p>
+          <p><strong>(b)</strong> Set $y = 0$: $-4x + 6 = 0 \Rightarrow x = \frac{6}{4} = 1.5$. x-intercept: $(1.5,\ 0)$.</p>
+          <p><strong>(c)</strong> Sketch: plot $(0,6)$ and $(1.5,0)$; draw a straight line with negative gradient (slopes downward to the right).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question">
+    <div class="question-header">Question 3 — Reading a quadratic graph</div>
+    <div class="question-body">
+      <p>The graph of $y = x^2 - 4x + 3$ is a parabola.</p>
+      <p>(a) Find the roots. &nbsp; (b) Find the turning point. &nbsp; (c) Write the y-intercept. &nbsp; (d) State the axis of symmetry.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x^2 - 4x + 3 = 0 \Rightarrow (x-1)(x-3) = 0 \Rightarrow x = 1$ or $x = 3$. Roots at $(1,0)$ and $(3,0)$.</p>
+          <p><strong>(b)</strong> Axis: $x = -\frac{-4}{2} = 2$. Sub: $y = 4-8+3 = -1$. Minimum at $(2, -1)$.</p>
+          <p><strong>(c)</strong> y-intercept: $(0, 3)$ (the constant term).</p>
+          <p><strong>(d)</strong> Axis of symmetry: $x = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question">
+    <div class="question-header">Question 4 — Cubic function table of values</div>
+    <div class="question-body">
+      <p>Complete the table for $y = x^3 + x^2 - 2x$ and state the roots of the equation $x^3 + x^2 - 2x = 0$.</p>
+      <table>
+        <tr><th>$x$</th><th>$-3$</th><th>$-2$</th><th>$-1$</th><th>$0$</th><th>$1$</th><th>$2$</th></tr>
+        <tr><td>$y$</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Substitute each $x$ into $y = x^3 + x^2 - 2x$:</p>
+          <table>
+            <tr><th>$x$</th><th>$-3$</th><th>$-2$</th><th>$-1$</th><th>$0$</th><th>$1$</th><th>$2$</th></tr>
+            <tr><td>$y$</td><td>$-12$</td><td>$0$</td><td>$2$</td><td>$0$</td><td>$0$</td><td>$8$</td></tr>
+          </table>
+          <p>Roots (where $y=0$): $x = -2,\ x = 0,\ x = 1$. (We can verify by factorising: $x(x^2+x-2) = x(x+2)(x-1) = 0$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question">
+    <div class="question-header">Question 5 — Reciprocal function</div>
+    <div class="question-body">
+      <p>(a) For $y = \dfrac{6}{x}$, calculate the values of $y$ when $x = -3,\ -1,\ 1,\ 2,\ 6$.</p>
+      <p>(b) State the equations of the asymptotes. &nbsp; (c) Describe the shape of the graph.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong></p>
+          <table>
+            <tr><th>$x$</th><th>$-3$</th><th>$-1$</th><th>$1$</th><th>$2$</th><th>$6$</th></tr>
+            <tr><td>$y = 6/x$</td><td>$-2$</td><td>$-6$</td><td>$6$</td><td>$3$</td><td>$1$</td></tr>
+          </table>
+          <p><strong>(b)</strong> Asymptotes: $x = 0$ (y-axis) and $y = 0$ (x-axis).</p>
+          <p><strong>(c)</strong> Two-branch hyperbola: one branch in the first quadrant ($x>0, y>0$) and one in the third quadrant ($x<0, y<0$). The curve approaches but never reaches either axis.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question">
+    <div class="question-header">Question 6 — Exponential growth</div>
+    <div class="question-body">
+      <p>The population of bacteria follows $P = 2^t$ where $t$ is time in hours.</p>
+      <p>(a) What is the population at $t = 0$? &nbsp; (b) How long does it take to reach a population of 32? &nbsp; (c) Sketch the graph for $0 \leq t \leq 5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $P = 2^0 = 1$. Population starts at 1.</p>
+          <p><strong>(b)</strong> $2^t = 32 = 2^5$, so $t = 5$ hours.</p>
+          <p><strong>(c)</strong> Plot points: $(0,1), (1,2), (2,4), (3,8), (4,16), (5,32)$. Draw a smooth increasing curve. The curve passes through $(0,1)$ and rises steeply. There is a horizontal asymptote at $P=0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question">
+    <div class="question-header">Question 7 — Sine graph</div>
+    <div class="question-body">
+      <p>(a) Write down the value of $\sin 270°$. &nbsp; (b) Solve $\sin \theta = \dfrac{\sqrt{3}}{2}$ for $0° \leq \theta \leq 360°$. &nbsp; (c) State the period of $y = \sin x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> From the sine graph, the minimum is $-1$ at $270°$: $\sin 270° = -1$</p>
+          <p><strong>(b)</strong> $\sin^{-1}\!\left(\frac{\sqrt{3}}{2}\right) = 60°$ (first quadrant solution). Since $\sin$ is positive in Q1 and Q2: second solution $= 180° - 60° = 120°$.</p>
+          <p>$\boldsymbol{\theta = 60°}$ <strong>and</strong> $\boldsymbol{\theta = 120°}$</p>
+          <p><strong>(c)</strong> Period of $y = \sin x$ is $\mathbf{360°}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question">
+    <div class="question-header">Question 8 — Cosine equation</div>
+    <div class="question-body">
+      <p>Solve $\cos \theta = -\dfrac{\sqrt{2}}{2}$ for $0° \leq \theta \leq 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos^{-1}\!\left(\frac{\sqrt{2}}{2}\right) = 45°$ — this is the reference angle.</p>
+          <p>Cosine is <em>negative</em> in the second and third quadrants:</p>
+          <p>Second quadrant: $\theta = 180° - 45° = 135°$</p>
+          <p>Third quadrant: $\theta = 180° + 45° = 225°$</p>
+          <p><strong>$\theta = 135°$ and $\theta = 225°$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question">
+    <div class="question-header">Question 9 — Matching graphs to equations</div>
+    <div class="question-body">
+      <p>Match each description to one of the equations below:</p>
+      <p><em>Equations:</em> &nbsp; A: $y = \sin x$ &nbsp; B: $y = x^3$ &nbsp; C: $y = \frac{1}{x}$ &nbsp; D: $y = 2^x$ &nbsp; E: $y = x^2 - 4$</p>
+      <p>(i) A U-shaped curve with roots at $x = \pm 2$ and minimum at $(0, -4)$.</p>
+      <p>(ii) A curve passing through $(0,1)$ with a horizontal asymptote at $y=0$ that increases steeply for $x>0$.</p>
+      <p>(iii) A curve with rotational symmetry about the origin, two branches that approach both axes but never cross them.</p>
+      <p>(iv) A curve that passes through the origin, with $y \to +\infty$ as $x \to +\infty$ and $y \to -\infty$ as $x \to -\infty$, S-shaped.</p>
+      <p>(v) A wave with period $360°$, value $0$ at $0°$ and maximum $1$ at $90°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(i) → <strong>E</strong>: $y = x^2 - 4$ — parabola, roots at $\pm 2$, vertex at $(0,-4)$</p>
+          <p>(ii) → <strong>D</strong>: $y = 2^x$ — exponential, passes through $(0,1)$, asymptote $y=0$</p>
+          <p>(iii) → <strong>C</strong>: $y = \frac{1}{x}$ — reciprocal, two-branch hyperbola</p>
+          <p>(iv) → <strong>B</strong>: $y = x^3$ — cubic S-curve through origin</p>
+          <p>(v) → <strong>A</strong>: $y = \sin x$ — sine wave, period $360°$, starts at $(0,0)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question">
+    <div class="question-header">Question 10 — Mixed interpretation</div>
+    <div class="question-body">
+      <p>A graph shows the curve $y = 4 \times 2^x$.</p>
+      <p>(a) What value does $y$ take when $x = 0$? &nbsp; (b) Write down the equation of the asymptote. &nbsp; (c) Is the curve increasing or decreasing? &nbsp; (d) Find $x$ when $y = 32$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $y = 4 \times 2^0 = 4 \times 1 = 4$. The y-intercept is $(0, 4)$.</p>
+          <p><strong>(b)</strong> As $x \to -\infty$, $2^x \to 0$, so $y \to 0$. Asymptote: $\mathbf{y = 0}$.</p>
+          <p><strong>(c)</strong> Since the base $2 > 1$, the function is <strong>increasing</strong> (exponential growth).</p>
+          <p><strong>(d)</strong> $4 \times 2^x = 32 \Rightarrow 2^x = 8 = 2^3 \Rightarrow \mathbf{x = 3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Graphs of Functions · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

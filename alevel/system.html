@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systematic Sampling - A Level Maths</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 0.5rem;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .formula-box {
+            background-color: #eafaf1;
+            border-left: 4px solid #27ae60;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+        .example-box {
+            background-color: #fcf3cf;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Systematic Sampling: A Level Maths Revision Guide</h1>
+        
+        <p>Systematic sampling is another fundamental random sampling method you need to know for A Level Maths. Instead of picking completely at random from the whole group, you select items from an ordered list (a sampling frame) at regular, fixed intervals.</p>
+
+        <hr>
+
+        <h2>How It Works</h2>
+        <p>To carry out systematic sampling, follow these steps:</p>
+        <ol>
+            <li><strong>Number the population:</strong> Ensure you have a complete sampling frame where every member of the population is listed and numbered.</li>
+            <li><strong>Calculate the interval (k):</strong> Figure out the regular gap you need to leave between each selected item to get your desired sample size.</li>
+            <li><strong>Choose a random start:</strong> Generate a random number between 1 and k. This is your first chosen item.</li>
+            <li><strong>Select the rest:</strong> Keep adding k to your starting number to pick the remaining items for your sample.</li>
+        </ol>
+
+        <hr>
+
+        <h2>The Formula</h2>
+        <p>To find your interval size (often referred to as k), use this formula:</p>
+        
+        <div class="formula-box">
+            k = Population Size / Sample Size
+        </div>
+        
+        <p><em>Note: If k doesn't work out to be a perfect whole number, you generally round down to the nearest integer. This ensures you don't run out of numbers on your list before you complete your sample.</em></p>
+
+        <hr>
+
+        <h2>A Practical Example</h2>
+        <div class="example-box">
+            <p>Let's say a factory produces 500 cars a day, and the quality control manager wants to take a systematic sample of 20 cars to check for defects.</p>
+            
+            <ol>
+                <li><strong>Calculate the interval (k):</strong> k = 500 / 20 = 25<br>
+                This means the manager needs to check every 25th car.</li>
+                
+                <li><strong>Choose a random start:</strong> The manager uses a random number generator to pick a starting number between 1 and 25. Let's say the random number generated is 7.</li>
+                
+                <li><strong>Select the sample:</strong>
+                    <ul>
+                        <li>The 1st car checked is the <strong>7th</strong> car off the production line.</li>
+                        <li>The 2nd car checked is the 7 + 25 = <strong>32nd</strong> car.</li>
+                        <li>The 3rd car checked is the 32 + 25 = <strong>57th</strong> car.</li>
+                        <li>...and so on, until 20 cars have been checked (the final car will be the 482nd).</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <hr>
+
+        <h2>Advantages and Disadvantages</h2>
+        <p>Just like with stratified sampling, A Level examiners want you to be able to critically evaluate this method.</p>
+        
+        <h3>Advantages:</h3>
+        <ul>
+            <li>It is straightforward, quick, and easy to use, especially for large populations.</li>
+            <li>It ensures the sample is evenly spread across the entire population (unlike simple random sampling, where random chance could result in all selected items clumping together at the top of the list).</li>
+        </ul>
+
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>It requires a complete sampling frame (a numbered list of the whole population).</li>
+            <li><strong>The major exam point:</strong> It can introduce bias if there is a hidden, repeating pattern in the sampling frame that coincides with the interval k. For example, if you sample every 7th day of the week to check shop sales, you will only ever be looking at the same day (e.g., every Tuesday), completely missing weekend trends.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

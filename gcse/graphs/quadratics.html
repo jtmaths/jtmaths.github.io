@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadratic Functions – Roots, Intercepts &amp; Turning Points</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1a2433;
+      background: #f0fdfc;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.1rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: .85rem;
+      margin-top: 10px;
+    }
+    main { max-width: 880px; margin: 0 auto; padding: 28px 20px; }
+
+    /* ── section headers ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0d9488;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 13px 20px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-top: 36px;
+    }
+    .section-title .num {
+      background: rgba(255,255,255,.25);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .section-body {
+      background: #fff;
+      border: 1px solid #99f6e4;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 22px 24px;
+    }
+
+    /* ── concept box ── */
+    .concept {
+      background: #f0fdfa;
+      border-left: 4px solid #0d9488;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .concept strong { color: #115e59; }
+
+    /* ── formula box ── */
+    .formula-box {
+      background: #ecfeff;
+      border: 2px solid #0891b2;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    .formula-box .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #0e7490;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    /* ── highlight box (key point) ── */
+    .key {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: .95rem;
+    }
+    .key strong { color: #9a3412; }
+
+    /* ── tip ── */
+    .tip {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: .95rem;
+    }
+    .tip strong { color: #713f12; }
+
+    /* ── step list ── */
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .steps li::before {
+      content: counter(step);
+      background: #0d9488;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── worked example ── */
+    .example {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .example-header {
+      background: #0d9488;
+      color: #fff;
+      padding: 9px 18px;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .example-body { padding: 16px 20px; }
+    .step-row {
+      display: flex; gap: 10px;
+      background: #ccfbf1;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .step-row .arrow { color: #0f766e; font-weight: 800; flex-shrink: 0; min-width: 20px; }
+
+    /* ── table ── */
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95rem; }
+    th {
+      background: #0d9488;
+      color: #fff;
+      padding: 9px 14px;
+      text-align: left;
+    }
+    td { padding: 9px 14px; border-bottom: 1px solid #d1fae5; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f0fdfa; }
+
+    /* ── feature cards ── */
+    .card-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+    .feature-card {
+      flex: 1; min-width: 160px;
+      border: 2px solid #99f6e4;
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: #f9fffe;
+    }
+    .feature-card h4 { color: #0d9488; font-size: .95rem; margin-bottom: 6px; }
+    .feature-card p  { font-size: .88rem; line-height: 1.5; }
+
+    /* ── svg diagrams ── */
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .svg-caption { font-size: .85rem; color: #555; margin-top: 5px; }
+
+    /* ── practice questions ── */
+    .question {
+      background: #fff;
+      border: 1px solid #99f6e4;
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .question-header {
+      background: #f0fdfa;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: #115e59;
+      font-size: .95rem;
+      border-bottom: 1px solid #99f6e4;
+    }
+    .question-body { padding: 10px 16px 14px; }
+    details summary {
+      cursor: pointer;
+      color: #0d9488;
+      font-weight: 600;
+      padding: 8px 0 4px;
+      font-size: .9rem;
+      user-select: none;
+    }
+    details summary:hover { color: #115e59; }
+    .solution {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: .93rem;
+    }
+    .solution p { margin-bottom: 6px; }
+
+    /* ── quick ref ── */
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card {
+      flex: 1; min-width: 190px;
+      background: #ecfeff;
+      border: 1px solid #a5f3fc;
+      border-radius: 8px;
+      padding: 13px 15px;
+    }
+    .ref-card h4 { color: #0e7490; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.55; }
+
+    /* ── completing the square layout ── */
+    .ctq-box {
+      background: #faf5ff;
+      border: 2px solid #a78bfa;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .ctq-box .ctq-title { color: #6d28d9; font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .card-row, .ref-grid { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Quadratic Functions</h1>
+  <p>Roots, Intercepts, Turning Points &amp; Completing the Square</p>
+  <div class="badge">GCSE Maths · Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1 – WHAT IS A QUADRATIC?
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What is a Quadratic Function?</div>
+<div class="section-body">
+
+  <p>A <strong>quadratic function</strong> is any function where the highest power of $x$ is 2. The standard form is:</p>
+  <div class="formula-box">
+    <div class="label">Standard Form</div>
+    $$y = ax^2 + bx + c$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">where $a \neq 0$, and $a$, $b$, $c$ are constants</p>
+  </div>
+
+  <p>Its graph is a smooth, symmetrical curve called a <strong>parabola</strong>.</p>
+
+  <div class="card-row">
+    <div class="feature-card">
+      <h4>When $a > 0$ (positive)</h4>
+      <p>The parabola is <strong>U-shaped</strong> — it opens upward and has a <em>minimum</em> turning point.</p>
+    </div>
+    <div class="feature-card">
+      <h4>When $a < 0$ (negative)</h4>
+      <p>The parabola is <strong>∩-shaped</strong> — it opens downward and has a <em>maximum</em> turning point.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Key features on graph</h4>
+      <p>Every parabola has: a <strong>y-intercept</strong>, possibly 0, 1 or 2 <strong>roots</strong>, and exactly one <strong>turning point</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Annotated parabola SVG -->
+  <div class="svg-block">
+    <svg width="440" height="340" viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#e0f7f5" stroke-width=".9">
+        <line x1="0" y1="50" x2="440" y2="50"/><line x1="0" y1="100" x2="440" y2="100"/>
+        <line x1="0" y1="150" x2="440" y2="150"/><line x1="0" y1="200" x2="440" y2="200"/>
+        <line x1="0" y1="250" x2="440" y2="250"/><line x1="0" y1="300" x2="440" y2="300"/>
+        <line x1="55" y1="0" x2="55" y2="340"/><line x1="110" y1="0" x2="110" y2="340"/>
+        <line x1="165" y1="0" x2="165" y2="340"/><line x1="220" y1="0" x2="220" y2="340"/>
+        <line x1="275" y1="0" x2="275" y2="340"/><line x1="330" y1="0" x2="330" y2="340"/>
+        <line x1="385" y1="0" x2="385" y2="340"/>
+      </g>
+      <!-- axes: origin at (220,220), sx=55, sy=40 -->
+      <line x1="5" y1="220" x2="435" y2="220" stroke="#0d9488" stroke-width="2"/>
+      <line x1="220" y1="330" x2="220" y2="10" stroke="#0d9488" stroke-width="2"/>
+      <!-- axis ticks & labels -->
+      <g font-family="Arial" font-size="12" fill="#0f766e" text-anchor="middle">
+        <text x="55"  y="237">-3</text><text x="110" y="237">-2</text>
+        <text x="165" y="237">-1</text><text x="275" y="237">1</text>
+        <text x="330" y="237">2</text><text x="385" y="237">3</text>
+        <text x="207" y="183">2</text><text x="207" y="143">4</text>
+        <text x="207" y="103">6</text><text x="207" y="263">-2</text>
+        <text x="207" y="303">-4</text>
+      </g>
+      <text x="428" y="217" font-family="Arial" font-size="13" fill="#0d9488" font-weight="bold">x</text>
+      <text x="224" y="13" font-family="Arial" font-size="13" fill="#0d9488" font-weight="bold">y</text>
+
+      <!-- Parabola y = x²-2x-3  (a=1,b=-2,c=-3)
+           roots at x=-1 and x=3, vertex at (1,-4), y-intercept at (0,-3)
+           origin(220,220), sx=55, sy=40
+           pixel_x = 220 + x*55
+           pixel_y = 220 - y*40
+           key points:
+             x=-1: y=0  → px=(165,220)
+             x=0:  y=-3 → px=(220,340) — but that's too low at sy=40: py=220-(-3)*40=220+120=340 ✓ (on edge)
+             x=1:  y=-4 → py=220+160=380 — off screen!
+           Need sy=25:
+             x=1: y=-4 → py=220+100=320 ✓
+             x=-1: y=0 → py=220
+             x=3:  y=0 → py=220
+             x=0:  y=-3→ py=220+75=295
+             x=-2: y=5 → py=220-125=95
+             x=4:  y=5 → py=95
+           x=-3: y=12 → py=220-300=-80 off
+           let's use sy=25, sx=55
+           x=-2.5: y=1+5-3=1+5... = 6.25+5-3=8.25 → py=220-206=-off
+           better: x from -2 to 4
+           x=-2: y=4+4-3=5   → py=220-125=95
+           x=-1: y=0          → py=220
+           x=0:  y=-3         → py=295
+           x=1:  y=1-2-3=-4  → py=320
+           x=2:  y=4-4-3=-3  → py=295
+           x=3:  y=9-6-3=0   → py=220
+           x=4:  y=16-8-3=5  → py=95
+      -->
+      <polyline
+        points="110,95 165,220 220,295 275,320 330,295 385,220 440,95"
+        fill="none" stroke="#0891b2" stroke-width="3" stroke-linejoin="round"/>
+      <!-- extend left: x=-2 → px=110; actual start already at x=-2 -->
+      <!-- actually polyline already covers -2 to 4; let's add half-step refinement -->
+      <!-- smoother with intermediate points:
+           x=-1.5: y=2.25+3-3=2.25 → py=220-56=164; px=220-1.5*55=137
+           x=-0.5: y=0.25+1-3=-1.75 → py=220+44=264; px=220-27.5=192
+           x=0.5: y=0.25-1-3=-3.75 → py=220+94=314; px=220+27.5=248
+           x=1.5: y=2.25-3-3=-3.75 → py=314; px=303
+           x=2.5: y=6.25-5-3=-1.75 → py=264; px=357
+           x=3.5: y=12.25-7-3=2.25 → py=164; px=413
+      -->
+      <polyline
+        points="110,95 137,164 165,220 192,264 220,295 248,314 275,320 303,314 330,295 357,264 385,220 413,164"
+        fill="none" stroke="#0891b2" stroke-width="3" stroke-linejoin="round"/>
+
+      <!-- roots: (-1,0) and (3,0) -->
+      <circle cx="165" cy="220" r="7" fill="#ef4444" stroke="white" stroke-width="2"/>
+      <circle cx="385" cy="220" r="7" fill="#ef4444" stroke="white" stroke-width="2"/>
+      <!-- root labels -->
+      <text x="155" y="210" font-family="Arial" font-size="12" fill="#dc2626" font-weight="bold">root</text>
+      <text x="155" y="198" font-family="Arial" font-size="11" fill="#dc2626">(-1, 0)</text>
+      <text x="388" y="210" font-family="Arial" font-size="12" fill="#dc2626" font-weight="bold">root</text>
+      <text x="388" y="198" font-family="Arial" font-size="11" fill="#dc2626">(3, 0)</text>
+
+      <!-- y-intercept: (0,-3) → px=220, py=295 -->
+      <circle cx="220" cy="295" r="7" fill="#f97316" stroke="white" stroke-width="2"/>
+      <text x="228" y="300" font-family="Arial" font-size="11" fill="#ea580c" font-weight="bold">y-intercept (0,−3)</text>
+
+      <!-- turning point (vertex): (1,-4) → px=275, py=320 -->
+      <circle cx="275" cy="320" r="7" fill="#7c3aed" stroke="white" stroke-width="2"/>
+      <text x="283" y="326" font-family="Arial" font-size="11" fill="#6d28d9" font-weight="bold">vertex (1,−4)</text>
+
+      <!-- axis of symmetry: dashed line x=1 → px=275 -->
+      <line x1="275" y1="50" x2="275" y2="330" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="279" y="45" font-family="Arial" font-size="11" fill="#6d28d9" font-style="italic">x = 1 (axis of symmetry)</text>
+
+      <!-- function label -->
+      <text x="415" y="90" font-family="Arial" font-size="13" fill="#0891b2" font-weight="bold">y = x²−2x−3</text>
+    </svg>
+    <p class="svg-caption">Key features of a quadratic graph: roots (red), y-intercept (orange), vertex (purple)</p>
+  </div>
+
+</div><!-- /section 1 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2 – ROOTS AND X-INTERCEPTS
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Roots (x-intercepts)</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>roots</strong> of a quadratic are the values of $x$ where the graph <em>crosses or touches</em> the x-axis — i.e. where $y = 0$. A quadratic can have <strong>0, 1 or 2 roots</strong>.
+  </div>
+
+  <!-- 0/1/2 roots SVG -->
+  <div class="card-row">
+    <div class="feature-card" style="text-align:center;">
+      <svg width="130" height="100" viewBox="0 0 130 100">
+        <line x1="5" y1="70" x2="125" y2="70" stroke="#aaa" stroke-width="1.5"/>
+        <line x1="65" y1="5" x2="65" y2="95" stroke="#aaa" stroke-width="1.5"/>
+        <!-- y=x²+2: vertex at (0,2), no real roots
+             origin(65,70), sx=30px/unit, sy=10px/unit
+             x=-2: y=6  → px=5,   py=70-60=10
+             x=-1.5: y=4.25 → px=20, py=70-42.5≈28
+             x=-1: y=3  → px=35,  py=70-30=40
+             x=-0.5: y=2.25 → px=50, py=70-22.5≈48
+             x=0:  y=2  → px=65,  py=70-20=50  (vertex, above x-axis)
+             x=0.5: y=2.25 → px=80, py=48
+             x=1:  y=3  → px=95,  py=40
+             x=1.5: y=4.25 → px=110, py=28
+             x=2:  y=6  → px=125, py=10 -->
+        <polyline points="5,10 20,28 35,40 50,48 65,50 80,48 95,40 110,28 125,10"
+                  fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+      <h4 style="color:#0d9488;font-size:.9rem;">No real roots</h4>
+      <p style="font-size:.82rem;">Graph doesn't cross x-axis<br>e.g. $y = x^2 + 2$</p>
+    </div>
+    <div class="feature-card" style="text-align:center;">
+      <svg width="130" height="100" viewBox="0 0 130 100">
+        <line x1="5" y1="50" x2="125" y2="50" stroke="#aaa" stroke-width="1.5"/>
+        <line x1="65" y1="5" x2="65" y2="95" stroke="#aaa" stroke-width="1.5"/>
+        <!-- y=x²: vertex at (0,0), one repeated root at x=0
+             origin(65,50), sx=30px/unit, sy=12px/unit
+             x=-2:   y=4 → px=5,   py=50-48=2
+             x=-1.5: y=2.25 → px=20, py=50-27=23
+             x=-1:   y=1 → px=35,  py=50-12=38
+             x=-0.5: y=0.25 → px=50, py=50-3=47
+             x=0:    y=0 → px=65,  py=50      (vertex touches x-axis)
+             x=0.5:  y=0.25 → px=80, py=47
+             x=1:    y=1 → px=95,  py=38
+             x=1.5:  y=2.25 → px=110, py=23
+             x=2:    y=4 → px=125, py=2 -->
+        <polyline points="5,2 20,23 35,38 50,47 65,50 80,47 95,38 110,23 125,2"
+                  fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="65" cy="50" r="5" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <h4 style="color:#0d9488;font-size:.9rem;">One root (repeated)</h4>
+      <p style="font-size:.82rem;">Graph touches x-axis<br>e.g. $y = x^2$</p>
+    </div>
+    <div class="feature-card" style="text-align:center;">
+      <svg width="130" height="100" viewBox="0 0 130 100">
+        <line x1="5" y1="50" x2="125" y2="50" stroke="#aaa" stroke-width="1.5"/>
+        <line x1="65" y1="5" x2="65" y2="95" stroke="#aaa" stroke-width="1.5"/>
+        <!-- y=x²-4: roots at x=±2, vertex at (0,-4)
+             origin(65,50), sx=30px/unit, sy=8px/unit
+             x=-2: px=5,  py=50       (root on x-axis)
+             x=-1.5: px=20, py=50+14=64
+             x=-1: px=35, py=50+24=74
+             x=0:  px=65, py=50+32=82 (vertex)
+             x=1:  px=95, py=74
+             x=1.5: px=110, py=64
+             x=2:  px=125, py=50      (root on x-axis) -->
+        <polyline points="5,50 20,64 35,74 50,80 65,82 80,80 95,74 110,64 125,50"
+                  fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="5"   cy="50" r="5" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+        <circle cx="125" cy="50" r="5" fill="#ef4444" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <h4 style="color:#0d9488;font-size:.9rem;">Two roots</h4>
+      <p style="font-size:.82rem;">Graph crosses x-axis twice<br>e.g. $y = x^2 - 4$</p>
+    </div>
+  </div>
+
+  <h3 style="margin:16px 0 8px;color:#115e59;">Method 1: Finding Roots by Factorising</h3>
+  <ol class="steps">
+    <li>Set $y = 0$ to get the equation $ax^2 + bx + c = 0$</li>
+    <li>Factorise the quadratic into two brackets</li>
+    <li>Set each bracket equal to zero and solve for $x$</li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Roots by Factorising: $y = x^2 - 5x + 6$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Set $y = 0$: $\quad x^2 - 5x + 6 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Find two numbers that <em>multiply</em> to $+6$ and <em>add</em> to $-5$: these are $-2$ and $-3$. So: $(x-2)(x-3) = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x - 2 = 0 \Rightarrow x = 2$ &nbsp;&nbsp; or &nbsp;&nbsp; $x - 3 = 0 \Rightarrow x = 3$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>Roots: $x = 2$ and $x = 3$</strong>&nbsp; — the graph crosses the x-axis at $(2, 0)$ and $(3, 0)$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Roots by Factorising: $y = x^2 + x - 12$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Set $y = 0$: $\quad x^2 + x - 12 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Need two numbers that multiply to $-12$ and add to $+1$: these are $+4$ and $-3$. So: $(x+4)(x-3) = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x + 4 = 0 \Rightarrow x = -4$ &nbsp;&nbsp; or &nbsp;&nbsp; $x - 3 = 0 \Rightarrow x = 3$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>Roots: $x = -4$ and $x = 3$</strong></span></div>
+    </div>
+  </div>
+
+  <h3 style="margin:16px 0 8px;color:#115e59;">Method 2: Finding Roots using the Quadratic Formula</h3>
+  <p>When a quadratic is hard to factorise, use the <strong>quadratic formula</strong>:</p>
+  <div class="formula-box">
+    <div class="label">Quadratic Formula</div>
+    $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+    <p style="font-size:.88rem;color:#555;margin-top:8px;">The expression $b^2 - 4ac$ is called the <strong>discriminant</strong> — it tells you how many roots there are.</p>
+  </div>
+
+  <table>
+    <tr><th>Discriminant $b^2 - 4ac$</th><th>Number of roots</th><th>Graph behaviour</th></tr>
+    <tr><td>$b^2 - 4ac > 0$</td><td>Two distinct real roots</td><td>Crosses x-axis at two points</td></tr>
+    <tr><td>$b^2 - 4ac = 0$</td><td>One repeated root</td><td>Touches x-axis at one point</td></tr>
+    <tr><td>$b^2 - 4ac < 0$</td><td>No real roots</td><td>Doesn't touch x-axis</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Quadratic Formula: $y = 2x^2 - 3x - 2$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Identify: $a = 2,\ b = -3,\ c = -2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Discriminant: $b^2 - 4ac = (-3)^2 - 4(2)(-2) = 9 + 16 = 25$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \dfrac{-(-3) \pm \sqrt{25}}{2(2)} = \dfrac{3 \pm 5}{4}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = \dfrac{3+5}{4} = 2$ &nbsp;&nbsp; or &nbsp;&nbsp; $x = \dfrac{3-5}{4} = -\dfrac{1}{2}$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>Roots: $x = 2$ and $x = -\tfrac{1}{2}$</strong></span></div>
+    </div>
+  </div>
+
+</div><!-- /section 2 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3 – Y-INTERCEPT
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The y-intercept</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>y-intercept</strong> is where the graph crosses the y-axis. This happens when $x = 0$.
+    For $y = ax^2 + bx + c$, substituting $x = 0$ gives $y = c$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">y-intercept</div>
+    $$\text{The y-intercept is always } (0,\ c)$$
+  </div>
+
+  <div class="tip"><strong>💡 Shortcut:</strong> The y-intercept is simply the constant term $c$ in the equation $y = ax^2 + bx + c$. No calculation needed!</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — y-intercept: $y = 3x^2 - 7x + 4$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>The constant term is $c = 4$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>y-intercept: $(0,\ 4)$</strong></span></div>
+      <p style="margin-top:8px;font-size:.9rem;color:#555;">Verify: substitute $x = 0$: $y = 3(0) - 7(0) + 4 = 4$ ✓</p>
+    </div>
+  </div>
+
+</div><!-- /section 3 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4 – TURNING POINTS
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Turning Point (Vertex)</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>turning point</strong> (also called the <strong>vertex</strong>) is the highest or lowest point on the parabola. It lies on the <strong>axis of symmetry</strong>, which is a vertical line that divides the parabola exactly in half.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Axis of Symmetry</div>
+    $$x = -\frac{b}{2a}$$
+    <p style="font-size:.88rem;color:#555;margin-top:6px;">Substitute this $x$-value back into the equation to find the $y$-coordinate of the turning point.</p>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Turning Point using axis of symmetry: $y = x^2 - 4x + 1$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Identify $a = 1,\ b = -4,\ c = 1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Axis of symmetry: $x = -\dfrac{-4}{2(1)} = \dfrac{4}{2} = 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Substitute $x = 2$: $y = (2)^2 - 4(2) + 1 = 4 - 8 + 1 = -3$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>Turning point (minimum): $(2,\ -3)$</strong>. Since $a = 1 > 0$, it is a minimum.</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin:16px 0 8px;color:#115e59;">Finding the Turning Point by Completing the Square</h3>
+  <p>Completing the square rewrites $y = ax^2 + bx + c$ in the form $y = a(x + p)^2 + q$, which directly reveals the turning point at $(-p,\ q)$.</p>
+
+  <div class="ctq-box">
+    <div class="ctq-title">Method: Completing the Square (when $a = 1$)</div>
+    <ol class="steps">
+      <li>Start with $y = x^2 + bx + c$</li>
+      <li>Halve the coefficient of $x$ to get $\dfrac{b}{2}$, then write $(x + \dfrac{b}{2})^2$</li>
+      <li>Subtract $\left(\dfrac{b}{2}\right)^2$ to compensate for the extra term introduced: $$y = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 + c$$</li>
+      <li>Simplify the constants — this gives you $a(x+p)^2 + q$</li>
+      <li>The turning point is $(-p,\ q)$</li>
+    </ol>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Completing the Square: $y = x^2 - 6x + 5$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Halve the coefficient of $x$: $\frac{-6}{2} = -3$. Write $(x - 3)^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expand to check: $(x-3)^2 = x^2 - 6x + 9$. But we need $x^2 - 6x + 5$, so subtract $9$ then add $5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$$y = (x-3)^2 - 9 + 5 = (x-3)^2 - 4$$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The turning point is where $(x-3)^2 = 0$, i.e. $x = 3$, giving $y = -4$.</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>Turning point (minimum): $(3,\ -4)$</strong> &nbsp;|&nbsp; Axis of symmetry: $x = 3$</span></div>
+      <div class="tip" style="margin-top:10px;"><strong>Bonus — roots from completed square:</strong> Set $y=0$: $(x-3)^2 = 4 \Rightarrow x-3 = \pm 2 \Rightarrow x = 1$ or $x = 5$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Completing the Square (with leading coefficient): $y = 2x^2 + 8x + 3$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Factor out the coefficient of $x^2$ from the first two terms: $y = 2(x^2 + 4x) + 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Complete the square inside the bracket: $x^2 + 4x = (x+2)^2 - 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = 2\big[(x+2)^2 - 4\big] + 3 = 2(x+2)^2 - 8 + 3 = 2(x+2)^2 - 5$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span><strong>Turning point (minimum): $(-2,\ -5)$</strong> &nbsp;|&nbsp; Axis of symmetry: $x = -2$</span></div>
+    </div>
+  </div>
+
+</div><!-- /section 4 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5 – READING FEATURES FROM A GRAPH
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Reading Features Directly from a Graph</div>
+<div class="section-body">
+
+  <p>In the exam you may be given a graph and asked to read off its features. Here's what to look for:</p>
+
+  <table>
+    <tr><th>Feature</th><th>Where to look</th><th>What it looks like</th></tr>
+    <tr><td><strong>Roots</strong></td><td>Where the curve crosses the x-axis</td><td>Points of the form $(x, 0)$</td></tr>
+    <tr><td><strong>y-intercept</strong></td><td>Where the curve crosses the y-axis</td><td>Point of the form $(0, y)$</td></tr>
+    <tr><td><strong>Turning point</strong></td><td>The lowest (U-shape) or highest (∩-shape) point of the curve</td><td>The tip of the parabola</td></tr>
+    <tr><td><strong>Axis of symmetry</strong></td><td>The vertical line through the turning point</td><td>Dashed vertical line $x = k$</td></tr>
+    <tr><td><strong>Values of $y$</strong></td><td>Read across from the y-axis at a given $x$</td><td>Read the height of the curve</td></tr>
+    <tr><td><strong>Solutions to $f(x)=k$</strong></td><td>Draw horizontal line $y=k$, find where it meets curve</td><td>x-coordinates at intersection</td></tr>
+  </table>
+
+  <div class="key"><strong>🔑 Exam technique:</strong> When reading from a graph, draw dotted lines from the point to both axes to help you read the coordinates accurately. Always check whether the scale uses 1 square = 1 unit or some other value.</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Reading a graph: $y = x^2 - 2x - 3$</div>
+    <div class="example-body">
+      <p>Using the annotated diagram from Section 1:</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Roots:</strong> The curve crosses the x-axis at $x = -1$ and $x = 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>y-intercept:</strong> The curve crosses the y-axis at $(0, -3)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Turning point:</strong> The minimum is at $(1, -4)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Axis of symmetry:</strong> $x = 1$ (midpoint of roots: $\frac{-1+3}{2} = 1$ ✓)</span></div>
+    </div>
+  </div>
+
+  <div class="tip"><strong>💡 Useful shortcut:</strong> The axis of symmetry is always midway between the two roots. If roots are $x = p$ and $x = q$, the axis of symmetry is $x = \dfrac{p+q}{2}$.</div>
+
+</div><!-- /section 5 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 6 – SKETCHING A QUADRATIC
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Sketching a Quadratic — Step by Step</div>
+<div class="section-body">
+
+  <p>To sketch $y = ax^2 + bx + c$ fully, find and plot all key features:</p>
+  <ol class="steps">
+    <li><strong>Shape:</strong> If $a > 0$, U-shape. If $a < 0$, ∩-shape.</li>
+    <li><strong>y-intercept:</strong> Always at $(0, c)$.</li>
+    <li><strong>Roots:</strong> Solve $ax^2 + bx + c = 0$ by factorising or the quadratic formula.</li>
+    <li><strong>Turning point:</strong> Use $x = -\dfrac{b}{2a}$ then substitute to find $y$; or use completed square form.</li>
+    <li><strong>Axis of symmetry:</strong> The vertical line $x = -\dfrac{b}{2a}$.</li>
+    <li>Plot all points, then draw a smooth symmetrical curve through them.</li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Full sketch of $y = -x^2 + 4x + 5$</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span><strong>Shape:</strong> $a = -1 < 0$ → ∩-shaped (opens downward), so it has a maximum.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>y-intercept:</strong> $c = 5$, so the curve crosses the y-axis at $(0, 5)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Roots:</strong> Set $y = 0$: $-x^2 + 4x + 5 = 0 \Rightarrow x^2 - 4x - 5 = 0 \Rightarrow (x-5)(x+1) = 0$, so $x = 5$ or $x = -1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Turning point:</strong> $x = -\dfrac{4}{2(-1)} = 2$. &nbsp; $y = -(2)^2 + 4(2) + 5 = -4+8+5 = 9$. &nbsp; <strong>Maximum at $(2, 9)$</strong>.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><strong>Axis of symmetry:</strong> $x = 2$ (check: midpoint of roots $= \frac{-1+5}{2} = 2$ ✓)</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Plot $(-1,0)$, $(0,5)$, $(2,9)$, $(5,0)$ and draw a smooth ∩-shaped curve.</span></div>
+    </div>
+  </div>
+
+</div><!-- /section 6 -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card">
+      <h4>Standard form</h4>
+      <p>$y = ax^2 + bx + c$ &nbsp;— $a \ne 0$<br>$a>0$: U-shape (min) &nbsp;$a<0$: ∩-shape (max)</p>
+    </div>
+    <div class="ref-card">
+      <h4>y-intercept</h4>
+      <p>Always $(0,\ c)$ — just read the constant term.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Roots</h4>
+      <p>Set $y=0$, then factorise or use $x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$</p>
+    </div>
+    <div class="ref-card">
+      <h4>Discriminant</h4>
+      <p>$b^2-4ac>0$: 2 roots<br>$b^2-4ac=0$: 1 root<br>$b^2-4ac<0$: no real roots</p>
+    </div>
+    <div class="ref-card">
+      <h4>Axis of symmetry</h4>
+      <p>$x = -\dfrac{b}{2a}$<br>Or midpoint of roots: $\dfrac{x_1+x_2}{2}$</p>
+    </div>
+    <div class="ref-card">
+      <h4>Turning point</h4>
+      <p>$x = -\dfrac{b}{2a}$, then sub back. Or complete the square: $a(x+p)^2+q$ → vertex $(-p,\ q)$.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Completed square</h4>
+      <p>$y = (x+p)^2 + q$ → vertex at $(-p,\ q)$. Set $y=0$ to find roots from this form.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Symmetry shortcut</h4>
+      <p>The turning point's x-coord is the average of the two roots: $x = \dfrac{x_1 + x_2}{2}$</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <!-- Q1 -->
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>For the quadratic $y = x^2 - 3x - 10$, find the roots by factorising. State the coordinates where the graph crosses the x-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Set $y = 0$: $\; x^2 - 3x - 10 = 0$</p>
+          <p>Find two numbers multiplying to $-10$ and adding to $-3$: $+2$ and $-5$.</p>
+          <p>$(x + 2)(x - 5) = 0$</p>
+          <p>$x = -2$ &nbsp; or &nbsp; $x = 5$</p>
+          <p><strong>The graph crosses the x-axis at $(-2,\ 0)$ and $(5,\ 0)$.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Write down the y-intercept of each of the following:</p>
+      <p>(a) $y = x^2 - 5x + 7$ &nbsp;&nbsp; (b) $y = 3x^2 + 2x - 8$ &nbsp;&nbsp; (c) $y = -2x^2 + x$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $c = 7$, so y-intercept is $\mathbf{(0,\ 7)}$</p>
+          <p>(b) $c = -8$, so y-intercept is $\mathbf{(0,\ -8)}$</p>
+          <p>(c) There is no constant term, so $c = 0$; y-intercept is $\mathbf{(0,\ 0)}$ — the curve passes through the origin.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the turning point and axis of symmetry of $y = x^2 + 6x + 8$. State whether it is a maximum or minimum.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = 1,\; b = 6,\; c = 8$</p>
+          <p>Axis of symmetry: $x = -\dfrac{6}{2(1)} = -3$</p>
+          <p>Substitute: $y = (-3)^2 + 6(-3) + 8 = 9 - 18 + 8 = -1$</p>
+          <p><strong>Turning point: $(-3,\; -1)$</strong> &nbsp;— it is a <strong>minimum</strong> since $a > 0$.</p>
+          <p>Axis of symmetry: $x = -3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Complete the square for $y = x^2 - 8x + 10$. Hence write down the coordinates of the turning point and the equation of the axis of symmetry.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Halve the coefficient of $x$: $\frac{-8}{2} = -4$</p>
+          <p>$y = (x - 4)^2 - 16 + 10$</p>
+          <p>$$y = (x - 4)^2 - 6$$</p>
+          <p><strong>Turning point: $(4,\; -6)$</strong> &nbsp; (minimum, since $a = 1 > 0$)</p>
+          <p>Axis of symmetry: $x = 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Use the quadratic formula to find the roots of $y = x^2 - 4x + 1$. Give your answers correct to 2 decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a=1,\; b=-4,\; c=1$</p>
+          <p>Discriminant: $(-4)^2 - 4(1)(1) = 16 - 4 = 12$</p>
+          <p>$$x = \frac{4 \pm \sqrt{12}}{2} = \frac{4 \pm 2\sqrt{3}}{2} = 2 \pm \sqrt{3}$$</p>
+          <p>$x = 2 + \sqrt{3} \approx 3.73$ &nbsp; or &nbsp; $x = 2 - \sqrt{3} \approx 0.27$</p>
+          <p><strong>Roots: $x \approx 3.73$ and $x \approx 0.27$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Complete the square for $y = x^2 + 4x + 7$. How many real roots does this quadratic have? Explain your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Halve the coefficient of $x$: $\frac{4}{2} = 2$</p>
+          <p>$y = (x + 2)^2 - 4 + 7 = (x+2)^2 + 3$</p>
+          <p>Since $(x+2)^2 \geq 0$ always, the minimum value of $y$ is $0 + 3 = 3$, which is <em>above</em> the x-axis.</p>
+          <p><strong>The quadratic has no real roots</strong> — the graph never crosses the x-axis.</p>
+          <p>(Check: discriminant $= 4^2 - 4(1)(7) = 16 - 28 = -12 < 0$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Sketch the graph of $y = x^2 - 2x - 8$. Clearly label the roots, y-intercept and turning point.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Shape:</strong> $a = 1 > 0$ → U-shaped (minimum)</p>
+          <p><strong>y-intercept:</strong> $(0,\; -8)$</p>
+          <p><strong>Roots:</strong> $x^2 - 2x - 8 = 0 \Rightarrow (x-4)(x+2)=0 \Rightarrow x=4$ or $x=-2$</p>
+          <p>So roots at $(-2,\; 0)$ and $(4,\; 0)$</p>
+          <p><strong>Turning point:</strong> $x = -\dfrac{-2}{2} = 1$; $y = 1 - 2 - 8 = -9$ → minimum at $(1,\; -9)$</p>
+          <p>Axis of symmetry: $x=1$ (check: $\frac{-2+4}{2}=1$ ✓)</p>
+          <p>Draw a U-shaped curve through $(-2,0)$, $(0,-8)$, $(1,-9)$, $(4,0)$, symmetric about $x=1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The graph of $y = -x^2 + 6x - 5$ has a maximum turning point.</p>
+      <p>(a) Find the roots. &nbsp; (b) Find the maximum turning point. &nbsp; (c) Write the y-intercept.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a) Roots:</strong> Set $y=0$: $-x^2+6x-5=0 \Rightarrow x^2-6x+5=0 \Rightarrow (x-1)(x-5)=0$</p>
+          <p>Roots: $x = 1$ and $x = 5$ &nbsp; → &nbsp; graph crosses x-axis at $(1,0)$ and $(5,0)$</p>
+          <p><strong>(b) Turning point:</strong> $a=-1,\;b=6$; axis: $x = -\dfrac{6}{2(-1)} = 3$</p>
+          <p>$y = -(3)^2 + 6(3) - 5 = -9 + 18 - 5 = 4$ → <strong>Maximum at $(3,\;4)$</strong></p>
+          <p><strong>(c) y-intercept:</strong> $(0,\;-5)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Complete the square for $y = 2x^2 - 12x + 13$. Hence find the minimum value of $y$ and the value of $x$ at which it occurs.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Factor out 2 from the $x^2$ and $x$ terms:</p>
+          <p>$y = 2(x^2 - 6x) + 13$</p>
+          <p>Complete the square inside: $x^2 - 6x = (x-3)^2 - 9$</p>
+          <p>$y = 2\big[(x-3)^2 - 9\big] + 13 = 2(x-3)^2 - 18 + 13$</p>
+          <p>$$y = 2(x-3)^2 - 5$$</p>
+          <p>Since $2(x-3)^2 \geq 0$, minimum occurs when $(x-3)^2 = 0$, i.e. at $x=3$.</p>
+          <p><strong>Minimum value of $y = -5$, occurring at $x = 3$.</strong></p>
+          <p>Turning point: $(3,\; -5)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The quadratic $y = x^2 - 6x + k$ has exactly one real root.</p>
+      <p>(a) Use the discriminant to find the value of $k$.</p>
+      <p>(b) Find the coordinates of the turning point.</p>
+      <p>(c) Write the equation of the axis of symmetry.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> For exactly one root: discriminant $= 0$</p>
+          <p>$b^2 - 4ac = 0 \Rightarrow (-6)^2 - 4(1)(k) = 0 \Rightarrow 36 - 4k = 0 \Rightarrow k = 9$</p>
+          <p><strong>$k = 9$</strong>, so the equation is $y = x^2 - 6x + 9 = (x-3)^2$</p>
+          <p><strong>(b)</strong> From $(x-3)^2$, the turning point is $(3,\ 0)$. (The parabola just touches the x-axis at its vertex.)</p>
+          <p><strong>(c)</strong> Axis of symmetry: $x = 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Quadratic Functions · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>
