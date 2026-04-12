@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradients &amp; Areas Under Graphs – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #0f172a;
+      background: #eff6ff;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.1rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .92; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: .85rem;
+      margin-top: 10px;
+    }
+    main { max-width: 900px; margin: 0 auto; padding: 28px 20px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1d4ed8;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 13px 20px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-top: 36px;
+    }
+    .section-title .num {
+      background: rgba(255,255,255,.25);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .section-body {
+      background: #fff;
+      border: 1px solid #bfdbfe;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 22px 24px;
+    }
+
+    .concept {
+      background: #eff6ff;
+      border-left: 4px solid #1d4ed8;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .concept strong { color: #1e40af; }
+
+    .formula-box {
+      background: #eff6ff;
+      border: 2px solid #1d4ed8;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    .formula-box .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #1d4ed8;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .key {
+      background: #fef9c3;
+      border-left: 4px solid #eab308;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .key strong { color: #713f12; }
+
+    .tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .tip strong { color: #15803d; }
+
+    .warn {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: .95rem;
+    }
+    .warn strong { color: #9a3412; }
+
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .steps li::before {
+      content: counter(step);
+      background: #1d4ed8;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .example {
+      background: #f8faff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .example-header {
+      background: #1d4ed8;
+      color: #fff;
+      padding: 9px 18px;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .example-body { padding: 16px 20px; }
+    .step-row {
+      display: flex; gap: 10px;
+      background: #dbeafe;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .step-row .arrow { color: #1e40af; font-weight: 800; flex-shrink: 0; min-width: 22px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .95rem; }
+    th { background: #1d4ed8; color: #fff; padding: 9px 14px; text-align: left; }
+    td { padding: 9px 14px; border-bottom: 1px solid #bfdbfe; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #eff6ff; }
+
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .svg-caption { font-size: .83rem; color: #555; margin-top: 5px; }
+
+    .graph-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; justify-content: center; }
+    .graph-panel {
+      flex: 1; min-width: 280px; max-width: 440px;
+      border: 2px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 12px;
+      background: #f8faff;
+      text-align: center;
+    }
+    .graph-panel h4 { color: #1d4ed8; font-size: .95rem; margin-bottom: 8px; }
+
+    .question {
+      background: #fff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .question-header {
+      background: #eff6ff;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: #1e40af;
+      font-size: .95rem;
+      border-bottom: 1px solid #bfdbfe;
+    }
+    .question-body { padding: 10px 16px 14px; }
+    details summary {
+      cursor: pointer;
+      color: #1d4ed8;
+      font-weight: 600;
+      padding: 8px 0 4px;
+      font-size: .9rem;
+      user-select: none;
+    }
+    details summary:hover { color: #1e40af; }
+    .solution {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: .93rem;
+    }
+    .solution p { margin-bottom: 6px; }
+
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card {
+      flex: 1; min-width: 200px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 13px 15px;
+    }
+    .ref-card h4 { color: #1d4ed8; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .85rem; line-height: 1.6; }
+
+    .two-col { display: flex; flex-wrap: wrap; gap: 20px; margin: 14px 0; }
+    .two-col > div { flex: 1; min-width: 240px; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .graph-row, .ref-grid, .two-col { flex-direction: column; }
+    }
+    @media print {
+      body { background: #fff; }
+      header { background: #1d4ed8 !important; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Gradients &amp; Areas Under Graphs</h1>
+  <p>Interpreting Rates of Change in Distance-Time, Velocity-Time &amp; Financial Graphs</p>
+  <div class="badge">GCSE Maths · Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1 – WHAT GRADIENT MEANS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What Gradient Tells Us</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>gradient</strong> of a graph tells you <strong>how quickly something is changing</strong>. It is the rate of change of the quantity on the y-axis with respect to the quantity on the x-axis.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Gradient Formula (straight line)</div>
+    $$\text{gradient} = \frac{\text{rise}}{\text{run}} = \frac{\text{change in } y}{\text{change in } x} = \frac{y_2 - y_1}{x_2 - x_1}$$
+  </div>
+
+  <p style="margin:10px 0;">The <strong>units of the gradient</strong> are always the y-unit divided by the x-unit. This is what gives gradient its real-world meaning:</p>
+
+  <table>
+    <tr><th>Graph type</th><th>x-axis</th><th>y-axis</th><th>Gradient = ?</th></tr>
+    <tr><td>Distance–time</td><td>Time (s, min, h)</td><td>Distance (m, km)</td><td><strong>Speed</strong> (m/s, km/h)</td></tr>
+    <tr><td>Velocity–time</td><td>Time (s)</td><td>Velocity (m/s)</td><td><strong>Acceleration</strong> (m/s²)</td></tr>
+    <tr><td>Cost–units</td><td>Units used</td><td>Cost (£)</td><td><strong>Cost per unit</strong> (£/unit)</td></tr>
+    <tr><td>Profit–items</td><td>Items sold</td><td>Profit (£)</td><td><strong>Profit per item</strong> (£/item)</td></tr>
+  </table>
+
+  <div class="key"><strong>🔑 Key signs:</strong> A <strong>positive gradient</strong> means y is increasing as x increases. A <strong>negative gradient</strong> means y is decreasing. A <strong>zero gradient</strong> (horizontal line) means y is not changing at all.</div>
+
+  <div class="concept">
+    <strong>How to calculate gradient:</strong><br>
+    1. Pick two clear points on the line (use gridline intersections where possible).<br>
+    2. Draw a right-angled triangle — the horizontal leg is the "run", the vertical leg is the "rise".<br>
+    3. Gradient = rise ÷ run. Include the sign (negative if the line slopes downward).
+  </div>
+
+  <!-- Gradient diagram: three lines on one set of axes -->
+  <div class="svg-block">
+    <!--
+      ViewBox 0 0 340 220. Origin(170,180), sx=40, sy=40.
+      Line A: positive slope, gradient=1. Through (90,260)–(250,100). But let's do fixed coords:
+      Line A (gradient=2, blue): through (50,180) and (130,20) → rise=-160, run=80 → grad=2 ✓
+      Line B (gradient=0, dashed green): horizontal through (50,100) to (290,100) → y=2
+      Line C (gradient=-1, orange): through (90,60) and (250,220) → rise=160, run=160 → grad=-1 ✓
+
+      Axes: origin(170,180), x from 30 to 310, y from 10 to 200
+      x-axis: y=180; y-axis: x=170
+    -->
+    <svg width="340" height="220" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#bfdbfe" stroke-width=".7">
+        <line x1="30" y1="60"  x2="310" y2="60"/>
+        <line x1="30" y1="100" x2="310" y2="100"/>
+        <line x1="30" y1="140" x2="310" y2="140"/>
+        <line x1="30" y1="180" x2="310" y2="180"/>
+        <line x1="90"  y1="10" x2="90"  y2="210"/>
+        <line x1="130" y1="10" x2="130" y2="210"/>
+        <line x1="170" y1="10" x2="170" y2="210"/>
+        <line x1="210" y1="10" x2="210" y2="210"/>
+        <line x1="250" y1="10" x2="250" y2="210"/>
+      </g>
+      <!-- axes -->
+      <line x1="30"  y1="180" x2="315" y2="180" stroke="#1d4ed8" stroke-width="2"/>
+      <line x1="170" y1="210" x2="170" y2="8"   stroke="#1d4ed8" stroke-width="2"/>
+      <text x="318" y="183" font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">x</text>
+      <text x="173" y="8"   font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">y</text>
+
+      <!-- Line A: gradient = +2 (steep positive) -->
+      <line x1="90" y1="180" x2="210" y2="-60" stroke="#1d4ed8" stroke-width="2.2"/>
+      <!-- Clip visible: from (90,180) going up. At x=210: y_px=-60 off screen. Use (90,180)→(170,20) -->
+      <line x1="90" y1="180" x2="170" y2="20" stroke="#1d4ed8" stroke-width="2.2"/>
+      <!-- gradient triangle for A: run=40px(=1 unit), rise=80px(=2 units) at (130,180)-(170,180)-(170,100) -->
+      <polyline points="130,180 170,180 170,100" fill="none" stroke="#1d4ed8" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="140" y="196" font-family="Arial" font-size="10" fill="#1d4ed8">run=1</text>
+      <text x="174" y="143" font-family="Arial" font-size="10" fill="#1d4ed8">rise=2</text>
+      <text x="72"  y="178" font-family="Arial" font-size="11" fill="#1d4ed8" font-weight="bold">A</text>
+      <text x="158" y="15"  font-family="Arial" font-size="10" fill="#1d4ed8">grad=+2</text>
+
+      <!-- Line B: gradient = 0 (horizontal) -->
+      <line x1="30" y1="100" x2="310" y2="100" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="8,4"/>
+      <text x="312" y="103" font-family="Arial" font-size="11" fill="#16a34a" font-weight="bold">B</text>
+      <text x="195" y="93"  font-family="Arial" font-size="10" fill="#16a34a">grad=0</text>
+
+      <!-- Line C: gradient = -1 (negative slope) -->
+      <line x1="90" y1="60" x2="250" y2="220" stroke="#ea580c" stroke-width="2.2"/>
+      <!-- Clip: visible from (90,60) to (250,220) stays in viewport -->
+      <!-- gradient triangle for C: run=80px(=2 units), rise=80px(=-2 units) at (130,100)-(210,100)-(210,180) -->
+      <polyline points="130,100 210,100 210,180" fill="none" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="155" y="94" font-family="Arial" font-size="10" fill="#ea580c">run=2</text>
+      <text x="213" y="145" font-family="Arial" font-size="10" fill="#ea580c">fall=2</text>
+      <text x="252" y="218" font-family="Arial" font-size="11" fill="#ea580c" font-weight="bold">C</text>
+      <text x="192" y="220" font-family="Arial" font-size="10" fill="#ea580c">grad=−1</text>
+    </svg>
+    <p class="svg-caption">Line A: gradient = +2 (steep positive). Line B: gradient = 0 (horizontal, no change). Line C: gradient = −1 (negative slope).</p>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 2 – DISTANCE–TIME GRAPHS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Distance–Time Graphs</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Key Rule</div>
+    $$\text{Gradient of a distance–time graph} = \text{Speed}$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">
+      Gradient = $\dfrac{\text{distance}}{\text{time}}$ — the same as the speed formula $v = \dfrac{d}{t}$.
+    </p>
+  </div>
+
+  <table>
+    <tr><th>What the graph looks like</th><th>What it means</th></tr>
+    <tr><td>Steep positive slope</td><td>Moving <strong>fast</strong> away from the start</td></tr>
+    <tr><td>Gentle positive slope</td><td>Moving <strong>slowly</strong> away from the start</td></tr>
+    <tr><td>Horizontal line (gradient = 0)</td><td><strong>Stationary</strong> — not moving</td></tr>
+    <tr><td>Negative slope</td><td>Moving <strong>back towards</strong> the starting point</td></tr>
+    <tr><td>Curved line</td><td>Speed is changing (accelerating or decelerating)</td></tr>
+  </table>
+
+  <!-- Distance–time graph diagram
+       Origin(60,200), sx=50px/h, sy=2px/km
+       Journey: (0,0)→(3h,60km)→(4h,60km)→(6h,90km)
+       Pixel coords:
+         (0,0): px=60, py=200
+         (3,60): px=60+150=210, py=200-120=80
+         (4,60): px=260, py=80  (stationary)
+         (6,90): px=60+300=360, py=200-180=20
+       Grid: d=0,20,40,60,80 at py=200,160,120,80,40
+             t=0..6 at px=60,110,160,210,260,310,360
+  -->
+  <div class="svg-block">
+    <svg width="430" height="228" viewBox="0 0 430 228" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#bfdbfe" stroke-width=".8">
+        <line x1="60" y1="200" x2="370" y2="200"/>
+        <line x1="60" y1="160" x2="370" y2="160"/>
+        <line x1="60" y1="120" x2="370" y2="120"/>
+        <line x1="60" y1="80"  x2="370" y2="80"/>
+        <line x1="60" y1="40"  x2="370" y2="40"/>
+        <line x1="110" y1="10" x2="110" y2="210"/>
+        <line x1="160" y1="10" x2="160" y2="210"/>
+        <line x1="210" y1="10" x2="210" y2="210"/>
+        <line x1="260" y1="10" x2="260" y2="210"/>
+        <line x1="310" y1="10" x2="310" y2="210"/>
+        <line x1="360" y1="10" x2="360" y2="210"/>
+      </g>
+      <!-- axes -->
+      <line x1="60" y1="200" x2="380" y2="200" stroke="#1d4ed8" stroke-width="2"/>
+      <line x1="60" y1="210" x2="60"  y2="8"   stroke="#1d4ed8" stroke-width="2"/>
+      <!-- axis labels -->
+      <g font-family="Arial" font-size="11" fill="#1e40af" text-anchor="middle">
+        <text x="60"  y="216">0</text>
+        <text x="110" y="216">1</text><text x="160" y="216">2</text>
+        <text x="210" y="216">3</text><text x="260" y="216">4</text>
+        <text x="310" y="216">5</text><text x="360" y="216">6</text>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#1e40af" text-anchor="end">
+        <text x="56" y="203">0</text><text x="56" y="163">20</text>
+        <text x="56" y="123">40</text><text x="56" y="83">60</text>
+        <text x="56" y="43">80</text>
+      </g>
+      <text x="385" y="203" font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">t (h)</text>
+      <text x="62"  y="7"   font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">d (km)</text>
+
+      <!-- The journey line -->
+      <!-- Section 1: t=0→3, d=0→60 (moving at 20km/h) -->
+      <line x1="60" y1="200" x2="210" y2="80" stroke="#1d4ed8" stroke-width="2.8"/>
+      <!-- Section 2: t=3→4, d=60 (stationary) -->
+      <line x1="210" y1="80" x2="260" y2="80" stroke="#16a34a" stroke-width="2.8"/>
+      <!-- Section 3: t=4→6, d=60→90 (moving at 15km/h) -->
+      <line x1="260" y1="80" x2="360" y2="20" stroke="#ea580c" stroke-width="2.8"/>
+
+      <!-- Gradient triangle for section 1 -->
+      <polyline points="60,200 210,200 210,80" fill="none" stroke="#1d4ed8" stroke-width="1.3" stroke-dasharray="5,3"/>
+      <text x="130" y="215" font-family="Arial" font-size="10" fill="#1d4ed8" text-anchor="middle">run = 3h</text>
+      <text x="218" y="145" font-family="Arial" font-size="10" fill="#1d4ed8">rise = 60km</text>
+
+      <!-- Gradient triangle for section 3 -->
+      <polyline points="260,80 360,80 360,20" fill="none" stroke="#ea580c" stroke-width="1.3" stroke-dasharray="5,3"/>
+      <text x="310" y="96" font-family="Arial" font-size="10" fill="#ea580c" text-anchor="middle">run = 2h</text>
+      <text x="363" y="53" font-family="Arial" font-size="10" fill="#ea580c">30km</text>
+
+      <!-- Section labels -->
+      <text x="130" y="148" font-family="Arial" font-size="10" fill="#1d4ed8" font-weight="bold" text-anchor="middle">20 km/h</text>
+      <text x="235" y="73"  font-family="Arial" font-size="10" fill="#16a34a" font-weight="bold">Stationary</text>
+      <text x="312" y="48"  font-family="Arial" font-size="10" fill="#ea580c" font-weight="bold" text-anchor="middle">15 km/h</text>
+
+      <!-- Key points dots -->
+      <circle cx="60"  cy="200" r="4" fill="#1d4ed8"/>
+      <circle cx="210" cy="80"  r="4" fill="#1d4ed8"/>
+      <circle cx="260" cy="80"  r="4" fill="#1d4ed8"/>
+      <circle cx="360" cy="20"  r="4" fill="#ea580c"/>
+    </svg>
+    <p class="svg-caption">A distance–time graph for a car journey: 60km in 3h (blue), rest for 1h (green), 30km more in 2h (orange).</p>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reading a Distance–Time Graph</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>Use the graph above. Find the speed in each moving section.</em></p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Section 1 (blue, 0→3h):</strong> gradient $= \dfrac{60 - 0}{3 - 0} = \dfrac{60}{3} = \mathbf{20}$ km/h</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Section 2 (green, 3→4h):</strong> horizontal line → gradient $= 0$ → <strong>stationary</strong></span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Section 3 (orange, 4→6h):</strong> gradient $= \dfrac{90 - 60}{6 - 4} = \dfrac{30}{2} = \mathbf{15}$ km/h</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Section 1 is steeper than section 3, confirming the car was faster in section 1 (20 km/h vs 15 km/h).</span></div>
+    </div>
+  </div>
+
+  <div class="tip"><strong>💡 Tip:</strong> To compare speeds on a distance-time graph without calculating: the <em>steeper</em> the line, the <em>faster</em> the object. A negative gradient means the object is returning to its starting point.</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Finding Speed When Returning</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>A cyclist travels 24km from home in 2 hours, stops for 30 minutes, then returns home in 1.5 hours. Find the speed on the return journey.</em></p>
+      <div class="step-row"><span class="arrow">①</span><span>On the return journey, distance goes from 24km back to 0km. Change in distance = $0 - 24 = -24$ km.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Time for return = 1.5 hours. Gradient $= \dfrac{-24}{1.5} = -16$ km/h.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The <em>speed</em> is the magnitude: $\mathbf{16}$ <strong>km/h</strong>. The negative sign tells us the cyclist is heading back towards home.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 – VELOCITY–TIME GRAPHS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Velocity–Time Graphs</div>
+<div class="section-body">
+
+  <div class="two-col">
+    <div>
+      <div class="formula-box">
+        <div class="label">Gradient</div>
+        $$\text{Gradient} = \text{Acceleration}$$
+        <p style="font-size:.9rem;color:#555;margin-top:6px;">$a = \dfrac{\Delta v}{\Delta t}$ in m/s²</p>
+      </div>
+    </div>
+    <div>
+      <div class="formula-box">
+        <div class="label">Area Under Graph</div>
+        $$\text{Area} = \text{Distance travelled}$$
+        <p style="font-size:.9rem;color:#555;margin-top:6px;">Count squares or use shape formulas</p>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>What the v–t graph looks like</th><th>What it means</th></tr>
+    <tr><td>Positive slope (rising)</td><td>Accelerating (speeding up)</td></tr>
+    <tr><td>Horizontal line (gradient=0)</td><td>Constant velocity (not accelerating)</td></tr>
+    <tr><td>Negative slope (falling)</td><td>Decelerating (slowing down)</td></tr>
+    <tr><td>Line touching x-axis (v=0)</td><td>Object momentarily at rest</td></tr>
+  </table>
+
+  <!-- Velocity–time graph
+       Origin(60,185), sx=30px/s, sy=12px/(m/s)
+       0→4s: v goes 0→12; 4→8s: v=12 (constant); 8→10s: v goes 12→0
+       Key pixels:
+         (0,0): px=60, py=185
+         (4,12): px=60+120=180, py=185-144=41
+         (8,12): px=60+240=300, py=41
+         (10,0): px=60+300=360, py=185
+       Grids: v=0,3,6,9,12 at py=185,149,113,77,41
+              t=0,2,4,6,8,10 at px=60,120,180,240,300,360
+  -->
+  <div class="svg-block">
+    <svg width="430" height="210" viewBox="0 0 430 210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#93c5fd" stroke-width="1.5"/>
+        </pattern>
+      </defs>
+      <!-- grid -->
+      <g stroke="#bfdbfe" stroke-width=".8">
+        <line x1="60" y1="185" x2="370" y2="185"/>
+        <line x1="60" y1="149" x2="370" y2="149"/>
+        <line x1="60" y1="113" x2="370" y2="113"/>
+        <line x1="60" y1="77"  x2="370" y2="77"/>
+        <line x1="60" y1="41"  x2="370" y2="41"/>
+        <line x1="120" y1="10" x2="120" y2="195"/>
+        <line x1="180" y1="10" x2="180" y2="195"/>
+        <line x1="240" y1="10" x2="240" y2="195"/>
+        <line x1="300" y1="10" x2="300" y2="195"/>
+        <line x1="360" y1="10" x2="360" y2="195"/>
+      </g>
+
+      <!-- Shaded area (trapezium shape) -->
+      <polygon points="60,185 180,41 300,41 360,185" fill="#bfdbfe" opacity="0.5"/>
+      <!-- Section dividers for area labelling -->
+      <line x1="180" y1="41" x2="180" y2="185" stroke="#1d4ed8" stroke-width="1" stroke-dasharray="5,4"/>
+      <line x1="300" y1="41" x2="300" y2="185" stroke="#1d4ed8" stroke-width="1" stroke-dasharray="5,4"/>
+
+      <!-- area labels -->
+      <text x="120" y="142" font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle" font-weight="bold">Triangle</text>
+      <text x="120" y="155" font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle">½×4×12=24m</text>
+      <text x="240" y="142" font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle" font-weight="bold">Rectangle</text>
+      <text x="240" y="155" font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle">4×12=48m</text>
+      <text x="333" y="148" font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle" font-weight="bold">Triangle</text>
+      <text x="333" y="161" font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle">½×2×12=12m</text>
+
+      <!-- axes -->
+      <line x1="60" y1="185" x2="380" y2="185" stroke="#1d4ed8" stroke-width="2"/>
+      <line x1="60" y1="195" x2="60"  y2="8"   stroke="#1d4ed8" stroke-width="2"/>
+
+      <!-- The v-t line -->
+      <polyline points="60,185 180,41 300,41 360,185" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-linejoin="round"/>
+
+      <!-- axis labels -->
+      <g font-family="Arial" font-size="11" fill="#1e40af" text-anchor="middle">
+        <text x="60"  y="200">0</text><text x="120" y="200">2</text>
+        <text x="180" y="200">4</text><text x="240" y="200">6</text>
+        <text x="300" y="200">8</text><text x="360" y="200">10</text>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#1e40af" text-anchor="end">
+        <text x="56" y="188">0</text><text x="56" y="152"> 3</text>
+        <text x="56" y="116"> 6</text><text x="56" y="80"> 9</text>
+        <text x="56" y="44">12</text>
+      </g>
+      <text x="385" y="188" font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">t (s)</text>
+      <text x="63"  y="7"   font-family="Arial" font-size="12" fill="#1d4ed8" font-weight="bold">v (m/s)</text>
+
+      <!-- Gradient annotation (acceleration in first section) -->
+      <polyline points="60,185 180,185 180,41" fill="none" stroke="#ea580c" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <text x="120" y="200" font-family="Arial" font-size="0" fill="#ea580c">placeholder</text>
+      <text x="185" y="118" font-family="Arial" font-size="10" fill="#ea580c">rise=12</text>
+      <text x="112" y="198" font-family="Arial" font-size="9" fill="#ea580c" text-anchor="middle">run=4s</text>
+
+      <!-- gradient label -->
+      <text x="100" y="172" font-family="Arial" font-size="10" fill="#ea580c" text-anchor="middle">accel</text>
+      <text x="100" y="183" font-family="Arial" font-size="10" fill="#ea580c" text-anchor="middle">= 3 m/s²</text>
+
+      <!-- Key points -->
+      <circle cx="60"  cy="185" r="4" fill="#1d4ed8"/>
+      <circle cx="180" cy="41"  r="4" fill="#1d4ed8"/>
+      <circle cx="300" cy="41"  r="4" fill="#1d4ed8"/>
+      <circle cx="360" cy="185" r="4" fill="#1d4ed8"/>
+
+      <!-- Total area label -->
+      <text x="390" y="100" font-family="Arial" font-size="11" fill="#1e40af" font-weight="bold">Total</text>
+      <text x="390" y="113" font-family="Arial" font-size="11" fill="#1e40af" font-weight="bold">= 84m</text>
+    </svg>
+    <p class="svg-caption">Velocity–time graph. Shaded area = total distance = 24 + 48 + 12 = <strong>84 m</strong>. Orange triangle shows how to find acceleration.</p>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Velocity–Time: Acceleration &amp; Distance</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>Using the graph above: (a) Find the acceleration in the first 4 seconds. (b) Find the deceleration in the last section. (c) Find the total distance travelled.</em></p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a) Acceleration (0→4s):</strong> gradient $= \dfrac{12 - 0}{4 - 0} = \dfrac{12}{4} = \mathbf{3 \text{ m/s}^2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b) Deceleration (8→10s):</strong> gradient $= \dfrac{0 - 12}{10 - 8} = \dfrac{-12}{2} = -6 \text{ m/s}^2$ → deceleration of $\mathbf{6 \text{ m/s}^2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c) Total distance</strong> = total area under the graph:
+        <br>Triangle (0–4s): $\frac{1}{2} \times 4 \times 12 = 24$ m
+        <br>Rectangle (4–8s): $4 \times 12 = 48$ m
+        <br>Triangle (8–10s): $\frac{1}{2} \times 2 \times 12 = 12$ m</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Total distance $= 24 + 48 + 12 = \mathbf{84 \text{ m}}$</span></div>
+    </div>
+  </div>
+
+  <div class="key"><strong>🔑 Remember:</strong> On a velocity-time graph, the area of each shape gives a distance. Always identify whether each region is a triangle ($\frac{1}{2} \times \text{base} \times \text{height}$), a rectangle ($\text{length} \times \text{height}$), or a trapezium ($\frac{1}{2}(a+b) \times h$).</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 – GRADIENT OF A CURVE
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Gradient of a Curve — Drawing a Tangent</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>curved</strong> distance-time or velocity-time graph means the rate of change is not constant (e.g., an object is accelerating). The gradient changes at every point. To find the gradient at one specific point, we <strong>draw a tangent</strong> to the curve at that point and then find the gradient of that straight tangent line.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Method</div>
+    <p style="font-size:.95rem;">Draw a <strong>straight line that just touches</strong> the curve at the point in question — this is the <strong>tangent</strong>. Then calculate gradient = rise ÷ run on that straight line.</p>
+  </div>
+
+  <!-- Tangent to curve diagram
+       d = t² (scaled), Origin(60,220), sx=40px/s, sy=8px/m
+       Curve points every 0.25s from t=0 to t=5:
+       t=0.0: px=60, d=0, py=220
+       t=0.5: d=0.25, py=218, px=80
+       t=1.0: d=1, py=212, px=100
+       t=1.5: d=2.25, py=202, px=120
+       t=2.0: d=4, py=188, px=140
+       t=2.5: d=6.25, py=170, px=160
+       t=3.0: d=9, py=148, px=180
+       t=3.5: d=12.25, py=122, px=200
+       t=4.0: d=16, py=92, px=220
+       t=4.5: d=20.25, py=58, px=240
+       t=5.0: d=25, py=20, px=260
+
+       Tangent at t=3 (slope = 6 m/s in real units):
+         In pixel space: slope_py/px = -6 * sy/sx = -6 * 8/40 = -1.2
+         At px=120 (t=1.5): py = 148 + 1.2*(180-120) = 220
+         At px=240 (t=4.5): py = 148 - 1.2*(240-180) = 76
+
+       Gradient triangle (t=2 to t=4):
+         At px=140: py = 148 + 1.2*(180-140) = 196
+         At px=220: py = 148 - 1.2*(220-180) = 100
+         Horizontal: (140,196)→(220,196) = 2s
+         Vertical:   (220,196)→(220,100) = 12m
+         Gradient = 12m / 2s = 6 m/s ✓
+  -->
+  <div class="svg-block">
+    <svg width="320" height="248" viewBox="0 0 320 248" xmlns="http://www.w3.org/2000/svg">
+      <!-- grid -->
+      <g stroke="#bfdbfe" stroke-width=".8">
+        <line x1="60" y1="220" x2="270" y2="220"/>
+        <line x1="60" y1="180" x2="270" y2="180"/>
+        <line x1="60" y1="140" x2="270" y2="140"/>
+        <line x1="60" y1="100" x2="270" y2="100"/>
+        <line x1="60" y1="60"  x2="270" y2="60"/>
+        <line x1="60" y1="20"  x2="270" y2="20"/>
+        <line x1="100" y1="10" x2="100" y2="230"/>
+        <line x1="140" y1="10" x2="140" y2="230"/>
+        <line x1="180" y1="10" x2="180" y2="230"/>
+        <line x1="220" y1="10" x2="220" y2="230"/>
+        <line x1="260" y1="10" x2="260" y2="230"/>
+      </g>
+      <!-- axes -->
+      <line x1="60" y1="220" x2="275" y2="220" stroke="#1d4ed8" stroke-width="2"/>
+      <line x1="60" y1="230" x2="60"  y2="8"   stroke="#1d4ed8" stroke-width="2"/>
+      <!-- axis labels -->
+      <g font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle">
+        <text x="100" y="233">1</text><text x="140" y="233">2</text>
+        <text x="180" y="233">3</text><text x="220" y="233">4</text>
+        <text x="260" y="233">5</text>
+      </g>
+      <g font-family="Arial" font-size="10" fill="#1e40af" text-anchor="end">
+        <text x="56" y="222">0</text><text x="56" y="182">5</text>
+        <text x="56" y="142">10</text><text x="56" y="102">15</text>
+        <text x="56" y="62">20</text><text x="56" y="22">25</text>
+      </g>
+      <text x="278" y="223" font-family="Arial" font-size="11" fill="#1d4ed8" font-weight="bold">t (s)</text>
+      <text x="63"  y="7"   font-family="Arial" font-size="11" fill="#1d4ed8" font-weight="bold">d (m)</text>
+
+      <!-- Tangent line (orange) -->
+      <line x1="120" y1="220" x2="240" y2="76" stroke="#ea580c" stroke-width="2" stroke-dasharray="7,4"/>
+
+      <!-- Gradient triangle (orange dashed) -->
+      <polyline points="140,196 220,196 220,100" fill="none" stroke="#ea580c" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <text x="180" y="210" font-family="Arial" font-size="10" fill="#ea580c" text-anchor="middle">run = 2 s</text>
+      <text x="225" y="152" font-family="Arial" font-size="10" fill="#ea580c">rise</text>
+      <text x="225" y="163" font-family="Arial" font-size="10" fill="#ea580c">= 12 m</text>
+
+      <!-- Curved line d=t² -->
+      <polyline
+        points="60,220 70,220 80,218 90,216 100,212 110,208 120,202 130,196 140,188 150,180 160,170 170,160 180,148 190,136 200,122 210,108 220,92 230,76 240,58 250,40 260,20"
+        fill="none" stroke="#1d4ed8" stroke-width="2.8" stroke-linejoin="round"/>
+
+      <!-- Point of tangency -->
+      <circle cx="180" cy="148" r="5" fill="#ea580c" stroke="white" stroke-width="1.5"/>
+      <text x="185" y="143" font-family="Arial" font-size="9" fill="#ea580c">t=3s</text>
+
+      <!-- Gradient result -->
+      <rect x="170" y="40" width="105" height="30" rx="5" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="222" y="55" font-family="Arial" font-size="10" fill="#9a3412" text-anchor="middle" font-weight="bold">gradient = 12÷2 = 6 m/s</text>
+    </svg>
+    <p class="svg-caption">The curve $d = t^2$ with a tangent drawn at $t = 3$ s. The gradient of the tangent ≈ 6 m/s = speed at that instant.</p>
+  </div>
+
+  <ol class="steps">
+    <li>Mark the point on the curve where you want the gradient.</li>
+    <li>Use a ruler to draw a straight line that touches the curve only at that point (tangent). The line should not cut through the curve.</li>
+    <li>Choose two points that are <strong>far apart</strong> on the tangent line (not necessarily on the curve) and read off their coordinates from the graph.</li>
+    <li>Calculate gradient = $\dfrac{y_2 - y_1}{x_2 - x_1}$ using those two points. Include the units!</li>
+  </ol>
+
+  <div class="warn"><strong>⚠️ Common mistake:</strong> Students sometimes calculate the gradient between the point of tangency and another point on the <em>curve</em>. Always use two points on the <em>tangent line</em>, not on the curve.</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Estimating Speed from a Curved Distance-Time Graph</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>A tangent is drawn to a distance-time curve at $t = 3$ s. The tangent passes through the points $(1, 0)$ and $(5, 24)$. Find the speed at $t = 3$ s.</em></p>
+      <div class="step-row"><span class="arrow">①</span><span>Two points on the tangent: $(1, 0)$ and $(5, 24)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Gradient $= \dfrac{24 - 0}{5 - 1} = \dfrac{24}{4} = \mathbf{6}$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Speed at $t = 3$ s $\approx \mathbf{6}$ m/s. (This is an estimate — drawing a tangent by hand introduces a small error.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 5 – AREA UNDER GRAPHS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Area Under a Graph — The Trapezium Rule</div>
+<div class="section-body">
+
+  <div class="concept">
+    For a <strong>velocity-time graph</strong>, the area between the line and the x-axis tells you the <strong>distance travelled</strong>. When the graph is a curve (not made up of straight lines), we can <strong>estimate</strong> the area using the <strong>trapezium rule</strong>.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Trapezium Rule (area estimation)</div>
+    $$\text{Area} \approx \frac{h}{2}\bigl(y_0 + 2y_1 + 2y_2 + \cdots + 2y_{n-1} + y_n\bigr)$$
+    <p style="font-size:.9rem;color:#555;margin-top:8px;">
+      where $h$ = width of each strip, $y_0$ = first value, $y_n$ = last value, and all middle values are doubled.
+    </p>
+  </div>
+
+  <h3 style="margin:14px 0 8px;color:#1e40af;">How to Use the Trapezium Rule</h3>
+  <ol class="steps">
+    <li>Divide the x-axis into equal strips of width $h$.</li>
+    <li>Read off the y-values at each strip boundary ($y_0, y_1, y_2, \ldots$).</li>
+    <li>Use the formula: add the first and last values once, and all middle values twice.</li>
+    <li>Multiply by $\frac{h}{2}$. Remember to include units (y-unit × x-unit).</li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Trapezium Rule for Distance</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>A car's velocity is recorded every 2 seconds:</em></p>
+      <table style="margin:8px 0;">
+        <tr><th>$t$ (s)</th><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td></tr>
+        <tr><th>$v$ (m/s)</th><td>0</td><td>6</td><td>10</td><td>12</td><td>8</td></tr>
+      </table>
+      <p style="margin:8px 0;"><em>Estimate the total distance using the trapezium rule.</em></p>
+      <div class="step-row"><span class="arrow">①</span><span>Strip width: $h = 2$ s. There are 4 strips.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Identify values: $y_0 = 0$, $y_1 = 6$, $y_2 = 10$, $y_3 = 12$, $y_4 = 8$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Apply the rule:
+        $$\text{Area} \approx \frac{2}{2}(0 + 2(6) + 2(10) + 2(12) + 8) = 1 \times (0 + 12 + 20 + 24 + 8) = 64$$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Estimated distance $\approx \mathbf{64 \text{ m}}$. (This is an approximation — the more strips used, the more accurate.)</span></div>
+    </div>
+  </div>
+
+  <div class="tip"><strong>💡 Counting squares:</strong> Another method is to count the squares under the graph. Whole squares count as 1; partial squares are estimated. Multiply by the value each square represents (x-unit × y-unit). This is less precise but useful for a quick check.</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 6 – REAL-LIFE & FINANCIAL GRAPHS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Real-Life &amp; Financial Graphs</div>
+<div class="section-body">
+
+  <div class="concept">
+    Gradients and areas appear in many real-life contexts beyond physics. In financial graphs, the gradient tells you a <strong>rate of change of cost, profit, or value</strong>. The y-intercept often represents a <strong>fixed charge</strong> or starting value.
+  </div>
+
+  <!-- Financial graph: electricity bill
+       C = 10 + 0.30n (£, kWh)
+       Origin(60,200), sx=2.5px/kWh, sy=4px/£
+       n=0: px=60, C=10, py=200-40=160
+       n=100: px=60+250=310, C=40, py=200-160=40
+
+       Grid: C=0,10,20,30,40 at py=200,160,120,80,40
+             n=0,20,40,60,80,100 at px=60,110,160,210,260,310
+  -->
+  <div class="graph-row">
+    <div class="graph-panel">
+      <h4>Electricity Bill: $C = 10 + 0.30n$</h4>
+      <svg width="360" height="220" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#bfdbfe" stroke-width=".8">
+          <line x1="60" y1="200" x2="320" y2="200"/>
+          <line x1="60" y1="160" x2="320" y2="160"/>
+          <line x1="60" y1="120" x2="320" y2="120"/>
+          <line x1="60" y1="80"  x2="320" y2="80"/>
+          <line x1="60" y1="40"  x2="320" y2="40"/>
+          <line x1="110" y1="5" x2="110" y2="210"/>
+          <line x1="160" y1="5" x2="160" y2="210"/>
+          <line x1="210" y1="5" x2="210" y2="210"/>
+          <line x1="260" y1="5" x2="260" y2="210"/>
+          <line x1="310" y1="5" x2="310" y2="210"/>
+        </g>
+        <!-- axes -->
+        <line x1="60" y1="200" x2="325" y2="200" stroke="#1d4ed8" stroke-width="1.8"/>
+        <line x1="60" y1="210" x2="60"  y2="8"   stroke="#1d4ed8" stroke-width="1.8"/>
+        <!-- labels -->
+        <g font-family="Arial" font-size="10" fill="#1e40af" text-anchor="middle">
+          <text x="60"  y="214">0</text><text x="110" y="214">20</text>
+          <text x="160" y="214">40</text><text x="210" y="214">60</text>
+          <text x="260" y="214">80</text><text x="310" y="214">100</text>
+        </g>
+        <g font-family="Arial" font-size="10" fill="#1e40af" text-anchor="end">
+          <text x="56" y="203">£0</text><text x="56" y="163">£10</text>
+          <text x="56" y="123">£20</text><text x="56" y="83">£30</text>
+          <text x="56" y="43">£40</text>
+        </g>
+        <text x="327" y="203" font-family="Arial" font-size="10" fill="#1d4ed8" font-weight="bold">kWh</text>
+        <text x="63"  y="7"   font-family="Arial" font-size="11" fill="#1d4ed8" font-weight="bold">Cost</text>
+
+        <!-- Cost line: (60,160) to (310,40) -->
+        <line x1="60" y1="160" x2="310" y2="40" stroke="#1d4ed8" stroke-width="2.5"/>
+
+        <!-- Gradient triangle -->
+        <polyline points="160,120 310,120 310,40" fill="none" stroke="#ea580c" stroke-width="1.3" stroke-dasharray="4,3"/>
+        <text x="235" y="135" font-family="Arial" font-size="9" fill="#ea580c" text-anchor="middle">run = 60 kWh</text>
+        <text x="315" y="83"  font-family="Arial" font-size="9" fill="#ea580c">rise=£18</text>
+        <text x="180" y="80"  font-family="Arial" font-size="10" fill="#ea580c" font-weight="bold">Gradient</text>
+        <text x="180" y="91"  font-family="Arial" font-size="10" fill="#ea580c">= 18÷60</text>
+        <text x="180" y="102" font-family="Arial" font-size="10" fill="#ea580c">= £0.30/kWh</text>
+
+        <!-- y-intercept annotation -->
+        <circle cx="60" cy="160" r="4" fill="#16a34a" stroke="white" stroke-width="1.5"/>
+        <text x="65" y="152" font-family="Arial" font-size="9" fill="#16a34a" font-weight="bold">y-int = £10</text>
+        <text x="65" y="162" font-family="Arial" font-size="9" fill="#16a34a">(standing charge)</text>
+
+        <!-- End point -->
+        <circle cx="310" cy="40" r="4" fill="#1d4ed8"/>
+      </svg>
+    </div>
+
+    <div style="flex:1; min-width:240px; padding:8px;">
+      <div class="concept" style="margin-top:0;">
+        <strong>Reading this graph:</strong><br>
+        <strong>y-intercept = £10</strong> — this is the <em>standing charge</em> (the fixed amount you pay even if you use no electricity).<br><br>
+        <strong>Gradient = £0.30 per kWh</strong> — this is the <em>unit price</em> (cost per kWh of electricity used).<br><br>
+        For any number of kWh used ($n$):
+        $$C = 10 + 0.30n$$
+      </div>
+      <div class="tip" style="margin-top:10px;"><strong>💡</strong> In financial graphs: <br>• gradient = rate of change of cost/profit<br>• y-intercept = starting value or fixed cost<br>• steeper line = higher rate</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Financial Graph: Gradient &amp; Interpretation</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>A mobile phone plan charges a £15 monthly fee plus £0.08 per minute of calls. (a) Write the equation for the monthly cost $C$. (b) What is the gradient of the cost graph and what does it represent? (c) What is the y-intercept and what does it mean?</em></p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Let $m$ = minutes used. Cost $C = 15 + 0.08m$ (£).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Gradient = <strong>0.08</strong>. It means the cost increases by <strong>8p for every minute</strong> of calls.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> y-intercept = <strong>£15</strong>. This is the fixed monthly charge — the amount you pay even if you make no calls.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Comparing Two Tariffs</div>
+    <div class="example-body">
+      <p style="margin-bottom:10px;"><em>Plan A: £5/month + £0.15 per minute. Plan B: £20/month + £0.05 per minute. Which is cheaper for 100 minutes? For 200 minutes?</em></p>
+      <div class="step-row"><span class="arrow">①</span><span>Plan A at 100 min: $5 + 0.15 \times 100 = 5 + 15 = \mathbf{£20}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Plan B at 100 min: $20 + 0.05 \times 100 = 20 + 5 = \mathbf{£25}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Plan A at 200 min: $5 + 0.15 \times 200 = 5 + 30 = \mathbf{£35}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Plan B at 200 min: $20 + 0.05 \times 200 = 20 + 10 = \mathbf{£30}$</span></div>
+      <div class="step-row"><span class="arrow">✓</span><span>Plan A is cheaper for 100 minutes; Plan B is cheaper for 200 minutes. The plans are equal when $5 + 0.15m = 20 + 0.05m \Rightarrow 0.10m = 15 \Rightarrow m = 150$ minutes.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+
+  <div class="ref-grid">
+    <div class="ref-card">
+      <h4>📐 Gradient of any straight-line graph</h4>
+      <p>$\text{gradient} = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{\text{rise}}{\text{run}}$<br>Units = y-unit ÷ x-unit</p>
+    </div>
+    <div class="ref-card">
+      <h4>🚗 Distance–time graph</h4>
+      <p><strong>Gradient = speed</strong><br>Positive → moving away<br>Zero → stationary<br>Negative → returning<br>Steeper = faster</p>
+    </div>
+    <div class="ref-card">
+      <h4>🚀 Velocity–time graph</h4>
+      <p><strong>Gradient = acceleration</strong><br><strong>Area = distance</strong><br>Positive slope → speeding up<br>Negative slope → slowing down</p>
+    </div>
+    <div class="ref-card">
+      <h4>📈 Curve: drawing a tangent</h4>
+      <p>Touch curve at one point only. Use two widely-spaced points on the tangent to calculate gradient = instantaneous rate of change.</p>
+    </div>
+    <div class="ref-card">
+      <h4>🔲 Trapezium rule</h4>
+      <p>$\text{Area} \approx \dfrac{h}{2}(y_0 + 2y_1 + \cdots + 2y_{n-1} + y_n)$<br>More strips → more accurate</p>
+    </div>
+    <div class="ref-card">
+      <h4>💷 Financial graphs</h4>
+      <p><strong>Gradient = rate of change</strong> (cost per unit, profit per item)<br><strong>y-intercept = fixed cost</strong> or starting value</p>
+    </div>
+  </div>
+
+  <table style="margin-top:18px;">
+    <tr><th>Shape in v–t graph</th><th>Area formula</th><th>Example</th></tr>
+    <tr><td>Triangle</td><td>$\frac{1}{2} \times \text{base} \times \text{height}$</td><td>Accelerating from rest to $v$ in time $t$: area $= \frac{1}{2}tv$</td></tr>
+    <tr><td>Rectangle</td><td>$\text{width} \times \text{height}$</td><td>Constant speed $v$ for time $t$: area $= tv$</td></tr>
+    <tr><td>Trapezium</td><td>$\frac{1}{2}(a + b) \times h$</td><td>Speed goes from $u$ to $v$ in time $t$: area $= \frac{1}{2}(u+v)t$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+═══════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <!-- Q1 -->
+  <div class="question">
+    <div class="question-header">Question 1 — Distance–Time: Multiple Sections</div>
+    <div class="question-body">
+      <p>A distance-time graph for a train journey has the following key points: $(0\text{ h},\ 0\text{ km})$, $(2.5\text{ h},\ 100\text{ km})$, $(3\text{ h},\ 100\text{ km})$, $(4.5\text{ h},\ 55\text{ km})$.</p>
+      <p>(a) Find the speed during the first section (0 to 2.5 h).</p>
+      <p>(b) Describe what is happening between 3 h and 4.5 h.</p>
+      <p>(c) Find the speed during the return section (3 h to 4.5 h) and state the direction of travel.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Speed $= \dfrac{\text{change in distance}}{\text{change in time}} = \dfrac{100 - 0}{2.5 - 0} = \dfrac{100}{2.5} = \mathbf{40}$ <strong>km/h</strong></p>
+          <p><strong>(b)</strong> Between 3 h and 4.5 h the distance <em>decreases</em> from 100 km to 55 km. The train is <strong>travelling back towards the start</strong>.</p>
+          <p><strong>(c)</strong> Gradient $= \dfrac{55 - 100}{4.5 - 3} = \dfrac{-45}{1.5} = -30$. Speed $= \mathbf{30}$ <strong>km/h</strong> in the <strong>direction of the starting point</strong> (negative = returning).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question">
+    <div class="question-header">Question 2 — Velocity–Time: Acceleration &amp; Distance</div>
+    <div class="question-body">
+      <p>A velocity-time graph has vertices at $(0\text{ s},\ 0\text{ m/s})$, $(6\text{ s},\ 30\text{ m/s})$, $(10\text{ s},\ 30\text{ m/s})$, and $(14\text{ s},\ 0\text{ m/s})$.</p>
+      <p>(a) Find the acceleration in the first 6 seconds.</p>
+      <p>(b) Find the deceleration in the last section (10 s to 14 s).</p>
+      <p>(c) Calculate the total distance travelled.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Acceleration $= \dfrac{30 - 0}{6 - 0} = \dfrac{30}{6} = \mathbf{5 \text{ m/s}^2}$</p>
+          <p><strong>(b)</strong> Gradient $= \dfrac{0 - 30}{14 - 10} = \dfrac{-30}{4} = -7.5$ m/s² → deceleration of $\mathbf{7.5 \text{ m/s}^2}$</p>
+          <p><strong>(c)</strong> Total area = Triangle + Rectangle + Triangle:</p>
+          <p>$\frac{1}{2} \times 6 \times 30 + 4 \times 30 + \frac{1}{2} \times 4 \times 30 = 90 + 120 + 60 = \mathbf{270 \text{ m}}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question">
+    <div class="question-header">Question 3 — Gradient of a Curve: Tangent Method</div>
+    <div class="question-body">
+      <p>A distance-time graph is curved (the object is accelerating). A tangent is drawn to the curve at $t = 5$ s. The tangent passes through the coordinates $(2\text{ s},\ 3\text{ m})$ and $(8\text{ s},\ 39\text{ m})$.</p>
+      <p>(a) Calculate the gradient of the tangent line.</p>
+      <p>(b) What does this gradient represent?</p>
+      <p>(c) Why is this only an estimate of the true speed?</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient $= \dfrac{39 - 3}{8 - 2} = \dfrac{36}{6} = \mathbf{6}$ m/s</p>
+          <p><strong>(b)</strong> The gradient of the tangent to a distance-time graph gives the <strong>instantaneous speed</strong> at that moment — in this case, the speed of the object at $t = 5$ s is approximately <strong>6 m/s</strong>.</p>
+          <p><strong>(c)</strong> Drawing a tangent by hand is not perfectly accurate. The tangent is an approximation to the true slope of the curve at that point, so the calculated gradient is only an estimate.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question">
+    <div class="question-header">Question 4 — Trapezium Rule</div>
+    <div class="question-body">
+      <p>A car's velocity is measured every 3 seconds during braking:</p>
+      <table>
+        <tr><th>$t$ (s)</th><td>0</td><td>3</td><td>6</td><td>9</td><td>12</td></tr>
+        <tr><th>$v$ (m/s)</th><td>24</td><td>18</td><td>12</td><td>6</td><td>0</td></tr>
+      </table>
+      <p>(a) Use the trapezium rule with 4 strips to estimate the braking distance.</p>
+      <p>(b) Comment on whether your answer is an overestimate or underestimate if the velocity decreases at an ever-increasing rate.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $h = 3$ s, $y_0 = 24,\ y_1 = 18,\ y_2 = 12,\ y_3 = 6,\ y_4 = 0$</p>
+          <p>$$\text{Area} \approx \frac{3}{2}(24 + 2(18) + 2(12) + 2(6) + 0) = \frac{3}{2}(24 + 36 + 24 + 12 + 0) = \frac{3}{2} \times 96 = \mathbf{144 \text{ m}}$$</p>
+          <p><strong>(b)</strong> If the velocity decreases at an ever-increasing rate (concave-down curve), each trapezium lies <em>above</em> the true curve, so the trapezium rule gives an <strong>overestimate</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question">
+    <div class="question-header">Question 5 — Financial Graph: Interpreting Gradient</div>
+    <div class="question-body">
+      <p>A car hire company charges customers. A graph of total cost ($C$, in £) against miles driven ($m$) is a straight line passing through $(0,\ 40)$ and $(200,\ 140)$.</p>
+      <p>(a) Find the gradient of the line and state its units.</p>
+      <p>(b) What does the gradient represent in context?</p>
+      <p>(c) What does the y-intercept represent?</p>
+      <p>(d) Write the equation for $C$ in terms of $m$.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient $= \dfrac{140 - 40}{200 - 0} = \dfrac{100}{200} = \mathbf{0.5}$ £/mile (or 50p per mile)</p>
+          <p><strong>(b)</strong> The gradient means the hire cost <strong>increases by 50p for every mile</strong> driven. This is the <em>cost per mile</em>.</p>
+          <p><strong>(c)</strong> The y-intercept is <strong>£40</strong> — this is the <em>base/fixed hire charge</em> that applies regardless of how far you drive.</p>
+          <p><strong>(d)</strong> $C = 40 + 0.5m$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question">
+    <div class="question-header">Question 6 — Velocity–Time: Trapezoid with Non-Zero Start</div>
+    <div class="question-body">
+      <p>A velocity-time graph is a straight line from $(0\text{ s},\ 5\text{ m/s})$ to $(8\text{ s},\ 21\text{ m/s})$.</p>
+      <p>(a) Find the acceleration.</p>
+      <p>(b) Calculate the distance travelled in the 8 seconds.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Acceleration $= \dfrac{21 - 5}{8 - 0} = \dfrac{16}{8} = \mathbf{2 \text{ m/s}^2}$</p>
+          <p><strong>(b)</strong> The area under the graph is a <strong>trapezium</strong> with parallel sides 5 and 21, and height (width) = 8 s:</p>
+          <p>$$\text{Distance} = \frac{1}{2}(5 + 21) \times 8 = \frac{1}{2} \times 26 \times 8 = \mathbf{104 \text{ m}}$$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question">
+    <div class="question-header">Question 7 — Describing a Real-Life Graph</div>
+    <div class="question-body">
+      <p>A graph shows the depth of water ($d$ cm) in a bathtub against time ($t$ minutes). The graph has three sections: (i) a steep positive slope for 4 minutes; (ii) a horizontal line for 10 minutes; (iii) a steep negative slope for 3 minutes.</p>
+      <p>(a) Describe what is happening in each section in the context of the scenario.</p>
+      <p>(b) The depth rises from 0 to 30 cm in 4 minutes. Find the rate of filling.</p>
+      <p>(c) The bath empties in 3 minutes from 30 cm. Find the rate of emptying.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> (i) The bath is <strong>filling</strong> — depth increases rapidly.<br>
+          (ii) The bath is <strong>full and the water isn't moving</strong> (someone is bathing, tap off, plug in).<br>
+          (iii) The bath is <strong>emptying</strong> — depth decreases rapidly.</p>
+          <p><strong>(b)</strong> Rate of filling = gradient $= \dfrac{30 - 0}{4 - 0} = \mathbf{7.5}$ <strong>cm/min</strong></p>
+          <p><strong>(c)</strong> Rate of emptying = $\dfrac{0 - 30}{3} = -10$ cm/min → <strong>10 cm/min</strong> (magnitude of gradient)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question">
+    <div class="question-header">Question 8 — Velocity–Time: Complex Journey</div>
+    <div class="question-body">
+      <p>A motorbike's journey is described by the following velocity-time graph points: $(0,\ 0)$, $(5,\ 20)$, $(15,\ 20)$, $(20,\ 0)$, $(25,\ 15)$.</p>
+      <p>(a) Find the acceleration between 0 and 5 seconds.</p>
+      <p>(b) Find the distance covered in the first 20 seconds.</p>
+      <p>(c) What is happening between 20 and 25 seconds? Find the acceleration.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Acceleration $= \dfrac{20 - 0}{5 - 0} = \mathbf{4 \text{ m/s}^2}$</p>
+          <p><strong>(b)</strong> Distance in 0–20 s = area under graph:<br>
+          Triangle (0–5 s): $\frac{1}{2} \times 5 \times 20 = 50$ m<br>
+          Rectangle (5–15 s): $10 \times 20 = 200$ m<br>
+          Triangle (15–20 s): $\frac{1}{2} \times 5 \times 20 = 50$ m<br>
+          Total $= 50 + 200 + 50 = \mathbf{300 \text{ m}}$</p>
+          <p><strong>(c)</strong> The motorbike starts from rest (v=0 at 20 s) and accelerates again to 15 m/s in 5 s. Acceleration $= \dfrac{15 - 0}{5} = \mathbf{3 \text{ m/s}^2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question">
+    <div class="question-header">Question 9 — Profit Graph &amp; Break-Even</div>
+    <div class="question-body">
+      <p>A small business sells handmade candles. Each candle sells for £8. The cost to produce $n$ candles is given by $C = 120 + 3n$ (£). The revenue from selling $n$ candles is $R = 8n$ (£).</p>
+      <p>(a) Find the gradient of the cost graph and the revenue graph. What do they represent?</p>
+      <p>(b) How many candles must be sold to break even (profit = 0)?</p>
+      <p>(c) Write an expression for the profit $P$ in terms of $n$ and find the profit from selling 50 candles.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient of cost graph = <strong>£3/candle</strong> (cost to make each candle). Gradient of revenue graph = <strong>£8/candle</strong> (selling price per candle). Revenue graph is steeper → eventually profit is made.</p>
+          <p><strong>(b)</strong> Break-even: Revenue = Cost<br>$8n = 120 + 3n \Rightarrow 5n = 120 \Rightarrow n = \mathbf{24}$ candles</p>
+          <p><strong>(c)</strong> Profit $P = R - C = 8n - (120 + 3n) = 5n - 120$<br>
+          At $n = 50$: $P = 5(50) - 120 = 250 - 120 = \mathbf{£130}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question">
+    <div class="question-header">Question 10 — Mixed: Distance–Time Curve &amp; Tangent</div>
+    <div class="question-body">
+      <p>A ball is rolled along a surface. Its distance from a sensor (in cm) at various times is recorded:</p>
+      <table>
+        <tr><th>$t$ (s)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+        <tr><th>$d$ (cm)</th><td>0</td><td>8</td><td>28</td><td>54</td><td>80</td><td>100</td></tr>
+      </table>
+      <p>(a) Without calculating, describe how the speed of the ball changes over time (look at the differences between consecutive d values).</p>
+      <p>(b) A tangent is drawn to the d-t curve at $t = 2$ s. It passes through $(0,\ -4)$ and $(4,\ 52)$. Find the speed at $t = 2$ s.</p>
+      <p>(c) Estimate the average speed over the entire 5 seconds.</p>
+      <details>
+        <summary>▶ Show Solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The differences are: 8, 20, 26, 26, 20. The ball speeds up between $t = 0$ and $t = 3$ s (differences increasing), then slows down from $t = 3$ to $t = 5$ s (differences decreasing). The speed <strong>increases then decreases</strong>.</p>
+          <p><strong>(b)</strong> Two points on tangent: $(0, -4)$ and $(4, 52)$<br>
+          Gradient $= \dfrac{52 - (-4)}{4 - 0} = \dfrac{56}{4} = \mathbf{14}$ cm/s</p>
+          <p>Speed at $t = 2$ s $\approx \mathbf{14}$ cm/s</p>
+          <p><strong>(c)</strong> Average speed $= \dfrac{\text{total distance}}{\text{total time}} = \dfrac{100 - 0}{5 - 0} = \mathbf{20}$ cm/s</p>
+          <p><em>Note: average speed uses total distance ÷ total time, NOT the gradient of the tangent.</em></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div>
+
+</main>
+</body>
+</html>

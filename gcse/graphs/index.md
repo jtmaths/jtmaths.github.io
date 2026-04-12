@@ -12,3 +12,5 @@ nav_order: 4
 * [Graphs of Functions](functions.html)
 * [Roots and turning points](quadratics.html)
 * [Translations and Reflections](translations.html)
+* [Real world examples](real-world.html)
+* [Graphs of Circles](circles.html)
