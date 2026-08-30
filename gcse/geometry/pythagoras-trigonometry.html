@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pythagoras and Trigonometry – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Pythagoras and Trigonometry</h1>
+  <p>GCSE Maths · Geometry and Measures (G20)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – PYTHAGORAS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Pythagoras' Theorem</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Pythagoras' theorem</div>
+    $a^2 + b^2 = c^2$ &nbsp;— where $c$ is the <strong>hypotenuse</strong>
+  </div>
+
+  <div class="concept">
+    The <strong>hypotenuse</strong> is the longest side, always <em>opposite</em> the right angle. It never touches the right angle.
+  </div>
+
+  <div class="svg-block">
+    <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,160 210,160 50,60" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <rect x="50" y="147" width="13" height="13" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="128" y="180" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">b</text>
+      <text x="36" y="115" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">a</text>
+      <text x="140" y="98" font-family="Arial" font-size="14" fill="#b91c1c" font-weight="bold">c</text>
+      <text x="150" y="196" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">c is opposite the right angle</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Identify the hypotenuse (opposite the right angle).</li>
+    <li>Decide whether you are finding the hypotenuse or one of the shorter sides.</li>
+    <li>Finding the hypotenuse: <strong>square, add, square root</strong>.</li>
+    <li>Finding a shorter side: <strong>square, subtract, square root</strong>.</li>
+    <li>Check: the hypotenuse must be the biggest answer.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding the hypotenuse</div>
+    <div class="example-body">
+      <p>A right-angled triangle has legs $7$ cm and $24$ cm. Find the hypotenuse.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$c^2 = 7^2 + 24^2 = 49 + 576 = 625$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$c = \sqrt{625} = 25$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Finding a shorter side</div>
+    <div class="example-body">
+      <p>A right-angled triangle has hypotenuse $17$ cm and one leg $8$ cm. Find the other leg.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Here we <strong>subtract</strong>, because we want a shorter side.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$b^2 = 17^2 - 8^2 = 289 - 64 = 225$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$b = \sqrt{225} = 15$ cm</span></div>
+      <div class="warn">Adding here would give $\sqrt{353} = 18.8$ — <em>longer</em> than the hypotenuse, which is impossible. Always sense-check.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Pythagorean triples worth recognising:</strong> $3,4,5$ &nbsp;·&nbsp; $5,12,13$ &nbsp;·&nbsp; $8,15,17$ &nbsp;·&nbsp; $7,24,25$ &nbsp;·&nbsp; $9,40,41$. Multiples also work: $6,8,10$ and $9,12,15$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Testing for a right angle</div>
+    <div class="example-body">
+      <p>A triangle has sides $9$ cm, $12$ cm and $16$ cm. Is it right-angled?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The longest side would be the hypotenuse: $16^2 = 256$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The other two: $9^2 + 12^2 = 81 + 144 = 225$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$225 \neq 256$, so <strong>it is not right-angled</strong>.</span></div>
+      <p>Since $225 \lt 256$, the largest angle is actually obtuse.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TRIGONOMETRY BASICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Trigonometry: SOH CAH TOA</div>
+<div class="section-body">
+
+  <p>Pythagoras links three <em>sides</em>. Trigonometry brings <em>angles</em> into the picture.</p>
+
+  <div class="formula-box">
+    <div class="label">SOH CAH TOA</div>
+    $\sin\theta = \dfrac{O}{H}$ &nbsp;·&nbsp; $\cos\theta = \dfrac{A}{H}$ &nbsp;·&nbsp; $\tan\theta = \dfrac{O}{A}$
+  </div>
+
+  <div class="concept">
+    <strong>Labelling the sides — always relative to the angle you are using:</strong><br>
+    <strong>H</strong> — the hypotenuse, opposite the right angle (this never changes)<br>
+    <strong>O</strong> — the side <em>opposite</em> the angle $\theta$<br>
+    <strong>A</strong> — the side <em>adjacent</em> to (next to) $\theta$, which is not the hypotenuse
+  </div>
+
+  <div class="svg-block">
+    <svg width="340" height="200" viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,160 250,160 250,50" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <rect x="237" y="147" width="13" height="13" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 90 160 A 40 40 0 0 0 82 138" fill="none" stroke="#16a34a" stroke-width="2"/>
+      <text x="94" y="150" font-family="Arial" font-size="14" fill="#16a34a" font-weight="bold">θ</text>
+      <text x="150" y="182" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">A (adjacent)</text>
+      <text x="258" y="110" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">O</text>
+      <text x="262" y="128" font-family="Arial" font-size="11" fill="#64748b">(opposite)</text>
+      <text x="122" y="92" font-family="Arial" font-size="14" fill="#b91c1c" font-weight="bold">H</text>
+      <text x="118" y="110" font-family="Arial" font-size="11" fill="#b91c1c">(hypotenuse)</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>O and A swap if you use the other angle.</strong> The hypotenuse never moves, but "opposite" and "adjacent" always depend on which angle you are working from. Relabel the triangle every time.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FINDING A SIDE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding a Missing Side</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Mark the angle you are given, then label the three sides H, O and A.</li>
+    <li>Circle the two sides involved: the one you know and the one you want.</li>
+    <li>Choose the ratio that uses exactly those two — SOH, CAH or TOA.</li>
+    <li>Write the equation and rearrange.</li>
+    <li>Calculate, checking your calculator is in <strong>degrees</strong> mode.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Opposite side</div>
+    <div class="example-body">
+      <p>A right-angled triangle has hypotenuse $20$ cm and an angle of $37^\circ$. Find the side opposite that angle, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>We know H and want O → use <strong>SOH</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin 37^\circ = \dfrac{O}{20}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$O = 20 \times \sin 37^\circ = 20 \times 0.60182 = 12.0$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — When the unknown is on the bottom</div>
+    <div class="example-body">
+      <p>A right-angled triangle has an angle of $28^\circ$ with an opposite side of $9$ cm. Find the hypotenuse, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>We know O and want H → use <strong>SOH</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin 28^\circ = \dfrac{9}{H}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Multiply both sides by $H$: $\;H \sin 28^\circ = 9$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$H = \dfrac{9}{\sin 28^\circ} = \dfrac{9}{0.46947} = 19.2$ cm</span></div>
+      <div class="tip">If the unknown is <em>underneath</em>, swap it with the answer: $H = \dfrac{O}{\sin\theta}$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Using tan</div>
+    <div class="example-body">
+      <p>A ladder leans against a wall at $65^\circ$ to the ground. Its foot is $1.8$ m from the wall. How far up the wall does it reach, to 2 d.p.?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The $1.8$ m is adjacent to the angle; the height up the wall is opposite → use <strong>TOA</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tan 65^\circ = \dfrac{h}{1.8}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$h = 1.8 \times \tan 65^\circ = 1.8 \times 2.14451 = 3.86$ m</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FINDING AN ANGLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Finding a Missing Angle</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Inverse functions</div>
+    $\theta = \sin^{-1}\left(\dfrac{O}{H}\right)$ &nbsp;·&nbsp; $\theta = \cos^{-1}\left(\dfrac{A}{H}\right)$ &nbsp;·&nbsp; $\theta = \tan^{-1}\left(\dfrac{O}{A}\right)$
+  </div>
+
+  <div class="concept">
+    On your calculator, $\sin^{-1}$, $\cos^{-1}$ and $\tan^{-1}$ are usually the SHIFT (or 2nd function) of the ordinary keys. They are sometimes labelled "arcsin", "arccos", "arctan".
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Finding an angle</div>
+    <div class="example-body">
+      <p>A right-angled triangle has an opposite side of $7$ cm and a hypotenuse of $11$ cm. Find the angle, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>O and H → use <strong>SOH</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin\theta = \dfrac{7}{11} = 0.63636$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\theta = \sin^{-1}(0.63636) = 39.5^\circ$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Angle from two legs</div>
+    <div class="example-body">
+      <p>A ramp rises $1.2$ m over a horizontal distance of $8$ m. Find the angle of elevation, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Opposite $= 1.2$, adjacent $= 8$ → use <strong>TOA</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tan\theta = \dfrac{1.2}{8} = 0.15$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\theta = \tan^{-1}(0.15) = 8.5^\circ$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – ANGLES OF ELEVATION AND DEPRESSION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Angles of Elevation and Depression</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Angle of elevation</strong> — measured <em>upwards</em> from the horizontal.<br>
+    <strong>Angle of depression</strong> — measured <em>downwards</em> from the horizontal.<br>
+    Both are measured from a horizontal line, never from the vertical.
+  </div>
+
+  <div class="svg-block">
+    <svg width="430" height="190" viewBox="0 0 430 190" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="150" x2="390" y2="150" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="5,4"/>
+      <line x1="40" y1="40" x2="200" y2="40" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="5,4"/>
+      <line x1="40" y1="40" x2="40" y2="150" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="40" y1="150" x2="330" y2="40" stroke="#7c3aed" stroke-width="2.5"/>
+      <circle cx="40" cy="40" r="4" fill="#4f46e5"/>
+      <circle cx="330" cy="40" r="4" fill="#7c3aed"/>
+      <path d="M 90 150 A 50 50 0 0 0 87 132" fill="none" stroke="#16a34a" stroke-width="2"/>
+      <text x="96" y="142" font-family="Arial" font-size="12" fill="#16a34a" font-weight="bold">elevation</text>
+      <line x1="40" y1="40" x2="330" y2="40" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="200" y="180" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Both angles are measured from a horizontal line</text>
+      <text x="230" y="34" font-family="Arial" font-size="12" fill="#b91c1c">depression (from the top)</text>
+    </svg>
+  </div>
+
+  <div class="tip">
+    <strong>They are equal.</strong> The angle of elevation from the ground to the top of a tower equals the angle of depression from the top of the tower back down — they are alternate angles between two horizontal (hence parallel) lines.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Angle of depression</div>
+    <div class="example-body">
+      <p>From the top of a $45$ m cliff, the angle of depression to a boat is $22^\circ$. How far is the boat from the base of the cliff, to the nearest metre?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The angle of depression from the top equals the angle of elevation from the boat, so use $22^\circ$ at the boat.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Opposite $= 45$ m (the cliff), adjacent $= d$ (the distance) → use <strong>TOA</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tan 22^\circ = \dfrac{45}{d}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$d = \dfrac{45}{\tan 22^\circ} = \dfrac{45}{0.40403} = 111.4$</span></div>
+      <p><strong>About $111$ m.</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – 3D PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Pythagoras and Trigonometry in 3D</div>
+<div class="section-body">
+
+  <p>3D problems are always solved by finding a suitable <strong>right-angled triangle inside the solid</strong> and then using the 2D methods.</p>
+
+  <div class="formula-box">
+    <div class="label">Space diagonal of a cuboid</div>
+    $d = \sqrt{l^2 + w^2 + h^2}$
+  </div>
+
+  <ul class="steps">
+    <li>Sketch the solid and mark the line you want.</li>
+    <li>Find a right-angled triangle that contains it.</li>
+    <li>If a side of that triangle is unknown, find it first with a second right-angled triangle (usually on the base).</li>
+    <li>Apply Pythagoras or trigonometry.</li>
+    <li>Keep full accuracy between the two stages.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — 3D diagonal and angle</div>
+    <div class="example-body">
+      <p>A cuboid measures $6$ cm by $8$ cm by $5$ cm. Find (a) the length of the space diagonal, (b) the angle the diagonal makes with the base.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> First the base diagonal: $\sqrt{6^2 + 8^2} = \sqrt{100} = 10$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Now the space diagonal, using that base diagonal and the height:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$d = \sqrt{10^2 + 5^2} = \sqrt{125} = 11.18$ cm (2 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(b)</strong> In that vertical triangle, opposite $= 5$ (height), adjacent $= 10$ (base diagonal).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\tan\theta = \dfrac{5}{10} = 0.5$, so $\theta = \tan^{-1}(0.5) = 26.6^\circ$ (1 d.p.)</span></div>
+      <div class="tip">Check with the one-step formula: $\sqrt{6^2+8^2+5^2} = \sqrt{36+64+25} = \sqrt{125}$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Pythagoras</h4><p>$a^2 + b^2 = c^2$, with $c$ the hypotenuse.</p></div>
+    <div class="ref-card"><h4>Hypotenuse</h4><p>Square, add, square root.</p></div>
+    <div class="ref-card"><h4>Shorter side</h4><p>Square, subtract, square root.</p></div>
+    <div class="ref-card"><h4>SOH CAH TOA</h4><p>$\sin = \tfrac{O}{H}$, $\cos = \tfrac{A}{H}$, $\tan = \tfrac{O}{A}$.</p></div>
+    <div class="ref-card"><h4>Finding an angle</h4><p>Use $\sin^{-1}$, $\cos^{-1}$ or $\tan^{-1}$.</p></div>
+    <div class="ref-card"><h4>Unknown on the bottom</h4><p>Swap it with the answer: $H = \tfrac{O}{\sin\theta}$.</p></div>
+    <div class="ref-card"><h4>Elevation / depression</h4><p>Measured from the horizontal; the two are equal.</p></div>
+    <div class="ref-card"><h4>3D</h4><p>Find a right-angled triangle inside the solid; often two stages.</p></div>
+    <div class="ref-card"><h4>Calculator</h4><p>Degrees mode. Round only at the very end.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A right-angled triangle has legs $9$ cm and $40$ cm. Find the hypotenuse.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$c^2 = 9^2 + 40^2 = 81 + 1600 = 1681$</p>
+          <p>$c = \sqrt{1681} = 41$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A right-angled triangle has hypotenuse $26$ cm and one leg $10$ cm. Find the other leg.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$b^2 = 26^2 - 10^2 = 676 - 100 = 576$</p>
+          <p>$b = \sqrt{576} = 24$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Is a triangle with sides $8$ cm, $15$ cm and $17$ cm right-angled? Show your working.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$8^2 + 15^2 = 64 + 225 = 289$</p>
+          <p>$17^2 = 289$</p>
+          <p>They are equal, so <strong>yes, the triangle is right-angled</strong> (with the right angle between the $8$ and $15$ sides).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A right-angled triangle has hypotenuse $15$ cm and an angle of $42^\circ$. Find the side adjacent to that angle, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A and H → use CAH.</p>
+          <p>$\cos 42^\circ = \dfrac{A}{15}$</p>
+          <p>$A = 15 \times \cos 42^\circ = 15 \times 0.74314 = 11.1$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In a right-angled triangle, the side opposite an angle is $12$ cm and the adjacent side is $5$ cm. Find the angle, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>O and A → use TOA.</p>
+          <p>$\tan\theta = \dfrac{12}{5} = 2.4$</p>
+          <p>$\theta = \tan^{-1}(2.4) = 67.4^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A ladder $6$ m long leans against a wall, reaching $5.2$ m up. Find the angle it makes with the ground, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The ladder is the hypotenuse ($6$ m); the height is opposite ($5.2$ m).</p>
+          <p>$\sin\theta = \dfrac{5.2}{6} = 0.86667$</p>
+          <p>$\theta = \sin^{-1}(0.86667) = 60.1^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>From a point $80$ m from the base of a tower, the angle of elevation to the top is $34^\circ$. Find the height of the tower, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Adjacent $= 80$, opposite $= h$ → use TOA.</p>
+          <p>$\tan 34^\circ = \dfrac{h}{80}$</p>
+          <p>$h = 80 \times \tan 34^\circ = 80 \times 0.67451 = 54.0$ m</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the distance between the points $A(2,\ 3)$ and $B(10,\ 9)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Delta x = 8$, $\Delta y = 6$ — these are the two legs of a right-angled triangle.</p>
+          <p>$AB = \sqrt{8^2 + 6^2} = \sqrt{100} = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>An isosceles triangle has two equal sides of $13$ cm and a base of $10$ cm.</p>
+      <p>(a) Find its perpendicular height. &nbsp; (b) Find its area. &nbsp; (c) Find its apex angle, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The perpendicular from the apex bisects the base, giving a right-angled triangle with hypotenuse $13$ and one leg $5$.</p>
+          <p>$h^2 = 13^2 - 5^2 = 169 - 25 = 144$, so $h = 12$ cm.</p>
+          <p><strong>(b)</strong> Area $= \tfrac{1}{2} \times 10 \times 12 = 60\text{ cm}^2$.</p>
+          <p><strong>(c)</strong> In the half-triangle, the angle at the apex has opposite $5$ and hypotenuse $13$.</p>
+          <p>$\sin\alpha = \dfrac{5}{13}$, so $\alpha = 22.62^\circ$.</p>
+          <p>The full apex angle is $2\alpha = \mathbf{45.2^\circ}$ (1 d.p.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A square-based pyramid has base edges $10$ cm and vertical height $12$ cm. $M$ is the centre of the base and $V$ is the apex.</p>
+      <p>(a) Find the distance from $M$ to a base corner. &nbsp; (b) Find the length of a sloping edge $VA$. &nbsp; (c) Find the angle a sloping edge makes with the base, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The base diagonal $= \sqrt{10^2 + 10^2} = \sqrt{200} = 14.142$ cm.</p>
+          <p>$M$ is the centre, so $MA = \dfrac{14.142}{2} = 7.071$ cm.</p>
+          <p><strong>(b)</strong> Triangle $VMA$ is right-angled at $M$, with $VM = 12$ and $MA = 7.071$.</p>
+          <p>$VA = \sqrt{12^2 + 7.071^2} = \sqrt{144 + 50} = \sqrt{194} = \mathbf{13.93}$ cm (2 d.p.).</p>
+          <p><strong>(c)</strong> The angle at $A$ in triangle $VMA$: opposite $= 12$, adjacent $= 7.071$.</p>
+          <p>$\tan\theta = \dfrac{12}{7.071} = 1.6971$</p>
+          <p>$\theta = \tan^{-1}(1.6971) = \mathbf{59.5^\circ}$ (1 d.p.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Pythagoras &amp; Trigonometry (G20) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

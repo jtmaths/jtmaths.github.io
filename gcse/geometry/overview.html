@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometry and Measures – Overview – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .group-head { margin-top: 22px; margin-bottom: 6px; color: #3730a3; font-size: 1.02rem; border-bottom: 2px solid #ddd6fe; padding-bottom: 4px; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Geometry and Measures</h1>
+  <p>GCSE Maths · Overview of the whole topic</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG PICTURE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Picture</div>
+<div class="section-body">
+
+  <p>Geometry is the mathematics of <strong>shape, size, position and space</strong>. It is the largest topic on the GCSE paper, but it rests on a surprisingly small number of core ideas.</p>
+
+  <div class="concept">
+    <strong>Everything in geometry comes back to four things:</strong><br>
+    • <strong>Angle facts</strong> — a handful of rules about angles that combine to solve almost any angle problem.<br>
+    • <strong>Properties of shapes</strong> — knowing what makes a rhombus a rhombus lets you deduce lengths and angles for free.<br>
+    • <strong>Formulae</strong> — for length, area and volume, which you apply and combine.<br>
+    • <strong>Right-angled triangles</strong> — Pythagoras and trigonometry, which turn a picture into an equation.
+  </div>
+
+  <div class="tip">
+    <strong>The golden rule of geometry questions:</strong> always give a <em>reason</em>. "$x = 47^\circ$" scores one mark; "$x = 47^\circ$ because alternate angles are equal" scores two. Write the reason every single time.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ANGLE FACTS YOU MUST KNOW
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Angle Facts You Must Know</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Fact</th><th>Reason to write</th></tr>
+    <tr><td>Angles on a straight line add to $180^\circ$</td><td>angles on a straight line</td></tr>
+    <tr><td>Angles round a point add to $360^\circ$</td><td>angles at a point</td></tr>
+    <tr><td>Vertically opposite angles are equal</td><td>vertically opposite angles</td></tr>
+    <tr><td>Angles in a triangle add to $180^\circ$</td><td>angle sum of a triangle</td></tr>
+    <tr><td>Angles in a quadrilateral add to $360^\circ$</td><td>angle sum of a quadrilateral</td></tr>
+    <tr><td>Alternate angles are equal (Z-shape)</td><td>alternate angles</td></tr>
+    <tr><td>Corresponding angles are equal (F-shape)</td><td>corresponding angles</td></tr>
+    <tr><td>Co-interior angles add to $180^\circ$ (C-shape)</td><td>co-interior angles</td></tr>
+    <tr><td>Base angles of an isosceles triangle are equal</td><td>base angles of an isosceles triangle</td></tr>
+    <tr><td>Exterior angle of a triangle $=$ sum of the two opposite interior angles</td><td>exterior angle of a triangle</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="560" height="180" viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- alternate -->
+      <text x="90" y="18" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Alternate (Z)</text>
+      <line x1="20" y1="50" x2="160" y2="50" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="20" y1="130" x2="160" y2="130" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="130" y1="35" x2="50" y2="145" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 100 50 A 22 22 0 0 0 118 62" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 80 130 A 22 22 0 0 0 62 118" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="112" y="46" font-family="Arial" font-size="12" fill="#ef4444">a</text>
+      <text x="64" y="140" font-family="Arial" font-size="12" fill="#ef4444">a</text>
+
+      <!-- corresponding -->
+      <text x="280" y="18" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Corresponding (F)</text>
+      <line x1="210" y1="50" x2="350" y2="50" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="210" y1="130" x2="350" y2="130" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="320" y1="35" x2="240" y2="145" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 290 50 A 22 22 0 0 0 308 62" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 262 130 A 22 22 0 0 0 280 142" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="302" y="46" font-family="Arial" font-size="12" fill="#16a34a">b</text>
+      <text x="274" y="126" font-family="Arial" font-size="12" fill="#16a34a">b</text>
+
+      <!-- co-interior -->
+      <text x="470" y="18" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Co-interior (C)</text>
+      <line x1="400" y1="50" x2="540" y2="50" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="400" y1="130" x2="540" y2="130" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="510" y1="35" x2="430" y2="145" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 480 50 A 22 22 0 0 1 462 62" fill="none" stroke="#d97706" stroke-width="2"/>
+      <path d="M 452 130 A 22 22 0 0 0 470 118" fill="none" stroke="#d97706" stroke-width="2"/>
+      <text x="462" y="46" font-family="Arial" font-size="12" fill="#d97706">c</text>
+      <text x="470" y="140" font-family="Arial" font-size="12" fill="#d97706">d</text>
+      <text x="470" y="168" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">c + d = 180°</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Formulae Sheet in Your Head</div>
+<div class="section-body">
+
+  <p>Most of these are <strong>not</strong> given in the exam, so they must be learnt.</p>
+
+  <table>
+    <tr><th>Shape</th><th>Formula</th></tr>
+    <tr><td>Triangle</td><td>Area $= \tfrac{1}{2}bh$</td></tr>
+    <tr><td>Parallelogram</td><td>Area $= bh$</td></tr>
+    <tr><td>Trapezium</td><td>Area $= \tfrac{1}{2}(a+b)h$</td></tr>
+    <tr><td>Circle</td><td>$C = 2\pi r = \pi d$ &nbsp;·&nbsp; $A = \pi r^2$</td></tr>
+    <tr><td>Any prism</td><td>Volume $=$ area of cross-section $\times$ length</td></tr>
+    <tr><td>Cylinder</td><td>$V = \pi r^2 h$ &nbsp;·&nbsp; curved surface $= 2\pi r h$</td></tr>
+    <tr><td>Cone</td><td>$V = \tfrac{1}{3}\pi r^2 h$ &nbsp;·&nbsp; curved surface $= \pi r l$</td></tr>
+    <tr><td>Sphere</td><td>$V = \tfrac{4}{3}\pi r^3$ &nbsp;·&nbsp; surface $= 4\pi r^2$</td></tr>
+    <tr><td>Pyramid</td><td>$V = \tfrac{1}{3} \times$ base area $\times$ height</td></tr>
+    <tr><td>Right-angled triangle</td><td>$a^2 + b^2 = c^2$ &nbsp;·&nbsp; SOH CAH TOA</td></tr>
+    <tr><td>Any triangle (Higher)</td><td>$\dfrac{a}{\sin A} = \dfrac{b}{\sin B}$ &nbsp;·&nbsp; $a^2 = b^2 + c^2 - 2bc\cos A$ &nbsp;·&nbsp; Area $= \tfrac{1}{2}ab\sin C$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The formulae given to you in the exam</strong> are usually only the sphere and cone formulae, and (on Higher) the sine and cosine rules. Everything else you must know by heart — check your exam board's formulae sheet.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE 25 SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The 25 Subtopics</div>
+<div class="section-body">
+
+  <p>The National Curriculum divides Geometry and Measures into 25 statements, usually labelled <strong>G1</strong> to <strong>G25</strong> in three groups. Each has its own page with explanations, worked examples and ten practice questions.</p>
+
+  <h3 class="group-head">Properties and constructions (G1–G13)</h3>
+  <ul class="topic-list">
+    <li><span class="code">G1</span><span><a href="conventions.html">Geometric Conventions and Notation</a><span class="desc">Points, lines, planes, labelling triangles, symmetry, drawing from a description.</span></span></li>
+    <li><span class="code">G2</span><span><a href="constructions-loci.html">Ruler and Compass Constructions and Loci</a><span class="desc">Bisectors, perpendiculars, and regions satisfying a set of conditions.</span></span></li>
+    <li><span class="code">G3</span><span><a href="angle-rules.html">Angle Rules and Polygons</a><span class="desc">Angles at a point and on lines, parallel-line angles, interior and exterior angles.</span></span></li>
+    <li><span class="code">G4</span><span><a href="quadrilaterals-triangles.html">Properties of Triangles and Quadrilaterals</a><span class="desc">Definitions and properties of every named triangle and quadrilateral.</span></span></li>
+    <li><span class="code">G5</span><span><a href="congruent-triangles.html">Congruent Triangles</a><span class="desc">The four criteria SSS, SAS, ASA and RHS, and how to write a congruence proof.</span></span></li>
+    <li><span class="code">G6</span><span><a href="geometric-proof.html">Geometric Reasoning and Proof</a><span class="desc">Chaining angle facts and congruence into a full written proof.</span></span></li>
+    <li><span class="code">G7</span><span><a href="transformations.html">Transformations</a><span class="desc">Rotation, reflection, translation and enlargement, including negative scale factors.</span></span></li>
+    <li><span class="code">G8</span><span><a href="combined-transformations.html">Combined Transformations and Invariance</a><span class="desc">Describing a single transformation equivalent to two, and what stays fixed.</span></span></li>
+    <li><span class="code">G9</span><span><a href="circle-parts.html">Parts of a Circle</a><span class="desc">Radius, chord, tangent, arc, sector, segment and their basic properties.</span></span></li>
+    <li><span class="code">G10</span><span><a href="circle-theorems.html">Circle Theorems</a><span class="desc">All eight theorems, their proofs, and how to apply them. (Higher)</span></span></li>
+    <li><span class="code">G11</span><span><a href="coordinate-geometry.html">Coordinate Geometry</a><span class="desc">Midpoints, distances, gradients, parallel and perpendicular lines, shapes on axes.</span></span></li>
+    <li><span class="code">G12</span><span><a href="3d-shapes.html">Properties of 3D Shapes</a><span class="desc">Faces, edges and vertices of prisms, pyramids, cylinders, cones and spheres.</span></span></li>
+    <li><span class="code">G13</span><span><a href="plans-elevations.html">Plans and Elevations</a><span class="desc">Drawing and interpreting 2D views of a 3D solid.</span></span></li>
+  </ul>
+
+  <h3 class="group-head">Mensuration and calculation (G14–G22)</h3>
+  <ul class="topic-list">
+    <li><span class="code">G14</span><span><a href="units-measures.html">Standard Units of Measure</a><span class="desc">Length, area, volume, mass, time and money, and converting between them.</span></span></li>
+    <li><span class="code">G15</span><span><a href="measuring-bearings.html">Measuring, Scale Drawings and Bearings</a><span class="desc">Using a ruler and protractor, maps, and three-figure bearings.</span></span></li>
+    <li><span class="code">G16</span><span><a href="area-volume-formulae.html">Area and Volume Formulae</a><span class="desc">Triangles, parallelograms, trapezia, cuboids and other prisms.</span></span></li>
+    <li><span class="code">G17</span><span><a href="circles-surface-area.html">Circles, Surface Area and Volume</a><span class="desc">Circumference and area of circles; spheres, cones, pyramids and composite solids.</span></span></li>
+    <li><span class="code">G18</span><span><a href="arcs-sectors.html">Arcs and Sectors</a><span class="desc">Arc length, sector area, segment area and perimeters of sectors.</span></span></li>
+    <li><span class="code">G19</span><span><a href="congruence-similarity.html">Congruence and Similarity in Measures</a><span class="desc">Length, area and volume scale factors $k$, $k^2$ and $k^3$.</span></span></li>
+    <li><span class="code">G20</span><span><a href="pythagoras-trigonometry.html">Pythagoras and Trigonometry</a><span class="desc">Right-angled triangles in 2D and 3D, SOH CAH TOA, and finding angles.</span></span></li>
+    <li><span class="code">G21</span><span><a href="exact-trig-values.html">Exact Trigonometric Values</a><span class="desc">The exact values for $0^\circ$, $30^\circ$, $45^\circ$, $60^\circ$ and $90^\circ$.</span></span></li>
+    <li><span class="code">G22</span><span><a href="sine-cosine-rules.html">Sine Rule, Cosine Rule and Area of a Triangle</a><span class="desc">Solving any triangle, not just right-angled ones. (Higher)</span></span></li>
+  </ul>
+
+  <h3 class="group-head">Vectors (G23–G25)</h3>
+  <ul class="topic-list">
+    <li><span class="code">G23</span><span><a href="vectors-translations.html">Vectors and Translations</a><span class="desc">Column vectors, notation, magnitude and describing translations.</span></span></li>
+    <li><span class="code">G24</span><span><a href="vector-arithmetic.html">Vector Arithmetic</a><span class="desc">Adding, subtracting, multiplying by a scalar, and vector diagrams.</span></span></li>
+    <li><span class="code">G25</span><span><a href="vector-proofs.html">Vector Geometry and Proof</a><span class="desc">Using vectors to prove that lines are parallel or that points are collinear. (Higher)</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – HOW TO ATTACK A GEOMETRY QUESTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> How to Attack a Geometry Question</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li><strong>Mark up the diagram.</strong> Write every angle and length you work out straight onto the picture. Use tick marks for equal sides and arcs for equal angles.</li>
+    <li><strong>Look for the standard shapes.</strong> Isosceles triangles, parallel lines, circles with a radius drawn — each brings a rule with it.</li>
+    <li><strong>Work out anything you can</strong>, even if it does not look useful yet. Geometry questions unlock a step at a time.</li>
+    <li><strong>Write the reason for every step.</strong> Marks are given for reasons, not just numbers.</li>
+    <li><strong>Check the answer is sensible.</strong> An angle that looks acute should not come out as $130^\circ$.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example — A typical multi-step angle chase</div>
+    <div class="example-body">
+      <p>In triangle $ABC$, $AB = AC$ and angle $BAC = 40^\circ$. The line $BC$ is extended to $D$. Find angle $ACD$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AB = AC$, so the triangle is isosceles and angles $ABC$ and $ACB$ are equal.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Angle sum of a triangle: $180 - 40 = 140^\circ$ shared between the two base angles.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So angle $ACB = 140 \div 2 = 70^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$BCD$ is a straight line, so angle $ACD = 180 - 70 = 110^\circ$.</span></div>
+      <p><strong>Answer: $110^\circ$</strong> — and note the reason given at every stage.</p>
+      <p><em>Alternatively:</em> the exterior angle of a triangle equals the sum of the two opposite interior angles, so angle $ACD = 40 + 70 = 110^\circ$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Mistake 1 — Assuming a diagram is to scale.</strong><br>
+    Unless it says "accurately drawn", never measure. Two lines that look equal may not be.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 2 — Confusing interior and exterior angles of a polygon.</strong><br>
+    Exterior angles always add to $360^\circ$; interior angles add to $(n-2)\times 180^\circ$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 3 — Using the slant height instead of the perpendicular height.</strong><br>
+    Area of a triangle or parallelogram needs the <em>perpendicular</em> height, not a sloping side.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 4 — Squaring the scale factor for volume.</strong><br>
+    Lengths $\times k$, areas $\times k^2$, volumes $\times k^3$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 5 — Using trigonometry in a triangle that is not right-angled.</strong><br>
+    SOH CAH TOA only works when there is a right angle. Otherwise you need the sine or cosine rule.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 6 — Rounding too early.</strong><br>
+    Keep full accuracy on your calculator throughout, and round only at the very end.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Angle sums</h4><p>Straight line $180^\circ$, point $360^\circ$, triangle $180^\circ$, quadrilateral $360^\circ$.</p></div>
+    <div class="ref-card"><h4>Polygons</h4><p>Interior sum $= (n-2)\times 180^\circ$; exterior sum $= 360^\circ$.</p></div>
+    <div class="ref-card"><h4>Parallel lines</h4><p>Alternate equal, corresponding equal, co-interior add to $180^\circ$.</p></div>
+    <div class="ref-card"><h4>Congruence</h4><p>SSS, SAS, ASA, RHS. Never SSA.</p></div>
+    <div class="ref-card"><h4>Pythagoras</h4><p>$a^2 + b^2 = c^2$, with $c$ the hypotenuse.</p></div>
+    <div class="ref-card"><h4>Trigonometry</h4><p>$\sin = \tfrac{O}{H}$, $\cos = \tfrac{A}{H}$, $\tan = \tfrac{O}{A}$.</p></div>
+    <div class="ref-card"><h4>Circle</h4><p>$C = 2\pi r$, $A = \pi r^2$. Arc and sector are fractions of these.</p></div>
+    <div class="ref-card"><h4>Similar shapes</h4><p>Length $k$, area $k^2$, volume $k^3$.</p></div>
+    <div class="ref-card"><h4>Vectors</h4><p>$\begin{pmatrix} x \\ y \end{pmatrix}$: $x$ across, $y$ up. Add by adding components.</p></div>
+    <div class="ref-card"><h4>Always</h4><p>Give a reason for every step of an angle chase.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <p style="margin-bottom:12px;">These ten questions sample the whole topic. If one type catches you out, follow the link in Section 4 to the page that covers it.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Three angles on a straight line are $x$, $2x$ and $3x$. Find $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Angles on a straight line add to $180^\circ$.</p>
+          <p>$x + 2x + 3x = 180 \Rightarrow 6x = 180$</p>
+          <p>$x = 30^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the size of each interior angle of a regular decagon (10 sides).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Exterior angle $= 360 \div 10 = 36^\circ$.</p>
+          <p>Interior angle $= 180 - 36 = 144^\circ$.</p>
+          <p><em>Check:</em> interior sum $= (10-2)\times 180 = 1440^\circ$; $1440 \div 10 = 144^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A right-angled triangle has legs $9$ cm and $12$ cm. Find the hypotenuse.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$c^2 = 9^2 + 12^2 = 81 + 144 = 225$</p>
+          <p>$c = \sqrt{225} = 15$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A circle has radius $7$ cm. Find its circumference and area, each to 1 decimal place.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$C = 2\pi r = 2 \times \pi \times 7 = 43.98\ldots = 44.0$ cm</p>
+          <p>$A = \pi r^2 = \pi \times 49 = 153.93\ldots = 153.9\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the area of a trapezium with parallel sides $8$ cm and $14$ cm and perpendicular height $5$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = \tfrac{1}{2}(a+b)h = \tfrac{1}{2}(8+14)\times 5$</p>
+          <p>$= \tfrac{1}{2} \times 22 \times 5 = 55\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>In a right-angled triangle the hypotenuse is $10$ cm and one angle is $35^\circ$. Find the side opposite that angle, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Opposite and hypotenuse → use sine.</p>
+          <p>$\sin 35^\circ = \dfrac{O}{10}$</p>
+          <p>$O = 10 \sin 35^\circ = 10 \times 0.57357 = 5.7$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A cylinder has radius $4$ cm and height $10$ cm. Find its volume to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$V = \pi r^2 h = \pi \times 16 \times 10 = 160\pi$</p>
+          <p>$= 502.65\ldots = 502.7\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Describe fully the single transformation that maps the point $(3,\ 2)$ to $(3,\ -2)$, and maps $(5,\ 1)$ to $(5,\ -1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The $x$-coordinates are unchanged and the $y$-coordinates have changed sign.</p>
+          <p>That is a <strong>reflection in the $x$-axis</strong> (the line $y = 0$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$\mathbf{a} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} -2 \\ 5 \end{pmatrix}$. Find $2\mathbf{a} + \mathbf{b}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\mathbf{a} = \begin{pmatrix} 6 \\ -2 \end{pmatrix}$</p>
+          <p>$2\mathbf{a} + \mathbf{b} = \begin{pmatrix} 6 + (-2) \\ -2 + 5 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Two similar cones have heights $6$ cm and $9$ cm. The smaller has volume $96\text{ cm}^3$ and surface area $80\text{ cm}^2$.</p>
+      <p>(a) Find the volume of the larger. &nbsp; (b) Find its surface area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Length scale factor $k = \dfrac{9}{6} = 1.5$.</p>
+          <p><strong>(a)</strong> Volume factor $= 1.5^3 = 3.375$; $96 \times 3.375 = 324\text{ cm}^3$.</p>
+          <p><strong>(b)</strong> Area factor $= 1.5^2 = 2.25$; $80 \times 2.25 = 180\text{ cm}^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Geometry &amp; Measures · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

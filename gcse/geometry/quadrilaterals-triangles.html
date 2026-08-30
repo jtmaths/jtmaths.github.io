@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties of Triangles and Quadrilaterals – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔷 Properties of Triangles and Quadrilaterals</h1>
+  <p>GCSE Maths · Geometry and Measures (G4)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY PROPERTIES MATTER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why Properties Matter</div>
+<div class="section-body">
+
+  <p>When a question says "$ABCD$ is a rhombus", it is handing you a whole list of facts for free — equal sides, parallel sides, bisecting diagonals — without stating any of them. Recognising the shape is often the entire question.</p>
+
+  <div class="concept">
+    <strong>The three things to check for every shape:</strong><br>
+    • Its <strong>sides</strong> — which are equal, which are parallel?<br>
+    • Its <strong>angles</strong> — which are equal, which are right angles?<br>
+    • Its <strong>diagonals</strong> — do they bisect each other, are they equal, do they meet at $90^\circ$, do they bisect the angles?
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TRIANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Four Types of Triangle</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="560" height="160" viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- equilateral -->
+      <polygon points="65,35 25,115 105,115" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="41" y1="79" x2="49" y2="73" stroke="#ef4444" stroke-width="2"/>
+      <line x1="81" y1="73" x2="89" y2="79" stroke="#ef4444" stroke-width="2"/>
+      <line x1="61" y1="111" x2="69" y2="119" stroke="#ef4444" stroke-width="2"/>
+      <text x="65" y="140" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Equilateral</text>
+      <text x="65" y="155" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">60°, 60°, 60°</text>
+      <!-- isosceles -->
+      <polygon points="205,30 170,115 240,115" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="184" y1="76" x2="192" y2="71" stroke="#ef4444" stroke-width="2"/>
+      <line x1="218" y1="71" x2="226" y2="76" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 182 115 A 14 14 0 0 0 176 104" fill="none" stroke="#16a34a" stroke-width="1.6"/>
+      <path d="M 234 104 A 14 14 0 0 0 228 115" fill="none" stroke="#16a34a" stroke-width="1.6"/>
+      <text x="205" y="140" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Isosceles</text>
+      <text x="205" y="155" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">2 equal sides &amp; angles</text>
+      <!-- scalene -->
+      <polygon points="345,40 310,115 400,105" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="355" y="140" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Scalene</text>
+      <text x="355" y="155" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">all different</text>
+      <!-- right-angled -->
+      <polygon points="465,35 465,115 545,115" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <rect x="465" y="103" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="505" y="140" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Right-angled</text>
+      <text x="505" y="155" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">one 90° angle</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Triangle</th><th>Sides</th><th>Angles</th><th>Symmetry</th></tr>
+    <tr><td><strong>Equilateral</strong></td><td>All three equal</td><td>All $60^\circ$</td><td>3 lines, order 3</td></tr>
+    <tr><td><strong>Isosceles</strong></td><td>Two equal</td><td>Two equal base angles</td><td>1 line, order 1</td></tr>
+    <tr><td><strong>Scalene</strong></td><td>All different</td><td>All different</td><td>0 lines, order 1</td></tr>
+    <tr><td><strong>Right-angled</strong></td><td>Longest side is the hypotenuse</td><td>One angle is $90^\circ$</td><td>Depends (isosceles version has 1 line)</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The isosceles rule you will use most</div>
+    Equal sides are <strong>opposite</strong> equal angles.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Spotting an isosceles triangle</div>
+    <div class="example-body">
+      <p>In triangle $PQR$, $\angle P = 50^\circ$ and $\angle Q = 65^\circ$. Show that the triangle is isosceles and state which two sides are equal.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\angle R = 180 - 50 - 65 = 65^\circ$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\angle Q = \angle R = 65^\circ$, so two angles are equal — the triangle is isosceles.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Equal sides are opposite equal angles. The side opposite $Q$ is $PR$, and the side opposite $R$ is $PQ$.</span></div>
+      <p><strong>$PR = PQ$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE QUADRILATERAL FAMILY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Quadrilateral Family</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="580" height="330" viewBox="0 0 580 330" xmlns="http://www.w3.org/2000/svg">
+      <!-- square -->
+      <rect x="25" y="30" width="75" height="75" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <rect x="25" y="93" width="11" height="11" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="62" y="124" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Square</text>
+      <!-- rectangle -->
+      <rect x="160" y="42" width="100" height="60" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <rect x="160" y="91" width="11" height="11" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="210" y="124" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Rectangle</text>
+      <!-- parallelogram -->
+      <polygon points="335,42 435,42 405,102 305,102" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="370" y="124" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Parallelogram</text>
+      <!-- rhombus -->
+      <polygon points="510,30 555,72 510,114 465,72" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="510" y="134" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Rhombus</text>
+
+      <!-- trapezium -->
+      <polygon points="45,190 105,190 125,255 25,255" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="75" y="278" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Trapezium</text>
+      <!-- isosceles trapezium -->
+      <polygon points="195,190 255,190 280,255 170,255" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="179" y1="224" x2="187" y2="220" stroke="#ef4444" stroke-width="2"/>
+      <line x1="264" y1="220" x2="272" y2="224" stroke="#ef4444" stroke-width="2"/>
+      <text x="225" y="278" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Isosceles trapezium</text>
+      <!-- kite -->
+      <polygon points="380,180 425,222 380,275 335,222" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="355" y1="197" x2="360" y2="204" stroke="#ef4444" stroke-width="2"/>
+      <line x1="400" y1="204" x2="405" y2="197" stroke="#ef4444" stroke-width="2"/>
+      <line x1="353" y1="250" x2="359" y2="245" stroke="#16a34a" stroke-width="2"/>
+      <line x1="401" y1="245" x2="407" y2="250" stroke="#16a34a" stroke-width="2"/>
+      <text x="380" y="298" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Kite</text>
+      <!-- arrowhead -->
+      <polygon points="510,180 555,270 510,235 465,270" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="510" y="298" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Arrowhead</text>
+      <text x="510" y="313" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">(a concave kite)</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Shape</th><th>Sides</th><th>Angles</th><th>Diagonals</th></tr>
+    <tr><td><strong>Square</strong></td><td>All $4$ equal; opposite sides parallel</td><td>All $90^\circ$</td><td>Equal, bisect each other at $90^\circ$, bisect the angles</td></tr>
+    <tr><td><strong>Rectangle</strong></td><td>Opposite sides equal and parallel</td><td>All $90^\circ$</td><td>Equal and bisect each other (not at $90^\circ$)</td></tr>
+    <tr><td><strong>Parallelogram</strong></td><td>Opposite sides equal and parallel</td><td>Opposite angles equal</td><td>Bisect each other (not equal, not at $90^\circ$)</td></tr>
+    <tr><td><strong>Rhombus</strong></td><td>All $4$ equal; opposite sides parallel</td><td>Opposite angles equal</td><td>Bisect each other at $90^\circ$, bisect the angles (not equal)</td></tr>
+    <tr><td><strong>Trapezium</strong></td><td>Exactly one pair of parallel sides</td><td>Co-interior pairs add to $180^\circ$</td><td>No special property</td></tr>
+    <tr><td><strong>Isosceles trapezium</strong></td><td>One parallel pair; the other two equal</td><td>Two pairs of equal angles</td><td>Equal in length</td></tr>
+    <tr><td><strong>Kite</strong></td><td>Two pairs of <em>adjacent</em> equal sides</td><td>One pair of equal opposite angles</td><td>Cross at $90^\circ$; the long one bisects the short one</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Always true</div>
+    The angles of any quadrilateral add to $360^\circ$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE FAMILY TREE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Family Tree</div>
+<div class="section-body">
+
+  <p>Quadrilaterals form a hierarchy. A shape lower down inherits <em>all</em> the properties of everything above it.</p>
+
+  <div class="svg-block">
+    <svg width="520" height="240" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+      <rect x="180" y="10" width="160" height="34" rx="8" fill="#4f46e5"/>
+      <text x="260" y="33" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">Quadrilateral</text>
+      <line x1="260" y1="44" x2="120" y2="78" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="260" y1="44" x2="330" y2="78" stroke="#94a3b8" stroke-width="2"/>
+      <rect x="45" y="78" width="150" height="32" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+      <text x="120" y="99" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Trapezium</text>
+      <rect x="255" y="78" width="150" height="32" rx="8" fill="#c7d2fe" stroke="#4f46e5"/>
+      <text x="330" y="99" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Kite</text>
+      <line x1="120" y1="110" x2="180" y2="140" stroke="#94a3b8" stroke-width="2"/>
+      <rect x="105" y="140" width="150" height="32" rx="8" fill="#ddd6fe" stroke="#7c3aed"/>
+      <text x="180" y="161" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle" font-weight="bold">Parallelogram</text>
+      <line x1="180" y1="172" x2="110" y2="200" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="180" y1="172" x2="255" y2="200" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="330" y1="110" x2="290" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+      <rect x="35" y="200" width="150" height="32" rx="8" fill="#e9d5ff" stroke="#7c3aed"/>
+      <text x="110" y="221" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle" font-weight="bold">Rectangle</text>
+      <rect x="215" y="200" width="150" height="32" rx="8" fill="#e9d5ff" stroke="#7c3aed"/>
+      <text x="290" y="221" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle" font-weight="bold">Rhombus</text>
+      <rect x="395" y="140" width="110" height="32" rx="8" fill="#fde68a" stroke="#d97706"/>
+      <text x="450" y="161" font-family="Arial" font-size="12" fill="#92400e" text-anchor="middle" font-weight="bold">Square</text>
+      <line x1="185" y1="216" x2="395" y2="165" stroke="#d97706" stroke-width="1.6" stroke-dasharray="4,3"/>
+      <line x1="365" y1="216" x2="415" y2="172" stroke="#d97706" stroke-width="1.6" stroke-dasharray="4,3"/>
+    </svg>
+  </div>
+
+  <div class="concept">
+    Reading the tree:<br>
+    • Every <strong>square</strong> is a rectangle, a rhombus, a parallelogram, a kite and a trapezium.<br>
+    • Every <strong>rectangle</strong> and every <strong>rhombus</strong> is a parallelogram.<br>
+    • Every <strong>parallelogram</strong> is a trapezium (it has a pair of parallel sides — indeed two pairs).<br>
+    • The reverse is <em>never</em> automatically true: a rectangle need not be a square.
+  </div>
+
+  <div class="warn">
+    <strong>An exam favourite:</strong> "Is every rhombus a square?" No — a rhombus has four equal sides but its angles need not be $90^\circ$. "Is every square a rhombus?" Yes — a square satisfies every condition of a rhombus.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Identifying from properties</div>
+    <div class="example-body">
+      <p>A quadrilateral has diagonals that bisect each other at right angles but are <em>not</em> equal in length. Name the shape.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Diagonals bisecting each other → it is a parallelogram.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>They also meet at $90^\circ$ → it is a rhombus or a square.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The diagonals are <em>not</em> equal, which rules out the square.</span></div>
+      <p><strong>It is a rhombus.</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – USING PROPERTIES TO FIND ANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using Properties to Find Angles</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Name the shape and write down which properties apply.</li>
+    <li>Mark every equal side and equal angle on the diagram.</li>
+    <li>Look for isosceles triangles created by the diagonals.</li>
+    <li>Use angle sums ($180^\circ$ for a triangle, $360^\circ$ for a quadrilateral) to finish.</li>
+    <li>Give a reason at each step.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Parallelogram angles</div>
+    <div class="example-body">
+      <p>In parallelogram $ABCD$, angle $A = 118^\circ$. Find angles $B$, $C$ and $D$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Opposite angles of a parallelogram are equal, so $C = A = 118^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AD \parallel BC$, so $A$ and $B$ are co-interior and add to $180^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$B = 180 - 118 = 62^\circ$, and $D = B = 62^\circ$.</span></div>
+      <p>Check: $118 + 62 + 118 + 62 = 360^\circ$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Rhombus diagonals</div>
+    <div class="example-body">
+      <p>In rhombus $PQRS$ the diagonals meet at $M$. Angle $PQR = 76^\circ$. Find angle $QPM$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The diagonals of a rhombus bisect the angles, so $\angle PQM = 76 \div 2 = 38^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The diagonals meet at $90^\circ$, so $\angle QMP = 90^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Angle sum of triangle $PQM$: $\angle QPM = 180 - 38 - 90 = 52^\circ$.</span></div>
+      <p><em>Check:</em> $\angle SPQ = 2 \times 52 = 104^\circ$, and $76 + 104 = 180^\circ$ as co-interior angles ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Kite angles</div>
+    <div class="example-body">
+      <p>Kite $ABCD$ has $AB = AD$ and $CB = CD$. Angle $B = 105^\circ$ and angle $A = 62^\circ$. Find angles $C$ and $D$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>In a kite the pair of angles <em>between</em> the unequal sides are equal. Here those are $B$ and $D$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So $D = B = 105^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Angle sum of a quadrilateral: $C = 360 - 62 - 105 - 105 = 88^\circ$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Isosceles rule</h4><p>Equal sides sit opposite equal angles — and vice versa.</p></div>
+    <div class="ref-card"><h4>Quadrilateral sum</h4><p>All four angles add to $360^\circ$.</p></div>
+    <div class="ref-card"><h4>Parallelogram</h4><p>Opposite sides parallel and equal; opposite angles equal; diagonals bisect each other.</p></div>
+    <div class="ref-card"><h4>Rhombus</h4><p>Parallelogram + all sides equal. Diagonals cross at $90^\circ$ and bisect the angles.</p></div>
+    <div class="ref-card"><h4>Rectangle</h4><p>Parallelogram + all angles $90^\circ$. Diagonals are equal.</p></div>
+    <div class="ref-card"><h4>Square</h4><p>Rectangle + rhombus. It has every property of both.</p></div>
+    <div class="ref-card"><h4>Kite</h4><p>Two adjacent equal pairs; one equal angle pair; diagonals meet at $90^\circ$.</p></div>
+    <div class="ref-card"><h4>Trapezium</h4><p>One pair of parallel sides, so co-interior angles add to $180^\circ$.</p></div>
+    <div class="ref-card"><h4>Family tree</h4><p>Going down inherits properties; going up does not.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>In parallelogram $WXYZ$, angle $W = 73^\circ$. Find the other three angles, giving reasons.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle Y = 73^\circ$ — opposite angles of a parallelogram are equal.</p>
+          <p>$\angle X = 180 - 73 = 107^\circ$ — co-interior angles between parallel sides.</p>
+          <p>$\angle Z = 107^\circ$ — opposite angles are equal.</p>
+          <p>Check: $73 + 107 + 73 + 107 = 360^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A quadrilateral has four equal sides and four equal angles. Name it and give the size of each angle.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Four equal sides and four equal angles means it is a <strong>square</strong>.</p>
+          <p>$360 \div 4 = 90^\circ$ each.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Is the statement "every parallelogram is a rectangle" true or false? Explain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>False.</strong></p>
+          <p>A rectangle needs all four angles to be $90^\circ$. A general parallelogram has two acute and two obtuse angles.</p>
+          <p>The correct statement is the reverse: every <em>rectangle</em> is a parallelogram.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>In an isosceles triangle $ABC$, $AB = AC$ and angle $B = 4x$, angle $A = x + 20$. Find $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$AB = AC$, so the base angles $B$ and $C$ are equal: $\angle C = 4x$.</p>
+          <p>$4x + 4x + (x + 20) = 180$</p>
+          <p>$9x + 20 = 180 \Rightarrow 9x = 160$</p>
+          <p>$x = \dfrac{160}{9} = 17.8$ (1 d.p.)</p>
+          <p>Angles: $B = C = 71.1^\circ$, $A = 37.8^\circ$. Check: $71.1 + 71.1 + 37.8 = 180$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Name every quadrilateral whose diagonals are equal in length.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Rectangle</strong>, <strong>square</strong> and <strong>isosceles trapezium</strong>.</p>
+          <p>(The square counts because it is a special rectangle.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>In trapezium $ABCD$, $AB \parallel DC$. Angle $A = 115^\circ$ and angle $C = 68^\circ$. Find angles $B$ and $D$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$AB \parallel DC$, so $A$ and $D$ are co-interior: $\angle D = 180 - 115 = 65^\circ$.</p>
+          <p>Similarly $B$ and $C$ are co-interior: $\angle B = 180 - 68 = 112^\circ$.</p>
+          <p>Check: $115 + 112 + 68 + 65 = 360^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Kite $KLMN$ has $KL = KN$ and $ML = MN$. Angle $K = 40^\circ$ and angle $M = 100^\circ$. Find angles $L$ and $N$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In a kite, the two angles <em>not</em> between a pair of equal sides are equal. Here $L$ and $N$ are that pair.</p>
+          <p>$L = N$, and all four angles add to $360^\circ$:</p>
+          <p>$40 + 100 + L + N = 360 \Rightarrow 2L = 220$</p>
+          <p>$L = N = 110^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The diagonals of quadrilateral $ABCD$ bisect each other but are not equal and do not meet at right angles. Name the shape and justify your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Diagonals bisecting each other is exactly the defining property of a <strong>parallelogram</strong>.</p>
+          <p>Not equal rules out a rectangle (and a square).</p>
+          <p>Not at right angles rules out a rhombus (and a square).</p>
+          <p>So it is a general <strong>parallelogram</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Rhombus $ABCD$ has $\angle ABC = 128^\circ$. The diagonals meet at $O$.</p>
+      <p>(a) Find $\angle BAD$. &nbsp; (b) Find $\angle OBC$. &nbsp; (c) Find $\angle BOC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $AB \parallel DC$, so $\angle ABC$ and $\angle BAD$ are co-interior: $\angle BAD = 180 - 128 = 52^\circ$.</p>
+          <p><strong>(b)</strong> The diagonal $BD$ bisects $\angle ABC$: $\angle OBC = 128 \div 2 = 64^\circ$.</p>
+          <p><strong>(c)</strong> The diagonals of a rhombus cross at right angles, so $\angle BOC = 90^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$ABCD$ is a parallelogram. $P$ is the midpoint of $AB$ and $Q$ is the midpoint of $DC$.</p>
+      <p>(a) Explain why $AP = QC$. &nbsp; (b) Explain why $APCQ$ is a parallelogram. &nbsp; (c) If $\angle DAB = 64^\circ$, find $\angle APC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> In a parallelogram opposite sides are equal, so $AB = DC$. Halving both gives $AP = \tfrac{1}{2}AB$ and $QC = \tfrac{1}{2}DC$, so $AP = QC$.</p>
+          <p><strong>(b)</strong> $AP$ and $QC$ lie on $AB$ and $DC$, which are parallel — so $AP \parallel QC$. They are also equal in length by part (a). A quadrilateral with one pair of sides both equal and parallel is a <strong>parallelogram</strong>.</p>
+          <p><strong>(c)</strong> $\angle APC$ and $\angle DAB$ are co-interior angles between the parallel lines $AD$ and $PC$… more directly, in parallelogram $APCQ$ the angle at $A$ is $\angle PAQ$. Using the straight line $AB$: $\angle APC$ is co-interior with $\angle PAQ = 64^\circ$.</p>
+          <p>$\angle APC = 180 - 64 = 116^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Triangles &amp; Quadrilaterals (G4) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

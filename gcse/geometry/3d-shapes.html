@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties of 3D Shapes – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧊 Properties of 3D Shapes</h1>
+  <p>GCSE Maths · Geometry and Measures (G12)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – FACES EDGES VERTICES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Faces, Edges and Vertices</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Face</strong> — a flat (or curved) surface of the solid.<br>
+    <strong>Edge</strong> — a line where two faces meet.<br>
+    <strong>Vertex</strong> — a corner where edges meet. Plural: <em>vertices</em>.
+  </div>
+
+  <div class="svg-block">
+    <svg width="300" height="220" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,80 60,180 180,180 180,80" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2.2"/>
+      <polygon points="60,80 110,40 230,40 180,80" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2.2"/>
+      <polygon points="180,80 230,40 230,140 180,180" fill="#818cf8" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="60" y1="180" x2="110" y2="140" stroke="#4f46e5" stroke-width="1.4" stroke-dasharray="4,3"/>
+      <line x1="110" y1="140" x2="230" y2="140" stroke="#4f46e5" stroke-width="1.4" stroke-dasharray="4,3"/>
+      <line x1="110" y1="140" x2="110" y2="40" stroke="#4f46e5" stroke-width="1.4" stroke-dasharray="4,3"/>
+      <circle cx="60" cy="80" r="4" fill="#ef4444"/>
+      <text x="252" y="70" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">vertex</text>
+      <line x1="248" y1="66" x2="234" y2="44" stroke="#ef4444" stroke-width="1.3"/>
+      <circle cx="230" cy="40" r="4" fill="#ef4444"/>
+      <text x="106" y="200" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">edge</text>
+      <text x="112" y="132" font-family="Arial" font-size="12" fill="#6d28d9" font-weight="bold">face</text>
+      <text x="150" y="215" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A cuboid: 6 faces, 12 edges, 8 vertices</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Solid</th><th>Faces</th><th>Edges</th><th>Vertices</th></tr>
+    <tr><td>Cube</td><td>$6$ (all squares)</td><td>$12$</td><td>$8$</td></tr>
+    <tr><td>Cuboid</td><td>$6$ (rectangles)</td><td>$12$</td><td>$8$</td></tr>
+    <tr><td>Triangular prism</td><td>$5$ ($2$ triangles, $3$ rectangles)</td><td>$9$</td><td>$6$</td></tr>
+    <tr><td>Square-based pyramid</td><td>$5$ ($1$ square, $4$ triangles)</td><td>$8$</td><td>$5$</td></tr>
+    <tr><td>Tetrahedron (triangular pyramid)</td><td>$4$ (all triangles)</td><td>$6$</td><td>$4$</td></tr>
+    <tr><td>Hexagonal prism</td><td>$8$</td><td>$18$</td><td>$12$</td></tr>
+    <tr><td>Cylinder</td><td>$3$ ($2$ flat circles, $1$ curved)</td><td>$2$ (curved)</td><td>$0$</td></tr>
+    <tr><td>Cone</td><td>$2$ ($1$ flat circle, $1$ curved)</td><td>$1$ (curved)</td><td>$1$ (the apex)</td></tr>
+    <tr><td>Sphere</td><td>$1$ (curved)</td><td>$0$</td><td>$0$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Cylinders, cones and spheres are the awkward ones.</strong> Exam boards differ slightly on how they count curved faces and edges, but the figures above are the standard GCSE answers.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Euler's formula (for solids with flat faces)</div>
+    $F + V - E = 2$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using Euler's formula</div>
+    <div class="example-body">
+      <p>A polyhedron has $12$ faces and $30$ edges. How many vertices does it have?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$F + V - E = 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$12 + V - 30 = 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$V - 18 = 2 \Rightarrow V = 20$</span></div>
+      <p>(This is a dodecahedron.)</p>
+      <div class="tip">Check the formula on a cube: $6 + 8 - 12 = 2$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PRISMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Prisms</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Definition</div>
+    A <strong>prism</strong> has the <em>same cross-section all the way through</em> its length.
+  </div>
+
+  <div class="concept">
+    Slice a prism anywhere parallel to its ends and you get an identical shape every time. The prism is named after that cross-section: a triangular prism has triangular ends, a hexagonal prism has hexagonal ends, and a cylinder is really a "circular prism".
+  </div>
+
+  <div class="svg-block">
+    <svg width="520" height="180" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- triangular prism -->
+      <polygon points="30,130 90,130 60,80" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="90,130 150,110 120,60 60,80" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="60,80 120,60 90,130" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="30" y1="130" x2="90" y2="110" stroke="#4f46e5" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <line x1="90" y1="110" x2="150" y2="110" stroke="#4f46e5" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <line x1="90" y1="110" x2="120" y2="60" stroke="#4f46e5" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <text x="90" y="160" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Triangular prism</text>
+
+      <!-- cylinder -->
+      <ellipse cx="270" cy="65" rx="45" ry="16" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 225 65 L 225 125 A 45 16 0 0 0 315 125 L 315 65" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 225 125 A 45 16 0 0 1 315 125" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <text x="270" y="160" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Cylinder</text>
+
+      <!-- hexagonal prism -->
+      <polygon points="400,80 420,62 448,62 468,80 448,98 420,98" fill="#a5b4fc" stroke="#4f46e5" stroke-width="1.8"/>
+      <polygon points="400,110 420,92 448,92 468,110 448,128 420,128" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="400" y1="80" x2="400" y2="110" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="420" y1="62" x2="420" y2="92" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="468" y1="80" x2="468" y2="110" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="448" y1="98" x2="448" y2="128" stroke="#4f46e5" stroke-width="1.8"/>
+      <text x="434" y="160" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Hexagonal prism</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Volume of any prism</div>
+    $V =$ area of cross-section $\times$ length
+  </div>
+
+  <div class="warn">
+    <strong>A pyramid, a cone and a sphere are NOT prisms.</strong> Their cross-sections change size as you move along them, which is why they all have that $\tfrac{1}{3}$ (or $\tfrac{4}{3}\pi$) in their volume formulae.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Volume of a prism</div>
+    <div class="example-body">
+      <p>A triangular prism has a cross-section that is a right-angled triangle with legs $6$ cm and $8$ cm. The prism is $15$ cm long. Find its volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cross-section area $= \tfrac{1}{2} \times 6 \times 8 = 24\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = 24 \times 15 = 360\text{ cm}^3$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PYRAMIDS, CONES AND SPHERES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Pyramids, Cones and Spheres</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Solid</th><th>Description</th><th>Volume</th></tr>
+    <tr><td><strong>Pyramid</strong></td><td>A flat base with triangular faces meeting at an apex</td><td>$\tfrac{1}{3} \times$ base area $\times$ height</td></tr>
+    <tr><td><strong>Cone</strong></td><td>A circular base tapering to an apex</td><td>$\tfrac{1}{3}\pi r^2 h$</td></tr>
+    <tr><td><strong>Sphere</strong></td><td>Every point the same distance from the centre</td><td>$\tfrac{4}{3}\pi r^3$</td></tr>
+    <tr><td><strong>Hemisphere</strong></td><td>Half a sphere</td><td>$\tfrac{2}{3}\pi r^3$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>The vertical height and the slant height are different.</strong> On a cone, $h$ is the <em>perpendicular</em> height from the base to the apex, while $l$ is the <em>slant</em> height along the sloping surface. They are linked by Pythagoras: $l^2 = r^2 + h^2$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="140" cy="155" rx="70" ry="20" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 70 155 L 140 35 L 210 155" fill="#a5b4fc" fill-opacity=".7" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="140" y1="35" x2="140" y2="155" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,4"/>
+      <line x1="140" y1="155" x2="210" y2="155" stroke="#16a34a" stroke-width="2"/>
+      <rect x="140" y="143" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="146" y="100" font-family="Arial" font-size="13" fill="#b91c1c" font-weight="bold">h</text>
+      <text x="172" y="172" font-family="Arial" font-size="13" fill="#166534" font-weight="bold">r</text>
+      <text x="185" y="95" font-family="Arial" font-size="13" fill="#4f46e5" font-weight="bold">l</text>
+      <text x="140" y="193" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Cone: l² = r² + h²</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Slant height</div>
+    <div class="example-body">
+      <p>A cone has base radius $9$ cm and vertical height $12$ cm. Find its slant height and its volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$l^2 = 9^2 + 12^2 = 81 + 144 = 225$, so $l = 15$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = \tfrac{1}{3}\pi r^2 h = \tfrac{1}{3} \times \pi \times 81 \times 12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 324\pi = 1017.9\text{ cm}^3$ (1 d.p.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – NETS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Nets</div>
+<div class="section-body">
+
+  <p>A <strong>net</strong> is the 2D shape you get by unfolding a solid and laying it flat. It shows every face at its true size, which makes nets the easiest route to a surface area.</p>
+
+  <div class="svg-block">
+    <svg width="480" height="230" viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg">
+      <text x="110" y="20" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Net of a cube</text>
+      <g fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8">
+        <rect x="70" y="35" width="40" height="40"/>
+        <rect x="30" y="75" width="40" height="40"/>
+        <rect x="70" y="75" width="40" height="40"/>
+        <rect x="110" y="75" width="40" height="40"/>
+        <rect x="150" y="75" width="40" height="40"/>
+        <rect x="70" y="115" width="40" height="40"/>
+      </g>
+      <text x="110" y="175" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">6 squares</text>
+
+      <text x="350" y="20" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Net of a cylinder</text>
+      <ellipse cx="290" cy="50" rx="26" ry="16" fill="#a5b4fc" stroke="#4f46e5" stroke-width="1.8"/>
+      <rect x="264" y="75" width="163" height="70" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <ellipse cx="290" cy="170" rx="26" ry="16" fill="#a5b4fc" stroke="#4f46e5" stroke-width="1.8"/>
+      <text x="345" y="115" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">width = 2πr</text>
+      <text x="345" y="205" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">2 circles + 1 rectangle</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>The cylinder net is the key one to remember.</strong> The curved surface unrolls into a rectangle whose width is the circumference of the circle, $2\pi r$, and whose height is the height of the cylinder. That is why the curved surface area is $2\pi r h$.
+  </div>
+
+  <table>
+    <tr><th>Solid</th><th>Net consists of</th></tr>
+    <tr><td>Cube</td><td>$6$ identical squares</td></tr>
+    <tr><td>Cuboid</td><td>$3$ pairs of matching rectangles</td></tr>
+    <tr><td>Triangular prism</td><td>$2$ triangles $+$ $3$ rectangles</td></tr>
+    <tr><td>Square-based pyramid</td><td>$1$ square $+$ $4$ triangles</td></tr>
+    <tr><td>Cylinder</td><td>$2$ circles $+$ $1$ rectangle of width $2\pi r$</td></tr>
+    <tr><td>Cone</td><td>$1$ circle $+$ $1$ sector of radius $l$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Surface area from a net</div>
+    <div class="example-body">
+      <p>A cuboid measures $5$ cm by $3$ cm by $2$ cm. Use its net to find the surface area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The net has three pairs of matching rectangles.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$5 \times 3 = 15$, and there are two of these: $30$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5 \times 2 = 10$, twice: $20$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3 \times 2 = 6$, twice: $12$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Total $= 30 + 20 + 12 = 62\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SYMMETRY IN 3D
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Planes of Symmetry</div>
+<div class="section-body">
+
+  <p>A <strong>plane of symmetry</strong> is a flat surface that slices a solid into two mirror-image halves.</p>
+
+  <table>
+    <tr><th>Solid</th><th>Planes of symmetry</th></tr>
+    <tr><td>Cube</td><td>$9$</td></tr>
+    <tr><td>Cuboid (all edges different)</td><td>$3$</td></tr>
+    <tr><td>Triangular prism (equilateral cross-section)</td><td>$4$</td></tr>
+    <tr><td>Cylinder</td><td>Infinitely many (plus one horizontal)</td></tr>
+    <tr><td>Cone</td><td>Infinitely many (all vertical, through the apex)</td></tr>
+    <tr><td>Sphere</td><td>Infinitely many</td></tr>
+    <tr><td>Square-based pyramid</td><td>$4$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Counting planes on a cuboid</div>
+    <div class="example-body">
+      <p>Explain why a cuboid with all three edge lengths different has exactly $3$ planes of symmetry.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Each plane must cut the cuboid into two identical halves.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Slicing horizontally halfway up gives two matching halves — that is one plane.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Slicing vertically halfway along the length gives another, and halfway across the width gives a third.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>A diagonal slice does <em>not</em> work, because the two rectangles it creates have different dimensions.</span></div>
+      <p><strong>So there are exactly $3$.</strong> A cube has more ($9$) because its diagonal slices <em>do</em> produce matching halves.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Face, edge, vertex</h4><p>Surface, line where faces meet, corner.</p></div>
+    <div class="ref-card"><h4>Cube / cuboid</h4><p>$6$ faces, $12$ edges, $8$ vertices.</p></div>
+    <div class="ref-card"><h4>Euler</h4><p>$F + V - E = 2$ for solids with flat faces.</p></div>
+    <div class="ref-card"><h4>Prism</h4><p>Constant cross-section; $V = $ area $\times$ length.</p></div>
+    <div class="ref-card"><h4>Pyramid / cone</h4><p>$V = \tfrac{1}{3} \times$ base area $\times$ height.</p></div>
+    <div class="ref-card"><h4>Sphere</h4><p>$V = \tfrac{4}{3}\pi r^3$, surface $= 4\pi r^2$.</p></div>
+    <div class="ref-card"><h4>Cone heights</h4><p>$l^2 = r^2 + h^2$ links slant and vertical height.</p></div>
+    <div class="ref-card"><h4>Nets</h4><p>Unfold the solid; add the face areas for the surface area.</p></div>
+    <div class="ref-card"><h4>Cylinder net</h4><p>$2$ circles plus a rectangle of width $2\pi r$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>State the number of faces, edges and vertices of a square-based pyramid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Faces: $5$ — one square base and four triangles.</p>
+          <p>Edges: $8$ — four around the base and four sloping up.</p>
+          <p>Vertices: $5$ — four at the base and one apex.</p>
+          <p>Check with Euler: $5 + 5 - 8 = 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A polyhedron has $8$ vertices and $12$ edges. How many faces does it have?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$F + V - E = 2$</p>
+          <p>$F + 8 - 12 = 2$</p>
+          <p>$F = 6$ (it could be a cube or cuboid).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Explain why a cone is not a prism.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A prism must have the <strong>same cross-section all the way through</strong>.</p>
+          <p>Slicing a cone parallel to its base gives circles, but they get smaller and smaller towards the apex.</p>
+          <p>The cross-section changes, so a cone is not a prism.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A hexagonal prism has how many (a) faces, (b) edges, (c) vertices? Verify with Euler's formula.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $2$ hexagonal ends $+ 6$ rectangles $= 8$ faces.</p>
+          <p><strong>(b)</strong> $6$ edges on each hexagon $+ 6$ joining edges $= 18$ edges.</p>
+          <p><strong>(c)</strong> $6$ corners on each hexagon $= 12$ vertices.</p>
+          <p>Euler: $8 + 12 - 18 = 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A cone has radius $5$ cm and slant height $13$ cm. Find its vertical height.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$l^2 = r^2 + h^2$, so $h^2 = l^2 - r^2$.</p>
+          <p>$h^2 = 169 - 25 = 144$</p>
+          <p>$h = 12$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A prism has a trapezium cross-section with parallel sides $7$ cm and $11$ cm and perpendicular height $4$ cm. The prism is $20$ cm long. Find its volume.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Cross-section area $= \tfrac{1}{2}(7 + 11) \times 4 = \tfrac{1}{2} \times 18 \times 4 = 36\text{ cm}^2$</p>
+          <p>$V = 36 \times 20 = 720\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Describe the net of a triangular prism whose cross-section is an equilateral triangle of side $6$ cm and whose length is $10$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The net consists of:</p>
+          <p>• <strong>Two equilateral triangles</strong> of side $6$ cm (the two ends).</p>
+          <p>• <strong>Three rectangles</strong>, each $6$ cm by $10$ cm (the three sloping/flat faces), joined edge to edge in a row.</p>
+          <p>The three rectangles form a single strip $18$ cm by $10$ cm, with a triangle attached to the top and bottom of the middle rectangle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>How many planes of symmetry does (a) a cube have, (b) a cylinder have?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A cube has <strong>$9$</strong>: three parallel to the faces (slicing it in half each way) and six through pairs of opposite edges (the diagonal slices).</p>
+          <p><strong>(b)</strong> A cylinder has <strong>infinitely many</strong>: any vertical plane through the central axis, plus one horizontal plane halfway up.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A cuboid measures $8$ cm by $6$ cm by $5$ cm. Find (a) its volume, (b) its surface area, (c) the length of a space diagonal (corner to opposite corner), to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $V = 8 \times 6 \times 5 = 240\text{ cm}^3$</p>
+          <p><strong>(b)</strong> $2(8\times6) + 2(8\times5) + 2(6\times5) = 96 + 80 + 60 = 236\text{ cm}^2$</p>
+          <p><strong>(c)</strong> Use Pythagoras twice. Base diagonal$^2 = 8^2 + 6^2 = 100$.</p>
+          <p>Space diagonal$^2 = 100 + 5^2 = 125$</p>
+          <p>Space diagonal $= \sqrt{125} = 11.2$ cm (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A solid is made from a cylinder of radius $4$ cm and height $10$ cm with a cone of the same radius and vertical height $3$ cm on top.</p>
+      <p>(a) Find the total volume, in terms of $\pi$. &nbsp; (b) Find the slant height of the cone. &nbsp; (c) Find the total surface area of the solid, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Cylinder: $\pi r^2 h = \pi \times 16 \times 10 = 160\pi$</p>
+          <p>Cone: $\tfrac{1}{3}\pi r^2 h = \tfrac{1}{3} \times \pi \times 16 \times 3 = 16\pi$</p>
+          <p>Total $= 160\pi + 16\pi = \mathbf{176\pi\text{ cm}^3}$</p>
+          <p><strong>(b)</strong> $l^2 = 4^2 + 3^2 = 25$, so $l = 5$ cm.</p>
+          <p><strong>(c)</strong> The surfaces are: the flat circular base, the curved cylinder, and the curved cone. (The top of the cylinder is hidden by the cone.)</p>
+          <p>Base circle: $\pi r^2 = 16\pi$</p>
+          <p>Cylinder curved surface: $2\pi r h = 2\pi \times 4 \times 10 = 80\pi$</p>
+          <p>Cone curved surface: $\pi r l = \pi \times 4 \times 5 = 20\pi$</p>
+          <p>Total $= 16\pi + 80\pi + 20\pi = 116\pi = \mathbf{364.4\text{ cm}^2}$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Properties of 3D Shapes (G12) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Units of Measure – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Standard Units of Measure</h1>
+  <p>GCSE Maths · Geometry and Measures (G14)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE MEASURES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Measures and Their Units</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Measure</th><th>What it measures</th><th>Common units</th></tr>
+    <tr><td><strong>Length</strong></td><td>Distance, height, perimeter</td><td>mm, cm, m, km</td></tr>
+    <tr><td><strong>Area</strong></td><td>Surface covered</td><td>mm², cm², m², km², hectares</td></tr>
+    <tr><td><strong>Volume</strong></td><td>Space occupied by a solid</td><td>mm³, cm³, m³</td></tr>
+    <tr><td><strong>Capacity</strong></td><td>How much a container holds</td><td>ml, cl, litres</td></tr>
+    <tr><td><strong>Mass</strong></td><td>How much matter (informally, weight)</td><td>mg, g, kg, tonnes</td></tr>
+    <tr><td><strong>Time</strong></td><td>Duration</td><td>seconds, minutes, hours, days</td></tr>
+    <tr><td><strong>Money</strong></td><td>Cost or value</td><td>pence, pounds</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Dimensions tell you what a formula measures.</strong><br>
+    One length multiplied by another gives an <strong>area</strong> — units squared.<br>
+    Three lengths multiplied give a <strong>volume</strong> — units cubed.<br>
+    So a formula like $2\pi r$ (one length) must be a perimeter, while $\pi r^2$ (two lengths) must be an area.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – METRIC CONVERSIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Metric Conversions</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The direction rule</div>
+    Going to a <strong>smaller</strong> unit → the number gets <strong>bigger</strong> → <strong>multiply</strong><br>
+    Going to a <strong>bigger</strong> unit → the number gets <strong>smaller</strong> → <strong>divide</strong>
+  </div>
+
+  <table>
+    <tr><th>Measure</th><th>Conversions</th></tr>
+    <tr><td>Length</td><td>$1$ cm $= 10$ mm · $1$ m $= 100$ cm · $1$ km $= 1000$ m</td></tr>
+    <tr><td>Mass</td><td>$1$ g $= 1000$ mg · $1$ kg $= 1000$ g · $1$ tonne $= 1000$ kg</td></tr>
+    <tr><td>Capacity</td><td>$1$ litre $= 1000$ ml $= 100$ cl</td></tr>
+    <tr><td>Volume ↔ capacity</td><td>$1$ ml $= 1\text{ cm}^3$ · $1$ litre $= 1000\text{ cm}^3$ · $1\text{ m}^3 = 1000$ litres</td></tr>
+    <tr><td>Time</td><td>$1$ min $= 60$ s · $1$ h $= 60$ min $= 3600$ s · $1$ day $= 24$ h</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="540" height="115" viewBox="0 0 540 115" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ur" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4f46e5"/></marker>
+        <marker id="ul" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/></marker>
+      </defs>
+      <g font-family="Arial" font-size="15" font-weight="bold" fill="#3730a3" text-anchor="middle">
+        <rect x="20" y="42" width="70" height="30" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="55" y="63">km</text>
+        <rect x="170" y="42" width="70" height="30" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="205" y="63">m</text>
+        <rect x="320" y="42" width="70" height="30" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="355" y="63">cm</text>
+        <rect x="450" y="42" width="70" height="30" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="485" y="63">mm</text>
+      </g>
+      <line x1="92" y1="52" x2="166" y2="52" stroke="#4f46e5" stroke-width="2" marker-end="url(#ur)"/>
+      <line x1="242" y1="52" x2="316" y2="52" stroke="#4f46e5" stroke-width="2" marker-end="url(#ur)"/>
+      <line x1="392" y1="52" x2="446" y2="52" stroke="#4f46e5" stroke-width="2" marker-end="url(#ur)"/>
+      <g font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle">
+        <text x="129" y="38">×1000</text><text x="279" y="38">×100</text><text x="419" y="38">×10</text>
+      </g>
+      <line x1="166" y1="86" x2="92" y2="86" stroke="#22c55e" stroke-width="2" marker-end="url(#ul)"/>
+      <line x1="316" y1="86" x2="242" y2="86" stroke="#22c55e" stroke-width="2" marker-end="url(#ul)"/>
+      <line x1="446" y1="86" x2="392" y2="86" stroke="#22c55e" stroke-width="2" marker-end="url(#ul)"/>
+      <g font-family="Arial" font-size="12" fill="#22c55e" text-anchor="middle">
+        <text x="129" y="104">÷1000</text><text x="279" y="104">÷100</text><text x="419" y="104">÷10</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A two-step conversion</div>
+    <div class="example-body">
+      <p>Convert $2350$ mm into metres.</p>
+      <div class="step-row"><span class="arrow">①</span><span>mm → cm: $2350 \div 10 = 235$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>cm → m: $235 \div 100 = 2.35$ m</span></div>
+      <div class="tip">Do it one step at a time along the chain — trying to jump two steps at once is where errors creep in.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – AREA AND VOLUME UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Area and Volume Conversions</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>$1\text{ m}^2$ is NOT $100\text{ cm}^2$.</strong> A square metre is a square of side $100$ cm, so it contains $100 \times 100 = 10\,000$ small squares.
+  </div>
+
+  <div class="svg-block">
+    <svg width="340" height="190" viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="25" width="140" height="140" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <g stroke="#c7d2fe" stroke-width=".8">
+        <line x1="53" y1="25" x2="53" y2="165"/><line x1="81" y1="25" x2="81" y2="165"/>
+        <line x1="109" y1="25" x2="109" y2="165"/><line x1="137" y1="25" x2="137" y2="165"/>
+        <line x1="25" y1="53" x2="165" y2="53"/><line x1="25" y1="81" x2="165" y2="81"/>
+        <line x1="25" y1="109" x2="165" y2="109"/><line x1="25" y1="137" x2="165" y2="137"/>
+      </g>
+      <text x="95" y="19" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle">100 cm</text>
+      <text x="15" y="100" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle" transform="rotate(-90 15 100)">100 cm</text>
+      <text x="95" y="100" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">1 m²</text>
+      <text x="190" y="95" font-family="Arial" font-size="22" fill="#7c3aed">=</text>
+      <text x="265" y="88" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">100 × 100</text>
+      <text x="265" y="110" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">= 10 000 cm²</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    If the length factor is $n$, the <strong>area</strong> factor is $n^2$ and the <strong>volume</strong> factor is $n^3$.
+  </div>
+
+  <table>
+    <tr><th>Conversion</th><th>Length</th><th>Area</th><th>Volume</th></tr>
+    <tr><td>cm ↔ mm</td><td>$\times 10$</td><td>$\times 100$</td><td>$\times 1000$</td></tr>
+    <tr><td>m ↔ cm</td><td>$\times 100$</td><td>$\times 10\,000$</td><td>$\times 1\,000\,000$</td></tr>
+    <tr><td>km ↔ m</td><td>$\times 1000$</td><td>$\times 1\,000\,000$</td><td>$\times 10^9$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Converting an area</div>
+    <div class="example-body">
+      <p>A window has area $1.8\text{ m}^2$. Convert this to $\text{cm}^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Length factor m → cm is $\times 100$, so the area factor is $100^2 = 10\,000$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1.8 \times 10\,000 = 18\,000\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Volume and capacity</div>
+    <div class="example-body">
+      <p>A tank measures $1.2$ m by $0.8$ m by $0.5$ m. How many litres does it hold?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume $= 1.2 \times 0.8 \times 0.5 = 0.48\text{ m}^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1\text{ m}^3 = 1000$ litres</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.48 \times 1000 = 480$ litres</span></div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>Hectares.</strong> Land area is often given in hectares. $1$ hectare $= 10\,000\text{ m}^2$ — the area of a square $100$ m by $100$ m. And $1\text{ km}^2 = 100$ hectares.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TIME
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Time</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Time is not metric.</strong> $2$ hours $30$ minutes is $2.5$ hours, not $2.3$ hours. To turn minutes into a decimal of an hour, divide by $60$.
+  </div>
+
+  <table>
+    <tr><th>Minutes</th><td>$6$</td><td>$12$</td><td>$15$</td><td>$20$</td><td>$30$</td><td>$45$</td><td>$50$</td></tr>
+    <tr><th>Decimal hours</th><td>$0.1$</td><td>$0.2$</td><td>$0.25$</td><td>$0.333$</td><td>$0.5$</td><td>$0.75$</td><td>$0.833$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Timetables</div>
+    <div class="example-body">
+      <p>A train leaves at $14{:}37$ and arrives at $17{:}12$. How long is the journey?</p>
+      <div class="step-row"><span class="arrow">①</span><span>From $14{:}37$ to $15{:}00$ is $23$ minutes.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>From $15{:}00$ to $17{:}00$ is $2$ hours.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>From $17{:}00$ to $17{:}12$ is $12$ minutes.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total $= 2$ h $+ 23 + 12 = 2$ h $35$ min.</span></div>
+      <div class="tip">Counting up to the next whole hour is far safer than subtracting the two times directly.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – IMPERIAL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Metric and Imperial</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Imperial</th><th>Metric (approx.)</th></tr>
+    <tr><td>$1$ inch</td><td>$2.5$ cm</td></tr>
+    <tr><td>$1$ foot ($12$ inches)</td><td>$30$ cm</td></tr>
+    <tr><td>$1$ mile</td><td>$1.6$ km &nbsp;(so $5$ miles $= 8$ km)</td></tr>
+    <tr><td>$1$ pound (lb)</td><td>$450$ g &nbsp;(so $1$ kg $\approx 2.2$ lb)</td></tr>
+    <tr><td>$1$ stone ($14$ lb)</td><td>$6.35$ kg</td></tr>
+    <tr><td>$1$ pint</td><td>$570$ ml</td></tr>
+    <tr><td>$1$ gallon ($8$ pints)</td><td>$4.5$ litres</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Miles and kilometres</div>
+    <div class="example-body">
+      <p>A journey is $72$ km. Roughly how many miles is this? Use $5$ miles $= 8$ km.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$72 \div 8 = 9$ lots of $8$ km.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$9 \times 5 = 45$ miles.</span></div>
+      <p>Sense check: a mile is longer than a kilometre, so the number of miles should be smaller ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – ACCURACY AND BOUNDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Measurement Accuracy and Bounds</div>
+<div class="section-body">
+
+  <p>Every measurement is rounded, so the true value lies within a range.</p>
+
+  <div class="formula-box">
+    <div class="label">Bounds</div>
+    A value rounded to the nearest $n$ lies within $\pm \dfrac{n}{2}$ of the stated value
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding bounds</div>
+    <div class="example-body">
+      <p>A length is measured as $8.6$ cm, correct to $1$ decimal place. Find the lower and upper bounds.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rounded to the nearest $0.1$, so the half-unit is $0.05$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Lower bound $= 8.6 - 0.05 = 8.55$ cm</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Upper bound $= 8.6 + 0.05 = 8.65$ cm</span></div>
+      <p>So the true length $L$ satisfies $8.55 \leq L \lt 8.65$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Bounds in a calculation</div>
+    <div class="example-body">
+      <p>A rectangle measures $12$ cm by $7$ cm, each to the nearest centimetre. Find the upper bound for its area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Upper bounds: $12.5$ cm and $7.5$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Maximum area $= 12.5 \times 7.5 = 93.75\text{ cm}^2$</span></div>
+      <p>(The lower bound would be $11.5 \times 6.5 = 74.75\text{ cm}^2$.)</p>
+      <div class="tip">For a <em>maximum</em> product use both upper bounds; for a maximum <em>quotient</em> use the upper bound on top and the <em>lower</em> bound underneath.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Direction rule</h4><p>Smaller unit → bigger number → multiply, and vice versa.</p></div>
+    <div class="ref-card"><h4>Length</h4><p>mm $\to$ cm $\div10$; cm $\to$ m $\div100$; m $\to$ km $\div1000$.</p></div>
+    <div class="ref-card"><h4>Area</h4><p>Square the length factor: m² $\to$ cm² is $\times 10\,000$.</p></div>
+    <div class="ref-card"><h4>Volume</h4><p>Cube the length factor: m³ $\to$ cm³ is $\times 10^6$.</p></div>
+    <div class="ref-card"><h4>Capacity link</h4><p>$1$ ml $= 1$ cm³; $1$ litre $= 1000$ cm³; $1$ m³ $= 1000$ litres.</p></div>
+    <div class="ref-card"><h4>Hectare</h4><p>$1$ ha $= 10\,000$ m²; $1$ km² $= 100$ ha.</p></div>
+    <div class="ref-card"><h4>Time</h4><p>Minutes $\div 60$ for decimal hours. $2$ h $30$ $= 2.5$ h.</p></div>
+    <div class="ref-card"><h4>Imperial</h4><p>$5$ miles $= 8$ km; $1$ kg $= 2.2$ lb; $1$ gallon $= 4.5$ litres.</p></div>
+    <div class="ref-card"><h4>Bounds</h4><p>Add and subtract half the rounding unit.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Convert: (a) $4.2$ km to metres, (b) $780$ g to kilograms, (c) $0.65$ litres to millilitres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $4.2 \times 1000 = 4200$ m</p>
+          <p><strong>(b)</strong> $780 \div 1000 = 0.78$ kg</p>
+          <p><strong>(c)</strong> $0.65 \times 1000 = 650$ ml</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A rectangle measures $1.5$ m by $80$ cm. Find its area in (a) $\text{m}^2$, (b) $\text{cm}^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $80$ cm $= 0.8$ m; area $= 1.5 \times 0.8 = 1.2\text{ m}^2$</p>
+          <p><strong>(b)</strong> $1.2 \times 10\,000 = 12\,000\text{ cm}^2$</p>
+          <p><em>Check:</em> $150 \times 80 = 12\,000$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Convert $0.035\text{ m}^3$ into $\text{cm}^3$ and into litres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.035 \times 1\,000\,000 = 35\,000\text{ cm}^3$</p>
+          <p>$35\,000 \div 1000 = 35$ litres</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A field is $250$ m by $160$ m. Find its area in hectares.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area $= 250 \times 160 = 40\,000\text{ m}^2$</p>
+          <p>$1$ hectare $= 10\,000\text{ m}^2$</p>
+          <p>$40\,000 \div 10\,000 = 4$ hectares</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A film starts at $19{:}45$ and lasts $2$ hours $38$ minutes. When does it finish?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$19{:}45 + 2$ hours $= 21{:}45$</p>
+          <p>$21{:}45 + 38$ min: $15$ min takes us to $22{:}00$, leaving $23$ min.</p>
+          <p>Finish time $= \mathbf{22{:}23}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A recipe needs $2$ pints of milk. How many millilitres is this? Use $1$ pint $= 570$ ml.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2 \times 570 = 1140$ ml (about $1.14$ litres).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A parcel weighs $3.4$ kg. Express this in pounds, using $1$ kg $= 2.2$ lb.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3.4 \times 2.2 = 7.48$ lb (about $7.5$ lb).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A mass is given as $46$ kg to the nearest kilogram. Write down the lower and upper bounds, using inequality notation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Rounded to the nearest $1$ kg, so the half-unit is $0.5$ kg.</p>
+          <p>Lower bound $= 45.5$ kg; upper bound $= 46.5$ kg.</p>
+          <p>$45.5 \leq m \lt 46.5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A cuboid box measures $30$ cm by $20$ cm by $15$ cm. Small cubes of side $5$ cm are packed inside.</p>
+      <p>(a) How many cubes fit exactly? &nbsp; (b) What is the box's capacity in litres?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Along each edge: $30 \div 5 = 6$, $20 \div 5 = 4$, $15 \div 5 = 3$.</p>
+          <p>Number of cubes $= 6 \times 4 \times 3 = 72$.</p>
+          <p><strong>(b)</strong> Volume $= 30 \times 20 \times 15 = 9000\text{ cm}^3$.</p>
+          <p>$9000 \div 1000 = 9$ litres.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A rectangular garden is measured as $18$ m by $11$ m, each to the nearest metre. Turf costs £$4.20$ per square metre.</p>
+      <p>(a) Find the lower and upper bounds for the area. &nbsp; (b) Find the greatest possible cost of turfing the garden. &nbsp; (c) A gardener quotes £$850$. Explain whether this is definitely enough.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Bounds on the sides: $17.5 \leq L \lt 18.5$ and $10.5 \leq W \lt 11.5$.</p>
+          <p>Lower area bound $= 17.5 \times 10.5 = 183.75\text{ m}^2$</p>
+          <p>Upper area bound $= 18.5 \times 11.5 = 212.75\text{ m}^2$</p>
+          <p><strong>(b)</strong> Greatest cost $= 212.75 \times 4.20 = £893.55$</p>
+          <p><strong>(c)</strong> The greatest possible cost is £$893.55$, which is more than £$850$.</p>
+          <p>So <strong>£$850$ is not definitely enough</strong>. (It would cover the smallest possible area, costing $183.75 \times 4.20 = £771.75$, but the true area could be larger.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Standard Units of Measure (G14) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

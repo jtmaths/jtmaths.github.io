@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congruence and Similarity in Measures – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔍 Congruence and Similarity in Measures</h1>
+  <p>GCSE Maths · Geometry and Measures (G19)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE THREE SCALE FACTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Three Scale Factors</div>
+<div class="section-body">
+
+  <p>When one shape is an enlargement of another by scale factor $k$, three different things change — and they change by three different amounts.</p>
+
+  <div class="formula-box">
+    <div class="label">The single most important fact on this page</div>
+    Lengths $\times k$ &nbsp;·&nbsp; Areas $\times k^2$ &nbsp;·&nbsp; Volumes $\times k^3$
+  </div>
+
+  <div class="svg-block">
+    <svg width="520" height="200" viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="80" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Length × 3</text>
+      <line x1="20" y1="60" x2="50" y2="60" stroke="#4f46e5" stroke-width="5"/>
+      <line x1="20" y1="90" x2="110" y2="90" stroke="#22c55e" stroke-width="5"/>
+      <text x="80" y="130" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">1 → 3</text>
+
+      <text x="255" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Area × 9</text>
+      <rect x="180" y="40" width="20" height="20" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.3"/>
+      <g fill="#bbf7d0" stroke="#22c55e" stroke-width="1.3">
+        <rect x="220" y="40" width="20" height="20"/><rect x="240" y="40" width="20" height="20"/><rect x="260" y="40" width="20" height="20"/>
+        <rect x="220" y="60" width="20" height="20"/><rect x="240" y="60" width="20" height="20"/><rect x="260" y="60" width="20" height="20"/>
+        <rect x="220" y="80" width="20" height="20"/><rect x="240" y="80" width="20" height="20"/><rect x="260" y="80" width="20" height="20"/>
+      </g>
+      <text x="250" y="130" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">1 → 9 squares</text>
+
+      <text x="430" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Volume × 27</text>
+      <rect x="360" y="45" width="18" height="18" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.2"/>
+      <path d="M360 45 L367 38 L385 38 L378 45" fill="#a5b4fc" stroke="#4f46e5" stroke-width="1"/>
+      <path d="M378 45 L385 38 L385 56 L378 63" fill="#818cf8" stroke="#4f46e5" stroke-width="1"/>
+      <rect x="420" y="45" width="54" height="54" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.2"/>
+      <path d="M420 45 L441 24 L495 24 L474 45" fill="#86efac" stroke="#22c55e" stroke-width="1"/>
+      <path d="M474 45 L495 24 L495 78 L474 99" fill="#4ade80" stroke="#22c55e" stroke-width="1"/>
+      <text x="440" y="130" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">1 → 27 cubes</text>
+      <text x="260" y="175" font-family="Arial" font-size="13" fill="#6d28d9" text-anchor="middle" font-weight="bold">Tripling every length multiplies area by 3² and volume by 3³</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Length factor $k$</th><th>Area factor $k^2$</th><th>Volume factor $k^3$</th></tr>
+    <tr><td>$2$</td><td>$4$</td><td>$8$</td></tr>
+    <tr><td>$3$</td><td>$9$</td><td>$27$</td></tr>
+    <tr><td>$4$</td><td>$16$</td><td>$64$</td></tr>
+    <tr><td>$5$</td><td>$25$</td><td>$125$</td></tr>
+    <tr><td>$1.5$</td><td>$2.25$</td><td>$3.375$</td></tr>
+    <tr><td>$0.5$</td><td>$0.25$</td><td>$0.125$</td></tr>
+    <tr><td>$\tfrac{2}{3}$</td><td>$\tfrac{4}{9}$</td><td>$\tfrac{8}{27}$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Congruence is the special case $k = 1$.</strong> If the scale factor is $1$, then lengths, areas and volumes are all unchanged — the shapes are identical.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – GOING FORWARDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Going Forwards from a Length</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Find $k$ by dividing a length on the new shape by the matching length on the old one.</li>
+    <li>Decide what you are scaling: a length, an area or a volume.</li>
+    <li>Multiply by $k$, $k^2$ or $k^3$ as appropriate.</li>
+    <li>Sense-check the direction — bigger shape should give bigger answers.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Scaling an area</div>
+    <div class="example-body">
+      <p>Two similar triangles have corresponding sides $5$ cm and $12$ cm. The smaller has area $20\text{ cm}^2$. Find the area of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$k = \dfrac{12}{5} = 2.4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Area factor $= k^2 = 2.4^2 = 5.76$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area $= 20 \times 5.76 = 115.2\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Scaling a volume</div>
+    <div class="example-body">
+      <p>Two similar jugs have heights $10$ cm and $15$ cm. The smaller holds $500$ ml. Find the capacity of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$k = \dfrac{15}{10} = 1.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Volume factor $= 1.5^3 = 3.375$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Capacity $= 500 \times 3.375 = 1687.5$ ml</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Scaling down</div>
+    <div class="example-body">
+      <p>Two similar cuboids have corresponding edges $18$ cm and $12$ cm. The larger has volume $1080\text{ cm}^3$. Find the volume of the smaller.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Going large to small: $k = \dfrac{12}{18} = \dfrac{2}{3}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Volume factor $= \left(\dfrac{2}{3}\right)^3 = \dfrac{8}{27}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Volume $= 1080 \times \dfrac{8}{27} = 320\text{ cm}^3$</span></div>
+      <div class="tip">Keeping $k$ as a fraction rather than $0.667$ avoids rounding errors and makes the cube much tidier.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – GOING BACKWARDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Going Backwards to a Length</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Recovering the length scale factor</div>
+    From an area ratio: &nbsp;$k = \sqrt{\text{area factor}}$<br>
+    From a volume ratio: &nbsp;$k = \sqrt[3]{\text{volume factor}}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — From areas to a length</div>
+    <div class="example-body">
+      <p>Two similar shapes have areas $32\text{ cm}^2$ and $200\text{ cm}^2$. A side of the smaller is $6$ cm. Find the matching side of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Area factor $= \dfrac{200}{32} = 6.25$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$k = \sqrt{6.25} = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Side $= 6 \times 2.5 = 15$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — From volumes to a length</div>
+    <div class="example-body">
+      <p>Two similar cones have volumes $54\text{ cm}^3$ and $250\text{ cm}^3$. The smaller has height $9$ cm. Find the height of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume factor $= \dfrac{250}{54} = \dfrac{125}{27}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$k = \sqrt[3]{\dfrac{125}{27}} = \dfrac{5}{3}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Height $= 9 \times \dfrac{5}{3} = 15$ cm</span></div>
+      <div class="tip">Spot the cube numbers: $125 = 5^3$ and $27 = 3^3$, so the cube root is exact and easy.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Volume to area</div>
+    <div class="example-body">
+      <p>Two similar solids have volumes in the ratio $8 : 125$. Find the ratio of their surface areas.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volumes $8 : 125$ means $k^3 = \dfrac{125}{8}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$k = \sqrt[3]{\dfrac{125}{8}} = \dfrac{5}{2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area factor $= k^2 = \dfrac{25}{4}$</span></div>
+      <p><strong>Surface areas are in the ratio $4 : 25$.</strong></p>
+      <div class="concept">Shortcut: if volumes are $a^3 : b^3$ then lengths are $a : b$ and areas are $a^2 : b^2$. Here $8 : 125 = 2^3 : 5^3$, so lengths are $2 : 5$ and areas are $4 : 25$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – RATIOS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Using Ratio Notation</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">If lengths are in the ratio $a : b$</div>
+    Areas are in the ratio $a^2 : b^2$ &nbsp;·&nbsp; Volumes are in the ratio $a^3 : b^3$
+  </div>
+
+  <table>
+    <tr><th>Lengths</th><th>Areas</th><th>Volumes</th></tr>
+    <tr><td>$1 : 2$</td><td>$1 : 4$</td><td>$1 : 8$</td></tr>
+    <tr><td>$2 : 3$</td><td>$4 : 9$</td><td>$8 : 27$</td></tr>
+    <tr><td>$3 : 5$</td><td>$9 : 25$</td><td>$27 : 125$</td></tr>
+    <tr><td>$1 : 4$</td><td>$1 : 16$</td><td>$1 : 64$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Mass scales like volume.</strong> Two similar solids made of the <em>same material</em> have masses in the ratio $a^3 : b^3$, because mass $=$ density $\times$ volume and the density is the same for both.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Mass of a similar solid</div>
+    <div class="example-body">
+      <p>Two similar solid statues are cast from the same bronze. Their heights are $20$ cm and $50$ cm. The smaller has mass $4$ kg. Find the mass of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$k = \dfrac{50}{20} = \dfrac{5}{2} = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Mass scales like volume: factor $= 2.5^3 = 15.625$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Mass $= 4 \times 15.625 = 62.5$ kg</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON TRAPS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Traps</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Trap 1 — Using $k$ where $k^2$ or $k^3$ is needed.</strong> Doubling the lengths of a box does not double its capacity; it multiplies it by $8$.
+  </div>
+
+  <div class="warn">
+    <strong>Trap 2 — Forgetting to take a root.</strong> If you are given <em>areas</em> and asked for a <em>length</em>, you must square root the area ratio first.
+  </div>
+
+  <div class="warn">
+    <strong>Trap 3 — Comparing non-matching measurements.</strong> Only divide a length by the corresponding length, an area by the corresponding area, and so on. Dividing an area by a length gives nothing useful.
+  </div>
+
+  <div class="warn">
+    <strong>Trap 4 — Assuming two shapes are similar.</strong> Two rectangles are similar only if their sides are in the same ratio. A $2 \times 4$ and a $3 \times 5$ rectangle are <em>not</em> similar, because $\tfrac{2}{4} \neq \tfrac{3}{5}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Are they similar?</div>
+    <div class="example-body">
+      <p>Rectangle $A$ is $6$ cm by $9$ cm. Rectangle $B$ is $10$ cm by $15$ cm. Are they similar?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Ratio of $A$'s sides: $\dfrac{6}{9} = \dfrac{2}{3}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ratio of $B$'s sides: $\dfrac{10}{15} = \dfrac{2}{3}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The ratios match, so <strong>yes, they are similar</strong>, with $k = \dfrac{10}{6} = \dfrac{5}{3}$.</span></div>
+      <p><em>Check with areas:</em> $54\text{ cm}^2$ and $150\text{ cm}^2$; $\dfrac{150}{54} = \dfrac{25}{9} = \left(\dfrac{5}{3}\right)^2$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The big three</h4><p>Length $\times k$, area $\times k^2$, volume $\times k^3$.</p></div>
+    <div class="ref-card"><h4>Finding $k$</h4><p>New length $\div$ old length, using corresponding sides.</p></div>
+    <div class="ref-card"><h4>From areas</h4><p>$k = \sqrt{\text{area factor}}$.</p></div>
+    <div class="ref-card"><h4>From volumes</h4><p>$k = \sqrt[3]{\text{volume factor}}$.</p></div>
+    <div class="ref-card"><h4>Ratios</h4><p>Lengths $a:b$ → areas $a^2:b^2$ → volumes $a^3:b^3$.</p></div>
+    <div class="ref-card"><h4>Mass</h4><p>Same material: mass scales like volume, $\times k^3$.</p></div>
+    <div class="ref-card"><h4>Congruence</h4><p>The special case $k = 1$ — nothing changes.</p></div>
+    <div class="ref-card"><h4>Testing similarity</h4><p>Corresponding sides must all be in the same ratio.</p></div>
+    <div class="ref-card"><h4>Keep fractions</h4><p>Exact fractions make squares and cubes far tidier.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Two similar shapes have lengths in the ratio $4 : 7$. Write the ratio of (a) their areas, (b) their volumes.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $4^2 : 7^2 = 16 : 49$</p>
+          <p><strong>(b)</strong> $4^3 : 7^3 = 64 : 343$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A shape is enlarged by scale factor $5$. Its area was $12\text{ cm}^2$. Find the new area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area factor $= 5^2 = 25$</p>
+          <p>New area $= 12 \times 25 = 300\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Two similar cylinders have radii $4$ cm and $10$ cm. The smaller has volume $96\text{ cm}^3$. Find the volume of the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = \dfrac{10}{4} = 2.5$</p>
+          <p>Volume factor $= 2.5^3 = 15.625$</p>
+          <p>Volume $= 96 \times 15.625 = 1500\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Two similar shapes have areas $45\text{ cm}^2$ and $80\text{ cm}^2$. A length on the smaller is $9$ cm. Find the matching length on the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area factor $= \dfrac{80}{45} = \dfrac{16}{9}$</p>
+          <p>$k = \sqrt{\dfrac{16}{9}} = \dfrac{4}{3}$</p>
+          <p>Length $= 9 \times \dfrac{4}{3} = 12$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Two similar solids have volumes $128\text{ cm}^3$ and $432\text{ cm}^3$. Find the ratio of their surface areas.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Volume ratio $= 128 : 432$. Divide both by $16$: $\;8 : 27$.</p>
+          <p>$8 = 2^3$ and $27 = 3^3$, so the length ratio is $2 : 3$.</p>
+          <p>Surface area ratio $= 2^2 : 3^2 = \mathbf{4 : 9}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Two similar bottles have heights $12$ cm and $18$ cm. The taller holds $810$ ml. Find the capacity of the shorter.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Going tall to short: $k = \dfrac{12}{18} = \dfrac{2}{3}$</p>
+          <p>Volume factor $= \left(\dfrac{2}{3}\right)^3 = \dfrac{8}{27}$</p>
+          <p>Capacity $= 810 \times \dfrac{8}{27} = 240$ ml</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two similar solid spheres are made of the same material. Their radii are $3$ cm and $6$ cm. The smaller has mass $450$ g. Find the mass of the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = \dfrac{6}{3} = 2$</p>
+          <p>Mass scales like volume: factor $= 2^3 = 8$</p>
+          <p>Mass $= 450 \times 8 = 3600$ g $= 3.6$ kg</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Rectangle $P$ measures $8$ cm by $12$ cm. Rectangle $Q$ measures $12$ cm by $16$ cm. Determine whether they are similar, showing your working.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P$: $\dfrac{8}{12} = \dfrac{2}{3} = 0.667$</p>
+          <p>$Q$: $\dfrac{12}{16} = \dfrac{3}{4} = 0.75$</p>
+          <p>The ratios are different, so <strong>the rectangles are not similar</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A model car is made to a scale of $1 : 24$. The real car has a boot with capacity $480$ litres and a windscreen of area $0.72\text{ m}^2$.</p>
+      <p>(a) Find the model boot's capacity in millilitres. &nbsp; (b) Find the model windscreen's area in cm².</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = \dfrac{1}{24}$ going from real to model.</p>
+          <p><strong>(a)</strong> Volume factor $= \dfrac{1}{24^3} = \dfrac{1}{13\,824}$</p>
+          <p>$480 \div 13\,824 = 0.03472$ litres $= 34.7$ ml (1 d.p.)</p>
+          <p><strong>(b)</strong> Area factor $= \dfrac{1}{24^2} = \dfrac{1}{576}$</p>
+          <p>$0.72 \div 576 = 0.00125\text{ m}^2$</p>
+          <p>$0.00125 \times 10\,000 = 12.5\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cone of height $24$ cm is cut by a plane parallel to its base, $8$ cm from the apex, producing a small cone and a frustum. The full cone has volume $1728\text{ cm}^3$ and curved surface area $432\text{ cm}^2$.</p>
+      <p>(a) Find the volume of the small cone. &nbsp; (b) Find the volume of the frustum. &nbsp; (c) Find the curved surface area of the small cone. &nbsp; (d) Write the ratio of the volume of the small cone to the volume of the frustum.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The small cone is similar to the whole cone, with $k = \dfrac{8}{24} = \dfrac{1}{3}$.</p>
+          <p><strong>(a)</strong> Volume factor $= \left(\dfrac{1}{3}\right)^3 = \dfrac{1}{27}$</p>
+          <p>Small cone $= 1728 \times \dfrac{1}{27} = \mathbf{64\text{ cm}^3}$</p>
+          <p><strong>(b)</strong> Frustum $= 1728 - 64 = \mathbf{1664\text{ cm}^3}$</p>
+          <p><strong>(c)</strong> Area factor $= \left(\dfrac{1}{3}\right)^2 = \dfrac{1}{9}$</p>
+          <p>Curved surface $= 432 \times \dfrac{1}{9} = \mathbf{48\text{ cm}^2}$</p>
+          <p><strong>(d)</strong> $64 : 1664$. Divide both by $64$: $\;\mathbf{1 : 26}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Congruence &amp; Similarity in Measures (G19) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parts of a Circle – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⭕ Parts of a Circle</h1>
+  <p>GCSE Maths · Geometry and Measures (G9)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE VOCABULARY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Vocabulary of the Circle</div>
+<div class="section-body">
+
+  <p>Circle questions are full of specific words. Getting them right is half the battle, because each one brings a property with it.</p>
+
+  <div class="svg-block">
+    <svg width="560" height="300" viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- main circle -->
+      <circle cx="180" cy="150" r="110" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="180" cy="150" r="4.5" fill="#1e1e2e"/>
+      <text x="172" y="168" font-family="Arial" font-size="13" fill="#1e1e2e" font-weight="bold">O</text>
+      <!-- radius -->
+      <line x1="180" y1="150" x2="180" y2="40" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="186" y="95" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">radius</text>
+      <!-- diameter -->
+      <line x1="70" y1="150" x2="290" y2="150" stroke="#16a34a" stroke-width="2.5"/>
+      <text x="86" y="143" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">diameter</text>
+      <!-- chord -->
+      <line x1="112" y1="236" x2="272" y2="205" stroke="#d97706" stroke-width="2.5"/>
+      <text x="160" y="250" font-family="Arial" font-size="12" fill="#92400e" font-weight="bold">chord</text>
+      <!-- circumference label -->
+      <text x="180" y="30" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle" font-weight="bold">circumference</text>
+
+      <!-- second circle: tangent, arc, sector, segment -->
+      <circle cx="420" cy="150" r="95" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5"/>
+      <circle cx="420" cy="150" r="4" fill="#1e1e2e"/>
+      <!-- sector -->
+      <path d="M 420 150 L 420 55 A 95 95 0 0 1 502 198 Z" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+      <text x="446" y="130" font-family="Arial" font-size="11" fill="#4c1d95" font-weight="bold">sector</text>
+      <!-- arc highlight -->
+      <path d="M 420 55 A 95 95 0 0 1 502 198" fill="none" stroke="#ef4444" stroke-width="4"/>
+      <text x="512" y="106" font-family="Arial" font-size="11" fill="#b91c1c" font-weight="bold">arc</text>
+      <!-- tangent -->
+      <line x1="330" y1="245" x2="470" y2="245" stroke="#16a34a" stroke-width="2.5"/>
+      <circle cx="420" cy="245" r="3.5" fill="#16a34a"/>
+      <text x="336" y="262" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">tangent</text>
+      <!-- segment -->
+      <path d="M 340 90 A 95 95 0 0 0 348 197 Z" fill="#c4b5fd" stroke="#6d28d9" stroke-width="1.6"/>
+      <line x1="340" y1="90" x2="348" y2="197" stroke="#6d28d9" stroke-width="2"/>
+      <text x="298" y="150" font-family="Arial" font-size="11" fill="#4c1d95" font-weight="bold">segment</text>
+      <text x="420" y="290" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A chord cuts off a segment; two radii cut off a sector</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Centre</strong></td><td>The point in the middle, usually labelled $O$.</td></tr>
+    <tr><td><strong>Radius</strong></td><td>A line from the centre to the edge. Plural: <em>radii</em>.</td></tr>
+    <tr><td><strong>Diameter</strong></td><td>A line right across the circle, through the centre. $d = 2r$.</td></tr>
+    <tr><td><strong>Circumference</strong></td><td>The distance all the way round the outside — the circle's perimeter.</td></tr>
+    <tr><td><strong>Chord</strong></td><td>A straight line joining two points on the circle (not through the centre).</td></tr>
+    <tr><td><strong>Arc</strong></td><td>Part of the circumference. The <em>minor</em> arc is the shorter one, the <em>major</em> arc the longer.</td></tr>
+    <tr><td><strong>Sector</strong></td><td>A "pizza slice" — the region between two radii and an arc.</td></tr>
+    <tr><td><strong>Segment</strong></td><td>The region between a chord and an arc.</td></tr>
+    <tr><td><strong>Tangent</strong></td><td>A straight line that touches the circle at exactly one point.</td></tr>
+    <tr><td><strong>Semicircle</strong></td><td>Half a circle, cut off by a diameter.</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Sector or segment?</strong> A <strong>sector</strong> is bounded by two straight radii (like a slice of pizza). A <strong>segment</strong> is bounded by one straight chord (like the piece you cut off the top of an orange). Mixing these up is the single most common circle vocabulary error.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE BASIC PROPERTIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Basic Properties</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The property you use most</div>
+    <strong>All radii of a circle are equal.</strong>
+  </div>
+
+  <div class="concept">
+    That single fact is why circles produce so many <strong>isosceles triangles</strong>. Any triangle formed by two radii and a chord automatically has two equal sides, so its base angles are equal. Spotting this unlocks a huge number of questions.
+  </div>
+
+  <div class="svg-block">
+    <svg width="300" height="240" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="120" r="95" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <circle cx="150" cy="120" r="4" fill="#1e1e2e"/>
+      <text x="142" y="138" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">O</text>
+      <line x1="150" y1="120" x2="72" y2="66" stroke="#7c3aed" stroke-width="2.2"/>
+      <line x1="150" y1="120" x2="228" y2="66" stroke="#7c3aed" stroke-width="2.2"/>
+      <line x1="72" y1="66" x2="228" y2="66" stroke="#7c3aed" stroke-width="2.2"/>
+      <line x1="107" y1="90" x2="113" y2="96" stroke="#ef4444" stroke-width="2"/>
+      <line x1="187" y1="96" x2="193" y2="90" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 90 78 A 20 20 0 0 0 92 66" fill="none" stroke="#16a34a" stroke-width="1.8"/>
+      <path d="M 208 66 A 20 20 0 0 0 210 78" fill="none" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="64" y="58" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">A</text>
+      <text x="232" y="58" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">B</text>
+      <text x="150" y="232" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">OA = OB (radii) → triangle OAB is isosceles</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Property</th><th>Why it is useful</th></tr>
+    <tr><td>All radii are equal</td><td>Creates isosceles triangles everywhere</td></tr>
+    <tr><td>The diameter is twice the radius</td><td>$d = 2r$, $r = \tfrac{d}{2}$</td></tr>
+    <tr><td>The diameter is the longest chord</td><td>Useful in "greatest distance" problems</td></tr>
+    <tr><td>A tangent meets a radius at $90^\circ$</td><td>Creates right-angled triangles for Pythagoras</td></tr>
+    <tr><td>A radius perpendicular to a chord bisects it</td><td>Splits the chord into two equal halves</td></tr>
+    <tr><td>Two tangents from the same external point are equal</td><td>Creates a kite and an isosceles triangle</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using the isosceles property</div>
+    <div class="example-body">
+      <p>$A$ and $B$ are points on a circle with centre $O$. Angle $AOB = 44^\circ$. Find angle $OAB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$OA = OB$ &nbsp;(radii of the same circle), so triangle $OAB$ is isosceles.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The base angles $OAB$ and $OBA$ are therefore equal.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$180 - 44 = 136^\circ$ shared between them.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\angle OAB = 136 \div 2 = 68^\circ$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TANGENTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Tangents</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Tangent property 1</div>
+    A <strong>tangent</strong> is perpendicular to the <strong>radius</strong> drawn to the point of contact.
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="240" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- single tangent -->
+      <circle cx="110" cy="110" r="70" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <circle cx="110" cy="110" r="4" fill="#1e1e2e"/>
+      <text x="100" y="128" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">O</text>
+      <line x1="110" y1="110" x2="110" y2="40" stroke="#7c3aed" stroke-width="2.2"/>
+      <line x1="30" y1="40" x2="195" y2="40" stroke="#16a34a" stroke-width="2.5"/>
+      <rect x="110" y="40" width="13" height="13" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="110" y="205" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Tangent ⊥ radius</text>
+
+      <!-- two tangents -->
+      <circle cx="320" cy="110" r="60" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <circle cx="320" cy="110" r="4" fill="#1e1e2e"/>
+      <text x="310" y="128" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">O</text>
+      <circle cx="450" cy="110" r="4.5" fill="#b91c1c"/>
+      <text x="456" y="106" font-family="Arial" font-size="13" fill="#b91c1c" font-weight="bold">P</text>
+      <line x1="450" y1="110" x2="348" y2="57" stroke="#16a34a" stroke-width="2.3"/>
+      <line x1="450" y1="110" x2="348" y2="163" stroke="#16a34a" stroke-width="2.3"/>
+      <circle cx="348" cy="57" r="3.5" fill="#16a34a"/>
+      <circle cx="348" cy="163" r="3.5" fill="#16a34a"/>
+      <line x1="320" y1="110" x2="348" y2="57" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="4,3"/>
+      <line x1="320" y1="110" x2="348" y2="163" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="4,3"/>
+      <text x="380" y="70" font-family="Arial" font-size="11" fill="#166534">A</text>
+      <text x="380" y="160" font-family="Arial" font-size="11" fill="#166534">B</text>
+      <text x="350" y="205" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">PA = PB (two tangents from P)</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Tangent property 2</div>
+    The two tangents drawn from an external point $P$ are <strong>equal in length</strong>: $PA = PB$.
+  </div>
+
+  <div class="concept">
+    Because $PA = PB$ and $OA = OB$, the shape $OAPB$ is a <strong>kite</strong>. The line $OP$ bisects both $\angle APB$ and $\angle AOB$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Tangent and Pythagoras</div>
+    <div class="example-body">
+      <p>A circle has centre $O$ and radius $5$ cm. $P$ is a point $13$ cm from $O$. A tangent from $P$ touches the circle at $T$. Find $PT$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$OT$ is a radius and $PT$ is a tangent, so $\angle OTP = 90^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Triangle $OTP$ is right-angled with hypotenuse $OP = 13$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$PT^2 = 13^2 - 5^2 = 169 - 25 = 144$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$PT = \sqrt{144} = 12$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Angles in a tangent kite</div>
+    <div class="example-body">
+      <p>Two tangents from $P$ touch a circle, centre $O$, at $A$ and $B$. Angle $APB = 54^\circ$. Find angle $AOB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\angle OAP = \angle OBP = 90^\circ$ &nbsp;(tangent perpendicular to radius)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$OAPB$ is a quadrilateral, so its angles add to $360^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle AOB = 360 - 90 - 90 - 54 = 126^\circ$</span></div>
+      <div class="tip">Notice the shortcut: $\angle AOB$ and $\angle APB$ always add to $180^\circ$ in this configuration.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CHORDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Chords</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The chord property</div>
+    The perpendicular from the <strong>centre</strong> to a chord <strong>bisects</strong> the chord.
+  </div>
+
+  <div class="concept">
+    <strong>Why?</strong> Join the centre $O$ to both ends of the chord $AB$, and let $M$ be the foot of the perpendicular. Then $OA = OB$ (radii), $OM = OM$ (common) and both triangles have a right angle at $M$. So $\triangle OAM \cong \triangle OBM$ by RHS, giving $AM = MB$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="300" height="230" viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="105" r="85" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <circle cx="150" cy="105" r="4" fill="#1e1e2e"/>
+      <text x="140" y="98" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">O</text>
+      <line x1="82" y1="156" x2="218" y2="156" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="150" y1="105" x2="150" y2="156" stroke="#ef4444" stroke-width="2.2"/>
+      <line x1="150" y1="105" x2="82" y2="156" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="4,3"/>
+      <line x1="150" y1="105" x2="218" y2="156" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="4,3"/>
+      <rect x="150" y="143" width="13" height="13" fill="none" stroke="#ef4444" stroke-width="1.8"/>
+      <line x1="116" y1="152" x2="116" y2="160" stroke="#d97706" stroke-width="2.2"/>
+      <line x1="184" y1="152" x2="184" y2="160" stroke="#d97706" stroke-width="2.2"/>
+      <text x="74" y="174" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+      <text x="220" y="174" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">B</text>
+      <text x="152" y="176" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">M</text>
+      <text x="150" y="212" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">AM = MB, and OM ⊥ AB</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding a chord length</div>
+    <div class="example-body">
+      <p>A circle has radius $13$ cm. A chord is $5$ cm from the centre. Find the length of the chord.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Draw the perpendicular from $O$ to the chord, meeting it at $M$. Then $OM = 5$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Join $O$ to one end $A$: $OA = 13$ cm (a radius) and $\angle OMA = 90^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$AM^2 = 13^2 - 5^2 = 169 - 25 = 144$, so $AM = 12$ cm.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$M$ is the midpoint, so the whole chord $AB = 2 \times 12 = 24$ cm.</span></div>
+      <div class="warn"><strong>Don't stop at $12$!</strong> Doubling at the end is the step most often forgotten.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding the distance from the centre</div>
+    <div class="example-body">
+      <p>A chord of length $16$ cm is drawn in a circle of radius $10$ cm. How far is the chord from the centre?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Half the chord $= 16 \div 2 = 8$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Right-angled triangle: hypotenuse $10$ (radius), one leg $8$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$OM^2 = 10^2 - 8^2 = 100 - 64 = 36$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$OM = 6$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Equal chords are equidistant from the centre</strong>, and conversely, chords the same distance from the centre are equal in length. The closer a chord is to the centre, the longer it is — which is why the diameter, at distance $0$, is the longest chord of all.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Radius / diameter</h4><p>$d = 2r$. All radii of a circle are equal.</p></div>
+    <div class="ref-card"><h4>Chord</h4><p>Joins two points on the circle. The diameter is the longest chord.</p></div>
+    <div class="ref-card"><h4>Arc</h4><p>Part of the circumference; minor is shorter, major is longer.</p></div>
+    <div class="ref-card"><h4>Sector</h4><p>Bounded by two radii and an arc — a pizza slice.</p></div>
+    <div class="ref-card"><h4>Segment</h4><p>Bounded by a chord and an arc.</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>Touches at one point; perpendicular to the radius there.</p></div>
+    <div class="ref-card"><h4>Two tangents</h4><p>From the same external point they are equal, forming a kite.</p></div>
+    <div class="ref-card"><h4>Chord bisector</h4><p>The perpendicular from the centre cuts a chord in half.</p></div>
+    <div class="ref-card"><h4>Look for</h4><p>Two radii and a chord always make an isosceles triangle.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Name the part of the circle described in each case: (a) a straight line joining two points on the circle; (b) the region between two radii and an arc; (c) a line touching the circle at exactly one point.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A chord (a diameter if it passes through the centre).</p>
+          <p><strong>(b)</strong> A sector.</p>
+          <p><strong>(c)</strong> A tangent.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A circle has diameter $17$ cm. Write down its radius.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r = \dfrac{d}{2} = \dfrac{17}{2} = 8.5$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$A$ and $B$ lie on a circle with centre $O$, and angle $AOB = 96^\circ$. Find angle $OBA$, giving a reason.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$OA = OB$ (radii of the same circle), so triangle $OAB$ is isosceles.</p>
+          <p>Base angles are equal: $\angle OAB = \angle OBA$.</p>
+          <p>$(180 - 96) \div 2 = 84 \div 2 = 42^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A tangent from an external point $P$ touches a circle of radius $8$ cm at $T$. Given $PT = 15$ cm, find the distance $OP$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle OTP = 90^\circ$ (tangent perpendicular to radius).</p>
+          <p>$OP^2 = 8^2 + 15^2 = 64 + 225 = 289$</p>
+          <p>$OP = \sqrt{289} = 17$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A chord of a circle of radius $25$ cm is $7$ cm from the centre. Find the length of the chord.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Half-chord$^2 = 25^2 - 7^2 = 625 - 49 = 576$</p>
+          <p>Half-chord $= \sqrt{576} = 24$ cm</p>
+          <p>Full chord $= 2 \times 24 = 48$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Explain the difference between a sector and a segment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A <strong>sector</strong> is bounded by <em>two radii</em> and an arc — the shape of a slice of pizza, with its point at the centre.</p>
+          <p>A <strong>segment</strong> is bounded by <em>one chord</em> and an arc — the shape you cut off when you slice straight across a circle without going through the centre.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two tangents from a point $P$ touch a circle with centre $O$ at $A$ and $B$. Angle $AOB = 140^\circ$. Find angle $APB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle OAP = \angle OBP = 90^\circ$ (tangent perpendicular to radius).</p>
+          <p>Angles of quadrilateral $OAPB$ add to $360^\circ$:</p>
+          <p>$\angle APB = 360 - 90 - 90 - 140 = 40^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>In a circle of radius $10$ cm, chord $PQ$ has length $12$ cm and chord $RS$ has length $16$ cm. Which chord is closer to the centre? Justify with calculation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$PQ$: half-chord $= 6$; distance$^2 = 100 - 36 = 64$; distance $= 8$ cm.</p>
+          <p>$RS$: half-chord $= 8$; distance$^2 = 100 - 64 = 36$; distance $= 6$ cm.</p>
+          <p><strong>$RS$ is closer</strong> ($6$ cm vs $8$ cm) — which fits the rule that the longer chord is always nearer the centre.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Two tangents from $P$ touch a circle of radius $9$ cm at $A$ and $B$. The distance $OP = 41$ cm. Find (a) the length $PA$, (b) the perimeter of the kite $OAPB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\angle OAP = 90^\circ$, so $PA^2 = 41^2 - 9^2 = 1681 - 81 = 1600$.</p>
+          <p>$PA = 40$ cm.</p>
+          <p><strong>(b)</strong> $PB = PA = 40$ cm (equal tangents) and $OA = OB = 9$ cm (radii).</p>
+          <p>Perimeter $= 9 + 40 + 40 + 9 = 98$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A circular tabletop of radius $60$ cm has a straight edge cut off along a chord that is $36$ cm from the centre.</p>
+      <p>(a) Find the length of the straight edge. &nbsp; (b) Find the greatest width of the piece cut off (measured perpendicular to the chord). &nbsp; (c) What is the greatest distance between any two points on the remaining tabletop?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Half-chord$^2 = 60^2 - 36^2 = 3600 - 1296 = 2304$.</p>
+          <p>Half-chord $= \sqrt{2304} = 48$ cm, so the straight edge is $2 \times 48 = \mathbf{96}$ cm.</p>
+          <p><strong>(b)</strong> The piece cut off is a segment. Its greatest width is the distance from the chord out to the circle, along the line through the centre:</p>
+          <p>$60 - 36 = \mathbf{24}$ cm.</p>
+          <p><strong>(c)</strong> The full diameter is $120$ cm. Is it still present? The chord is $36$ cm from the centre, so the centre is still on the tabletop, and a diameter drawn parallel to the chord is untouched by the cut.</p>
+          <p>So the greatest distance is still the full diameter, $\mathbf{120}$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Parts of a Circle (G9) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area and Volume Formulae – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📦 Area and Volume Formulae</h1>
+  <p>GCSE Maths · Geometry and Measures (G16)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – AREA FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Area Formulae</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Shape</th><th>Formula</th><th>Note</th></tr>
+    <tr><td>Rectangle</td><td>$A = bh$</td><td>base $\times$ height</td></tr>
+    <tr><td>Square</td><td>$A = s^2$</td><td>a special rectangle</td></tr>
+    <tr><td>Triangle</td><td>$A = \tfrac{1}{2}bh$</td><td>$h$ is the <em>perpendicular</em> height</td></tr>
+    <tr><td>Parallelogram</td><td>$A = bh$</td><td>$h$ is the perpendicular height, not the slant side</td></tr>
+    <tr><td>Trapezium</td><td>$A = \tfrac{1}{2}(a+b)h$</td><td>$a$ and $b$ are the <em>parallel</em> sides</td></tr>
+    <tr><td>Kite / rhombus</td><td>$A = \tfrac{1}{2}d_1 d_2$</td><td>half the product of the diagonals</td></tr>
+    <tr><td>Circle</td><td>$A = \pi r^2$</td><td>see the circles page</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="560" height="180" viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- triangle -->
+      <polygon points="25,130 135,130 95,45" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="95" y1="45" x2="95" y2="130" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,4"/>
+      <rect x="95" y="118" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="100" y="92" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">h</text>
+      <text x="80" y="148" font-family="Arial" font-size="12" fill="#3730a3">b</text>
+      <text x="80" y="172" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">½bh</text>
+
+      <!-- parallelogram -->
+      <polygon points="200,130 300,130 340,60 240,60" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="240" y1="60" x2="240" y2="130" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,4"/>
+      <rect x="240" y="118" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="246" y="98" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">h</text>
+      <text x="248" y="148" font-family="Arial" font-size="12" fill="#3730a3">b</text>
+      <text x="270" y="172" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">bh</text>
+
+      <!-- trapezium -->
+      <polygon points="400,130 540,130 510,60 430,60" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="430" y1="60" x2="430" y2="130" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,4"/>
+      <rect x="430" y="118" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <text x="436" y="98" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">h</text>
+      <text x="466" y="54" font-family="Arial" font-size="12" fill="#3730a3">a</text>
+      <text x="466" y="148" font-family="Arial" font-size="12" fill="#3730a3">b</text>
+      <text x="470" y="172" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">½(a+b)h</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>Always use the perpendicular height.</strong> In a triangle or parallelogram the sloping side is <em>longer</em> than the perpendicular height, so using it gives an answer that is too big. Look for the little right-angle square in the diagram.
+  </div>
+
+  <div class="concept">
+    <strong>Why $\tfrac{1}{2}bh$ for a triangle?</strong> Two identical triangles fit together to make a parallelogram of area $bh$. So one triangle is half of that.<br><br>
+    <strong>Why $\tfrac{1}{2}(a+b)h$ for a trapezium?</strong> Two identical trapezia fit together to make a parallelogram whose base is $a + b$ and whose height is $h$. So one trapezium is half of $(a+b)h$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Triangle</div>
+    <div class="example-body">
+      <p>A triangle has base $14$ cm and perpendicular height $9$ cm. Find its area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = \tfrac{1}{2} \times 14 \times 9$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= \tfrac{1}{2} \times 126 = 63\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Trapezium</div>
+    <div class="example-body">
+      <p>A trapezium has parallel sides $9$ cm and $15$ cm, and a perpendicular height of $6$ cm. Find its area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = \tfrac{1}{2}(9 + 15) \times 6$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= \tfrac{1}{2} \times 24 \times 6 = 12 \times 6 = 72\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Working backwards</div>
+    <div class="example-body">
+      <p>A parallelogram has area $84\text{ cm}^2$ and base $12$ cm. Find its perpendicular height.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = bh$, so $84 = 12 \times h$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$h = 84 \div 12 = 7$ cm</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – COMPOUND AREAS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Compound Shapes</div>
+<div class="section-body">
+
+  <p>A compound shape is made from simpler ones. There are two strategies, and it is worth choosing the easier one.</p>
+
+  <div class="concept">
+    <strong>Split it up</strong> — divide the shape into rectangles and triangles, find each area and add.<br>
+    <strong>Cut it out</strong> — find the area of a big surrounding rectangle and subtract the missing pieces.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — An L-shape</div>
+    <div class="example-body">
+      <p>An L-shaped room is formed from a $10$ m by $8$ m rectangle with a $4$ m by $3$ m rectangle removed from one corner. Find its area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Big rectangle: $10 \times 8 = 80\text{ m}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Missing corner: $4 \times 3 = 12\text{ m}^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area $= 80 - 12 = 68\text{ m}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A house shape</div>
+    <div class="example-body">
+      <p>A shape consists of a rectangle $12$ cm wide and $9$ cm tall with a triangle on top. The triangle has the same $12$ cm base and a height of $5$ cm. Find the total area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rectangle: $12 \times 9 = 108\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Triangle: $\tfrac{1}{2} \times 12 \times 5 = 30\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total $= 108 + 30 = 138\text{ cm}^2$</span></div>
+      <div class="tip">Mark each piece on the diagram and label the missing lengths before you start calculating.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VOLUME OF PRISMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Volume of Prisms</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The one formula for every prism</div>
+    $V = $ area of cross-section $\times$ length
+  </div>
+
+  <table>
+    <tr><th>Prism</th><th>Volume</th></tr>
+    <tr><td>Cuboid</td><td>$V = lwh$</td></tr>
+    <tr><td>Cube</td><td>$V = s^3$</td></tr>
+    <tr><td>Triangular prism</td><td>$V = \tfrac{1}{2}bh \times L$</td></tr>
+    <tr><td>Trapezoidal prism</td><td>$V = \tfrac{1}{2}(a+b)h \times L$</td></tr>
+    <tr><td>Cylinder</td><td>$V = \pi r^2 h$</td></tr>
+  </table>
+
+  <ul class="steps">
+    <li>Identify the cross-section — the face that stays the same all the way through.</li>
+    <li>Find its area using the right 2D formula.</li>
+    <li>Multiply by the length (or height) of the prism.</li>
+    <li>Give the answer in cubic units.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Triangular prism</div>
+    <div class="example-body">
+      <p>A triangular prism has a cross-section with base $10$ cm and height $7$ cm. The prism is $20$ cm long. Find its volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cross-section area $= \tfrac{1}{2} \times 10 \times 7 = 35\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = 35 \times 20 = 700\text{ cm}^3$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Cylinder</div>
+    <div class="example-body">
+      <p>A cylinder has radius $6$ cm and height $11$ cm. Find its volume, to 1 decimal place.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cross-section is a circle: $A = \pi r^2 = \pi \times 36 = 36\pi$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = 36\pi \times 11 = 396\pi$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 1244.07\ldots = 1244.1\text{ cm}^3$</span></div>
+      <div class="tip">Keep the answer as $396\pi$ until the very end, then convert to a decimal. Rounding early loses accuracy.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Working backwards</div>
+    <div class="example-body">
+      <p>A cylinder has volume $500\text{ cm}^3$ and height $10$ cm. Find its radius, to 2 decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$V = \pi r^2 h$, so $500 = \pi \times r^2 \times 10$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$r^2 = \dfrac{500}{10\pi} = \dfrac{50}{\pi} = 15.9155$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$r = \sqrt{15.9155} = 3.99$ cm (2 d.p.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SURFACE AREA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Surface Area of Prisms</div>
+<div class="section-body">
+
+  <p>Surface area is the total area of all the faces. The safest method is to imagine the net and add up every face.</p>
+
+  <table>
+    <tr><th>Solid</th><th>Surface area</th></tr>
+    <tr><td>Cuboid</td><td>$2(lw + lh + wh)$</td></tr>
+    <tr><td>Cube</td><td>$6s^2$</td></tr>
+    <tr><td>Cylinder (closed)</td><td>$2\pi r^2 + 2\pi r h$</td></tr>
+    <tr><td>Cylinder (open tube)</td><td>$2\pi r h$ only</td></tr>
+    <tr><td>Any prism</td><td>$2 \times$ cross-section $+$ perimeter of cross-section $\times$ length</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Read whether the solid is open or closed.</strong> An open-topped tank has no lid, so you count five faces, not six. An open pipe has no circular ends at all.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Cuboid surface area</div>
+    <div class="example-body">
+      <p>Find the surface area of a cuboid measuring $9$ cm by $5$ cm by $4$ cm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Top and bottom: $2(9 \times 5) = 90$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Front and back: $2(9 \times 4) = 72$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Two ends: $2(5 \times 4) = 40$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total $= 90 + 72 + 40 = 202\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Cylinder surface area</div>
+    <div class="example-body">
+      <p>A closed cylinder has radius $5$ cm and height $12$ cm. Find its total surface area, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Two circular ends: $2\pi r^2 = 2\pi \times 25 = 50\pi$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Curved surface: $2\pi r h = 2\pi \times 5 \times 12 = 120\pi$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total $= 50\pi + 120\pi = 170\pi$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 534.07\ldots = 534.1\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Triangle</h4><p>$A = \tfrac{1}{2}bh$ with the perpendicular height.</p></div>
+    <div class="ref-card"><h4>Parallelogram</h4><p>$A = bh$, again perpendicular height.</p></div>
+    <div class="ref-card"><h4>Trapezium</h4><p>$A = \tfrac{1}{2}(a+b)h$; $a$ and $b$ are the parallel sides.</p></div>
+    <div class="ref-card"><h4>Kite / rhombus</h4><p>$A = \tfrac{1}{2}d_1 d_2$.</p></div>
+    <div class="ref-card"><h4>Compound shapes</h4><p>Split and add, or surround and subtract.</p></div>
+    <div class="ref-card"><h4>Any prism</h4><p>$V = $ cross-section area $\times$ length.</p></div>
+    <div class="ref-card"><h4>Cylinder</h4><p>$V = \pi r^2 h$; curved surface $= 2\pi r h$.</p></div>
+    <div class="ref-card"><h4>Cuboid surface</h4><p>$2(lw + lh + wh)$ — three pairs of faces.</p></div>
+    <div class="ref-card"><h4>Units</h4><p>Area in units², volume in units³. Convert before you calculate.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the area of a triangle with base $18$ cm and perpendicular height $11$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = \tfrac{1}{2} \times 18 \times 11 = 99\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the area of a trapezium with parallel sides $6$ cm and $10$ cm and height $7$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = \tfrac{1}{2}(6 + 10) \times 7 = \tfrac{1}{2} \times 16 \times 7 = 56\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A parallelogram has area $150\text{ cm}^2$ and perpendicular height $10$ cm. Find its base.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$150 = b \times 10$</p>
+          <p>$b = 15$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>An L-shape is made from a $12$ cm by $9$ cm rectangle with a $5$ cm by $4$ cm rectangle cut from one corner. Find the area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Big rectangle: $12 \times 9 = 108\text{ cm}^2$</p>
+          <p>Cut-out: $5 \times 4 = 20\text{ cm}^2$</p>
+          <p>Area $= 108 - 20 = 88\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the volume of a cuboid measuring $7$ cm by $4$ cm by $2.5$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$V = 7 \times 4 \times 2.5 = 70\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A cylinder has diameter $14$ cm and height $20$ cm. Find its volume, to the nearest cm³.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Radius $= 14 \div 2 = 7$ cm.</p>
+          <p>$V = \pi r^2 h = \pi \times 49 \times 20 = 980\pi$</p>
+          <p>$= 3078.76\ldots \approx 3079\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A prism has a trapezium cross-section with parallel sides $5$ cm and $9$ cm and height $4$ cm. The prism is $25$ cm long. Find its volume.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Cross-section $= \tfrac{1}{2}(5 + 9) \times 4 = \tfrac{1}{2} \times 14 \times 4 = 28\text{ cm}^2$</p>
+          <p>$V = 28 \times 25 = 700\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the surface area of a cube of side $6$ cm, and the surface area of an open-topped box of the same size.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Closed cube: $6s^2 = 6 \times 36 = 216\text{ cm}^2$</p>
+          <p>Open-topped: only $5$ faces, so $5 \times 36 = 180\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A swimming pool is $25$ m long and $10$ m wide. It slopes evenly from $1$ m deep at one end to $3$ m at the other.</p>
+      <p>(a) Sketch the cross-section and name it. &nbsp; (b) Find the volume of water when full. &nbsp; (c) How many litres is this?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Looking along the length, the cross-section is a <strong>trapezium</strong> with parallel sides $1$ m and $3$ m (the two depths) and "height" $25$ m (the length of the pool).</p>
+          <p><strong>(b)</strong> Cross-section area $= \tfrac{1}{2}(1 + 3) \times 25 = \tfrac{1}{2} \times 4 \times 25 = 50\text{ m}^2$</p>
+          <p>$V = 50 \times 10 = 500\text{ m}^3$</p>
+          <p><strong>(c)</strong> $1\text{ m}^3 = 1000$ litres, so $500 \times 1000 = 500\,000$ litres.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cylindrical water butt has radius $30$ cm and height $80$ cm. It is open at the top.</p>
+      <p>(a) Find its capacity in litres, to the nearest litre. &nbsp; (b) Find the area of metal needed to make it, to the nearest cm². &nbsp; (c) Water flows in at $4$ litres per minute. How long, to the nearest minute, does it take to fill?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $V = \pi r^2 h = \pi \times 900 \times 80 = 72\,000\pi = 226\,194.7\text{ cm}^3$</p>
+          <p>$226\,194.7 \div 1000 = \mathbf{226}$ litres (nearest litre).</p>
+          <p><strong>(b)</strong> Open top, so one circular base plus the curved surface.</p>
+          <p>Base: $\pi r^2 = 900\pi$</p>
+          <p>Curved: $2\pi r h = 2\pi \times 30 \times 80 = 4800\pi$</p>
+          <p>Total $= 5700\pi = \mathbf{17\,907}\text{ cm}^2$ (nearest cm²).</p>
+          <p><strong>(c)</strong> $226.19 \div 4 = 56.5$ minutes, so about $\mathbf{57}$ minutes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Area &amp; Volume Formulae (G16) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

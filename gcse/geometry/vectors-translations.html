@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectors and Translations – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➡️ Vectors and Translations</h1>
+  <p>GCSE Maths · Geometry and Measures (G23)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IS A VECTOR?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What Is a Vector?</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>vector</strong> has both a <strong>size</strong> (magnitude) and a <strong>direction</strong>.<br>
+    A <strong>scalar</strong> has size only.
+  </div>
+
+  <table>
+    <tr><th>Vector quantities</th><th>Scalar quantities</th></tr>
+    <tr><td>Displacement (5 km <em>north</em>)</td><td>Distance (5 km)</td></tr>
+    <tr><td>Velocity (30 m/s <em>east</em>)</td><td>Speed (30 m/s)</td></tr>
+    <tr><td>Force (10 N <em>downwards</em>)</td><td>Mass (10 kg)</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Column vector</div>
+    $\begin{pmatrix} x \\ y \end{pmatrix}$ &nbsp;—&nbsp; $x$ is the movement <strong>across</strong>, $y$ is the movement <strong>up</strong>
+  </div>
+
+  <div class="concept">
+    <strong>Signs:</strong> positive $x$ means right, negative $x$ means left. Positive $y$ means up, negative $y$ means down.<br>
+    So $\begin{pmatrix} -3 \\ 5 \end{pmatrix}$ means $3$ left and $5$ up.
+  </div>
+
+  <div class="svg-block">
+    <svg width="400" height="290" viewBox="0 0 400 290" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="40" y1="40" x2="360" y2="40"/><line x1="40" y1="80" x2="360" y2="80"/>
+        <line x1="40" y1="120" x2="360" y2="120"/><line x1="40" y1="160" x2="360" y2="160"/>
+        <line x1="40" y1="200" x2="360" y2="200"/><line x1="40" y1="240" x2="360" y2="240"/>
+        <line x1="80" y1="20" x2="80" y2="260"/><line x1="120" y1="20" x2="120" y2="260"/>
+        <line x1="160" y1="20" x2="160" y2="260"/><line x1="200" y1="20" x2="200" y2="260"/>
+        <line x1="240" y1="20" x2="240" y2="260"/><line x1="280" y1="20" x2="280" y2="260"/>
+        <line x1="320" y1="20" x2="320" y2="260"/>
+      </g>
+      <defs><marker id="vv" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L10,3 z" fill="#7c3aed"/></marker></defs>
+      <line x1="80" y1="240" x2="200" y2="120" stroke="#7c3aed" stroke-width="3" marker-end="url(#vv)"/>
+      <line x1="80" y1="240" x2="200" y2="240" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,4"/>
+      <line x1="200" y1="240" x2="200" y2="125" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,4"/>
+      <circle cx="80" cy="240" r="4.5" fill="#4f46e5"/>
+      <circle cx="200" cy="120" r="4.5" fill="#4f46e5"/>
+      <text x="66" y="258" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">A</text>
+      <text x="206" y="114" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">B</text>
+      <text x="132" y="260" font-family="Arial" font-size="12" fill="#166534">3 across</text>
+      <text x="208" y="188" font-family="Arial" font-size="12" fill="#166534">3 up</text>
+      <text x="290" y="150" font-family="Arial" font-size="15" fill="#6d28d9" font-weight="bold">AB = (3, 3)</text>
+      <text x="200" y="282" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A column vector records the journey, not the position</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – NOTATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Vector Notation</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Notation</th><th>Meaning</th></tr>
+    <tr><td>$\overrightarrow{AB}$</td><td>The vector from point $A$ to point $B$ — note the arrow direction</td></tr>
+    <tr><td>$\mathbf{a}$ (bold)</td><td>A named vector, in print</td></tr>
+    <tr><td>$\underline{a}$ (underlined)</td><td>The same thing, written by hand — <em>always underline</em></td></tr>
+    <tr><td>$|\mathbf{a}|$ or $|\overrightarrow{AB}|$</td><td>The <strong>magnitude</strong> (length) of the vector</td></tr>
+    <tr><td>$-\mathbf{a}$</td><td>The same length but the <em>opposite</em> direction</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Always underline your vectors when writing by hand.</strong> Bold cannot be written with a pen, so the underline is how you show that $\underline{a}$ is a vector rather than an ordinary number $a$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The reversal rule</div>
+    $\overrightarrow{BA} = -\overrightarrow{AB}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reversing a vector</div>
+    <div class="example-body">
+      <p>$\overrightarrow{PQ} = \begin{pmatrix} 5 \\ -2 \end{pmatrix}$. Write down $\overrightarrow{QP}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Going backwards means reversing both components.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{QP} = \begin{pmatrix} -5 \\ 2 \end{pmatrix}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FINDING A VECTOR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding a Vector Between Two Points</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    $\overrightarrow{AB} = \begin{pmatrix} x_B - x_A \\ y_B - y_A \end{pmatrix}$ &nbsp;— <strong>finish minus start</strong>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Vector between two points</div>
+    <div class="example-body">
+      <p>$A = (2,\ 7)$ and $B = (9,\ 3)$. Find $\overrightarrow{AB}$ and $\overrightarrow{BA}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x$: $9 - 2 = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y$: $3 - 7 = -4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{AB} = \begin{pmatrix} 7 \\ -4 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\overrightarrow{BA} = \begin{pmatrix} -7 \\ 4 \end{pmatrix}$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Finish minus start, not the other way round.</strong> Doing start minus finish gives the vector pointing backwards.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TRANSLATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Translations</div>
+<div class="section-body">
+
+  <p>A <strong>translation</strong> slides every point of a shape by the same vector. It is the transformation that vectors were made for.</p>
+
+  <div class="formula-box">
+    <div class="label">Translating a point</div>
+    image $=$ object $+$ vector &nbsp;— add the components
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Applying a translation</div>
+    <div class="example-body">
+      <p>Translate the triangle with vertices $(1,\ 2)$, $(4,\ 2)$ and $(1,\ 6)$ by $\begin{pmatrix} -2 \\ 3 \end{pmatrix}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(1,\ 2) \to (1-2,\ 2+3) = (-1,\ 5)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(4,\ 2) \to (4-2,\ 2+3) = (2,\ 5)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(1,\ 6) \to (1-2,\ 6+3) = (-1,\ 9)$</span></div>
+      <p>The image is the same size and shape — a translation preserves everything except position.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding the translation vector</div>
+    <div class="example-body">
+      <p>A shape is translated so that the vertex at $(5,\ 1)$ moves to $(-2,\ 8)$. Find the translation vector.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Image minus object.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x$: $-2 - 5 = -7$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y$: $8 - 1 = 7$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Vector $= \begin{pmatrix} -7 \\ 7 \end{pmatrix}$</span></div>
+      <div class="tip">Use <em>corresponding</em> vertices. Comparing the top-left corner of one shape with the bottom-right of the other gives the wrong answer.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Reversing a translation</div>
+    <div class="example-body">
+      <p>Shape $B$ is the image of shape $A$ after a translation of $\begin{pmatrix} 4 \\ -6 \end{pmatrix}$. Describe the translation that maps $B$ back onto $A$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>To undo a translation, reverse the vector.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>A translation by $\begin{pmatrix} -4 \\ 6 \end{pmatrix}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – MAGNITUDE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Magnitude of a Vector</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Magnitude (length)</div>
+    $\left| \begin{pmatrix} x \\ y \end{pmatrix} \right| = \sqrt{x^2 + y^2}$
+  </div>
+
+  <div class="concept">
+    This is just Pythagoras. The vector is the hypotenuse of a right-angled triangle whose legs are $x$ and $y$.<br>
+    The magnitude is always <strong>positive</strong>, whatever the signs of $x$ and $y$ — squaring removes them.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Magnitude</div>
+    <div class="example-body">
+      <p>Find the magnitude of $\mathbf{a} = \begin{pmatrix} 5 \\ 12 \end{pmatrix}$ and of $\mathbf{b} = \begin{pmatrix} -3 \\ 4 \end{pmatrix}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$|\mathbf{a}| = \sqrt{5^2 + 12^2} = \sqrt{169} = 13$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$|\mathbf{b}| = \sqrt{(-3)^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$</span></div>
+      <p>Note that $(-3)^2 = 9$, not $-9$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Distance between two points</div>
+    <div class="example-body">
+      <p>$P = (1,\ 4)$ and $Q = (7,\ 12)$. Find the distance $PQ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{PQ} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$|\overrightarrow{PQ}| = \sqrt{36 + 64} = \sqrt{100} = 10$</span></div>
+      <p>Finding a distance is exactly the same as finding a magnitude.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – EQUAL AND PARALLEL VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Equal and Parallel Vectors</div>
+<div class="section-body">
+
+  <div class="concept">
+    Two vectors are <strong>equal</strong> if they have the same magnitude <em>and</em> the same direction. Their position on the page does not matter — a vector records a journey, not a place.<br><br>
+    Two vectors are <strong>parallel</strong> if one is a multiple of the other.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Testing for parallel vectors</div>
+    <div class="example-body">
+      <p>Are $\begin{pmatrix} 3 \\ 2 \end{pmatrix}$ and $\begin{pmatrix} 9 \\ 6 \end{pmatrix}$ parallel?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Is one a multiple of the other? Try $\times 3$: $\;3 \times 3 = 9$ ✓ and $3 \times 2 = 6$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\begin{pmatrix} 9 \\ 6 \end{pmatrix} = 3\begin{pmatrix} 3 \\ 2 \end{pmatrix}$</span></div>
+      <p><strong>Yes, they are parallel</strong>, and the second is three times as long.</p>
+      <div class="warn">Both components must scale by the <em>same</em> factor. $\begin{pmatrix} 3 \\ 2 \end{pmatrix}$ and $\begin{pmatrix} 9 \\ 5 \end{pmatrix}$ are <em>not</em> parallel.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Equal vectors in a shape</div>
+    <div class="example-body">
+      <p>$ABCD$ is a parallelogram. Explain why $\overrightarrow{AB} = \overrightarrow{DC}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>In a parallelogram, $AB$ and $DC$ are opposite sides, so they are equal in length.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>They are also parallel, and going $A \to B$ points the same way as going $D \to C$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Same magnitude and same direction, so the vectors are equal. ∎</span></div>
+      <p>Note that $\overrightarrow{AB} = -\overrightarrow{CD}$, because $C \to D$ points the opposite way.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Vector vs scalar</h4><p>A vector has size and direction; a scalar has size only.</p></div>
+    <div class="ref-card"><h4>Column vector</h4><p>$\begin{pmatrix} x \\ y \end{pmatrix}$: $x$ across, $y$ up. Left and down are negative.</p></div>
+    <div class="ref-card"><h4>Notation</h4><p>$\overrightarrow{AB}$, bold $\mathbf{a}$, or underlined $\underline{a}$ by hand.</p></div>
+    <div class="ref-card"><h4>Reversing</h4><p>$\overrightarrow{BA} = -\overrightarrow{AB}$ — change both signs.</p></div>
+    <div class="ref-card"><h4>Between points</h4><p>$\overrightarrow{AB} = $ finish $-$ start.</p></div>
+    <div class="ref-card"><h4>Translation</h4><p>Image $=$ object $+$ vector.</p></div>
+    <div class="ref-card"><h4>Magnitude</h4><p>$\sqrt{x^2 + y^2}$ — always positive.</p></div>
+    <div class="ref-card"><h4>Parallel</h4><p>One vector is a scalar multiple of the other.</p></div>
+    <div class="ref-card"><h4>Equal</h4><p>Same magnitude and direction; position is irrelevant.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Describe in words the movement given by (a) $\begin{pmatrix} 4 \\ -3 \end{pmatrix}$, (b) $\begin{pmatrix} -6 \\ 0 \end{pmatrix}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $4$ units right and $3$ units down.</p>
+          <p><strong>(b)</strong> $6$ units left, with no vertical movement.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$A = (3,\ 1)$ and $B = (8,\ 9)$. Find $\overrightarrow{AB}$ and $\overrightarrow{BA}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = \begin{pmatrix} 8-3 \\ 9-1 \end{pmatrix} = \begin{pmatrix} 5 \\ 8 \end{pmatrix}$</p>
+          <p>$\overrightarrow{BA} = \begin{pmatrix} -5 \\ -8 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Translate the point $(6,\ -2)$ by the vector $\begin{pmatrix} -9 \\ 5 \end{pmatrix}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x$: $6 + (-9) = -3$</p>
+          <p>$y$: $-2 + 5 = 3$</p>
+          <p>Image $= (-3,\ 3)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the magnitude of (a) $\begin{pmatrix} 8 \\ 15 \end{pmatrix}$, (b) $\begin{pmatrix} -7 \\ -24 \end{pmatrix}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\sqrt{64 + 225} = \sqrt{289} = 17$</p>
+          <p><strong>(b)</strong> $\sqrt{49 + 576} = \sqrt{625} = 25$</p>
+          <p>(Both are Pythagorean triples: $8,15,17$ and $7,24,25$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A shape is translated so that $(2,\ 5)$ maps to $(11,\ -1)$. Find the translation vector, and the vector that maps the image back.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Forward: $\begin{pmatrix} 11-2 \\ -1-5 \end{pmatrix} = \begin{pmatrix} 9 \\ -6 \end{pmatrix}$</p>
+          <p>Back: $\begin{pmatrix} -9 \\ 6 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Which of these vectors are parallel to $\begin{pmatrix} 2 \\ -5 \end{pmatrix}$?</p>
+      <p>$\begin{pmatrix} 4 \\ -10 \end{pmatrix}$, &nbsp;$\begin{pmatrix} -6 \\ 15 \end{pmatrix}$, &nbsp;$\begin{pmatrix} 4 \\ -5 \end{pmatrix}$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\begin{pmatrix} 4 \\ -10 \end{pmatrix} = 2\begin{pmatrix} 2 \\ -5 \end{pmatrix}$ ✓ parallel</p>
+          <p>$\begin{pmatrix} -6 \\ 15 \end{pmatrix} = -3\begin{pmatrix} 2 \\ -5 \end{pmatrix}$ ✓ parallel (pointing the opposite way)</p>
+          <p>$\begin{pmatrix} 4 \\ -5 \end{pmatrix}$: the $x$ doubled but the $y$ did not ✗ not parallel</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$P = (-4,\ 6)$ and $Q = (8,\ 1)$. Find the exact distance $PQ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{PQ} = \begin{pmatrix} 12 \\ -5 \end{pmatrix}$</p>
+          <p>$|PQ| = \sqrt{144 + 25} = \sqrt{169} = 13$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\overrightarrow{AB} = \begin{pmatrix} 3 \\ 7 \end{pmatrix}$ and $A = (2,\ -1)$. Find the coordinates of $B$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$B = A + \overrightarrow{AB}$</p>
+          <p>$x$: $2 + 3 = 5$; &nbsp;$y$: $-1 + 7 = 6$</p>
+          <p>$B = (5,\ 6)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$ABCD$ is a parallelogram with $A = (1,\ 2)$, $B = (5,\ 3)$ and $D = (2,\ 7)$.</p>
+      <p>(a) Find $\overrightarrow{AB}$. &nbsp; (b) Use the fact that $\overrightarrow{DC} = \overrightarrow{AB}$ to find $C$. &nbsp; (c) Find the length $AB$, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{AB} = \begin{pmatrix} 5-1 \\ 3-2 \end{pmatrix} = \begin{pmatrix} 4 \\ 1 \end{pmatrix}$</p>
+          <p><strong>(b)</strong> $C = D + \overrightarrow{DC} = (2 + 4,\ 7 + 1) = (6,\ 8)$</p>
+          <p><strong>(c)</strong> $|AB| = \sqrt{16 + 1} = \sqrt{17} = 4.12$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A boat's journey is described by two successive translations: $\begin{pmatrix} 8 \\ 6 \end{pmatrix}$ km, then $\begin{pmatrix} -3 \\ 9 \end{pmatrix}$ km.</p>
+      <p>(a) Find the single vector describing the whole journey. &nbsp; (b) Find the direct distance from start to finish, to 2 d.p. &nbsp; (c) Find the total distance actually travelled, to 2 d.p. &nbsp; (d) Explain why your answers to (b) and (c) differ.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Add the components: $\begin{pmatrix} 8 + (-3) \\ 6 + 9 \end{pmatrix} = \begin{pmatrix} 5 \\ 15 \end{pmatrix}$</p>
+          <p><strong>(b)</strong> $\sqrt{25 + 225} = \sqrt{250} = 15.81$ km</p>
+          <p><strong>(c)</strong> First leg: $\sqrt{64 + 36} = \sqrt{100} = 10$ km</p>
+          <p>Second leg: $\sqrt{9 + 81} = \sqrt{90} = 9.4868$ km</p>
+          <p>Total travelled $= 10 + 9.4868 = 19.49$ km</p>
+          <p><strong>(d)</strong> The <em>displacement</em> (b) is the straight-line vector from start to finish, while the <em>distance travelled</em> (c) follows the actual path. Because the boat changed direction, the path is longer than the straight line.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vectors &amp; Translations (G23) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

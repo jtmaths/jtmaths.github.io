@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transformations – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔄 Transformations</h1>
+  <p>GCSE Maths · Geometry and Measures (G7)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE FOUR TRANSFORMATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Four Transformations</div>
+<div class="section-body">
+
+  <p>A <strong>transformation</strong> moves or resizes a shape. The original is the <strong>object</strong>; the result is the <strong>image</strong>.</p>
+
+  <table>
+    <tr><th>Transformation</th><th>What it does</th><th>You must state</th><th>Congruent?</th></tr>
+    <tr><td><strong>Translation</strong></td><td>Slides the shape</td><td>The column vector</td><td>Yes</td></tr>
+    <tr><td><strong>Reflection</strong></td><td>Flips it in a mirror line</td><td>The equation of the mirror line</td><td>Yes</td></tr>
+    <tr><td><strong>Rotation</strong></td><td>Turns it about a point</td><td>Angle, direction, centre</td><td>Yes</td></tr>
+    <tr><td><strong>Enlargement</strong></td><td>Resizes it</td><td>Scale factor and centre</td><td>No (unless SF is $\pm 1$)</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Describe, don't just name.</strong> "It's a rotation" earns nothing. You must give <em>every</em> detail listed in the third column above, or you lose marks.
+  </div>
+
+  <div class="tip">
+    <strong>Only one transformation.</strong> If a question says "describe fully the <em>single</em> transformation", never answer with two. Find the one that does the whole job.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TRANSLATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Translation</div>
+<div class="section-body">
+
+  <p>A translation slides every point the same distance in the same direction. It is described by a <strong>column vector</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Column vector</div>
+    $\begin{pmatrix} x \\ y \end{pmatrix}$ &nbsp;— &nbsp;$x$ across (right if positive), $y$ up (up if positive)
+  </div>
+
+  <div class="svg-block">
+    <svg width="380" height="290" viewBox="0 0 380 290" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="30" y1="40" x2="350" y2="40"/><line x1="30" y1="80" x2="350" y2="80"/>
+        <line x1="30" y1="120" x2="350" y2="120"/><line x1="30" y1="160" x2="350" y2="160"/>
+        <line x1="30" y1="200" x2="350" y2="200"/><line x1="30" y1="240" x2="350" y2="240"/>
+        <line x1="70" y1="20" x2="70" y2="260"/><line x1="110" y1="20" x2="110" y2="260"/>
+        <line x1="150" y1="20" x2="150" y2="260"/><line x1="190" y1="20" x2="190" y2="260"/>
+        <line x1="230" y1="20" x2="230" y2="260"/><line x1="270" y1="20" x2="270" y2="260"/>
+        <line x1="310" y1="20" x2="310" y2="260"/>
+      </g>
+      <polygon points="70,240 150,240 70,160" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="95" y="220" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">A</text>
+      <polygon points="190,160 270,160 190,80" fill="#bbf7d0" stroke="#22c55e" stroke-width="2.2"/>
+      <text x="215" y="140" font-family="Arial" font-size="13" fill="#166534" font-weight="bold">B</text>
+      <line x1="70" y1="240" x2="185" y2="163" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#tv)"/>
+      <defs><marker id="tv" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+      <text x="130" y="278" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">Translation by 3 right and 2 up</text>
+      <text x="290" y="250" font-family="Arial" font-size="14" fill="#b91c1c" font-weight="bold">(3, 2)</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Applying a translation</div>
+    <div class="example-body">
+      <p>Translate the point $(4,\ -1)$ by the vector $\begin{pmatrix} -3 \\ 5 \end{pmatrix}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Add the top number to the $x$-coordinate: $4 + (-3) = 1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Add the bottom number to the $y$-coordinate: $-1 + 5 = 4$</span></div>
+      <p><strong>Image: $(1,\ 4)$</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Finding the vector</div>
+    <div class="example-body">
+      <p>Triangle $P$ has a vertex at $(2,\ 7)$. After a translation, the matching vertex of triangle $Q$ is at $(-4,\ 3)$. Find the translation vector.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Across: $-4 - 2 = -6$ (6 to the left)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Up: $3 - 7 = -4$ (4 down)</span></div>
+      <p><strong>Vector: $\begin{pmatrix} -6 \\ -4 \end{pmatrix}$</strong></p>
+      <div class="tip"><strong>Always image minus object</strong>, and use <em>corresponding</em> vertices.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – REFLECTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Reflection</div>
+<div class="section-body">
+
+  <p>A reflection flips a shape across a <strong>mirror line</strong>. Every point and its image are the same distance from the mirror, on opposite sides, measured perpendicular to the line.</p>
+
+  <table>
+    <tr><th>Mirror line</th><th>Effect on $(x,\ y)$</th></tr>
+    <tr><td>The $x$-axis, $y = 0$</td><td>$(x,\ -y)$ — the $y$-coordinate changes sign</td></tr>
+    <tr><td>The $y$-axis, $x = 0$</td><td>$(-x,\ y)$ — the $x$-coordinate changes sign</td></tr>
+    <tr><td>$x = a$ (a vertical line)</td><td>$(2a - x,\ y)$</td></tr>
+    <tr><td>$y = b$ (a horizontal line)</td><td>$(x,\ 2b - y)$</td></tr>
+    <tr><td>$y = x$</td><td>$(y,\ x)$ — swap the coordinates</td></tr>
+    <tr><td>$y = -x$</td><td>$(-y,\ -x)$ — swap and change both signs</td></tr>
+  </table>
+
+  <ul class="steps">
+    <li>Draw the mirror line accurately (a dashed line).</li>
+    <li>For each vertex, count the perpendicular distance to the mirror.</li>
+    <li>Count the same distance beyond the mirror and mark the image point.</li>
+    <li>Join the image points in the same order.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Count perpendicular to the mirror.</strong> For a diagonal mirror such as $y = x$ this means counting diagonally — or simply use the coordinate rule and swap the numbers.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Reflection in $y = x$</div>
+    <div class="example-body">
+      <p>Reflect the triangle with vertices $(1,\ 4)$, $(3,\ 4)$ and $(1,\ 7)$ in the line $y = x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The rule for $y = x$ is: swap the coordinates.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(1,\ 4) \to (4,\ 1)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(3,\ 4) \to (4,\ 3)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$(1,\ 7) \to (7,\ 1)$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding the mirror line</div>
+    <div class="example-body">
+      <p>A shape is reflected so that $(2,\ 5)$ maps to $(2,\ -3)$ and $(6,\ 5)$ maps to $(6,\ -3)$. Find the mirror line.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The $x$-coordinates are unchanged, so the mirror is horizontal.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The mirror lies halfway between the object and image $y$-values.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Midpoint of $5$ and $-3$: $\dfrac{5 + (-3)}{2} = 1$</span></div>
+      <p><strong>Mirror line: $y = 1$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – ROTATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Rotation</div>
+<div class="section-body">
+
+  <p>A rotation turns a shape about a fixed point called the <strong>centre of rotation</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">You must give all three</div>
+    the <strong>angle</strong> &nbsp;·&nbsp; the <strong>direction</strong> (clockwise or anticlockwise) &nbsp;·&nbsp; the <strong>centre</strong>
+  </div>
+
+  <div class="tip">
+    <strong>A rotation of $180^\circ$ needs no direction</strong> — clockwise and anticlockwise give the same result.
+  </div>
+
+  <table>
+    <tr><th>Rotation about the origin</th><th>Effect on $(x,\ y)$</th></tr>
+    <tr><td>$90^\circ$ anticlockwise</td><td>$(-y,\ x)$</td></tr>
+    <tr><td>$90^\circ$ clockwise</td><td>$(y,\ -x)$</td></tr>
+    <tr><td>$180^\circ$</td><td>$(-x,\ -y)$</td></tr>
+  </table>
+
+  <ul class="steps">
+    <li>Mark the centre of rotation clearly.</li>
+    <li>Use tracing paper: trace the shape and the centre, hold a pencil on the centre, and turn.</li>
+    <li>If no tracing paper, count the "across and up" from the centre to a vertex, then rotate that pair of steps.</li>
+    <li>Mark all the image vertices and join them.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Rotating about a point</div>
+    <div class="example-body">
+      <p>Rotate the point $(5,\ 3)$ by $90^\circ$ clockwise about the centre $(1,\ 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Find the step from the centre to the point: $4$ right, $2$ up.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Turning $90^\circ$ clockwise sends "right" to "down" and "up" to "right".</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the new step is $4$ down and $2$ right — that is, $2$ right and $4$ down.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Image $= (1 + 2,\ 1 - 4) = (3,\ -3)$</span></div>
+      <p><em>Check with the formula:</em> relative coordinates $(4, 2)$; clockwise $90^\circ$ gives $(y, -x) = (2, -4)$; add the centre: $(1+2,\ 1-4) = (3, -3)$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding the centre of rotation</div>
+    <div class="example-body">
+      <p>Describe how to find the centre when you can see the object and its image.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Join a vertex of the object to its matching vertex on the image.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Construct the perpendicular bisector of that line.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Repeat with a second pair of matching vertices.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The centre of rotation is where the two perpendicular bisectors cross.</span></div>
+      <p>This works because the centre is equidistant from every point and its image.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – ENLARGEMENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Enlargement</div>
+<div class="section-body">
+
+  <p>An enlargement changes the <strong>size</strong> of a shape. The image is <em>similar</em> to the object, not congruent.</p>
+
+  <div class="formula-box">
+    <div class="label">You must give both</div>
+    the <strong>scale factor</strong> &nbsp;·&nbsp; the <strong>centre of enlargement</strong>
+  </div>
+
+  <table>
+    <tr><th>Scale factor $k$</th><th>Effect</th></tr>
+    <tr><td>$k > 1$</td><td>Bigger, same way up, same side of the centre</td></tr>
+    <tr><td>$0 \lt k \lt 1$</td><td>Smaller (still called an <em>enlargement</em>), same way up</td></tr>
+    <tr><td>$k = -1$</td><td>Same size, upside down — equivalent to a $180^\circ$ rotation about the centre</td></tr>
+    <tr><td>$k \lt 0$</td><td>Upside down and on the <em>opposite</em> side of the centre</td></tr>
+  </table>
+
+  <ul class="steps">
+    <li>Draw a ray from the centre through each vertex of the object.</li>
+    <li>Measure the distance from the centre to each vertex.</li>
+    <li>Multiply each distance by the scale factor.</li>
+    <li>Mark the new points along the rays (backwards through the centre if $k$ is negative).</li>
+    <li>Join the image vertices.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="440" height="250" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="200" r="5" fill="#ef4444"/>
+      <text x="30" y="222" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">centre</text>
+      <line x1="50" y1="200" x2="380" y2="35" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5,4"/>
+      <line x1="50" y1="200" x2="380" y2="200" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5,4"/>
+      <line x1="50" y1="200" x2="380" y2="145" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5,4"/>
+      <polygon points="160,145 160,172 215,172" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2.2"/>
+      <text x="175" y="166" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+      <polygon points="380,35 380,145 545,145" fill="#bbf7d0" stroke="#22c55e" stroke-width="2.2" opacity=".5"/>
+      <polygon points="380,35 380,145 435,145" fill="#bbf7d0" stroke="#22c55e" stroke-width="2.2"/>
+      <text x="390" y="120" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">B</text>
+      <text x="240" y="235" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">Rays from the centre; every distance is multiplied by the scale factor</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Positive scale factor</div>
+    <div class="example-body">
+      <p>Enlarge the point $(4,\ 3)$ by scale factor $3$, centre $(1,\ 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Step from centre to point: $4 - 1 = 3$ across, $3 - 1 = 2$ up.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply by $3$: $9$ across, $6$ up.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Image $= (1 + 9,\ 1 + 6) = (10,\ 7)$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Negative scale factor</div>
+    <div class="example-body">
+      <p>Enlarge the point $(5,\ 4)$ by scale factor $-2$, centre $(1,\ 2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Step from centre to point: $4$ across, $2$ up.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply by $-2$: $-8$ across, $-4$ up — the negative reverses the direction.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Image $= (1 - 8,\ 2 - 4) = (-7,\ -2)$</span></div>
+      <p>The image is twice the size, upside down, and on the opposite side of the centre.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Finding the scale factor and centre</div>
+    <div class="example-body">
+      <p>A triangle with sides $3$ cm, $4$ cm and $5$ cm is enlarged to one with sides $7.5$ cm, $10$ cm and $12.5$ cm. Find the scale factor, and describe how to locate the centre.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Scale factor $= \dfrac{\text{image length}}{\text{object length}} = \dfrac{7.5}{3} = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Check with another pair: $\dfrac{10}{4} = 2.5$ ✓ and $\dfrac{12.5}{5} = 2.5$ ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>To find the centre, draw a straight line through each vertex of the object and its matching image vertex.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>All the lines meet at the centre of enlargement.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Area does not scale the same way.</strong> If lengths are multiplied by $k$, areas are multiplied by $k^2$. An enlargement of scale factor $3$ makes the area $9$ times bigger.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Translation</h4><p>State the column vector. Image $=$ object $+$ vector.</p></div>
+    <div class="ref-card"><h4>Reflection</h4><p>State the equation of the mirror line, e.g. $y = -2$.</p></div>
+    <div class="ref-card"><h4>Rotation</h4><p>State angle, direction and centre. $180^\circ$ needs no direction.</p></div>
+    <div class="ref-card"><h4>Enlargement</h4><p>State scale factor and centre.</p></div>
+    <div class="ref-card"><h4>$y = x$</h4><p>Reflection swaps the coordinates: $(x,y) \to (y,x)$.</p></div>
+    <div class="ref-card"><h4>$90^\circ$ about O</h4><p>Anticlockwise $(x,y)\to(-y,x)$; clockwise $(x,y)\to(y,-x)$.</p></div>
+    <div class="ref-card"><h4>Negative SF</h4><p>Image is inverted and on the opposite side of the centre.</p></div>
+    <div class="ref-card"><h4>Congruence</h4><p>Translation, reflection and rotation preserve size; enlargement does not.</p></div>
+    <div class="ref-card"><h4>Finding a centre</h4><p>Join matching vertices; for enlargement the lines meet at the centre.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Translate the point $(-2,\ 6)$ by the vector $\begin{pmatrix} 5 \\ -8 \end{pmatrix}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x$: $-2 + 5 = 3$</p>
+          <p>$y$: $6 + (-8) = -2$</p>
+          <p><strong>Image: $(3,\ -2)$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Reflect the point $(3,\ -5)$ in (a) the $x$-axis, (b) the $y$-axis, (c) the line $y = x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x$-axis: change the sign of $y$ → $(3,\ 5)$</p>
+          <p><strong>(b)</strong> $y$-axis: change the sign of $x$ → $(-3,\ -5)$</p>
+          <p><strong>(c)</strong> $y = x$: swap the coordinates → $(-5,\ 3)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Rotate the point $(4,\ 2)$ by $180^\circ$ about the origin, then by $90^\circ$ anticlockwise about the origin (starting again from $(4, 2)$).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$180^\circ$: $(x,y) \to (-x,-y)$, giving $(-4,\ -2)$.</p>
+          <p>$90^\circ$ anticlockwise: $(x,y) \to (-y,x)$, giving $(-2,\ 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Describe fully the single transformation that maps $(1,\ 3)$ to $(1,\ -1)$ and $(4,\ 5)$ to $(4,\ -3)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The $x$-coordinates are unchanged, so the mirror line is horizontal.</p>
+          <p>Midpoint of the first pair of $y$-values: $\dfrac{3 + (-1)}{2} = 1$.</p>
+          <p>Check with the second pair: $\dfrac{5 + (-3)}{2} = 1$ ✓ — the same line.</p>
+          <p><strong>A reflection in the line $y = 1$.</strong></p>
+          <p><em>Why not a translation?</em> The first point moves down $4$ but the second moves down $8$, so no single translation works.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Enlarge the point $(6,\ 8)$ by scale factor $\tfrac{1}{2}$, centre the origin.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>With the centre at the origin, simply multiply both coordinates by the scale factor.</p>
+          <p>$(6 \times \tfrac{1}{2},\ 8 \times \tfrac{1}{2}) = (3,\ 4)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Enlarge the point $(7,\ 5)$ by scale factor $2$, centre $(3,\ 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Step from centre: $7 - 3 = 4$ across, $5 - 1 = 4$ up.</p>
+          <p>Multiply by $2$: $8$ across, $8$ up.</p>
+          <p>Image $= (3 + 8,\ 1 + 8) = (11,\ 9)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Enlarge the point $(4,\ 6)$ by scale factor $-3$, centre $(1,\ 2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Step from centre: $3$ across, $4$ up.</p>
+          <p>Multiply by $-3$: $-9$ across, $-12$ up.</p>
+          <p>Image $= (1 - 9,\ 2 - 12) = (-8,\ -10)$</p>
+          <p>The image is $3$ times the size, inverted, and on the opposite side of the centre.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A shape is enlarged by scale factor $4$. Its original area was $7\text{ cm}^2$. Find the area of the image.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Lengths are multiplied by $4$, so areas are multiplied by $4^2 = 16$.</p>
+          <p>Image area $= 7 \times 16 = 112\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Triangle $T$ has vertices $(2,\ 1)$, $(2,\ 4)$ and $(4,\ 1)$. Triangle $U$ has vertices $(-1,\ 2)$, $(-4,\ 2)$ and $(-1,\ 4)$. Describe fully the single transformation that maps $T$ onto $U$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Check the side lengths: $T$ has legs $3$ and $2$; $U$ has legs $3$ and $2$. Same size, so it is not an enlargement.</p>
+          <p>Test a $90^\circ$ anticlockwise rotation about the origin, $(x,y) \to (-y,x)$:</p>
+          <p>$(2,1) \to (-1,2)$ ✓ &nbsp; $(2,4) \to (-4,2)$ ✓ &nbsp; $(4,1) \to (-1,4)$ ✓</p>
+          <p>All three vertices match.</p>
+          <p><strong>A rotation of $90^\circ$ anticlockwise about the origin $(0,\ 0)$.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Shape $A$ has vertices $(2,\ 2)$, $(4,\ 2)$ and $(2,\ 5)$. Shape $B$ has vertices $(8,\ 2)$, $(12,\ 2)$ and $(8,\ 8)$.</p>
+      <p>(a) Show that $B$ is an enlargement of $A$ and find the scale factor. &nbsp; (b) Find the centre of enlargement. &nbsp; (c) Find the ratio of the areas.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $A$ has a horizontal side of $2$ and a vertical side of $3$. $B$ has $4$ and $6$.</p>
+          <p>$\dfrac{4}{2} = 2$ and $\dfrac{6}{3} = 2$ — both give the same factor, so it is an enlargement with <strong>scale factor $2$</strong>.</p>
+          <p><strong>(b)</strong> Let the centre be $(a,\ b)$. For scale factor $2$: image $=$ centre $+ 2 \times$ (object $-$ centre).</p>
+          <p>Using $(2,2) \to (8,2)$ for the $x$-coordinate: $8 = a + 2(2 - a) = 4 - a$, so $a = -4$.</p>
+          <p>For $y$: $2 = b + 2(2 - b) = 4 - b$, so $b = 2$.</p>
+          <p><strong>Centre $= (-4,\ 2)$.</strong></p>
+          <p><em>Check with $(2,5)\to(8,8)$:</em> $y$: $2 + 2(5-2) = 8$ ✓</p>
+          <p><strong>(c)</strong> Areas scale by $k^2 = 4$, so the ratio of areas $A : B = 1 : 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Transformations (G7) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

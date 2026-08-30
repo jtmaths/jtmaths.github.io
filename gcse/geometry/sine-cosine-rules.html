@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sine Rule, Cosine Rule and Area of a Triangle – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Sine Rule, Cosine Rule and Area</h1>
+  <p>GCSE Maths · Geometry and Measures (G22)</p>
+  <div class="badge">Ages 15–16 · Higher tier</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY WE NEED THEM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why We Need These Rules</div>
+<div class="section-body">
+
+  <p>SOH CAH TOA only works in a <strong>right-angled</strong> triangle. The sine and cosine rules work in <em>any</em> triangle.</p>
+
+  <div class="formula-box">
+    <div class="label">Labelling convention</div>
+    Capital letters $A$, $B$, $C$ for the <strong>angles</strong><br>
+    Lower-case $a$, $b$, $c$ for the <strong>sides opposite</strong> them
+  </div>
+
+  <div class="svg-block">
+    <svg width="320" height="200" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="45,165 270,165 130,40" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <text x="32" y="182" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">B</text>
+      <text x="276" y="182" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">C</text>
+      <text x="124" y="30" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">A</text>
+      <text x="155" y="186" font-family="Arial" font-size="15" fill="#ef4444" font-style="italic">a</text>
+      <text x="208" y="98" font-family="Arial" font-size="15" fill="#ef4444" font-style="italic">b</text>
+      <text x="76" y="98" font-family="Arial" font-size="15" fill="#ef4444" font-style="italic">c</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Sine rule</div>
+    $\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C}$<br>
+    <span style="font-size:.85rem;color:#555;">(or upside down, $\dfrac{\sin A}{a} = \dfrac{\sin B}{b} = \dfrac{\sin C}{c}$, when finding an angle)</span>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Cosine rule</div>
+    $a^2 = b^2 + c^2 - 2bc\cos A$<br>
+    rearranged for an angle: &nbsp;$\cos A = \dfrac{b^2 + c^2 - a^2}{2bc}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Area of any triangle</div>
+    $\text{Area} = \tfrac{1}{2}ab\sin C$
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHICH RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Choosing the Right Rule</div>
+<div class="section-body">
+
+  <p>This is the most important decision, and it takes only a few seconds.</p>
+
+  <table>
+    <tr><th>What you are given</th><th>Use</th></tr>
+    <tr><td>A right angle</td><td>SOH CAH TOA (much quicker)</td></tr>
+    <tr><td>A matching <strong>pair</strong> (a side and its opposite angle) plus one more piece</td><td><strong>Sine rule</strong></td></tr>
+    <tr><td>Two sides and the <strong>included</strong> angle (SAS)</td><td><strong>Cosine rule</strong> — to find the third side</td></tr>
+    <tr><td>All three sides (SSS)</td><td><strong>Cosine rule</strong> — to find an angle</td></tr>
+    <tr><td>Two sides and the included angle, and you want the area</td><td><strong>Area $= \tfrac{1}{2}ab\sin C$</strong></td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>The single fastest test:</strong> look for a <em>matching pair</em> — a side with its opposite angle both known. If you can see one, use the <strong>sine rule</strong>. If you cannot, use the <strong>cosine rule</strong>.
+  </div>
+
+  <div class="warn">
+    <strong>The angle must be opposite the side.</strong> In the sine rule, $a$ and $A$ must be a genuine opposite pair — the side $a$ facing the angle $A$ across the triangle.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SINE RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Sine Rule</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Label the triangle: angles $A$, $B$, $C$ and opposite sides $a$, $b$, $c$.</li>
+    <li>Identify the complete pair and the incomplete pair.</li>
+    <li>Write the two relevant fractions equal to each other.</li>
+    <li>If finding a <strong>side</strong>, put the sides on top. If finding an <strong>angle</strong>, put the sines on top.</li>
+    <li>Cross-multiply and solve.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding a side</div>
+    <div class="example-body">
+      <p>In triangle $ABC$, $A = 52^\circ$, $B = 71^\circ$ and $a = 9$ cm. Find $b$, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The complete pair is $a$ and $A$; we want $b$, whose angle $B$ is known.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{b}{\sin B} = \dfrac{a}{\sin A}$, that is $\dfrac{b}{\sin 71^\circ} = \dfrac{9}{\sin 52^\circ}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$b = \dfrac{9 \sin 71^\circ}{\sin 52^\circ} = \dfrac{9 \times 0.94552}{0.78801}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$b = \dfrac{8.5097}{0.78801} = 10.80$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Finding an angle</div>
+    <div class="example-body">
+      <p>In triangle $PQR$, $p = 12$ cm, $q = 8$ cm and $P = 78^\circ$. Find $Q$, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Finding an angle, so put the sines on top:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\sin Q}{8} = \dfrac{\sin 78^\circ}{12}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin Q = \dfrac{8 \sin 78^\circ}{12} = \dfrac{8 \times 0.97815}{12} = 0.65210$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$Q = \sin^{-1}(0.65210) = 40.7^\circ$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>The ambiguous case.</strong> $\sin\theta = \sin(180 - \theta)$, so an equation like $\sin Q = 0.652$ has two solutions between $0^\circ$ and $180^\circ$: $40.7^\circ$ and $139.3^\circ$. Check whether the second one is possible — if the angles would then total more than $180^\circ$, discard it. In Worked Example 2, $78 + 139.3 = 217.3 \gt 180$, so only $40.7^\circ$ works.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COSINE RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Cosine Rule</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>How to write it correctly:</strong> the letter on the left of the formula, and the angle used, must be the <em>same</em> letter. If you want side $c$, write $c^2 = a^2 + b^2 - 2ab\cos C$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding a side (SAS)</div>
+    <div class="example-body">
+      <p>A triangle has sides $7$ cm and $10$ cm with an angle of $46^\circ$ between them. Find the third side, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Two sides and the included angle → cosine rule.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a^2 = 7^2 + 10^2 - 2(7)(10)\cos 46^\circ$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 49 + 100 - 140 \times 0.69466$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 149 - 97.252 = 51.748$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$a = \sqrt{51.748} = 7.19$ cm</span></div>
+      <div class="tip">Work out the whole right-hand side <em>before</em> square rooting. Square rooting too early is a classic slip.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding an angle (SSS)</div>
+    <div class="example-body">
+      <p>A triangle has sides $5$ cm, $7$ cm and $9$ cm. Find the largest angle, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The largest angle is opposite the longest side, so it faces the $9$ cm side. Let $a = 9$, $b = 5$, $c = 7$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos A = \dfrac{b^2 + c^2 - a^2}{2bc} = \dfrac{25 + 49 - 81}{2 \times 5 \times 7}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{-7}{70} = -0.1$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$A = \cos^{-1}(-0.1) = 95.7^\circ$</span></div>
+      <div class="concept">A <strong>negative</strong> cosine means the angle is obtuse — a useful check. If the cosine comes out positive, the angle is acute.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>The cosine rule contains Pythagoras.</strong> If $A = 90^\circ$ then $\cos A = 0$, and the formula collapses to $a^2 = b^2 + c^2$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – AREA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Area of Any Triangle</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Area formula</div>
+    $\text{Area} = \tfrac{1}{2}ab\sin C$
+  </div>
+
+  <div class="concept">
+    The two sides $a$ and $b$ must have the angle $C$ <strong>between</strong> them. In other words, this is the SAS formula for area.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Area</div>
+    <div class="example-body">
+      <p>A triangle has sides $11$ cm and $14$ cm with an angle of $63^\circ$ between them. Find its area, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Area $= \tfrac{1}{2} \times 11 \times 14 \times \sin 63^\circ$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 77 \times 0.89101$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 68.6\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Working backwards from the area</div>
+    <div class="example-body">
+      <p>A triangle has sides $9$ cm and $12$ cm and area $40\text{ cm}^2$. Find the acute angle between them, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\tfrac{1}{2} \times 9 \times 12 \times \sin C = 40$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$54\sin C = 40$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin C = \dfrac{40}{54} = 0.74074$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$C = \sin^{-1}(0.74074) = 47.8^\circ$</span></div>
+      <p>(The obtuse alternative $132.2^\circ$ would also give this area, which is why the question specifies "acute".)</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – MULTI-STEP PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Multi-Step Problems</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Cosine rule then area</div>
+    <div class="example-body">
+      <p>A triangular field has sides $80$ m, $110$ m and $150$ m. Find its area, to the nearest m².</p>
+      <div class="step-row"><span class="arrow">①</span><span>Three sides but no angles — find an angle first with the cosine rule.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $a = 150$, $b = 80$, $c = 110$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\cos A = \dfrac{80^2 + 110^2 - 150^2}{2 \times 80 \times 110} = \dfrac{6400 + 12100 - 22500}{17600}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \dfrac{-4000}{17600} = -0.227273$, so $A = 103.14^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Area $= \tfrac{1}{2} \times 80 \times 110 \times \sin 103.14^\circ = 4400 \times 0.97383$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$= 4284.8$, so about $\mathbf{4285}\text{ m}^2$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Bearings with the cosine rule</div>
+    <div class="example-body">
+      <p>A ship sails $60$ km on a bearing of $040^\circ$, then $90$ km on a bearing of $130^\circ$. Find its distance from the start.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The turn between the two bearings is $130 - 40 = 90^\circ$, so the interior angle of the triangle is $180 - 90 = 90^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>With a right angle, Pythagoras is quickest: $d = \sqrt{60^2 + 90^2} = \sqrt{3600 + 8100}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \sqrt{11700} = 108.2$ km (1 d.p.)</span></div>
+      <p><em>Check with the cosine rule:</em> $d^2 = 60^2 + 90^2 - 2(60)(90)\cos 90^\circ = 11700 - 0$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Labelling</h4><p>Capital angle, matching lower-case side opposite it.</p></div>
+    <div class="ref-card"><h4>Which rule?</h4><p>A matching pair → sine rule. No matching pair → cosine rule.</p></div>
+    <div class="ref-card"><h4>Sine rule (side)</h4><p>$\dfrac{a}{\sin A} = \dfrac{b}{\sin B}$ — sides on top.</p></div>
+    <div class="ref-card"><h4>Sine rule (angle)</h4><p>$\dfrac{\sin A}{a} = \dfrac{\sin B}{b}$ — sines on top.</p></div>
+    <div class="ref-card"><h4>Cosine rule (side)</h4><p>$a^2 = b^2 + c^2 - 2bc\cos A$.</p></div>
+    <div class="ref-card"><h4>Cosine rule (angle)</h4><p>$\cos A = \dfrac{b^2 + c^2 - a^2}{2bc}$.</p></div>
+    <div class="ref-card"><h4>Area</h4><p>$\tfrac{1}{2}ab\sin C$, with $C$ between $a$ and $b$.</p></div>
+    <div class="ref-card"><h4>Negative cosine</h4><p>Means the angle is obtuse — a handy check.</p></div>
+    <div class="ref-card"><h4>Ambiguous case</h4><p>$\sin\theta = \sin(180-\theta)$; check whether both are possible.</p></div>
+    <div class="ref-card"><h4>Right angle?</h4><p>Use SOH CAH TOA instead — it is far quicker.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>In triangle $ABC$, $A = 40^\circ$, $B = 65^\circ$ and $a = 8$ cm. Find $b$, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{b}{\sin 65^\circ} = \dfrac{8}{\sin 40^\circ}$</p>
+          <p>$b = \dfrac{8 \times 0.90631}{0.64279} = \dfrac{7.2505}{0.64279} = 11.28$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A triangle has sides $6$ cm and $9$ cm with an angle of $55^\circ$ between them. Find the third side, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a^2 = 6^2 + 9^2 - 2(6)(9)\cos 55^\circ$</p>
+          <p>$= 36 + 81 - 108 \times 0.57358 = 117 - 61.947 = 55.053$</p>
+          <p>$a = \sqrt{55.053} = 7.42$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the area of a triangle with sides $10$ cm and $15$ cm and an included angle of $40^\circ$, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area $= \tfrac{1}{2} \times 10 \times 15 \times \sin 40^\circ$</p>
+          <p>$= 75 \times 0.64279 = 48.2\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A triangle has sides $4$ cm, $6$ cm and $8$ cm. Find the largest angle, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The largest angle is opposite the $8$ cm side.</p>
+          <p>$\cos A = \dfrac{4^2 + 6^2 - 8^2}{2 \times 4 \times 6} = \dfrac{16 + 36 - 64}{48} = \dfrac{-12}{48} = -0.25$</p>
+          <p>$A = \cos^{-1}(-0.25) = 104.5^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In triangle $XYZ$, $x = 14$ cm, $y = 9$ cm and $X = 95^\circ$. Find $Y$, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\sin Y}{9} = \dfrac{\sin 95^\circ}{14}$</p>
+          <p>$\sin Y = \dfrac{9 \times 0.99619}{14} = 0.64041$</p>
+          <p>$Y = \sin^{-1}(0.64041) = 39.8^\circ$</p>
+          <p>(The obtuse alternative $140.2^\circ$ is impossible, since $95 + 140.2 \gt 180$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A triangle has sides $7$ cm and $11$ cm and area $30\text{ cm}^2$. Find the acute angle between them, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tfrac{1}{2} \times 7 \times 11 \times \sin C = 30$</p>
+          <p>$38.5\sin C = 30$</p>
+          <p>$\sin C = 0.77922$</p>
+          <p>$C = \sin^{-1}(0.77922) = 51.2^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>In triangle $ABC$, $A = 38^\circ$, $C = 71^\circ$ and $b = 15$ cm. Find $a$, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First find the missing angle: $B = 180 - 38 - 71 = 71^\circ$.</p>
+          <p>Now there is a matching pair ($b$ and $B$):</p>
+          <p>$\dfrac{a}{\sin 38^\circ} = \dfrac{15}{\sin 71^\circ}$</p>
+          <p>$a = \dfrac{15 \times 0.61566}{0.94552} = \dfrac{9.2349}{0.94552} = 9.77$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Two ships leave a port at the same time. One sails on a bearing of $050^\circ$ at $18$ km/h; the other on a bearing of $110^\circ$ at $24$ km/h. How far apart are they after $2$ hours, to 1 d.p.?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Distances after $2$ hours: $36$ km and $48$ km.</p>
+          <p>Angle at the port $= 110 - 50 = 60^\circ$.</p>
+          <p>Two sides and the included angle → cosine rule.</p>
+          <p>$d^2 = 36^2 + 48^2 - 2(36)(48)\cos 60^\circ$</p>
+          <p>$= 1296 + 2304 - 3456 \times 0.5 = 3600 - 1728 = 1872$</p>
+          <p>$d = \sqrt{1872} = 43.3$ km</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A triangular plot has sides $25$ m, $32$ m and $40$ m.</p>
+      <p>(a) Find the largest angle, to 1 d.p. &nbsp; (b) Find the area, to the nearest m².</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Largest angle is opposite the $40$ m side.</p>
+          <p>$\cos A = \dfrac{25^2 + 32^2 - 40^2}{2 \times 25 \times 32} = \dfrac{625 + 1024 - 1600}{1600} = \dfrac{49}{1600} = 0.030625$</p>
+          <p>$A = \cos^{-1}(0.030625) = 88.2^\circ$</p>
+          <p><strong>(b)</strong> Area $= \tfrac{1}{2} \times 25 \times 32 \times \sin 88.2^\circ = 400 \times 0.99954$</p>
+          <p>$= 399.8$, so about $\mathbf{400}\text{ m}^2$.</p>
+          <p>(The angle is very close to $90^\circ$, so the area is very close to $\tfrac{1}{2} \times 25 \times 32 = 400$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>In triangle $ABC$, $AB = 12$ cm, $BC = 15$ cm and angle $ABC = 68^\circ$.</p>
+      <p>(a) Find $AC$, to 2 d.p. &nbsp; (b) Find angle $BAC$, to 1 d.p. &nbsp; (c) Find the area, to 1 d.p. &nbsp; (d) Find the perpendicular distance from $B$ to $AC$, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Two sides and the included angle → cosine rule.</p>
+          <p>$AC^2 = 12^2 + 15^2 - 2(12)(15)\cos 68^\circ$</p>
+          <p>$= 144 + 225 - 360 \times 0.37461 = 369 - 134.86 = 234.14$</p>
+          <p>$AC = \sqrt{234.14} = \mathbf{15.30}$ cm</p>
+          <p><strong>(b)</strong> Sine rule, using the pair $BC = 15$ opposite $A$, and $AC = 15.30$ opposite $B$:</p>
+          <p>$\dfrac{\sin A}{15} = \dfrac{\sin 68^\circ}{15.30}$</p>
+          <p>$\sin A = \dfrac{15 \times 0.92718}{15.30} = 0.90900$</p>
+          <p>$A = \sin^{-1}(0.90900) = \mathbf{65.4^\circ}$</p>
+          <p><strong>(c)</strong> Area $= \tfrac{1}{2} \times 12 \times 15 \times \sin 68^\circ = 90 \times 0.92718 = \mathbf{83.4\text{ cm}^2}$</p>
+          <p><strong>(d)</strong> Using $AC$ as the base: Area $= \tfrac{1}{2} \times AC \times h$</p>
+          <p>$83.45 = \tfrac{1}{2} \times 15.30 \times h$</p>
+          <p>$h = \dfrac{2 \times 83.45}{15.30} = \mathbf{10.91}$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Sine Rule, Cosine Rule &amp; Area (G22) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

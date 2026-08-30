@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plans and Elevations – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Plans and Elevations</h1>
+  <p>GCSE Maths · Geometry and Measures (G13)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE THREE VIEWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Three Views</div>
+<div class="section-body">
+
+  <p>A 3D solid can be described completely by three flat drawings, each showing what you see when you look at it from a particular direction.</p>
+
+  <div class="formula-box">
+    <div class="label">The three standard views</div>
+    <strong>Plan</strong> — the view from <em>directly above</em><br>
+    <strong>Front elevation</strong> — the view from the <em>front</em><br>
+    <strong>Side elevation</strong> — the view from the <em>side</em>
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="230" viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- the solid -->
+      <polygon points="60,150 60,100 120,100 120,150" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="60,100 85,80 145,80 120,100" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="120,100 145,80 145,130 120,150" fill="#818cf8" stroke="#4f46e5" stroke-width="2"/>
+      <!-- arrows -->
+      <line x1="100" y1="45" x2="100" y2="72" stroke="#ef4444" stroke-width="2" marker-end="url(#pa)"/>
+      <defs><marker id="pa" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+      <text x="100" y="38" font-family="Arial" font-size="12" fill="#b91c1c" text-anchor="middle" font-weight="bold">PLAN (from above)</text>
+      <line x1="90" y1="205" x2="90" y2="162" stroke="#16a34a" stroke-width="2" marker-end="url(#pb)"/>
+      <defs><marker id="pb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#16a34a"/></marker></defs>
+      <text x="90" y="222" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">FRONT</text>
+      <line x1="215" y1="120" x2="160" y2="115" stroke="#d97706" stroke-width="2" marker-end="url(#pc)"/>
+      <defs><marker id="pc" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#d97706"/></marker></defs>
+      <text x="248" y="124" font-family="Arial" font-size="12" fill="#92400e" font-weight="bold">SIDE</text>
+
+      <!-- the three views drawn -->
+      <rect x="310" y="30" width="55" height="35" fill="#fee2e2" stroke="#ef4444" stroke-width="1.8"/>
+      <text x="378" y="52" font-family="Arial" font-size="11" fill="#b91c1c">plan</text>
+      <rect x="310" y="95" width="55" height="45" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+      <text x="378" y="122" font-family="Arial" font-size="11" fill="#166534">front elevation</text>
+      <rect x="310" y="165" width="35" height="45" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+      <text x="360" y="192" font-family="Arial" font-size="11" fill="#92400e">side elevation</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>Every view is a flat 2D drawing.</strong> There is no perspective and no shading — you draw exactly the outline you would see, plus lines where there is a change in height or a visible edge.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DRAWING THE VIEWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Drawing the Views</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Decide which face is the "front" — the question will usually mark it with an arrow.</li>
+    <li>For the <strong>plan</strong>, imagine hovering above and looking straight down. Draw the outline you see.</li>
+    <li>For the <strong>front elevation</strong>, look horizontally at the front face. Draw its outline at true height and width.</li>
+    <li>For the <strong>side elevation</strong>, look horizontally from the side. Its width is the <em>depth</em> of the solid.</li>
+    <li>Add lines wherever a step or a change of level would be visible.</li>
+    <li>Use squared paper and keep every view to the same scale.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Match the dimensions.</strong> The plan and the front elevation must have the same <em>width</em>. The front and side elevations must have the same <em>height</em>. The plan and the side elevation must have the same <em>depth</em>. Checking these three is the fastest way to spot a mistake.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A cuboid</div>
+    <div class="example-body">
+      <p>A cuboid is $6$ cm wide, $4$ cm deep and $3$ cm tall. Describe its three views.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Plan:</strong> looking down, you see the top face — a rectangle $6$ cm by $4$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Front elevation:</strong> a rectangle $6$ cm wide by $3$ cm tall.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Side elevation:</strong> a rectangle $4$ cm wide by $3$ cm tall.</span></div>
+      <p>Check: plan and front share the width $6$; front and side share the height $3$; plan and side share the depth $4$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A cylinder standing upright</div>
+    <div class="example-body">
+      <p>A cylinder of radius $3$ cm and height $8$ cm stands on its circular base. Describe its three views.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Plan:</strong> a circle of radius $3$ cm (diameter $6$ cm).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Front elevation:</strong> a rectangle $6$ cm wide by $8$ cm tall.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Side elevation:</strong> also a rectangle $6$ cm by $8$ cm — a cylinder looks the same from every side.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A square-based pyramid</div>
+    <div class="example-body">
+      <p>A pyramid has a square base of side $10$ cm and vertical height $12$ cm. Describe its three views.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Plan:</strong> a $10$ cm square, with both diagonals drawn — you can see the four sloping edges running to the apex above the centre.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Front elevation:</strong> an isosceles triangle, base $10$ cm and height $12$ cm.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Side elevation:</strong> identical to the front — another isosceles triangle $10$ cm by $12$ cm.</span></div>
+      <div class="tip">The diagonals on the plan are the give-away that this is a pyramid rather than a cuboid.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SOLIDS MADE FROM CUBES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Solids Made from Cubes</div>
+<div class="section-body">
+
+  <p>The most common exam question uses a shape built from unit cubes. The trick is to work out, for each column of the view, the <em>maximum</em> height or depth you can see.</p>
+
+  <div class="svg-block">
+    <svg width="520" height="240" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+      <text x="105" y="20" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">The solid (5 cubes)</text>
+      <!-- back row of 3 -->
+      <g stroke="#4f46e5" stroke-width="1.6">
+        <polygon points="40,150 40,120 70,120 70,150" fill="#c7d2fe"/>
+        <polygon points="70,150 70,120 100,120 100,150" fill="#c7d2fe"/>
+        <polygon points="100,150 100,120 130,120 130,150" fill="#c7d2fe"/>
+        <polygon points="40,120 55,105 85,105 70,120" fill="#a5b4fc"/>
+        <polygon points="70,120 85,105 115,105 100,120" fill="#a5b4fc"/>
+        <polygon points="100,120 115,105 145,105 130,120" fill="#a5b4fc"/>
+        <polygon points="130,150 145,135 145,105 130,120" fill="#818cf8"/>
+        <!-- cube on top left -->
+        <polygon points="40,120 40,90 70,90 70,120" fill="#c7d2fe"/>
+        <polygon points="40,90 55,75 85,75 70,90" fill="#a5b4fc"/>
+        <polygon points="70,120 85,105 85,75 70,90" fill="#818cf8"/>
+        <!-- cube on top middle -->
+        <polygon points="70,120 70,90 100,90 100,120" fill="#c7d2fe"/>
+        <polygon points="70,90 85,75 115,75 100,90" fill="#a5b4fc"/>
+        <polygon points="100,120 115,105 115,75 100,90" fill="#818cf8"/>
+      </g>
+      <text x="85" y="182" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">3 along the bottom, 2 on top</text>
+
+      <!-- plan -->
+      <text x="240" y="20" font-family="Arial" font-size="12" fill="#b91c1c" text-anchor="middle" font-weight="bold">Plan</text>
+      <g fill="#fee2e2" stroke="#ef4444" stroke-width="1.8">
+        <rect x="200" y="35" width="28" height="28"/><rect x="228" y="35" width="28" height="28"/><rect x="256" y="35" width="28" height="28"/>
+      </g>
+      <text x="240" y="80" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">3 × 1 rectangle</text>
+
+      <!-- front -->
+      <text x="240" y="115" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">Front elevation</text>
+      <g fill="#dcfce7" stroke="#16a34a" stroke-width="1.8">
+        <rect x="200" y="130" width="28" height="28"/><rect x="228" y="130" width="28" height="28"/>
+        <rect x="200" y="158" width="28" height="28"/><rect x="228" y="158" width="28" height="28"/><rect x="256" y="158" width="28" height="28"/>
+      </g>
+      <text x="240" y="205" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">an L-shape (upside down)</text>
+
+      <!-- side -->
+      <text x="400" y="20" font-family="Arial" font-size="12" fill="#92400e" text-anchor="middle" font-weight="bold">Side elevation</text>
+      <g fill="#fef3c7" stroke="#d97706" stroke-width="1.8">
+        <rect x="386" y="35" width="28" height="28"/>
+        <rect x="386" y="63" width="28" height="28"/>
+      </g>
+      <text x="400" y="110" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">1 wide, 2 tall</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>The rule for cube stacks:</strong><br>
+    • <strong>Plan</strong> — for each square of the base, mark it if there is <em>any</em> cube above it.<br>
+    • <strong>Front elevation</strong> — for each column across, draw as tall as the <em>tallest</em> stack in that column.<br>
+    • <strong>Side elevation</strong> — for each column of depth, draw as tall as the tallest stack at that depth.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A staircase of cubes</div>
+    <div class="example-body">
+      <p>A shape is built from unit cubes: a bottom row of $3$ cubes, with $2$ cubes stacked on the leftmost, and $1$ extra on the middle one. Describe the three elevations.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Heights across the three columns: $3$, $2$, $1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Front elevation:</strong> a staircase — three columns of heights $3$, $2$ and $1$ squares.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Plan:</strong> all three base squares are covered, so it is a $3 \times 1$ rectangle.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Side elevation:</strong> the solid is only $1$ cube deep, and the tallest point is $3$, so it is a $1 \times 3$ rectangle (1 wide, 3 tall).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WORKING BACKWARDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Working Backwards from the Views</div>
+<div class="section-body">
+
+  <p>Harder questions give you the three views and ask you to identify or sketch the solid.</p>
+
+  <ul class="steps">
+    <li>Read the plan first — it tells you the "footprint" of the solid.</li>
+    <li>Read the front elevation for the height and any steps across the width.</li>
+    <li>Read the side elevation for the height and any steps through the depth.</li>
+    <li>Combine: the solid must fit inside a box with those three dimensions.</li>
+    <li>Sketch on isometric paper if you have it.</li>
+  </ul>
+
+  <table>
+    <tr><th>Plan</th><th>Front</th><th>Side</th><th>Solid</th></tr>
+    <tr><td>Circle</td><td>Rectangle</td><td>Rectangle</td><td>Cylinder (standing up)</td></tr>
+    <tr><td>Circle</td><td>Circle</td><td>Circle</td><td>Sphere</td></tr>
+    <tr><td>Circle</td><td>Triangle</td><td>Triangle</td><td>Cone</td></tr>
+    <tr><td>Square</td><td>Square</td><td>Square</td><td>Cube</td></tr>
+    <tr><td>Square with diagonals</td><td>Triangle</td><td>Triangle</td><td>Square-based pyramid</td></tr>
+    <tr><td>Rectangle</td><td>Triangle</td><td>Rectangle</td><td>Triangular prism (lying down)</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Identifying a solid</div>
+    <div class="example-body">
+      <p>The plan of a solid is a circle of diameter $8$ cm. The front elevation is a triangle of base $8$ cm and height $10$ cm. The side elevation is the same triangle. Name the solid and find its volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>A circular plan with triangular elevations means a <strong>cone</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Radius $= 8 \div 2 = 4$ cm; vertical height $= 10$ cm.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$V = \tfrac{1}{3}\pi r^2 h = \tfrac{1}{3} \times \pi \times 16 \times 10$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \dfrac{160\pi}{3} = 167.6\text{ cm}^3$ (1 d.p.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Plan</h4><p>The view from directly above.</p></div>
+    <div class="ref-card"><h4>Front elevation</h4><p>The view from the front, at true height and width.</p></div>
+    <div class="ref-card"><h4>Side elevation</h4><p>The view from the side; its width is the depth.</p></div>
+    <div class="ref-card"><h4>Matching check</h4><p>Plan and front share width; front and side share height; plan and side share depth.</p></div>
+    <div class="ref-card"><h4>Cube stacks</h4><p>Each column of an elevation is as tall as the tallest stack behind it.</p></div>
+    <div class="ref-card"><h4>Cylinder</h4><p>Circle plan; rectangle for both elevations.</p></div>
+    <div class="ref-card"><h4>Cone</h4><p>Circle plan; triangle for both elevations.</p></div>
+    <div class="ref-card"><h4>Pyramid</h4><p>Square plan with diagonals; triangular elevations.</p></div>
+    <div class="ref-card"><h4>No perspective</h4><p>Draw flat outlines only — no shading, no vanishing points.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Describe the plan, front elevation and side elevation of a cube of side $5$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>All three views are identical: a <strong>$5$ cm by $5$ cm square</strong>.</p>
+          <p>A cube looks the same from every direction perpendicular to a face.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A cuboid measures $10$ cm wide, $3$ cm deep and $7$ cm tall. Give the dimensions of each of the three views.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Plan: $10$ cm by $3$ cm rectangle.</p>
+          <p>Front elevation: $10$ cm by $7$ cm rectangle.</p>
+          <p>Side elevation: $3$ cm by $7$ cm rectangle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The plan, front elevation and side elevation of a solid are all circles of the same size. Name the solid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A <strong>sphere</strong> — the only solid that appears as an identical circle from every direction.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A cylinder of radius $5$ cm and length $12$ cm is lying on its side, with the circular ends facing left and right. Describe the three views.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Plan (from above): a rectangle $12$ cm by $10$ cm.</p>
+          <p>Front elevation: a rectangle $12$ cm wide by $10$ cm tall.</p>
+          <p>Side elevation: a <strong>circle</strong> of diameter $10$ cm — you are looking straight at a circular end.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A solid is built from $4$ unit cubes in a straight row. Describe the three views.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Plan: a $4 \times 1$ rectangle.</p>
+          <p>Front elevation: a $4 \times 1$ rectangle (four squares across, one high).</p>
+          <p>Side elevation: a single $1 \times 1$ square.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A solid has a square plan with both diagonals drawn, and both elevations are isosceles triangles. Name the solid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A <strong>square-based pyramid</strong>.</p>
+          <p>The diagonals on the plan are the four sloping edges running up to the apex, which sits directly above the centre of the square.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A triangular prism has an equilateral triangular cross-section of side $6$ cm and length $15$ cm, lying with a rectangular face on the table and the triangles facing front and back. Describe the plan and both elevations.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Front elevation: an <strong>equilateral triangle</strong> of side $6$ cm (you are looking straight at a triangular end).</p>
+          <p>Side elevation: a rectangle $15$ cm long by the triangle's height, $\sqrt{6^2 - 3^2} = \sqrt{27} = 5.20$ cm.</p>
+          <p>Plan: a rectangle $6$ cm by $15$ cm, with a line down the middle where the top ridge of the prism is.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The three views of a solid are: plan a $3 \times 2$ rectangle, front elevation a $3 \times 4$ rectangle, side elevation a $2 \times 4$ rectangle. Name the solid and find its volume.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>All three views are rectangles with consistent dimensions, so the solid is a <strong>cuboid</strong>.</p>
+          <p>Width $3$, depth $2$, height $4$.</p>
+          <p>$V = 3 \times 2 \times 4 = 24$ cubic units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A shape is made from unit cubes. Looking from the front, the column heights (left to right) are $2$, $3$, $1$. The shape is $1$ cube deep throughout. Sketch-describe all three views and state how many cubes are used.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Front elevation: three columns of $2$, $3$ and $1$ squares — a stepped shape.</p>
+          <p>Plan: the footprint is $3$ squares in a row, so a $3 \times 1$ rectangle.</p>
+          <p>Side elevation: only $1$ deep, and the tallest column is $3$, so a $1 \times 3$ rectangle.</p>
+          <p>Number of cubes $= 2 + 3 + 1 = 6$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A solid consists of a cuboid $8$ cm wide, $6$ cm deep and $4$ cm tall, with a cube of side $2$ cm sitting on top at the centre of the cuboid's top face.</p>
+      <p>(a) Describe the plan. &nbsp; (b) Describe the front elevation. &nbsp; (c) Find the total volume. &nbsp; (d) Find the total surface area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> An $8$ cm by $6$ cm rectangle, with a $2$ cm by $2$ cm square drawn in the middle of it (the outline of the cube seen from above).</p>
+          <p><strong>(b)</strong> An $8$ cm by $4$ cm rectangle with a $2$ cm by $2$ cm square sitting centrally on top — a stepped shape $6$ cm tall overall.</p>
+          <p><strong>(c)</strong> Cuboid: $8 \times 6 \times 4 = 192\text{ cm}^3$. Cube: $2^3 = 8\text{ cm}^3$.</p>
+          <p>Total $= 192 + 8 = \mathbf{200\text{ cm}^3}$.</p>
+          <p><strong>(d)</strong> Cuboid surface area $= 2(8\times6) + 2(8\times4) + 2(6\times4) = 96 + 64 + 48 = 208\text{ cm}^2$.</p>
+          <p>The cube adds its $4$ side faces ($4 \times 4 = 16\text{ cm}^2$) and its top ($4\text{ cm}^2$), but hides $4\text{ cm}^2$ of the cuboid's top face.</p>
+          <p>Net change $= 16 + 4 - 4 = 16\text{ cm}^2$.</p>
+          <p>Total $= 208 + 16 = \mathbf{224\text{ cm}^2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Plans &amp; Elevations (G13) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruler and Compass Constructions and Loci – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧭 Ruler and Compass Constructions and Loci</h1>
+  <p>GCSE Maths · Geometry and Measures (G2)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE RULES OF CONSTRUCTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Rules of Construction</div>
+<div class="section-body">
+
+  <p>A <strong>construction</strong> is an accurate drawing made with only a ruler (for straight lines) and a pair of compasses (for arcs). A protractor is <em>not</em> allowed.</p>
+
+  <div class="warn">
+    <strong>Leave your construction arcs on the page.</strong> The arcs are the evidence that you used the correct method, and most of the marks are awarded for them. Rubbing them out throws marks away.
+  </div>
+
+  <div class="concept">
+    <strong>Why compasses work.</strong> Every point on an arc drawn from centre $P$ is the <em>same distance</em> from $P$. So when two arcs of the same radius, drawn from $A$ and from $B$, cross at a point, that point is equally far from $A$ and $B$. Every construction on this page is built from that one fact.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PERPENDICULAR BISECTOR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Perpendicular Bisector of a Line Segment</div>
+<div class="section-body">
+
+  <p>The perpendicular bisector cuts $AB$ exactly in half, at $90^\circ$.</p>
+
+  <ul class="steps">
+    <li>Open your compasses to <strong>more than half</strong> the length of $AB$.</li>
+    <li>Put the point on $A$ and draw arcs above and below the line.</li>
+    <li><strong>Keeping the same radius</strong>, put the point on $B$ and draw arcs that cross the first two.</li>
+    <li>Join the two crossing points with a straight line.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="360" height="230" viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+      <line x1="80" y1="115" x2="280" y2="115" stroke="#1e1e2e" stroke-width="2.5"/>
+      <circle cx="80" cy="115" r="4" fill="#4f46e5"/><circle cx="280" cy="115" r="4" fill="#4f46e5"/>
+      <text x="70" y="134" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">A</text>
+      <text x="286" y="134" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">B</text>
+      <path d="M 137 33 A 125 125 0 0 1 137 197" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+      <path d="M 223 33 A 125 125 0 0 0 223 197" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+      <line x1="180" y1="25" x2="180" y2="205" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="180" cy="42" r="4" fill="#ef4444"/><circle cx="180" cy="188" r="4" fill="#ef4444"/>
+      <rect x="180" y="103" width="12" height="12" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="180" y="222" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Same compass radius from A and from B</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What it means</div>
+    Every point on the perpendicular bisector of $AB$ is <strong>equidistant</strong> from $A$ and $B$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using the bisector</div>
+    <div class="example-body">
+      <p>Two mobile phone masts stand at $A$ and $B$. Show the region of a map that is closer to mast $A$ than to mast $B$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Construct the perpendicular bisector of $AB$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Points on the bisector are equally far from both masts.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Everything on the $A$ side of that line is closer to $A$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Shade the whole half-plane containing $A$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ANGLE BISECTOR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Bisecting an Angle</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Put the compass point on the <strong>vertex</strong> of the angle and draw an arc crossing both arms.</li>
+    <li>Put the compass point on each crossing point in turn and draw two arcs that meet inside the angle.</li>
+    <li>Join the vertex to where those two arcs cross.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="340" height="220" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="180" x2="300" y2="180" stroke="#1e1e2e" stroke-width="2.5"/>
+      <line x1="50" y1="180" x2="240" y2="40" stroke="#1e1e2e" stroke-width="2.5"/>
+      <circle cx="50" cy="180" r="4" fill="#4f46e5"/>
+      <text x="36" y="198" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">O</text>
+      <path d="M 150 180 A 100 100 0 0 0 129 121" fill="none" stroke="#94a3b8" stroke-width="1.4"/>
+      <circle cx="150" cy="180" r="3.5" fill="#94a3b8"/>
+      <circle cx="129" cy="121" r="3.5" fill="#94a3b8"/>
+      <path d="M 195 130 A 62 62 0 0 0 150 180" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+      <path d="M 195 130 A 62 62 0 0 1 129 121" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+      <line x1="50" y1="180" x2="275" y2="105" stroke="#ef4444" stroke-width="2.5"/>
+      <path d="M 100 180 A 50 50 0 0 0 97 163" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 97 163 A 50 50 0 0 0 89 147" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="118" y="176" font-family="Arial" font-size="11" fill="#16a34a">x</text>
+      <text x="103" y="152" font-family="Arial" font-size="11" fill="#16a34a">x</text>
+      <text x="170" y="212" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The bisector splits the angle into two equal parts</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What it means</div>
+    Every point on the bisector of an angle is <strong>equidistant from the two arms</strong> of the angle.
+  </div>
+
+  <div class="tip">
+    <strong>Constructing $60^\circ$ and $30^\circ$.</strong> Draw an arc from $A$ crossing the line, then from that crossing point draw an arc of the <em>same radius</em>. Joining $A$ to where they meet gives exactly $60^\circ$ (you have built an equilateral triangle). Bisect it for $30^\circ$, and bisect again for $15^\circ$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PERPENDICULARS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Perpendicular From and At a Point</div>
+<div class="section-body">
+
+  <h4 style="color:#3730a3;margin-top:8px;">Perpendicular from a point $P$ <em>not</em> on the line</h4>
+  <ul class="steps">
+    <li>With the compass point on $P$, draw an arc that crosses the line twice. Call the crossings $X$ and $Y$.</li>
+    <li>Construct the perpendicular bisector of $XY$ in the usual way.</li>
+    <li>That bisector passes through $P$ and meets the line at $90^\circ$.</li>
+  </ul>
+
+  <h4 style="color:#3730a3;margin-top:14px;">Perpendicular at a point $P$ <em>on</em> the line</h4>
+  <ul class="steps">
+    <li>With the compass point on $P$, draw arcs cutting the line either side of $P$ at equal distances. Call them $X$ and $Y$.</li>
+    <li>Construct the perpendicular bisector of $XY$ — it will pass through $P$.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="360" height="200" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="150" x2="330" y2="150" stroke="#1e1e2e" stroke-width="2.5"/>
+      <circle cx="180" cy="45" r="4.5" fill="#4f46e5"/>
+      <text x="188" y="42" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">P</text>
+      <path d="M 110 150 A 120 120 0 0 0 250 150" fill="none" stroke="#94a3b8" stroke-width="1.3"/>
+      <circle cx="110" cy="150" r="3.5" fill="#94a3b8"/><circle cx="250" cy="150" r="3.5" fill="#94a3b8"/>
+      <text x="104" y="168" font-family="Arial" font-size="12" fill="#64748b">X</text>
+      <text x="246" y="168" font-family="Arial" font-size="12" fill="#64748b">Y</text>
+      <line x1="180" y1="35" x2="180" y2="185" stroke="#ef4444" stroke-width="2.5"/>
+      <rect x="180" y="138" width="12" height="12" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="196" y="110" font-family="Arial" font-size="11" fill="#b91c1c">shortest distance</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>The shortest distance</strong> from a point to a line is always the <em>perpendicular</em> distance. Any other route from $P$ to the line is the hypotenuse of a right-angled triangle, and the hypotenuse is always the longest side.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – CONSTRUCTING TRIANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Constructing Triangles</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>You are given</th><th>Method</th></tr>
+    <tr><td>Three sides (SSS)</td><td>Draw the longest side. Arc from each end with the other two lengths; they cross at the third vertex.</td></tr>
+    <tr><td>Two sides and the included angle (SAS)</td><td>Draw one side, measure the angle with a protractor, draw the second side, join up.</td></tr>
+    <tr><td>Two angles and a side (ASA)</td><td>Draw the side, measure both angles at its ends, extend the arms until they meet.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — SSS construction</div>
+    <div class="example-body">
+      <p>Construct triangle $ABC$ with $AB = 8$ cm, $BC = 6$ cm and $AC = 5$ cm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Draw $AB = 8$ cm accurately with a ruler — the longest side, as the base.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Set the compasses to $5$ cm, point on $A$, draw an arc above $AB$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Set the compasses to $6$ cm, point on $B$, draw an arc crossing the first.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The crossing point is $C$. Join $AC$ and $BC$, leaving both arcs visible.</span></div>
+      <div class="tip"><strong>Check:</strong> a triangle only exists if the two shorter sides add to more than the longest. Here $5 + 6 = 11 > 8$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – LOCI
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Loci</div>
+<div class="section-body">
+
+  <p>A <strong>locus</strong> (plural <em>loci</em>) is the set of all points that satisfy a given rule. There are four standard loci to learn.</p>
+
+  <table>
+    <tr><th>The rule</th><th>The locus</th></tr>
+    <tr><td>A fixed distance $r$ from a point $P$</td><td>A <strong>circle</strong> of radius $r$ centred on $P$</td></tr>
+    <tr><td>A fixed distance $d$ from a line segment $AB$</td><td>A "<strong>racetrack</strong>": two parallel lines $d$ away, joined by semicircles of radius $d$ at each end</td></tr>
+    <tr><td>Equidistant from two points $A$ and $B$</td><td>The <strong>perpendicular bisector</strong> of $AB$</td></tr>
+    <tr><td>Equidistant from two lines</td><td>The <strong>angle bisector</strong> of the angle between them</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="560" height="180" viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+      <text x="85" y="20" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Distance r from a point</text>
+      <circle cx="85" cy="95" r="48" fill="#eef2ff" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="85" cy="95" r="4" fill="#4f46e5"/>
+      <line x1="85" y1="95" x2="133" y2="95" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="105" y="90" font-family="Arial" font-size="11" fill="#4f46e5">r</text>
+
+      <text x="285" y="20" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Distance d from a line segment</text>
+      <path d="M 225 62 L 345 62 A 33 33 0 0 1 345 128 L 225 128 A 33 33 0 0 1 225 62 Z" fill="#eef2ff" stroke="#ef4444" stroke-width="2.5"/>
+      <line x1="225" y1="95" x2="345" y2="95" stroke="#1e1e2e" stroke-width="2.5"/>
+      <circle cx="225" cy="95" r="3.5" fill="#4f46e5"/><circle cx="345" cy="95" r="3.5" fill="#4f46e5"/>
+      <text x="285" y="88" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">A ——— B</text>
+
+      <text x="475" y="20" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Equidistant from 2 points</text>
+      <circle cx="425" cy="95" r="4" fill="#4f46e5"/><circle cx="525" cy="95" r="4" fill="#4f46e5"/>
+      <line x1="425" y1="95" x2="525" y2="95" stroke="#1e1e2e" stroke-width="2"/>
+      <line x1="475" y1="45" x2="475" y2="145" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="418" y="112" font-family="Arial" font-size="12" fill="#3730a3">A</text>
+      <text x="528" y="112" font-family="Arial" font-size="12" fill="#3730a3">B</text>
+      <rect x="475" y="83" width="10" height="12" fill="none" stroke="#22c55e" stroke-width="1.6"/>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A region satisfying two conditions</div>
+    <div class="example-body">
+      <p>A goat is tethered in a rectangular field $ABCD$. It must be <em>within</em> $10$ m of corner $A$ and <em>nearer</em> to side $AB$ than to side $AD$. Shade the region it can reach. (Scale: $1$ cm represents $5$ m.)</p>
+      <div class="step-row"><span class="arrow">①</span><span>Convert: $10$ m $= 10 \div 5 = 2$ cm on the drawing.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Draw an arc of radius $2$ cm centred on $A$. The region <em>inside</em> it satisfies the first condition.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Construct the bisector of angle $DAB$. Points nearer $AB$ lie on the $AB$ side of it.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Shade only where <strong>both</strong> conditions hold — the part of the quarter-circle between $AB$ and the bisector.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Watch the wording.</strong><br>
+    "Within" or "less than" → the boundary is <em>not</em> included; draw it dashed if the question asks.<br>
+    "At most" or "no more than" → the boundary <em>is</em> included; draw it solid.<br>
+    When two conditions are given, shade only the <strong>overlap</strong>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Leave the arcs</h4><p>Construction arcs earn the marks — never rub them out.</p></div>
+    <div class="ref-card"><h4>Perp. bisector</h4><p>Equal arcs from both ends; the line is equidistant from $A$ and $B$.</p></div>
+    <div class="ref-card"><h4>Angle bisector</h4><p>Arc from the vertex, then arcs from both crossings; equidistant from both arms.</p></div>
+    <div class="ref-card"><h4>Perpendicular</h4><p>Arc from $P$ cutting the line twice, then bisect that chord.</p></div>
+    <div class="ref-card"><h4>Shortest distance</h4><p>From a point to a line it is always the perpendicular distance.</p></div>
+    <div class="ref-card"><h4>$60^\circ$</h4><p>Two arcs of equal radius build an equilateral triangle; bisect for $30^\circ$.</p></div>
+    <div class="ref-card"><h4>Locus: point</h4><p>Fixed distance from a point = a circle.</p></div>
+    <div class="ref-card"><h4>Locus: segment</h4><p>Fixed distance from a segment = a racetrack shape.</p></div>
+    <div class="ref-card"><h4>Two conditions</h4><p>Shade only the overlap of the two regions.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Describe the steps needed to construct the perpendicular bisector of a line segment $PQ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. Open the compasses to more than half of $PQ$.</p>
+          <p>2. With the point on $P$, draw arcs above and below $PQ$.</p>
+          <p>3. Keeping the <strong>same radius</strong>, put the point on $Q$ and draw arcs crossing the first pair.</p>
+          <p>4. Draw a straight line through the two intersection points.</p>
+          <p>Leave all arcs showing.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>What is the locus of points exactly $4$ cm from a fixed point $O$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A <strong>circle</strong> of radius $4$ cm with centre $O$.</p>
+          <p>(If the question said "at most $4$ cm", it would be the circle <em>and everything inside it</em>.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Two trees stand $12$ m apart at points $A$ and $B$. Describe the locus of points that are the same distance from both trees.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The <strong>perpendicular bisector</strong> of $AB$.</p>
+          <p>It is a straight line crossing $AB$ at its midpoint, $6$ m from each tree, at $90^\circ$ to $AB$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Explain why a triangle with sides $3$ cm, $4$ cm and $9$ cm cannot be constructed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The two shorter sides must add to more than the longest side.</p>
+          <p>$3 + 4 = 7$, which is less than $9$.</p>
+          <p>Arcs of radius $3$ cm and $4$ cm from the ends of a $9$ cm line would never meet, so no triangle exists.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Describe the locus of all points exactly $3$ cm from a straight line segment $XY$ of length $10$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Two straight lines of length $10$ cm, each parallel to $XY$ and $3$ cm from it (one either side).</p>
+          <p>These are joined at each end by a <strong>semicircle</strong> of radius $3$ cm centred on $X$ and on $Y$.</p>
+          <p>The whole shape looks like a running track.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>How would you construct an angle of exactly $30^\circ$ using only a ruler and compasses?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. Draw a line and mark a point $A$ on it.</p>
+          <p>2. With the point on $A$, draw an arc crossing the line at $B$.</p>
+          <p>3. With the <strong>same radius</strong> and the point on $B$, draw an arc crossing the first at $C$.</p>
+          <p>4. Join $AC$: triangle $ABC$ is equilateral, so angle $CAB = 60^\circ$.</p>
+          <p>5. Bisect angle $CAB$ to get $30^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A rectangular garden $ABCD$ measures $20$ m by $12$ m. A path must be built that is always the same distance from $AB$ as from $AD$. Describe and locate the path.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Points equidistant from two lines lie on the <strong>bisector of the angle between them</strong>.</p>
+          <p>$AB$ and $AD$ meet at $A$ at $90^\circ$, so the path is the bisector of that right angle.</p>
+          <p>It starts at corner $A$ and runs at $45^\circ$ into the garden.</p>
+          <p>Since the garden is $20$ m by $12$ m, the path reaches the far side $BC$ after $12$ m across and $12$ m up, at the point on $BC$ that is $12$ m from $B$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A point $P$ lies $5$ cm from a line $L$. Explain why $5$ cm is the shortest distance from $P$ to $L$, and describe how you would construct that shortest path.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The shortest distance is the <strong>perpendicular</strong> distance. Any other line from $P$ to $L$ forms a right-angled triangle in which that line is the hypotenuse, and the hypotenuse is always longer than the perpendicular leg.</p>
+          <p><em>Construction:</em> with the compass point on $P$, draw an arc cutting $L$ at two points $X$ and $Y$; then construct the perpendicular bisector of $XY$. It passes through $P$ and meets $L$ at $90^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>On a map with scale $1$ cm : $50$ m, a radio transmitter at $T$ has a range of $325$ m. A second transmitter at $S$ has a range of $200$ m.</p>
+      <p>(a) What radii would you draw on the map? &nbsp; (b) Describe the region that receives both signals.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $T$: $325 \div 50 = 6.5$ cm. &nbsp; $S$: $200 \div 50 = 4$ cm.</p>
+          <p><strong>(b)</strong> Draw a circle of radius $6.5$ cm about $T$ and a circle of radius $4$ cm about $S$. The region receiving both signals is the <strong>overlap</strong> of the two circles — a lens-shaped area. (If the circles do not overlap on the map, no point receives both.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Triangle $ABC$ has $AB = 9$ cm, $BC = 7$ cm and $AC = 6$ cm. A treasure is buried inside the triangle so that it is:</p>
+      <p>• nearer to $AB$ than to $AC$, and<br>• less than $4$ cm from $B$.</p>
+      <p>Describe fully how to find and shade the possible region.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Step 1 — Construct the triangle (SSS).</strong> Draw $AB = 9$ cm. Arc $6$ cm from $A$ and $7$ cm from $B$; they cross at $C$. Join $AC$ and $BC$.</p>
+          <p><strong>Step 2 — First condition.</strong> "Nearer to $AB$ than to $AC$" — these two lines meet at $A$, so construct the <strong>bisector of angle $BAC$</strong>. The required side is the one containing $AB$.</p>
+          <p><strong>Step 3 — Second condition.</strong> "Less than $4$ cm from $B$" — draw an arc of radius $4$ cm centred on $B$. The required region is <em>inside</em> the arc, so draw it dashed.</p>
+          <p><strong>Step 4 — Shade.</strong> Shade only the part that is inside the triangle, on the $AB$ side of the angle bisector, <em>and</em> within $4$ cm of $B$.</p>
+          <p>Leave every construction arc visible.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Constructions &amp; Loci (G2) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

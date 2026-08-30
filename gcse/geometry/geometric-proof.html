@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometric Reasoning and Proof – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧩 Geometric Reasoning and Proof</h1>
+  <p>GCSE Maths · Geometry and Measures (G6)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A PROOF IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Proof Is</div>
+<div class="section-body">
+
+  <p>A <strong>proof</strong> is a chain of logical steps that starts from facts you are allowed to assume and ends at the statement you were asked to establish. Every link in the chain needs a reason.</p>
+
+  <div class="warn">
+    <strong>Checking examples is not a proof.</strong> Showing that a result works for three particular triangles proves nothing about the fourth. A proof must work for <em>every</em> case at once — which is why it uses letters, not numbers.
+  </div>
+
+  <div class="concept">
+    <strong>What you may assume</strong> without proof at GCSE:<br>
+    • the basic angle facts (straight line, point, vertically opposite)<br>
+    • the parallel-line rules (alternate, corresponding, co-interior)<br>
+    • the angle sum of a triangle<br>
+    • the four congruence criteria (SSS, SAS, ASA, RHS)<br>
+    • properties of named shapes, once you have named the shape<br>
+    Everything else you must <em>derive</em>.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The shape of every geometric proof</div>
+    Statement &nbsp;→&nbsp; <em>reason</em> &nbsp;→&nbsp; Statement &nbsp;→&nbsp; <em>reason</em> &nbsp;→&nbsp; … &nbsp;→&nbsp; Conclusion
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE OF PROOF
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language of Proof</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word in the question</th><th>What is expected</th></tr>
+    <tr><td><strong>Prove</strong> / <strong>Show that</strong></td><td>A full logical argument with a reason at every step.</td></tr>
+    <tr><td><strong>Give a reason</strong></td><td>Quote the standard angle fact by name.</td></tr>
+    <tr><td><strong>Explain why</strong></td><td>A sentence or two of reasoning; usually fewer marks than "prove".</td></tr>
+    <tr><td><strong>Deduce</strong></td><td>Use a result you have just proved to get something new.</td></tr>
+    <tr><td><strong>Hence</strong></td><td>You <em>must</em> use the previous part of the question.</td></tr>
+    <tr><td><strong>Hence or otherwise</strong></td><td>Using the previous part is the intended route, but any valid method scores.</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Write reasons in the standard wording.</strong> "Alternate angles are equal" earns the mark; "the Z rule" may not. Learn the phrases: <em>angles on a straight line</em>, <em>angles at a point</em>, <em>vertically opposite angles</em>, <em>angle sum of a triangle</em>, <em>alternate angles</em>, <em>corresponding angles</em>, <em>co-interior angles</em>, <em>base angles of an isosceles triangle</em>, <em>exterior angle of a triangle</em>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ANGLE CHASE PROOFS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Angle Chase Proofs</div>
+<div class="section-body">
+
+  <p>The most common type: introduce a letter for an unknown angle, chase it round the diagram, and arrive at the required result.</p>
+
+  <ul class="steps">
+    <li>Let the unknown angle be $x$ (and a second one $y$ if needed).</li>
+    <li>Express other angles in terms of $x$, giving a reason each time.</li>
+    <li>Form an equation from an angle sum.</li>
+    <li>Simplify to reach the required statement.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Proving the angle sum of a triangle</div>
+    <div class="example-body">
+      <p>Prove that the angles of a triangle add to $180^\circ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Draw triangle $ABC$, and draw a line through $A$ parallel to $BC$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Label the three angles at $A$ (left to right) as $p$, $\angle BAC$ and $q$. These three angles lie on a straight line, so $p + \angle BAC + q = 180^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$p = \angle ABC$ &nbsp;(alternate angles, the new line is parallel to $BC$)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$q = \angle ACB$ &nbsp;(alternate angles, the new line is parallel to $BC$)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Substituting: $\angle ABC + \angle BAC + \angle ACB = 180^\circ$ ∎</span></div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="420" height="190" viewBox="0 0 420 190" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="50" x2="380" y2="50" stroke="#7c3aed" stroke-width="2.5"/>
+      <path d="M150 44 l9 6 l-9 6" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="70" y1="155" x2="350" y2="155" stroke="#4f46e5" stroke-width="2.5"/>
+      <path d="M190 149 l9 6 l-9 6" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="70,155 350,155 210,50" fill="#eef2ff" fill-opacity=".6" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="210" cy="50" r="4" fill="#4f46e5"/>
+      <text x="204" y="40" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">A</text>
+      <text x="58" y="172" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">B</text>
+      <text x="354" y="172" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">C</text>
+      <text x="180" y="66" font-family="Arial" font-size="13" fill="#ef4444" font-weight="bold">p</text>
+      <text x="234" y="66" font-family="Arial" font-size="13" fill="#16a34a" font-weight="bold">q</text>
+      <text x="96" y="148" font-family="Arial" font-size="13" fill="#ef4444" font-weight="bold">p</text>
+      <text x="322" y="148" font-family="Arial" font-size="13" fill="#16a34a" font-weight="bold">q</text>
+      <text x="210" y="184" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Alternate angles transfer the base angles up to the vertex</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Proving the exterior angle rule</div>
+    <div class="example-body">
+      <p>In triangle $ABC$, $BC$ is extended to $D$. Prove that $\angle ACD = \angle ABC + \angle BAC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $\angle ABC = a$, $\angle BAC = b$ and $\angle ACB = c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a + b + c = 180^\circ$ &nbsp;(angle sum of a triangle)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle ACD + c = 180^\circ$ &nbsp;(angles on a straight line $BCD$)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>From ②, $c = 180 - a - b$. Substituting into ③:</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\angle ACD + 180 - a - b = 180$, so $\angle ACD = a + b$ ∎</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PROOFS USING CONGRUENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Proofs Using Congruence</div>
+<div class="section-body">
+
+  <p>When a question asks you to prove two <em>lengths</em> or two <em>angles</em> are equal, congruence is nearly always the tool.</p>
+
+  <div class="formula-box">
+    <div class="label">The standard route</div>
+    Find two triangles &nbsp;→&nbsp; prove them congruent &nbsp;→&nbsp; deduce that the parts you want are equal
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Diagonals of a rectangle</div>
+    <div class="example-body">
+      <p>Prove that the diagonals of a rectangle are equal in length.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $ABCD$ be a rectangle. Consider triangles $ABC$ and $BAD$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AB = BA$ &nbsp;(common side)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle ABC = \angle BAD = 90^\circ$ &nbsp;(angles of a rectangle)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$BC = AD$ &nbsp;(opposite sides of a rectangle are equal)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Therefore $\triangle ABC \cong \triangle BAD$ (SAS).</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Corresponding sides are equal, so $AC = BD$. The diagonals are equal. ∎</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A two-stage proof</div>
+    <div class="example-body">
+      <p>$ABCD$ is a parallelogram. $E$ is the midpoint of $AB$ and $F$ is the midpoint of $CD$. Prove that $DE = BF$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AB = CD$ &nbsp;(opposite sides of a parallelogram), so halving gives $AE = CF$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AD = CB$ &nbsp;(opposite sides of a parallelogram)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle DAE = \angle BCF$ &nbsp;(opposite angles of a parallelogram are equal)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Therefore $\triangle DAE \cong \triangle BCF$ (SAS).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Corresponding sides give $DE = BF$. ∎</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PROVING PYTHAGORAS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Proving Pythagoras' Theorem</div>
+<div class="section-body">
+
+  <p>The classic dissection proof uses four copies of the same right-angled triangle arranged inside a square.</p>
+
+  <div class="svg-block">
+    <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="30" width="220" height="220" fill="#f5f3ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <polygon points="40,30 130,30 40,120" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <polygon points="130,30 260,30 260,120" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <polygon points="260,120 260,250 170,250" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <polygon points="170,250 40,250 40,120" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <polygon points="130,30 260,120 170,250 40,120" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2.5"/>
+      <text x="85" y="24" font-family="Arial" font-size="12" fill="#3730a3">a</text>
+      <text x="195" y="24" font-family="Arial" font-size="12" fill="#3730a3">b</text>
+      <text x="30" y="80" font-family="Arial" font-size="12" fill="#3730a3">b</text>
+      <text x="30" y="190" font-family="Arial" font-size="12" fill="#3730a3">a</text>
+      <text x="80" y="80" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">c</text>
+      <text x="150" y="150" font-family="Arial" font-size="15" fill="#4c1d95" text-anchor="middle" font-weight="bold">c²</text>
+      <text x="150" y="285" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Big square of side (a + b) containing 4 triangles and a tilted square</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — The dissection proof</div>
+    <div class="example-body">
+      <p>Prove that $a^2 + b^2 = c^2$ for a right-angled triangle with legs $a$ and $b$ and hypotenuse $c$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Arrange four copies of the triangle inside a square of side $(a + b)$, as shown. The inner tilted quadrilateral has all sides $c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At each corner of the inner shape, the two acute angles of the triangle sit either side. Those two angles add to $90^\circ$, and the three angles lie on a straight line, so each inner angle is $180 - 90 = 90^\circ$. The inner shape is a <strong>square</strong> of side $c$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area of the large square $= (a+b)^2 = a^2 + 2ab + b^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Area also $= 4 \times \left(\tfrac{1}{2}ab\right) + c^2 = 2ab + c^2$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Equating: $a^2 + 2ab + b^2 = 2ab + c^2$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Subtracting $2ab$ from both sides: $a^2 + b^2 = c^2$ ∎</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – ALGEBRAIC PROOF IN GEOMETRY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Algebraic Proof in Geometry</div>
+<div class="section-body">
+
+  <p>Some proofs need algebra rather than a diagram argument. The method is to write everything in terms of letters and simplify.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Interior angle sum of a polygon</div>
+    <div class="example-body">
+      <p>Prove that the interior angles of an $n$-sided polygon add to $(n-2) \times 180^\circ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Choose one vertex of the polygon and join it to every other non-adjacent vertex.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>There are $n$ vertices; the chosen one and its two neighbours cannot be joined, so there are $n - 3$ diagonals.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>These $n - 3$ diagonals cut the polygon into $n - 2$ triangles.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Every angle of every triangle is part of an interior angle of the polygon, and nothing is left over.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Each triangle contributes $180^\circ$, so the total is $(n-2) \times 180^\circ$ ∎</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Disproving a statement</div>
+    <div class="example-body">
+      <p>Alex claims: "If a quadrilateral has two pairs of equal sides, it must be a parallelogram." Show that Alex is wrong.</p>
+      <div class="step-row"><span class="arrow">①</span><span>To disprove a general claim you only need <strong>one counter-example</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>A <strong>kite</strong> has two pairs of equal sides — but the equal sides are <em>adjacent</em>, not opposite.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>A kite is not a parallelogram, because its opposite sides are neither equal nor parallel.</span></div>
+      <p><strong>So the claim is false.</strong> The correct statement is: if the two pairs of equal sides are <em>opposite</em> pairs, the quadrilateral is a parallelogram.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>To disprove, find one counter-example. To prove, argue in general.</strong> This asymmetry is the single most useful idea about proof.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Structure</h4><p>Statement, reason, statement, reason… then the conclusion.</p></div>
+    <div class="ref-card"><h4>Examples ≠ proof</h4><p>Testing cases never proves a general result.</p></div>
+    <div class="ref-card"><h4>Counter-example</h4><p>One is enough to <em>disprove</em> a claim.</p></div>
+    <div class="ref-card"><h4>Equal lengths?</h4><p>Look for two triangles and prove congruence.</p></div>
+    <div class="ref-card"><h4>Introduce letters</h4><p>Let the unknown angle be $x$, then chase it round.</p></div>
+    <div class="ref-card"><h4>Add a line</h4><p>A parallel line or a diagonal often unlocks the proof.</p></div>
+    <div class="ref-card"><h4>"Hence"</h4><p>You must use the previous part of the question.</p></div>
+    <div class="ref-card"><h4>Standard wording</h4><p>Quote angle facts by their proper names.</p></div>
+    <div class="ref-card"><h4>Finish it</h4><p>End with the statement you were asked to prove, and mark it ∎.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$ABC$ is a straight line. $\angle DBA = 3x$ and $\angle DBC = 2x + 40$. Find $x$, giving a reason.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x + (2x + 40) = 180$ &nbsp;— angles on a straight line add to $180^\circ$.</p>
+          <p>$5x + 40 = 180 \Rightarrow 5x = 140$</p>
+          <p>$x = 28$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Prove that the opposite angles of a parallelogram are equal.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $ABCD$ be a parallelogram with $AB \parallel DC$ and $AD \parallel BC$.</p>
+          <p>$\angle A + \angle B = 180^\circ$ &nbsp;(co-interior angles, $AD \parallel BC$)</p>
+          <p>$\angle B + \angle C = 180^\circ$ &nbsp;(co-interior angles, $AB \parallel DC$)</p>
+          <p>Therefore $\angle A + \angle B = \angle B + \angle C$.</p>
+          <p>Subtracting $\angle B$ from both sides gives $\angle A = \angle C$.</p>
+          <p>The same argument starting from $\angle B$ gives $\angle B = \angle D$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Sam says: "All rectangles are squares." Give a counter-example to show that Sam is wrong.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A rectangle measuring $6$ cm by $2$ cm has four right angles, so it is a rectangle.</p>
+          <p>Its sides are not all equal, so it is not a square.</p>
+          <p>One counter-example is enough to disprove the claim. (The correct statement is the reverse: all squares are rectangles.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>In triangle $PQR$, $PQ = PR$ and $\angle QPR = 2x$. Prove that $\angle PQR = 90 - x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$PQ = PR$, so the triangle is isosceles and $\angle PQR = \angle PRQ$ (base angles of an isosceles triangle).</p>
+          <p>Let each base angle be $y$.</p>
+          <p>$2x + y + y = 180$ &nbsp;(angle sum of a triangle)</p>
+          <p>$2y = 180 - 2x$</p>
+          <p>$y = 90 - x$</p>
+          <p>Therefore $\angle PQR = 90 - x$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Prove that the diagonals of a rhombus bisect each other at right angles.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $ABCD$ be a rhombus with diagonals meeting at $O$. A rhombus is a parallelogram, so its diagonals bisect each other: $AO = OC$ and $BO = OD$.</p>
+          <p>Now consider triangles $AOB$ and $COB$:</p>
+          <p>$AB = CB$ &nbsp;(all sides of a rhombus are equal)</p>
+          <p>$AO = CO$ &nbsp;(diagonals bisect each other)</p>
+          <p>$OB = OB$ &nbsp;(common side)</p>
+          <p>Therefore $\triangle AOB \cong \triangle COB$ (SSS), so $\angle AOB = \angle COB$.</p>
+          <p>These two angles lie on the straight line $AOC$, so they add to $180^\circ$. Being equal, each must be $90^\circ$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Two straight lines $AB$ and $CD$ intersect at $X$. Prove that vertically opposite angles are equal, i.e. $\angle AXC = \angle BXD$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle AXC + \angle CXB = 180^\circ$ &nbsp;(angles on the straight line $AB$)</p>
+          <p>$\angle CXB + \angle BXD = 180^\circ$ &nbsp;(angles on the straight line $CD$)</p>
+          <p>Therefore $\angle AXC + \angle CXB = \angle CXB + \angle BXD$.</p>
+          <p>Subtracting $\angle CXB$ from both sides gives $\angle AXC = \angle BXD$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A regular polygon has $n$ sides. Prove that each interior angle is $\dfrac{(n-2) \times 180}{n}$ degrees, and use this to find the interior angle when $n = 8$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The interior angles of any $n$-sided polygon add to $(n-2)\times 180^\circ$.</p>
+          <p>In a <em>regular</em> polygon all $n$ interior angles are equal, so each one is the total divided by $n$:</p>
+          <p>$$\text{each interior angle} = \frac{(n-2)\times 180}{n}$$</p>
+          <p>When $n = 8$: $\dfrac{6 \times 180}{8} = \dfrac{1080}{8} = 135^\circ$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$ABCD$ is a quadrilateral in which $AB \parallel DC$ and $AB = DC$. Prove that $ABCD$ is a parallelogram.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Draw the diagonal $AC$ and consider triangles $ABC$ and $CDA$.</p>
+          <p>$AB = CD$ &nbsp;(given)</p>
+          <p>$\angle BAC = \angle DCA$ &nbsp;(alternate angles, $AB \parallel DC$)</p>
+          <p>$AC = CA$ &nbsp;(common side)</p>
+          <p>Therefore $\triangle ABC \cong \triangle CDA$ (SAS).</p>
+          <p>Corresponding parts give $BC = DA$, and $\angle BCA = \angle DAC$ — which are alternate angles, so $BC \parallel AD$.</p>
+          <p>Both pairs of opposite sides are parallel and equal, so $ABCD$ is a parallelogram. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>In the diagram, $AB \parallel CD$. $\angle BAE = 4x - 10$ and $\angle DCE = x + 50$, and these are alternate angles. Find $x$ and hence both angles.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Alternate angles are equal, so:</p>
+          <p>$4x - 10 = x + 50$</p>
+          <p>$3x = 60 \Rightarrow x = 20$</p>
+          <p>$\angle BAE = 4(20) - 10 = 70^\circ$</p>
+          <p>$\angle DCE = 20 + 50 = 70^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$ABC$ is an isosceles triangle with $AB = AC$. $D$ is a point on $AB$ and $E$ is a point on $AC$ such that $AD = AE$.</p>
+      <p>(a) Prove that $\triangle ABE \cong \triangle ACD$. &nbsp; (b) Deduce that $BE = CD$. &nbsp; (c) $BE$ and $CD$ meet at $F$. Prove that triangle $FBC$ is isosceles.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $AB = AC$ &nbsp;(given)</p>
+          <p>$\angle BAE = \angle CAD$ &nbsp;(the same angle, $\angle BAC$, shared by both triangles)</p>
+          <p>$AE = AD$ &nbsp;(given)</p>
+          <p>Therefore $\triangle ABE \cong \triangle ACD$ (SAS).</p>
+          <p><strong>(b)</strong> Corresponding sides of congruent triangles are equal, so $BE = CD$. ∎</p>
+          <p><strong>(c)</strong> From the congruence, $\angle ABE = \angle ACD$.</p>
+          <p>Also $\angle ABC = \angle ACB$ &nbsp;(base angles of the isosceles triangle $ABC$).</p>
+          <p>Subtracting: $\angle ABC - \angle ABE = \angle ACB - \angle ACD$, that is $\angle FBC = \angle FCB$.</p>
+          <p>Triangle $FBC$ has two equal angles, so it is isosceles (with $FB = FC$). ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Geometric Reasoning &amp; Proof (G6) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

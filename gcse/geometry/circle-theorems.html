@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Theorems – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .thm { background: #fff; border: 2px solid #7c3aed; border-radius: 10px; margin: 18px 0; overflow: hidden; }
+    .thm-head { background: #7c3aed; color: #fff; padding: 9px 16px; font-weight: 700; font-size: .98rem; }
+    .thm-body { padding: 14px 18px; }
+    .thm-reason { background: #fef3c7; border-radius: 6px; padding: 8px 12px; margin-top: 10px; font-size: .9rem; }
+    .thm-reason strong { color: #92400e; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚪ Circle Theorems</h1>
+  <p>GCSE Maths · Geometry and Measures (G10)</p>
+  <div class="badge">Ages 15–16 · Higher tier</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE EIGHT THEOREMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Eight Theorems</div>
+<div class="section-body">
+
+  <p>There are eight circle theorems to learn. Every one has an exact form of words that must be quoted as your reason — a rough description will not earn the mark.</p>
+
+  <div class="warn">
+    <strong>Learn the wording, not just the picture.</strong> The reason is worth a mark on its own in almost every circle-theorem question.
+  </div>
+
+  <!-- Theorem 1 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 1 — Angle in a semicircle</div>
+    <div class="thm-body">
+      <div class="svg-block">
+        <svg width="260" height="170" viewBox="0 0 260 170" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="130" cy="105" r="75" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+          <line x1="55" y1="105" x2="205" y2="105" stroke="#7c3aed" stroke-width="2.2"/>
+          <circle cx="130" cy="105" r="3.5" fill="#1e1e2e"/>
+          <line x1="55" y1="105" x2="175" y2="42" stroke="#16a34a" stroke-width="2.2"/>
+          <line x1="205" y1="105" x2="175" y2="42" stroke="#16a34a" stroke-width="2.2"/>
+          <rect x="168" y="46" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="2" transform="rotate(28 174 52)"/>
+          <text x="46" y="120" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+          <text x="208" y="120" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">B</text>
+          <text x="180" y="36" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">C</text>
+          <text x="130" y="162" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">AB is a diameter → angle C = 90°</text>
+        </svg>
+      </div>
+      <p>If $AB$ is a <strong>diameter</strong> and $C$ is any other point on the circle, then $\angle ACB = 90^\circ$.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "the angle in a semicircle is $90^\circ$"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 2 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 2 — Angle at the centre</div>
+    <div class="thm-body">
+      <div class="svg-block">
+        <svg width="260" height="200" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="130" cy="105" r="78" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+          <circle cx="130" cy="105" r="3.5" fill="#1e1e2e"/>
+          <text x="134" y="118" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">O</text>
+          <line x1="130" y1="105" x2="68" y2="152" stroke="#7c3aed" stroke-width="2.2"/>
+          <line x1="130" y1="105" x2="192" y2="152" stroke="#7c3aed" stroke-width="2.2"/>
+          <line x1="68" y1="152" x2="130" y2="27" stroke="#16a34a" stroke-width="2.2"/>
+          <line x1="192" y1="152" x2="130" y2="27" stroke="#16a34a" stroke-width="2.2"/>
+          <path d="M 100 128 A 38 38 0 0 0 160 128" fill="none" stroke="#ef4444" stroke-width="2"/>
+          <text x="124" y="148" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">2x</text>
+          <path d="M 118 50 A 28 28 0 0 0 143 51" fill="none" stroke="#d97706" stroke-width="2"/>
+          <text x="124" y="68" font-family="Arial" font-size="12" fill="#92400e" font-weight="bold">x</text>
+          <text x="58" y="170" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+          <text x="196" y="170" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">B</text>
+          <text x="126" y="22" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">C</text>
+          <text x="130" y="192" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Centre angle is twice the circumference angle</text>
+        </svg>
+      </div>
+      <p>The angle subtended at the <strong>centre</strong> is <strong>twice</strong> the angle subtended at the circumference, when both stand on the same arc.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "the angle at the centre is twice the angle at the circumference"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 3 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 3 — Angles in the same segment</div>
+    <div class="thm-body">
+      <div class="svg-block">
+        <svg width="260" height="190" viewBox="0 0 260 190" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="130" cy="100" r="78" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+          <line x1="70" y1="150" x2="190" y2="150" stroke="#7c3aed" stroke-width="2.2"/>
+          <line x1="70" y1="150" x2="90" y2="30" stroke="#16a34a" stroke-width="2"/>
+          <line x1="190" y1="150" x2="90" y2="30" stroke="#16a34a" stroke-width="2"/>
+          <line x1="70" y1="150" x2="175" y2="45" stroke="#d97706" stroke-width="2"/>
+          <line x1="190" y1="150" x2="175" y2="45" stroke="#d97706" stroke-width="2"/>
+          <path d="M 96 47 A 22 22 0 0 0 108 42" fill="none" stroke="#ef4444" stroke-width="2"/>
+          <path d="M 168 60 A 22 22 0 0 0 182 62" fill="none" stroke="#ef4444" stroke-width="2"/>
+          <text x="100" y="60" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">x</text>
+          <text x="170" y="76" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">x</text>
+          <text x="58" y="166" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+          <text x="194" y="166" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">B</text>
+          <text x="130" y="184" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Both angles stand on the same chord AB</text>
+        </svg>
+      </div>
+      <p>Angles in the <strong>same segment</strong>, standing on the same arc, are <strong>equal</strong>.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "angles in the same segment are equal"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 4 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 4 — Cyclic quadrilateral</div>
+    <div class="thm-body">
+      <div class="svg-block">
+        <svg width="260" height="190" viewBox="0 0 260 190" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="130" cy="95" r="78" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+          <polygon points="62,55 175,26 200,120 90,166" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2.2"/>
+          <text x="50" y="50" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+          <text x="180" y="22" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">B</text>
+          <text x="206" y="124" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">C</text>
+          <text x="80" y="180" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">D</text>
+          <text x="130" y="186" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A + C = 180°  and  B + D = 180°</text>
+        </svg>
+      </div>
+      <p>Opposite angles of a <strong>cyclic quadrilateral</strong> (all four vertices on the circle) add to $180^\circ$.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "opposite angles of a cyclic quadrilateral add up to $180^\circ$"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 5 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 5 — Tangent and radius</div>
+    <div class="thm-body">
+      <p>A <strong>tangent</strong> meets the <strong>radius</strong> at the point of contact at $90^\circ$.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "the angle between a tangent and a radius is $90^\circ$"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 6 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 6 — Two tangents</div>
+    <div class="thm-body">
+      <p>The two tangents from an external point are <strong>equal in length</strong>, and the line from that point to the centre bisects the angle between them.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "tangents from an external point are equal"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 7 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 7 — Perpendicular from the centre to a chord</div>
+    <div class="thm-body">
+      <p>The perpendicular from the centre to a chord <strong>bisects</strong> the chord.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "the perpendicular from the centre bisects the chord"</div>
+    </div>
+  </div>
+
+  <!-- Theorem 8 -->
+  <div class="thm">
+    <div class="thm-head">Theorem 8 — Alternate segment theorem</div>
+    <div class="thm-body">
+      <div class="svg-block">
+        <svg width="280" height="210" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="140" cy="100" r="75" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+          <line x1="40" y1="175" x2="240" y2="175" stroke="#16a34a" stroke-width="2.5"/>
+          <circle cx="140" cy="175" r="4" fill="#16a34a"/>
+          <text x="134" y="196" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">T</text>
+          <line x1="140" y1="175" x2="72" y2="132" stroke="#7c3aed" stroke-width="2.2"/>
+          <line x1="72" y1="132" x2="185" y2="38" stroke="#d97706" stroke-width="2.2"/>
+          <line x1="140" y1="175" x2="185" y2="38" stroke="#d97706" stroke-width="2.2"/>
+          <path d="M 112 175 A 28 28 0 0 0 118 159" fill="none" stroke="#ef4444" stroke-width="2"/>
+          <text x="112" y="167" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">x</text>
+          <path d="M 172 52 A 24 24 0 0 0 164 44" fill="none" stroke="#ef4444" stroke-width="2"/>
+          <text x="164" y="66" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">x</text>
+          <text x="60" y="128" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+          <text x="190" y="34" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">B</text>
+          <text x="140" y="208" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Tangent–chord angle = angle in the alternate segment</text>
+        </svg>
+      </div>
+      <p>The angle between a <strong>tangent</strong> and a <strong>chord</strong> equals the angle in the <strong>alternate segment</strong> — the angle subtended by that chord on the other side.</p>
+      <div class="thm-reason"><strong>Reason to write:</strong> "alternate segment theorem"</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PROVING THE THEOREMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Proving the Theorems</div>
+<div class="section-body">
+
+  <p>Higher papers sometimes ask you to <em>prove</em> a circle theorem. Two proofs come up most often.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Proving the angle at the centre theorem</div>
+    <div class="example-body">
+      <p>Prove that the angle at the centre is twice the angle at the circumference.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $A$, $B$ and $C$ be on the circle with centre $O$. Draw the line $CO$ and extend it to a point $D$ on the far side.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$OA = OC$ &nbsp;(radii), so triangle $OAC$ is isosceles. Let $\angle OCA = \angle OAC = a$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle AOD$ is the exterior angle of triangle $OAC$, so $\angle AOD = a + a = 2a$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Similarly $OB = OC$, so let $\angle OCB = \angle OBC = b$, giving $\angle BOD = 2b$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\angle ACB = a + b$ and $\angle AOB = 2a + 2b = 2(a+b)$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Therefore $\angle AOB = 2 \times \angle ACB$ ∎</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Proving the cyclic quadrilateral theorem</div>
+    <div class="example-body">
+      <p>Prove that opposite angles of a cyclic quadrilateral add to $180^\circ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $ABCD$ be a cyclic quadrilateral with centre $O$. Join $OB$ and $OD$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The angle at the centre standing on arc $BCD$ is twice $\angle BAD$ &nbsp;(angle at the centre is twice the angle at the circumference).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The reflex angle at the centre standing on arc $BAD$ is twice $\angle BCD$, for the same reason.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The two angles at $O$ together make a full turn: $2\angle BAD + 2\angle BCD = 360^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Dividing by $2$: $\angle BAD + \angle BCD = 180^\circ$ ∎</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Theorem 1 is a special case of Theorem 2.</strong> If $AB$ is a diameter, the angle at the centre is the straight angle $180^\circ$, so the angle at the circumference is $180 \div 2 = 90^\circ$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – HOW TO SPOT WHICH THEOREM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> How to Spot Which Theorem to Use</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>What you see in the diagram</th><th>Theorem to try</th></tr>
+    <tr><td>A line through the centre (a diameter) with a triangle on it</td><td>Angle in a semicircle $= 90^\circ$</td></tr>
+    <tr><td>An angle at the centre and an angle at the edge on the same arc</td><td>Centre angle is twice the other</td></tr>
+    <tr><td>Two angles "pointing at" the same chord from the same side</td><td>Angles in the same segment are equal</td></tr>
+    <tr><td>A four-sided shape with all corners on the circle</td><td>Opposite angles add to $180^\circ$</td></tr>
+    <tr><td>A straight line touching the circle, with a radius drawn</td><td>Tangent meets radius at $90^\circ$</td></tr>
+    <tr><td>Two lines from one outside point touching the circle</td><td>Equal tangents; a kite is formed</td></tr>
+    <tr><td>A tangent with a chord drawn from the point of contact</td><td>Alternate segment theorem</td></tr>
+    <tr><td>Two radii and a chord</td><td>Isosceles triangle</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Always mark the radii.</strong> If the centre is shown, draw in every radius you can. Each one creates an isosceles triangle, and those often supply the missing step.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WORKED EXAMPLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Worked Examples</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Angle at the centre</div>
+    <div class="example-body">
+      <p>$A$, $B$ and $C$ are on a circle with centre $O$. Angle $AOB = 130^\circ$. Find angle $ACB$, where $C$ is on the major arc.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both angles stand on the same arc $AB$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The angle at the centre is twice the angle at the circumference.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle ACB = 130 \div 2 = 65^\circ$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — The reflex trap</div>
+    <div class="example-body">
+      <p>$P$, $Q$ and $R$ are on a circle with centre $O$. Angle $PRQ = 110^\circ$, where $R$ is on the minor arc. Find the <em>obtuse</em> angle $POQ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The angle at the centre is twice the angle at the circumference: $2 \times 110 = 220^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>But $220^\circ$ is more than $180^\circ$ — this is the <strong>reflex</strong> angle at $O$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The obtuse angle $POQ = 360 - 220 = 140^\circ$</span></div>
+      <div class="warn"><strong>Watch for this.</strong> When the angle at the circumference is obtuse, doubling gives the reflex angle at the centre. Subtract from $360^\circ$ to get the "ordinary" one.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Cyclic quadrilateral with algebra</div>
+    <div class="example-body">
+      <p>In cyclic quadrilateral $ABCD$, $\angle A = 3x + 10$ and $\angle C = 2x + 20$. Find $x$ and both angles.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A$ and $C$ are opposite angles, so they add to $180^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(3x + 10) + (2x + 20) = 180$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5x + 30 = 180 \Rightarrow 5x = 150 \Rightarrow x = 30$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\angle A = 100^\circ$ and $\angle C = 80^\circ$. Check: $100 + 80 = 180$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Multi-step chase</div>
+    <div class="example-body">
+      <p>$AB$ is a diameter of a circle with centre $O$. $C$ is a point on the circle with $\angle CAB = 34^\circ$. Find $\angle CBA$ and $\angle COB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AB$ is a diameter, so $\angle ACB = 90^\circ$ &nbsp;(angle in a semicircle).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Angle sum of triangle $ABC$: $\angle CBA = 180 - 90 - 34 = 56^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>For $\angle COB$: it is the angle at the centre standing on arc $CB$, and $\angle CAB = 34^\circ$ is the angle at the circumference on the same arc.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\angle COB = 2 \times 34 = 68^\circ$</span></div>
+      <p><em>Check:</em> triangle $OCB$ is isosceles ($OC = OB$, radii), so its base angles are $(180-68)\div 2 = 56^\circ$ — matching $\angle CBA$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Alternate segment</div>
+    <div class="example-body">
+      <p>$TA$ is a tangent to a circle at $A$, and $AB$ is a chord. The angle between the tangent and the chord, $\angle TAB$, is $58^\circ$. $C$ is a point in the alternate segment. Find $\angle ACB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The alternate segment theorem says the tangent–chord angle equals the angle in the alternate segment.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\angle ACB = \angle TAB = 58^\circ$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Semicircle</h4><p>Angle in a semicircle is $90^\circ$.</p></div>
+    <div class="ref-card"><h4>Centre</h4><p>Angle at the centre is twice the angle at the circumference.</p></div>
+    <div class="ref-card"><h4>Same segment</h4><p>Angles in the same segment are equal.</p></div>
+    <div class="ref-card"><h4>Cyclic quad</h4><p>Opposite angles add to $180^\circ$.</p></div>
+    <div class="ref-card"><h4>Tangent–radius</h4><p>They meet at $90^\circ$.</p></div>
+    <div class="ref-card"><h4>Two tangents</h4><p>Equal in length; the shape formed is a kite.</p></div>
+    <div class="ref-card"><h4>Chord</h4><p>The perpendicular from the centre bisects it.</p></div>
+    <div class="ref-card"><h4>Alternate segment</h4><p>Tangent–chord angle equals the angle in the alternate segment.</p></div>
+    <div class="ref-card"><h4>Reflex trap</h4><p>Doubling an obtuse circumference angle gives the reflex centre angle.</p></div>
+    <div class="ref-card"><h4>Always</h4><p>Quote the theorem by name as your reason.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$AB$ is a diameter of a circle and $C$ lies on the circle. Angle $ABC = 27^\circ$. Find angle $BAC$, giving reasons.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle ACB = 90^\circ$ — the angle in a semicircle is $90^\circ$.</p>
+          <p>$\angle BAC = 180 - 90 - 27 = 63^\circ$ — angle sum of a triangle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$O$ is the centre of a circle. $A$, $B$ and $C$ are on the circumference with $\angle ACB = 41^\circ$. Find $\angle AOB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle AOB = 2 \times 41 = 82^\circ$</p>
+          <p>Reason: the angle at the centre is twice the angle at the circumference.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>In cyclic quadrilateral $PQRS$, $\angle P = 96^\circ$ and $\angle Q = 71^\circ$. Find $\angle R$ and $\angle S$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle R = 180 - 96 = 84^\circ$ — opposite angles of a cyclic quadrilateral add to $180^\circ$.</p>
+          <p>$\angle S = 180 - 71 = 109^\circ$ — same reason.</p>
+          <p>Check: $96 + 71 + 84 + 109 = 360^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$A$, $B$, $C$ and $D$ lie on a circle. $\angle ACB = 38^\circ$. Find $\angle ADB$, giving a reason.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Both angles stand on the same chord $AB$ and are on the same side of it.</p>
+          <p>$\angle ADB = 38^\circ$ — angles in the same segment are equal.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A tangent touches a circle at $T$. $O$ is the centre and $P$ is a point on the tangent with $\angle TOP = 62^\circ$. Find $\angle TPO$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle OTP = 90^\circ$ — the angle between a tangent and a radius is $90^\circ$.</p>
+          <p>$\angle TPO = 180 - 90 - 62 = 28^\circ$ — angle sum of a triangle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$A$, $B$ and $C$ lie on a circle with centre $O$, and $\angle ACB = 128^\circ$ where $C$ is on the minor arc. Find the obtuse angle $AOB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Angle at the centre $= 2 \times 128 = 256^\circ$ — but this is the reflex angle.</p>
+          <p>Obtuse $\angle AOB = 360 - 256 = 104^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$TA$ and $TB$ are tangents to a circle with centre $O$, touching at $A$ and $B$. $\angle ATB = 46^\circ$. Find (a) $\angle AOB$, (b) $\angle OAB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\angle OAT = \angle OBT = 90^\circ$ (tangent–radius).</p>
+          <p>Angles of quadrilateral $OATB$: $\angle AOB = 360 - 90 - 90 - 46 = 134^\circ$.</p>
+          <p><strong>(b)</strong> $OA = OB$ (radii), so triangle $OAB$ is isosceles.</p>
+          <p>$\angle OAB = (180 - 134) \div 2 = 46 \div 2 = 23^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A tangent at $A$ makes an angle of $73^\circ$ with the chord $AB$. $C$ is a point in the alternate segment. Find $\angle ACB$, and find $\angle ABC$ given that $\angle BAC = 55^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle ACB = 73^\circ$ — alternate segment theorem.</p>
+          <p>Angle sum of triangle $ABC$: $\angle ABC = 180 - 73 - 55 = 52^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$AB$ is a diameter of a circle with centre $O$. $C$ and $D$ lie on the circle, on the same side of $AB$. $\angle CAB = 25^\circ$ and $\angle DAB = 61^\circ$.</p>
+      <p>(a) Find $\angle ACB$. &nbsp; (b) Find $\angle ADB$. &nbsp; (c) Find $\angle CBD$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\angle ACB = 90^\circ$ — angle in a semicircle.</p>
+          <p><strong>(b)</strong> $\angle ADB = 90^\circ$ — same reason ($AB$ is still the diameter).</p>
+          <p><strong>(c)</strong> In triangle $ABC$: $\angle ABC = 180 - 90 - 25 = 65^\circ$.</p>
+          <p>In triangle $ABD$: $\angle ABD = 180 - 90 - 61 = 29^\circ$.</p>
+          <p>$C$ and $D$ are on the same side, so $\angle CBD = 65 - 29 = 36^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$A$, $B$, $C$ and $D$ lie on a circle with centre $O$. $TA$ is a tangent at $A$. $\angle TAB = 64^\circ$ and $\angle ADC = 118^\circ$.</p>
+      <p>(a) Find $\angle ACB$, with a reason. &nbsp; (b) Find $\angle ABC$. &nbsp; (c) Find the reflex angle $AOC$. &nbsp; (d) Find $\angle BAC$ given that $\angle ABC$ is the angle you found in (b) and $\angle ACB$ is from (a).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\angle ACB = \angle TAB = 64^\circ$ — alternate segment theorem.</p>
+          <p><strong>(b)</strong> $ABCD$ is a cyclic quadrilateral, so opposite angles add to $180^\circ$:</p>
+          <p>$\angle ABC = 180 - 118 = 62^\circ$.</p>
+          <p><strong>(c)</strong> $\angle ABC = 62^\circ$ is the angle at the circumference standing on arc $ADC$.</p>
+          <p>The angle at the centre on the same arc is $2 \times 62 = 124^\circ$ — this is the <em>non-reflex</em> $\angle AOC$ measured through $D$'s side.</p>
+          <p>So the reflex angle $AOC = 360 - 124 = 236^\circ$.</p>
+          <p><strong>(d)</strong> In triangle $ABC$: $\angle BAC = 180 - 64 - 62 = 54^\circ$ — angle sum of a triangle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Circle Theorems (G10) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

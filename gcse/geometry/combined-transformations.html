@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined Transformations and Invariance – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔁 Combined Transformations and Invariance</h1>
+  <p>GCSE Maths · Geometry and Measures (G8)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – DOING TWO IN A ROW
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Doing Two Transformations in a Row</div>
+<div class="section-body">
+
+  <p>When one transformation is followed by another, the result can very often be achieved by a <strong>single</strong> transformation instead. Finding that single transformation is the standard exam question.</p>
+
+  <ul class="steps">
+    <li>Apply the first transformation to get the intermediate shape. Label it clearly.</li>
+    <li>Apply the second transformation to get the final image.</li>
+    <li>Now <strong>ignore the middle shape completely</strong> and compare only the original with the final image.</li>
+    <li>Check the size: same size means translation, reflection or rotation. Different size means enlargement.</li>
+    <li>Check the orientation: has the shape been flipped over, or just turned?</li>
+    <li>Describe the single transformation fully.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>The order matters.</strong> Doing transformation $A$ then $B$ usually gives a different result from doing $B$ then $A$. Read the question carefully to see which comes first.
+  </div>
+
+  <div class="tip">
+    <strong>The key diagnostic question:</strong> "has the shape been turned over?"<br>
+    • Not turned over → it is a translation, a rotation, or an enlargement.<br>
+    • Turned over (mirror image) → it involves a reflection.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TWO REFLECTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Two Reflections</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two key results</div>
+    Two reflections in <strong>parallel</strong> mirrors $=$ a <strong>translation</strong><br>
+    Two reflections in <strong>intersecting</strong> mirrors $=$ a <strong>rotation</strong> about the crossing point
+  </div>
+
+  <div class="concept">
+    <strong>Parallel mirrors.</strong> If the mirrors are a distance $d$ apart, the translation moves the shape $2d$, perpendicular to the mirrors, in the direction from the first mirror to the second.<br><br>
+    <strong>Intersecting mirrors.</strong> If the mirrors meet at an angle $\theta$, the rotation is through $2\theta$ about the point where they cross.
+  </div>
+
+  <div class="svg-block">
+    <svg width="540" height="200" viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="130" y="18" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Parallel mirrors → translation</text>
+      <line x1="90" y1="35" x2="90" y2="170" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+      <line x1="160" y1="35" x2="160" y2="170" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+      <polygon points="30,150 60,150 30,110" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="120,150 150,150 150,110" fill="#e9d5ff" stroke="#7c3aed" stroke-width="1.6" opacity=".7"/>
+      <polygon points="170,150 200,150 170,110" fill="#bbf7d0" stroke="#22c55e" stroke-width="2"/>
+      <text x="125" y="188" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">distance d apart → moves 2d</text>
+
+      <text x="400" y="18" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Intersecting mirrors → rotation</text>
+      <line x1="310" y1="120" x2="490" y2="120" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+      <line x1="340" y1="175" x2="460" y2="60" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+      <circle cx="400" cy="120" r="4" fill="#1e1e2e"/>
+      <polygon points="415,110 450,105 440,85" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.8"/>
+      <polygon points="380,132 348,143 356,160" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.8"/>
+      <path d="M 435 120 A 35 35 0 0 0 424 96" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <text x="440" y="112" font-family="Arial" font-size="11" fill="#6d28d9">θ</text>
+      <text x="400" y="192" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">angle θ between mirrors → rotation of 2θ</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reflections in two parallel lines</div>
+    <div class="example-body">
+      <p>A shape is reflected in the line $x = 1$, and the image is then reflected in the line $x = 5$. Describe the single transformation equivalent to this pair.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The mirrors are parallel (both vertical), a distance $5 - 1 = 4$ apart.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Two parallel reflections give a translation of $2 \times 4 = 8$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The direction is from the first mirror towards the second — that is, to the right.</span></div>
+      <p><strong>A translation by $\begin{pmatrix} 8 \\ 0 \end{pmatrix}$.</strong></p>
+      <p><em>Check with a point:</em> $(3, 2)$ reflects in $x=1$ to $(-1, 2)$, which reflects in $x=5$ to $(11, 2)$. That is $8$ to the right ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reflections in two perpendicular axes</div>
+    <div class="example-body">
+      <p>A shape is reflected in the $x$-axis and then in the $y$-axis. Describe the single equivalent transformation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take a general point $(x,\ y)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Reflect in the $x$-axis: $(x,\ -y)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Reflect that in the $y$-axis: $(-x,\ -y)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$(x,y) \to (-x,-y)$ is the rule for a $180^\circ$ rotation about the origin.</span></div>
+      <p><strong>A rotation of $180^\circ$ about the origin $(0,\ 0)$.</strong></p>
+      <p>This matches the rule: the mirrors meet at $90^\circ$, and $2 \times 90 = 180^\circ$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – OTHER COMBINATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Other Combinations</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>First</th><th>Then</th><th>Single equivalent</th></tr>
+    <tr><td>Translation</td><td>Translation</td><td>A translation — add the two vectors</td></tr>
+    <tr><td>Rotation about $P$</td><td>Rotation about the same $P$</td><td>A rotation about $P$ — add the angles</td></tr>
+    <tr><td>Reflection</td><td>Reflection (parallel mirrors)</td><td>A translation</td></tr>
+    <tr><td>Reflection</td><td>Reflection (intersecting mirrors)</td><td>A rotation about the crossing point</td></tr>
+    <tr><td>Enlargement SF $a$</td><td>Enlargement SF $b$, same centre</td><td>An enlargement, SF $a \times b$</td></tr>
+    <tr><td>Rotation</td><td>Translation</td><td>Usually a rotation through the same angle, about a different centre</td></tr>
+    <tr><td>Reflection</td><td>Translation parallel to the mirror</td><td>A "glide reflection" — not a single named GCSE transformation</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Two translations</div>
+    <div class="example-body">
+      <p>A shape is translated by $\begin{pmatrix} 4 \\ -3 \end{pmatrix}$ and then by $\begin{pmatrix} -1 \\ 7 \end{pmatrix}$. Find the single equivalent translation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Add the components: $4 + (-1) = 3$ and $-3 + 7 = 4$.</span></div>
+      <p><strong>A translation by $\begin{pmatrix} 3 \\ 4 \end{pmatrix}$.</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Two rotations about the same centre</div>
+    <div class="example-body">
+      <p>A shape is rotated $70^\circ$ clockwise about the origin, then $160^\circ$ clockwise about the origin. Describe the single equivalent transformation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total turn $= 70 + 160 = 230^\circ$ clockwise.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Angles over $180^\circ$ are usually re-expressed the other way round: $360 - 230 = 130^\circ$.</span></div>
+      <p><strong>A rotation of $130^\circ$ anticlockwise about the origin</strong> (equivalently $230^\circ$ clockwise).</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Reflection then reflection in $y=x$ and the $x$-axis</div>
+    <div class="example-body">
+      <p>A shape is reflected in the line $y = x$ and then in the $x$-axis. Describe the single equivalent transformation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Start with $(x,\ y)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Reflect in $y = x$: swap coordinates → $(y,\ x)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Reflect in the $x$-axis: change the sign of the second coordinate → $(y,\ -x)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$(x,y) \to (y,-x)$ is a rotation of $90^\circ$ <em>clockwise</em> about the origin.</span></div>
+      <p><strong>A rotation of $90^\circ$ clockwise about $(0,\ 0)$.</strong></p>
+      <p>Check with the mirror rule: $y = x$ and the $x$-axis meet at $45^\circ$, and $2 \times 45 = 90^\circ$ ✓</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>The reliable method:</strong> track a general point $(x,\ y)$ through both transformations algebraically. The final rule tells you exactly what the single transformation is.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – INVARIANCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Invariance — What Stays the Same</div>
+<div class="section-body">
+
+  <p>Something is <strong>invariant</strong> under a transformation if it does not change.</p>
+
+  <table>
+    <tr><th>Property</th><th>Translation</th><th>Reflection</th><th>Rotation</th><th>Enlargement</th></tr>
+    <tr><td>Side lengths</td><td>Same</td><td>Same</td><td>Same</td><td>$\times k$</td></tr>
+    <tr><td>Angles</td><td>Same</td><td>Same</td><td>Same</td><td>Same</td></tr>
+    <tr><td>Area</td><td>Same</td><td>Same</td><td>Same</td><td>$\times k^2$</td></tr>
+    <tr><td>Orientation (way round)</td><td>Same</td><td><strong>Reversed</strong></td><td>Same</td><td>Same (reversed if $k \lt 0$)</td></tr>
+    <tr><td>Parallel lines stay parallel</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Congruent to the original?</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Angles are invariant under all four transformations.</strong> That is why an enlarged shape is <em>similar</em> to the original — same angles, different size.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – INVARIANT POINTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Invariant Points</div>
+<div class="section-body">
+
+  <p>An <strong>invariant point</strong> is a point that does not move — its image is exactly where it started.</p>
+
+  <table>
+    <tr><th>Transformation</th><th>Invariant points</th></tr>
+    <tr><td>Translation (non-zero vector)</td><td><strong>None</strong> — everything moves</td></tr>
+    <tr><td>Reflection</td><td>Every point <strong>on the mirror line</strong></td></tr>
+    <tr><td>Rotation</td><td>Only the <strong>centre of rotation</strong></td></tr>
+    <tr><td>Enlargement ($k \neq 1$)</td><td>Only the <strong>centre of enlargement</strong></td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Counting invariant points on a shape</div>
+    <div class="example-body">
+      <p>A rectangle has vertices $(1,\ 2)$, $(5,\ 2)$, $(5,\ 4)$ and $(1,\ 4)$. It is reflected in the line $y = 2$. How many of its vertices are invariant?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Under a reflection, invariant points are exactly those lying on the mirror line.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The mirror is $y = 2$. Which vertices have $y = 2$?</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(1,\ 2)$ ✓ and $(5,\ 2)$ ✓. The other two have $y = 4$.</span></div>
+      <p><strong>Two invariant vertices.</strong></p>
+      <p>(In fact the whole edge joining them is invariant — every point on it stays put.)</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Choosing the mirror line</div>
+    <div class="example-body">
+      <p>Triangle $T$ has vertices $(2,\ 1)$, $(6,\ 1)$ and $(2,\ 5)$. Find a reflection under which exactly one vertex of $T$ is invariant.</p>
+      <div class="step-row"><span class="arrow">①</span><span>We need a mirror line that passes through exactly one of the three vertices.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The line $x = 6$ passes through $(6,\ 1)$ only — the other two have $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check: $(2,1) \to (10,1)$, $(2,5) \to (10,5)$, and $(6,1)$ stays put.</span></div>
+      <p><strong>A reflection in $x = 6$ leaves exactly one vertex invariant.</strong></p>
+      <p><em>Another valid answer:</em> $y = 5$, which passes only through $(2,\ 5)$.</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>An invariant <em>point</em> is not the same as an invariant <em>shape</em>.</strong> A square rotated $90^\circ$ about its centre lands exactly on itself — the shape as a whole is invariant — but only the centre point has not moved.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Method</h4><p>Do both, then ignore the middle shape and compare start with finish.</p></div>
+    <div class="ref-card"><h4>Order matters</h4><p>$A$ then $B$ is generally not the same as $B$ then $A$.</p></div>
+    <div class="ref-card"><h4>Parallel mirrors</h4><p>Give a translation of $2d$, where $d$ is the gap.</p></div>
+    <div class="ref-card"><h4>Intersecting mirrors</h4><p>Give a rotation of $2\theta$ about the crossing point.</p></div>
+    <div class="ref-card"><h4>Two translations</h4><p>Add the vectors.</p></div>
+    <div class="ref-card"><h4>Two rotations</h4><p>Same centre: add the angles.</p></div>
+    <div class="ref-card"><h4>Algebraic check</h4><p>Track $(x,y)$ through both steps; the final rule names the transformation.</p></div>
+    <div class="ref-card"><h4>Always invariant</h4><p>Angles, under every one of the four transformations.</p></div>
+    <div class="ref-card"><h4>Invariant points</h4><p>Mirror line; centre of rotation; centre of enlargement; none for a translation.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A shape is translated by $\begin{pmatrix} -2 \\ 5 \end{pmatrix}$ and then by $\begin{pmatrix} 7 \\ -9 \end{pmatrix}$. Find the single equivalent translation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Add the components: $-2 + 7 = 5$ and $5 + (-9) = -4$.</p>
+          <p><strong>A translation by $\begin{pmatrix} 5 \\ -4 \end{pmatrix}$.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A shape is reflected in the $y$-axis and then in the $x$-axis. Describe the single equivalent transformation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x,\ y) \to (-x,\ y) \to (-x,\ -y)$</p>
+          <p>The rule $(x,y) \to (-x,-y)$ is a <strong>rotation of $180^\circ$ about the origin</strong>.</p>
+          <p>(The mirrors meet at $90^\circ$, and $2 \times 90 = 180^\circ$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A shape is reflected in $y = 2$ and then in $y = 6$. Describe the single equivalent transformation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The mirrors are parallel (both horizontal), $6 - 2 = 4$ apart.</p>
+          <p>Translation distance $= 2 \times 4 = 8$, in the direction from the first mirror to the second, i.e. upwards.</p>
+          <p><strong>A translation by $\begin{pmatrix} 0 \\ 8 \end{pmatrix}$.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>How many invariant points are there when a triangle with vertices $(0,\ 0)$, $(4,\ 0)$ and $(0,\ 3)$ is reflected in the $x$-axis?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Invariant points under a reflection are those on the mirror line, here $y = 0$.</p>
+          <p>$(0,\ 0)$ has $y = 0$ ✓; $(4,\ 0)$ has $y = 0$ ✓; $(0,\ 3)$ does not.</p>
+          <p><strong>Two invariant vertices</strong> — and in fact the whole side joining them is invariant.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A shape is enlarged by scale factor $3$ about the origin, then by scale factor $\tfrac{1}{2}$ about the origin. Describe the single equivalent transformation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiply the scale factors: $3 \times \tfrac{1}{2} = 1.5$.</p>
+          <p><strong>An enlargement of scale factor $1.5$, centre the origin.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A shape is rotated $90^\circ$ clockwise about the origin and then reflected in the $x$-axis. Find the single equivalent transformation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$90^\circ$ clockwise: $(x,\ y) \to (y,\ -x)$</p>
+          <p>Reflect in the $x$-axis: $(y,\ -x) \to (y,\ x)$</p>
+          <p>The rule $(x,y) \to (y,x)$ is a <strong>reflection in the line $y = x$</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Under which transformations is the area of a shape invariant? Explain your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area is invariant under <strong>translation, reflection and rotation</strong>, because these all produce a congruent image — the shape is moved but never resized.</p>
+          <p>Area is <em>not</em> invariant under an enlargement (unless the scale factor is $1$ or $-1$): lengths are multiplied by $k$, so area is multiplied by $k^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Square $S$ has vertices $(1,\ 1)$, $(3,\ 1)$, $(3,\ 3)$ and $(1,\ 3)$. It is rotated $90^\circ$ anticlockwise about $(2,\ 2)$. Describe what happens to the square, and state the invariant points.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(2,\ 2)$ is the centre of the square, so rotating $90^\circ$ about it maps the square exactly onto itself — each vertex moves round to the next one.</p>
+          <p>The <strong>shape as a whole is invariant</strong>, but the only <strong>invariant point</strong> is the centre $(2,\ 2)$: every other point has moved.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A shape is reflected in the line $y = x$ and then in the $y$-axis. Use algebra to find the single equivalent transformation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Reflect in $y = x$: $(x,\ y) \to (y,\ x)$</p>
+          <p>Reflect in the $y$-axis (change the sign of the first coordinate): $(y,\ x) \to (-y,\ x)$</p>
+          <p>The rule $(x,y) \to (-y,\ x)$ is a <strong>rotation of $90^\circ$ anticlockwise about the origin</strong>.</p>
+          <p><em>Check with the mirror rule:</em> $y = x$ and the $y$-axis meet at $45^\circ$, and $2 \times 45 = 90^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Triangle $A$ has vertices $(1,\ 1)$, $(3,\ 1)$ and $(1,\ 2)$.</p>
+      <p>(a) Reflect $A$ in the $y$-axis to give $B$; write down $B$'s vertices.<br>(b) Translate $B$ by $\begin{pmatrix} 0 \\ -4 \end{pmatrix}$ to give $C$; write down $C$'s vertices.<br>(c) Describe fully the single transformation mapping $A$ to $C$, or explain why no single named transformation does it.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Reflecting in the $y$-axis changes the sign of $x$:</p>
+          <p>$B$: $(-1,\ 1)$, $(-3,\ 1)$, $(-1,\ 2)$</p>
+          <p><strong>(b)</strong> Subtract $4$ from each $y$:</p>
+          <p>$C$: $(-1,\ -3)$, $(-3,\ -3)$, $(-1,\ -2)$</p>
+          <p><strong>(c)</strong> Compare $A$ and $C$. The triangle has been turned over (a reflection is involved) and also shifted, so it is not a pure reflection, rotation or translation.</p>
+          <p>Test a reflection: a single mirror would need to be the perpendicular bisector of every join. $(1,1) \to (-1,-3)$ has midpoint $(0,-1)$; $(3,1)\to(-3,-3)$ has midpoint $(0,-1)$; but $(1,2)\to(-1,-2)$ has midpoint $(0,0)$. The midpoints differ, so no single mirror works.</p>
+          <p>Test a rotation of $180^\circ$ about $(0,-1)$: that maps $(1,1)\to(-1,-3)$ ✓ and $(3,1)\to(-3,-3)$ ✓ but $(1,2)\to(-1,-4)$ ✗.</p>
+          <p><strong>Conclusion:</strong> the combination is a <em>glide reflection</em> — a reflection followed by a translation parallel to the mirror. This is not one of the four named GCSE transformations, so no single one describes it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Combined Transformations &amp; Invariance (G8) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

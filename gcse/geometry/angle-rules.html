@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angle Rules and Polygons – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 Angle Rules and Polygons</h1>
+  <p>GCSE Maths · Geometry and Measures (G3)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – BASIC ANGLE FACTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Basic Angle Facts</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Learn these four</div>
+    Angles on a straight line add to $180^\circ$<br>
+    Angles at a point add to $360^\circ$<br>
+    Vertically opposite angles are equal<br>
+    Angles in a triangle add to $180^\circ$
+  </div>
+
+  <div class="svg-block">
+    <svg width="560" height="170" viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
+      <!-- straight line -->
+      <text x="90" y="18" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">On a straight line</text>
+      <line x1="20" y1="110" x2="165" y2="110" stroke="#1e1e2e" stroke-width="2.5"/>
+      <line x1="92" y1="110" x2="130" y2="45" stroke="#7c3aed" stroke-width="2.5"/>
+      <path d="M 62 110 A 30 30 0 0 0 77 84" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 122 110 A 30 30 0 0 0 108 82" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="66" y="98" font-family="Arial" font-size="12" fill="#ef4444">a</text>
+      <text x="112" y="100" font-family="Arial" font-size="12" fill="#16a34a">b</text>
+      <text x="90" y="145" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">a + b = 180°</text>
+
+      <!-- at a point -->
+      <text x="280" y="18" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">At a point</text>
+      <circle cx="280" cy="90" r="3.5" fill="#1e1e2e"/>
+      <line x1="280" y1="90" x2="350" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="280" y1="90" x2="235" y2="35" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="280" y1="90" x2="215" y2="115" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="280" y1="90" x2="300" y2="150" stroke="#7c3aed" stroke-width="2.5"/>
+      <text x="280" y="145" font-family="Arial" font-size="11" fill="#555" text-anchor="middle" transform="translate(0,18)">all angles add to 360°</text>
+
+      <!-- vertically opposite -->
+      <text x="465" y="18" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Vertically opposite</text>
+      <line x1="400" y1="45" x2="530" y2="135" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="400" y1="135" x2="530" y2="45" stroke="#7c3aed" stroke-width="2.5"/>
+      <path d="M 442 74 A 40 40 0 0 0 442 106" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 488 106 A 40 40 0 0 0 488 74" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="437" y="95" font-family="Arial" font-size="12" fill="#ef4444">x</text>
+      <text x="488" y="95" font-family="Arial" font-size="12" fill="#ef4444">x</text>
+      <text x="465" y="163" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">the X-shape gives equal pairs</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Angles at a point</div>
+    <div class="example-body">
+      <p>Four angles meet at a point. Three of them are $85^\circ$, $112^\circ$ and $63^\circ$. Find the fourth.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Angles at a point add to $360^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$85 + 112 + 63 = 260$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Fourth angle $= 360 - 260 = 100^\circ$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using algebra</div>
+    <div class="example-body">
+      <p>Angles on a straight line are $(3x + 10)^\circ$, $(2x)^\circ$ and $(x + 20)^\circ$. Find $x$ and hence the largest angle.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(3x + 10) + 2x + (x + 20) = 180$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$6x + 30 = 180$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$6x = 150 \Rightarrow x = 25$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Angles: $3(25)+10 = 85^\circ$, $2(25) = 50^\circ$, $25 + 20 = 45^\circ$.</span></div>
+      <p>Largest angle $= 85^\circ$. Check: $85 + 50 + 45 = 180$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PARALLEL LINES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Angles in Parallel Lines</div>
+<div class="section-body">
+
+  <p>When a straight line (a <strong>transversal</strong>) crosses a pair of parallel lines, three special relationships appear.</p>
+
+  <table>
+    <tr><th>Name</th><th>Shape to look for</th><th>Rule</th></tr>
+    <tr><td><strong>Alternate</strong></td><td>Z</td><td>Equal</td></tr>
+    <tr><td><strong>Corresponding</strong></td><td>F</td><td>Equal</td></tr>
+    <tr><td><strong>Co-interior</strong> (allied)</td><td>C or U</td><td>Add to $180^\circ$</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="380" height="250" viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="80" x2="350" y2="80" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="30" y1="180" x2="350" y2="180" stroke="#4f46e5" stroke-width="2.5"/>
+      <path d="M180 74 l9 6 l-9 6" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M180 174 l9 6 l-9 6" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="250" y1="35" x2="110" y2="225" stroke="#7c3aed" stroke-width="2.5"/>
+      <circle cx="217" cy="80" r="4" fill="#1e1e2e"/>
+      <circle cx="143" cy="180" r="4" fill="#1e1e2e"/>
+      <text x="226" y="66" font-family="Arial" font-size="13" fill="#ef4444" font-weight="bold">a</text>
+      <text x="192" y="70" font-family="Arial" font-size="13" fill="#16a34a" font-weight="bold">b</text>
+      <text x="196" y="100" font-family="Arial" font-size="13" fill="#d97706" font-weight="bold">c</text>
+      <text x="232" y="100" font-family="Arial" font-size="13" fill="#2563eb" font-weight="bold">d</text>
+      <text x="152" y="166" font-family="Arial" font-size="13" fill="#2563eb" font-weight="bold">e</text>
+      <text x="118" y="170" font-family="Arial" font-size="13" fill="#d97706" font-weight="bold">f</text>
+      <text x="120" y="200" font-family="Arial" font-size="13" fill="#16a34a" font-weight="bold">g</text>
+      <text x="154" y="200" font-family="Arial" font-size="13" fill="#ef4444" font-weight="bold">h</text>
+      <text x="190" y="240" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Same colour = equal angle</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    In the diagram above:<br>
+    • <strong>Corresponding</strong> (F-shape): $a = e$, $b = f$, $c = g$, $d = h$<br>
+    • <strong>Alternate</strong> (Z-shape): $c = e$ and $d = f$ (both between the parallel lines, on opposite sides)<br>
+    • <strong>Co-interior</strong> (C-shape): $c + f = 180^\circ$ and $d + e = 180^\circ$
+  </div>
+
+  <div class="warn">
+    <strong>The lines must actually be parallel</strong> — look for the matching arrows. Without them, none of these rules applies.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A parallel-line chase</div>
+    <div class="example-body">
+      <p>Two parallel lines are crossed by a transversal. One angle is $118^\circ$. Find the co-interior angle and the corresponding angle.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Corresponding angles are equal, so the corresponding angle is $118^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Co-interior angles add to $180^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Co-interior angle $= 180 - 118 = 62^\circ$.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>If you get stuck</strong> on a parallel-line problem, draw an extra line through the awkward point parallel to the given pair. It turns one hard angle into two easy alternate angles.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TRIANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Angles in Triangles</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Two essential facts</div>
+    Angle sum of a triangle $= 180^\circ$<br>
+    Exterior angle $=$ sum of the two opposite interior angles
+  </div>
+
+  <div class="svg-block">
+    <svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,140 250,140 150,45" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="250" y1="140" x2="340" y2="140" stroke="#4f46e5" stroke-width="2.5" stroke-dasharray="6,4"/>
+      <path d="M 88 140 A 28 28 0 0 0 78 122" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <path d="M 222 140 A 28 28 0 0 0 231 121" fill="none" stroke="#16a34a" stroke-width="2"/>
+      <path d="M 137 58 A 20 20 0 0 0 164 59" fill="none" stroke="#d97706" stroke-width="2"/>
+      <path d="M 264 140 A 14 14 0 0 0 259 130" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <text x="80" y="132" font-family="Arial" font-size="13" fill="#ef4444" font-weight="bold">a</text>
+      <text x="228" y="132" font-family="Arial" font-size="13" fill="#16a34a" font-weight="bold">b</text>
+      <text x="146" y="76" font-family="Arial" font-size="13" fill="#d97706" font-weight="bold">c</text>
+      <text x="266" y="128" font-family="Arial" font-size="13" fill="#7c3aed" font-weight="bold">e</text>
+      <text x="200" y="170" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">a + b + c = 180°  and  e = a + c</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>Why the exterior angle rule works.</strong> $b + e = 180^\circ$ (angles on a straight line) and $a + b + c = 180^\circ$ (angle sum). Setting these equal gives $b + e = a + b + c$, so $e = a + c$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Isosceles triangle</div>
+    <div class="example-body">
+      <p>An isosceles triangle has an apex angle of $34^\circ$. Find the base angles.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The two base angles are equal. Call each $x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$34 + x + x = 180$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2x = 146 \Rightarrow x = 73^\circ$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Two possible answers.</strong> If a question says "an isosceles triangle has an angle of $40^\circ$", that $40^\circ$ could be the apex (giving base angles $70^\circ$, $70^\circ$) or a base angle (giving $40^\circ$, $40^\circ$, $100^\circ$). Check whether the question tells you which.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – POLYGON ANGLE SUMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Interior Angles of a Polygon</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Interior angle sum</div>
+    $\text{sum} = (n - 2) \times 180^\circ$ &nbsp; for a polygon with $n$ sides
+  </div>
+
+  <div class="concept">
+    <strong>Why?</strong> Pick one vertex and draw every diagonal from it. This splits an $n$-sided polygon into exactly $n - 2$ triangles, and each triangle contributes $180^\circ$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,90 100,30 180,30 220,90 140,155" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="60" y1="90" x2="180" y2="30" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5,3"/>
+      <line x1="60" y1="90" x2="220" y2="90" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5,3"/>
+      <text x="118" y="58" font-family="Arial" font-size="12" fill="#7c3aed">1</text>
+      <text x="160" y="66" font-family="Arial" font-size="12" fill="#7c3aed">2</text>
+      <text x="140" y="115" font-family="Arial" font-size="12" fill="#7c3aed">3</text>
+      <text x="300" y="80" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Pentagon: n = 5</text>
+      <text x="300" y="102" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">5 − 2 = 3 triangles</text>
+      <text x="300" y="124" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">3 × 180° = 540°</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Sides $n$</th><th>Name</th><th>Interior sum</th><th>Each interior angle if regular</th></tr>
+    <tr><td>$3$</td><td>Triangle</td><td>$180^\circ$</td><td>$60^\circ$</td></tr>
+    <tr><td>$4$</td><td>Quadrilateral</td><td>$360^\circ$</td><td>$90^\circ$</td></tr>
+    <tr><td>$5$</td><td>Pentagon</td><td>$540^\circ$</td><td>$108^\circ$</td></tr>
+    <tr><td>$6$</td><td>Hexagon</td><td>$720^\circ$</td><td>$120^\circ$</td></tr>
+    <tr><td>$8$</td><td>Octagon</td><td>$1080^\circ$</td><td>$135^\circ$</td></tr>
+    <tr><td>$10$</td><td>Decagon</td><td>$1440^\circ$</td><td>$144^\circ$</td></tr>
+    <tr><td>$12$</td><td>Dodecagon</td><td>$1800^\circ$</td><td>$150^\circ$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – EXTERIOR ANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Exterior Angles of a Polygon</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The most useful polygon fact</div>
+    The exterior angles of <strong>any</strong> polygon add to $360^\circ$<br>
+    For a <strong>regular</strong> $n$-gon: &nbsp;each exterior angle $= \dfrac{360^\circ}{n}$
+  </div>
+
+  <div class="concept">
+    <strong>Why $360^\circ$?</strong> Imagine walking all the way round the outside of the polygon. At each corner you turn through the exterior angle. When you arrive back at the start facing the original direction, you have turned through exactly one full circle.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The link between the two</div>
+    interior angle $+$ exterior angle $= 180^\circ$ &nbsp;(they lie on a straight line)
+  </div>
+
+  <div class="tip">
+    <strong>Nearly always use the exterior angle first.</strong> Finding $360 \div n$ and subtracting from $180$ is quicker and safer than $(n-2)\times 180 \div n$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding an interior angle</div>
+    <div class="example-body">
+      <p>Find each interior angle of a regular polygon with $15$ sides.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Exterior angle $= 360 \div 15 = 24^\circ$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Interior angle $= 180 - 24 = 156^\circ$</span></div>
+      <p><em>Check:</em> $(15-2)\times 180 = 2340^\circ$; $2340 \div 15 = 156^\circ$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Working backwards to find $n$</div>
+    <div class="example-body">
+      <p>A regular polygon has interior angles of $162^\circ$. How many sides does it have?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Exterior angle $= 180 - 162 = 18^\circ$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = 360 \div 18 = 20$</span></div>
+      <p><strong>The polygon has $20$ sides.</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — An irregular polygon</div>
+    <div class="example-body">
+      <p>A hexagon has five interior angles of $110^\circ$, $135^\circ$, $98^\circ$, $142^\circ$ and $121^\circ$. Find the sixth.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Interior sum $= (6-2) \times 180 = 720^\circ$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$110 + 135 + 98 + 142 + 121 = 606$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Sixth angle $= 720 - 606 = 114^\circ$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – TESSELLATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Why Only Some Shapes Tessellate</div>
+<div class="section-body">
+
+  <p>Shapes <strong>tessellate</strong> when they fit together with no gaps and no overlaps. For regular polygons this happens only when the interior angle divides exactly into $360^\circ$.</p>
+
+  <table>
+    <tr><th>Regular shape</th><th>Interior angle</th><th>$360 \div$ angle</th><th>Tessellates?</th></tr>
+    <tr><td>Triangle</td><td>$60^\circ$</td><td>$6$</td><td>Yes</td></tr>
+    <tr><td>Square</td><td>$90^\circ$</td><td>$4$</td><td>Yes</td></tr>
+    <tr><td>Pentagon</td><td>$108^\circ$</td><td>$3.33\ldots$</td><td>No</td></tr>
+    <tr><td>Hexagon</td><td>$120^\circ$</td><td>$3$</td><td>Yes</td></tr>
+    <tr><td>Octagon</td><td>$135^\circ$</td><td>$2.66\ldots$</td><td>No</td></tr>
+  </table>
+
+  <div class="concept">
+    Only the equilateral triangle, the square and the regular hexagon tessellate on their own. That is why honeycombs and floor tiles use those shapes.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Straight line</h4><p>Angles add to $180^\circ$.</p></div>
+    <div class="ref-card"><h4>At a point</h4><p>Angles add to $360^\circ$.</p></div>
+    <div class="ref-card"><h4>Vertically opposite</h4><p>Equal — the X-shape.</p></div>
+    <div class="ref-card"><h4>Alternate (Z)</h4><p>Equal.</p></div>
+    <div class="ref-card"><h4>Corresponding (F)</h4><p>Equal.</p></div>
+    <div class="ref-card"><h4>Co-interior (C)</h4><p>Add to $180^\circ$.</p></div>
+    <div class="ref-card"><h4>Triangle</h4><p>Sum $180^\circ$; exterior $=$ sum of the two opposite interior angles.</p></div>
+    <div class="ref-card"><h4>Polygon interior</h4><p>Sum $= (n-2)\times 180^\circ$.</p></div>
+    <div class="ref-card"><h4>Polygon exterior</h4><p>Sum $= 360^\circ$; each one is $\dfrac{360}{n}$ if regular.</p></div>
+    <div class="ref-card"><h4>Always</h4><p>Write the reason next to every angle you find.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Angles at a point are $72^\circ$, $x$, $118^\circ$ and $2x$. Find $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Angles at a point add to $360^\circ$.</p>
+          <p>$72 + x + 118 + 2x = 360$</p>
+          <p>$3x + 190 = 360 \Rightarrow 3x = 170$</p>
+          <p>$x = 56.67^\circ$ (2 d.p.), or exactly $\dfrac{170}{3}^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Two parallel lines are crossed by a transversal. One of the angles is $73^\circ$. Write down, with reasons, the sizes of the corresponding, alternate and co-interior angles.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Corresponding angle $= 73^\circ$ — corresponding angles are equal.</p>
+          <p>Alternate angle $= 73^\circ$ — alternate angles are equal.</p>
+          <p>Co-interior angle $= 180 - 73 = 107^\circ$ — co-interior angles add to $180^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the interior angle sum of (a) a nonagon (9 sides), (b) a 20-sided polygon.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(9-2)\times 180 = 7 \times 180 = 1260^\circ$</p>
+          <p><strong>(b)</strong> $(20-2)\times 180 = 18 \times 180 = 3240^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A regular polygon has exterior angles of $20^\circ$. Find (a) the number of sides, (b) each interior angle, (c) the interior angle sum.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $n = 360 \div 20 = 18$ sides.</p>
+          <p><strong>(b)</strong> Interior $= 180 - 20 = 160^\circ$.</p>
+          <p><strong>(c)</strong> Sum $= (18-2)\times 180 = 2880^\circ$. Check: $18 \times 160 = 2880$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In triangle $ABC$, side $BC$ is extended to $D$. Angle $ABC = 52^\circ$ and angle $BAC = 61^\circ$. Find angle $ACD$ using the exterior angle rule, and check your answer another way.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Exterior angle $ACD$ = sum of the two opposite interior angles.</p>
+          <p>$\angle ACD = 52 + 61 = 113^\circ$</p>
+          <p><em>Check:</em> $\angle ACB = 180 - 52 - 61 = 67^\circ$; angles on a straight line give $180 - 67 = 113^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A regular polygon has interior angles of $140^\circ$. How many sides has it?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Exterior angle $= 180 - 140 = 40^\circ$</p>
+          <p>$n = 360 \div 40 = 9$ sides (a nonagon).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>An isosceles triangle has one angle of $110^\circ$. Find the other two angles, and explain why there is only one possible answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$110^\circ$ cannot be one of the equal pair, because two angles of $110^\circ$ would total $220^\circ$ — already more than $180^\circ$.</p>
+          <p>So $110^\circ$ is the apex angle.</p>
+          <p>Base angles: $(180 - 110) \div 2 = 70 \div 2 = 35^\circ$ each.</p>
+          <p>Angles: $110^\circ$, $35^\circ$, $35^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The interior angles of a pentagon are $x$, $2x$, $2x$, $3x$ and $4x$. Find the size of the largest angle.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Interior sum of a pentagon $= (5-2)\times 180 = 540^\circ$.</p>
+          <p>$x + 2x + 2x + 3x + 4x = 540$</p>
+          <p>$12x = 540 \Rightarrow x = 45$</p>
+          <p>Largest angle $= 4x = 180^\circ$.</p>
+          <p><em>Note:</em> an interior angle of exactly $180^\circ$ means that "vertex" is actually a straight line, so this shape is really a quadrilateral — a good reminder to sense-check an answer.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain, using angle facts, why regular pentagons cannot tessellate but regular hexagons can.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Shapes meeting at a point must have interior angles adding to exactly $360^\circ$.</p>
+          <p><strong>Pentagon:</strong> interior angle $= 180 - (360 \div 5) = 180 - 72 = 108^\circ$. $360 \div 108 = 3.33\ldots$, not a whole number, so three pentagons leave a gap of $360 - 324 = 36^\circ$ and four would overlap.</p>
+          <p><strong>Hexagon:</strong> interior angle $= 180 - 60 = 120^\circ$. $360 \div 120 = 3$ exactly, so three hexagons meet perfectly at every point.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A regular hexagon and a regular polygon with $n$ sides meet at a point, together with an equilateral triangle, with no gaps and no overlaps.</p>
+      <p>(a) Write an equation for the angles at that point. &nbsp; (b) Find $n$ and name the polygon.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Hexagon interior angle $= 120^\circ$; equilateral triangle $= 60^\circ$.</p>
+          <p>Let the third polygon's interior angle be $I$. Then:</p>
+          <p>$120 + 60 + I = 360$</p>
+          <p><strong>(b)</strong> $I = 360 - 180 = 180^\circ$.</p>
+          <p>An interior angle of $180^\circ$ is impossible for a polygon, so <strong>no such polygon exists</strong> — the hexagon and triangle alone already leave a straight-line gap.</p>
+          <p><em>A valid alternative:</em> two hexagons and one triangle give $120 + 120 + 60 = 300^\circ$, which also fails. But <strong>one</strong> hexagon and <strong>four</strong> triangles work: $120 + 4(60) = 360^\circ$ ✓ — a genuine semi-regular tessellation.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Angle Rules &amp; Polygons (G3) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

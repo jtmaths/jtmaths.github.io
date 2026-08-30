@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Geometry and Proof – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧮 Vector Geometry and Proof</h1>
+  <p>GCSE Maths · Geometry and Measures (G25)</p>
+  <div class="badge">Ages 15–16 · Higher tier</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE TWO KEY RESULTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Two Results Everything Depends On</div>
+<div class="section-body">
+
+  <p>Vector proof questions almost always ask you to show that lines are <strong>parallel</strong> or that points are <strong>collinear</strong> (lie on a straight line). Both come from the same single idea.</p>
+
+  <div class="formula-box">
+    <div class="label">Result 1 — Parallel</div>
+    If $\overrightarrow{AB} = k\,\overrightarrow{CD}$ for some number $k$,<br>then $AB$ is <strong>parallel</strong> to $CD$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Result 2 — Collinear</div>
+    If $\overrightarrow{AB} = k\,\overrightarrow{BC}$ &nbsp;(sharing the point $B$),<br>then $A$, $B$ and $C$ lie on a <strong>straight line</strong>
+  </div>
+
+  <div class="concept">
+    <strong>Parallel vs collinear.</strong> Two vectors that are multiples of each other point along the same direction. If they are separate line segments, the lines are <em>parallel</em>. If they <em>share a point</em>, the three points must all lie on one straight line — they are <em>collinear</em>.
+  </div>
+
+  <div class="svg-block">
+    <svg width="520" height="180" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="pk" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7c3aed"/></marker></defs>
+      <text x="120" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Parallel: AB = k·CD</text>
+      <line x1="30" y1="70" x2="110" y2="45" stroke="#7c3aed" stroke-width="3" marker-end="url(#pk)"/>
+      <line x1="30" y1="130" x2="190" y2="80" stroke="#7c3aed" stroke-width="3" marker-end="url(#pk)"/>
+      <text x="60" y="42" font-family="Arial" font-size="12" fill="#6d28d9">A→B</text>
+      <text x="90" y="128" font-family="Arial" font-size="12" fill="#6d28d9">C→D</text>
+      <text x="120" y="165" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">separate lines, same direction</text>
+
+      <text x="390" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Collinear: AB = k·BC</text>
+      <line x1="290" y1="120" x2="360" y2="82" stroke="#7c3aed" stroke-width="3" marker-end="url(#pk)"/>
+      <line x1="368" y1="78" x2="490" y2="12" stroke="#22c55e" stroke-width="3" marker-end="url(#pk)"/>
+      <circle cx="290" cy="120" r="4.5" fill="#1e1e2e"/>
+      <circle cx="364" cy="80" r="4.5" fill="#ef4444"/>
+      <circle cx="490" cy="12" r="4.5" fill="#1e1e2e"/>
+      <text x="278" y="138" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">A</text>
+      <text x="356" y="100" font-family="Arial" font-size="13" fill="#b91c1c" font-weight="bold">B</text>
+      <text x="496" y="24" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">C</text>
+      <text x="390" y="165" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">shared point B → all three on one line</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Method</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Write down the vectors you are given, usually $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$.</li>
+    <li>Find a route for each vector you need, and express it in terms of $\mathbf{a}$ and $\mathbf{b}$.</li>
+    <li>Simplify each expression fully.</li>
+    <li>Compare the two: <strong>factorise</strong> to show one is a multiple of the other.</li>
+    <li>State the conclusion clearly, quoting the reason.</li>
+  </ul>
+
+  <div class="tip">
+    <strong>Factorising is the whole trick.</strong> An answer like $3\mathbf{a} + 6\mathbf{b}$ does not obviously relate to $\mathbf{a} + 2\mathbf{b}$ — until you write it as $3(\mathbf{a} + 2\mathbf{b})$. Always take out the common factor at the end.
+  </div>
+
+  <div class="warn">
+    <strong>Write a proper concluding sentence.</strong> Finding that $\overrightarrow{PQ} = 2\overrightarrow{RS}$ scores the method marks, but you must add: "so $PQ$ is parallel to $RS$" (and often "and twice as long") to score the final mark.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PARALLEL PROOFS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Proving Lines Are Parallel</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The midpoint theorem</div>
+    <div class="example-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $M$ is the midpoint of $OA$ and $N$ is the midpoint of $OB$. Prove that $MN$ is parallel to $AB$ and half its length.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{OM} = \tfrac{1}{2}\mathbf{a}$ and $\overrightarrow{ON} = \tfrac{1}{2}\mathbf{b}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{MN} = \overrightarrow{MO} + \overrightarrow{ON} = -\tfrac{1}{2}\mathbf{a} + \tfrac{1}{2}\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Factorise: $\overrightarrow{MN} = \tfrac{1}{2}(\mathbf{b} - \mathbf{a})$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\overrightarrow{AB} = \overrightarrow{AO} + \overrightarrow{OB} = -\mathbf{a} + \mathbf{b} = \mathbf{b} - \mathbf{a}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So $\overrightarrow{MN} = \tfrac{1}{2}\overrightarrow{AB}$.</span></div>
+      <p><strong>Since $\overrightarrow{MN}$ is a scalar multiple of $\overrightarrow{AB}$, the lines $MN$ and $AB$ are parallel; and the multiple is $\tfrac{1}{2}$, so $MN$ is half the length of $AB$. ∎</strong></p>
+      <div class="concept">This is the <strong>midpoint theorem</strong>: the line joining the midpoints of two sides of a triangle is parallel to the third side and half its length. Vectors prove it in four lines.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A quadrilateral</div>
+    <div class="example-body">
+      <p>In quadrilateral $OABC$, $\overrightarrow{OA} = 2\mathbf{a}$, $\overrightarrow{OB} = 2\mathbf{a} + 4\mathbf{b}$ and $\overrightarrow{OC} = 6\mathbf{b}$. Show that $AB$ is parallel to $OC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \overrightarrow{AO} + \overrightarrow{OB} = -2\mathbf{a} + (2\mathbf{a} + 4\mathbf{b})$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 4\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{OC} = 6\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\overrightarrow{AB} = \tfrac{4}{6}\overrightarrow{OC} = \tfrac{2}{3}\overrightarrow{OC}$</span></div>
+      <p><strong>$\overrightarrow{AB}$ is a scalar multiple of $\overrightarrow{OC}$, so $AB \parallel OC$. ∎</strong></p>
+      <p>Since only one pair of sides is parallel, $OABC$ is a trapezium.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COLLINEARITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Proving Points Are Collinear</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two things you must show</div>
+    (1) One vector is a multiple of the other, <strong>and</strong><br>
+    (2) they share a common point
+  </div>
+
+  <div class="warn">
+    <strong>Both parts are needed.</strong> Two parallel vectors that do not share a point give parallel lines, not collinear points. Always say which point is shared.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Collinear points</div>
+    <div class="example-body">
+      <p>$\overrightarrow{OA} = \mathbf{a}$, $\overrightarrow{OB} = \mathbf{b}$. $P$ is the point with $\overrightarrow{OP} = \mathbf{a} + 2\mathbf{b}$ and $Q$ is the point with $\overrightarrow{OQ} = 3\mathbf{a} + 6\mathbf{b}$. Show that $O$, $P$ and $Q$ are collinear.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{OP} = \mathbf{a} + 2\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{OQ} = 3\mathbf{a} + 6\mathbf{b} = 3(\mathbf{a} + 2\mathbf{b})$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $\overrightarrow{OQ} = 3\overrightarrow{OP}$.</span></div>
+      <p><strong>$\overrightarrow{OQ}$ is a scalar multiple of $\overrightarrow{OP}$, and both start at the common point $O$. Therefore $O$, $P$ and $Q$ lie on the same straight line. ∎</strong></p>
+      <p>Furthermore $OQ$ is three times as long as $OP$, so $P$ lies one third of the way from $O$ to $Q$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Collinear with a shared middle point</div>
+    <div class="example-body">
+      <p>$\overrightarrow{XY} = 2\mathbf{p} - \mathbf{q}$ and $\overrightarrow{YZ} = 6\mathbf{p} - 3\mathbf{q}$. Show that $X$, $Y$ and $Z$ are collinear, and find the ratio $XY : YZ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Factorise the second: $\overrightarrow{YZ} = 3(2\mathbf{p} - \mathbf{q})$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So $\overrightarrow{YZ} = 3\overrightarrow{XY}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The two vectors are parallel and share the point $Y$.</span></div>
+      <p><strong>Therefore $X$, $Y$ and $Z$ are collinear. ∎</strong></p>
+      <p>Since $YZ$ is three times $XY$, the ratio $XY : YZ = 1 : 3$.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – RATIO PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Harder Ratio Problems</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding a ratio</div>
+    <div class="example-body">
+      <p>$OACB$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $D$ is the point on $AB$ with $AD : DB = 1 : 2$. Show that $O$, $D$ and $C$ are <em>not</em> collinear, where $\overrightarrow{OC} = \mathbf{a} + \mathbf{b}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$, so $\overrightarrow{AD} = \tfrac{1}{3}(\mathbf{b} - \mathbf{a})$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{OD} = \mathbf{a} + \tfrac{1}{3}(\mathbf{b} - \mathbf{a}) = \tfrac{2}{3}\mathbf{a} + \tfrac{1}{3}\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Factorise: $\overrightarrow{OD} = \tfrac{1}{3}(2\mathbf{a} + \mathbf{b})$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\overrightarrow{OC} = \mathbf{a} + \mathbf{b}$. Is $2\mathbf{a} + \mathbf{b}$ a multiple of $\mathbf{a} + \mathbf{b}$?</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>For a multiple $k$ we would need $2 = k$ and $1 = k$ at the same time — impossible.</span></div>
+      <p><strong>So $\overrightarrow{OD}$ is not a scalar multiple of $\overrightarrow{OC}$, and the three points are not collinear. ∎</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Two routes to the same point</div>
+    <div class="example-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $M$ is the midpoint of $AB$ and $G$ lies on $OM$ with $OG : GM = 2 : 1$. Show that $\overrightarrow{OG} = \tfrac{1}{3}(\mathbf{a} + \mathbf{b})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{OM} = \tfrac{1}{2}(\mathbf{a} + \mathbf{b})$ (the midpoint result).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$OG : GM = 2 : 1$, so $G$ is $\tfrac{2}{3}$ of the way along $OM$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{OG} = \tfrac{2}{3}\overrightarrow{OM} = \tfrac{2}{3} \times \tfrac{1}{2}(\mathbf{a} + \mathbf{b})$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \tfrac{1}{3}(\mathbf{a} + \mathbf{b})$ ∎</span></div>
+      <div class="concept">$G$ is the <strong>centroid</strong> of the triangle — the point where all three medians meet. The symmetry of $\tfrac{1}{3}(\mathbf{a} + \mathbf{b})$ hints at why all three medians pass through it.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Common Mistakes</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Mistake 1 — Getting the direction wrong.</strong> $\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$, not $\mathbf{a} - \mathbf{b}$. Remember: <em>finish minus start</em>.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 2 — Not factorising.</strong> Leaving the answer as $\tfrac{2}{3}\mathbf{a} + \tfrac{1}{3}\mathbf{b}$ hides the structure. Write $\tfrac{1}{3}(2\mathbf{a} + \mathbf{b})$ so the comparison is obvious.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 3 — Forgetting the conclusion.</strong> "$\overrightarrow{PQ} = 2\overrightarrow{RS}$" is not a proof by itself. Finish with "therefore $PQ$ is parallel to $RS$".
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 4 — Confusing parallel with collinear.</strong> Say explicitly which point is shared when claiming collinearity.
+  </div>
+
+  <div class="tip">
+    <strong>A reliable habit:</strong> for every vector you need, write the <em>route</em> first (e.g. "$\overrightarrow{MN} = \overrightarrow{MO} + \overrightarrow{ON}$") before substituting. It keeps the signs straight.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Parallel</h4><p>$\overrightarrow{AB} = k\overrightarrow{CD}$ for some scalar $k$.</p></div>
+    <div class="ref-card"><h4>Collinear</h4><p>A scalar multiple <em>and</em> a shared point.</p></div>
+    <div class="ref-card"><h4>Route first</h4><p>Write $\overrightarrow{MN} = \overrightarrow{MO} + \overrightarrow{ON}$ before substituting.</p></div>
+    <div class="ref-card"><h4>Finish minus start</h4><p>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$.</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>$\overrightarrow{OM} = \tfrac{1}{2}(\mathbf{a} + \mathbf{b})$.</p></div>
+    <div class="ref-card"><h4>Ratio $m:n$</h4><p>$\overrightarrow{AP} = \dfrac{m}{m+n}\overrightarrow{AB}$.</p></div>
+    <div class="ref-card"><h4>Factorise</h4><p>Always take out the common factor to reveal the multiple.</p></div>
+    <div class="ref-card"><h4>Conclude</h4><p>Write the sentence: "therefore … is parallel to …".</p></div>
+    <div class="ref-card"><h4>Not a multiple?</h4><p>If two coefficients demand different values of $k$, no multiple exists.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$\overrightarrow{AB} = 3\mathbf{a} + 6\mathbf{b}$ and $\overrightarrow{CD} = \mathbf{a} + 2\mathbf{b}$. Show that $AB$ is parallel to $CD$ and state the ratio of their lengths.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = 3\mathbf{a} + 6\mathbf{b} = 3(\mathbf{a} + 2\mathbf{b}) = 3\overrightarrow{CD}$</p>
+          <p>$\overrightarrow{AB}$ is a scalar multiple of $\overrightarrow{CD}$, so <strong>$AB \parallel CD$</strong>.</p>
+          <p>The multiple is $3$, so $AB : CD = 3 : 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$\overrightarrow{OP} = 2\mathbf{a} - \mathbf{b}$ and $\overrightarrow{OQ} = 8\mathbf{a} - 4\mathbf{b}$. Show that $O$, $P$ and $Q$ are collinear.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{OQ} = 8\mathbf{a} - 4\mathbf{b} = 4(2\mathbf{a} - \mathbf{b}) = 4\overrightarrow{OP}$</p>
+          <p>$\overrightarrow{OQ}$ is a scalar multiple of $\overrightarrow{OP}$, and both vectors start at the shared point $O$.</p>
+          <p>Therefore <strong>$O$, $P$ and $Q$ are collinear</strong>. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Are $\overrightarrow{XY} = 4\mathbf{a} + 6\mathbf{b}$ and $\overrightarrow{ZW} = 6\mathbf{a} + 8\mathbf{b}$ parallel? Justify your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>For them to be parallel we would need $\overrightarrow{ZW} = k\overrightarrow{XY}$.</p>
+          <p>Comparing $\mathbf{a}$: $6 = 4k$, so $k = 1.5$.</p>
+          <p>Comparing $\mathbf{b}$: $8 = 6k$, so $k = \tfrac{4}{3}$.</p>
+          <p>The two values of $k$ disagree, so <strong>no, they are not parallel</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $C$ is the midpoint of $OA$ and $D$ is the midpoint of $OB$. Find $\overrightarrow{CD}$ in terms of $\mathbf{a}$ and $\mathbf{b}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{OC} = \tfrac{1}{2}\mathbf{a}$ and $\overrightarrow{OD} = \tfrac{1}{2}\mathbf{b}$.</p>
+          <p>$\overrightarrow{CD} = \overrightarrow{CO} + \overrightarrow{OD} = -\tfrac{1}{2}\mathbf{a} + \tfrac{1}{2}\mathbf{b}$</p>
+          <p>$= \tfrac{1}{2}(\mathbf{b} - \mathbf{a})$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$\overrightarrow{OA} = \mathbf{a}$, $\overrightarrow{OB} = \mathbf{b}$, and $P$ lies on $AB$ with $AP : PB = 3 : 1$. Find $\overrightarrow{OP}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 4$, so $\overrightarrow{AP} = \tfrac{3}{4}(\mathbf{b} - \mathbf{a})$.</p>
+          <p>$\overrightarrow{OP} = \mathbf{a} + \tfrac{3}{4}(\mathbf{b} - \mathbf{a}) = \tfrac{1}{4}\mathbf{a} + \tfrac{3}{4}\mathbf{b}$</p>
+          <p>$= \tfrac{1}{4}(\mathbf{a} + 3\mathbf{b})$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OC} = \mathbf{c}$. $M$ is the midpoint of $AB$. Show that $\overrightarrow{OM} = \mathbf{a} + \tfrac{1}{2}\mathbf{c}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In a parallelogram, $\overrightarrow{AB} = \overrightarrow{OC} = \mathbf{c}$.</p>
+          <p>$M$ is the midpoint of $AB$, so $\overrightarrow{AM} = \tfrac{1}{2}\mathbf{c}$.</p>
+          <p>$\overrightarrow{OM} = \overrightarrow{OA} + \overrightarrow{AM} = \mathbf{a} + \tfrac{1}{2}\mathbf{c}$ ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$\overrightarrow{PQ} = \mathbf{u} + 3\mathbf{v}$ and $\overrightarrow{QR} = 2\mathbf{u} + 6\mathbf{v}$. Show that $P$, $Q$ and $R$ are collinear, and find $PQ : QR$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{QR} = 2\mathbf{u} + 6\mathbf{v} = 2(\mathbf{u} + 3\mathbf{v}) = 2\overrightarrow{PQ}$</p>
+          <p>The vectors are scalar multiples and share the point $Q$.</p>
+          <p>Therefore <strong>$P$, $Q$ and $R$ are collinear</strong>, and $PQ : QR = 1 : 2$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = 3\mathbf{a}$ and $\overrightarrow{OB} = 3\mathbf{b}$. $P$ lies on $OA$ with $OP : PA = 1 : 2$, and $Q$ lies on $OB$ with $OQ : QB = 1 : 2$. Prove that $PQ$ is parallel to $AB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$OP : PA = 1 : 2$ means $P$ is $\tfrac{1}{3}$ of the way along $OA$, so $\overrightarrow{OP} = \tfrac{1}{3}(3\mathbf{a}) = \mathbf{a}$.</p>
+          <p>Similarly $\overrightarrow{OQ} = \mathbf{b}$.</p>
+          <p>$\overrightarrow{PQ} = \overrightarrow{PO} + \overrightarrow{OQ} = -\mathbf{a} + \mathbf{b} = \mathbf{b} - \mathbf{a}$</p>
+          <p>$\overrightarrow{AB} = -3\mathbf{a} + 3\mathbf{b} = 3(\mathbf{b} - \mathbf{a})$</p>
+          <p>So $\overrightarrow{AB} = 3\overrightarrow{PQ}$: a scalar multiple, therefore <strong>$PQ \parallel AB$</strong> (and $AB$ is three times as long). ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$ABCD$ is a quadrilateral. $P$, $Q$, $R$ and $S$ are the midpoints of $AB$, $BC$, $CD$ and $DA$ respectively. Let $\overrightarrow{AB} = 2\mathbf{p}$, $\overrightarrow{BC} = 2\mathbf{q}$ and $\overrightarrow{CD} = 2\mathbf{r}$.</p>
+      <p>(a) Find $\overrightarrow{PQ}$. &nbsp; (b) Find $\overrightarrow{SR}$. &nbsp; (c) What does this prove about $PQRS$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{PB} = \tfrac{1}{2}\overrightarrow{AB} = \mathbf{p}$ and $\overrightarrow{BQ} = \tfrac{1}{2}\overrightarrow{BC} = \mathbf{q}$.</p>
+          <p>$\overrightarrow{PQ} = \mathbf{p} + \mathbf{q}$</p>
+          <p><strong>(b)</strong> $\overrightarrow{DA} = -(\overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CD}) = -(2\mathbf{p} + 2\mathbf{q} + 2\mathbf{r})$, since the four sides return to the start.</p>
+          <p>Take the route $\overrightarrow{SR} = \overrightarrow{SD} + \overrightarrow{DR}$.</p>
+          <p>$\overrightarrow{AD} = \overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CD} = 2\mathbf{p} + 2\mathbf{q} + 2\mathbf{r}$, and $S$ is the midpoint of $AD$, so</p>
+          <p>$\overrightarrow{SD} = \tfrac{1}{2}\overrightarrow{AD} = \mathbf{p} + \mathbf{q} + \mathbf{r}$</p>
+          <p>$\overrightarrow{DR} = -\tfrac{1}{2}\overrightarrow{CD} = -\mathbf{r}$</p>
+          <p>$\overrightarrow{SR} = (\mathbf{p} + \mathbf{q} + \mathbf{r}) - \mathbf{r} = \mathbf{p} + \mathbf{q}$</p>
+          <p><strong>(c)</strong> $\overrightarrow{PQ} = \overrightarrow{SR}$, so $PQ$ and $SR$ are equal in length and parallel.</p>
+          <p>A quadrilateral with one pair of sides equal and parallel is a <strong>parallelogram</strong>, so $PQRS$ is a parallelogram — whatever shape $ABCD$ was. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $M$ is the midpoint of $OB$. The point $N$ lies on $AB$ with $AN : NB = 2 : 1$.</p>
+      <p>(a) Find $\overrightarrow{AM}$. &nbsp; (b) Find $\overrightarrow{AN}$. &nbsp; (c) Find $\overrightarrow{MN}$, fully simplified. &nbsp; (d) The point $X$ has $\overrightarrow{OX} = \tfrac{2}{3}\mathbf{a} + \mathbf{b}$. Determine whether $M$, $N$ and $X$ are collinear.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{OM} = \tfrac{1}{2}\mathbf{b}$, so $\overrightarrow{AM} = \overrightarrow{AO} + \overrightarrow{OM} = -\mathbf{a} + \tfrac{1}{2}\mathbf{b}$.</p>
+          <p><strong>(b)</strong> $\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$, and $N$ is $\tfrac{2}{3}$ of the way along.</p>
+          <p>$\overrightarrow{AN} = \tfrac{2}{3}(\mathbf{b} - \mathbf{a})$</p>
+          <p><strong>(c)</strong> $\overrightarrow{MN} = \overrightarrow{MA} + \overrightarrow{AN} = \left(\mathbf{a} - \tfrac{1}{2}\mathbf{b}\right) + \tfrac{2}{3}\mathbf{b} - \tfrac{2}{3}\mathbf{a}$</p>
+          <p>$= \tfrac{1}{3}\mathbf{a} + \tfrac{1}{6}\mathbf{b} = \tfrac{1}{6}(2\mathbf{a} + \mathbf{b})$</p>
+          <p><strong>(d)</strong> $\overrightarrow{ON} = \overrightarrow{OA} + \overrightarrow{AN} = \mathbf{a} + \tfrac{2}{3}\mathbf{b} - \tfrac{2}{3}\mathbf{a} = \tfrac{1}{3}\mathbf{a} + \tfrac{2}{3}\mathbf{b}$</p>
+          <p>$\overrightarrow{NX} = \overrightarrow{OX} - \overrightarrow{ON} = \left(\tfrac{2}{3}\mathbf{a} + \mathbf{b}\right) - \left(\tfrac{1}{3}\mathbf{a} + \tfrac{2}{3}\mathbf{b}\right) = \tfrac{1}{3}\mathbf{a} + \tfrac{1}{3}\mathbf{b}$</p>
+          <p>$= \tfrac{1}{3}(\mathbf{a} + \mathbf{b})$</p>
+          <p>Compare with $\overrightarrow{MN} = \tfrac{1}{6}(2\mathbf{a} + \mathbf{b})$. For these to be parallel we would need $\mathbf{a} + \mathbf{b} = k(2\mathbf{a} + \mathbf{b})$, giving $1 = 2k$ and $1 = k$ — a contradiction.</p>
+          <p>So $\overrightarrow{NX}$ is <em>not</em> a multiple of $\overrightarrow{MN}$, and <strong>$M$, $N$ and $X$ are not collinear</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vector Geometry &amp; Proof (G25) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

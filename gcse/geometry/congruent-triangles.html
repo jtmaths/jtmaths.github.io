@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congruent Triangles – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔺 Congruent Triangles</h1>
+  <p>GCSE Maths · Geometry and Measures (G5)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT CONGRUENT MEANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What "Congruent" Means</div>
+<div class="section-body">
+
+  <p>Two shapes are <strong>congruent</strong> if they are <em>exactly</em> the same shape and the same size. One could be cut out and placed perfectly on top of the other.</p>
+
+  <div class="concept">
+    <strong>Congruent</strong> — identical in both shape and size. Scale factor $1$.<br>
+    <strong>Similar</strong> — the same shape but a different size. Scale factor other than $1$.<br>
+    Congruent shapes are a special case of similar shapes.
+  </div>
+
+  <div class="tip">
+    <strong>Congruent shapes may be turned over or rotated.</strong> A shape and its mirror image are still congruent — you are allowed to flip it before placing it on top.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Notation</div>
+    $\triangle ABC \cong \triangle PQR$ &nbsp;means "triangle $ABC$ is congruent to triangle $PQR$"
+  </div>
+
+  <div class="warn">
+    <strong>The order of the letters matters.</strong> Writing $\triangle ABC \cong \triangle PQR$ states that $A$ corresponds to $P$, $B$ to $Q$ and $C$ to $R$ — so $AB = PQ$, $BC = QR$, $AC = PR$, $\angle A = \angle P$, and so on.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE FOUR CRITERIA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Four Congruence Criteria</div>
+<div class="section-body">
+
+  <p>You do not need to check all six measurements (three sides and three angles). Any <strong>one</strong> of these four sets of three is enough.</p>
+
+  <table>
+    <tr><th>Code</th><th>Stands for</th><th>What you must show</th></tr>
+    <tr><td><strong>SSS</strong></td><td>Side, Side, Side</td><td>All three pairs of sides are equal</td></tr>
+    <tr><td><strong>SAS</strong></td><td>Side, Angle, Side</td><td>Two pairs of sides equal, and the angle <em>between</em> them equal</td></tr>
+    <tr><td><strong>ASA</strong></td><td>Angle, Side, Angle</td><td>Two pairs of angles equal, and a pair of corresponding sides equal</td></tr>
+    <tr><td><strong>RHS</strong></td><td>Right angle, Hypotenuse, Side</td><td>Both have a right angle, equal hypotenuses, and one other pair of equal sides</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="580" height="330" viewBox="0 0 580 330" xmlns="http://www.w3.org/2000/svg">
+      <!-- SSS -->
+      <text x="145" y="18" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">SSS</text>
+      <polygon points="30,110 130,110 75,35" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="48" y1="76" x2="55" y2="71" stroke="#ef4444" stroke-width="2"/>
+      <line x1="99" y1="69" x2="106" y2="76" stroke="#16a34a" stroke-width="2"/>
+      <line x1="103" y1="72" x2="110" y2="79" stroke="#16a34a" stroke-width="2"/>
+      <line x1="76" y1="106" x2="76" y2="114" stroke="#d97706" stroke-width="2"/>
+      <line x1="83" y1="106" x2="83" y2="114" stroke="#d97706" stroke-width="2"/>
+      <line x1="90" y1="106" x2="90" y2="114" stroke="#d97706" stroke-width="2"/>
+      <polygon points="170,110 270,110 215,35" fill="#f0fdf4" stroke="#22c55e" stroke-width="2.2"/>
+      <line x1="188" y1="76" x2="195" y2="71" stroke="#ef4444" stroke-width="2"/>
+      <line x1="239" y1="69" x2="246" y2="76" stroke="#16a34a" stroke-width="2"/>
+      <line x1="243" y1="72" x2="250" y2="79" stroke="#16a34a" stroke-width="2"/>
+      <line x1="216" y1="106" x2="216" y2="114" stroke="#d97706" stroke-width="2"/>
+      <line x1="223" y1="106" x2="223" y2="114" stroke="#d97706" stroke-width="2"/>
+      <line x1="230" y1="106" x2="230" y2="114" stroke="#d97706" stroke-width="2"/>
+      <text x="145" y="132" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">all three sides match</text>
+
+      <!-- SAS -->
+      <text x="435" y="18" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">SAS</text>
+      <polygon points="320,110 410,110 335,40" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="325" y1="78" x2="333" y2="74" stroke="#ef4444" stroke-width="2"/>
+      <line x1="362" y1="106" x2="362" y2="114" stroke="#d97706" stroke-width="2"/>
+      <line x1="369" y1="106" x2="369" y2="114" stroke="#d97706" stroke-width="2"/>
+      <path d="M 342 110 A 22 22 0 0 0 328 96" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <polygon points="460,110 550,110 475,40" fill="#f0fdf4" stroke="#22c55e" stroke-width="2.2"/>
+      <line x1="465" y1="78" x2="473" y2="74" stroke="#ef4444" stroke-width="2"/>
+      <line x1="502" y1="106" x2="502" y2="114" stroke="#d97706" stroke-width="2"/>
+      <line x1="509" y1="106" x2="509" y2="114" stroke="#d97706" stroke-width="2"/>
+      <path d="M 482 110 A 22 22 0 0 0 468 96" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <text x="435" y="132" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">angle sits BETWEEN the two sides</text>
+
+      <!-- ASA -->
+      <text x="145" y="180" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">ASA</text>
+      <polygon points="30,275 130,275 90,200" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <path d="M 52 275 A 22 22 0 0 0 44 259" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 108 275 A 22 22 0 0 0 116 262" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <line x1="76" y1="271" x2="76" y2="279" stroke="#d97706" stroke-width="2"/>
+      <line x1="83" y1="271" x2="83" y2="279" stroke="#d97706" stroke-width="2"/>
+      <polygon points="170,275 270,275 230,200" fill="#f0fdf4" stroke="#22c55e" stroke-width="2.2"/>
+      <path d="M 192 275 A 22 22 0 0 0 184 259" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 248 275 A 22 22 0 0 0 256 262" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <line x1="216" y1="271" x2="216" y2="279" stroke="#d97706" stroke-width="2"/>
+      <line x1="223" y1="271" x2="223" y2="279" stroke="#d97706" stroke-width="2"/>
+      <text x="145" y="298" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">two angles and a matching side</text>
+
+      <!-- RHS -->
+      <text x="435" y="180" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">RHS</text>
+      <polygon points="330,275 330,205 400,275" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+      <rect x="330" y="263" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.8"/>
+      <line x1="361" y1="236" x2="369" y2="244" stroke="#16a34a" stroke-width="2"/>
+      <line x1="365" y1="232" x2="373" y2="240" stroke="#16a34a" stroke-width="2"/>
+      <line x1="326" y1="240" x2="334" y2="240" stroke="#d97706" stroke-width="2"/>
+      <polygon points="470,275 470,205 540,275" fill="#f0fdf4" stroke="#22c55e" stroke-width="2.2"/>
+      <rect x="470" y="263" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="1.8"/>
+      <line x1="501" y1="236" x2="509" y2="244" stroke="#16a34a" stroke-width="2"/>
+      <line x1="505" y1="232" x2="513" y2="240" stroke="#16a34a" stroke-width="2"/>
+      <line x1="466" y1="240" x2="474" y2="240" stroke="#d97706" stroke-width="2"/>
+      <text x="435" y="298" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">right angle, hypotenuse, one other side</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – WHY SSA FAILS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Why SSA and AAA Do Not Work</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>SSA is not a congruence criterion.</strong> If the equal angle is <em>not</em> between the two equal sides, two genuinely different triangles can be built from the same three measurements — the "ambiguous case".
+  </div>
+
+  <div class="svg-block">
+    <svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="140" x2="360" y2="140" stroke="#1e1e2e" stroke-width="2"/>
+      <line x1="40" y1="140" x2="200" y2="30" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="200" cy="30" r="4" fill="#4f46e5"/>
+      <text x="205" y="26" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">A</text>
+      <path d="M 200 30 A 120 120 0 0 1 320 140" fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4,3"/>
+      <line x1="200" y1="30" x2="140" y2="140" stroke="#ef4444" stroke-width="2.2"/>
+      <line x1="200" y1="30" x2="290" y2="140" stroke="#22c55e" stroke-width="2.2"/>
+      <circle cx="140" cy="140" r="4" fill="#ef4444"/>
+      <circle cx="290" cy="140" r="4" fill="#22c55e"/>
+      <text x="132" y="158" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">B₁</text>
+      <text x="284" y="158" font-family="Arial" font-size="12" fill="#16a34a" font-weight="bold">B₂</text>
+      <path d="M 70 140 A 30 30 0 0 0 60 120" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <text x="200" y="172" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Same angle, same two lengths — but two different triangles</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>AAA is not a congruence criterion either.</strong> Three equal angles guarantee the shapes are <em>similar</em>, but they could be any size at all. A tiny equilateral triangle and a huge one both have angles $60^\circ$, $60^\circ$, $60^\circ$.
+  </div>
+
+  <div class="tip">
+    <strong>Memory hook:</strong> the valid four are SSS, SAS, ASA, RHS. The invalid two are SSA and AAA. Every valid criterion contains at least one <strong>side</strong>, and in SAS the angle must be the <em>included</em> one.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WRITING A CONGRUENCE PROOF
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Writing a Congruence Proof</div>
+<div class="section-body">
+
+  <p>Exam questions ask you to <em>prove</em> congruence. There is a standard four-line layout that scores full marks.</p>
+
+  <ul class="steps">
+    <li>State the <strong>first</strong> pair of equal parts, with a reason.</li>
+    <li>State the <strong>second</strong> pair, with a reason.</li>
+    <li>State the <strong>third</strong> pair, with a reason.</li>
+    <li>Write the conclusion: "therefore $\triangle ABC \cong \triangle PQR$ (<strong>SAS</strong>)" — naming the criterion.</li>
+  </ul>
+
+  <div class="tip">
+    <strong>Useful reasons to have ready:</strong> "given", "common side" (a side shared by both triangles), "vertically opposite angles", "alternate angles, $AB \parallel CD$", "base angles of an isosceles triangle", "radii of the same circle", "$M$ is the midpoint".
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A full SAS proof</div>
+    <div class="example-body">
+      <p>In the diagram, $AB$ and $CD$ are two straight lines crossing at $M$, with $AM = DM$ and $BM = CM$. Prove that $\triangle AMB \cong \triangle DMC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AM = DM$ &nbsp;(given)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\angle AMB = \angle DMC$ &nbsp;(vertically opposite angles)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$BM = CM$ &nbsp;(given)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The equal angle lies <em>between</em> the two equal sides.</span></div>
+      <p><strong>Therefore $\triangle AMB \cong \triangle DMC$ (SAS).</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using a common side</div>
+    <div class="example-body">
+      <p>$ABCD$ is a kite with $AB = AD$ and $CB = CD$. Prove that $\triangle ABC \cong \triangle ADC$, and hence that $\angle ABC = \angle ADC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AB = AD$ &nbsp;(given, property of the kite)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$CB = CD$ &nbsp;(given, property of the kite)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$AC = AC$ &nbsp;(common side — shared by both triangles)</span></div>
+      <p><strong>Therefore $\triangle ABC \cong \triangle ADC$ (SSS).</strong></p>
+      <p>Because the triangles are congruent, all matching parts are equal. $\angle ABC$ in the first triangle matches $\angle ADC$ in the second, so $\angle ABC = \angle ADC$. ∎</p>
+      <p>This is exactly why a kite has one pair of equal opposite angles.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — An ASA proof with parallel lines</div>
+    <div class="example-body">
+      <p>$ABCD$ is a parallelogram whose diagonals meet at $O$. Prove that $\triangle AOB \cong \triangle COD$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\angle OAB = \angle OCD$ &nbsp;(alternate angles, $AB \parallel DC$)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AB = CD$ &nbsp;(opposite sides of a parallelogram are equal)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle OBA = \angle ODC$ &nbsp;(alternate angles, $AB \parallel DC$)</span></div>
+      <p><strong>Therefore $\triangle AOB \cong \triangle COD$ (ASA).</strong></p>
+      <p>It follows that $AO = CO$ and $BO = DO$ — which proves that <em>the diagonals of a parallelogram bisect each other</em>. ∎</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — An RHS proof</div>
+    <div class="example-body">
+      <p>Triangle $ABC$ is isosceles with $AB = AC$. $AD$ is the perpendicular from $A$ to $BC$. Prove that $BD = DC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\angle ADB = \angle ADC = 90^\circ$ &nbsp;(given, $AD \perp BC$) — the <strong>R</strong></span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AB = AC$ &nbsp;(given, isosceles) — these are the hypotenuses, the <strong>H</strong></span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$AD = AD$ &nbsp;(common side) — the <strong>S</strong></span></div>
+      <p><strong>Therefore $\triangle ABD \cong \triangle ACD$ (RHS).</strong></p>
+      <p>Matching sides are equal, so $BD = DC$. The perpendicular from the apex of an isosceles triangle bisects the base. ∎</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – USING CONGRUENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using Congruence to Find Lengths and Angles</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The payoff</div>
+    Once two triangles are congruent, <strong>every</strong> pair of corresponding sides and angles is equal.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding a length</div>
+    <div class="example-body">
+      <p>$\triangle PQR \cong \triangle XYZ$. Given $PQ = 8$ cm, $QR = 11$ cm, $\angle P = 47^\circ$ and $XZ = 6$ cm, write down $XY$, $YZ$, $PR$ and $\angle X$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The letter order tells you $P \leftrightarrow X$, $Q \leftrightarrow Y$, $R \leftrightarrow Z$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$XY$ matches $PQ$, so $XY = 8$ cm.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$YZ$ matches $QR$, so $YZ = 11$ cm.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$PR$ matches $XZ$, so $PR = 6$ cm.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\angle X$ matches $\angle P$, so $\angle X = 47^\circ$.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Congruent shapes have equal areas and equal perimeters.</strong> The converse is false: two shapes with the same area need not be congruent — a $2 \times 6$ rectangle and a $3 \times 4$ rectangle both have area $12$ but are quite different.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Congruent</h4><p>Same shape <em>and</em> same size; reflections still count.</p></div>
+    <div class="ref-card"><h4>SSS</h4><p>All three sides equal.</p></div>
+    <div class="ref-card"><h4>SAS</h4><p>Two sides and the <em>included</em> angle.</p></div>
+    <div class="ref-card"><h4>ASA</h4><p>Two angles and a corresponding side.</p></div>
+    <div class="ref-card"><h4>RHS</h4><p>Right angle, equal hypotenuses, one other equal side.</p></div>
+    <div class="ref-card"><h4>Not valid</h4><p>SSA (ambiguous) and AAA (only proves similarity).</p></div>
+    <div class="ref-card"><h4>Proof layout</h4><p>Three statements with reasons, then the criterion named.</p></div>
+    <div class="ref-card"><h4>Handy reasons</h4><p>Common side, vertically opposite, alternate angles, given.</p></div>
+    <div class="ref-card"><h4>The payoff</h4><p>Congruence makes <em>all</em> corresponding parts equal.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>State which congruence criterion (if any) proves each pair of triangles congruent.</p>
+      <p>(a) Sides $5$, $7$, $9$ and sides $9$, $5$, $7$.<br>(b) Two sides $6$ and $8$ with the angle between them $50^\circ$, in both.<br>(c) All three angles $40^\circ$, $60^\circ$, $80^\circ$ in both.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> SSS — the same three lengths, just listed in a different order.</p>
+          <p><strong>(b)</strong> SAS — the angle is between the two given sides.</p>
+          <p><strong>(c)</strong> <strong>Not congruent</strong> (AAA). The triangles are similar, but could be any size.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Explain why knowing two sides and a non-included angle is not enough to prove congruence.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>This is the <strong>SSA</strong> or "ambiguous" case.</p>
+          <p>If the angle is not between the two known sides, the third vertex can fall in two different places — an arc of the given radius can cut the base line twice.</p>
+          <p>That produces two triangles with the same three measurements but different shapes, so congruence is not guaranteed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$\triangle ABC \cong \triangle DEF$. Given $AB = 7$ cm, $\angle B = 62^\circ$ and $EF = 9$ cm, write down $DE$, $\angle E$ and $BC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The letter order gives $A \leftrightarrow D$, $B \leftrightarrow E$, $C \leftrightarrow F$.</p>
+          <p>$DE = AB = 7$ cm</p>
+          <p>$\angle E = \angle B = 62^\circ$</p>
+          <p>$BC = EF = 9$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$M$ is the midpoint of both $AC$ and $BD$. Prove that $\triangle ABM \cong \triangle CDM$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$AM = CM$ &nbsp;($M$ is the midpoint of $AC$)</p>
+          <p>$\angle AMB = \angle CMD$ &nbsp;(vertically opposite angles)</p>
+          <p>$BM = DM$ &nbsp;($M$ is the midpoint of $BD$)</p>
+          <p>The equal angle is between the two pairs of equal sides.</p>
+          <p><strong>Therefore $\triangle ABM \cong \triangle CDM$ (SAS).</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In triangle $ABC$, $AB = AC$. Prove that $\angle ABC = \angle ACB$ (the base angles of an isosceles triangle are equal).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $M$ be the midpoint of $BC$, and join $AM$.</p>
+          <p>$AB = AC$ &nbsp;(given)</p>
+          <p>$BM = CM$ &nbsp;($M$ is the midpoint)</p>
+          <p>$AM = AM$ &nbsp;(common side)</p>
+          <p>Therefore $\triangle ABM \cong \triangle ACM$ (SSS).</p>
+          <p>Corresponding angles of congruent triangles are equal, so $\angle ABM = \angle ACM$, i.e. $\angle ABC = \angle ACB$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Two right-angled triangles each have a hypotenuse of $13$ cm and one other side of $5$ cm. Are they congruent? Which criterion applies?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Yes</strong> — by <strong>RHS</strong>: both have a right angle, equal hypotenuses ($13$ cm) and one other equal side ($5$ cm).</p>
+          <p><em>Confirmation:</em> Pythagoras forces the third side in each to be $\sqrt{13^2 - 5^2} = \sqrt{144} = 12$ cm, so in fact all three sides match.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$PQRS$ is a parallelogram. Prove that $\triangle PQR \cong \triangle RSP$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$PQ = RS$ &nbsp;(opposite sides of a parallelogram are equal)</p>
+          <p>$QR = SP$ &nbsp;(opposite sides of a parallelogram are equal)</p>
+          <p>$PR = RP$ &nbsp;(common side — the diagonal)</p>
+          <p><strong>Therefore $\triangle PQR \cong \triangle RSP$ (SSS).</strong></p>
+          <p>This proves that a diagonal cuts a parallelogram into two congruent triangles, and hence that opposite angles are equal.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Two triangles have the same area. Must they be congruent? Justify your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>No.</strong></p>
+          <p>Counter-example: a triangle with base $12$ cm and height $2$ cm has area $12\text{ cm}^2$, and so does one with base $6$ cm and height $4$ cm. The two shapes are quite different.</p>
+          <p>Equal area is a <em>consequence</em> of congruence, not a test for it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$AB$ and $CD$ are two chords of a circle with centre $O$, and $AB = CD$. Prove that $\triangle OAB \cong \triangle OCD$, and state what this tells you about the distances of the two chords from the centre.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$OA = OC$ &nbsp;(radii of the same circle)</p>
+          <p>$OB = OD$ &nbsp;(radii of the same circle)</p>
+          <p>$AB = CD$ &nbsp;(given)</p>
+          <p><strong>Therefore $\triangle OAB \cong \triangle OCD$ (SSS).</strong></p>
+          <p>Congruent triangles have equal corresponding heights, so the perpendicular distance from $O$ to $AB$ equals the perpendicular distance from $O$ to $CD$.</p>
+          <p>In other words, <strong>equal chords are equidistant from the centre</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$ABCD$ is a square. $P$, $Q$, $R$ and $S$ are points on $AB$, $BC$, $CD$ and $DA$ respectively such that $AP = BQ = CR = DS$.</p>
+      <p>(a) Prove that $\triangle APS \cong \triangle BQP$. &nbsp; (b) Explain why $PQRS$ has four equal sides. &nbsp; (c) Prove that $PQRS$ is a square.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $AP = BQ = CR = DS = x$ and let the square have side $s$. Then $SA = DA - DS = s - x$ and $PB = AB - AP = s - x$, so $SA = PB$.</p>
+          <p>$AP = BQ$ &nbsp;(given)</p>
+          <p>$\angle PAS = \angle QBP = 90^\circ$ &nbsp;(angles of a square)</p>
+          <p>$SA = PB$ &nbsp;(shown above)</p>
+          <p>The right angle lies between the two pairs of equal sides, so <strong>$\triangle APS \cong \triangle BQP$ (SAS)</strong>.</p>
+          <p><strong>(b)</strong> The same argument applies at all four corners, so all four corner triangles are congruent. Their hypotenuses are $SP$, $PQ$, $QR$ and $RS$ — corresponding sides of congruent triangles — so all four are equal.</p>
+          <p><strong>(c)</strong> In $\triangle APS$, $\angle APS + \angle ASP = 90^\circ$. From the congruence, $\angle BPQ = \angle ASP$.</p>
+          <p>Along the straight line $AB$: $\angle APS + \angle SPQ + \angle BPQ = 180^\circ$.</p>
+          <p>Substituting, $\angle SPQ = 180 - (\angle APS + \angle ASP) = 180 - 90 = 90^\circ$.</p>
+          <p>The same holds at each vertex, so $PQRS$ has four equal sides and four right angles — it is a <strong>square</strong>. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Congruent Triangles (G5) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

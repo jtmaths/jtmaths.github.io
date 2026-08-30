@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circles, Surface Area and Volume – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔵 Circles, Surface Area and Volume</h1>
+  <p>GCSE Maths · Geometry and Measures (G17)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – CIRCLE FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Circumference and Area of a Circle</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two circle formulae</div>
+    Circumference: &nbsp;$C = 2\pi r = \pi d$<br>
+    Area: &nbsp;$A = \pi r^2$
+  </div>
+
+  <div class="warn">
+    <strong>Do not mix them up.</strong> The one with the <strong>square</strong> is the <strong>area</strong>. A useful memory line: "<em>Twinkle twinkle little star, circumference equals two pi r</em>."
+  </div>
+
+  <div class="concept">
+    <strong>What is $\pi$?</strong> It is the number you get when you divide any circle's circumference by its diameter — always about $3.14159$. That is exactly why $C = \pi d$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Circumference and area</div>
+    <div class="example-body">
+      <p>A circle has radius $9$ cm. Find its circumference and area, each to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$C = 2\pi r = 2 \times \pi \times 9 = 18\pi = 56.5$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = \pi r^2 = \pi \times 81 = 81\pi = 254.5\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Working from the diameter</div>
+    <div class="example-body">
+      <p>A circular pond has diameter $7$ m. Find its area, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Halve the diameter first: $r = 7 \div 2 = 3.5$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = \pi \times 3.5^2 = \pi \times 12.25 = 38.48\text{ m}^2$</span></div>
+      <div class="warn"><strong>Never square the diameter.</strong> $\pi \times 7^2$ would give four times the correct area.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Working backwards</div>
+    <div class="example-body">
+      <p>A circle has area $200\text{ cm}^2$. Find its radius, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\pi r^2 = 200$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$r^2 = \dfrac{200}{\pi} = 63.662$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$r = \sqrt{63.662} = 7.98$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>"Leave your answer in terms of $\pi$"</strong> means do not press the $\pi$ button at the end — write $81\pi$, not $254.5$. This is exact and often easier.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – COMPOSITE 2D SHAPES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Semicircles and Composite Shapes</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Shape</th><th>Area</th><th>Perimeter</th></tr>
+    <tr><td>Semicircle</td><td>$\tfrac{1}{2}\pi r^2$</td><td>$\pi r + 2r$ &nbsp;(curve $+$ diameter)</td></tr>
+    <tr><td>Quarter circle</td><td>$\tfrac{1}{4}\pi r^2$</td><td>$\tfrac{1}{2}\pi r + 2r$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The perimeter of a semicircle is not half the circumference.</strong> You must add the straight diameter as well, or the shape would not be closed.
+  </div>
+
+  <div class="svg-block">
+    <svg width="420" height="170" viewBox="0 0 420 170" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 40 120 A 60 60 0 0 1 160 120 Z" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="40" y1="120" x2="160" y2="120" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="100" y="140" font-family="Arial" font-size="12" fill="#b91c1c" text-anchor="middle">diameter = 2r</text>
+      <text x="100" y="52" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">curve = πr</text>
+      <text x="100" y="162" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Perimeter = πr + 2r</text>
+
+      <rect x="240" y="60" width="140" height="60" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 240 60 A 30 30 0 0 0 240 120" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 380 60 A 30 30 0 0 1 380 120" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+      <text x="310" y="145" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A running track: rectangle + two semicircles</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Semicircle</div>
+    <div class="example-body">
+      <p>A semicircle has radius $8$ cm. Find its area and its perimeter, each to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Area $= \tfrac{1}{2}\pi r^2 = \tfrac{1}{2} \times \pi \times 64 = 32\pi = 100.5\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Curved part $= \tfrac{1}{2} \times 2\pi r = \pi \times 8 = 25.13$ cm</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Straight part (the diameter) $= 16$ cm</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Perimeter $= 25.13 + 16 = 41.1$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A composite shape</div>
+    <div class="example-body">
+      <p>A shape is a rectangle $20$ cm by $12$ cm with a semicircle of diameter $12$ cm attached to one short end. Find its area, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rectangle: $20 \times 12 = 240\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Semicircle radius $= 12 \div 2 = 6$ cm</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Semicircle area $= \tfrac{1}{2}\pi \times 36 = 18\pi = 56.55\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total $= 240 + 56.55 = 296.5\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – 3D FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Volume and Surface Area of Solids</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Solid</th><th>Volume</th><th>Surface area</th></tr>
+    <tr><td>Cuboid</td><td>$lwh$</td><td>$2(lw + lh + wh)$</td></tr>
+    <tr><td>Prism</td><td>cross-section $\times$ length</td><td>$2\times$cross-section $+$ perimeter $\times$ length</td></tr>
+    <tr><td>Cylinder</td><td>$\pi r^2 h$</td><td>$2\pi r^2 + 2\pi r h$</td></tr>
+    <tr><td>Cone</td><td>$\tfrac{1}{3}\pi r^2 h$</td><td>$\pi r^2 + \pi r l$ &nbsp;($l$ = slant height)</td></tr>
+    <tr><td>Sphere</td><td>$\tfrac{4}{3}\pi r^3$</td><td>$4\pi r^2$</td></tr>
+    <tr><td>Hemisphere (solid)</td><td>$\tfrac{2}{3}\pi r^3$</td><td>$2\pi r^2 + \pi r^2 = 3\pi r^2$</td></tr>
+    <tr><td>Pyramid</td><td>$\tfrac{1}{3} \times$ base area $\times h$</td><td>base $+$ area of the triangular faces</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The sphere and cone formulae are usually given</strong> on the exam formulae sheet. The cuboid, prism and cylinder formulae are <em>not</em> — learn those.
+  </div>
+
+  <div class="concept">
+    <strong>Curved surface of a cone: $\pi r l$.</strong> Note the <strong>slant</strong> height $l$, not the vertical height $h$. If you are given $h$, find $l$ first using $l^2 = r^2 + h^2$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Sphere</div>
+    <div class="example-body">
+      <p>A sphere has radius $6$ cm. Find its volume and surface area, in terms of $\pi$ and as decimals to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$V = \tfrac{4}{3}\pi r^3 = \tfrac{4}{3} \times \pi \times 216 = 288\pi = 904.8\text{ cm}^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$SA = 4\pi r^2 = 4 \times \pi \times 36 = 144\pi = 452.4\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Cone with vertical height given</div>
+    <div class="example-body">
+      <p>A cone has radius $5$ cm and vertical height $12$ cm. Find its total surface area, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Slant height: $l^2 = 5^2 + 12^2 = 169$, so $l = 13$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Base: $\pi r^2 = 25\pi$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Curved surface: $\pi r l = \pi \times 5 \times 13 = 65\pi$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total $= 25\pi + 65\pi = 90\pi = 282.7\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Pyramid</div>
+    <div class="example-body">
+      <p>A pyramid has a square base of side $8$ cm and vertical height $9$ cm. Find its volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Base area $= 8 \times 8 = 64\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = \tfrac{1}{3} \times 64 \times 9 = \tfrac{1}{3} \times 576 = 192\text{ cm}^3$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COMPOSITE SOLIDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Composite Solids</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Break the solid into standard pieces.</li>
+    <li>Find each volume separately and add (or subtract for a hole).</li>
+    <li>For surface area, list only the faces that are <strong>actually visible</strong>.</li>
+    <li>Remember: where two pieces join, both hidden faces disappear.</li>
+    <li>Keep answers in terms of $\pi$ until the end.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Surface area of a composite solid is not the sum of the two surface areas.</strong> The faces where the pieces meet are inside the solid and must not be counted.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Cylinder with a hemisphere on top</div>
+    <div class="example-body">
+      <p>A solid consists of a cylinder of radius $4$ cm and height $10$ cm with a hemisphere of the same radius on top. Find its volume and total surface area, both in terms of $\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cylinder volume $= \pi r^2 h = \pi \times 16 \times 10 = 160\pi$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Hemisphere volume $= \tfrac{2}{3}\pi r^3 = \tfrac{2}{3} \times \pi \times 64 = \dfrac{128\pi}{3}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total volume $= 160\pi + \dfrac{128\pi}{3} = \dfrac{480\pi + 128\pi}{3} = \dfrac{608\pi}{3}\text{ cm}^3$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Surfaces: the flat circular base, the cylinder's curved surface, and the hemisphere's curved surface. The cylinder's top is hidden.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Base $= \pi r^2 = 16\pi$; cylinder curved $= 2\pi r h = 80\pi$; hemisphere curved $= 2\pi r^2 = 32\pi$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Total surface area $= 16\pi + 80\pi + 32\pi = 128\pi\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — A hole drilled through</div>
+    <div class="example-body">
+      <p>A cuboid $10$ cm by $10$ cm by $6$ cm has a cylindrical hole of radius $2$ cm drilled all the way through its $6$ cm depth. Find the remaining volume, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cuboid volume $= 10 \times 10 \times 6 = 600\text{ cm}^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cylinder removed $= \pi r^2 h = \pi \times 4 \times 6 = 24\pi = 75.40\text{ cm}^3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Remaining $= 600 - 75.40 = 524.6\text{ cm}^3$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Circle</h4><p>$C = 2\pi r = \pi d$; $A = \pi r^2$. The squared one is the area.</p></div>
+    <div class="ref-card"><h4>Diameter first</h4><p>Halve it to get $r$ before using any formula.</p></div>
+    <div class="ref-card"><h4>Semicircle</h4><p>Area $\tfrac{1}{2}\pi r^2$; perimeter $\pi r + 2r$.</p></div>
+    <div class="ref-card"><h4>Cylinder</h4><p>$V = \pi r^2 h$; $SA = 2\pi r^2 + 2\pi r h$.</p></div>
+    <div class="ref-card"><h4>Cone</h4><p>$V = \tfrac{1}{3}\pi r^2 h$; curved surface $= \pi r l$.</p></div>
+    <div class="ref-card"><h4>Sphere</h4><p>$V = \tfrac{4}{3}\pi r^3$; $SA = 4\pi r^2$.</p></div>
+    <div class="ref-card"><h4>Pyramid</h4><p>$V = \tfrac{1}{3} \times$ base $\times$ height.</p></div>
+    <div class="ref-card"><h4>Composite</h4><p>Add volumes; count only the visible faces for surface area.</p></div>
+    <div class="ref-card"><h4>Exact answers</h4><p>Leave in terms of $\pi$ unless told otherwise.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A circle has radius $12$ cm. Find (a) its circumference, (b) its area, each in terms of $\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $C = 2\pi r = 24\pi$ cm</p>
+          <p><strong>(b)</strong> $A = \pi r^2 = 144\pi\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A circular table has diameter $1.4$ m. Find its area, to 3 significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r = 1.4 \div 2 = 0.7$ m</p>
+          <p>$A = \pi \times 0.7^2 = 0.49\pi = 1.539\ldots$</p>
+          <p><strong>$1.54\text{ m}^2$</strong> (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A circle has circumference $50$ cm. Find its radius, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\pi r = 50$</p>
+          <p>$r = \dfrac{50}{2\pi} = \dfrac{25}{\pi} = 7.96$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the perimeter of a semicircle of radius $10$ cm, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Curved part $= \pi r = 10\pi = 31.42$ cm</p>
+          <p>Straight part $= 2r = 20$ cm</p>
+          <p>Perimeter $= 31.42 + 20 = 51.4$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A sphere has radius $3$ cm. Find its volume and surface area in terms of $\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$V = \tfrac{4}{3}\pi \times 27 = 36\pi\text{ cm}^3$</p>
+          <p>$SA = 4\pi \times 9 = 36\pi\text{ cm}^2$</p>
+          <p>(A curious coincidence: for $r = 3$ the two numbers match, but the units differ.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A cone has radius $6$ cm and slant height $10$ cm. Find (a) its curved surface area, (b) its vertical height, (c) its volume. Give (a) and (c) in terms of $\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\pi r l = \pi \times 6 \times 10 = 60\pi\text{ cm}^2$</p>
+          <p><strong>(b)</strong> $h^2 = l^2 - r^2 = 100 - 36 = 64$, so $h = 8$ cm.</p>
+          <p><strong>(c)</strong> $V = \tfrac{1}{3}\pi \times 36 \times 8 = 96\pi\text{ cm}^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A cylinder has volume $1000\text{ cm}^3$ and radius $5$ cm. Find its height, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\pi r^2 h = 1000$</p>
+          <p>$25\pi h = 1000$</p>
+          <p>$h = \dfrac{1000}{25\pi} = \dfrac{40}{\pi} = 12.73$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A shape is a rectangle $14$ cm by $8$ cm with a semicircle of diameter $8$ cm attached to each short end. Find (a) the total area, (b) the total perimeter, each to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Semicircle radius $= 4$ cm. Two semicircles make one full circle.</p>
+          <p><strong>(a)</strong> Rectangle $= 14 \times 8 = 112\text{ cm}^2$. Full circle $= \pi \times 16 = 50.27\text{ cm}^2$.</p>
+          <p>Total $= 112 + 50.27 = 162.3\text{ cm}^2$</p>
+          <p><strong>(b)</strong> The perimeter is the two long rectangle sides plus the two curves (which together make a full circumference).</p>
+          <p>$= 2 \times 14 + 2\pi \times 4 = 28 + 25.13 = 53.1$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A solid hemisphere has radius $9$ cm. Find (a) its volume, (b) its total surface area (including the flat circular face), both in terms of $\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $V = \tfrac{2}{3}\pi r^3 = \tfrac{2}{3} \times \pi \times 729 = 486\pi\text{ cm}^3$</p>
+          <p><strong>(b)</strong> Curved part $= 2\pi r^2 = 162\pi$; flat circle $= \pi r^2 = 81\pi$.</p>
+          <p>Total $= 162\pi + 81\pi = 243\pi\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A solid is made from a cylinder of radius $5$ cm and height $12$ cm with a cone of the same radius and slant height $13$ cm on top.</p>
+      <p>(a) Find the cone's vertical height. &nbsp; (b) Find the total volume in terms of $\pi$. &nbsp; (c) Find the total surface area in terms of $\pi$. &nbsp; (d) The solid is made of a metal of density $7.8\text{ g/cm}^3$. Find its mass, to the nearest gram.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $h^2 = 13^2 - 5^2 = 169 - 25 = 144$, so $h = 12$ cm.</p>
+          <p><strong>(b)</strong> Cylinder $= \pi \times 25 \times 12 = 300\pi$</p>
+          <p>Cone $= \tfrac{1}{3}\pi \times 25 \times 12 = 100\pi$</p>
+          <p>Total $= \mathbf{400\pi\text{ cm}^3}$</p>
+          <p><strong>(c)</strong> Visible surfaces: the flat base, the cylinder's curved surface, the cone's curved surface. (The cylinder's top is covered by the cone.)</p>
+          <p>Base $= \pi \times 25 = 25\pi$</p>
+          <p>Cylinder curved $= 2\pi \times 5 \times 12 = 120\pi$</p>
+          <p>Cone curved $= \pi r l = \pi \times 5 \times 13 = 65\pi$</p>
+          <p>Total $= \mathbf{210\pi\text{ cm}^2}$</p>
+          <p><strong>(d)</strong> Volume $= 400\pi = 1256.637\text{ cm}^3$</p>
+          <p>Mass $= 1256.637 \times 7.8 = 9801.8$, so about $\mathbf{9802}$ g (roughly $9.8$ kg).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Circles, Surface Area &amp; Volume (G17) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

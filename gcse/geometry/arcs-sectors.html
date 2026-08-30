@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcs and Sectors – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍕 Arcs and Sectors</h1>
+  <p>GCSE Maths · Geometry and Measures (G18)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE FRACTION IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The One Idea Behind Everything</div>
+<div class="section-body">
+
+  <p>An arc is <em>part</em> of a circumference and a sector is <em>part</em> of an area. Both are found the same way: work out what fraction of the whole circle you have, then take that fraction of the whole.</p>
+
+  <div class="formula-box">
+    <div class="label">The key fraction</div>
+    $\dfrac{\theta}{360}$ &nbsp;— where $\theta$ is the angle at the centre, in degrees
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The two formulae</div>
+    Arc length $= \dfrac{\theta}{360} \times 2\pi r$<br><br>
+    Sector area $= \dfrac{\theta}{360} \times \pi r^2$
+  </div>
+
+  <div class="svg-block">
+    <svg width="470" height="220" viewBox="0 0 470 220" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="115" cy="110" r="80" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 115 110 L 115 30 A 80 80 0 0 1 184 150 Z" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2.2"/>
+      <path d="M 115 30 A 80 80 0 0 1 184 150" fill="none" stroke="#ef4444" stroke-width="4"/>
+      <circle cx="115" cy="110" r="4" fill="#1e1e2e"/>
+      <path d="M 115 70 A 40 40 0 0 1 149 130" fill="none" stroke="#16a34a" stroke-width="2"/>
+      <text x="139" y="98" font-family="Arial" font-size="13" fill="#16a34a" font-weight="bold">θ</text>
+      <text x="128" y="78" font-family="Arial" font-size="12" fill="#4c1d95">r</text>
+      <text x="196" y="66" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">arc</text>
+      <text x="152" y="128" font-family="Arial" font-size="12" fill="#4c1d95" font-weight="bold">sector</text>
+      <text x="115" y="212" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The sector is a slice of the whole circle</text>
+
+      <text x="345" y="60" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">If θ = 90°</text>
+      <text x="345" y="88" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">fraction = 90/360 = ¼</text>
+      <text x="345" y="116" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">so take a quarter of</text>
+      <text x="345" y="140" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">the circumference and area</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Angle $\theta$</th><th>Fraction</th><th>Name</th></tr>
+    <tr><td>$360^\circ$</td><td>$1$</td><td>the whole circle</td></tr>
+    <tr><td>$180^\circ$</td><td>$\tfrac{1}{2}$</td><td>semicircle</td></tr>
+    <tr><td>$120^\circ$</td><td>$\tfrac{1}{3}$</td><td>a third</td></tr>
+    <tr><td>$90^\circ$</td><td>$\tfrac{1}{4}$</td><td>quarter circle</td></tr>
+    <tr><td>$60^\circ$</td><td>$\tfrac{1}{6}$</td><td>a sixth</td></tr>
+    <tr><td>$45^\circ$</td><td>$\tfrac{1}{8}$</td><td>an eighth</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ARC LENGTH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Arc Length</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Write down $r$ and $\theta$.</li>
+    <li>Find the whole circumference, $2\pi r$.</li>
+    <li>Multiply by $\dfrac{\theta}{360}$.</li>
+    <li>Give the answer in the units of length (cm, m…), not squared.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Arc length</div>
+    <div class="example-body">
+      <p>A sector has radius $12$ cm and angle $50^\circ$. Find the arc length, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Whole circumference $= 2\pi \times 12 = 24\pi$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Fraction $= \dfrac{50}{360}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Arc $= \dfrac{50}{360} \times 24\pi = \dfrac{1200\pi}{360} = \dfrac{10\pi}{3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 10.47$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Finding the angle</div>
+    <div class="example-body">
+      <p>An arc of length $15$ cm is drawn on a circle of radius $10$ cm. Find the angle at the centre, to the nearest degree.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\theta}{360} \times 2\pi \times 10 = 15$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\theta}{360} \times 20\pi = 15$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\theta = \dfrac{15 \times 360}{20\pi} = \dfrac{5400}{62.832} = 85.94$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\theta \approx 86^\circ$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SECTOR AREA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Sector Area</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Sector area</div>
+    <div class="example-body">
+      <p>A sector has radius $8$ cm and angle $135^\circ$. Find its area, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Whole circle area $= \pi r^2 = 64\pi$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Fraction $= \dfrac{135}{360} = \dfrac{3}{8}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area $= \dfrac{3}{8} \times 64\pi = 24\pi$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 75.4\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding the radius</div>
+    <div class="example-body">
+      <p>A sector of angle $72^\circ$ has area $50\text{ cm}^2$. Find its radius, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{72}{360} \times \pi r^2 = 50$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{1}{5} \pi r^2 = 50$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\pi r^2 = 250$, so $r^2 = \dfrac{250}{\pi} = 79.577$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$r = \sqrt{79.577} = 8.92$ cm</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PERIMETER OF A SECTOR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Perimeter of a Sector</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Perimeter of a sector</div>
+    $P = \text{arc length} + 2r$
+  </div>
+
+  <div class="warn">
+    <strong>Don't forget the two radii.</strong> The perimeter is the whole way round the outside of the slice: the curved arc <em>plus</em> the two straight edges. Leaving out the $2r$ is the most common error on this topic.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Perimeter of a sector</div>
+    <div class="example-body">
+      <p>A sector has radius $9$ cm and angle $80^\circ$. Find its perimeter, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Arc $= \dfrac{80}{360} \times 2\pi \times 9 = \dfrac{80}{360} \times 18\pi = 4\pi = 12.566$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Two radii $= 2 \times 9 = 18$ cm</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Perimeter $= 12.566 + 18 = 30.6$ cm</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SEGMENTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Area of a Segment (Higher)</div>
+<div class="section-body">
+
+  <p>A <strong>segment</strong> is what is left when you cut the triangle off a sector.</p>
+
+  <div class="formula-box">
+    <div class="label">Segment area</div>
+    segment $=$ sector $-$ triangle<br><br>
+    $= \dfrac{\theta}{360}\pi r^2 - \dfrac{1}{2}r^2 \sin\theta$
+  </div>
+
+  <div class="svg-block">
+    <svg width="450" height="180" viewBox="0 0 450 180" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="80" cy="90" r="65" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+      <path d="M 80 90 L 34 44 A 65 65 0 0 1 126 44 Z" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+      <text x="80" y="170" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle" font-weight="bold">sector</text>
+      <text x="160" y="95" font-family="Arial" font-size="20" fill="#1e1e2e">−</text>
+
+      <circle cx="245" cy="90" r="65" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+      <polygon points="245,90 199,44 291,44" fill="#fecaca" stroke="#ef4444" stroke-width="2"/>
+      <text x="245" y="170" font-family="Arial" font-size="12" fill="#b91c1c" text-anchor="middle" font-weight="bold">triangle</text>
+      <text x="325" y="95" font-family="Arial" font-size="20" fill="#1e1e2e">=</text>
+
+      <circle cx="395" cy="90" r="65" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+      <path d="M 349 44 A 65 65 0 0 1 441 44 Z" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+      <text x="395" y="170" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">segment</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    The triangle formed by the two radii and the chord has two sides of length $r$ with the angle $\theta$ between them, so its area is $\tfrac{1}{2}ab\sin C = \tfrac{1}{2}r^2\sin\theta$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Segment area</div>
+    <div class="example-body">
+      <p>A circle has radius $10$ cm. A chord subtends an angle of $70^\circ$ at the centre. Find the area of the minor segment, to 2 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sector area $= \dfrac{70}{360} \times \pi \times 100 = 61.087\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Triangle area $= \tfrac{1}{2} \times 10^2 \times \sin 70^\circ = 50 \times 0.93969 = 46.985\text{ cm}^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Segment $= 61.087 - 46.985 = 14.10\text{ cm}^2$</span></div>
+      <div class="tip">Make sure your calculator is in <strong>degrees</strong> mode before using $\sin$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – MAJOR AND MINOR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Major and Minor</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Minor</strong> means the smaller piece (angle less than $180^\circ$).<br>
+    <strong>Major</strong> means the larger piece (angle more than $180^\circ$).<br>
+    The two angles always add to $360^\circ$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Major sector</div>
+    <div class="example-body">
+      <p>A minor sector has angle $110^\circ$ and radius $6$ cm. Find the area of the corresponding <em>major</em> sector, to 1 d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Major angle $= 360 - 110 = 250^\circ$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Area $= \dfrac{250}{360} \times \pi \times 36 = \dfrac{250}{360} \times 113.097$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 78.5\text{ cm}^2$</span></div>
+      <p><em>Check:</em> the minor sector is $\dfrac{110}{360} \times 113.097 = 34.6\text{ cm}^2$, and $78.5 + 34.6 = 113.1$ — the whole circle ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The fraction</h4><p>$\dfrac{\theta}{360}$ of the whole circle.</p></div>
+    <div class="ref-card"><h4>Arc length</h4><p>$\dfrac{\theta}{360} \times 2\pi r$ — a length, so units are cm not cm².</p></div>
+    <div class="ref-card"><h4>Sector area</h4><p>$\dfrac{\theta}{360} \times \pi r^2$.</p></div>
+    <div class="ref-card"><h4>Sector perimeter</h4><p>arc $+ 2r$ — never forget the two radii.</p></div>
+    <div class="ref-card"><h4>Segment</h4><p>sector $-$ triangle, with triangle $= \tfrac{1}{2}r^2\sin\theta$.</p></div>
+    <div class="ref-card"><h4>Major / minor</h4><p>The two angles add to $360^\circ$.</p></div>
+    <div class="ref-card"><h4>Finding $\theta$ or $r$</h4><p>Substitute into the formula and rearrange.</p></div>
+    <div class="ref-card"><h4>Accuracy</h4><p>Keep $\pi$ exact until the final line.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the arc length of a sector with radius $15$ cm and angle $60^\circ$, in terms of $\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{60}{360} = \dfrac{1}{6}$</p>
+          <p>Arc $= \dfrac{1}{6} \times 2\pi \times 15 = \dfrac{30\pi}{6} = 5\pi$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the area of a sector with radius $10$ cm and angle $45^\circ$, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{45}{360} = \dfrac{1}{8}$</p>
+          <p>Area $= \dfrac{1}{8} \times \pi \times 100 = 12.5\pi = 39.27\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the perimeter of a quarter circle of radius $14$ cm, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Arc $= \dfrac{90}{360} \times 2\pi \times 14 = \dfrac{1}{4} \times 28\pi = 7\pi = 21.99$ cm</p>
+          <p>Two radii $= 2 \times 14 = 28$ cm</p>
+          <p>Perimeter $= 21.99 + 28 = 50.0$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A sector has radius $8$ cm and arc length $10$ cm. Find the angle at the centre, to the nearest degree.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\theta}{360} \times 2\pi \times 8 = 10$</p>
+          <p>$\dfrac{\theta}{360} \times 16\pi = 10$</p>
+          <p>$\theta = \dfrac{10 \times 360}{16\pi} = \dfrac{3600}{50.265} = 71.6$</p>
+          <p>$\theta \approx 72^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A sector of angle $120^\circ$ has area $30\text{ cm}^2$. Find its radius, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{120}{360} \times \pi r^2 = 30$</p>
+          <p>$\dfrac{1}{3}\pi r^2 = 30$, so $\pi r^2 = 90$</p>
+          <p>$r^2 = \dfrac{90}{\pi} = 28.648$</p>
+          <p>$r = 5.35$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A minor sector has angle $95^\circ$ and radius $12$ cm. Find the arc length of the <em>major</em> arc, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Major angle $= 360 - 95 = 265^\circ$</p>
+          <p>Arc $= \dfrac{265}{360} \times 2\pi \times 12 = \dfrac{265}{360} \times 75.398$</p>
+          <p>$= 55.5$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A circle of radius $9$ cm has a chord subtending $100^\circ$ at the centre. Find the area of the minor segment, to 2 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sector $= \dfrac{100}{360} \times \pi \times 81 = 70.686\text{ cm}^2$</p>
+          <p>Triangle $= \tfrac{1}{2} \times 81 \times \sin 100^\circ = 40.5 \times 0.98481 = 39.885\text{ cm}^2$</p>
+          <p>Segment $= 70.686 - 39.885 = 30.80\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A goat is tethered by a $7$ m rope to a post at the corner of a large rectangular field, so it can graze a quarter circle. Find the grazing area, to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The corner gives a $90^\circ$ sector of radius $7$ m.</p>
+          <p>Area $= \dfrac{90}{360} \times \pi \times 49 = \dfrac{1}{4} \times 153.938$</p>
+          <p>$= 38.5\text{ m}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A sector of a circle of radius $10$ cm has a perimeter of $35$ cm. Find the angle at the centre, to the nearest degree.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Perimeter $=$ arc $+ 2r$, so arc $= 35 - 20 = 15$ cm.</p>
+          <p>$\dfrac{\theta}{360} \times 2\pi \times 10 = 15$</p>
+          <p>$\theta = \dfrac{15 \times 360}{20\pi} = \dfrac{5400}{62.832} = 85.94$</p>
+          <p>$\theta \approx 86^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A running track is made of a rectangle $84.4$ m long with a semicircular end of radius $36.5$ m at each end.</p>
+      <p>(a) Find the total perimeter of the track, to 1 d.p. &nbsp; (b) Find the total area enclosed, to the nearest m². &nbsp; (c) A runner completes $4$ laps. How far has she run, to the nearest metre?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The two semicircular ends together form one full circle of radius $36.5$ m.</p>
+          <p>Curved part $= 2\pi \times 36.5 = 229.336$ m</p>
+          <p>Straight parts $= 2 \times 84.4 = 168.8$ m</p>
+          <p>Perimeter $= 229.336 + 168.8 = \mathbf{398.1}$ m (1 d.p.)</p>
+          <p><strong>(b)</strong> Rectangle $= 84.4 \times (2 \times 36.5) = 84.4 \times 73 = 6161.2\text{ m}^2$</p>
+          <p>Full circle $= \pi \times 36.5^2 = \pi \times 1332.25 = 4185.4\text{ m}^2$</p>
+          <p>Total $= 6161.2 + 4185.4 = \mathbf{10\,347}\text{ m}^2$ (nearest m²)</p>
+          <p><strong>(c)</strong> $4 \times 398.136 = 1592.5$, so about $\mathbf{1593}$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Arcs &amp; Sectors (G18) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

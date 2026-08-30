@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Measuring, Scale Drawings and Bearings – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧭 Measuring, Scale Drawings and Bearings</h1>
+  <p>GCSE Maths · Geometry and Measures (G15)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – MEASURING ACCURATELY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Measuring Accurately</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Line the <strong>zero</strong> of the ruler up with the start of the line — not the end of the plastic.</li>
+    <li>Read to the nearest millimetre and write the answer in the units asked for.</li>
+    <li>For an angle, put the protractor's <strong>centre</strong> on the vertex and the zero line along one arm.</li>
+    <li>Read from the scale that starts at zero on that arm.</li>
+    <li>Sense-check: an acute-looking angle must read less than $90^\circ$.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>The protractor's two scales.</strong> Every protractor has an inner and an outer scale. Decide first whether the angle is acute or obtuse, then choose the reading that matches. An angle that clearly looks acute cannot be $130^\circ$.
+  </div>
+
+  <div class="tip">
+    <strong>Reflex angles.</strong> A protractor only measures up to $180^\circ$. To measure a reflex angle, measure the smaller angle and subtract from $360^\circ$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – SCALES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Scales and Scale Drawings</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Scale ratio</div>
+    $\text{drawing length} : \text{real length}$ &nbsp;— always in the <strong>same units</strong>, so no units are written
+  </div>
+
+  <table>
+    <tr><th>You know…</th><th>You want…</th><th>Do this</th></tr>
+    <tr><td>Map / drawing length</td><td>Real length</td><td><strong>Multiply</strong> by the scale number</td></tr>
+    <tr><td>Real length</td><td>Map / drawing length</td><td><strong>Divide</strong> by the scale number</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="500" height="130" viewBox="0 0 500 130" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="35" width="90" height="50" rx="6" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <text x="65" y="58" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">6 cm</text>
+      <text x="65" y="76" font-family="Arial" font-size="11" fill="#64748b" text-anchor="middle">on the map</text>
+      <line x1="118" y1="60" x2="330" y2="60" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#sa)"/>
+      <defs><marker id="sa" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7c3aed"/></marker></defs>
+      <text x="224" y="48" font-family="Arial" font-size="14" fill="#6d28d9" text-anchor="middle" font-weight="bold">× 25 000</text>
+      <rect x="340" y="35" width="140" height="50" rx="6" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+      <text x="410" y="56" font-family="Arial" font-size="13" fill="#166534" text-anchor="middle" font-weight="bold">150 000 cm</text>
+      <text x="410" y="76" font-family="Arial" font-size="13" fill="#166534" text-anchor="middle" font-weight="bold">= 1.5 km</text>
+      <text x="250" y="118" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Scale 1 : 25 000</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Map to real</div>
+    <div class="example-body">
+      <p>On a $1 : 50\,000$ map, two villages are $9.2$ cm apart. Find the real distance in kilometres.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiply: $9.2 \times 50\,000 = 460\,000$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>cm → m: $460\,000 \div 100 = 4600$ m</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>m → km: $4600 \div 1000 = 4.6$ km</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Real to drawing</div>
+    <div class="example-body">
+      <p>A room is $7.5$ m long. How long is it on a plan drawn to a scale of $1 : 50$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Convert to cm first: $7.5$ m $= 750$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide: $750 \div 50 = 15$ cm.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Handy shortcuts:</strong> on a $1 : 25\,000$ map, $1$ cm $= 0.25$ km. On a $1 : 50\,000$ map, $1$ cm $= 0.5$ km. On a $1 : 100\,000$ map, $1$ cm $= 1$ km.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – BEARINGS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Bearings</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The three rules of a bearing</div>
+    Measured from <strong>North</strong> &nbsp;·&nbsp; measured <strong>clockwise</strong> &nbsp;·&nbsp; always <strong>three figures</strong>
+  </div>
+
+  <div class="concept">
+    Three figures means writing $072^\circ$, not $72^\circ$. A bearing of $8^\circ$ is written $008^\circ$. Bearings run from $000^\circ$ round to $360^\circ$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="520" height="240" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- compass -->
+      <circle cx="115" cy="120" r="80" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
+      <line x1="115" y1="120" x2="115" y2="30" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="115" y="24" font-family="Arial" font-size="13" fill="#475569" text-anchor="middle" font-weight="bold">N (000°)</text>
+      <text x="212" y="125" font-family="Arial" font-size="12" fill="#475569" font-weight="bold">E (090°)</text>
+      <text x="115" y="220" font-family="Arial" font-size="12" fill="#475569" text-anchor="middle" font-weight="bold">S (180°)</text>
+      <text x="18" y="125" font-family="Arial" font-size="12" fill="#475569" font-weight="bold">W (270°)</text>
+      <path d="M 115 60 A 60 60 0 0 1 157 78" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <line x1="115" y1="120" x2="175" y2="60" stroke="#7c3aed" stroke-width="2.5"/>
+      <text x="146" y="60" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">045°</text>
+      <circle cx="115" cy="120" r="4" fill="#1e1e2e"/>
+
+      <!-- example bearing -->
+      <line x1="360" y1="185" x2="360" y2="35" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="360" y="28" font-family="Arial" font-size="13" fill="#475569" text-anchor="middle" font-weight="bold">N</text>
+      <circle cx="360" cy="185" r="5" fill="#4f46e5"/>
+      <text x="342" y="203" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">A</text>
+      <line x1="360" y1="185" x2="470" y2="105" stroke="#7c3aed" stroke-width="2.5"/>
+      <circle cx="470" cy="105" r="5" fill="#7c3aed"/>
+      <text x="478" y="101" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">B</text>
+      <path d="M 360 125 A 60 60 0 0 1 405 143" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="394" y="120" font-family="Arial" font-size="13" fill="#ef4444" font-weight="bold">054°</text>
+      <text x="410" y="225" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The bearing of B from A is 054°</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Identify the point you are measuring <strong>from</strong> — it comes after the word "from".</li>
+    <li>Draw a North line at that point.</li>
+    <li>Measure clockwise from North to the line joining the two points.</li>
+    <li>Write the answer with three figures and a degree sign.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>"The bearing of B from A" means you stand at A.</strong> The North line goes at $A$, not at $B$. Getting this the wrong way round is the commonest error in the whole topic.
+  </div>
+
+  <table>
+    <tr><th>Direction</th><th>Bearing</th><th>Direction</th><th>Bearing</th></tr>
+    <tr><td>North</td><td>$000^\circ$</td><td>South</td><td>$180^\circ$</td></tr>
+    <tr><td>North-East</td><td>$045^\circ$</td><td>South-West</td><td>$225^\circ$</td></tr>
+    <tr><td>East</td><td>$090^\circ$</td><td>West</td><td>$270^\circ$</td></tr>
+    <tr><td>South-East</td><td>$135^\circ$</td><td>North-West</td><td>$315^\circ$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – BACK BEARINGS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Back Bearings</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Back bearing rule</div>
+    If the bearing is <strong>less than $180^\circ$</strong>, <strong>add</strong> $180^\circ$<br>
+    If the bearing is <strong>more than $180^\circ$</strong>, <strong>subtract</strong> $180^\circ$
+  </div>
+
+  <div class="concept">
+    <strong>Why $180^\circ$?</strong> The North lines at $A$ and at $B$ are parallel. The bearing of $B$ from $A$ and the bearing of $A$ from $B$ are co-interior angles between those parallel lines, so they differ by $180^\circ$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Back bearings both ways</div>
+    <div class="example-body">
+      <p>(a) The bearing of $Q$ from $P$ is $073^\circ$. Find the bearing of $P$ from $Q$.<br>(b) The bearing of $S$ from $R$ is $296^\circ$. Find the bearing of $R$ from $S$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $073^\circ \lt 180^\circ$, so add: $73 + 180 = 253^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $296^\circ \gt 180^\circ$, so subtract: $296 - 180 = 116^\circ$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – BEARINGS WITH SCALE DRAWINGS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Bearings with Scale Drawings</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Choose a scale that makes the drawing fit the page.</li>
+    <li>Convert each real distance into a drawing length by dividing.</li>
+    <li>Mark the starting point and draw a North line there.</li>
+    <li>Measure the first bearing clockwise from North and draw the leg to the correct length.</li>
+    <li>Draw a <strong>fresh North line</strong> at the new point before measuring the next bearing.</li>
+    <li>Measure the final answer from the drawing and multiply back up to real life.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A two-leg journey</div>
+    <div class="example-body">
+      <p>A boat sails $40$ km on a bearing of $060^\circ$, then $30$ km on a bearing of $150^\circ$. Using a scale of $1$ cm : $10$ km, find the distance and bearing of the boat from its start.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Drawing lengths: $40 \div 10 = 4$ cm and $30 \div 10 = 3$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Draw the first leg at $060^\circ$ from North, $4$ cm long.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Draw a new North line at that point; measure $150^\circ$ and draw $3$ cm.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The two bearings differ by $150 - 60 = 90^\circ$, so the legs meet at a right angle.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>By Pythagoras: distance $= \sqrt{40^2 + 30^2} = \sqrt{2500} = 50$ km.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>For the bearing: $\tan\theta = \dfrac{30}{40} = 0.75$, so $\theta = 36.9^\circ$ from the first leg.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>Bearing $= 60 + 36.9 = 096.9^\circ$, so about $097^\circ$.</span></div>
+      <p>Measuring the drawing should give $5$ cm and about $097^\circ$ — matching the calculation ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Bearings and angle facts</div>
+    <div class="example-body">
+      <p>The bearing of $B$ from $A$ is $130^\circ$. The bearing of $C$ from $A$ is $210^\circ$. Find the angle $BAC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both bearings are measured from the same North line at $A$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The angle between them is simply the difference.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle BAC = 210 - 130 = 80^\circ$</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Accuracy in the exam.</strong> Scale-drawing answers are usually accepted within $\pm 2$ mm and $\pm 2^\circ$. Use a sharp pencil and draw long lines — a short line magnifies any angular error.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Bearings</h4><p>From North, clockwise, three figures.</p></div>
+    <div class="ref-card"><h4>"B from A"</h4><p>Stand at $A$; the North line goes at $A$.</p></div>
+    <div class="ref-card"><h4>Back bearing</h4><p>Add $180^\circ$ if under $180^\circ$; subtract if over.</p></div>
+    <div class="ref-card"><h4>Compass points</h4><p>N $000$, NE $045$, E $090$, SE $135$, S $180$, SW $225$, W $270$, NW $315$.</p></div>
+    <div class="ref-card"><h4>Map → real</h4><p>Multiply by the scale, then convert cm → m → km.</p></div>
+    <div class="ref-card"><h4>Real → map</h4><p>Convert to cm first, then divide by the scale.</p></div>
+    <div class="ref-card"><h4>New North lines</h4><p>Draw a fresh one at every turning point.</p></div>
+    <div class="ref-card"><h4>Angle between bearings</h4><p>From the same point, just subtract.</p></div>
+    <div class="ref-card"><h4>Tolerance</h4><p>Usually $\pm 2$ mm and $\pm 2^\circ$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write these compass directions as three-figure bearings: (a) South-East, (b) West, (c) North.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $135^\circ$ &nbsp; <strong>(b)</strong> $270^\circ$ &nbsp; <strong>(c)</strong> $000^\circ$ (or $360^\circ$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>The bearing of $Y$ from $X$ is $048^\circ$. Find the bearing of $X$ from $Y$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$048^\circ$ is less than $180^\circ$, so add $180^\circ$.</p>
+          <p>$48 + 180 = 228^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The bearing of $M$ from $L$ is $315^\circ$. Find the bearing of $L$ from $M$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$315^\circ$ is more than $180^\circ$, so subtract $180^\circ$.</p>
+          <p>$315 - 180 = 135^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>On a map with scale $1 : 20\,000$, a river is $12.5$ cm long. Find its real length in kilometres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$12.5 \times 20\,000 = 250\,000$ cm</p>
+          <p>$250\,000 \div 100 = 2500$ m $= 2.5$ km</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A garden is $24$ m long. It is drawn to a scale of $1 : 200$. How long is it on the plan?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$24$ m $= 2400$ cm</p>
+          <p>$2400 \div 200 = 12$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>The bearing of $B$ from $A$ is $035^\circ$ and the bearing of $C$ from $A$ is $128^\circ$. Find angle $BAC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Both are measured from the same North line at $A$, so subtract:</p>
+          <p>$\angle BAC = 128 - 35 = 93^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A walker heads $5$ km due North, then $12$ km due East. Find (a) the direct distance from the start, (b) the bearing of the finish from the start, to the nearest degree.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The two legs are perpendicular, so use Pythagoras:</p>
+          <p>$d = \sqrt{5^2 + 12^2} = \sqrt{169} = 13$ km</p>
+          <p><strong>(b)</strong> $\tan\theta = \dfrac{12}{5} = 2.4$, so $\theta = 67.4^\circ$ measured from North.</p>
+          <p>Bearing $= \mathbf{067^\circ}$ (nearest degree).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A ship sails $18$ km on a bearing of $090^\circ$, then $18$ km on a bearing of $180^\circ$. Find its distance and bearing from the start.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$090^\circ$ is due East and $180^\circ$ is due South, so the legs are perpendicular.</p>
+          <p>Distance $= \sqrt{18^2 + 18^2} = \sqrt{648} = 25.5$ km (1 d.p.)</p>
+          <p>Equal East and South components means the direction is exactly South-East.</p>
+          <p>Bearing $= \mathbf{135^\circ}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A walker uses a $1 : 25\,000$ map. The route measures $22.4$ cm. She walks at $5$ km/h. How long will the walk take, to the nearest minute?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Real distance $= 22.4 \times 25\,000 = 560\,000$ cm $= 5600$ m $= 5.6$ km.</p>
+          <p>Time $= \dfrac{5.6}{5} = 1.12$ hours.</p>
+          <p>$0.12 \times 60 = 7.2$ minutes.</p>
+          <p><strong>About $1$ hour $7$ minutes.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Town $B$ is $60$ km from town $A$ on a bearing of $120^\circ$. Town $C$ is $60$ km from $B$ on a bearing of $240^\circ$.</p>
+      <p>(a) Find angle $ABC$. &nbsp; (b) What type of triangle is $ABC$? &nbsp; (c) Find the distance $AC$. &nbsp; (d) Find the bearing of $C$ from $A$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The bearing of $A$ from $B$ is the back bearing of $120^\circ$: $120 + 180 = 300^\circ$.</p>
+          <p>At $B$, the two directions are $300^\circ$ (towards $A$) and $240^\circ$ (towards $C$).</p>
+          <p>$\angle ABC = 300 - 240 = 60^\circ$</p>
+          <p><strong>(b)</strong> $AB = BC = 60$ km, so the triangle is isosceles. With the apex angle $60^\circ$, the base angles are $(180-60)\div2 = 60^\circ$ each — so it is <strong>equilateral</strong>.</p>
+          <p><strong>(c)</strong> All sides equal, so $AC = \mathbf{60}$ km.</p>
+          <p><strong>(d)</strong> At $A$, the direction to $B$ is $120^\circ$ and $\angle BAC = 60^\circ$.</p>
+          <p>$C$ lies to the west of the line $AB$ (since the second leg turned back), so the bearing of $C$ from $A$ is $120 - 60 = \mathbf{060^\circ}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Measuring, Scale Drawings &amp; Bearings (G15) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

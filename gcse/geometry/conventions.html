@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometric Conventions and Notation – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✏️ Geometric Conventions and Notation</h1>
+  <p>GCSE Maths · Geometry and Measures (G1)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BUILDING BLOCKS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Building Blocks</div>
+<div class="section-body">
+
+  <p>Geometry has its own vocabulary. Using the right word is worth marks, because examiners need to know exactly which object you mean.</p>
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Point</strong></td><td>A position with no size. Labelled with a capital letter, e.g. $A$.</td></tr>
+    <tr><td><strong>Line</strong></td><td>Straight and infinitely long in both directions.</td></tr>
+    <tr><td><strong>Line segment</strong></td><td>The part of a line between two points, e.g. $AB$. This is what you actually draw.</td></tr>
+    <tr><td><strong>Ray</strong></td><td>Starts at a point and continues forever in one direction.</td></tr>
+    <tr><td><strong>Plane</strong></td><td>A flat surface extending forever — the page you are drawing on.</td></tr>
+    <tr><td><strong>Vertex</strong></td><td>A corner, where two edges meet. Plural: <em>vertices</em>.</td></tr>
+    <tr><td><strong>Edge</strong></td><td>A line segment where two faces of a solid meet.</td></tr>
+    <tr><td><strong>Face</strong></td><td>A flat surface of a solid.</td></tr>
+    <tr><td><strong>Parallel</strong></td><td>Always the same distance apart; never meet. Written $AB \parallel CD$.</td></tr>
+    <tr><td><strong>Perpendicular</strong></td><td>Meeting at $90^\circ$. Written $AB \perp CD$.</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="560" height="150" viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- parallel -->
+      <text x="80" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Parallel lines</text>
+      <line x1="20" y1="55" x2="145" y2="55" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="20" y1="100" x2="145" y2="100" stroke="#4f46e5" stroke-width="2.5"/>
+      <path d="M75 49 l8 6 l-8 6" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M75 94 l8 6 l-8 6" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <text x="80" y="132" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">matching arrows</text>
+      <!-- perpendicular -->
+      <text x="255" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Perpendicular</text>
+      <line x1="195" y1="105" x2="320" y2="105" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="245" y1="35" x2="245" y2="105" stroke="#4f46e5" stroke-width="2.5"/>
+      <rect x="245" y="93" width="12" height="12" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <text x="255" y="132" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">right-angle square</text>
+      <!-- equal sides -->
+      <text x="450" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Equal sides</text>
+      <polygon points="450,35 395,110 505,110" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="418" y1="76" x2="426" y2="70" stroke="#ef4444" stroke-width="2.5"/>
+      <line x1="474" y1="70" x2="482" y2="76" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="450" y="132" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">dashes mark equal lengths</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>Diagram conventions:</strong><br>
+    • <strong>Arrows</strong> ► on two lines mean they are parallel. Double arrows ►► mark a second parallel pair.<br>
+    • <strong>Dashes</strong> across sides mean those sides are equal. Double dashes mark a second equal pair.<br>
+    • A small <strong>square</strong> in a corner means a right angle.<br>
+    • <strong>Arcs</strong> inside angles mean those angles are equal.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – LABELLING TRIANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Labelling Triangles and Angles</div>
+<div class="section-body">
+
+  <p>There is a standard convention that every exam board uses, and understanding it makes questions much easier to read.</p>
+
+  <div class="formula-box">
+    <div class="label">The standard convention</div>
+    <strong>Vertices</strong> get CAPITAL letters: $A$, $B$, $C$.<br>
+    <strong>Sides</strong> get the lower-case letter of the <em>opposite</em> vertex: $a$, $b$, $c$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="330" height="220" viewBox="0 0 330 220" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,180 280,180 130,40" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="60" cy="180" r="4" fill="#4f46e5"/>
+      <circle cx="280" cy="180" r="4" fill="#4f46e5"/>
+      <circle cx="130" cy="40" r="4" fill="#4f46e5"/>
+      <text x="46" y="196" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">B</text>
+      <text x="288" y="196" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">C</text>
+      <text x="124" y="30" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">A</text>
+      <text x="170" y="200" font-family="Arial" font-size="15" fill="#ef4444" font-style="italic">a</text>
+      <text x="212" y="105" font-family="Arial" font-size="15" fill="#ef4444" font-style="italic">b</text>
+      <text x="84" y="105" font-family="Arial" font-size="15" fill="#ef4444" font-style="italic">c</text>
+      <text x="165" y="216" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">side a is opposite vertex A, and so on</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Notation</th><th>Means</th></tr>
+    <tr><td>$AB$</td><td>The line segment from $A$ to $B$, or its length.</td></tr>
+    <tr><td>$\angle ABC$ &nbsp;or&nbsp; $A\hat{B}C$</td><td>The angle at $B$, formed by $BA$ and $BC$.</td></tr>
+    <tr><td>$\triangle ABC$</td><td>The triangle with vertices $A$, $B$ and $C$.</td></tr>
+    <tr><td>$AB \parallel CD$</td><td>$AB$ is parallel to $CD$.</td></tr>
+    <tr><td>$AB \perp CD$</td><td>$AB$ is perpendicular to $CD$.</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The middle letter is the angle.</strong> In $\angle ABC$ the vertex is $B$ — the letter in the middle. $\angle BAC$ is a completely different angle, the one at $A$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reading the notation</div>
+    <div class="example-body">
+      <p>In triangle $PQR$, $\angle QPR = 55^\circ$ and $\angle PQR = 70^\circ$. Find $\angle PRQ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\angle QPR$ is the angle at $P$ (middle letter), so $P = 55^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\angle PQR$ is the angle at $Q$, so $Q = 70^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle PRQ$ is the angle at $R$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Angle sum of a triangle: $R = 180 - 55 - 70 = 55^\circ$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TYPES OF ANGLE AND TRIANGLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Types of Angle and Triangle</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Angle type</th><th>Size</th></tr>
+    <tr><td>Acute</td><td>Less than $90^\circ$</td></tr>
+    <tr><td>Right angle</td><td>Exactly $90^\circ$</td></tr>
+    <tr><td>Obtuse</td><td>Between $90^\circ$ and $180^\circ$</td></tr>
+    <tr><td>Straight angle</td><td>Exactly $180^\circ$</td></tr>
+    <tr><td>Reflex</td><td>Between $180^\circ$ and $360^\circ$</td></tr>
+  </table>
+
+  <table>
+    <tr><th>Triangle</th><th>Sides</th><th>Angles</th></tr>
+    <tr><td>Equilateral</td><td>All three equal</td><td>All $60^\circ$</td></tr>
+    <tr><td>Isosceles</td><td>Two equal</td><td>Two equal (the base angles)</td></tr>
+    <tr><td>Scalene</td><td>All different</td><td>All different</td></tr>
+    <tr><td>Right-angled</td><td>—</td><td>One angle is $90^\circ$</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>A triangle can have two labels.</strong> A right-angled isosceles triangle has angles $90^\circ$, $45^\circ$, $45^\circ$ — it is both right-angled and isosceles.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – POLYGONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Polygons</div>
+<div class="section-body">
+
+  <p>A <strong>polygon</strong> is a closed 2D shape made only of straight sides.</p>
+
+  <table>
+    <tr><th>Sides</th><th>Name</th><th>Sides</th><th>Name</th></tr>
+    <tr><td>3</td><td>Triangle</td><td>8</td><td>Octagon</td></tr>
+    <tr><td>4</td><td>Quadrilateral</td><td>9</td><td>Nonagon</td></tr>
+    <tr><td>5</td><td>Pentagon</td><td>10</td><td>Decagon</td></tr>
+    <tr><td>6</td><td>Hexagon</td><td>11</td><td>Hendecagon</td></tr>
+    <tr><td>7</td><td>Heptagon</td><td>12</td><td>Dodecagon</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Regular</strong> means <em>all sides equal AND all angles equal</em>. Both conditions are needed.<br>
+    A rhombus has all sides equal but is not regular, because its angles are not all equal.<br>
+    A rectangle has all angles equal but is not regular, because its sides are not all equal.<br>
+    A square is both — so a square is a regular quadrilateral.
+  </div>
+
+  <div class="concept">
+    <strong>Convex</strong> polygons have every interior angle less than $180^\circ$.<br>
+    <strong>Concave</strong> (or re-entrant) polygons have at least one reflex interior angle — they look "dented".
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SYMMETRY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Symmetry</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Line symmetry</strong> (reflection symmetry): a mirror line can be drawn so that one half maps exactly onto the other.<br>
+    <strong>Rotational symmetry</strong>: the shape looks identical after turning through less than a full turn. The <strong>order</strong> is the number of positions in which it looks the same during one complete turn.
+  </div>
+
+  <div class="svg-block">
+    <svg width="540" height="170" viewBox="0 0 540 170" xmlns="http://www.w3.org/2000/svg">
+      <!-- rectangle -->
+      <rect x="25" y="55" width="110" height="65" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="80" y1="45" x2="80" y2="130" stroke="#ef4444" stroke-width="1.6" stroke-dasharray="5,4"/>
+      <line x1="15" y1="87.5" x2="145" y2="87.5" stroke="#ef4444" stroke-width="1.6" stroke-dasharray="5,4"/>
+      <text x="80" y="38" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Rectangle</text>
+      <text x="80" y="150" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">2 lines · order 2</text>
+      <!-- equilateral triangle -->
+      <polygon points="255,50 210,125 300,125" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="255" y1="42" x2="255" y2="133" stroke="#ef4444" stroke-width="1.4" stroke-dasharray="5,4"/>
+      <line x1="212" y1="132" x2="292" y2="66" stroke="#ef4444" stroke-width="1.4" stroke-dasharray="5,4"/>
+      <line x1="298" y1="132" x2="218" y2="66" stroke="#ef4444" stroke-width="1.4" stroke-dasharray="5,4"/>
+      <text x="255" y="38" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Equilateral</text>
+      <text x="255" y="150" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">3 lines · order 3</text>
+      <!-- parallelogram -->
+      <polygon points="405,55 500,55 470,120 375,120" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <circle cx="437.5" cy="87.5" r="4" fill="#ef4444"/>
+      <text x="437" y="38" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Parallelogram</text>
+      <text x="437" y="150" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">0 lines · order 2</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Shape</th><th>Lines of symmetry</th><th>Rotational order</th></tr>
+    <tr><td>Equilateral triangle</td><td>$3$</td><td>$3$</td></tr>
+    <tr><td>Isosceles triangle</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>Scalene triangle</td><td>$0$</td><td>$1$</td></tr>
+    <tr><td>Square</td><td>$4$</td><td>$4$</td></tr>
+    <tr><td>Rectangle</td><td>$2$</td><td>$2$</td></tr>
+    <tr><td>Rhombus</td><td>$2$</td><td>$2$</td></tr>
+    <tr><td>Parallelogram</td><td>$0$</td><td>$2$</td></tr>
+    <tr><td>Kite</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>Regular $n$-gon</td><td>$n$</td><td>$n$</td></tr>
+    <tr><td>Circle</td><td>Infinitely many</td><td>Infinite</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Rotational order is never $0$.</strong> Every shape returns to itself after a full $360^\circ$ turn, so the minimum order is $1$ — which means "no rotational symmetry".
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Symmetry of a parallelogram</div>
+    <div class="example-body">
+      <p>Explain why a parallelogram has rotational symmetry of order $2$ but no lines of symmetry.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rotating $180^\circ$ about the centre sends each vertex to the opposite one, and the shape looks identical.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Together with the $360^\circ$ position, that gives order $2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Folding along either diagonal does not match the halves, because the angles at the ends of a diagonal are different.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Folding along a line through the midpoints of opposite sides fails too, because the shape leans.</span></div>
+      <p>So there are <strong>$0$ lines of symmetry</strong>.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – DRAWING FROM A DESCRIPTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Drawing a Diagram from a Description</div>
+<div class="section-body">
+
+  <p>Exam questions often give you words and no picture. Drawing your own diagram is nearly always the fastest route to the answer.</p>
+
+  <ul class="steps">
+    <li>Read the whole description before drawing anything.</li>
+    <li>Sketch the main shape roughly — it does not need to be accurate unless the question says so.</li>
+    <li>Add every label, in the order the letters are given.</li>
+    <li>Mark equal sides with dashes, equal angles with arcs and right angles with squares.</li>
+    <li>Write on every measurement you are told.</li>
+    <li>Check your diagram against the description sentence by sentence.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Building a diagram</div>
+    <div class="example-body">
+      <p>"$ABCD$ is a trapezium with $AB$ parallel to $DC$. $AD = BC$. Angle $ADC = 68^\circ$." Draw and label the diagram, then find angle $DAB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Draw $DC$ as the longer bottom side and $AB$ shorter and parallel above it, with $A$ above $D$ and $B$ above $C$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Mark $AD$ and $BC$ with single dashes to show they are equal — this is an <em>isosceles</em> trapezium.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Write $68^\circ$ at $D$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$AB \parallel DC$, so angles $DAB$ and $ADC$ are co-interior and add to $180^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Angle $DAB = 180 - 68 = 112^\circ$.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Letters go round the shape in order.</strong> In quadrilateral $ABCD$ the sides are $AB$, $BC$, $CD$ and $DA$; $AC$ and $BD$ are the diagonals. Drawing the letters out of order will make everything else wrong.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Angle notation</h4><p>$\angle ABC$ is the angle at $B$ — the middle letter.</p></div>
+    <div class="ref-card"><h4>Triangle labels</h4><p>Capital for a vertex, matching lower case for the opposite side.</p></div>
+    <div class="ref-card"><h4>Diagram marks</h4><p>Arrows = parallel; dashes = equal sides; arcs = equal angles; square = $90^\circ$.</p></div>
+    <div class="ref-card"><h4>Regular polygon</h4><p>All sides equal AND all angles equal — both conditions.</p></div>
+    <div class="ref-card"><h4>Angle names</h4><p>Acute $\lt 90^\circ$, right $=90^\circ$, obtuse $90$–$180^\circ$, reflex $180$–$360^\circ$.</p></div>
+    <div class="ref-card"><h4>Rotational order</h4><p>Counts positions in a full turn; minimum value is $1$.</p></div>
+    <div class="ref-card"><h4>Letters in order</h4><p>$ABCD$ goes round the shape; $AC$ and $BD$ are diagonals.</p></div>
+    <div class="ref-card"><h4>Sketch it</h4><p>Always draw your own diagram if the question gives only words.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>In triangle $XYZ$, angle $XYZ = 48^\circ$ and angle $YZX = 63^\circ$. Find angle $ZXY$, and state which vertex each angle is at.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\angle XYZ$ is at $Y$ (middle letter) $= 48^\circ$.</p>
+          <p>$\angle YZX$ is at $Z = 63^\circ$.</p>
+          <p>$\angle ZXY$ is at $X$.</p>
+          <p>Angle sum of a triangle: $180 - 48 - 63 = 69^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Classify each angle: (a) $89^\circ$ &nbsp; (b) $90^\circ$ &nbsp; (c) $174^\circ$ &nbsp; (d) $271^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Acute (less than $90^\circ$)</p>
+          <p><strong>(b)</strong> A right angle</p>
+          <p><strong>(c)</strong> Obtuse (between $90^\circ$ and $180^\circ$)</p>
+          <p><strong>(d)</strong> Reflex (between $180^\circ$ and $360^\circ$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>State the number of lines of symmetry and the order of rotational symmetry of (a) a regular hexagon, (b) a kite, (c) a parallelogram.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Regular hexagon: $6$ lines, order $6$.</p>
+          <p><strong>(b)</strong> Kite: $1$ line (along the long diagonal), order $1$.</p>
+          <p><strong>(c)</strong> Parallelogram: $0$ lines, order $2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Explain why a rhombus is not a regular polygon, even though all four of its sides are equal.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A regular polygon needs <strong>both</strong> all sides equal <strong>and</strong> all angles equal.</p>
+          <p>A rhombus has four equal sides, but its angles come in two different pairs (two acute and two obtuse) unless it happens to be a square.</p>
+          <p>Because the angles are not all equal, it is not regular.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A shape has $12$ sides. (a) Name it. (b) If it is regular, state its number of lines of symmetry and rotational order.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A dodecagon.</p>
+          <p><strong>(b)</strong> A regular $n$-gon has $n$ lines of symmetry and rotational order $n$, so $12$ lines and order $12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$PQRS$ is a quadrilateral. Write down (a) the four sides, (b) the two diagonals.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Sides: $PQ$, $QR$, $RS$, $SP$ — the letters taken in order round the shape.</p>
+          <p><strong>(b)</strong> Diagonals: $PR$ and $QS$ — joining opposite vertices.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Draw and label a diagram for: "Triangle $LMN$ has $LM = LN$, angle $MLN = 36^\circ$, and $MN$ is horizontal." Then find angle $LMN$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Draw $MN$ horizontally with $L$ above the midpoint. Mark $LM$ and $LN$ with single dashes (equal), and write $36^\circ$ at $L$.</p>
+          <p>$LM = LN$ so the triangle is isosceles and the base angles $LMN$ and $LNM$ are equal.</p>
+          <p>$180 - 36 = 144^\circ$ shared between them.</p>
+          <p>Angle $LMN = 144 \div 2 = 72^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A triangle has one angle of $90^\circ$ and one line of symmetry. Find all three of its angles and name the triangle fully.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>One line of symmetry means it is isosceles, so two angles are equal.</p>
+          <p>The $90^\circ$ angle cannot be one of the equal pair (two right angles would already total $180^\circ$).</p>
+          <p>Remaining: $180 - 90 = 90^\circ$ split equally, so $45^\circ$ each.</p>
+          <p>Angles: $90^\circ$, $45^\circ$, $45^\circ$ — a <strong>right-angled isosceles triangle</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Write each statement in symbols: (a) $AB$ is parallel to $CD$. (b) $PQ$ is perpendicular to $QR$. (c) The angle at $Y$ in triangle $XYZ$ is $50^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $AB \parallel CD$</p>
+          <p><strong>(b)</strong> $PQ \perp QR$</p>
+          <p><strong>(c)</strong> $\angle XYZ = 50^\circ$ (the vertex $Y$ must be the middle letter)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A quadrilateral has exactly $2$ lines of symmetry and rotational symmetry of order $2$. Its diagonals cross at right angles.</p>
+      <p>(a) Name the shape. &nbsp; (b) Explain how you know it is not a rectangle. &nbsp; (c) What extra condition would make it a square?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A <strong>rhombus</strong>. Its two lines of symmetry are its diagonals, and it has rotational order $2$.</p>
+          <p><strong>(b)</strong> A rectangle also has $2$ lines of symmetry and order $2$, but its diagonals do <em>not</em> cross at right angles (unless it is a square). The perpendicular diagonals rule the rectangle out.</p>
+          <p><strong>(c)</strong> If the angles were also all equal ($90^\circ$ each) — equivalently if the diagonals were also equal in length — the rhombus would be a square, with $4$ lines of symmetry and order $4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Geometric Conventions &amp; Notation (G1) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

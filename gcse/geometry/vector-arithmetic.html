@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Arithmetic – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➕ Vector Arithmetic</h1>
+  <p>GCSE Maths · Geometry and Measures (G24)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – ADDING AND SUBTRACTING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Adding and Subtracting Column Vectors</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    Add or subtract the <strong>top numbers</strong>, then the <strong>bottom numbers</strong>, separately
+  </div>
+
+  <div class="formula-box">
+    $\begin{pmatrix} a \\ b \end{pmatrix} + \begin{pmatrix} c \\ d \end{pmatrix} = \begin{pmatrix} a + c \\ b + d \end{pmatrix}$ &nbsp;&nbsp;·&nbsp;&nbsp; $\begin{pmatrix} a \\ b \end{pmatrix} - \begin{pmatrix} c \\ d \end{pmatrix} = \begin{pmatrix} a - c \\ b - d \end{pmatrix}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Adding and subtracting</div>
+    <div class="example-body">
+      <p>$\mathbf{a} = \begin{pmatrix} 5 \\ -2 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} -3 \\ 7 \end{pmatrix}$. Find $\mathbf{a} + \mathbf{b}$ and $\mathbf{a} - \mathbf{b}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{a} + \mathbf{b} = \begin{pmatrix} 5 + (-3) \\ -2 + 7 \end{pmatrix} = \begin{pmatrix} 2 \\ 5 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{a} - \mathbf{b} = \begin{pmatrix} 5 - (-3) \\ -2 - 7 \end{pmatrix} = \begin{pmatrix} 8 \\ -9 \end{pmatrix}$</span></div>
+      <div class="warn">Careful with double negatives: $5 - (-3) = 5 + 3 = 8$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – SCALAR MULTIPLICATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Multiplying by a Scalar</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    $k\begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} ka \\ kb \end{pmatrix}$ &nbsp;— multiply <strong>both</strong> components
+  </div>
+
+  <table>
+    <tr><th>Multiplier</th><th>Effect on the vector</th></tr>
+    <tr><td>$k \gt 1$</td><td>Longer, same direction</td></tr>
+    <tr><td>$0 \lt k \lt 1$</td><td>Shorter, same direction</td></tr>
+    <tr><td>$k = -1$</td><td>Same length, opposite direction</td></tr>
+    <tr><td>$k \lt 0$</td><td>Opposite direction, and scaled by $|k|$</td></tr>
+  </table>
+
+  <div class="concept">
+    Multiplying by a scalar <strong>never changes the line of direction</strong> — it only stretches, shrinks or reverses along it. That is why $k\mathbf{a}$ is always <em>parallel</em> to $\mathbf{a}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Combining operations</div>
+    <div class="example-body">
+      <p>$\mathbf{p} = \begin{pmatrix} 4 \\ 1 \end{pmatrix}$ and $\mathbf{q} = \begin{pmatrix} -2 \\ 6 \end{pmatrix}$. Find $3\mathbf{p} - 2\mathbf{q}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3\mathbf{p} = \begin{pmatrix} 12 \\ 3 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2\mathbf{q} = \begin{pmatrix} -4 \\ 12 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3\mathbf{p} - 2\mathbf{q} = \begin{pmatrix} 12 - (-4) \\ 3 - 12 \end{pmatrix} = \begin{pmatrix} 16 \\ -9 \end{pmatrix}$</span></div>
+      <div class="tip">Do the multiplications first, then the addition or subtraction — the usual order of operations applies.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Vectors on Diagrams</div>
+<div class="section-body">
+
+  <p>Vectors can also be combined geometrically, and this is where most exam marks are.</p>
+
+  <div class="formula-box">
+    <div class="label">The triangle law</div>
+    $\overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}$
+  </div>
+
+  <div class="concept">
+    <strong>Think of it as a journey.</strong> Going from $A$ to $B$ and then $B$ to $C$ takes you to exactly the same place as going straight from $A$ to $C$. The middle letters "cancel".
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="va" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7c3aed"/></marker>
+      <marker id="vb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+      <line x1="40" y1="155" x2="150" y2="60" stroke="#7c3aed" stroke-width="2.8" marker-end="url(#va)"/>
+      <line x1="155" y1="55" x2="265" y2="95" stroke="#7c3aed" stroke-width="2.8" marker-end="url(#va)"/>
+      <line x1="40" y1="155" x2="262" y2="98" stroke="#ef4444" stroke-width="2.8" stroke-dasharray="7,4" marker-end="url(#vb)"/>
+      <circle cx="40" cy="155" r="4.5" fill="#1e1e2e"/>
+      <circle cx="152" cy="57" r="4.5" fill="#1e1e2e"/>
+      <circle cx="265" cy="97" r="4.5" fill="#1e1e2e"/>
+      <text x="26" y="173" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">A</text>
+      <text x="148" y="46" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">B</text>
+      <text x="272" y="94" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">C</text>
+      <text x="76" y="98" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">a</text>
+      <text x="208" y="66" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">b</text>
+      <text x="150" y="140" font-family="Arial" font-size="13" fill="#b91c1c" font-weight="bold">a + b</text>
+      <text x="380" y="90" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">Nose to tail:</text>
+      <text x="380" y="112" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">the resultant closes</text>
+      <text x="380" y="134" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">the triangle</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Find a route from the start point to the end point along known vectors.</li>
+    <li>Write each leg down in order.</li>
+    <li>If you travel <em>against</em> an arrow, use the <strong>negative</strong> of that vector.</li>
+    <li>Add the legs together and simplify.</li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">Going backwards</div>
+    $\overrightarrow{AC} = \overrightarrow{AB} + \overrightarrow{BC} = -\overrightarrow{BA} + \overrightarrow{BC}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Route-finding on a diagram</div>
+    <div class="example-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OC} = \mathbf{c}$. Find $\overrightarrow{AC}$ and $\overrightarrow{OB}$ in terms of $\mathbf{a}$ and $\mathbf{c}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>To get from $A$ to $C$, go $A \to O \to C$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AO} = -\mathbf{a}$ (against the arrow) and $\overrightarrow{OC} = \mathbf{c}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{AC} = -\mathbf{a} + \mathbf{c}$, usually written $\mathbf{c} - \mathbf{a}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>For $\overrightarrow{OB}$: in a parallelogram $\overrightarrow{AB} = \overrightarrow{OC} = \mathbf{c}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\overrightarrow{OB} = \overrightarrow{OA} + \overrightarrow{AB} = \mathbf{a} + \mathbf{c}$.</span></div>
+      <div class="concept">In a parallelogram, one diagonal is $\mathbf{a} + \mathbf{c}$ (the <em>sum</em>) and the other is $\mathbf{c} - \mathbf{a}$ (the <em>difference</em>). This pair comes up again and again.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Longer route</div>
+    <div class="example-body">
+      <p>In a diagram, $\overrightarrow{PQ} = \mathbf{u}$, $\overrightarrow{QR} = \mathbf{v}$ and $\overrightarrow{RS} = \mathbf{w}$. Express $\overrightarrow{PS}$ and $\overrightarrow{SQ}$ in terms of $\mathbf{u}$, $\mathbf{v}$ and $\mathbf{w}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{PS} = \overrightarrow{PQ} + \overrightarrow{QR} + \overrightarrow{RS} = \mathbf{u} + \mathbf{v} + \mathbf{w}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{SQ}$ goes backwards along $RS$ then backwards along $QR$:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{SQ} = \overrightarrow{SR} + \overrightarrow{RQ} = -\mathbf{w} - \mathbf{v}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – MIDPOINTS AND FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Midpoints and Fractions of a Line</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Midpoint</div>
+    If $M$ is the midpoint of $AB$, then $\overrightarrow{AM} = \tfrac{1}{2}\overrightarrow{AB}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Dividing in a ratio</div>
+    If $AP : PB = m : n$, then $\overrightarrow{AP} = \dfrac{m}{m+n}\overrightarrow{AB}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Using a midpoint</div>
+    <div class="example-body">
+      <p>$\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $M$ is the midpoint of $AB$. Find $\overrightarrow{OM}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Route: $O \to A \to M$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AB} = \overrightarrow{AO} + \overrightarrow{OB} = -\mathbf{a} + \mathbf{b} = \mathbf{b} - \mathbf{a}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{AM} = \tfrac{1}{2}(\mathbf{b} - \mathbf{a})$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\overrightarrow{OM} = \mathbf{a} + \tfrac{1}{2}(\mathbf{b} - \mathbf{a}) = \mathbf{a} + \tfrac{1}{2}\mathbf{b} - \tfrac{1}{2}\mathbf{a}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$= \tfrac{1}{2}\mathbf{a} + \tfrac{1}{2}\mathbf{b} = \tfrac{1}{2}(\mathbf{a} + \mathbf{b})$</span></div>
+      <div class="tip">This is a result worth remembering: the vector to the <strong>midpoint</strong> of $AB$ is the <strong>average</strong> of the vectors to $A$ and $B$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Dividing in a ratio</div>
+    <div class="example-body">
+      <p>$\overrightarrow{OA} = \mathbf{a}$, $\overrightarrow{OB} = \mathbf{b}$, and $P$ lies on $AB$ with $AP : PB = 1 : 3$. Find $\overrightarrow{OP}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total parts $= 4$, so $\overrightarrow{AP} = \tfrac{1}{4}\overrightarrow{AB}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$, so $\overrightarrow{AP} = \tfrac{1}{4}(\mathbf{b} - \mathbf{a})$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{OP} = \mathbf{a} + \tfrac{1}{4}(\mathbf{b} - \mathbf{a})$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \mathbf{a} - \tfrac{1}{4}\mathbf{a} + \tfrac{1}{4}\mathbf{b} = \tfrac{3}{4}\mathbf{a} + \tfrac{1}{4}\mathbf{b}$</span></div>
+      <p><em>Sense check:</em> $P$ is closer to $A$, so the coefficient of $\mathbf{a}$ should be the larger one ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SIMPLIFYING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Simplifying Vector Expressions</div>
+<div class="section-body">
+
+  <p>Vector algebra follows exactly the same rules as ordinary algebra: collect like terms, expand brackets, factorise.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Collecting terms</div>
+    <div class="example-body">
+      <p>Simplify $3(\mathbf{a} + 2\mathbf{b}) - 2(\mathbf{a} - \mathbf{b})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expand: $3\mathbf{a} + 6\mathbf{b} - 2\mathbf{a} + 2\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Collect $\mathbf{a}$ terms: $3\mathbf{a} - 2\mathbf{a} = \mathbf{a}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Collect $\mathbf{b}$ terms: $6\mathbf{b} + 2\mathbf{b} = 8\mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \mathbf{a} + 8\mathbf{b}$</span></div>
+      <div class="warn">Watch the sign when a minus sign multiplies a bracket: $-2(\mathbf{a} - \mathbf{b}) = -2\mathbf{a} + 2\mathbf{b}$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Solving a vector equation</div>
+    <div class="example-body">
+      <p>Given $\mathbf{x} + 3\mathbf{a} = 2\mathbf{x} - \mathbf{b}$, find $\mathbf{x}$ in terms of $\mathbf{a}$ and $\mathbf{b}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Subtract $\mathbf{x}$ from both sides: $3\mathbf{a} = \mathbf{x} - \mathbf{b}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Add $\mathbf{b}$ to both sides: $\mathbf{x} = 3\mathbf{a} + \mathbf{b}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Adding</h4><p>Add tops, add bottoms, separately.</p></div>
+    <div class="ref-card"><h4>Scalar multiple</h4><p>$k\mathbf{a}$ multiplies both components; always parallel to $\mathbf{a}$.</p></div>
+    <div class="ref-card"><h4>Triangle law</h4><p>$\overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}$ — middle letters cancel.</p></div>
+    <div class="ref-card"><h4>Against an arrow</h4><p>Use the negative: $\overrightarrow{BA} = -\overrightarrow{AB}$.</p></div>
+    <div class="ref-card"><h4>Parallelogram</h4><p>Diagonals are $\mathbf{a} + \mathbf{b}$ and $\mathbf{b} - \mathbf{a}$.</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>$\overrightarrow{OM} = \tfrac{1}{2}(\mathbf{a} + \mathbf{b})$ — the average.</p></div>
+    <div class="ref-card"><h4>Ratio $m:n$</h4><p>$\overrightarrow{AP} = \dfrac{m}{m+n}\overrightarrow{AB}$.</p></div>
+    <div class="ref-card"><h4>Algebra</h4><p>Expand and collect like terms exactly as with numbers.</p></div>
+    <div class="ref-card"><h4>Route-finding</h4><p>Any path from start to finish gives the same answer.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$\mathbf{a} = \begin{pmatrix} 6 \\ -1 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} -2 \\ 4 \end{pmatrix}$. Find (a) $\mathbf{a} + \mathbf{b}$, (b) $\mathbf{a} - \mathbf{b}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\begin{pmatrix} 6 - 2 \\ -1 + 4 \end{pmatrix} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}$</p>
+          <p><strong>(b)</strong> $\begin{pmatrix} 6 - (-2) \\ -1 - 4 \end{pmatrix} = \begin{pmatrix} 8 \\ -5 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$\mathbf{p} = \begin{pmatrix} 3 \\ 5 \end{pmatrix}$. Find (a) $4\mathbf{p}$, (b) $-2\mathbf{p}$, (c) $\tfrac{1}{2}\mathbf{p}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\begin{pmatrix} 12 \\ 20 \end{pmatrix}$</p>
+          <p><strong>(b)</strong> $\begin{pmatrix} -6 \\ -10 \end{pmatrix}$</p>
+          <p><strong>(c)</strong> $\begin{pmatrix} 1.5 \\ 2.5 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$\mathbf{u} = \begin{pmatrix} 2 \\ -3 \end{pmatrix}$ and $\mathbf{v} = \begin{pmatrix} 5 \\ 1 \end{pmatrix}$. Find $3\mathbf{u} + 2\mathbf{v}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3\mathbf{u} = \begin{pmatrix} 6 \\ -9 \end{pmatrix}$ and $2\mathbf{v} = \begin{pmatrix} 10 \\ 2 \end{pmatrix}$</p>
+          <p>Sum $= \begin{pmatrix} 16 \\ -7 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Simplify $\overrightarrow{PQ} + \overrightarrow{QR} + \overrightarrow{RS}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The middle letters cancel in pairs: $P \to Q \to R \to S$.</p>
+          <p>$= \overrightarrow{PS}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Simplify $5(\mathbf{a} - 2\mathbf{b}) + 3(2\mathbf{a} + \mathbf{b})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand: $5\mathbf{a} - 10\mathbf{b} + 6\mathbf{a} + 3\mathbf{b}$</p>
+          <p>Collect: $11\mathbf{a} - 7\mathbf{b}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. Express $\overrightarrow{AB}$ and $\overrightarrow{BA}$ in terms of $\mathbf{a}$ and $\mathbf{b}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = \overrightarrow{AO} + \overrightarrow{OB} = -\mathbf{a} + \mathbf{b} = \mathbf{b} - \mathbf{a}$</p>
+          <p>$\overrightarrow{BA} = \mathbf{a} - \mathbf{b}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$\overrightarrow{OP} = \mathbf{p}$ and $\overrightarrow{OQ} = \mathbf{q}$. $M$ is the midpoint of $PQ$. Find $\overrightarrow{PM}$ and $\overrightarrow{OM}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{PQ} = \mathbf{q} - \mathbf{p}$</p>
+          <p>$\overrightarrow{PM} = \tfrac{1}{2}(\mathbf{q} - \mathbf{p})$</p>
+          <p>$\overrightarrow{OM} = \mathbf{p} + \tfrac{1}{2}(\mathbf{q} - \mathbf{p}) = \tfrac{1}{2}\mathbf{p} + \tfrac{1}{2}\mathbf{q} = \tfrac{1}{2}(\mathbf{p} + \mathbf{q})$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathbf{a} = \begin{pmatrix} 4 \\ 3 \end{pmatrix}$. Find the magnitude of $3\mathbf{a}$, and explain the relationship with $|\mathbf{a}|$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$|\mathbf{a}| = \sqrt{16 + 9} = 5$</p>
+          <p>$3\mathbf{a} = \begin{pmatrix} 12 \\ 9 \end{pmatrix}$, so $|3\mathbf{a}| = \sqrt{144 + 81} = \sqrt{225} = 15$</p>
+          <p>$15 = 3 \times 5$: multiplying a vector by $k$ multiplies its magnitude by $|k|$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OC} = \mathbf{c}$. $M$ is the midpoint of the diagonal $OB$.</p>
+      <p>(a) Find $\overrightarrow{OB}$. &nbsp; (b) Find $\overrightarrow{OM}$. &nbsp; (c) Show that $M$ is also the midpoint of $AC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{OB} = \overrightarrow{OA} + \overrightarrow{AB} = \mathbf{a} + \mathbf{c}$ (since $\overrightarrow{AB} = \overrightarrow{OC} = \mathbf{c}$).</p>
+          <p><strong>(b)</strong> $\overrightarrow{OM} = \tfrac{1}{2}(\mathbf{a} + \mathbf{c})$.</p>
+          <p><strong>(c)</strong> Let $N$ be the midpoint of $AC$. Then $\overrightarrow{ON} = \tfrac{1}{2}(\overrightarrow{OA} + \overrightarrow{OC}) = \tfrac{1}{2}(\mathbf{a} + \mathbf{c})$.</p>
+          <p>$\overrightarrow{ON} = \overrightarrow{OM}$, so $N$ and $M$ are the same point.</p>
+          <p>This proves that <strong>the diagonals of a parallelogram bisect each other</strong>. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. The point $P$ lies on $AB$ with $AP : PB = 2 : 3$. The point $Q$ lies on $OB$ with $OQ : QB = 1 : 4$.</p>
+      <p>(a) Find $\overrightarrow{OP}$. &nbsp; (b) Find $\overrightarrow{OQ}$. &nbsp; (c) Find $\overrightarrow{QP}$, simplifying your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Total parts $= 5$, so $\overrightarrow{AP} = \tfrac{2}{5}\overrightarrow{AB} = \tfrac{2}{5}(\mathbf{b} - \mathbf{a})$.</p>
+          <p>$\overrightarrow{OP} = \mathbf{a} + \tfrac{2}{5}(\mathbf{b} - \mathbf{a}) = \tfrac{3}{5}\mathbf{a} + \tfrac{2}{5}\mathbf{b}$</p>
+          <p><strong>(b)</strong> Total parts $= 5$, so $\overrightarrow{OQ} = \tfrac{1}{5}\mathbf{b}$.</p>
+          <p><strong>(c)</strong> $\overrightarrow{QP} = \overrightarrow{QO} + \overrightarrow{OP} = -\tfrac{1}{5}\mathbf{b} + \tfrac{3}{5}\mathbf{a} + \tfrac{2}{5}\mathbf{b}$</p>
+          <p>$= \tfrac{3}{5}\mathbf{a} + \tfrac{1}{5}\mathbf{b}$</p>
+          <p>Or, factorising: $\overrightarrow{QP} = \tfrac{1}{5}(3\mathbf{a} + \mathbf{b})$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vector Arithmetic (G24) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>
