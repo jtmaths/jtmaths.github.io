@@ -13,7 +13,7 @@ nav_order: 2
 * [Algebraic Fractions](algebraic_fractions.html)
 * [Inequalities](inequalities.html)
 * [Algebraic Manipulation](manipulation.html)
-* [Equations, Indentities and Proofs](identities.html)
+* [Equations, Identities and Proofs](identities.html)
 * [Simultaneous Equations](simultaneous1.html)
 * [Simultaneous Quadratic Equations](simultaneous2.html)
 * [Functions](functions.html)
