@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratio, Proportion &amp; Rates of Change – Overview – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1e1e2e;
+      background: #f6f5ff;
+      padding: 0 0 60px;
+    }
+    header {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: .85rem;
+      margin-top: 10px;
+    }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #4f46e5;
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 13px 20px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 36px;
+    }
+    .section-title .num {
+      background: rgba(255,255,255,.25);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .section-body {
+      background: #fff;
+      border: 1px solid #c7d2fe;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 22px 24px;
+    }
+
+    .concept {
+      background: #eef2ff;
+      border-left: 4px solid #4f46e5;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .concept strong { color: #3730a3; }
+
+    .formula-box {
+      background: #f5f3ff;
+      border: 2px solid #7c3aed;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 16px 0;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .formula-box .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6d28d9;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .steps li::before {
+      content: counter(step);
+      background: #4f46e5;
+      color: #fff;
+      border-radius: 50%;
+      min-width: 26px; height: 26px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; font-weight: 700; flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .example {
+      background: #faf5ff;
+      border: 1px solid #ddd6fe;
+      border-radius: 8px;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+    .example-header {
+      background: #7c3aed;
+      color: #fff;
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row {
+      display: flex; gap: 10px;
+      background: #ede9fe;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 6px 0;
+      align-items: flex-start;
+    }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+
+    .tip {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: .95rem;
+    }
+    .tip strong { color: #92400e; }
+
+    .warn {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 14px 0;
+      font-size: .95rem;
+    }
+    .warn strong { color: #b91c1c; }
+
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th {
+      background: #4f46e5;
+      color: #fff;
+      padding: 9px 14px;
+      text-align: left;
+      font-size: .9rem;
+    }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+
+    .question {
+      background: #fff;
+      border: 1px solid #c7d2fe;
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .question-header {
+      background: #eef2ff;
+      padding: 10px 16px;
+      font-weight: 700;
+      color: #3730a3;
+      font-size: .95rem;
+    }
+    .question-body { padding: 10px 16px; }
+    details summary {
+      cursor: pointer;
+      color: #4f46e5;
+      font-weight: 600;
+      padding: 8px 0 4px;
+      font-size: .9rem;
+      user-select: none;
+    }
+    details summary:hover { color: #3730a3; }
+    .solution {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: .93rem;
+    }
+    .solution p { margin-bottom: 6px; }
+
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card {
+      flex: 1; min-width: 180px;
+      background: #f5f3ff;
+      border: 1px solid #c4b5fd;
+      border-radius: 8px;
+      padding: 13px 15px;
+    }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+
+    /* topic index list */
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: #fafafe;
+      border: 1px solid #ddd6fe;
+      border-radius: 8px;
+      padding: 11px 14px;
+      margin-bottom: 8px;
+    }
+    .topic-list .code {
+      background: #4f46e5; color: #fff;
+      border-radius: 6px;
+      font-size: .78rem; font-weight: 800;
+      padding: 2px 8px; flex-shrink: 0; margin-top: 3px;
+      min-width: 34px; text-align: center;
+    }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .ref-grid { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Ratio, Proportion &amp; Rates of Change</h1>
+  <p>GCSE Maths · Overview of the whole topic</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>Almost every question in this topic is really asking the same thing:</p>
+
+  <div class="formula-box">
+    <div class="label">The one big idea</div>
+    How many <strong>times bigger</strong> is one quantity than another?
+  </div>
+
+  <p>That "times bigger" number is called a <strong>multiplier</strong> (or a <strong>scale factor</strong>). Once you can find it, you can answer questions about ratios, fractions, percentages, speed, density, maps, recipes, interest and growth — because they are all the same piece of mathematics wearing different clothes.</p>
+
+  <div class="concept">
+    <strong>Additive vs multiplicative thinking</strong><br>
+    • <em>Additive:</em> "8 is 5 <strong>more</strong> than 3." (subtraction)<br>
+    • <em>Multiplicative:</em> "12 is 4 <strong>times</strong> 3." (division)<br>
+    This whole topic is <strong>multiplicative</strong>. If you find yourself adding or subtracting to compare two quantities, stop and ask whether you should be dividing instead.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Same idea, four disguises</div>
+    <div class="example-body">
+      <p>A shop mixes red and blue paint. For every 2 litres of red there are 5 litres of blue.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>As a ratio:</strong> red : blue $= 2 : 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>As a fraction:</strong> red is $\dfrac{2}{5}$ of the blue, and $\dfrac{2}{7}$ of the whole mixture.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>As a percentage:</strong> red is $\dfrac{2}{7} = 0.2857\ldots = 28.6\%$ of the mixture (1 d.p.).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>As an equation:</strong> $B = 2.5R$, so blue is always $2.5$ times the red.</span></div>
+      <p>All four statements say exactly the same thing. Being able to switch between them is the single most useful skill in this topic.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE FIVE TOOLS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Five Tools You Will Use Everywhere</div>
+<div class="section-body">
+
+  <p>Nearly every question in this topic can be cracked with one of these five methods.</p>
+
+  <h4 style="color:#3730a3;margin-top:14px;">Tool 1 — The unitary method ("find one")</h4>
+  <p>Scale down to <strong>1</strong> of something, then scale up to the amount you want.</p>
+  <div class="example">
+    <div class="example-header">Example</div>
+    <div class="example-body">
+      <p>5 pens cost £3.50. How much do 8 pens cost?</p>
+      <div class="step-row"><span class="arrow">①</span><span>1 pen: $3.50 \div 5 = £0.70$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>8 pens: $0.70 \times 8 = £5.60$</span></div>
+    </div>
+  </div>
+
+  <h4 style="color:#3730a3;margin-top:14px;">Tool 2 — The multiplier (scale factor)</h4>
+  <p>Find the number that turns the first quantity into the second, then apply it to everything.</p>
+  <div class="example">
+    <div class="example-header">Example</div>
+    <div class="example-body">
+      <p>A recipe for 4 people uses 300 g of rice. How much for 10 people?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 10 \div 4 = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Rice $= 300 \times 2.5 = 750$ g</span></div>
+    </div>
+  </div>
+
+  <h4 style="color:#3730a3;margin-top:14px;">Tool 3 — The bar model</h4>
+  <p>Draw the ratio as equal-sized boxes. One box = one "part". Brilliant for share-in-a-ratio and "difference" questions.</p>
+  <div class="svg-block">
+    <svg width="420" height="120" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg">
+      <text x="10" y="30" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">Red</text>
+      <rect x="60" y="14" width="60" height="26" fill="#fca5a5" stroke="#ef4444"/>
+      <rect x="120" y="14" width="60" height="26" fill="#fca5a5" stroke="#ef4444"/>
+      <text x="10" y="76" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">Blue</text>
+      <rect x="60" y="60" width="60" height="26" fill="#93c5fd" stroke="#3b82f6"/>
+      <rect x="120" y="60" width="60" height="26" fill="#93c5fd" stroke="#3b82f6"/>
+      <rect x="180" y="60" width="60" height="26" fill="#93c5fd" stroke="#3b82f6"/>
+      <rect x="240" y="60" width="60" height="26" fill="#93c5fd" stroke="#3b82f6"/>
+      <rect x="300" y="60" width="60" height="26" fill="#93c5fd" stroke="#3b82f6"/>
+      <text x="200" y="110" font-family="Arial" font-size="12" fill="#555">7 equal parts altogether · ratio 2 : 5</text>
+    </svg>
+  </div>
+
+  <h4 style="color:#3730a3;margin-top:14px;">Tool 4 — The double number line / ratio table</h4>
+  <p>Line the two quantities up in a table and multiply or divide both rows by the same number.</p>
+  <table>
+    <tr><th>Litres of petrol</th><td>1</td><td>5</td><td>12</td></tr>
+    <tr><th>Cost (£)</th><td>1.45</td><td>7.25</td><td>17.40</td></tr>
+  </table>
+
+  <h4 style="color:#3730a3;margin-top:14px;">Tool 5 — The formula triangle / algebraic rule</h4>
+  <p>For compound measures and proportion, write a rule such as $S = \dfrac{D}{T}$ or $y = kx$ and substitute.</p>
+
+  <div class="tip">
+    <strong>Exam tip:</strong> if you get stuck, draw the bar model or write a ratio table. Marks are awarded for method, and a clear diagram very often unlocks the answer.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE 16 SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The 16 Subtopics</div>
+<div class="section-body">
+
+  <p>The National Curriculum splits this topic into 16 statements, usually labelled <strong>R1</strong> to <strong>R16</strong>. Each has its own page with explanations, worked examples and ten practice questions.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">R1</span><span><a href="units.html">Units and Compound Units</a><span class="desc">Changing between standard units (length, area, volume, mass, time) and compound units (speed, density, rates of pay).</span></span></li>
+    <li><span class="code">R2</span><span><a href="scale-diagrams.html">Scale Factors, Scale Diagrams and Maps</a><span class="desc">Map scales such as $1:25\,000$, scale drawings, bearings and real distances.</span></span></li>
+    <li><span class="code">R3</span><span><a href="fraction-of-another.html">One Quantity as a Fraction of Another</a><span class="desc">Writing $a$ as a fraction of $b$, including improper fractions when $a > b$.</span></span></li>
+    <li><span class="code">R4</span><span><a href="ratio-notation.html">Ratio Notation and Simplifying</a><span class="desc">Writing, simplifying and comparing ratios, including $1:n$ and $n:1$ form.</span></span></li>
+    <li><span class="code">R5</span><span><a href="sharing-in-a-ratio.html">Dividing a Quantity in a Ratio</a><span class="desc">Part:part and part:whole sharing, "difference" problems, recipes, mixtures and concentrations.</span></span></li>
+    <li><span class="code">R6</span><span><a href="multiplicative-relationships.html">Multiplicative Relationships</a><span class="desc">Expressing the link between two quantities as a ratio, a fraction or a multiplier.</span></span></li>
+    <li><span class="code">R7</span><span><a href="proportion-equal-ratios.html">Proportion as Equality of Ratios</a><span class="desc">Solving $a:b = c:d$, cross-multiplication and best-buy comparisons.</span></span></li>
+    <li><span class="code">R8</span><span><a href="ratios-fractions-linear.html">Ratios, Fractions and Linear Functions</a><span class="desc">Turning a ratio into a fraction and into an equation $y = mx$; changing ratios.</span></span></li>
+    <li><span class="code">R9</span><span><a href="percentages.html">Percentages and Percentage Change</a><span class="desc">Increase, decrease, reverse percentages, simple interest and comparing with percentages.</span></span></li>
+    <li><span class="code">R10</span><span><a href="direct-inverse-proportion.html">Direct and Inverse Proportion Problems</a><span class="desc">Recognising and solving both types, numerically and graphically.</span></span></li>
+    <li><span class="code">R11</span><span><a href="compound-measures.html">Compound Measures</a><span class="desc">Speed, density, pressure, rates of pay, unit pricing and population density.</span></span></li>
+    <li><span class="code">R12</span><span><a href="similar-shapes.html">Similar Shapes: Length, Area and Volume</a><span class="desc">Scale factors $k$, $k^2$ and $k^3$, and links to similarity and trigonometry.</span></span></li>
+    <li><span class="code">R13</span><span><a href="proportion-equations.html">Equations of Direct and Inverse Proportion</a><span class="desc">Using $y = kx$, $y = kx^2$, $y = \dfrac{k}{x}$ and finding the constant $k$.</span></span></li>
+    <li><span class="code">R14</span><span><a href="gradient-rate-of-change.html">Gradient as a Rate of Change</a><span class="desc">Reading rates from straight-line graphs; recognising proportion graphs.</span></span></li>
+    <li><span class="code">R15</span><span><a href="instantaneous-rate-of-change.html">Instantaneous Rates of Change</a><span class="desc">Gradients of chords and tangents; average vs instantaneous rate; areas under graphs.</span></span></li>
+    <li><span class="code">R16</span><span><a href="growth-and-decay.html">Growth and Decay</a><span class="desc">Compound interest, depreciation, exponential models and iterative processes.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Mistake 1 — Confusing part:part with part:whole.</strong><br>
+    In the ratio $2:3$ there are $5$ parts altogether. The first quantity is $\frac{2}{3}$ of the second but $\frac{2}{5}$ of the total. Read the question carefully to see which one is wanted.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 2 — Forgetting units must match before simplifying.</strong><br>
+    $50\text{ cm} : 2\text{ m}$ is <em>not</em> $50:2$. Convert first: $50:200 = 1:4$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 3 — Adding percentages.</strong><br>
+    A $10\%$ rise followed by a $10\%$ fall is <em>not</em> "no change". The multiplier is $1.10 \times 0.90 = 0.99$, a $1\%$ overall <strong>decrease</strong>.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 4 — Dividing by the new value in reverse percentage questions.</strong><br>
+    If a price after a $20\%$ discount is £48, the original is $48 \div 0.8 = £60$, not $48 \times 1.2 = £57.60$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 5 — Using the same scale factor for area and volume.</strong><br>
+    If lengths are doubled, areas are $\times 4$ and volumes are $\times 8$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 6 — Averaging speeds.</strong><br>
+    Driving 60 km at 60 km/h and 60 km at 30 km/h does <em>not</em> average 45 km/h. Use total distance $\div$ total time: $120 \div 3 = 40$ km/h.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card">
+      <h4>Share in a ratio</h4>
+      <p>Add the parts → divide the total by the number of parts → multiply each share.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Percentage multiplier</h4>
+      <p>Increase by $p\%$: $\times\left(1 + \frac{p}{100}\right)$. Decrease: $\times\left(1 - \frac{p}{100}\right)$.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Direct proportion</h4>
+      <p>$y = kx$. Doubling $x$ doubles $y$. Graph: straight line through the origin.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Inverse proportion</h4>
+      <p>$y = \dfrac{k}{x}$, so $xy = k$. Doubling $x$ halves $y$. Graph: a hyperbola.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Speed / Density / Pressure</h4>
+      <p>$S = \dfrac{D}{T}$, $\rho = \dfrac{M}{V}$, $P = \dfrac{F}{A}$.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Similar shapes</h4>
+      <p>Length $\times k$, Area $\times k^2$, Volume $\times k^3$.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Compound growth</h4>
+      <p>$A = P(1 + r)^n$ for growth; $A = P(1 - r)^n$ for decay.</p>
+    </div>
+    <div class="ref-card">
+      <h4>Rate from a graph</h4>
+      <p>Gradient $=\dfrac{\text{change in } y}{\text{change in } x}$ — always give the units.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <p style="margin-bottom:12px;">These ten questions sample the whole topic. If one type catches you out, follow the link in Section 3 to the page that covers it.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Simplify the ratio $45\text{ minutes} : 2\text{ hours}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Convert to the same unit first: $2$ hours $= 120$ minutes.</p>
+          <p>$45 : 120$</p>
+          <p>Divide both by the HCF, which is $15$: $\;45 \div 15 = 3$, $\;120 \div 15 = 8$.</p>
+          <p><strong>Answer: $3 : 8$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>£420 is shared between Amir and Beth in the ratio $4 : 3$. How much does each receive?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 4 + 3 = 7$.</p>
+          <p>One part $= 420 \div 7 = £60$.</p>
+          <p>Amir $= 4 \times 60 = £240$. &nbsp; Beth $= 3 \times 60 = £180$.</p>
+          <p><em>Check:</em> $240 + 180 = 420$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A jacket costs £85. In a sale the price is reduced by 24%. Find the sale price.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier for a 24% decrease $= 1 - 0.24 = 0.76$.</p>
+          <p>$85 \times 0.76 = £64.60$</p>
+          <p><strong>Sale price = £64.60</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>After a 15% increase, a train fare is £69. What was the fare before the increase?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>This is a <strong>reverse percentage</strong>: divide by the multiplier.</p>
+          <p>Multiplier $= 1.15$.</p>
+          <p>Original $= 69 \div 1.15 = £60$</p>
+          <p><em>Check:</em> $60 \times 1.15 = 69$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A car travels 189 km in 2 hours 15 minutes. Find its average speed in km/h.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Time in hours: $2\text{ h }15\text{ min} = 2.25$ h.</p>
+          <p>$$S = \frac{D}{T} = \frac{189}{2.25} = 84$$</p>
+          <p><strong>Average speed = 84 km/h</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$y$ is directly proportional to $x$. When $x = 6$, $y = 15$. Find $y$ when $x = 10$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = kx$, so $15 = k \times 6 \Rightarrow k = 2.5$.</p>
+          <p>Formula: $y = 2.5x$.</p>
+          <p>When $x = 10$: $y = 2.5 \times 10 = 25$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>It takes 4 painters 9 days to paint a building. Assuming they all work at the same rate, how long would 6 painters take?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>More painters → less time, so this is <strong>inverse</strong> proportion.</p>
+          <p>Total work $= 4 \times 9 = 36$ painter-days.</p>
+          <p>Time for 6 painters $= 36 \div 6 = 6$ days.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Two similar cylinders have heights 5 cm and 15 cm. The smaller has volume 40 cm³. Find the volume of the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Length scale factor $k = 15 \div 5 = 3$.</p>
+          <p>Volume scale factor $= k^3 = 27$.</p>
+          <p>Volume $= 40 \times 27 = 1080\text{ cm}^3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>£2500 is invested at 3% compound interest per year. Find the value after 4 years, to the nearest penny.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$$A = P(1 + r)^n = 2500 \times 1.03^{4}$$</p>
+          <p>$1.03^4 = 1.12550881$</p>
+          <p>$A = 2500 \times 1.12550881 = £2813.77$ (nearest penny).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>On a map with scale $1 : 50\,000$, two towns are 7.4 cm apart. Find the real distance in kilometres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Real distance $= 7.4 \times 50\,000 = 370\,000$ cm.</p>
+          <p>$370\,000 \text{ cm} \div 100 = 3700$ m $\div 1000 = 3.7$ km.</p>
+          <p><strong>Answer: 3.7 km</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Ratio, Proportion &amp; Rates of Change · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

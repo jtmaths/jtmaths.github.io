@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Quantity as a Fraction of Another – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍰 One Quantity as a Fraction of Another</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R3)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BASIC IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Basic Idea</div>
+<div class="section-body">
+
+  <p>"Express $A$ as a fraction of $B$" simply means: <strong>write $A$ over $B$ and simplify</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    $A$ as a fraction of $B$ &nbsp;$=\;\dfrac{A}{B}$
+  </div>
+
+  <div class="concept">
+    <strong>Which number goes on top?</strong><br>
+    The quantity that comes <em>immediately after the word "express"</em> goes on the <strong>top</strong>.<br>
+    The quantity that comes after the word <strong>"of"</strong> goes on the <strong>bottom</strong>.<br>
+    "Express $12$ as a fraction <em>of</em> $20$" $\Rightarrow \dfrac{12}{20}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A straightforward case</div>
+    <div class="example-body">
+      <p>Express $12$ as a fraction of $20$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write the fraction: $\dfrac{12}{20}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Find the HCF of $12$ and $20$: it is $4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide top and bottom by $4$: $\dfrac{12 \div 4}{20 \div 4} = \dfrac{3}{5}$</span></div>
+      <p><strong>Answer: $\dfrac{3}{5}$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – UNITS MUST MATCH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Units Must Match First</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>You cannot put centimetres over metres.</strong> Always convert both quantities into the <em>same</em> unit before writing the fraction.
+  </div>
+
+  <ul class="steps">
+    <li>Read both quantities and check their units.</li>
+    <li>Convert so that both are in the same unit (usually the smaller one).</li>
+    <li>Write the fraction $\dfrac{\text{first}}{\text{second}}$, dropping the units.</li>
+    <li>Simplify by dividing top and bottom by their HCF.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Different units</div>
+    <div class="example-body">
+      <p>Express $45$ cm as a fraction of $2$ m.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Convert: $2$ m $= 200$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Fraction $= \dfrac{45}{200}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>HCF of $45$ and $200$ is $5$: $\dfrac{45 \div 5}{200 \div 5} = \dfrac{9}{40}$</span></div>
+      <p><strong>Answer: $\dfrac{9}{40}$</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Time</div>
+    <div class="example-body">
+      <p>Express $50$ minutes as a fraction of $3$ hours.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3$ hours $= 3 \times 60 = 180$ minutes</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{50}{180}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>HCF is $10$: $\dfrac{5}{18}$</span></div>
+      <p><strong>Answer: $\dfrac{5}{18}$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FRACTIONS BIGGER THAN 1
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> When the Fraction is Bigger Than 1</div>
+<div class="section-body">
+
+  <p>There is nothing special to do when the first quantity is <em>larger</em> than the second — you still write $\dfrac{A}{B}$. The answer is then an <strong>improper fraction</strong> (top heavier than bottom), which you may leave as it is or write as a mixed number.</p>
+
+  <div class="concept">
+    <strong>What a fraction greater than 1 tells you:</strong><br>
+    $\dfrac{7}{4} = 1.75$ means the first quantity is $1.75$ times — that is, $75\%$ bigger than — the second.
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="130" viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg">
+      <text x="18" y="34" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">B = 40</text>
+      <rect x="100" y="16" width="160" height="26" fill="#93c5fd" stroke="#3b82f6"/>
+      <text x="18" y="82" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">A = 70</text>
+      <rect x="100" y="64" width="160" height="26" fill="#fca5a5" stroke="#ef4444"/>
+      <rect x="260" y="64" width="120" height="26" fill="#fca5a5" stroke="#ef4444" stroke-dasharray="4,3"/>
+      <line x1="260" y1="10" x2="260" y2="100" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="230" y="120" font-family="Arial" font-size="12" fill="#555">A is 70/40 = 7/4 = 1.75 times B</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — An improper fraction</div>
+    <div class="example-body">
+      <p>Express $70$ as a fraction of $40$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{70}{40}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>HCF is $10$: $\dfrac{7}{4}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>As a mixed number: $1\dfrac{3}{4}$; as a decimal: $1.75$</span></div>
+      <p><strong>Answer: $\dfrac{7}{4}$ (or $1\dfrac{3}{4}$)</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Bigger, with units</div>
+    <div class="example-body">
+      <p>Express $2.5$ kg as a fraction of $800$ g.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2.5$ kg $= 2500$ g</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{2500}{800}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide both by $100$: $\dfrac{25}{8}$ (HCF of 25 and 8 is 1, so this is simplest form)</span></div>
+      <p><strong>Answer: $\dfrac{25}{8} = 3\dfrac{1}{8} = 3.125$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PART OF A WHOLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> "Fraction of the Total" Questions</div>
+<div class="section-body">
+
+  <p>A very common exam twist is that you are given the <em>parts</em> and must first work out the <em>total</em> before writing the fraction.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding the total first</div>
+    <div class="example-body">
+      <p>A box contains $8$ red, $12$ blue and $5$ green counters. What fraction of the counters are blue?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total $= 8 + 12 + 5 = 25$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Blue fraction $= \dfrac{12}{25}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$12$ and $25$ share no factors, so this is already simplest.</span></div>
+      <p><strong>Answer: $\dfrac{12}{25}$</strong></p>
+      <p><em>Careful:</em> "what fraction of the red counters are blue?" would be a different question: $\dfrac{12}{8} = \dfrac{3}{2}$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Working backwards</div>
+    <div class="example-body">
+      <p>$\dfrac{3}{8}$ of the students in a year group study Spanish. There are $96$ Spanish students. How many students are in the year group?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{3}{8}$ of the total $= 96$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So $\dfrac{1}{8}$ of the total $= 96 \div 3 = 32$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The whole is $\dfrac{8}{8}$: $\;32 \times 8 = 256$</span></div>
+      <p><strong>Answer: $256$ students</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – FRACTION, DECIMAL, PERCENTAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Fraction ↔ Decimal ↔ Percentage</div>
+<div class="section-body">
+
+  <p>Once you have the fraction, you can always convert it. All three are answers to the same question: "how many times bigger?"</p>
+
+  <table>
+    <tr><th>To go from…</th><th>…to</th><th>Method</th></tr>
+    <tr><td>Fraction</td><td>Decimal</td><td>Divide top by bottom</td></tr>
+    <tr><td>Decimal</td><td>Percentage</td><td>$\times 100$</td></tr>
+    <tr><td>Fraction</td><td>Percentage</td><td>$\dfrac{A}{B} \times 100$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — All three forms</div>
+    <div class="example-body">
+      <p>In a test Priya scored $27$ out of $45$. Express her score as a fraction, a decimal and a percentage.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Fraction: $\dfrac{27}{45}$. HCF is $9$: $\dfrac{3}{5}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Decimal: $3 \div 5 = 0.6$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Percentage: $0.6 \times 100 = 60\%$</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Comparing quantities:</strong> to decide which of two fractions is bigger, convert both to decimals. E.g. $\dfrac{7}{12} = 0.583$ and $\dfrac{5}{9} = 0.556$, so $\dfrac{7}{12}$ is bigger.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – FRACTIONS AND RATIOS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Linking Fractions with Ratios</div>
+<div class="section-body">
+
+  <div class="concept">
+    If $A : B = 3 : 5$, then:<br>
+    • $A$ as a fraction of $B$ is $\dfrac{3}{5}$ &nbsp;(<em>part : part</em>)<br>
+    • $A$ as a fraction of the total is $\dfrac{3}{8}$ &nbsp;(<em>part : whole</em>)<br>
+    • $B$ as a fraction of $A$ is $\dfrac{5}{3}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Switching between them</div>
+    <div class="example-body">
+      <p>In a car park the ratio of cars to vans is $9 : 4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Vans as a fraction of cars: $\dfrac{4}{9}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Total parts $= 9 + 4 = 13$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Vans as a fraction of all vehicles: $\dfrac{4}{13}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Cars as a fraction of vans: $\dfrac{9}{4} = 2.25$, so there are $2.25$ times as many cars as vans.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The rule</h4><p>"$A$ as a fraction of $B$" $= \dfrac{A}{B}$. Whatever follows "of" goes on the bottom.</p></div>
+    <div class="ref-card"><h4>Units</h4><p>Convert both to the same unit <em>before</em> writing the fraction.</p></div>
+    <div class="ref-card"><h4>Simplifying</h4><p>Divide top and bottom by their highest common factor.</p></div>
+    <div class="ref-card"><h4>Bigger than 1</h4><p>Perfectly allowed — leave as an improper fraction or convert to a mixed number.</p></div>
+    <div class="ref-card"><h4>Part or whole?</h4><p>Read carefully: "of the blue" vs "of the total" give different denominators.</p></div>
+    <div class="ref-card"><h4>Converting</h4><p>Fraction $\to$ decimal: divide. Decimal $\to$ percentage: $\times 100$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Express $18$ as a fraction of $30$, in its simplest form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{18}{30}$. The HCF of $18$ and $30$ is $6$.</p>
+          <p>$\dfrac{18 \div 6}{30 \div 6} = \dfrac{3}{5}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Express $60$ cm as a fraction of $1.5$ m.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1.5$ m $= 150$ cm.</p>
+          <p>$\dfrac{60}{150}$; HCF is $30$; $\dfrac{2}{5}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Express $75$ minutes as a fraction of $1$ day.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1$ day $= 24 \times 60 = 1440$ minutes.</p>
+          <p>$\dfrac{75}{1440}$; HCF is $15$; $\dfrac{5}{96}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Express $84$ as a fraction of $56$. Give your answer as an improper fraction in its simplest form and as a mixed number.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{84}{56}$. The HCF of $84$ and $56$ is $28$.</p>
+          <p>$\dfrac{84 \div 28}{56 \div 28} = \dfrac{3}{2}$</p>
+          <p>As a mixed number: $1\dfrac{1}{2}$ (so $84$ is one and a half times $56$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A bag contains $14$ apples, $10$ pears and $16$ oranges. What fraction of the fruit are (a) pears, (b) not oranges?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total $= 14 + 10 + 16 = 40$.</p>
+          <p><strong>(a)</strong> $\dfrac{10}{40} = \dfrac{1}{4}$</p>
+          <p><strong>(b)</strong> Not oranges $= 14 + 10 = 24$, so $\dfrac{24}{40} = \dfrac{3}{5}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A recipe uses $250$ g of flour and $600$ g of total ingredients. Express the mass of flour as a fraction of the total, and as a percentage to 1 d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{250}{600}$; HCF is $50$; $\dfrac{5}{12}$</p>
+          <p>Percentage $= \dfrac{5}{12} \times 100 = 41.666\ldots = 41.7\%$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$\dfrac{5}{9}$ of a crowd at a match support the home team. There are $2700$ home supporters. How many people are in the crowd?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{5}{9}$ of the crowd $= 2700$.</p>
+          <p>$\dfrac{1}{9}$ of the crowd $= 2700 \div 5 = 540$.</p>
+          <p>Whole crowd $= 540 \times 9 = 4860$ people.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>In class A, $18$ out of $30$ students walk to school. In class B, $21$ out of $35$ do. Which class has the greater fraction of walkers?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Class A: $\dfrac{18}{30} = \dfrac{3}{5} = 0.6$</p>
+          <p>Class B: $\dfrac{21}{35} = \dfrac{3}{5} = 0.6$</p>
+          <p><strong>Neither — the fractions are equal.</strong> Both are $60\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The ratio of boys to girls in a club is $7 : 5$. Express the number of girls as a fraction of (a) the number of boys, (b) the whole club.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Girls : boys $= 5 : 7$, so girls are $\dfrac{5}{7}$ of the boys.</p>
+          <p><strong>(b)</strong> Total parts $= 7 + 5 = 12$, so girls are $\dfrac{5}{12}$ of the club.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A tank holds $1.2\text{ m}^3$ of water. A bucket holds $15$ litres. Express the bucket's capacity as a fraction of the tank's capacity, and state how many bucketfuls fill the tank.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1\text{ m}^3 = 1000$ litres, so the tank holds $1.2 \times 1000 = 1200$ litres.</p>
+          <p>Fraction $= \dfrac{15}{1200}$; divide both by $15$: $\dfrac{1}{80}$</p>
+          <p>Since the bucket is $\dfrac{1}{80}$ of the tank, it takes <strong>$80$ bucketfuls</strong> to fill it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  One Quantity as a Fraction of Another (R3) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

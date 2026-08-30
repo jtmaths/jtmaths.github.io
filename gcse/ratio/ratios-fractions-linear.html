@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratios, Fractions and Linear Functions – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔗 Ratios, Fractions and Linear Functions</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R8)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE THREE LANGUAGES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Three Languages, One Idea</div>
+<div class="section-body">
+
+  <p>A ratio, a fraction and a linear function are three ways of describing the <em>same</em> multiplicative link. Being able to translate between them turns hard-looking questions into easy ones.</p>
+
+  <table>
+    <tr><th>Language</th><th>Written as</th><th>Says</th></tr>
+    <tr><td>Ratio</td><td>$y : x = 3 : 4$</td><td>For every $4$ of $x$ there are $3$ of $y$</td></tr>
+    <tr><td>Fraction</td><td>$y = \dfrac{3}{4}x$</td><td>$y$ is three quarters of $x$</td></tr>
+    <tr><td>Linear function</td><td>$y = 0.75x$</td><td>A straight-line graph through the origin, gradient $0.75$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The bridge</div>
+    $y : x = a : b$ &nbsp;$\Longleftrightarrow$&nbsp; $y = \dfrac{a}{b}x$ &nbsp;$\Longleftrightarrow$&nbsp; gradient $= \dfrac{a}{b}$
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – RATIO TO EQUATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Turning a Ratio Into an Equation</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Write the ratio in the order given, e.g. $y : x = a : b$.</li>
+    <li>Rewrite as a fraction equation: $\dfrac{y}{x} = \dfrac{a}{b}$.</li>
+    <li>Multiply both sides by $x$: $y = \dfrac{a}{b}x$.</li>
+    <li>Convert $\dfrac{a}{b}$ to a decimal if the question prefers it.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Ratio to equation</div>
+    <div class="example-body">
+      <p>In a bakery the ratio of loaves $L$ to rolls $R$ baked each day is $2 : 5$. Write $R$ in terms of $L$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$L : R = 2 : 5$, so $\dfrac{L}{R} = \dfrac{2}{5}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cross-multiply: $5L = 2R$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$R = \dfrac{5L}{2} = 2.5L$</span></div>
+      <p>So there are always $2.5$ times as many rolls as loaves. If $L = 40$, then $R = 100$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Three-part ratio to equations</div>
+    <div class="example-body">
+      <p>$a : b : c = 3 : 5 : 8$. Write $b$ and $c$ in terms of $a$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let one part be $t$, so $a = 3t$, $b = 5t$, $c = 8t$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>From the first, $t = \dfrac{a}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$b = 5 \times \dfrac{a}{3} = \dfrac{5a}{3}$ &nbsp;and&nbsp; $c = 8 \times \dfrac{a}{3} = \dfrac{8a}{3}$</span></div>
+      <p>The "let one part be $t$" trick is extremely useful — remember it.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE GRAPH OF A RATIO
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Graph of a Ratio</div>
+<div class="section-body">
+
+  <p>Because $y = \dfrac{a}{b}x$ has no constant term, its graph is a <strong>straight line through the origin</strong>. The gradient <em>is</em> the ratio.</p>
+
+  <div class="svg-block">
+    <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="50" y1="30" x2="380" y2="30"/><line x1="50" y1="80" x2="380" y2="80"/>
+        <line x1="50" y1="130" x2="380" y2="130"/><line x1="50" y1="180" x2="380" y2="180"/>
+        <line x1="50" y1="230" x2="380" y2="230"/>
+        <line x1="100" y1="20" x2="100" y2="260"/><line x1="150" y1="20" x2="150" y2="260"/>
+        <line x1="200" y1="20" x2="200" y2="260"/><line x1="250" y1="20" x2="250" y2="260"/>
+        <line x1="300" y1="20" x2="300" y2="260"/><line x1="350" y1="20" x2="350" y2="260"/>
+      </g>
+      <line x1="50" y1="260" x2="385" y2="260" stroke="#4f46e5" stroke-width="2.2"/>
+      <line x1="50" y1="265" x2="50" y2="20" stroke="#4f46e5" stroke-width="2.2"/>
+      <!-- y = 0.75x : at x=0 -> y=0 (50,260); x=8 -> y=6 . scale: x 1 unit = 50/1.6? use x step 50 = 2 units, y step 50 = 1.5 units -->
+      <!-- simpler: point (0,0)=(50,260) and (320, 60) -->
+      <line x1="50" y1="260" x2="350" y2="35" stroke="#7c3aed" stroke-width="3"/>
+      <circle cx="200" cy="147.5" r="5" fill="#ef4444"/>
+      <line x1="200" y1="147.5" x2="275" y2="147.5" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="275" y1="147.5" x2="275" y2="91" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="228" y="165" font-family="Arial" font-size="12" fill="#166534">4 across</text>
+      <text x="282" y="122" font-family="Arial" font-size="12" fill="#166534">3 up</text>
+      <text x="290" y="55" font-family="Arial" font-size="14" fill="#6d28d9" font-weight="bold">y = 0.75x</text>
+      <text x="215" y="285" font-family="Arial" font-size="13" fill="#4f46e5" font-weight="bold">x</text>
+      <text x="28" y="35" font-family="Arial" font-size="13" fill="#4f46e5" font-weight="bold">y</text>
+      <text x="38" y="275" font-family="Arial" font-size="12" fill="#3730a3">O</text>
+      <text x="200" y="298" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">gradient = 3 ÷ 4 = 0.75, matching the ratio y : x = 3 : 4</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>Reading a ratio off a graph:</strong> pick any point on the line and read its coordinates. The ratio $y : x$ is the same at <em>every</em> point. That is exactly what "in proportion" means.
+  </div>
+
+  <div class="warn">
+    <strong>If the line does not pass through the origin</strong> (e.g. $y = 2x + 5$), the quantities are <em>linearly related</em> but <strong>not</strong> in a fixed ratio: $\dfrac{y}{x}$ changes as $x$ changes.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Ratio from a graph</div>
+    <div class="example-body">
+      <p>A straight line through the origin passes through the point $(12,\ 20)$. Write the ratio $y : x$ in its simplest form and state the equation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y : x = 20 : 12$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide by the HCF $4$: $\;5 : 3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Gradient $= \dfrac{20}{12} = \dfrac{5}{3}$</span></div>
+      <p><strong>Equation: $y = \dfrac{5}{3}x$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – RATIO TO FRACTIONS OF THE WHOLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Ratios and Fractions of the Whole</div>
+<div class="section-body">
+
+  <p>The other essential translation is between a ratio and the fractions of the <em>total</em>.</p>
+
+  <div class="concept">
+    If $A : B = a : b$, then out of $a + b$ total parts:<br>
+    $A = \dfrac{a}{a+b}$ of the total &nbsp;&nbsp;and&nbsp;&nbsp; $B = \dfrac{b}{a+b}$ of the total.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Both directions</div>
+    <div class="example-body">
+      <p>(a) The ratio of cats to dogs is $4 : 7$. What fraction of the animals are dogs?<br>(b) $\dfrac{3}{10}$ of a class are left-handed. What is the ratio left : right?</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Total parts $= 4 + 7 = 11$, so dogs are $\dfrac{7}{11}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Left-handed $= 3$ parts out of $10$, so right-handed $= 10 - 3 = 7$ parts.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Ratio left : right $= 3 : 7$.</span></div>
+      <div class="warn">A frequent error is to answer $3 : 10$ in part (b). That is the part : <em>whole</em> ratio, not left : right.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SOLVING WITH ALGEBRA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Solving Ratio Problems With Algebra</div>
+<div class="section-body">
+
+  <p>When the ratio changes, algebra is the cleanest route. The standard setup is: <strong>let one part be $x$</strong>.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Changing ratio</div>
+    <div class="example-body">
+      <p>The ratio of Ann's money to Bob's is $5 : 2$. Ann gives Bob £$18$, and now the ratio is $4 : 3$. How much did Ann have at the start?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let one part be $x$: Ann $= 5x$, Bob $= 2x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>After the transfer: Ann $= 5x - 18$, Bob $= 2x + 18$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{5x - 18}{2x + 18} = \dfrac{4}{3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Cross-multiply: $3(5x - 18) = 4(2x + 18)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$15x - 54 = 8x + 72 \Rightarrow 7x = 126 \Rightarrow x = 18$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Ann started with $5x = £90$.</span></div>
+      <p>Check: Ann £$90$, Bob £$36$ ($5:2$ ✓). After: £$72$ and £$54$, and $72 : 54 = 4 : 3$ ✓</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Notice</strong> that the <em>total</em> money is unchanged here ($90 + 36 = 72 + 54 = 126$). Spotting an invariant like this is often a quick way to check your answer.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Ratio and simultaneous equations</div>
+    <div class="example-body">
+      <p>$x : y = 3 : 5$ and $x + y = 96$. Find $x$ and $y$ using algebra.</p>
+      <div class="step-row"><span class="arrow">①</span><span>From the ratio: $y = \dfrac{5}{3}x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Substitute: $x + \dfrac{5}{3}x = 96$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{8}{3}x = 96 \Rightarrow x = 96 \times \dfrac{3}{8} = 36$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = 96 - 36 = 60$</span></div>
+      <p>Check: $36 : 60 = 3 : 5$ ✓ (This matches the "add-divide-multiply" method: $96 \div 8 = 12$, so $3\times12=36$, $5\times12=60$.)</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – LINEAR FUNCTIONS AND RATIOS OF LENGTHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Dividing a Line in a Ratio</div>
+<div class="section-body">
+
+  <p>Coordinate geometry uses ratios to find points along a line segment.</p>
+
+  <div class="formula-box">
+    <div class="label">Point dividing AB in the ratio $m : n$</div>
+    $P = \left(x_A + \dfrac{m}{m+n}(x_B - x_A),\;\; y_A + \dfrac{m}{m+n}(y_B - y_A)\right)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Dividing a line segment</div>
+    <div class="example-body">
+      <p>$A$ is $(2,\ 3)$ and $B$ is $(14,\ 19)$. Find the point $P$ on $AB$ such that $AP : PB = 1 : 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total parts $= 1 + 3 = 4$, so $P$ is $\dfrac{1}{4}$ of the way from $A$ to $B$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Change in $x$: $14 - 2 = 12$; a quarter of this is $3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Change in $y$: $19 - 3 = 16$; a quarter of this is $4$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P = (2 + 3,\; 3 + 4) = (5,\ 7)$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Ratio → equation</h4><p>$y : x = a : b \Rightarrow y = \dfrac{a}{b}x$.</p></div>
+    <div class="ref-card"><h4>Gradient</h4><p>For $y = \dfrac{a}{b}x$ the gradient is $\dfrac{a}{b}$ — the ratio itself.</p></div>
+    <div class="ref-card"><h4>Through the origin</h4><p>Proportional relationships always pass through $(0,0)$.</p></div>
+    <div class="ref-card"><h4>Ratio → fraction of total</h4><p>$a : b$ gives $\dfrac{a}{a+b}$ and $\dfrac{b}{a+b}$.</p></div>
+    <div class="ref-card"><h4>Fraction → ratio</h4><p>$\dfrac{3}{10}$ are $A$ $\Rightarrow A : B = 3 : 7$, not $3 : 10$.</p></div>
+    <div class="ref-card"><h4>Let one part be $x$</h4><p>The universal setup for changing-ratio problems.</p></div>
+    <div class="ref-card"><h4>Cross-multiply</h4><p>$\dfrac{p}{q} = \dfrac{r}{s} \Rightarrow ps = qr$.</p></div>
+    <div class="ref-card"><h4>Dividing a line</h4><p>$AP : PB = m : n$ means $P$ is $\dfrac{m}{m+n}$ of the way from $A$ to $B$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$y : x = 7 : 4$. Write $y$ in terms of $x$, and find $y$ when $x = 20$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{y}{x} = \dfrac{7}{4}$, so $y = \dfrac{7}{4}x = 1.75x$.</p>
+          <p>When $x = 20$: $y = 1.75 \times 20 = 35$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A straight line through the origin passes through $(15,\ 9)$. Write its equation and the ratio $y : x$ in simplest form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= \dfrac{9}{15} = \dfrac{3}{5} = 0.6$.</p>
+          <p>Equation: $y = 0.6x$ (or $y = \tfrac{3}{5}x$).</p>
+          <p>Ratio $y : x = 9 : 15 = 3 : 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$\dfrac{4}{9}$ of the members of a club are female. Write the ratio of female to male members.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Female $= 4$ parts out of $9$, so male $= 9 - 4 = 5$ parts.</p>
+          <p><strong>Ratio female : male $= 4 : 5$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$p : q : r = 2 : 7 : 4$. Write $q$ and $r$ in terms of $p$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let one part be $t$: $p = 2t$, $q = 7t$, $r = 4t$.</p>
+          <p>$t = \dfrac{p}{2}$</p>
+          <p>$q = 7 \times \dfrac{p}{2} = \dfrac{7p}{2} = 3.5p$</p>
+          <p>$r = 4 \times \dfrac{p}{2} = 2p$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Is the relationship $y = 3x + 2$ a proportional one? Explain your answer using the table below.</p>
+      <table>
+        <tr><th>$x$</th><td>$1$</td><td>$2$</td><td>$4$</td></tr>
+        <tr><th>$y$</th><td>$5$</td><td>$8$</td><td>$14$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{y}{x}$: &nbsp;$5 \div 1 = 5$, &nbsp;$8 \div 2 = 4$, &nbsp;$14 \div 4 = 3.5$</p>
+          <p>The ratio is not constant, so <strong>no, it is not proportional</strong>.</p>
+          <p>The graph is a straight line but it crosses the $y$-axis at $(0, 2)$, not at the origin.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$a : b = 4 : 9$ and $a + b = 78$. Find $a$ and $b$ using algebra.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let one part be $x$: $a = 4x$, $b = 9x$.</p>
+          <p>$4x + 9x = 78 \Rightarrow 13x = 78 \Rightarrow x = 6$</p>
+          <p>$a = 24$, $b = 54$. Check: $24 + 54 = 78$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The ratio of red to green counters in a bag is $3 : 8$. If $15$ more red counters are added, the ratio becomes $3 : 4$. How many green counters are there?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let one part be $x$: red $= 3x$, green $= 8x$.</p>
+          <p>$$\frac{3x + 15}{8x} = \frac{3}{4}$$</p>
+          <p>Cross-multiply: $4(3x + 15) = 3 \times 8x$</p>
+          <p>$12x + 60 = 24x \Rightarrow 60 = 12x \Rightarrow x = 5$</p>
+          <p>Green $= 8 \times 5 = \mathbf{40}$ counters.</p>
+          <p>Check: red was $15$, now $30$; $30 : 40 = 3 : 4$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Two brothers share sweets in the ratio $7 : 4$. The older brother gives $9$ sweets to the younger, and now they have equal amounts. How many sweets were there altogether?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let one part be $x$: older $= 7x$, younger $= 4x$.</p>
+          <p>After the gift: $7x - 9 = 4x + 9$</p>
+          <p>$3x = 18 \Rightarrow x = 6$</p>
+          <p>Total $= 7x + 4x = 11x = 11 \times 6 = \mathbf{66}$ sweets.</p>
+          <p>Check: $42$ and $24$; after the gift, $33$ each ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$A$ is $(1,\ 2)$ and $B$ is $(13,\ 26)$. Find the coordinates of the point $P$ on $AB$ with $AP : PB = 2 : 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 3$, so $P$ is $\dfrac{2}{3}$ of the way from $A$ to $B$.</p>
+          <p>$x$: change $= 13 - 1 = 12$; $\dfrac{2}{3} \times 12 = 8$; so $x_P = 1 + 8 = 9$.</p>
+          <p>$y$: change $= 26 - 2 = 24$; $\dfrac{2}{3} \times 24 = 16$; so $y_P = 2 + 16 = 18$.</p>
+          <p><strong>$P = (9,\ 18)$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A currency graph is a straight line through the origin. The point $(200,\ 232)$ lies on it, where $x$ is pounds and $y$ is euros.</p>
+      <p>(a) Write the equation of the line. &nbsp; (b) Convert £$450$ into euros. &nbsp; (c) Convert €$696$ into pounds. &nbsp; (d) Write the ratio pounds : euros in the form $1 : n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient $= \dfrac{232}{200} = 1.16$, so $y = 1.16x$.</p>
+          <p><strong>(b)</strong> $450 \times 1.16 = €522$</p>
+          <p><strong>(c)</strong> $696 \div 1.16 = £600$</p>
+          <p><strong>(d)</strong> $200 : 232 = 1 : 1.16$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Ratios, Fractions &amp; Linear Functions (R8) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

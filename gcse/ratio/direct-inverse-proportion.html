@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direct and Inverse Proportion Problems – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Direct and Inverse Proportion</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R10)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE TWO TYPES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Two Types of Proportion</div>
+<div class="section-body">
+
+  <p>There are just two possibilities to recognise, and the first job in every question is to decide which one you have.</p>
+
+  <table>
+    <tr><th></th><th>Direct proportion</th><th>Inverse proportion</th></tr>
+    <tr><td><strong>In words</strong></td><td>As one goes up, the other goes up by the same factor</td><td>As one goes up, the other goes <em>down</em> by that factor</td></tr>
+    <tr><td><strong>Double $x$…</strong></td><td>…and $y$ doubles</td><td>…and $y$ halves</td></tr>
+    <tr><td><strong>Equation</strong></td><td>$y = kx$</td><td>$y = \dfrac{k}{x}$</td></tr>
+    <tr><td><strong>What stays constant</strong></td><td>$\dfrac{y}{x} = k$</td><td>$xy = k$</td></tr>
+    <tr><td><strong>Graph</strong></td><td>Straight line through the origin</td><td>Curve (hyperbola), never touching the axes</td></tr>
+    <tr><td><strong>Typical context</strong></td><td>Cost of petrol, wages, recipe amounts</td><td>Workers and time, speed and journey time</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="620" height="240" viewBox="0 0 620 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- direct -->
+      <text x="150" y="18" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">Direct: y = kx</text>
+      <line x1="40" y1="200" x2="270" y2="200" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="40" y1="200" x2="40" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="40" y1="200" x2="250" y2="45" stroke="#22c55e" stroke-width="3"/>
+      <circle cx="40" cy="200" r="4" fill="#22c55e"/>
+      <text x="150" y="225" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">passes through the origin</text>
+      <text x="262" y="205" font-family="Arial" font-size="12" fill="#4f46e5">x</text>
+      <text x="26" y="36" font-family="Arial" font-size="12" fill="#4f46e5">y</text>
+      <!-- inverse -->
+      <text x="460" y="18" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">Inverse: y = k/x</text>
+      <line x1="350" y1="200" x2="590" y2="200" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="350" y1="200" x2="350" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 372 40 Q 400 130 460 165 Q 520 188 580 193" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <text x="465" y="225" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">never reaches either axis</text>
+      <text x="582" y="205" font-family="Arial" font-size="12" fill="#4f46e5">x</text>
+      <text x="336" y="36" font-family="Arial" font-size="12" fill="#4f46e5">y</text>
+    </svg>
+  </div>
+
+  <div class="tip">
+    <strong>Quick test:</strong> ask yourself "if I double the first quantity, does the second double or halve?" More workers → less time = <strong>inverse</strong>. More petrol → more cost = <strong>direct</strong>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DIRECT PROPORTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Solving Direct Proportion Problems</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Check it really is direct (does doubling one double the other?).</li>
+    <li>Either find the value for <strong>one</strong> unit, or find the <strong>multiplier</strong> between the two situations.</li>
+    <li>Scale up or down to the amount you need.</li>
+    <li>Check that the answer is the right sort of size.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Unitary method</div>
+    <div class="example-body">
+      <p>$9$ metres of rope costs £$14.85$. Find the cost of $23$ metres.</p>
+      <div class="step-row"><span class="arrow">①</span><span>One metre $= 14.85 \div 9 = £1.65$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$23$ metres $= 1.65 \times 23 = £37.95$</span></div>
+      <p>Sense check: $23$ m is about $2.5$ times $9$ m, and $£37.95$ is about $2.5$ times $£14.85$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Multiplier method</div>
+    <div class="example-body">
+      <p>$14$ litres of fuel cost £$21.70$. How much fuel can be bought for £$46.50$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier on the money: $46.50 \div 21.70 = 2.1428\ldots$ — messy, so use the unitary method instead.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cost per litre $= 21.70 \div 14 = £1.55$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Litres bought $= 46.50 \div 1.55 = 30$ litres</span></div>
+      <p><strong>Answer: $30$ litres</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using the equation</div>
+    <div class="example-body">
+      <p>$y$ is directly proportional to $x$. When $x = 12$, $y = 30$. Find $y$ when $x = 20$, and find $x$ when $y = 55$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write $y = kx$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Substitute: $30 = k \times 12$, so $k = 2.5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The rule is $y = 2.5x$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>When $x = 20$: $y = 2.5 \times 20 = 50$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>When $y = 55$: $55 = 2.5x$, so $x = 22$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – INVERSE PROPORTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Solving Inverse Proportion Problems</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The key fact</div>
+    In inverse proportion the <strong>product</strong> stays the same: &nbsp;$x_1 y_1 = x_2 y_2 = k$
+  </div>
+
+  <ul class="steps">
+    <li>Check it really is inverse (more of one means less of the other).</li>
+    <li>Multiply the two known values together to find $k$.</li>
+    <li>Divide $k$ by the new value to get the answer.</li>
+    <li>Check: the answer should move in the <em>opposite</em> direction.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Workers and time</div>
+    <div class="example-body">
+      <p>It takes $6$ builders $20$ days to build a wall. How long would $8$ builders take, working at the same rate?</p>
+      <div class="step-row"><span class="arrow">①</span><span>More builders → fewer days, so this is <strong>inverse</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Total work $= 6 \times 20 = 120$ builder-days $= k$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Time for $8$ builders $= 120 \div 8 = 15$ days.</span></div>
+      <p>Check: $8 > 6$ and $15 < 20$, so the answer moved the right way ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Speed and time</div>
+    <div class="example-body">
+      <p>A journey takes $2.5$ hours at an average speed of $56$ km/h. How long would the same journey take at $70$ km/h?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The distance is fixed, so speed and time are inversely proportional.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$k = 56 \times 2.5 = 140$ (this is the distance in km).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Time $= 140 \div 70 = 2$ hours.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Using the equation</div>
+    <div class="example-body">
+      <p>$y$ is inversely proportional to $x$. When $x = 4$, $y = 15$. Find $y$ when $x = 10$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write $y = \dfrac{k}{x}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$15 = \dfrac{k}{4}$, so $k = 60$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Rule: $y = \dfrac{60}{x}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>When $x = 10$: $y = \dfrac{60}{10} = 6$.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Not everything that decreases is inverse proportion.</strong> "The temperature falls by $2^\circ$ every hour" is a <em>linear</em> decrease, not an inverse one. Inverse proportion requires the <strong>product</strong> to stay constant.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SPOTTING WHICH IS WHICH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Spotting Which Type You Have</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Situation</th><th>Type</th><th>Why</th></tr>
+    <tr><td>Number of tickets and total cost</td><td>Direct</td><td>Twice as many tickets, twice the cost</td></tr>
+    <tr><td>Hours worked and pay</td><td>Direct</td><td>Twice the hours, twice the pay</td></tr>
+    <tr><td>Number of taps filling a pool and time taken</td><td>Inverse</td><td>Twice as many taps, half the time</td></tr>
+    <tr><td>Speed and journey time (fixed distance)</td><td>Inverse</td><td>Twice the speed, half the time</td></tr>
+    <tr><td>Number of people sharing a fixed prize</td><td>Inverse</td><td>Twice as many people, half each</td></tr>
+    <tr><td>Side length and perimeter of a square</td><td>Direct</td><td>$P = 4s$</td></tr>
+    <tr><td>Number of days food lasts and number of animals</td><td>Inverse</td><td>More animals, fewer days</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Testing a table</div>
+    <div class="example-body">
+      <p>Decide whether this table shows direct proportion, inverse proportion, or neither.</p>
+      <table>
+        <tr><th>$x$</th><td>$2$</td><td>$3$</td><td>$12$</td></tr>
+        <tr><th>$y$</th><td>$18$</td><td>$12$</td><td>$3$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Test $\dfrac{y}{x}$: $9$, $4$, $0.25$ — not constant, so not direct.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Test $xy$: $2 \times 18 = 36$, $3 \times 12 = 36$, $12 \times 3 = 36$ — constant!</span></div>
+      <p><strong>Inverse proportion</strong>, with $y = \dfrac{36}{x}$.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – HARDER PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Harder Problems: Combining Both</div>
+<div class="section-body">
+
+  <p>Some questions involve both types at once — typically "workers, days and amount of work".</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Two changes at once</div>
+    <div class="example-body">
+      <p>$5$ machines can produce $600$ parts in $4$ hours. How many parts can $8$ machines produce in $3$ hours?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Find the rate for one machine for one hour.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$5$ machines $\times$ $4$ hours $= 20$ machine-hours produce $600$ parts.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>One machine-hour $= 600 \div 20 = 30$ parts.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$8$ machines $\times$ $3$ hours $= 24$ machine-hours.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Parts $= 24 \times 30 = 720$.</span></div>
+      <p><strong>Answer: $720$ parts</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Partial completion</div>
+    <div class="example-body">
+      <p>$4$ gardeners can clear a field in $18$ hours. They work for $6$ hours and then $2$ more gardeners join them. How much longer will the job take?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total work $= 4 \times 18 = 72$ gardener-hours.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Work already done $= 4 \times 6 = 24$ gardener-hours.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Work remaining $= 72 - 24 = 48$ gardener-hours.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Now there are $6$ gardeners: time $= 48 \div 6 = 8$ hours.</span></div>
+      <p><strong>Answer: $8$ more hours</strong> (a total of $14$ hours rather than $18$).</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Direct</h4><p>$y = kx$; $\dfrac{y}{x}$ constant; straight line through the origin.</p></div>
+    <div class="ref-card"><h4>Inverse</h4><p>$y = \dfrac{k}{x}$; $xy$ constant; hyperbola.</p></div>
+    <div class="ref-card"><h4>Deciding</h4><p>Double the first: does the second double (direct) or halve (inverse)?</p></div>
+    <div class="ref-card"><h4>Unitary method</h4><p>Find the value for one, then scale.</p></div>
+    <div class="ref-card"><h4>Inverse shortcut</h4><p>Multiply the pair you know to get $k$, then divide.</p></div>
+    <div class="ref-card"><h4>Worker problems</h4><p>Count total "worker-hours" — that total is the constant.</p></div>
+    <div class="ref-card"><h4>Testing a table</h4><p>Try $\dfrac{y}{x}$; if that fails, try $xy$.</p></div>
+    <div class="ref-card"><h4>Sense check</h4><p>Inverse answers move the opposite way to the change.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$7$ notebooks cost £$10.15$. Find the cost of $12$ notebooks.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Direct proportion.</p>
+          <p>One notebook $= 10.15 \div 7 = £1.45$</p>
+          <p>Twelve $= 1.45 \times 12 = £17.40$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>It takes $12$ workers $15$ days to complete a job. How long would $20$ workers take?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Inverse proportion.</p>
+          <p>Total work $= 12 \times 15 = 180$ worker-days.</p>
+          <p>Time $= 180 \div 20 = 9$ days.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$y$ is directly proportional to $x$. When $x = 8$, $y = 22$. (a) Find the formula. (b) Find $y$ when $x = 15$. (c) Find $x$ when $y = 55$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $y = kx$; $22 = 8k$, so $k = 2.75$ and $y = 2.75x$.</p>
+          <p><strong>(b)</strong> $y = 2.75 \times 15 = 41.25$</p>
+          <p><strong>(c)</strong> $55 = 2.75x$, so $x = 20$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$y$ is inversely proportional to $x$. When $x = 6$, $y = 14$. Find $y$ when $x = 21$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = \dfrac{k}{x}$; $14 = \dfrac{k}{6}$, so $k = 84$.</p>
+          <p>$y = \dfrac{84}{21} = 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Say whether each pair is in direct proportion, inverse proportion, or neither.</p>
+      <p>(a) The number of pizzas ordered and the total bill.<br>(b) The number of friends sharing a £$60$ taxi fare and the amount each pays.<br>(c) A person's age and their height.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Direct — twice as many pizzas costs twice as much.</p>
+          <p><strong>(b)</strong> Inverse — twice as many friends means each pays half.</p>
+          <p><strong>(c)</strong> Neither — height increases with age for a while, then stops. There is no constant ratio or product.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Decide the type of proportion and find the missing value $p$.</p>
+      <table>
+        <tr><th>$x$</th><td>$4$</td><td>$10$</td><td>$25$</td></tr>
+        <tr><th>$y$</th><td>$50$</td><td>$20$</td><td>$p$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{y}{x}$: $12.5$ then $2$ — not constant.</p>
+          <p>$xy$: $4 \times 50 = 200$ and $10 \times 20 = 200$ — constant.</p>
+          <p>Inverse proportion with $k = 200$, so $p = 200 \div 25 = 8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A tank is filled by $5$ identical pumps in $36$ minutes. Two of the pumps break down. How long will the remaining pumps take to fill the tank?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Inverse proportion.</p>
+          <p>$k = 5 \times 36 = 180$ pump-minutes.</p>
+          <p>Now only $3$ pumps work: $180 \div 3 = 60$ minutes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$6$ printers produce $2700$ leaflets in $5$ hours. How many leaflets would $10$ printers produce in $4$ hours?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Printer-hours available originally $= 6 \times 5 = 30$.</p>
+          <p>One printer-hour $= 2700 \div 30 = 90$ leaflets.</p>
+          <p>New printer-hours $= 10 \times 4 = 40$.</p>
+          <p>Leaflets $= 40 \times 90 = 3600$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A farmer has enough feed for $45$ sheep for $28$ days. He buys $18$ more sheep. Assuming each sheep eats the same amount, how long will the feed now last?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total feed $= 45 \times 28 = 1260$ sheep-days.</p>
+          <p>New number of sheep $= 45 + 18 = 63$.</p>
+          <p>Days $= 1260 \div 63 = 20$ days.</p>
+          <p>Check: more sheep, fewer days ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$8$ decorators can paint a block of flats in $21$ days. After $9$ days, $3$ decorators leave.</p>
+      <p>(a) How much of the work remains? &nbsp; (b) How many more days will the job take? &nbsp; (c) By how many days is the job delayed overall?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Total work $= 8 \times 21 = 168$ decorator-days.</p>
+          <p>Work done $= 8 \times 9 = 72$ decorator-days.</p>
+          <p>Remaining $= 168 - 72 = 96$ decorator-days.</p>
+          <p><strong>(b)</strong> Decorators left $= 8 - 3 = 5$.</p>
+          <p>Extra days $= 96 \div 5 = 19.2$ days.</p>
+          <p><strong>(c)</strong> Total time $= 9 + 19.2 = 28.2$ days, compared with the planned $21$ days.</p>
+          <p>Delay $= 28.2 - 21 = \mathbf{7.2}$ days.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Direct &amp; Inverse Proportion (R10) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

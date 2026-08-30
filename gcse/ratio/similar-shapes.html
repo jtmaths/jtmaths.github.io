@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Similar Shapes: Length, Area and Volume – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔺 Similar Shapes: Length, Area and Volume</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R12)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT SIMILAR MEANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What "Similar" Means in Maths</div>
+<div class="section-body">
+
+  <p>Two shapes are <strong>similar</strong> if one is an enlargement of the other. Everyday language uses "similar" to mean "a bit alike"; in maths it has a precise meaning.</p>
+
+  <div class="concept">
+    Two shapes are similar when:<br>
+    • all pairs of corresponding <strong>angles are equal</strong>, and<br>
+    • all pairs of corresponding <strong>sides are in the same ratio</strong>.<br>
+    That common ratio is the <strong>scale factor</strong>, written $k$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="190" viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="30,150 110,150 30,90" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <text x="66" y="167" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">8 cm</text>
+      <text x="16" y="124" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">6</text>
+      <text x="82" y="112" font-family="Arial" font-size="12" fill="#3730a3">10</text>
+      <text x="66" y="82" font-family="Arial" font-size="13" fill="#4f46e5" text-anchor="middle" font-weight="bold">Shape A</text>
+      <text x="205" y="120" font-family="Arial" font-size="15" fill="#7c3aed" text-anchor="middle" font-weight="bold">× 2.5</text>
+      <polygon points="270,150 470,150 270,0" fill="#f0fdf4" stroke="#22c55e" stroke-width="2.5"/>
+      <text x="370" y="167" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle">20 cm</text>
+      <text x="256" y="80" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle">15</text>
+      <text x="380" y="70" font-family="Arial" font-size="12" fill="#166534">25</text>
+      <text x="330" y="130" font-family="Arial" font-size="13" fill="#22c55e" text-anchor="middle" font-weight="bold">Shape B</text>
+    </svg>
+    <p style="font-size:.85rem;color:#555;">Every side of B is $2.5$ times the matching side of A, and the angles are unchanged.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Finding the scale factor:</strong> $k = \dfrac{\text{a length on the new shape}}{\text{the matching length on the old shape}}$. Make sure you pair up <em>corresponding</em> sides — the ones opposite equal angles.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – MISSING LENGTHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding Missing Lengths</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Identify which sides correspond (redraw the shapes the same way up if it helps).</li>
+    <li>Find the scale factor using a pair of sides you know both of.</li>
+    <li>Multiply (to go bigger) or divide (to go smaller) to find the missing length.</li>
+    <li>Sense check: the bigger shape must have the bigger sides.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Similar triangles</div>
+    <div class="example-body">
+      <p>Triangle $ABC$ has $AB = 6$ cm and $BC = 9$ cm. Triangle $PQR$ is similar, with $PQ = 15$ cm corresponding to $AB$. Find $QR$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Scale factor $k = \dfrac{15}{6} = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$QR$ corresponds to $BC$, so $QR = 9 \times 2.5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 22.5$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Going the other way</div>
+    <div class="example-body">
+      <p>Two similar rectangles have widths $12$ cm and $8$ cm. The larger has length $21$ cm. Find the length of the smaller.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Going from large to small, $k = \dfrac{8}{12} = \dfrac{2}{3}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Length $= 21 \times \dfrac{2}{3} = 14$ cm</span></div>
+      <p>Sense check: $14 < 21$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – AREA AND VOLUME SCALE FACTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Area and Volume Scale Factors</div>
+<div class="section-body">
+
+  <p>This is the single most important idea on this page, and the one most often got wrong.</p>
+
+  <div class="formula-box">
+    <div class="label">The three scale factors</div>
+    Lengths $\times k$ &nbsp;·&nbsp; Areas $\times k^2$ &nbsp;·&nbsp; Volumes $\times k^3$
+  </div>
+
+  <div class="svg-block">
+    <svg width="520" height="200" viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- length -->
+      <text x="80" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Length ×2</text>
+      <line x1="20" y1="60" x2="70" y2="60" stroke="#4f46e5" stroke-width="4"/>
+      <line x1="20" y1="90" x2="120" y2="90" stroke="#22c55e" stroke-width="4"/>
+      <text x="80" y="125" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">1 → 2</text>
+      <!-- area -->
+      <text x="250" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Area ×4</text>
+      <rect x="190" y="40" width="30" height="30" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+      <g fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5">
+        <rect x="240" y="40" width="30" height="30"/><rect x="270" y="40" width="30" height="30"/>
+        <rect x="240" y="70" width="30" height="30"/><rect x="270" y="70" width="30" height="30"/>
+      </g>
+      <text x="250" y="125" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">1 → 4 squares</text>
+      <!-- volume -->
+      <text x="430" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Volume ×8</text>
+      <rect x="370" y="45" width="24" height="24" fill="#c7d2fe" stroke="#4f46e5" stroke-width="1.5"/>
+      <path d="M370 45 L378 37 L402 37 L394 45" fill="#a5b4fc" stroke="#4f46e5" stroke-width="1"/>
+      <path d="M394 45 L402 37 L402 61 L394 69" fill="#818cf8" stroke="#4f46e5" stroke-width="1"/>
+      <g>
+        <rect x="430" y="45" width="48" height="48" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5"/>
+        <path d="M430 45 L446 29 L494 29 L478 45" fill="#86efac" stroke="#22c55e" stroke-width="1"/>
+        <path d="M478 45 L494 29 L494 77 L478 93" fill="#4ade80" stroke="#22c55e" stroke-width="1"/>
+      </g>
+      <text x="430" y="125" font-family="Arial" font-size="13" fill="#555" text-anchor="middle">1 → 8 cubes</text>
+      <text x="260" y="165" font-family="Arial" font-size="13" fill="#6d28d9" text-anchor="middle" font-weight="bold">Doubling every length multiplies area by 2² = 4 and volume by 2³ = 8</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Length factor $k$</th><th>Area factor $k^2$</th><th>Volume factor $k^3$</th></tr>
+    <tr><td>$2$</td><td>$4$</td><td>$8$</td></tr>
+    <tr><td>$3$</td><td>$9$</td><td>$27$</td></tr>
+    <tr><td>$5$</td><td>$25$</td><td>$125$</td></tr>
+    <tr><td>$1.5$</td><td>$2.25$</td><td>$3.375$</td></tr>
+    <tr><td>$0.5$</td><td>$0.25$</td><td>$0.125$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Working backwards.</strong> If you are given the <em>area</em> factor, take the square root to get the length factor. If you are given the <em>volume</em> factor, take the cube root.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Area</div>
+    <div class="example-body">
+      <p>Two similar triangles have corresponding sides $4$ cm and $10$ cm. The smaller has area $18\text{ cm}^2$. Find the area of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Length factor $k = \dfrac{10}{4} = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Area factor $= k^2 = 2.5^2 = 6.25$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area $= 18 \times 6.25 = 112.5\text{ cm}^2$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Volume</div>
+    <div class="example-body">
+      <p>Two similar jugs have heights $12$ cm and $18$ cm. The smaller holds $640$ ml. How much does the larger hold?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$k = \dfrac{18}{12} = 1.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Volume factor $= 1.5^3 = 3.375$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Capacity $= 640 \times 3.375 = 2160$ ml</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Working backwards from area</div>
+    <div class="example-body">
+      <p>Two similar shapes have areas $45\text{ cm}^2$ and $180\text{ cm}^2$. A side of the smaller is $6$ cm. Find the corresponding side of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Area factor $= \dfrac{180}{45} = 4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Length factor $k = \sqrt{4} = 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Side $= 6 \times 2 = 12$ cm</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Working backwards from volume</div>
+    <div class="example-body">
+      <p>Two similar cones have volumes $54\text{ cm}^3$ and $128\text{ cm}^3$. The smaller has slant height $9$ cm. Find the slant height of the larger.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume factor $= \dfrac{128}{54} = \dfrac{64}{27}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$k = \sqrt[3]{\dfrac{64}{27}} = \dfrac{4}{3}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Slant height $= 9 \times \dfrac{4}{3} = 12$ cm</span></div>
+      <div class="tip"><strong>Tip:</strong> keeping the factor as a fraction of cubes ($\tfrac{64}{27}$) makes the cube root much easier than using a decimal.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – RATIO NOTATION FOR SIMILAR SHAPES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Using Ratio Notation</div>
+<div class="section-body">
+
+  <p>Exam questions often present the information as a ratio rather than a scale factor.</p>
+
+  <div class="formula-box">
+    <div class="label">If lengths are in the ratio $a : b$</div>
+    Areas are in the ratio $a^2 : b^2$ &nbsp;·&nbsp; Volumes are in the ratio $a^3 : b^3$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Ratios of areas and volumes</div>
+    <div class="example-body">
+      <p>Two similar solids have lengths in the ratio $2 : 5$. Write the ratio of their surface areas and the ratio of their volumes.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Areas: $2^2 : 5^2 = 4 : 25$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Volumes: $2^3 : 5^3 = 8 : 125$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SIMILAR TRIANGLES AND TRIG
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Similar Triangles and Trigonometry</div>
+<div class="section-body">
+
+  <p>Trigonometry exists <em>because</em> of similar triangles. In any right-angled triangle with a given angle $\theta$, the ratio of two named sides is always the same, no matter how big the triangle is.</p>
+
+  <div class="svg-block">
+    <svg width="440" height="200" viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="30,170 130,170 30,110" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 110 170 A 20 20 0 0 0 113 163" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="98" y="160" font-family="Arial" font-size="11" fill="#ef4444">θ</text>
+      <text x="80" y="186" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">4</text>
+      <text x="20" y="145" font-family="Arial" font-size="11" fill="#3730a3">3</text>
+      <polygon points="200,170 400,170 200,50" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+      <path d="M 375 170 A 25 25 0 0 0 379 161" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="362" y="160" font-family="Arial" font-size="11" fill="#ef4444">θ</text>
+      <text x="300" y="186" font-family="Arial" font-size="11" fill="#166534" text-anchor="middle">8</text>
+      <text x="188" y="115" font-family="Arial" font-size="11" fill="#166534">6</text>
+      <text x="220" y="30" font-family="Arial" font-size="12" fill="#555">tan θ = 3/4 = 6/8 = 0.75 in both</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    $\sin\theta$, $\cos\theta$ and $\tan\theta$ are simply <strong>ratios of sides</strong> that depend only on the angle. That is why the same $\tan 36.87^\circ = 0.75$ works for a triangle of any size.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Similar triangles inside a diagram</div>
+    <div class="example-body">
+      <p>In triangle $ABC$, the point $D$ lies on $AB$ and $E$ on $AC$, with $DE$ parallel to $BC$. $AD = 4$ cm, $DB = 6$ cm and $DE = 5$ cm. Find $BC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Because $DE \parallel BC$, the angles match, so triangles $ADE$ and $ABC$ are similar.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AB = AD + DB = 4 + 6 = 10$ cm</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Scale factor $k = \dfrac{AB}{AD} = \dfrac{10}{4} = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$BC = DE \times 2.5 = 5 \times 2.5 = 12.5$ cm</span></div>
+      <div class="warn">A classic slip is to use $\dfrac{6}{4}$ here. The scale factor compares the <em>whole</em> triangle to the small one, so it is $\dfrac{10}{4}$, not $\dfrac{DB}{AD}$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Similar</h4><p>Equal angles, all sides in the same ratio $k$.</p></div>
+    <div class="ref-card"><h4>Scale factor</h4><p>$k = \dfrac{\text{new length}}{\text{old length}}$, using corresponding sides.</p></div>
+    <div class="ref-card"><h4>The big three</h4><p>Length $\times k$, area $\times k^2$, volume $\times k^3$.</p></div>
+    <div class="ref-card"><h4>Backwards</h4><p>From area: $k = \sqrt{\text{area factor}}$. From volume: $k = \sqrt[3]{\text{volume factor}}$.</p></div>
+    <div class="ref-card"><h4>Ratios</h4><p>Lengths $a : b$ → areas $a^2 : b^2$ → volumes $a^3 : b^3$.</p></div>
+    <div class="ref-card"><h4>Mass</h4><p>For solids of the same material, mass scales like volume, i.e. $\times k^3$.</p></div>
+    <div class="ref-card"><h4>Parallel lines</h4><p>A line parallel to one side creates a similar triangle.</p></div>
+    <div class="ref-card"><h4>Trig link</h4><p>$\sin$, $\cos$, $\tan$ are side ratios fixed by the angle alone.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Two similar rectangles have widths $5$ cm and $12.5$ cm. The smaller has length $8$ cm. Find the length of the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = \dfrac{12.5}{5} = 2.5$</p>
+          <p>Length $= 8 \times 2.5 = 20$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Two similar shapes have lengths in the ratio $3 : 7$. Write the ratio of (a) their areas, (b) their volumes.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $3^2 : 7^2 = 9 : 49$</p>
+          <p><strong>(b)</strong> $3^3 : 7^3 = 27 : 343$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A photograph measuring $10$ cm by $15$ cm is enlarged so that the longer side becomes $24$ cm. Find (a) the new shorter side, (b) the area of the enlargement.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $k = \dfrac{24}{15} = 1.6$; shorter side $= 10 \times 1.6 = 16$ cm.</p>
+          <p><strong>(b)</strong> Area $= 16 \times 24 = 384\text{ cm}^2$.</p>
+          <p><em>Or via the area factor:</em> original area $= 150\text{ cm}^2$; $k^2 = 2.56$; $150 \times 2.56 = 384\text{ cm}^2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Two similar triangles have corresponding sides $6$ cm and $9$ cm. The larger has area $81\text{ cm}^2$. Find the area of the smaller.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Going large → small: $k = \dfrac{6}{9} = \dfrac{2}{3}$.</p>
+          <p>Area factor $= \left(\dfrac{2}{3}\right)^2 = \dfrac{4}{9}$.</p>
+          <p>Area $= 81 \times \dfrac{4}{9} = 36\text{ cm}^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Two similar bottles have heights $15$ cm and $25$ cm. The taller holds $1.25$ litres. Find the capacity of the shorter, in millilitres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = \dfrac{15}{25} = 0.6$</p>
+          <p>Volume factor $= 0.6^3 = 0.216$</p>
+          <p>$1.25$ litres $= 1250$ ml</p>
+          <p>Capacity $= 1250 \times 0.216 = 270$ ml</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Two similar shapes have areas $28\text{ cm}^2$ and $175\text{ cm}^2$. A length on the smaller is $4$ cm. Find the corresponding length on the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area factor $= \dfrac{175}{28} = 6.25$</p>
+          <p>$k = \sqrt{6.25} = 2.5$</p>
+          <p>Length $= 4 \times 2.5 = 10$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two similar solid statues are made of the same bronze. The smaller is $30$ cm tall and has mass $5.4$ kg. The larger is $50$ cm tall. Find its mass.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = \dfrac{50}{30} = \dfrac{5}{3}$</p>
+          <p>Mass scales like volume, so the factor is $\left(\dfrac{5}{3}\right)^3 = \dfrac{125}{27}$.</p>
+          <p>Mass $= 5.4 \times \dfrac{125}{27} = 25$ kg</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>In triangle $PQR$, $S$ lies on $PQ$ and $T$ on $PR$, with $ST$ parallel to $QR$. $PS = 6$ cm, $SQ = 9$ cm and $QR = 20$ cm. Find $ST$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Triangles $PST$ and $PQR$ are similar.</p>
+          <p>$PQ = 6 + 9 = 15$ cm.</p>
+          <p>Scale factor from large to small $= \dfrac{6}{15} = 0.4$.</p>
+          <p>$ST = 20 \times 0.4 = 8$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Two similar cones have volumes $135\text{ cm}^3$ and $320\text{ cm}^3$. The surface area of the smaller is $63\text{ cm}^2$. Find the surface area of the larger.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Volume factor $= \dfrac{320}{135} = \dfrac{64}{27}$</p>
+          <p>$k = \sqrt[3]{\dfrac{64}{27}} = \dfrac{4}{3}$</p>
+          <p>Area factor $= k^2 = \dfrac{16}{9}$</p>
+          <p>Surface area $= 63 \times \dfrac{16}{9} = 112\text{ cm}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cone of height $18$ cm has a smaller cone cut from its top by a cut parallel to the base. The small cone has height $6$ cm. The volume of the whole cone is $972\text{ cm}^3$.</p>
+      <p>(a) Find the volume of the small cone. &nbsp; (b) Find the volume of the frustum (the piece left behind). &nbsp; (c) Write the ratio small cone : frustum in its simplest form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The small cone is similar to the whole cone with $k = \dfrac{6}{18} = \dfrac{1}{3}$.</p>
+          <p>Volume factor $= \left(\dfrac{1}{3}\right)^3 = \dfrac{1}{27}$.</p>
+          <p>Small cone $= 972 \times \dfrac{1}{27} = 36\text{ cm}^3$.</p>
+          <p><strong>(b)</strong> Frustum $= 972 - 36 = 936\text{ cm}^3$.</p>
+          <p><strong>(c)</strong> $36 : 936$. Divide both by $36$: $\;\mathbf{1 : 26}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Similar Shapes: Length, Area &amp; Volume (R12) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

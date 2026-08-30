@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentages and Percentage Change – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>％ Percentages and Percentage Change</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R9)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A PERCENTAGE IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Percentage Actually Is</div>
+<div class="section-body">
+
+  <p><strong>Per cent</strong> means "per hundred". A percentage is simply a fraction whose denominator is $100$.</p>
+
+  <div class="formula-box">
+    <div class="label">Definition</div>
+    $p\% = \dfrac{p}{100}$
+  </div>
+
+  <table>
+    <tr><th>Percentage</th><th>Fraction</th><th>Decimal</th></tr>
+    <tr><td>$10\%$</td><td>$\dfrac{1}{10}$</td><td>$0.1$</td></tr>
+    <tr><td>$25\%$</td><td>$\dfrac{1}{4}$</td><td>$0.25$</td></tr>
+    <tr><td>$50\%$</td><td>$\dfrac{1}{2}$</td><td>$0.5$</td></tr>
+    <tr><td>$75\%$</td><td>$\dfrac{3}{4}$</td><td>$0.75$</td></tr>
+    <tr><td>$100\%$</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>$150\%$</td><td>$\dfrac{3}{2}$</td><td>$1.5$</td></tr>
+    <tr><td>$0.5\%$</td><td>$\dfrac{1}{200}$</td><td>$0.005$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Percentages above $100\%$ are perfectly normal.</strong> $250\%$ of a quantity just means $2.5$ times it. This happens all the time with growth figures.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FINDING A PERCENTAGE OF AN AMOUNT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding a Percentage of an Amount</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Calculator method</div>
+    $p\%$ of $A = \dfrac{p}{100} \times A$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Calculator method</div>
+    <div class="example-body">
+      <p>Find $23\%$ of £$640$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$23\% = 0.23$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.23 \times 640 = 147.2$</span></div>
+      <p><strong>Answer: £$147.20$</strong></p>
+    </div>
+  </div>
+
+  <p>Without a calculator, build the answer from easy percentages:</p>
+
+  <table>
+    <tr><th>Percentage</th><th>Non-calculator method</th></tr>
+    <tr><td>$50\%$</td><td>halve</td></tr>
+    <tr><td>$25\%$</td><td>halve, then halve again</td></tr>
+    <tr><td>$10\%$</td><td>divide by $10$</td></tr>
+    <tr><td>$5\%$</td><td>half of $10\%$</td></tr>
+    <tr><td>$1\%$</td><td>divide by $100$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Building up without a calculator</div>
+    <div class="example-body">
+      <p>Find $37\%$ of $840$ g.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$10\% = 84$, so $30\% = 84 \times 3 = 252$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$5\% = 42$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$1\% = 8.4$, so $2\% = 16.8$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$37\% = 252 + 42 + 16.8 = 310.8$</span></div>
+      <p><strong>Answer: $310.8$ g</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ONE AS A PERCENTAGE OF ANOTHER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> One Quantity as a Percentage of Another</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    $A$ as a percentage of $B = \dfrac{A}{B} \times 100$
+  </div>
+
+  <div class="warn">
+    <strong>Convert to the same units first</strong>, just as with fractions and ratios.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Test score</div>
+    <div class="example-body">
+      <p>Nadia scored $57$ out of $75$. What percentage is this?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{57}{75} = 0.76$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.76 \times 100 = 76$</span></div>
+      <p><strong>Answer: $76\%$</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Different units</div>
+    <div class="example-body">
+      <p>Express $360$ g as a percentage of $1.5$ kg.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$1.5$ kg $= 1500$ g</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{360}{1500} \times 100 = 24$</span></div>
+      <p><strong>Answer: $24\%$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – MULTIPLIERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Percentage Increase and Decrease — Use Multipliers</div>
+<div class="section-body">
+
+  <p>The single most important technique in this whole subtopic is the <strong>percentage multiplier</strong>. Learn it and almost every percentage question becomes one calculation.</p>
+
+  <div class="formula-box">
+    <div class="label">Multipliers</div>
+    Increase by $p\%$: &nbsp;$\times \left(1 + \dfrac{p}{100}\right)$<br>
+    Decrease by $p\%$: &nbsp;$\times \left(1 - \dfrac{p}{100}\right)$
+  </div>
+
+  <table>
+    <tr><th>Change</th><th>Multiplier</th><th>Change</th><th>Multiplier</th></tr>
+    <tr><td>$+5\%$</td><td>$1.05$</td><td>$-5\%$</td><td>$0.95$</td></tr>
+    <tr><td>$+12\%$</td><td>$1.12$</td><td>$-12\%$</td><td>$0.88$</td></tr>
+    <tr><td>$+20\%$</td><td>$1.2$</td><td>$-20\%$</td><td>$0.8$</td></tr>
+    <tr><td>$+7.5\%$</td><td>$1.075$</td><td>$-7.5\%$</td><td>$0.925$</td></tr>
+    <tr><td>$+100\%$</td><td>$2$</td><td>$-100\%$</td><td>$0$</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="480" height="120" viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="35" width="110" height="46" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <text x="75" y="64" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">£240</text>
+      <line x1="135" y1="45" x2="315" y2="30" stroke="#22c55e" stroke-width="2.5" marker-end="url(#ap)"/>
+      <line x1="135" y1="72" x2="315" y2="88" stroke="#ef4444" stroke-width="2.5" marker-end="url(#aq)"/>
+      <defs>
+        <marker id="ap" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker>
+        <marker id="aq" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker>
+      </defs>
+      <text x="222" y="28" font-family="Arial" font-size="13" fill="#166534" text-anchor="middle" font-weight="bold">× 1.15 (up 15%)</text>
+      <text x="222" y="103" font-family="Arial" font-size="13" fill="#b91c1c" text-anchor="middle" font-weight="bold">× 0.85 (down 15%)</text>
+      <rect x="320" y="12" width="110" height="38" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+      <text x="375" y="36" font-family="Arial" font-size="14" fill="#166534" text-anchor="middle" font-weight="bold">£276</text>
+      <rect x="320" y="70" width="110" height="38" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+      <text x="375" y="94" font-family="Arial" font-size="14" fill="#b91c1c" text-anchor="middle" font-weight="bold">£204</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Increase</div>
+    <div class="example-body">
+      <p>A season ticket costing £$680$ rises by $8\%$. Find the new price.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 1 + 0.08 = 1.08$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$680 \times 1.08 = 734.4$</span></div>
+      <p><strong>Answer: £$734.40$</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Decrease</div>
+    <div class="example-body">
+      <p>A laptop costing £$540$ is reduced by $35\%$. Find the sale price.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 1 - 0.35 = 0.65$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$540 \times 0.65 = 351$</span></div>
+      <p><strong>Answer: £$351$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PERCENTAGE CHANGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Calculating a Percentage Change</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Percentage change</div>
+    $\text{percentage change} = \dfrac{\text{change}}{\text{original}} \times 100$
+  </div>
+
+  <div class="warn">
+    <strong>Always divide by the ORIGINAL value</strong> — the value you started with — never by the new one.
+  </div>
+
+  <ul class="steps">
+    <li>Work out the change: new $-$ original (a negative answer means a decrease).</li>
+    <li>Divide by the <strong>original</strong>.</li>
+    <li>Multiply by $100$.</li>
+    <li>State clearly whether it is an increase or a decrease.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Percentage profit</div>
+    <div class="example-body">
+      <p>A trader buys a painting for £$450$ and sells it for £$603$. Find the percentage profit.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Profit $= 603 - 450 = £153$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{153}{450} = 0.34$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.34 \times 100 = 34$</span></div>
+      <p><strong>Answer: $34\%$ profit</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Percentage loss</div>
+    <div class="example-body">
+      <p>A car bought for £$18\,500$ is sold three years later for £$11\,470$. Find the percentage loss.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Loss $= 18\,500 - 11\,470 = £7030$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{7030}{18\,500} = 0.38$</span></div>
+      <p><strong>Answer: a $38\%$ loss</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – REVERSE PERCENTAGES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Reverse Percentages — Finding the Original</div>
+<div class="section-body">
+
+  <p>These are the questions students lose most marks on. The giveaway wording is "<em>before</em> the increase", "<em>original</em> price", "<em>pre-VAT</em>" or "what was it worth <em>last year</em>".</p>
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    $\text{original} = \dfrac{\text{new value}}{\text{multiplier}}$
+  </div>
+
+  <div class="warn">
+    <strong>Never</strong> take the percentage off the new value. Taking $20\%$ off a price that has had $20\%$ added does <em>not</em> get you back to the start.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Reverse increase</div>
+    <div class="example-body">
+      <p>A television costs £$564$ including $20\%$ VAT. Find the price before VAT.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The £$564$ represents $120\%$ of the pre-VAT price.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiplier $= 1.2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Original $= 564 \div 1.2 = £470$</span></div>
+      <p>Check: $470 \times 1.2 = 564$ ✓</p>
+      <p><em>The wrong method</em> would give $564 \times 0.8 = £451.20$ — over £$18$ out.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Reverse decrease</div>
+    <div class="example-body">
+      <p>In a sale, all prices are cut by $30\%$. A coat now costs £$87.50$. What was its original price?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 1 - 0.30 = 0.7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Original $= 87.50 \div 0.7 = £125$</span></div>
+      <p>Check: $125 \times 0.7 = 87.50$ ✓</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>How to tell the difference:</strong> if the question gives you a starting value and asks for the end value, <em>multiply</em>. If it gives you the end value and asks for the start, <em>divide</em>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – SIMPLE INTEREST
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Simple Interest</div>
+<div class="section-body">
+
+  <p>With <strong>simple interest</strong> the interest is calculated on the <em>original</em> amount every year, so you earn the same amount each year.</p>
+
+  <div class="formula-box">
+    <div class="label">Simple interest</div>
+    $I = \dfrac{P \times r \times n}{100}$<br>
+    <span style="font-size:.85rem;color:#555;">$P$ = principal, $r$ = rate per year (%), $n$ = number of years</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 11 — Simple interest</div>
+    <div class="example-body">
+      <p>£$3200$ is invested at $4.5\%$ simple interest per year for $6$ years. Find the interest earned and the final total.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Interest in one year $= 3200 \times 0.045 = £144$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Over $6$ years: $144 \times 6 = £864$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total $= 3200 + 864 = £4064$</span></div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>Simple vs compound.</strong> Simple interest adds the same amount each year. <em>Compound</em> interest pays interest on the interest, so it grows faster — see the <a href="growth-and-decay.html" style="color:#4338ca;">Growth and Decay</a> page.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – COMPARING WITH PERCENTAGES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Comparing Quantities Using Percentages</div>
+<div class="section-body">
+
+  <p>Percentages let you compare fairly when the totals are different.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 12 — Fair comparison</div>
+    <div class="example-body">
+      <p>In Maths, Tom scored $34$ out of $40$. In Physics he scored $51$ out of $60$. In which subject did he do better?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Maths: $\dfrac{34}{40} \times 100 = 85\%$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Physics: $\dfrac{51}{60} \times 100 = 85\%$</span></div>
+      <p><strong>Equally well</strong> — both are $85\%$, even though the raw marks differ.</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Percentage points vs percentages.</strong> If support rises from $40\%$ to $50\%$, that is a rise of $10$ <em>percentage points</em>, but a percentage <em>increase</em> of $\dfrac{10}{40} \times 100 = 25\%$. Examiners love this distinction.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 9 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">9</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$p\% = \dfrac{p}{100}$ — a fraction out of one hundred.</p></div>
+    <div class="ref-card"><h4>Of an amount</h4><p>$p\%$ of $A = \dfrac{p}{100} \times A$.</p></div>
+    <div class="ref-card"><h4>As a percentage</h4><p>$\dfrac{A}{B} \times 100$, with matching units.</p></div>
+    <div class="ref-card"><h4>Increase / decrease</h4><p>$\times (1 + \tfrac{p}{100})$ or $\times(1 - \tfrac{p}{100})$.</p></div>
+    <div class="ref-card"><h4>Percentage change</h4><p>$\dfrac{\text{change}}{\text{original}} \times 100$. Divide by the original.</p></div>
+    <div class="ref-card"><h4>Reverse</h4><p>Original $=$ new $\div$ multiplier.</p></div>
+    <div class="ref-card"><h4>Simple interest</h4><p>$I = \dfrac{Prn}{100}$ — the same amount every year.</p></div>
+    <div class="ref-card"><h4>Combining</h4><p>Multiply multipliers; $1.1 \times 0.9 = 0.99$, a $1\%$ fall.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 10 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">10</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find (a) $18\%$ of £$250$ &nbsp; (b) $6.5\%$ of $840$ kg.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $0.18 \times 250 = £45$</p>
+          <p><strong>(b)</strong> $0.065 \times 840 = 54.6$ kg</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Express $27$ minutes as a percentage of $2$ hours.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2$ hours $= 120$ minutes.</p>
+          <p>$\dfrac{27}{120} \times 100 = 22.5$</p>
+          <p><strong>Answer: $22.5\%$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A phone contract costs £$28$ per month. The price rises by $7.5\%$. Find the new monthly cost.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier $= 1.075$</p>
+          <p>$28 \times 1.075 = 30.1$</p>
+          <p><strong>Answer: £$30.10$ per month</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A bicycle priced at £$425$ is reduced by $16\%$ in a sale. Find the sale price.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier $= 1 - 0.16 = 0.84$</p>
+          <p>$425 \times 0.84 = £357$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The population of a village grew from $1250$ to $1425$. Find the percentage increase.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Change $= 1425 - 1250 = 175$</p>
+          <p>$\dfrac{175}{1250} \times 100 = 14$</p>
+          <p><strong>Answer: a $14\%$ increase</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A meal costs £$46.20$ including a $10\%$ service charge. Find the cost of the meal before the service charge was added.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>This is a reverse percentage. Multiplier $= 1.1$.</p>
+          <p>$46.20 \div 1.1 = £42$</p>
+          <p>Check: $42 \times 1.1 = 46.20$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>After a $12\%$ pay rise, Aisha earns £$29\,120$ per year. What did she earn before the rise?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier $= 1.12$.</p>
+          <p>$29\,120 \div 1.12 = £26\,000$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>£$4500$ is invested for $5$ years at $3.2\%$ simple interest per year. Find the total value at the end.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Interest per year $= 4500 \times 0.032 = £144$</p>
+          <p>Over $5$ years $= 144 \times 5 = £720$</p>
+          <p>Total $= 4500 + 720 = £5220$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A shop increases a price by $25\%$, then later reduces the new price by $25\%$. Show that the final price is <em>not</em> the same as the original, and find the overall percentage change.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Overall multiplier $= 1.25 \times 0.75 = 0.9375$</p>
+          <p>Since $0.9375 \neq 1$, the price has changed.</p>
+          <p>$0.9375 = 93.75\%$, so the overall change is a decrease of $100 - 93.75 = \mathbf{6.25\%}$.</p>
+          <p><em>Why?</em> The $25\%$ rise is calculated on the small original, but the $25\%$ fall is calculated on the larger increased price, so more is taken off than was put on.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A jeweller buys a ring for £$820$. She adds $65\%$ to get the shop price, then in a sale reduces the shop price by $20\%$.</p>
+      <p>(a) Find the sale price. &nbsp; (b) Find her percentage profit on the original £$820$. &nbsp; (c) What single multiplier takes £$820$ to the sale price?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Shop price $= 820 \times 1.65 = £1353$</p>
+          <p>Sale price $= 1353 \times 0.8 = £1082.40$</p>
+          <p><strong>(b)</strong> Profit $= 1082.40 - 820 = £262.40$</p>
+          <p>$\dfrac{262.40}{820} \times 100 = 32$, so a $\mathbf{32\%}$ profit.</p>
+          <p><strong>(c)</strong> $1.65 \times 0.8 = \mathbf{1.32}$ — which confirms the $32\%$ increase ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Percentages &amp; Percentage Change (R9) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

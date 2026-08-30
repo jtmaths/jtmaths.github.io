@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Units and Compound Units – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 Units and Compound Units</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R1)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY CONVERTING UNITS MATTERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why Converting Units Matters</div>
+<div class="section-body">
+
+  <p>You cannot compare, add or simplify two quantities until they are measured in the <strong>same unit</strong>. Converting units is therefore the very first step in a huge number of GCSE questions.</p>
+
+  <div class="concept">
+    <strong>A unit conversion is just a multiplication.</strong><br>
+    Every conversion means multiplying or dividing by a <em>conversion factor</em>.<br>
+    Going to a <strong>smaller</strong> unit → the number gets <strong>bigger</strong> → <strong>multiply</strong>.<br>
+    Going to a <strong>bigger</strong> unit → the number gets <strong>smaller</strong> → <strong>divide</strong>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Which way round?</div>
+    <div class="example-body">
+      <p>Convert $3.6$ km into metres.</p>
+      <div class="step-row"><span class="arrow">①</span><span>A metre is <em>smaller</em> than a kilometre, so the number must get bigger.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1$ km $= 1000$ m, so multiply: $3.6 \times 1000 = 3600$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Answer: $3600$ m</strong></span></div>
+      <p>Sense check: 3600 is bigger than 3.6 ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – METRIC UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Metric Units of Length, Mass and Capacity</div>
+<div class="section-body">
+
+  <p>The metric system is built on powers of $10$, so all conversions are $\times 10$, $\times 100$ or $\times 1000$.</p>
+
+  <table>
+    <tr><th>Measure</th><th>Conversions you must know</th></tr>
+    <tr><td><strong>Length</strong></td><td>$1$ cm $= 10$ mm &nbsp;·&nbsp; $1$ m $= 100$ cm $= 1000$ mm &nbsp;·&nbsp; $1$ km $= 1000$ m</td></tr>
+    <tr><td><strong>Mass</strong></td><td>$1$ g $= 1000$ mg &nbsp;·&nbsp; $1$ kg $= 1000$ g &nbsp;·&nbsp; $1$ tonne $= 1000$ kg</td></tr>
+    <tr><td><strong>Capacity</strong></td><td>$1$ litre $= 1000$ ml &nbsp;·&nbsp; $1$ litre $= 100$ cl &nbsp;·&nbsp; $1$ cl $= 10$ ml</td></tr>
+    <tr><td><strong>Link</strong></td><td>$1$ ml $= 1\text{ cm}^3$ &nbsp;·&nbsp; $1$ litre $= 1000\text{ cm}^3$ &nbsp;·&nbsp; $1\text{ m}^3 = 1000$ litres</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="540" height="120" viewBox="0 0 540 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4f46e5"/></marker>
+        <marker id="al" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/></marker>
+      </defs>
+      <g font-family="Arial" font-size="15" font-weight="bold" fill="#3730a3" text-anchor="middle">
+        <rect x="20" y="45" width="70" height="32" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="55" y="66">km</text>
+        <rect x="170" y="45" width="70" height="32" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="205" y="66">m</text>
+        <rect x="320" y="45" width="70" height="32" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="355" y="66">cm</text>
+        <rect x="450" y="45" width="70" height="32" rx="6" fill="#eef2ff" stroke="#4f46e5"/><text x="485" y="66">mm</text>
+      </g>
+      <line x1="92" y1="55" x2="166" y2="55" stroke="#4f46e5" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="242" y1="55" x2="316" y2="55" stroke="#4f46e5" stroke-width="2" marker-end="url(#ar)"/>
+      <line x1="392" y1="55" x2="446" y2="55" stroke="#4f46e5" stroke-width="2" marker-end="url(#ar)"/>
+      <g font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle">
+        <text x="129" y="40">×1000</text><text x="279" y="40">×100</text><text x="419" y="40">×10</text>
+      </g>
+      <line x1="166" y1="90" x2="92" y2="90" stroke="#22c55e" stroke-width="2" marker-end="url(#al)"/>
+      <line x1="316" y1="90" x2="242" y2="90" stroke="#22c55e" stroke-width="2" marker-end="url(#al)"/>
+      <line x1="446" y1="90" x2="392" y2="90" stroke="#22c55e" stroke-width="2" marker-end="url(#al)"/>
+      <g font-family="Arial" font-size="12" fill="#22c55e" text-anchor="middle">
+        <text x="129" y="108">÷1000</text><text x="279" y="108">÷100</text><text x="419" y="108">÷10</text>
+      </g>
+    </svg>
+    <p style="font-size:.85rem;color:#555;">Blue = going to a smaller unit (multiply) · Green = going to a bigger unit (divide)</p>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A two-step conversion</div>
+    <div class="example-body">
+      <p>Convert $47\,500$ mm into kilometres.</p>
+      <div class="step-row"><span class="arrow">①</span><span>mm → m: divide by $1000$. &nbsp; $47\,500 \div 1000 = 47.5$ m</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>m → km: divide by $1000$. &nbsp; $47.5 \div 1000 = 0.0475$ km</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Answer: $0.0475$ km</strong></span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Tip:</strong> do conversions one step at a time along the chain above. Trying to jump two steps at once is where most errors creep in.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – AREA AND VOLUME UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Area and Volume Units — the Big Trap</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>$1\text{ m}^2$ is NOT $100\text{ cm}^2$.</strong> A square metre is a square of side $100$ cm, so its area is $100 \times 100 = 10\,000\text{ cm}^2$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="330" height="180" viewBox="0 0 330 180" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="140" height="140" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <text x="90" y="95" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">1 m²</text>
+      <text x="90" y="14" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle">100 cm</text>
+      <text x="12" y="95" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle" transform="rotate(-90 12 95)">100 cm</text>
+      <text x="185" y="85" font-family="Arial" font-size="20" fill="#7c3aed">=</text>
+      <text x="255" y="80" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">100 × 100</text>
+      <text x="255" y="102" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">= 10 000 cm²</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>The rule:</strong> if the <em>length</em> conversion factor is $n$, then<br>
+    • the <strong>area</strong> factor is $n^2$<br>
+    • the <strong>volume</strong> factor is $n^3$
+  </div>
+
+  <table>
+    <tr><th>Conversion</th><th>Length</th><th>Area</th><th>Volume</th></tr>
+    <tr><td>cm ↔ mm</td><td>$\times 10$</td><td>$\times 100$</td><td>$\times 1000$</td></tr>
+    <tr><td>m ↔ cm</td><td>$\times 100$</td><td>$\times 10\,000$</td><td>$\times 1\,000\,000$</td></tr>
+    <tr><td>km ↔ m</td><td>$\times 1000$</td><td>$\times 1\,000\,000$</td><td>$\times 10^9$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Converting an area</div>
+    <div class="example-body">
+      <p>A carpet has area $6.4\text{ m}^2$. Convert this to $\text{cm}^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Length factor m → cm is $\times 100$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Area factor is $100^2 = 10\,000$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$6.4 \times 10\,000 = 64\,000$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Answer: $64\,000\text{ cm}^2$</strong></span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Converting a volume</div>
+    <div class="example-body">
+      <p>A tank holds $2\,500\,000\text{ cm}^3$ of water. Convert this to $\text{m}^3$ and then to litres.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume factor cm³ → m³ is $\div 1\,000\,000$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2\,500\,000 \div 1\,000\,000 = 2.5\text{ m}^3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$1\text{ cm}^3 = 1$ ml, so $2\,500\,000\text{ cm}^3 = 2\,500\,000$ ml.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$2\,500\,000 \div 1000 = 2500$ litres.</span></div>
+      <p><strong>Answer: $2.5\text{ m}^3 = 2500$ litres</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TIME
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Units of Time</div>
+<div class="section-body">
+
+  <p>Time is the one measure that is <strong>not</strong> metric, so be extra careful.</p>
+
+  <table>
+    <tr><th>From</th><th>To</th><th>Do this</th></tr>
+    <tr><td>hours</td><td>minutes</td><td>$\times 60$</td></tr>
+    <tr><td>minutes</td><td>seconds</td><td>$\times 60$</td></tr>
+    <tr><td>hours</td><td>seconds</td><td>$\times 3600$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>$2$ hours $30$ minutes is $2.5$ hours, not $2.3$ hours.</strong><br>
+    To turn minutes into a decimal of an hour, divide by $60$: &nbsp; $30 \div 60 = 0.5$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Minutes to decimal hours</div>
+    <div class="example-body">
+      <p>Write $3$ hours $24$ minutes as a decimal number of hours.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$24$ minutes $= 24 \div 60 = 0.4$ hours</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3 + 0.4 = 3.4$ hours</span></div>
+      <p>And in reverse: $1.75$ hours $= 0.75 \times 60 = 45$ min, so $1$ h $45$ min.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMPOUND UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Compound Units</div>
+<div class="section-body">
+
+  <p>A <strong>compound unit</strong> is made from two different measures combined, almost always by <em>dividing</em> one by the other. The word "<strong>per</strong>" (or the slash "/") tells you a division is happening.</p>
+
+  <table>
+    <tr><th>Quantity</th><th>Formula</th><th>Typical units</th></tr>
+    <tr><td>Speed</td><td>$\text{speed} = \dfrac{\text{distance}}{\text{time}}$</td><td>m/s, km/h, mph</td></tr>
+    <tr><td>Density</td><td>$\text{density} = \dfrac{\text{mass}}{\text{volume}}$</td><td>g/cm³, kg/m³</td></tr>
+    <tr><td>Pressure</td><td>$\text{pressure} = \dfrac{\text{force}}{\text{area}}$</td><td>N/m² (pascals), N/cm²</td></tr>
+    <tr><td>Rate of pay</td><td>$\dfrac{\text{money}}{\text{time}}$</td><td>£/hour</td></tr>
+    <tr><td>Unit price</td><td>$\dfrac{\text{cost}}{\text{quantity}}$</td><td>p/gram, £/litre</td></tr>
+    <tr><td>Fuel economy</td><td>$\dfrac{\text{distance}}{\text{fuel}}$</td><td>miles per gallon, km/litre</td></tr>
+    <tr><td>Population density</td><td>$\dfrac{\text{people}}{\text{area}}$</td><td>people/km²</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Reading a compound unit</div>
+    "km<strong>/</strong>h" literally means "kilometres <strong>divided by</strong> hours".<br>
+    The unit itself tells you the formula.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Using a compound unit</div>
+    <div class="example-body">
+      <p>A block of oak has mass $840$ g and volume $1200\text{ cm}^3$. Find its density.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The unit g/cm³ says: mass $\div$ volume.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$840 \div 1200 = 0.7$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Density $= 0.7\text{ g/cm}^3$</strong></span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – CONVERTING COMPOUND UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Converting Between Compound Units</div>
+<div class="section-body">
+
+  <p>To convert a compound unit you must convert <strong>both parts</strong>. Do it one part at a time.</p>
+
+  <ul class="steps">
+    <li>Write the quantity as a fraction, e.g. $\dfrac{72\text{ km}}{1\text{ h}}$.</li>
+    <li>Convert the top into the unit you want.</li>
+    <li>Convert the bottom into the unit you want.</li>
+    <li>Divide to get the new value.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — km/h into m/s</div>
+    <div class="example-body">
+      <p>Convert $72$ km/h into m/s.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$72$ km/h means $72$ km travelled in $1$ hour.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Top: $72$ km $= 72 \times 1000 = 72\,000$ m</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Bottom: $1$ hour $= 3600$ s</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{72\,000}{3600} = 20$</span></div>
+      <p><strong>Answer: $20$ m/s</strong></p>
+      <div class="tip"><strong>Shortcut:</strong> km/h $\to$ m/s, divide by $3.6$. &nbsp; m/s $\to$ km/h, multiply by $3.6$. &nbsp; ($72 \div 3.6 = 20$ ✓)</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — g/cm³ into kg/m³</div>
+    <div class="example-body">
+      <p>The density of aluminium is $2.7\text{ g/cm}^3$. Convert this to $\text{kg/m}^3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write it as $\dfrac{2.7\text{ g}}{1\text{ cm}^3}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Top: $2.7$ g $= 2.7 \div 1000 = 0.0027$ kg</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Bottom: $1\text{ cm}^3 = 1 \div 1\,000\,000 = 0.000001\text{ m}^3$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{0.0027}{0.000001} = 2700$</span></div>
+      <p><strong>Answer: $2700\text{ kg/m}^3$</strong></p>
+      <p>In other words, to go from g/cm³ to kg/m³ you simply multiply by $1000$.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – METRIC AND IMPERIAL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Metric ↔ Imperial Conversions</div>
+<div class="section-body">
+
+  <p>These approximations are worth learning; harder questions will usually give you the conversion factor.</p>
+
+  <table>
+    <tr><th>Imperial</th><th>Metric (approx.)</th></tr>
+    <tr><td>$1$ inch</td><td>$2.5$ cm</td></tr>
+    <tr><td>$1$ foot</td><td>$30$ cm</td></tr>
+    <tr><td>$1$ mile</td><td>$1.6$ km &nbsp;(exactly $1.609\ldots$)</td></tr>
+    <tr><td>$5$ miles</td><td>$8$ km</td></tr>
+    <tr><td>$1$ pound (lb)</td><td>$450$ g</td></tr>
+    <tr><td>$1$ kg</td><td>$2.2$ lb</td></tr>
+    <tr><td>$1$ gallon</td><td>$4.5$ litres</td></tr>
+    <tr><td>$1$ pint</td><td>$570$ ml</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Miles and kilometres</div>
+    <div class="example-body">
+      <p>A road sign says the next town is $56$ km away. Roughly how many miles is this? Use $5$ miles $= 8$ km.</p>
+      <div class="step-row"><span class="arrow">①</span><span>How many lots of $8$ km? &nbsp;$56 \div 8 = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Each lot is $5$ miles: $7 \times 5 = 35$</span></div>
+      <p><strong>Answer: $35$ miles</strong></p>
+      <p>Sense check: miles are longer than km, so the number of miles should be <em>smaller</em> ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Mixing conversions with money</div>
+    <div class="example-body">
+      <p>Petrol in the UK costs £$1.48$ per litre. In the USA it costs &#36;$3.60$ per US gallon. Given $1$ US gallon $= 3.79$ litres and £$1$ = &#36;$1.25$, which country's petrol is cheaper?</p>
+      <div class="step-row"><span class="arrow">①</span><span>US price per litre in dollars: $3.60 \div 3.79 = 0.9499\ldots$, i.e. &#36;$0.95$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Convert to pounds: $0.9499 \div 1.25 = £0.7599\ldots$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Compare: UK £$1.48$/litre vs USA £$0.76$/litre.</span></div>
+      <p><strong>USA petrol is cheaper</strong> — about half the UK price.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Direction rule</h4><p>Smaller unit → bigger number → multiply. Bigger unit → smaller number → divide.</p></div>
+    <div class="ref-card"><h4>Length</h4><p>mm $\to$ cm $\div10$, cm $\to$ m $\div100$, m $\to$ km $\div1000$.</p></div>
+    <div class="ref-card"><h4>Area &amp; volume</h4><p>Square the length factor for area, cube it for volume.</p></div>
+    <div class="ref-card"><h4>Capacity link</h4><p>$1\text{ cm}^3 = 1$ ml, $1000\text{ cm}^3 = 1$ litre, $1\text{ m}^3 = 1000$ litres.</p></div>
+    <div class="ref-card"><h4>Time</h4><p>Minutes $\to$ decimal hours: $\div 60$. Never write $2$ h $30$ as $2.3$.</p></div>
+    <div class="ref-card"><h4>Speed shortcut</h4><p>km/h $\div 3.6 =$ m/s. &nbsp; m/s $\times 3.6 =$ km/h.</p></div>
+    <div class="ref-card"><h4>Density shortcut</h4><p>g/cm³ $\times 1000 =$ kg/m³.</p></div>
+    <div class="ref-card"><h4>Imperial</h4><p>$5$ miles $= 8$ km, $1$ kg $= 2.2$ lb, $1$ gallon $= 4.5$ litres.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 9 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">9</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Convert: (a) $2.7$ km to metres &nbsp; (b) $845$ g to kilograms &nbsp; (c) $0.36$ litres to millilitres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> km → m is $\times 1000$: &nbsp;$2.7 \times 1000 = 2700$ m</p>
+          <p><strong>(b)</strong> g → kg is $\div 1000$: &nbsp;$845 \div 1000 = 0.845$ kg</p>
+          <p><strong>(c)</strong> litres → ml is $\times 1000$: &nbsp;$0.36 \times 1000 = 360$ ml</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A rectangle measures $2.4$ m by $150$ cm. Find its area in $\text{m}^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Make the units match first. $150$ cm $= 150 \div 100 = 1.5$ m.</p>
+          <p>Area $= 2.4 \times 1.5 = 3.6$</p>
+          <p><strong>Answer: $3.6\text{ m}^2$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Convert $0.045\text{ m}^2$ into $\text{cm}^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Length factor m → cm is $\times 100$, so the area factor is $100^2 = 10\,000$.</p>
+          <p>$0.045 \times 10\,000 = 450$</p>
+          <p><strong>Answer: $450\text{ cm}^2$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A fish tank is a cuboid measuring $80$ cm by $40$ cm by $50$ cm. How many litres of water does it hold when full?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Volume $= 80 \times 40 \times 50 = 160\,000\text{ cm}^3$</p>
+          <p>$1000\text{ cm}^3 = 1$ litre, so divide by $1000$:</p>
+          <p>$160\,000 \div 1000 = 160$</p>
+          <p><strong>Answer: $160$ litres</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write (a) $4$ hours $12$ minutes as a decimal number of hours, and (b) $2.85$ hours in hours and minutes.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $12 \div 60 = 0.2$, so the time is $4.2$ hours.</p>
+          <p><strong>(b)</strong> $0.85 \times 60 = 51$ minutes, so $2.85$ h $= 2$ hours $51$ minutes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A cyclist travels at $9$ m/s. Convert this speed to km/h.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In $1$ second: $9$ m. In $1$ hour ($3600$ s): $9 \times 3600 = 32\,400$ m.</p>
+          <p>$32\,400$ m $= 32\,400 \div 1000 = 32.4$ km.</p>
+          <p><strong>Answer: $32.4$ km/h</strong> &nbsp;(check: $9 \times 3.6 = 32.4$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Mercury has a density of $13\,600\text{ kg/m}^3$. Convert this into $\text{g/cm}^3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>kg/m³ → g/cm³ is $\div 1000$ (the reverse of the shortcut in Section 6).</p>
+          <p>$13\,600 \div 1000 = 13.6$</p>
+          <p><strong>Answer: $13.6\text{ g/cm}^3$</strong></p>
+          <p><em>Full working:</em> $13\,600$ kg $= 13\,600\,000$ g; $1\text{ m}^3 = 1\,000\,000\text{ cm}^3$; $13\,600\,000 \div 1\,000\,000 = 13.6$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A plumber charges £$34$ per hour. She works from $08{:}45$ to $14{:}15$. How much does she charge?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Time worked: $08{:}45 \to 14{:}15$ is $5$ hours $30$ minutes.</p>
+          <p>As a decimal: $30 \div 60 = 0.5$, so $5.5$ hours.</p>
+          <p>Charge $= 34 \times 5.5 = £187$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A car's fuel tank holds $12$ gallons. Using $1$ gallon $= 4.5$ litres, and given that fuel costs £$1.52$ per litre, find the cost of filling the tank from empty.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Capacity in litres: $12 \times 4.5 = 54$ litres.</p>
+          <p>Cost $= 54 \times 1.52 = £82.08$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A goods lorry may not exceed $7.5$ tonnes. It weighs $4200$ kg when empty and is loaded with $180$ boxes each of mass $16.5$ kg. Is the lorry within the limit?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Mass of boxes $= 180 \times 16.5 = 2970$ kg.</p>
+          <p>Total mass $= 4200 + 2970 = 7170$ kg.</p>
+          <p>Limit $= 7.5$ tonnes $= 7.5 \times 1000 = 7500$ kg.</p>
+          <p>$7170 < 7500$, so <strong>yes, the lorry is within the limit</strong> — with $330$ kg to spare.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Units &amp; Compound Units (R1) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

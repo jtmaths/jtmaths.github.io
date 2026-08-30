@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proportion as Equality of Ratios – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🟰 Proportion as Equality of Ratios</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R7)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT PROPORTION MEANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What "In Proportion" Means</div>
+<div class="section-body">
+
+  <p>Two situations are <strong>in proportion</strong> when their ratios are <em>equal</em>. That single idea is what lets you scale recipes, compare prices and solve for missing values.</p>
+
+  <div class="formula-box">
+    <div class="label">A proportion statement</div>
+    $a : b = c : d$ &nbsp;&nbsp;which is the same as&nbsp;&nbsp; $\dfrac{a}{b} = \dfrac{c}{d}$
+  </div>
+
+  <div class="concept">
+    <strong>Example.</strong> If $3$ apples cost £$1.20$, then $6$ apples cost £$2.40$.<br>
+    The ratio apples : cost is $3 : 1.20$ in the first case and $6 : 2.40$ in the second.<br>
+    Both simplify to $1 : 0.40$ — the ratios are <strong>equal</strong>, so the situations are in proportion.
+  </div>
+
+  <div class="svg-block">
+    <svg width="470" height="120" viewBox="0 0 470 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="180" height="76" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <text x="110" y="46" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">3 apples : £1.20</text>
+      <text x="110" y="72" font-family="Arial" font-size="13" fill="#64748b" text-anchor="middle">= 1 : 0.40</text>
+      <text x="235" y="66" font-family="Arial" font-size="26" fill="#7c3aed" text-anchor="middle" font-weight="bold">=</text>
+      <rect x="270" y="20" width="180" height="76" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+      <text x="360" y="46" font-family="Arial" font-size="14" fill="#166534" text-anchor="middle" font-weight="bold">6 apples : £2.40</text>
+      <text x="360" y="72" font-family="Arial" font-size="13" fill="#4b5563" text-anchor="middle">= 1 : 0.40</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CROSS-MULTIPLICATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Solving With Cross-Multiplication</div>
+<div class="section-body">
+
+  <p>When one of the four numbers is missing, the fastest reliable method is <strong>cross-multiplication</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Cross-multiplication</div>
+    If $\dfrac{a}{b} = \dfrac{c}{d}$ &nbsp;then&nbsp; $a \times d = b \times c$
+  </div>
+
+  <ul class="steps">
+    <li>Write the proportion as two equal fractions, keeping <strong>like with like</strong> (e.g. cost on top of both sides, quantity underneath both).</li>
+    <li>Multiply diagonally across the equals sign, both ways.</li>
+    <li>Set the two products equal and solve the resulting equation.</li>
+    <li>Sense-check the size of your answer.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Keep like with like.</strong> $\dfrac{\text{cost}}{\text{quantity}} = \dfrac{\text{cost}}{\text{quantity}}$ is correct. $\dfrac{\text{cost}}{\text{quantity}} = \dfrac{\text{quantity}}{\text{cost}}$ is not.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding a missing value</div>
+    <div class="example-body">
+      <p>Solve $\;4 : 7 = 20 : x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write as fractions: $\dfrac{4}{7} = \dfrac{20}{x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cross-multiply: $4 \times x = 7 \times 20$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$4x = 140$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 35$</span></div>
+      <p>Check: $4 : 7 = 20 : 35$? Divide the second by $5$: $4 : 7$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A real context</div>
+    <div class="example-body">
+      <p>A machine fills $150$ bottles in $8$ minutes. How long does it take to fill $525$ bottles?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\text{bottles}}{\text{minutes}}$ stays constant: $\dfrac{150}{8} = \dfrac{525}{t}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cross-multiply: $150t = 8 \times 525 = 4200$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t = 4200 \div 150 = 28$</span></div>
+      <p><strong>Answer: $28$ minutes</strong></p>
+      <p>Sense check: $525$ is $3.5$ times $150$, and $8 \times 3.5 = 28$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE UNITARY METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Unitary Method ("Find One")</div>
+<div class="section-body">
+
+  <p>An alternative that many students find clearer: scale down to <strong>one</strong>, then scale up.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Unitary method</div>
+    <div class="example-body">
+      <p>$7$ identical books weigh $1.96$ kg. What do $12$ such books weigh?</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Find one:</strong> $1.96 \div 7 = 0.28$ kg per book</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Scale up:</strong> $0.28 \times 12 = 3.36$ kg</span></div>
+      <p><strong>Answer: $3.36$ kg</strong></p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Which method?</strong> Use the unitary method when the "find one" step divides neatly. Use cross-multiplication when it does not — you avoid awkward recurring decimals in the middle of the working.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – RATIO TABLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Ratio Tables and Double Number Lines</div>
+<div class="section-body">
+
+  <p>A ratio table lays the information out so the multipliers are obvious. Whatever you do to one row, do to the other.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using a ratio table</div>
+    <div class="example-body">
+      <p>$5$ litres of paint cover $60\text{ m}^2$. How much paint is needed for $150\text{ m}^2$?</p>
+      <table>
+        <tr><th>Paint (litres)</th><td>$5$</td><td>$1$</td><td>$?$</td></tr>
+        <tr><th>Area (m²)</th><td>$60$</td><td>$12$</td><td>$150$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Divide both by $5$: $1$ litre covers $12\text{ m}^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$150 \div 12 = 12.5$</span></div>
+      <p><strong>Answer: $12.5$ litres</strong></p>
+      <p>In practice you would buy $13$ litres!</p>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="470" height="130" viewBox="0 0 470 130" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="40" x2="430" y2="40" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="30" y1="95" x2="430" y2="95" stroke="#22c55e" stroke-width="2"/>
+      <g stroke="#4f46e5" stroke-width="1.5">
+        <line x1="70" y1="33" x2="70" y2="47"/><line x1="190" y1="33" x2="190" y2="47"/><line x1="390" y1="33" x2="390" y2="47"/>
+      </g>
+      <g stroke="#22c55e" stroke-width="1.5">
+        <line x1="70" y1="88" x2="70" y2="102"/><line x1="190" y1="88" x2="190" y2="102"/><line x1="390" y1="88" x2="390" y2="102"/>
+      </g>
+      <g font-family="Arial" font-size="12" text-anchor="middle">
+        <text x="70" y="27" fill="#3730a3">1 L</text><text x="190" y="27" fill="#3730a3">5 L</text><text x="390" y="27" fill="#3730a3">12.5 L</text>
+        <text x="70" y="118" fill="#166534">12 m²</text><text x="190" y="118" fill="#166534">60 m²</text><text x="390" y="118" fill="#166534">150 m²</text>
+      </g>
+      <text x="440" y="44" font-family="Arial" font-size="12" fill="#4f46e5">paint</text>
+      <text x="440" y="99" font-family="Arial" font-size="12" fill="#22c55e">area</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – BEST BUYS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Best Buy Problems</div>
+<div class="section-body">
+
+  <p>"Which is better value?" questions are proportion questions. Make the comparison fair by reducing both options to the <strong>same base</strong>.</p>
+
+  <div class="concept">
+    <strong>Two valid approaches:</strong><br>
+    • <strong>Cost per unit</strong> — divide price by quantity. The <em>smaller</em> answer is better value.<br>
+    • <strong>Quantity per pound</strong> — divide quantity by price. The <em>larger</em> answer is better value.<br>
+    Either is fine, but say clearly which one you are using.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Best buy</div>
+    <div class="example-body">
+      <p>Which is better value: a $750$ g box of cereal for £$2.40$, or a $1.2$ kg box for £$3.66$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Use cost per $100$ g to keep the numbers friendly.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Small: $240\text{p} \div 7.5 = 32$p per $100$ g</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Large: $1.2$ kg $= 1200$ g, so $366\text{p} \div 12 = 30.5$p per $100$ g</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$30.5 < 32$</span></div>
+      <p><strong>The $1.2$ kg box is better value</strong> — by $1.5$p per $100$ g.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Special offers</div>
+    <div class="example-body">
+      <p>Shop A sells juice at £$1.80$ per carton with "buy 3 get 1 free". Shop B sells the same juice at £$1.50$ per carton with "buy 2 get the third half price". Which shop is cheaper?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Shop A: $4$ cartons cost $3 \times 1.80 = £5.40$, so $£5.40 \div 4 = £1.35$ each.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Shop B: $3$ cartons cost $1.50 + 1.50 + 0.75 = £3.75$, so $£3.75 \div 3 = £1.25$ each.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$£1.25 < £1.35$</span></div>
+      <p><strong>Shop B is cheaper.</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – CHECKING FOR PROPORTIONALITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Deciding Whether Two Quantities Are in Proportion</div>
+<div class="section-body">
+
+  <p>To test a table of values, work out $\dfrac{y}{x}$ for every pair. If the answer is the same each time, the quantities are in <strong>direct proportion</strong>.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Testing a table</div>
+    <div class="example-body">
+      <p>Are $x$ and $y$ in direct proportion?</p>
+      <table>
+        <tr><th>$x$</th><td>$2$</td><td>$5$</td><td>$8$</td></tr>
+        <tr><th>$y$</th><td>$7$</td><td>$17.5$</td><td>$28$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>$7 \div 2 = 3.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$17.5 \div 5 = 3.5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$28 \div 8 = 3.5$</span></div>
+      <p><strong>Yes</strong> — the ratio is constant, and $y = 3.5x$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A table that fails the test</div>
+    <div class="example-body">
+      <p>A taxi charges £$3$ plus £$2$ per mile. Are cost and distance in proportion?</p>
+      <table>
+        <tr><th>Miles</th><td>$1$</td><td>$2$</td><td>$5$</td></tr>
+        <tr><th>Cost (£)</th><td>$5$</td><td>$7$</td><td>$13$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>$5 \div 1 = 5$, &nbsp;$7 \div 2 = 3.5$, &nbsp;$13 \div 5 = 2.6$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The ratios are not equal.</span></div>
+      <p><strong>No, they are not in proportion</strong> — because of the fixed £$3$ charge. Doubling the distance does not double the cost.</p>
+      <p>The relationship is $C = 2m + 3$: a linear relationship, but not a proportional one (the graph does not pass through the origin).</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>In proportion means equal ratios: $a : b = c : d$.</p></div>
+    <div class="ref-card"><h4>Cross-multiplying</h4><p>$\dfrac{a}{b} = \dfrac{c}{d} \Rightarrow ad = bc$. Keep like with like.</p></div>
+    <div class="ref-card"><h4>Unitary method</h4><p>Divide to find one, then multiply up to the amount wanted.</p></div>
+    <div class="ref-card"><h4>Ratio tables</h4><p>Do the same operation to both rows; work via $1$ if it helps.</p></div>
+    <div class="ref-card"><h4>Best buys</h4><p>Compare cost per unit (smaller wins) or amount per £ (bigger wins).</p></div>
+    <div class="ref-card"><h4>Testing proportion</h4><p>$\dfrac{y}{x}$ constant $\Rightarrow$ direct proportion. Any fixed charge breaks it.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Solve $\;3 : 8 = x : 40$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{3}{8} = \dfrac{x}{40}$</p>
+          <p>Cross-multiply: $8x = 3 \times 40 = 120$</p>
+          <p>$x = 15$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Six identical chairs cost £$414$. How much do $11$ chairs cost?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>One chair $= 414 \div 6 = £69$</p>
+          <p>Eleven chairs $= 69 \times 11 = £759$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A recipe for $9$ muffins uses $360$ g of flour. How many muffins can be made with $600$ g of flour?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{9}{360} = \dfrac{m}{600}$</p>
+          <p>Cross-multiply: $360m = 9 \times 600 = 5400$</p>
+          <p>$m = 15$ muffins</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$4$ workers lay $180$ bricks in an hour. Working at the same rate, how many bricks would $7$ workers lay in an hour?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>One worker lays $180 \div 4 = 45$ bricks per hour.</p>
+          <p>Seven workers lay $45 \times 7 = 315$ bricks per hour.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Which is better value: $12$ eggs for £$3.24$, or $18$ eggs for £$4.68$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Cost per egg (pack of 12): $324 \div 12 = 27$p</p>
+          <p>Cost per egg (pack of 18): $468 \div 18 = 26$p</p>
+          <p><strong>The pack of $18$ is better value</strong> (1p cheaper per egg).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Exchange rate: £$1$ = &#36;$1.27$. Convert (a) £$350$ into dollars, (b) &#36;$508$ into pounds.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $350 \times 1.27 = 444.50$, so &#36;$444.50$</p>
+          <p><strong>(b)</strong> $508 \div 1.27 = 400$, so £$400$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A $2.5$ litre tin of paint covers $30\text{ m}^2$. A decorator must paint a wall $12$ m long and $2.8$ m high, giving it two coats. How many tins must she buy?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area of wall $= 12 \times 2.8 = 33.6\text{ m}^2$</p>
+          <p>Two coats: $33.6 \times 2 = 67.2\text{ m}^2$</p>
+          <p>Tins needed $= 67.2 \div 30 = 2.24$</p>
+          <p>Round <strong>up</strong>: she must buy $3$ tins.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Decide whether $x$ and $y$ are in direct proportion. Justify your answer.</p>
+      <table>
+        <tr><th>$x$</th><td>$3$</td><td>$4$</td><td>$9$</td></tr>
+        <tr><th>$y$</th><td>$10.5$</td><td>$14$</td><td>$31.5$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$10.5 \div 3 = 3.5$; &nbsp;$14 \div 4 = 3.5$; &nbsp;$31.5 \div 9 = 3.5$</p>
+          <p><strong>Yes</strong> — the ratio $\dfrac{y}{x}$ is constant, so $y = 3.5x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Shop A sells $6$ tins of soup for £$4.20$. Shop B sells the same tins at $80$p each with an offer of "buy 3 get 1 free". Which shop gives the cheaper tin?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Shop A: $420 \div 6 = 70$p per tin.</p>
+          <p>Shop B: you pay for $3$ tins and take home $4$.</p>
+          <p>Cost of $4$ tins $= 3 \times 80 = 240$p.</p>
+          <p>Cost per tin $= 240 \div 4 = 60$p.</p>
+          <p><strong>Shop B is cheaper</strong> at $60$p per tin, saving $10$p on every tin.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>On a school trip the ratio of teachers to students must be at least $1 : 12$ (that is, no more than $12$ students per teacher).</p>
+      <p>(a) What is the smallest number of teachers needed for $150$ students?</p>
+      <p>(b) The trip costs £$18$ per student and £$0$ per teacher, plus a fixed coach hire of £$260$. Find the total cost.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $150 \div 12 = 12.5$</p>
+          <p>You cannot have half a teacher, and $12$ teachers could only supervise $144$ students, so round <strong>up</strong>: $13$ teachers.</p>
+          <p><strong>(b)</strong> Student cost $= 150 \times 18 = £2700$</p>
+          <p>Total $= 2700 + 260 = £2960$</p>
+          <p><em>Note:</em> because of the fixed £$260$, the total cost is <em>not</em> in direct proportion to the number of students.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Proportion as Equality of Ratios (R7) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplicative Relationships – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✖️ Multiplicative Relationships</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R6)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IS A MULTIPLICATIVE RELATIONSHIP?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What is a Multiplicative Relationship?</div>
+<div class="section-body">
+
+  <p>Two quantities are linked <strong>multiplicatively</strong> when you get from one to the other by <em>multiplying</em> (or dividing) — not by adding.</p>
+
+  <div class="formula-box">
+    <div class="label">The core statement</div>
+    $A = k \times B$ &nbsp;&nbsp;where $k$ is the <strong>multiplier</strong>
+  </div>
+
+  <div class="concept">
+    <strong>Three ways of saying exactly the same thing.</strong> If $A = 15$ and $B = 6$:<br>
+    • <strong>Multiplier:</strong> $A = 2.5 \times B$ &nbsp;(because $15 \div 6 = 2.5$)<br>
+    • <strong>Fraction:</strong> $A$ is $\dfrac{5}{2}$ of $B$<br>
+    • <strong>Ratio:</strong> $A : B = 15 : 6 = 5 : 2$<br>
+    Learning to slide between these three forms is the whole of this subtopic.
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="140" viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="40" width="110" height="50" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <text x="85" y="62" font-family="Arial" font-size="14" fill="#3730a3" text-anchor="middle" font-weight="bold">B = 6</text>
+      <text x="85" y="80" font-family="Arial" font-size="11" fill="#64748b" text-anchor="middle">(the "of" one)</text>
+      <line x1="145" y1="65" x2="315" y2="65" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#am)"/>
+      <defs><marker id="am" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7c3aed"/></marker></defs>
+      <text x="230" y="52" font-family="Arial" font-size="15" fill="#6d28d9" text-anchor="middle" font-weight="bold">× 2.5</text>
+      <rect x="320" y="40" width="120" height="50" rx="8" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+      <text x="380" y="70" font-family="Arial" font-size="14" fill="#166534" text-anchor="middle" font-weight="bold">A = 15</text>
+      <line x1="315" y1="105" x2="145" y2="105" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#am2)"/>
+      <defs><marker id="am2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker></defs>
+      <text x="230" y="128" font-family="Arial" font-size="14" fill="#166534" text-anchor="middle">÷ 2.5 &nbsp;(or × 0.4)</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>Additive thinking is the enemy.</strong> "$15$ is $9$ more than $6$" is true but almost never useful in this topic — the number $9$ tells you nothing that scales. The multiplier $2.5$ does.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FINDING THE MULTIPLIER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding the Multiplier</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Decide which quantity you are starting <em>from</em> and which you are going <em>to</em>.</li>
+    <li>Divide: multiplier $= \dfrac{\text{the quantity you want}}{\text{the quantity you start from}}$.</li>
+    <li>State it as a decimal or as a fraction, whichever is neater.</li>
+    <li>Check by multiplying back.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Both directions</div>
+    <div class="example-body">
+      <p>A shop's takings rose from £$800$ on Monday to £$1000$ on Tuesday.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Monday $\to$ Tuesday: $1000 \div 800 = 1.25$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Tuesday $\to$ Monday: $800 \div 1000 = 0.8$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Note that $1.25 \times 0.8 = 1$ — the two multipliers are <strong>reciprocals</strong> of each other.</span></div>
+      <p>So Tuesday's takings are $1.25$ times Monday's, and Monday's are $0.8$ of Tuesday's.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Useful check:</strong> if the multiplier is bigger than $1$ the quantity has grown; if it is between $0$ and $1$ the quantity has shrunk.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Multiplier as a fraction</div>
+    <div class="example-body">
+      <p>A pencil is $18$ cm long and a pen is $12$ cm long. Express the pen's length as a multiple of the pencil's.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= \dfrac{12}{18} = \dfrac{2}{3}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So pen $= \dfrac{2}{3} \times$ pencil.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>As a decimal: $0.666\ldots$, which is awkward — here the <strong>fraction is the better answer</strong>.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SWITCHING BETWEEN THE FORMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Switching Between Ratio, Fraction and Multiplier</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Given</th><th>To a ratio</th><th>To a fraction</th><th>To a multiplier</th></tr>
+    <tr><td>$A : B = 3 : 4$</td><td>—</td><td>$A = \dfrac{3}{4}B$</td><td>$A = 0.75B$</td></tr>
+    <tr><td>$A = \dfrac{5}{2}B$</td><td>$A : B = 5 : 2$</td><td>—</td><td>$A = 2.5B$</td></tr>
+    <tr><td>$A = 1.6B$</td><td>$A : B = 8 : 5$</td><td>$A = \dfrac{8}{5}B$</td><td>—</td></tr>
+    <tr><td>$A$ is $40\%$ of $B$</td><td>$A : B = 2 : 5$</td><td>$A = \dfrac{2}{5}B$</td><td>$A = 0.4B$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Decimal multiplier to ratio</div>
+    <div class="example-body">
+      <p>$A = 1.6B$. Write $A : B$ in its simplest form.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take $B = 1$, so $A = 1.6$. That gives $A : B = 1.6 : 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply both by $10$ to clear the decimal: $16 : 10$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide by the HCF $2$: $\;8 : 5$.</span></div>
+      <p><strong>Answer: $A : B = 8 : 5$</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Ratio to multiplier</div>
+    <div class="example-body">
+      <p>The ratio of Ella's savings to Fred's is $7 : 4$. Fred has £$260$. Find Ella's savings using a multiplier.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Ella $= \dfrac{7}{4} \times$ Fred, so the multiplier is $1.75$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ella $= 260 \times 1.75 = £455$</span></div>
+      <p>Check with the parts method: one part $= 260 \div 4 = 65$, so Ella $= 7 \times 65 = £455$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CHAINS OF MULTIPLIERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Chains of Multipliers</div>
+<div class="section-body">
+
+  <p>If you apply one multiplier and then another, the <strong>overall</strong> multiplier is found by multiplying them together.</p>
+
+  <div class="formula-box">
+    <div class="label">Combining multipliers</div>
+    $\text{overall multiplier} = m_1 \times m_2 \times \ldots$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Two changes in a row</div>
+    <div class="example-body">
+      <p>A price is increased by $20\%$ and then reduced by $15\%$. Find the overall multiplier and describe the overall change.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Increase by $20\%$: multiplier $= 1.2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Decrease by $15\%$: multiplier $= 0.85$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Overall $= 1.2 \times 0.85 = 1.02$</span></div>
+      <p><strong>An overall increase of $2\%$.</strong></p>
+      <p><em>Note</em> that this is not the same as $20 - 15 = 5\%$. Percentages must be combined by multiplying, never by adding.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A chain of three quantities</div>
+    <div class="example-body">
+      <p>$P$ is $\dfrac{3}{5}$ of $Q$, and $Q$ is $\dfrac{10}{9}$ of $R$. Express $P$ as a fraction of $R$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P = \dfrac{3}{5}Q$ &nbsp;and&nbsp; $Q = \dfrac{10}{9}R$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Substitute: $P = \dfrac{3}{5} \times \dfrac{10}{9} \times R$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{3 \times 10}{5 \times 9} = \dfrac{30}{45} = \dfrac{2}{3}$</span></div>
+      <p><strong>$P = \dfrac{2}{3}R$</strong>, so $P : R = 2 : 3$.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – REVERSING A MULTIPLIER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Reversing a Multiplier</div>
+<div class="section-body">
+
+  <p>To undo a multiplication you <strong>divide</strong> — equivalently, you multiply by the <strong>reciprocal</strong>.</p>
+
+  <table>
+    <tr><th>Forward multiplier</th><th>Reverse multiplier</th></tr>
+    <tr><td>$\times 4$</td><td>$\div 4$ &nbsp;(that is, $\times 0.25$)</td></tr>
+    <tr><td>$\times 1.15$</td><td>$\div 1.15$ &nbsp;($\approx \times 0.8696$)</td></tr>
+    <tr><td>$\times \dfrac{3}{7}$</td><td>$\times \dfrac{7}{3}$</td></tr>
+    <tr><td>$\times 0.8$</td><td>$\times 1.25$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Working backwards</div>
+    <div class="example-body">
+      <p>After a $35\%$ discount, a bike costs £$266.50$. What was the original price?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Forward multiplier $= 1 - 0.35 = 0.65$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So original $\times 0.65 = 266.50$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Original $= 266.50 \div 0.65 = £410$</span></div>
+      <p>Check: $410 \times 0.65 = 266.50$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – ALGEBRAIC MULTIPLICATIVE RELATIONSHIPS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Writing the Relationship Algebraically</div>
+<div class="section-body">
+
+  <p>Exam questions increasingly ask you to write the link as an <strong>equation</strong>, because that is what you need for proportion questions later.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — From words to an equation</div>
+    <div class="example-body">
+      <p>"There are $5$ times as many sheep as cows." Let $s$ be the number of sheep and $c$ the number of cows. Write an equation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sheep are the bigger group, so sheep $=$ multiplier $\times$ cows.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$s = 5c$</span></div>
+      <div class="warn"><strong>Very common error:</strong> writing $5s = c$. Test with numbers — if there are $2$ cows there are $10$ sheep, and $s = 5c$ gives $10 = 5 \times 2$ ✓ while $5s = c$ gives $50 = 2$ ✗.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Two relationships combined</div>
+    <div class="example-body">
+      <p>$a : b = 4 : 3$ and $b : c = 9 : 2$. Write $a$ in terms of $c$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = \dfrac{4}{3}b$ &nbsp;and&nbsp; $b = \dfrac{9}{2}c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a = \dfrac{4}{3} \times \dfrac{9}{2} \times c = \dfrac{36}{6}c = 6c$</span></div>
+      <p><strong>$a = 6c$</strong>, so $a : c = 6 : 1$.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Multiplier</h4><p>$k = \dfrac{\text{quantity you want}}{\text{quantity you start from}}$.</p></div>
+    <div class="ref-card"><h4>Bigger or smaller?</h4><p>$k > 1$ means growth; $0 < k < 1$ means shrinkage.</p></div>
+    <div class="ref-card"><h4>Ratio → fraction</h4><p>$A : B = a : b$ means $A = \dfrac{a}{b}B$.</p></div>
+    <div class="ref-card"><h4>Decimal → ratio</h4><p>Write $k : 1$, then clear the decimal and simplify.</p></div>
+    <div class="ref-card"><h4>Chains</h4><p>Multiply the multipliers together; never add them.</p></div>
+    <div class="ref-card"><h4>Reversing</h4><p>Divide by the multiplier — the reciprocal undoes it.</p></div>
+    <div class="ref-card"><h4>Algebra</h4><p>"$A$ is $n$ times $B$" $\Rightarrow A = nB$. Always test with real numbers.</p></div>
+    <div class="ref-card"><h4>Percentages</h4><p>$p\%$ of $B$ means $\dfrac{p}{100} \times B$ — just another multiplier.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$A = 24$ and $B = 15$. Write (a) the multiplier from $B$ to $A$, (b) $A$ as a fraction of $B$, (c) $A : B$ in its simplest form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $24 \div 15 = 1.6$</p>
+          <p><strong>(b)</strong> $\dfrac{24}{15} = \dfrac{8}{5}$</p>
+          <p><strong>(c)</strong> $24 : 15 = 8 : 5$ (divide both by $3$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>The number of visitors to a museum fell from $4500$ to $3600$. Find the multiplier, and state the percentage change.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier $= 3600 \div 4500 = 0.8$</p>
+          <p>$0.8 = 80\%$, so visitors are now $80\%$ of what they were.</p>
+          <p>That is a decrease of $100 - 80 = 20\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$P = 0.35Q$. Write $P : Q$ in its simplest form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P : Q = 0.35 : 1$</p>
+          <p>Multiply both by $100$: $35 : 100$</p>
+          <p>Divide by the HCF $5$: $\;7 : 20$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>The ratio of Jaz's height to Kim's height is $6 : 5$. Kim is $145$ cm tall. Find Jaz's height.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Jaz $= \dfrac{6}{5} \times$ Kim $= 1.2 \times 145$</p>
+          <p>$= 174$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A quantity is multiplied by $1.5$ and then by $0.6$. Find the single multiplier that has the same effect, and say whether the quantity has grown or shrunk.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1.5 \times 0.6 = 0.9$</p>
+          <p>Since $0.9 < 1$, the quantity has <strong>shrunk</strong> — it is now $90\%$ of the original, a $10\%$ decrease.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$X$ is $\dfrac{4}{7}$ of $Y$, and $Y$ is $\dfrac{7}{2}$ of $Z$. Express $X$ in terms of $Z$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$X = \dfrac{4}{7} \times \dfrac{7}{2} \times Z = \dfrac{28}{14}Z = 2Z$</p>
+          <p><strong>$X = 2Z$</strong>, so $X : Z = 2 : 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>After a $12\%$ increase, a salary is £$33\,600$. Find the salary before the increase.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Forward multiplier $= 1.12$.</p>
+          <p>Original $= 33\,600 \div 1.12 = £30\,000$</p>
+          <p>Check: $30\,000 \times 1.12 = 33\,600$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>There are $\dfrac{3}{8}$ as many buses as cars in a depot. Write an equation linking the number of buses $b$ and the number of cars $c$, and find $c$ when $b = 21$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$b = \dfrac{3}{8}c$</p>
+          <p>When $b = 21$: $\;21 = \dfrac{3}{8}c$</p>
+          <p>Multiply both sides by $8$: $168 = 3c$, so $c = 56$ cars.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A shop reduces all prices by $30\%$, then adds $20\%$ VAT to the reduced price. A jacket was originally £$95$ before VAT. Find the final price and the overall multiplier.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Overall multiplier $= 0.7 \times 1.2 = 0.84$</p>
+          <p>Final price $= 95 \times 0.84 = £79.80$</p>
+          <p>The overall effect is a $16\%$ decrease on the original.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$m : n = 5 : 2$ and $n : p = 6 : 7$. </p>
+      <p>(a) Write $m$ in terms of $p$. &nbsp; (b) If $p = 42$, find $m$ and $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $m = \dfrac{5}{2}n$ and $n = \dfrac{6}{7}p$.</p>
+          <p>$m = \dfrac{5}{2} \times \dfrac{6}{7} \times p = \dfrac{30}{14}p = \dfrac{15}{7}p$</p>
+          <p><strong>(b)</strong> $n = \dfrac{6}{7} \times 42 = 36$</p>
+          <p>$m = \dfrac{15}{7} \times 42 = 90$</p>
+          <p>Check: $m : n = 90 : 36 = 5 : 2$ ✓ &nbsp;and&nbsp; $n : p = 36 : 42 = 6 : 7$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Multiplicative Relationships (R6) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

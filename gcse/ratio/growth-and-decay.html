@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growth and Decay – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Growth and Decay</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R16)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – REPEATED PERCENTAGE CHANGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Repeated Percentage Change</div>
+<div class="section-body">
+
+  <p>Growth and decay problems all come from the same idea: the <strong>same percentage change applied over and over again</strong>. Each time, you multiply by the same multiplier.</p>
+
+  <div class="formula-box">
+    <div class="label">The growth and decay formula</div>
+    $A = P \times M^{\,n}$<br>
+    <span style="font-size:.85rem;color:#555;">$P$ = starting amount &nbsp;·&nbsp; $M$ = multiplier &nbsp;·&nbsp; $n$ = number of time periods &nbsp;·&nbsp; $A$ = final amount</span>
+  </div>
+
+  <table>
+    <tr><th>Situation</th><th>Multiplier $M$</th></tr>
+    <tr><td>Growth of $3\%$ per year</td><td>$1.03$</td></tr>
+    <tr><td>Growth of $12\%$ per year</td><td>$1.12$</td></tr>
+    <tr><td>Decay of $8\%$ per year</td><td>$0.92$</td></tr>
+    <tr><td>Decay of $25\%$ per year</td><td>$0.75$</td></tr>
+    <tr><td>Doubling each period</td><td>$2$</td></tr>
+    <tr><td>Halving each period</td><td>$0.5$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Never multiply the percentage by the number of years.</strong> $5\%$ growth for $3$ years is <em>not</em> $15\%$ growth — it is $1.05^3 = 1.157625$, that is $15.76\%$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – COMPOUND INTEREST
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Compound Interest</div>
+<div class="section-body">
+
+  <p><strong>Compound interest</strong> means you earn interest on the interest already earned. Each year the interest is calculated on the <em>new</em> balance.</p>
+
+  <div class="formula-box">
+    <div class="label">Compound interest</div>
+    $A = P\left(1 + \dfrac{r}{100}\right)^n$
+  </div>
+
+  <ul class="steps">
+    <li>Write down $P$ (the starting amount), the rate and $n$ (the number of years).</li>
+    <li>Work out the multiplier: $1 + \dfrac{r}{100}$.</li>
+    <li>Raise it to the power $n$ using the $x^y$ button on your calculator.</li>
+    <li>Multiply by $P$ and round sensibly (money to the nearest penny).</li>
+    <li>If the question wants the <em>interest</em>, remember to subtract $P$ at the end.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Compound interest</div>
+    <div class="example-body">
+      <p>£$4000$ is invested at $3.5\%$ compound interest per year for $6$ years. Find the value of the investment and the total interest earned.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 1 + 0.035 = 1.035$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = 4000 \times 1.035^{6}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$1.035^6 = 1.229255\ldots$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$A = 4000 \times 1.229255 = £4917.02$ (nearest penny)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Interest $= 4917.02 - 4000 = £917.02$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Simple vs compound</div>
+    <div class="example-body">
+      <p>Compare £$5000$ invested for $4$ years at $6\%$ simple interest and at $6\%$ compound interest.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Simple:</strong> $5000 \times 0.06 = £300$ per year, so $300 \times 4 = £1200$ interest. Total $= £6200$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Compound:</strong> $5000 \times 1.06^4 = 5000 \times 1.26247696 = £6312.38$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Interest $= £1312.38$.</span></div>
+      <p>Compound interest earns <strong>£$112.38$ more</strong> over the four years — and the gap widens rapidly as the years go on.</p>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="450" height="270" viewBox="0 0 450 270" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="55" y1="40" x2="420" y2="40"/><line x1="55" y1="80" x2="420" y2="80"/>
+        <line x1="55" y1="120" x2="420" y2="120"/><line x1="55" y1="160" x2="420" y2="160"/>
+        <line x1="120" y1="30" x2="120" y2="200"/><line x1="185" y1="30" x2="185" y2="200"/>
+        <line x1="250" y1="30" x2="250" y2="200"/><line x1="315" y1="30" x2="315" y2="200"/>
+        <line x1="380" y1="30" x2="380" y2="200"/>
+      </g>
+      <line x1="55" y1="200" x2="425" y2="200" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="200" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="180" x2="380" y2="100" stroke="#22c55e" stroke-width="2.5"/>
+      <path d="M 55 180 Q 200 160 300 110 Q 350 80 380 55" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <text x="300" y="146" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">simple</text>
+      <text x="300" y="86" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">compound</text>
+      <text x="240" y="228" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle" font-weight="bold">Years</text>
+      <text x="18" y="115" font-family="Arial" font-size="12" fill="#4f46e5" text-anchor="middle" font-weight="bold" transform="rotate(-90 18 115)">Value</text>
+      <text x="240" y="252" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Simple interest grows in a straight line; compound interest curves upwards</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – DEPRECIATION AND DECAY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Depreciation and Decay</div>
+<div class="section-body">
+
+  <p><strong>Depreciation</strong> is compound <em>decrease</em>: cars, laptops and machinery all lose a percentage of their value each year.</p>
+
+  <div class="formula-box">
+    <div class="label">Decay</div>
+    $A = P\left(1 - \dfrac{r}{100}\right)^n$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Car depreciation</div>
+    <div class="example-body">
+      <p>A car costing £$22\,000$ loses $18\%$ of its value each year. Find its value after $5$ years, to the nearest pound.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 1 - 0.18 = 0.82$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = 22\,000 \times 0.82^{5}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.82^5 = 0.3707398\ldots$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$A = 22\,000 \times 0.3707398 = £8156$ (nearest pound)</span></div>
+      <p>The car has lost about $63\%$ of its value in five years.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Half-life</div>
+    <div class="example-body">
+      <p>A radioactive substance has a half-life of $3$ days: its mass halves every $3$ days. A sample starts at $640$ g. Find the mass after $15$ days.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Number of half-lives $= 15 \div 3 = 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = 640 \times 0.5^{5}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 640 \times 0.03125 = 20$ g</span></div>
+      <p>Check by halving: $640 \to 320 \to 160 \to 80 \to 40 \to 20$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – HOW MANY YEARS?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> "How Many Years?" Questions</div>
+<div class="section-body">
+
+  <p>When $n$ is the unknown, the GCSE method is <strong>trial and improvement</strong>: try values of $n$ until you cross the target.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding the number of years</div>
+    <div class="example-body">
+      <p>£$3000$ is invested at $4\%$ compound interest. After how many complete years will the investment first exceed £$4000$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = 3000 \times 1.04^n$; we need $A > 4000$.</span></div>
+      <table>
+        <tr><th>$n$</th><td>$5$</td><td>$6$</td><td>$7$</td><td>$8$</td></tr>
+        <tr><th>$A$ (£)</th><td>$3649.96$</td><td>$3795.96$</td><td>$3947.80$</td><td>$4105.71$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">②</span><span>After $7$ years the value is still below £$4000$; after $8$ years it is above.</span></div>
+      <p><strong>Answer: $8$ years</strong></p>
+      <div class="tip"><strong>Calculator tip:</strong> type $3000 \times 1.04$, press $=$, then keep pressing $=$ (or use the ANS key) to step through the years one at a time.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Decay over time</div>
+    <div class="example-body">
+      <p>A population of $12\,000$ fish is falling by $15\%$ per year. After how many years will the population first drop below $5000$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = 12\,000 \times 0.85^n$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = 4$: $12\,000 \times 0.85^4 = 6264$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n = 5$: $12\,000 \times 0.85^5 = 5324$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n = 6$: $12\,000 \times 0.85^6 = 4526$</span></div>
+      <p><strong>Answer: $6$ years</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – FINDING THE RATE OR THE START
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Finding the Rate or the Starting Amount</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Finding the starting value</div>
+    <div class="example-body">
+      <p>After $3$ years of $5\%$ compound growth, an investment is worth £$9261$. What was invested at the start?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$9261 = P \times 1.05^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1.05^3 = 1.157625$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P = 9261 \div 1.157625 = £8000$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Finding the rate</div>
+    <div class="example-body">
+      <p>A painting bought for £$2000$ is worth £$3456$ after $4$ years. Find the annual percentage growth rate.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3456 = 2000 \times M^4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$M^4 = \dfrac{3456}{2000} = 1.728$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$M = \sqrt[4]{1.728} = 1.14657\ldots$ &nbsp;(use the $\sqrt[x]{\;}$ button, or raise to the power $0.25$)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$M - 1 = 0.1466$, so the rate is about $14.7\%$ per year.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – ITERATIVE PROCESSES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> General Iterative Processes</div>
+<div class="section-body">
+
+  <p>An <strong>iterative process</strong> is any rule you apply repeatedly, feeding each answer back in as the next input. Growth and decay are just one example.</p>
+
+  <div class="formula-box">
+    <div class="label">Iteration notation</div>
+    $x_{n+1} = f(x_n)$ &nbsp;— "the next term is found by applying the rule to the one before"
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — An iterative formula</div>
+    <div class="example-body">
+      <p>Use $x_{n+1} = \sqrt{5x_n + 3}$ with $x_1 = 4$ to find $x_2$, $x_3$ and $x_4$, each to 4 decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x_2 = \sqrt{5 \times 4 + 3} = \sqrt{23} = 4.7958$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_3 = \sqrt{5 \times 4.7958 + 3} = \sqrt{26.9790} = 5.1941$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x_4 = \sqrt{5 \times 5.1941 + 3} = \sqrt{28.9705} = 5.3824$</span></div>
+      <p>The values are settling towards about $5.54$, which is the solution of $x^2 = 5x + 3$.</p>
+      <div class="tip"><strong>Calculator method:</strong> type $4$ and press $=$. Then type $\sqrt{5 \times \text{ANS} + 3}$ and press $=$ repeatedly. Each press gives the next term.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Iteration with a real context</div>
+    <div class="example-body">
+      <p>A savings account pays $2\%$ interest per year, and the saver adds £$500$ at the end of each year. She starts with £$2000$. Write an iterative rule and find the balance after $3$ years.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rule: $B_{n+1} = 1.02 \times B_n + 500$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Year 1: $1.02 \times 2000 + 500 = 2040 + 500 = £2540$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Year 2: $1.02 \times 2540 + 500 = 2590.80 + 500 = £3090.80$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Year 3: $1.02 \times 3090.80 + 500 = 3152.62 + 500 = £3652.62$</span></div>
+      <p><strong>Balance after $3$ years $= £3652.62$</strong></p>
+      <p>Note that the simple formula $A = P \times M^n$ does <em>not</em> work here, because extra money is added each year. An iterative approach is essential.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The formula</h4><p>$A = P \times M^{\,n}$ for repeated percentage change.</p></div>
+    <div class="ref-card"><h4>Growth</h4><p>$M = 1 + \dfrac{r}{100}$, e.g. $+7\% \Rightarrow 1.07$.</p></div>
+    <div class="ref-card"><h4>Decay</h4><p>$M = 1 - \dfrac{r}{100}$, e.g. $-7\% \Rightarrow 0.93$.</p></div>
+    <div class="ref-card"><h4>Interest only</h4><p>Subtract $P$ from the final amount.</p></div>
+    <div class="ref-card"><h4>Simple vs compound</h4><p>Simple is a straight line; compound is a curve and always ends up larger.</p></div>
+    <div class="ref-card"><h4>Finding $n$</h4><p>Trial and improvement — press $=$ repeatedly and count.</p></div>
+    <div class="ref-card"><h4>Finding $P$</h4><p>Divide the final amount by $M^{\,n}$.</p></div>
+    <div class="ref-card"><h4>Finding $M$</h4><p>$M = \sqrt[n]{\dfrac{A}{P}}$, then subtract $1$ for the rate.</p></div>
+    <div class="ref-card"><h4>Iteration</h4><p>$x_{n+1} = f(x_n)$; use the ANS key to repeat the rule.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>£$6000$ is invested at $4\%$ compound interest per year. Find the value after $3$ years, to the nearest penny.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = 6000 \times 1.04^3$</p>
+          <p>$1.04^3 = 1.124864$</p>
+          <p>$A = 6000 \times 1.124864 = £6749.18$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A motorbike bought for £$7500$ depreciates by $22\%$ each year. Find its value after $4$ years, to the nearest pound.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier $= 0.78$</p>
+          <p>$A = 7500 \times 0.78^4 = 7500 \times 0.37015056$</p>
+          <p>$= £2776$ (nearest pound)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>£$2500$ is invested for $5$ years at $3\%$ per year. Find the total <em>interest</em> earned with (a) simple interest, (b) compound interest.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $2500 \times 0.03 = £75$ per year; $75 \times 5 = £375$.</p>
+          <p><strong>(b)</strong> $A = 2500 \times 1.03^5 = 2500 \times 1.159274 = £2898.19$.</p>
+          <p>Interest $= 2898.19 - 2500 = £398.19$.</p>
+          <p>Compound earns £$23.19$ more.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A bacterial colony of $500$ cells grows by $30\%$ every hour. How many cells are there after $6$ hours, to the nearest whole number?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = 500 \times 1.3^6$</p>
+          <p>$1.3^6 = 4.826809$</p>
+          <p>$A = 500 \times 4.826809 = 2413.4$</p>
+          <p><strong>About $2413$ cells</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A radioactive isotope has a half-life of $8$ hours. A $960$ g sample is left for $2$ days. How much remains?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2$ days $= 48$ hours; number of half-lives $= 48 \div 8 = 6$.</p>
+          <p>$A = 960 \times 0.5^6 = 960 \times \dfrac{1}{64} = 15$ g</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>£$1500$ is invested at $5\%$ compound interest. After how many complete years does the investment first exceed £$2000$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = 1500 \times 1.05^n$</p>
+          <p>$n = 5$: $1914.42$ — still below.</p>
+          <p>$n = 6$: $2010.14$ — above.</p>
+          <p><strong>Answer: $6$ years</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>After $2$ years of $8\%$ annual compound growth, a fund is worth £$11\,664$. What was the original investment?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$11\,664 = P \times 1.08^2 = P \times 1.1664$</p>
+          <p>$P = 11\,664 \div 1.1664 = £10\,000$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A house bought for £$180\,000$ is worth £$239\,580$ after $3$ years. Find the annual percentage increase.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$M^3 = \dfrac{239\,580}{180\,000} = 1.331$</p>
+          <p>$M = \sqrt[3]{1.331} = 1.1$</p>
+          <p>$M - 1 = 0.1$, so <strong>the house increased by $10\%$ per year.</strong></p>
+          <p>Check: $180\,000 \times 1.1^3 = 180\,000 \times 1.331 = £239\,580$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Bank A offers $3.5\%$ compound interest per year. Bank B offers $4\%$ for the first year and then $3\%$ for each following year. £$8000$ is invested for $3$ years. Which bank gives more, and by how much?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Bank A:</strong> $8000 \times 1.035^3 = 8000 \times 1.108718 = £8869.74$</p>
+          <p><strong>Bank B:</strong> $8000 \times 1.04 \times 1.03 \times 1.03 = 8000 \times 1.103336 = £8826.69$</p>
+          <p><strong>Bank A gives more</strong>, by $8869.74 - 8826.69 = £43.05$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A lake contains $80\,000$ litres of water. Each week $12\%$ evaporates, but $6000$ litres of rain are added at the end of the week.</p>
+      <p>(a) Write an iterative formula for the volume $V_n$ after $n$ weeks. &nbsp; (b) Find the volume after $3$ weeks, to the nearest litre. &nbsp; (c) Explain why the volume will eventually settle at $50\,000$ litres.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $V_{n+1} = 0.88 V_n + 6000$, with $V_0 = 80\,000$.</p>
+          <p><strong>(b)</strong> Week 1: $0.88 \times 80\,000 + 6000 = 70\,400 + 6000 = 76\,400$</p>
+          <p>Week 2: $0.88 \times 76\,400 + 6000 = 67\,232 + 6000 = 73\,232$</p>
+          <p>Week 3: $0.88 \times 73\,232 + 6000 = 64\,444.16 + 6000 = \mathbf{70\,444}$ litres</p>
+          <p><strong>(c)</strong> The volume settles when it stops changing, i.e. when $V = 0.88V + 6000$.</p>
+          <p>$0.12V = 6000 \Rightarrow V = 50\,000$ litres.</p>
+          <p>At that level the $12\%$ lost ($6000$ litres) exactly balances the $6000$ litres of rain added.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Growth &amp; Decay (R16) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

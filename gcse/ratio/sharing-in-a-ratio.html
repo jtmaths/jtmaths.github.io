@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dividing a Quantity in a Ratio – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍫 Dividing a Quantity in a Ratio</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R5)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE STANDARD METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Standard Method</div>
+<div class="section-body">
+
+  <p>The classic question is: "Share £$X$ in the ratio $a : b$." There is one reliable method, and it works every time.</p>
+
+  <ul class="steps">
+    <li><strong>Add</strong> the parts of the ratio to find the total number of parts.</li>
+    <li><strong>Divide</strong> the total amount by the number of parts. This gives the value of <em>one part</em>.</li>
+    <li><strong>Multiply</strong> the value of one part by each number in the ratio.</li>
+    <li><strong>Check</strong> that your shares add back up to the original amount.</li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">Remember it as</div>
+    <strong>ADD → DIVIDE → MULTIPLY → CHECK</strong>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Sharing money</div>
+    <div class="example-body">
+      <p>Share £$450$ between Ali and Ben in the ratio $4 : 5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Add:</strong> $4 + 5 = 9$ parts</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Divide:</strong> $450 \div 9 = £50$ per part</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Multiply:</strong> Ali $= 4 \times 50 = £200$; Ben $= 5 \times 50 = £250$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Check:</strong> $200 + 250 = 450$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="130" viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg">
+      <text x="14" y="34" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">Ali</text>
+      <g fill="#c7d2fe" stroke="#4f46e5">
+        <rect x="60" y="16" width="44" height="26"/><rect x="104" y="16" width="44" height="26"/>
+        <rect x="148" y="16" width="44" height="26"/><rect x="192" y="16" width="44" height="26"/>
+      </g>
+      <text x="148" y="34" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">£200</text>
+      <text x="14" y="80" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">Ben</text>
+      <g fill="#ddd6fe" stroke="#7c3aed">
+        <rect x="60" y="62" width="44" height="26"/><rect x="104" y="62" width="44" height="26"/>
+        <rect x="148" y="62" width="44" height="26"/><rect x="192" y="62" width="44" height="26"/>
+        <rect x="236" y="62" width="44" height="26"/>
+      </g>
+      <text x="170" y="80" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle">£250</text>
+      <text x="300" y="52" font-family="Arial" font-size="13" fill="#555">9 boxes altogether</text>
+      <text x="300" y="72" font-family="Arial" font-size="13" fill="#555">each box = £50</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Three-part ratio</div>
+    <div class="example-body">
+      <p>$720$ g of pastry is divided in the ratio $2 : 3 : 7$. Find each amount.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total parts $= 2 + 3 + 7 = 12$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>One part $= 720 \div 12 = 60$ g</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2 \times 60 = 120$ g, $\;3 \times 60 = 180$ g, $\;7 \times 60 = 420$ g</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Check: $120 + 180 + 420 = 720$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PART:PART vs PART:WHOLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Part : Part or Part : Whole?</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Read the wording very carefully.</strong><br>
+    "The ratio of red to blue is $2 : 3$" is <em>part : part</em> — there are $5$ parts altogether.<br>
+    "$2$ out of every $5$ counters are red" is <em>part : whole</em> — the ratio red : blue is $2 : 3$.
+  </div>
+
+  <table>
+    <tr><th>Statement</th><th>Ratio red : blue</th><th>Red as a fraction of all</th></tr>
+    <tr><td>red : blue $= 3 : 4$</td><td>$3 : 4$</td><td>$\dfrac{3}{7}$</td></tr>
+    <tr><td>red : total $= 3 : 7$</td><td>$3 : 4$</td><td>$\dfrac{3}{7}$</td></tr>
+    <tr><td>$\dfrac{3}{7}$ are red</td><td>$3 : 4$</td><td>$\dfrac{3}{7}$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Part : whole given</div>
+    <div class="example-body">
+      <p>In a garage, the ratio of cars to <em>all</em> vehicles is $5 : 8$. There are $96$ vehicles. How many are <em>not</em> cars?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Here the $8$ is the whole, not a separate part.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>One part $= 96 \div 8 = 12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Cars $= 5 \times 12 = 60$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Not cars $= 96 - 60 = 36$ &nbsp;(or $(8-5)\times 12 = 36$)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – "DIFFERENCE" PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> When You Are Given the Difference</div>
+<div class="section-body">
+
+  <p>Sometimes you are not told the total, but you <em>are</em> told how much bigger one share is. The method is the same, but you divide by the <strong>difference</strong> in parts.</p>
+
+  <div class="formula-box">
+    <div class="label">Key idea</div>
+    one part $= \dfrac{\text{the difference in amount}}{\text{the difference in parts}}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Difference given</div>
+    <div class="example-body">
+      <p>Money is shared between Cara and Dan in the ratio $7 : 3$. Cara gets £$60$ more than Dan. How much did they share altogether?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Difference in parts $= 7 - 3 = 4$ parts</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>These $4$ parts are worth £$60$, so one part $= 60 \div 4 = £15$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total parts $= 7 + 3 = 10$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total money $= 10 \times 15 = £150$</span></div>
+      <p>Check: Cara $= 7 \times 15 = £105$, Dan $= 3 \times 15 = £45$; difference $= £60$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – ONE SHARE GIVEN
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When You Are Given One Share</div>
+<div class="section-body">
+
+  <p>If you know the value of just one person's share, work out one part from that, then build up everything else.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — One share given</div>
+    <div class="example-body">
+      <p>A sum is shared between Eve, Fay and Gil in the ratio $2 : 5 : 6$. Fay receives £$85$. Find the total shared.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Fay has $5$ parts, worth £$85$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>One part $= 85 \div 5 = £17$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total parts $= 2 + 5 + 6 = 13$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total $= 13 \times 17 = £221$</span></div>
+      <p>(Eve gets $2 \times 17 = £34$ and Gil gets $6 \times 17 = £102$; check: $34 + 85 + 102 = 221$ ✓)</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – RECIPES AND SCALING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Recipes and Scaling</div>
+<div class="section-body">
+
+  <p>Recipe questions are ratio questions in disguise. Find the <strong>multiplier</strong> and apply it to every ingredient.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Scaling a recipe up</div>
+    <div class="example-body">
+      <p>A recipe for $6$ scones uses $250$ g flour, $50$ g butter and $150$ ml milk. Rewrite it for $15$ scones.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiplier $= 15 \div 6 = 2.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Flour $= 250 \times 2.5 = 625$ g</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Butter $= 50 \times 2.5 = 125$ g</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Milk $= 150 \times 2.5 = 375$ ml</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Limited ingredients</div>
+    <div class="example-body">
+      <p>The same recipe (for $6$ scones: $250$ g flour, $50$ g butter, $150$ ml milk) is to be used. A baker has $2$ kg of flour, $300$ g of butter and $1$ litre of milk. What is the greatest number of scones he can make?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Work out how many batches each ingredient allows.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Flour: $2000 \div 250 = 8$ batches</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Butter: $300 \div 50 = 6$ batches</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Milk: $1000 \div 150 = 6.66\ldots$ batches</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The <strong>smallest</strong> figure limits him: $6$ complete batches (butter runs out first).</span></div>
+      <p><strong>Answer: $6 \times 6 = 36$ scones</strong></p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Exam tip:</strong> in "how many can be made" questions, always take the <em>smallest</em> number of batches, and round <em>down</em> to a whole number.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – MIXTURES AND CONCENTRATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Mixtures and Concentrations</div>
+<div class="section-body">
+
+  <p>These questions combine sharing with comparing. The usual trick is to work out how much of the "active" ingredient there is in each mixture.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Combining two mixtures</div>
+    <div class="example-body">
+      <p>Alloy A is $60$ kg of copper and zinc in the ratio $3 : 2$. Alloy B is $40$ kg of copper and zinc in the ratio $1 : 3$. The two alloys are melted together. Find the ratio of copper to zinc in the new alloy.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Alloy A: $5$ parts, so one part $= 60 \div 5 = 12$ kg. Copper $= 36$ kg, zinc $= 24$ kg.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Alloy B: $4$ parts, so one part $= 40 \div 4 = 10$ kg. Copper $= 10$ kg, zinc $= 30$ kg.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Totals: copper $= 36 + 10 = 46$ kg; zinc $= 24 + 30 = 54$ kg.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Ratio $= 46 : 54 = 23 : 27$ (divide both by $2$).</span></div>
+      <p>Check: $46 + 54 = 100$ kg $= 60 + 40$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Concentration</div>
+    <div class="example-body">
+      <p>Orange squash is mixed with water in the ratio $1 : 6$. How much squash and how much water are needed to make $2.8$ litres of drink?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total parts $= 1 + 6 = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>One part $= 2.8 \div 7 = 0.4$ litres</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Squash $= 1 \times 0.4 = 0.4$ litres $= 400$ ml</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Water $= 6 \times 0.4 = 2.4$ litres</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – CHANGING A RATIO
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Changing a Ratio</div>
+<div class="section-body">
+
+  <p>Harder questions add or remove some of one quantity and ask for the new ratio, or ask you to work backwards. Algebra makes these manageable.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Using algebra</div>
+    <div class="example-body">
+      <p>In a box the ratio of red to blue pens is $5 : 3$. When $8$ more blue pens are added, the ratio becomes $5 : 4$. How many red pens are there?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let one original part be $x$, so red $= 5x$ and blue $= 3x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The red count does not change, so after the change: $\dfrac{5x}{3x + 8} = \dfrac{5}{4}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Cross-multiply: $4 \times 5x = 5 \times (3x + 8)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$20x = 15x + 40 \Rightarrow 5x = 40 \Rightarrow x = 8$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Red $= 5x = 40$ pens</span></div>
+      <p>Check: originally $40$ red, $24$ blue ($40:24 = 5:3$ ✓). After adding $8$: $40 : 32 = 5 : 4$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Standard method</h4><p>Add the parts → divide the total → multiply each share → check the sum.</p></div>
+    <div class="ref-card"><h4>Difference given</h4><p>One part $=$ difference in amount $\div$ difference in parts.</p></div>
+    <div class="ref-card"><h4>One share given</h4><p>One part $=$ that share $\div$ its number of parts.</p></div>
+    <div class="ref-card"><h4>Part : whole</h4><p>If the second number is the total, do not add — it already includes the first.</p></div>
+    <div class="ref-card"><h4>Recipes</h4><p>Multiplier $=$ new amount $\div$ old amount; apply it to every ingredient.</p></div>
+    <div class="ref-card"><h4>Limited ingredients</h4><p>Work out batches for each; the smallest one wins; round down.</p></div>
+    <div class="ref-card"><h4>Mixtures</h4><p>Split each mixture into its actual amounts, then add the like amounts.</p></div>
+    <div class="ref-card"><h4>Changing ratios</h4><p>Let one part be $x$, form an equation and cross-multiply.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 9 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">9</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Share £$364$ in the ratio $3 : 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 3 + 4 = 7$.</p>
+          <p>One part $= 364 \div 7 = £52$.</p>
+          <p>Shares: $3 \times 52 = £156$ and $4 \times 52 = £208$.</p>
+          <p>Check: $156 + 208 = 364$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$1.5$ kg of sweets is divided in the ratio $2 : 3 : 5$. Find each mass in grams.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1.5$ kg $= 1500$ g. Total parts $= 2 + 3 + 5 = 10$.</p>
+          <p>One part $= 1500 \div 10 = 150$ g.</p>
+          <p>Shares: $300$ g, $450$ g, $750$ g.</p>
+          <p>Check: $300 + 450 + 750 = 1500$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Two sisters share some money in the ratio $9 : 5$. The older sister gets £$72$ more than the younger. How much did each get?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Difference in parts $= 9 - 5 = 4$.</p>
+          <p>One part $= 72 \div 4 = £18$.</p>
+          <p>Older $= 9 \times 18 = £162$; younger $= 5 \times 18 = £90$.</p>
+          <p>Check: $162 - 90 = 72$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A prize is shared in the ratio $4 : 7 : 9$. The largest share is £$405$. Find the total prize.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The largest share has $9$ parts.</p>
+          <p>One part $= 405 \div 9 = £45$.</p>
+          <p>Total parts $= 4 + 7 + 9 = 20$.</p>
+          <p>Total prize $= 20 \times 45 = £900$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In a bag of $60$ marbles, the ratio of red marbles to <em>all</em> the marbles is $2 : 5$. How many marbles are not red?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>This is part : whole, so $5$ parts $= 60$ marbles.</p>
+          <p>One part $= 60 \div 5 = 12$.</p>
+          <p>Red $= 2 \times 12 = 24$.</p>
+          <p>Not red $= 60 - 24 = 36$ marbles.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A recipe for $8$ pancakes uses $200$ g flour, $2$ eggs and $300$ ml milk. How much of each is needed for $20$ pancakes?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiplier $= 20 \div 8 = 2.5$.</p>
+          <p>Flour $= 200 \times 2.5 = 500$ g.</p>
+          <p>Eggs $= 2 \times 2.5 = 5$ eggs.</p>
+          <p>Milk $= 300 \times 2.5 = 750$ ml.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A recipe for $4$ portions of soup needs $600$ g of tomatoes, $2$ onions and $500$ ml of stock. Sam has $2.1$ kg of tomatoes, $9$ onions and $2$ litres of stock. What is the greatest number of portions he can make?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Tomatoes: $2100 \div 600 = 3.5$ batches.</p>
+          <p>Onions: $9 \div 2 = 4.5$ batches.</p>
+          <p>Stock: $2000 \div 500 = 4$ batches.</p>
+          <p>Smallest is $3.5$, so $3$ complete batches (tomatoes run out first).</p>
+          <p><strong>$3 \times 4 = 12$ portions</strong></p>
+          <p><em>Note:</em> if half-batches were allowed, $3.5 \times 4 = 14$ portions; the safest exam answer uses whole batches unless the question says otherwise.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A fruit punch is made with juice and lemonade in the ratio $3 : 5$. How much of each is needed to make $4.8$ litres of punch?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 3 + 5 = 8$.</p>
+          <p>One part $= 4.8 \div 8 = 0.6$ litres.</p>
+          <p>Juice $= 3 \times 0.6 = 1.8$ litres.</p>
+          <p>Lemonade $= 5 \times 0.6 = 3$ litres.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Alloy P is $50$ kg of tin and lead in the ratio $2 : 3$. Alloy Q is $30$ kg of tin and lead in the ratio $1 : 2$. They are melted together. Find the ratio of tin to lead in the new alloy, in its simplest form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Alloy P: $5$ parts, one part $= 50 \div 5 = 10$ kg. Tin $= 20$ kg, lead $= 30$ kg.</p>
+          <p>Alloy Q: $3$ parts, one part $= 30 \div 3 = 10$ kg. Tin $= 10$ kg, lead $= 20$ kg.</p>
+          <p>Total tin $= 30$ kg; total lead $= 50$ kg.</p>
+          <p>Ratio $= 30 : 50 = 3 : 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The ratio of adults to children at a play scheme is $2 : 7$. After $8$ more adults arrive, the ratio becomes $2 : 3$. How many children are there?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let one original part be $x$: adults $= 2x$, children $= 7x$.</p>
+          <p>The number of children does not change, so:</p>
+          <p>$$\frac{2x + 8}{7x} = \frac{2}{3}$$</p>
+          <p>Cross-multiply: $3(2x + 8) = 2 \times 7x$</p>
+          <p>$6x + 24 = 14x \Rightarrow 24 = 8x \Rightarrow x = 3$</p>
+          <p>Children $= 7x = 7 \times 3 = \mathbf{21}$</p>
+          <p><em>Check:</em> adults were $2 \times 3 = 6$; after $8$ arrive there are $14$. And $14 : 21 = 2 : 3$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Dividing a Quantity in a Ratio (R5) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

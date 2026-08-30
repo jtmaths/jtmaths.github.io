@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equations of Direct and Inverse Proportion – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Equations of Direct and Inverse Proportion</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R13)</p>
+  <div class="badge">Ages 15–16 · Higher tier focus</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE PROPORTIONALITY SYMBOL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Proportionality Symbol</div>
+<div class="section-body">
+
+  <p>The symbol $\propto$ means "is proportional to". It is a statement about shape, not a full equation — to calculate with it you must replace it by an equals sign and a <strong>constant of proportionality</strong>, usually called $k$.</p>
+
+  <div class="formula-box">
+    <div class="label">Turning $\propto$ into $=$</div>
+    $y \propto x$ &nbsp;becomes&nbsp; $y = kx$<br>
+    $y \propto \dfrac{1}{x}$ &nbsp;becomes&nbsp; $y = \dfrac{k}{x}$
+  </div>
+
+  <div class="concept">
+    <strong>"$y$ is inversely proportional to $x$" means exactly "$y$ is proportional to $\dfrac{1}{x}$".</strong><br>
+    That is why the equation is $y = \dfrac{k}{x}$: you take the direct-proportion form $y = k \times (\text{something})$ and the "something" is $\dfrac{1}{x}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE FOUR-STEP METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Four-Step Method</div>
+<div class="section-body">
+
+  <p>Every question of this type — and there are a lot of them — is solved with the same four steps.</p>
+
+  <ul class="steps">
+    <li><strong>Write the formula</strong> with $k$ in it, translating the words exactly.</li>
+    <li><strong>Substitute</strong> the pair of values you are given.</li>
+    <li><strong>Solve for $k$</strong> and write out the completed formula.</li>
+    <li><strong>Use the formula</strong> to answer the actual question.</li>
+  </ul>
+
+  <div class="tip">
+    <strong>Always write out the completed formula</strong> (e.g. "$y = 3x^2$") as a separate line. Exam mark schemes award a mark for it, and it makes the rest of the question much easier.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Direct proportion</div>
+    <div class="example-body">
+      <p>$y$ is directly proportional to $x$. When $x = 8$, $y = 20$. Find $y$ when $x = 14$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = kx$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$20 = k \times 8$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 2.5$, so $y = 2.5x$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = 2.5 \times 14 = 35$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Inverse proportion</div>
+    <div class="example-body">
+      <p>$p$ is inversely proportional to $q$. When $q = 5$, $p = 12$. Find $q$ when $p = 8$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$p = \dfrac{k}{q}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$12 = \dfrac{k}{5}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 60$, so $p = \dfrac{60}{q}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$8 = \dfrac{60}{q} \Rightarrow 8q = 60 \Rightarrow q = 7.5$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – POWERS AND ROOTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Proportion to Powers and Roots</div>
+<div class="section-body">
+
+  <p>The quantity on the right does not have to be simply $x$. Read the wording carefully and translate it literally.</p>
+
+  <table>
+    <tr><th>In words</th><th>Symbols</th><th>Equation</th></tr>
+    <tr><td>$y$ is proportional to $x$</td><td>$y \propto x$</td><td>$y = kx$</td></tr>
+    <tr><td>$y$ is proportional to the square of $x$</td><td>$y \propto x^2$</td><td>$y = kx^2$</td></tr>
+    <tr><td>$y$ is proportional to the cube of $x$</td><td>$y \propto x^3$</td><td>$y = kx^3$</td></tr>
+    <tr><td>$y$ is proportional to the square root of $x$</td><td>$y \propto \sqrt{x}$</td><td>$y = k\sqrt{x}$</td></tr>
+    <tr><td>$y$ is inversely proportional to $x$</td><td>$y \propto \dfrac{1}{x}$</td><td>$y = \dfrac{k}{x}$</td></tr>
+    <tr><td>$y$ is inversely proportional to the square of $x$</td><td>$y \propto \dfrac{1}{x^2}$</td><td>$y = \dfrac{k}{x^2}$</td></tr>
+    <tr><td>$y$ is inversely proportional to the square root of $x$</td><td>$y \propto \dfrac{1}{\sqrt{x}}$</td><td>$y = \dfrac{k}{\sqrt{x}}$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Square law</div>
+    <div class="example-body">
+      <p>$y$ is proportional to the square of $x$. When $x = 3$, $y = 45$. Find $y$ when $x = 7$, and find $x$ when $y = 125$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = kx^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$45 = k \times 3^2 = 9k$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 5$, so $y = 5x^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>When $x = 7$: $y = 5 \times 49 = 245$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>When $y = 125$: $125 = 5x^2 \Rightarrow x^2 = 25 \Rightarrow x = \pm 5$</span></div>
+      <p>In a real-world context (a length, say) you would take the positive answer, $x = 5$.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Inverse square law</div>
+    <div class="example-body">
+      <p>The intensity $I$ of light is inversely proportional to the square of the distance $d$ from the lamp. At $2$ m the intensity is $90$ lux. Find the intensity at $6$ m.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$I = \dfrac{k}{d^2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$90 = \dfrac{k}{2^2} = \dfrac{k}{4}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 360$, so $I = \dfrac{360}{d^2}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $d = 6$: $I = \dfrac{360}{36} = 10$ lux</span></div>
+      <p>Notice the distance tripled and the intensity fell to $\dfrac{1}{9}$ — that is the inverse square law in action.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Square root</div>
+    <div class="example-body">
+      <p>The time $T$ seconds for a pendulum to swing is proportional to the square root of its length $L$ cm. A pendulum of length $25$ cm takes $1$ second. Find the time for a pendulum of length $81$ cm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$T = k\sqrt{L}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1 = k\sqrt{25} = 5k$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 0.2$, so $T = 0.2\sqrt{L}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T = 0.2 \times \sqrt{81} = 0.2 \times 9 = 1.8$ seconds</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHAT HAPPENS WHEN x CHANGES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> What Happens When $x$ Is Multiplied</div>
+<div class="section-body">
+
+  <p>A favourite exam question asks about the <em>effect</em> of a change without giving you any numbers.</p>
+
+  <table>
+    <tr><th>Relationship</th><th>If $x$ is doubled…</th><th>If $x$ is tripled…</th></tr>
+    <tr><td>$y = kx$</td><td>$y$ doubles ($\times 2$)</td><td>$y$ triples ($\times 3$)</td></tr>
+    <tr><td>$y = kx^2$</td><td>$y \times 4$</td><td>$y \times 9$</td></tr>
+    <tr><td>$y = kx^3$</td><td>$y \times 8$</td><td>$y \times 27$</td></tr>
+    <tr><td>$y = k\sqrt{x}$</td><td>$y \times \sqrt{2} \approx 1.41$</td><td>$y \times \sqrt{3} \approx 1.73$</td></tr>
+    <tr><td>$y = \dfrac{k}{x}$</td><td>$y$ halves ($\times \tfrac{1}{2}$)</td><td>$y \times \tfrac{1}{3}$</td></tr>
+    <tr><td>$y = \dfrac{k}{x^2}$</td><td>$y \times \tfrac{1}{4}$</td><td>$y \times \tfrac{1}{9}$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Reasoning without numbers</div>
+    <div class="example-body">
+      <p>$y$ is inversely proportional to the square of $x$. What happens to $y$ if $x$ is multiplied by $5$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = \dfrac{k}{x^2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Replace $x$ with $5x$: $\;y_{\text{new}} = \dfrac{k}{(5x)^2} = \dfrac{k}{25x^2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{1}{25} \times \dfrac{k}{x^2} = \dfrac{1}{25}y$</span></div>
+      <p><strong>$y$ is divided by $25$.</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – GRAPHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Recognising the Graphs</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="620" height="230" viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- y = kx -->
+      <text x="90" y="16" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">y = kx</text>
+      <line x1="30" y1="190" x2="160" y2="190" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="30" y1="190" x2="30" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="30" y1="190" x2="150" y2="40" stroke="#4f46e5" stroke-width="3"/>
+      <text x="90" y="215" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">straight, through O</text>
+      <!-- y = kx^2 -->
+      <text x="245" y="16" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">y = kx²</text>
+      <line x1="185" y1="190" x2="315" y2="190" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="185" y1="190" x2="185" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
+      <path d="M 185 190 Q 265 185 305 40" fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <text x="245" y="215" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">curve, through O</text>
+      <!-- y = k/x -->
+      <text x="400" y="16" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">y = k/x</text>
+      <line x1="340" y1="190" x2="470" y2="190" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="340" y1="190" x2="340" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
+      <path d="M 355 38 Q 385 130 430 165 Q 450 178 465 183" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <text x="400" y="215" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">hyperbola, never at O</text>
+      <!-- y = k sqrt x -->
+      <text x="555" y="16" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">y = k√x</text>
+      <line x1="495" y1="190" x2="615" y2="190" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="495" y1="190" x2="495" y2="30" stroke="#94a3b8" stroke-width="1.5"/>
+      <path d="M 495 190 Q 530 90 610 55" fill="none" stroke="#22c55e" stroke-width="3"/>
+      <text x="555" y="215" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">rises then flattens</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>How to identify a relationship from a graph:</strong><br>
+    • Straight line through the origin → $y = kx$<br>
+    • Curve through the origin, getting steeper → $y = kx^2$ or $y = kx^3$<br>
+    • Curve that approaches both axes but never touches → $y = \dfrac{k}{x}$<br>
+    • Curve through the origin, getting <em>less</em> steep → $y = k\sqrt{x}$
+  </div>
+
+  <div class="tip">
+    <strong>Turning a curve into a line.</strong> If you suspect $y = kx^2$, plot $y$ against $x^2$. If the relationship is right you get a straight line through the origin whose gradient is $k$. This trick works for any power.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – REAL-WORLD FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Proportion in Real Formulae</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Formula</th><th>Proportionality</th></tr>
+    <tr><td>Circumference $C = 2\pi r$</td><td>$C \propto r$, with $k = 2\pi$</td></tr>
+    <tr><td>Area of a circle $A = \pi r^2$</td><td>$A \propto r^2$, with $k = \pi$</td></tr>
+    <tr><td>Volume of a sphere $V = \tfrac{4}{3}\pi r^3$</td><td>$V \propto r^3$, with $k = \tfrac{4}{3}\pi$</td></tr>
+    <tr><td>Journey time $T = \dfrac{D}{S}$ (fixed $D$)</td><td>$T \propto \dfrac{1}{S}$, with $k = D$</td></tr>
+    <tr><td>Gravitational force</td><td>$F \propto \dfrac{1}{d^2}$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A modelling question</div>
+    <div class="example-body">
+      <p>The braking distance $D$ metres of a car is proportional to the square of its speed $v$ mph. At $30$ mph the braking distance is $14$ m.</p>
+      <p>(a) Find the formula. (b) Find the braking distance at $70$ mph. (c) At what speed is the braking distance $50$ m?</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $D = kv^2$; $14 = k \times 900$; $k = \dfrac{14}{900} = 0.015\overline{5}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$D = \dfrac{7}{450}v^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(b)</strong> $D = \dfrac{7}{450} \times 4900 = 76.2$ m (1 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(c)</strong> $50 = \dfrac{7}{450}v^2 \Rightarrow v^2 = \dfrac{50 \times 450}{7} = 3214.3$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$v = \sqrt{3214.3} = 56.7$ mph (1 d.p.)</span></div>
+      <p>Note that more than doubling the speed (from $30$ to $70$) makes the braking distance over five times longer — the reason speed limits matter.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The symbol</h4><p>$\propto$ means "proportional to". Replace it with $=$ and a constant $k$.</p></div>
+    <div class="ref-card"><h4>Four steps</h4><p>Formula with $k$ → substitute → find $k$ → use the formula.</p></div>
+    <div class="ref-card"><h4>Direct forms</h4><p>$y = kx$, $kx^2$, $kx^3$, $k\sqrt{x}$.</p></div>
+    <div class="ref-card"><h4>Inverse forms</h4><p>$y = \dfrac{k}{x}$, $\dfrac{k}{x^2}$, $\dfrac{k}{\sqrt{x}}$.</p></div>
+    <div class="ref-card"><h4>Inverse means</h4><p>"$y$ inversely proportional to $x$" $\equiv$ "$y \propto \dfrac{1}{x}$".</p></div>
+    <div class="ref-card"><h4>Scaling</h4><p>Square laws multiply by $n^2$; inverse squares divide by $n^2$.</p></div>
+    <div class="ref-card"><h4>Graphs</h4><p>Line through O; rising curve; hyperbola; flattening root curve.</p></div>
+    <div class="ref-card"><h4>Straightening</h4><p>Plot $y$ against $x^2$ (or $\sqrt{x}$, or $\tfrac{1}{x}$) to test a suspected law.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$y \propto x$. When $x = 12$, $y = 42$. Find the formula and use it to find $y$ when $x = 20$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = kx$; $42 = 12k$; $k = 3.5$.</p>
+          <p>Formula: $y = 3.5x$.</p>
+          <p>$y = 3.5 \times 20 = 70$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$y \propto x^2$. When $x = 4$, $y = 48$. Find $y$ when $x = 9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = kx^2$; $48 = 16k$; $k = 3$.</p>
+          <p>$y = 3x^2 = 3 \times 81 = 243$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$y$ is inversely proportional to $x$. When $x = 9$, $y = 4$. Find $x$ when $y = 12$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = \dfrac{k}{x}$; $4 = \dfrac{k}{9}$; $k = 36$.</p>
+          <p>$12 = \dfrac{36}{x} \Rightarrow x = 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$W$ is inversely proportional to the square of $r$. When $r = 3$, $W = 20$. Find $W$ when $r = 5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$W = \dfrac{k}{r^2}$; $20 = \dfrac{k}{9}$; $k = 180$.</p>
+          <p>$W = \dfrac{180}{25} = 7.2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$y$ is proportional to $\sqrt{x}$. When $x = 16$, $y = 10$. Find (a) $y$ when $x = 49$, (b) $x$ when $y = 20$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = k\sqrt{x}$; $10 = 4k$; $k = 2.5$; $y = 2.5\sqrt{x}$.</p>
+          <p><strong>(a)</strong> $y = 2.5 \times 7 = 17.5$</p>
+          <p><strong>(b)</strong> $20 = 2.5\sqrt{x} \Rightarrow \sqrt{x} = 8 \Rightarrow x = 64$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$y \propto x^3$. If $x$ is multiplied by $4$, what happens to $y$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = kx^3$. Replacing $x$ by $4x$:</p>
+          <p>$y_{\text{new}} = k(4x)^3 = 64kx^3 = 64y$</p>
+          <p><strong>$y$ is multiplied by $64$.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The table shows values of $x$ and $y$. Show that $y$ is proportional to $x^2$ and find the formula.</p>
+      <table>
+        <tr><th>$x$</th><td>$2$</td><td>$5$</td><td>$8$</td></tr>
+        <tr><th>$y$</th><td>$14$</td><td>$87.5$</td><td>$224$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Work out $\dfrac{y}{x^2}$ each time:</p>
+          <p>$\dfrac{14}{4} = 3.5$; &nbsp;$\dfrac{87.5}{25} = 3.5$; &nbsp;$\dfrac{224}{64} = 3.5$</p>
+          <p>The value is constant, so $y \propto x^2$ with $k = 3.5$.</p>
+          <p><strong>Formula: $y = 3.5x^2$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The force $F$ between two magnets is inversely proportional to the square of the distance $d$ between them. When $d = 4$ cm, $F = 12$ N.</p>
+      <p>(a) Find the formula. &nbsp; (b) Find $F$ when $d = 10$ cm. &nbsp; (c) Find $d$ when $F = 3$ N.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $F = \dfrac{k}{d^2}$; $12 = \dfrac{k}{16}$; $k = 192$; so $F = \dfrac{192}{d^2}$.</p>
+          <p><strong>(b)</strong> $F = \dfrac{192}{100} = 1.92$ N</p>
+          <p><strong>(c)</strong> $3 = \dfrac{192}{d^2} \Rightarrow d^2 = 64 \Rightarrow d = 8$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$a$ is proportional to $b^2$, and $b$ is inversely proportional to $c$. Show that $a$ is inversely proportional to $c^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = k_1 b^2$ &nbsp;and&nbsp; $b = \dfrac{k_2}{c}$</p>
+          <p>Substitute: $a = k_1 \left(\dfrac{k_2}{c}\right)^2 = \dfrac{k_1 k_2^{\,2}}{c^2}$</p>
+          <p>Let $K = k_1 k_2^{\,2}$, a constant. Then $a = \dfrac{K}{c^2}$.</p>
+          <p>So $a \propto \dfrac{1}{c^2}$, i.e. $a$ is inversely proportional to $c^2$. ∎</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The kinetic energy $E$ joules of a moving object is proportional to the square of its speed $v$ m/s. A car travelling at $12$ m/s has kinetic energy $86\,400$ J.</p>
+      <p>(a) Find the formula. &nbsp; (b) Find $E$ when $v = 30$ m/s. &nbsp; (c) The car's speed increases by $50\%$. By what percentage does its kinetic energy increase?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $E = kv^2$; $86\,400 = k \times 144$; $k = 600$.</p>
+          <p>Formula: $E = 600v^2$.</p>
+          <p><strong>(b)</strong> $E = 600 \times 900 = 540\,000$ J</p>
+          <p><strong>(c)</strong> New speed $= 1.5v$, so new energy $= 600(1.5v)^2 = 600 \times 2.25v^2 = 2.25E$.</p>
+          <p>The energy multiplier is $2.25$, so the increase is $125\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Equations of Direct &amp; Inverse Proportion (R13) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

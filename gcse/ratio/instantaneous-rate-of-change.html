@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instantaneous Rates of Change – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📉 Instantaneous Rates of Change</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R15)</p>
+  <div class="badge">Ages 15–16 · Higher tier focus</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHEN THE RATE KEEPS CHANGING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> When the Rate Keeps Changing</div>
+<div class="section-body">
+
+  <p>On a <strong>straight-line</strong> graph the rate of change is the same everywhere. On a <strong>curved</strong> graph it is different at every point — a car speeds up and slows down, a cup of tea cools quickly then slowly.</p>
+
+  <div class="concept">
+    Two different questions, two different tools:<br>
+    • <strong>Average rate of change</strong> between two points → find the gradient of the <strong>chord</strong> joining them.<br>
+    • <strong>Instantaneous rate of change</strong> at one particular moment → find the gradient of the <strong>tangent</strong> at that point.
+  </div>
+
+  <div class="svg-block">
+    <svg width="470" height="300" viewBox="0 0 470 300" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="55" y1="40" x2="440" y2="40"/><line x1="55" y1="80" x2="440" y2="80"/>
+        <line x1="55" y1="120" x2="440" y2="120"/><line x1="55" y1="160" x2="440" y2="160"/>
+        <line x1="55" y1="200" x2="440" y2="200"/>
+        <line x1="110" y1="30" x2="110" y2="240"/><line x1="165" y1="30" x2="165" y2="240"/>
+        <line x1="220" y1="30" x2="220" y2="240"/><line x1="275" y1="30" x2="275" y2="240"/>
+        <line x1="330" y1="30" x2="330" y2="240"/><line x1="385" y1="30" x2="385" y2="240"/>
+      </g>
+      <line x1="55" y1="240" x2="445" y2="240" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="240" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <!-- curve -->
+      <path d="M 55 240 Q 200 235 300 150 Q 370 90 420 45" fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <!-- chord -->
+      <line x1="165" y1="228" x2="385" y2="80" stroke="#22c55e" stroke-width="2.5" stroke-dasharray="7,4"/>
+      <circle cx="165" cy="228" r="5" fill="#22c55e"/>
+      <circle cx="385" cy="80" r="5" fill="#22c55e"/>
+      <text x="196" y="120" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">chord → average rate</text>
+      <!-- tangent at x=300 -->
+      <line x1="235" y1="215" x2="380" y2="80" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="300" cy="150" r="5.5" fill="#ef4444"/>
+      <text x="300" y="272" font-family="Arial" font-size="12" fill="#b91c1c" text-anchor="middle" font-weight="bold">tangent at this point → instantaneous rate</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – AVERAGE RATE: THE CHORD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Average Rate of Change — the Chord</div>
+<div class="section-body">
+
+  <p>A <strong>chord</strong> is a straight line joining two points on the curve. Its gradient tells you the <em>average</em> rate of change over that interval.</p>
+
+  <div class="formula-box">
+    <div class="label">Average rate of change</div>
+    $\dfrac{y_2 - y_1}{x_2 - x_1}$ &nbsp; between the points $(x_1, y_1)$ and $(x_2, y_2)$
+  </div>
+
+  <ul class="steps">
+    <li>Read off the coordinates of the two points from the graph (or use the equation).</li>
+    <li>Subtract to find the change in $y$ and the change in $x$.</li>
+    <li>Divide.</li>
+    <li>State the units and interpret the answer in context.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Average speed from a curve</div>
+    <div class="example-body">
+      <p>A ball's distance fallen is modelled by $d = 5t^2$, where $d$ is in metres and $t$ in seconds. Find the average speed between $t = 1$ and $t = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>At $t = 1$: $d = 5 \times 1 = 5$ m</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $t = 3$: $d = 5 \times 9 = 45$ m</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Average speed $= \dfrac{45 - 5}{3 - 1} = \dfrac{40}{2} = 20$</span></div>
+      <p><strong>Answer: $20$ m/s</strong></p>
+      <p>The ball is not travelling at $20$ m/s at any particular instant in that interval — that is just the average.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Chords getting shorter</div>
+    <div class="example-body">
+      <p>Using $d = 5t^2$ again, find the average speed over intervals that close in on $t = 2$.</p>
+      <table>
+        <tr><th>Interval</th><th>Change in $d$</th><th>Change in $t$</th><th>Average speed</th></tr>
+        <tr><td>$t = 2$ to $t = 3$</td><td>$45 - 20 = 25$</td><td>$1$</td><td>$25$ m/s</td></tr>
+        <tr><td>$t = 2$ to $t = 2.5$</td><td>$31.25 - 20 = 11.25$</td><td>$0.5$</td><td>$22.5$ m/s</td></tr>
+        <tr><td>$t = 2$ to $t = 2.1$</td><td>$22.05 - 20 = 2.05$</td><td>$0.1$</td><td>$20.5$ m/s</td></tr>
+        <tr><td>$t = 2$ to $t = 2.01$</td><td>$20.2005 - 20 = 0.2005$</td><td>$0.01$</td><td>$20.05$ m/s</td></tr>
+      </table>
+      <p>The values are closing in on <strong>$20$ m/s</strong>. That is the instantaneous speed at $t = 2$ — and it is exactly what the tangent at $t = 2$ would give you.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>This is the big idea behind calculus:</strong> shrink the chord until the two points nearly coincide, and the chord becomes the tangent.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – INSTANTANEOUS RATE: THE TANGENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Instantaneous Rate — Drawing a Tangent</div>
+<div class="section-body">
+
+  <p>A <strong>tangent</strong> is a straight line that just touches the curve at one point, matching its steepness there.</p>
+
+  <ul class="steps">
+    <li>Mark the point on the curve where the rate is wanted.</li>
+    <li>Lay a ruler so that it touches the curve at that point only, with equal gaps between the ruler and the curve on both sides.</li>
+    <li>Draw a long line — the longer the tangent, the more accurate your reading.</li>
+    <li>Pick two points on the <strong>tangent</strong> (not on the curve) that are easy to read.</li>
+    <li>Find the gradient of the tangent and give the units.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Use points on the tangent, never on the curve.</strong> Once the tangent is drawn, forget the curve exists — you are finding the gradient of a straight line.
+  </div>
+
+  <div class="tip">
+    <strong>Accuracy:</strong> drawing a tangent by hand is approximate, so exam mark schemes allow a range of answers. Draw as long a tangent as the grid allows and use a large triangle to reduce the error.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Reading a tangent</div>
+    <div class="example-body">
+      <p>On a distance–time graph, a tangent drawn at $t = 4$ s passes through the points $(2,\ 10)$ and $(6,\ 34)$, with distance in metres. Estimate the speed at $t = 4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rise $= 34 - 10 = 24$ m</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Run $= 6 - 2 = 4$ s</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Gradient $= \dfrac{24}{4} = 6$</span></div>
+      <p><strong>The speed at $t = 4$ s is about $6$ m/s.</strong></p>
+      <p>The word "estimate" is used because the tangent was drawn by eye.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Cooling</div>
+    <div class="example-body">
+      <p>A cup of coffee cools. A tangent to the temperature–time curve at $t = 10$ minutes passes through $(4,\ 78)$ and $(16,\ 42)$, with temperature in °C. Find the rate of cooling at $t = 10$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rise $= 42 - 78 = -36$ °C</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Run $= 16 - 4 = 12$ minutes</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Gradient $= \dfrac{-36}{12} = -3$</span></div>
+      <p><strong>The coffee is cooling at $3$ °C per minute at that moment.</strong></p>
+      <p>The negative sign is important: it shows the temperature is <em>falling</em>.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHAT THE SHAPE TELLS YOU
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Reading the Shape of a Curve</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Shape</th><th>Gradient</th><th>Meaning on a distance–time graph</th></tr>
+    <tr><td>Rising, getting steeper</td><td>Positive and increasing</td><td>Speeding up</td></tr>
+    <tr><td>Rising, getting shallower</td><td>Positive and decreasing</td><td>Slowing down (still moving forward)</td></tr>
+    <tr><td>Horizontal at a peak</td><td>Zero</td><td>Momentarily stationary</td></tr>
+    <tr><td>Falling, getting steeper</td><td>Negative, getting more negative</td><td>Returning, and speeding up</td></tr>
+    <tr><td>Falling, getting shallower</td><td>Negative, approaching zero</td><td>Returning, and slowing down</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Comparing two moments</div>
+    <div class="example-body">
+      <p>The graph of the depth of water in a draining bath is a curve that falls steeply at first and then more gently. Explain how the rate of draining changes, without doing any calculations.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Early on the tangent is steep and negative, so the depth is falling quickly.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Later the tangent is much shallower, so the depth is falling slowly.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Physically: with more water above it the pressure at the plughole is greater, so the water leaves faster.</span></div>
+      <p>The <strong>rate of change is decreasing in magnitude</strong> throughout.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – AREA UNDER A GRAPH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Area Under a Curve</div>
+<div class="section-body">
+
+  <p>The <em>gradient</em> of a graph gives a rate. The <strong>area underneath</strong> gives a total.</p>
+
+  <div class="formula-box">
+    <div class="label">Area under a speed–time graph</div>
+    Area $=$ distance travelled
+  </div>
+
+  <div class="concept">
+    <strong>Why?</strong> Because (speed) $\times$ (time) $=$ distance, and area is height $\times$ width. The units multiply too: m/s $\times$ s $=$ m.
+  </div>
+
+  <p>For a curve you cannot use one simple shape, so you <strong>estimate</strong> the area by splitting it into strips — usually trapeziums.</p>
+
+  <div class="svg-block">
+    <svg width="440" height="240" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="190" x2="420" y2="190" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="50" y1="190" x2="50" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 50 175 Q 160 150 250 100 Q 340 55 410 40" fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <g fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.2" opacity=".75">
+        <polygon points="50,190 122,190 122,163 50,175"/>
+        <polygon points="122,190 194,190 194,131 122,163"/>
+        <polygon points="194,190 266,190 266,93 194,131"/>
+        <polygon points="266,190 338,190 338,60 266,93"/>
+        <polygon points="338,190 410,190 410,40 338,60"/>
+      </g>
+      <text x="230" y="220" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">Five trapezium strips estimate the area under the curve</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Area of one trapezium strip</div>
+    $\dfrac{1}{2}(a + b) \times h$ &nbsp; where $a$ and $b$ are the two parallel heights and $h$ is the strip width
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Estimating with trapeziums</div>
+    <div class="example-body">
+      <p>A car's speed in m/s is recorded every $2$ seconds:</p>
+      <table>
+        <tr><th>Time (s)</th><td>$0$</td><td>$2$</td><td>$4$</td><td>$6$</td></tr>
+        <tr><th>Speed (m/s)</th><td>$0$</td><td>$7$</td><td>$12$</td><td>$15$</td></tr>
+      </table>
+      <p>Estimate the distance travelled in the first $6$ seconds.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Strip 1: $\tfrac{1}{2}(0 + 7) \times 2 = 7$ m</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Strip 2: $\tfrac{1}{2}(7 + 12) \times 2 = 19$ m</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Strip 3: $\tfrac{1}{2}(12 + 15) \times 2 = 27$ m</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Total $\approx 7 + 19 + 27 = 53$ m</span></div>
+      <div class="tip"><strong>Under- or over-estimate?</strong> The curve here bends downwards (it is concave), so the straight tops of the trapeziums lie <em>below</em> the curve: this is an <strong>under-estimate</strong>. Using more, narrower strips would improve it.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Chord</h4><p>Joins two points; its gradient is the <em>average</em> rate of change.</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>Touches at one point; its gradient is the <em>instantaneous</em> rate.</p></div>
+    <div class="ref-card"><h4>Drawing a tangent</h4><p>Long line, equal gaps either side, then use points on the line.</p></div>
+    <div class="ref-card"><h4>Sign</h4><p>Negative gradient means the quantity is decreasing.</p></div>
+    <div class="ref-card"><h4>Steepness</h4><p>Steeper tangent → faster rate of change at that moment.</p></div>
+    <div class="ref-card"><h4>Area</h4><p>Area under a speed–time graph $=$ distance travelled.</p></div>
+    <div class="ref-card"><h4>Trapezium rule</h4><p>Each strip: $\tfrac{1}{2}(a+b)h$; add them all up.</p></div>
+    <div class="ref-card"><h4>Estimate wording</h4><p>Say "estimate" — hand-drawn tangents and strips are approximate.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A curve passes through $(2,\ 7)$ and $(8,\ 43)$. Find the average rate of change between these points.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient of the chord $= \dfrac{43 - 7}{8 - 2} = \dfrac{36}{6} = 6$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A tangent to a distance–time curve at $t = 5$ s passes through $(1,\ 6)$ and $(9,\ 46)$, with distance in metres. Estimate the speed at $t = 5$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= \dfrac{46 - 6}{9 - 1} = \dfrac{40}{8} = 5$</p>
+          <p><strong>Speed $\approx 5$ m/s</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The height of a plant is modelled by $h = t^2 + 3t$, where $h$ is in cm and $t$ in weeks. Find the average growth rate between weeks $2$ and $6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>At $t = 2$: $h = 4 + 6 = 10$ cm.</p>
+          <p>At $t = 6$: $h = 36 + 18 = 54$ cm.</p>
+          <p>Average rate $= \dfrac{54 - 10}{6 - 2} = \dfrac{44}{4} = 11$ cm per week.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A tangent to a temperature–time curve at $t = 8$ minutes passes through $(2,\ 84)$ and $(14,\ 30)$, with temperature in °C. Find the rate of change and describe what it means.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= \dfrac{30 - 84}{14 - 2} = \dfrac{-54}{12} = -4.5$</p>
+          <p>The temperature is <strong>falling at $4.5$ °C per minute</strong> at $t = 8$ minutes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>For the curve $y = x^2$, calculate the gradient of the chord from $x = 3$ to (a) $x = 4$, (b) $x = 3.5$, (c) $x = 3.1$. What value are these closing in on?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{16 - 9}{4 - 3} = 7$</p>
+          <p><strong>(b)</strong> $\dfrac{12.25 - 9}{0.5} = \dfrac{3.25}{0.5} = 6.5$</p>
+          <p><strong>(c)</strong> $\dfrac{9.61 - 9}{0.1} = \dfrac{0.61}{0.1} = 6.1$</p>
+          <p>The values are approaching <strong>$6$</strong> — the gradient of the tangent at $x = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Estimate the distance travelled in the first $8$ seconds from this speed table, using trapezium strips.</p>
+      <table>
+        <tr><th>Time (s)</th><td>$0$</td><td>$2$</td><td>$4$</td><td>$6$</td><td>$8$</td></tr>
+        <tr><th>Speed (m/s)</th><td>$0$</td><td>$5$</td><td>$9$</td><td>$12$</td><td>$14$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tfrac{1}{2}(0+5)\times 2 = 5$</p>
+          <p>$\tfrac{1}{2}(5+9)\times 2 = 14$</p>
+          <p>$\tfrac{1}{2}(9+12)\times 2 = 21$</p>
+          <p>$\tfrac{1}{2}(12+14)\times 2 = 26$</p>
+          <p>Total $\approx 5 + 14 + 21 + 26 = \mathbf{66}$ m</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A distance–time graph curves upwards, becoming steeper. At $t = 2$ the tangent has gradient $3$; at $t = 6$ it has gradient $11$. Describe the motion and find the average acceleration between these times.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The gradient is the speed, so the object speeds up from $3$ m/s to $11$ m/s — it is accelerating.</p>
+          <p>Average acceleration $= \dfrac{11 - 3}{6 - 2} = \dfrac{8}{4} = 2\text{ m/s}^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Water is poured into a container. The graph of depth against time is a curve that rises steeply at first and then more gradually. Explain what this tells you about the shape of the container.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A steep gradient means the depth rises quickly, which happens where the container is <strong>narrow</strong>.</p>
+          <p>A shallow gradient means the depth rises slowly, which happens where the container is <strong>wide</strong>.</p>
+          <p>So the container is narrow at the bottom and gets wider towards the top — a cone or bowl shape standing point-down.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A rocket's height is modelled by $h = 40t - 5t^2$ metres, where $t$ is in seconds.</p>
+      <p>(a) Find the average velocity between $t = 1$ and $t = 3$. &nbsp; (b) Find the average velocity between $t = 5$ and $t = 7$. &nbsp; (c) Explain the sign of your answer to (b).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $h(1) = 40 - 5 = 35$ m; $h(3) = 120 - 45 = 75$ m.</p>
+          <p>Average velocity $= \dfrac{75 - 35}{2} = 20$ m/s.</p>
+          <p><strong>(b)</strong> $h(5) = 200 - 125 = 75$ m; $h(7) = 280 - 245 = 35$ m.</p>
+          <p>Average velocity $= \dfrac{35 - 75}{2} = -20$ m/s.</p>
+          <p><strong>(c)</strong> The negative sign shows the rocket is <strong>falling</strong> over that interval — it has passed its highest point (at $t = 4$) and is coming back down.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A speed–time graph for a car over $10$ seconds gives these readings.</p>
+      <table>
+        <tr><th>Time (s)</th><td>$0$</td><td>$2.5$</td><td>$5$</td><td>$7.5$</td><td>$10$</td></tr>
+        <tr><th>Speed (m/s)</th><td>$20$</td><td>$15$</td><td>$11$</td><td>$8$</td><td>$6$</td></tr>
+      </table>
+      <p>(a) Estimate the distance travelled. &nbsp; (b) Is your estimate too big or too small? Explain. &nbsp; (c) Estimate the deceleration at $t = 5$ s using the readings either side.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Strip width $h = 2.5$.</p>
+          <p>$\tfrac{1}{2}(20+15)(2.5) = 43.75$</p>
+          <p>$\tfrac{1}{2}(15+11)(2.5) = 32.5$</p>
+          <p>$\tfrac{1}{2}(11+8)(2.5) = 23.75$</p>
+          <p>$\tfrac{1}{2}(8+6)(2.5) = 17.5$</p>
+          <p>Total $\approx 43.75 + 32.5 + 23.75 + 17.5 = \mathbf{117.5}$ m</p>
+          <p><strong>(b)</strong> The speed is falling and the curve is concave up (the drops get smaller: $5$, $4$, $3$, $2$), so the straight strip tops lie <em>above</em> the curve. The estimate is therefore an <strong>over-estimate</strong>.</p>
+          <p><strong>(c)</strong> Use the chord from $t = 2.5$ to $t = 7.5$ as an approximation to the tangent at $t = 5$:</p>
+          <p>Gradient $= \dfrac{8 - 15}{7.5 - 2.5} = \dfrac{-7}{5} = -1.4$</p>
+          <p>The car is <strong>decelerating at about $1.4\text{ m/s}^2$</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Instantaneous Rates of Change (R15) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

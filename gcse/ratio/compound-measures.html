@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Measures – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚗 Compound Measures</h1>
+  <p>GCSE Maths · Ratio, Proportion &amp; Rates of Change (R11)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IS A COMPOUND MEASURE?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What is a Compound Measure?</div>
+<div class="section-body">
+
+  <p>A <strong>compound measure</strong> combines two different measurements into one rate. You will always spot it because its units contain the word "per" or a slash.</p>
+
+  <table>
+    <tr><th>Measure</th><th>Formula</th><th>Units</th></tr>
+    <tr><td>Speed</td><td>$S = \dfrac{D}{T}$</td><td>m/s, km/h, mph</td></tr>
+    <tr><td>Density</td><td>$\rho = \dfrac{M}{V}$</td><td>g/cm³, kg/m³</td></tr>
+    <tr><td>Pressure</td><td>$P = \dfrac{F}{A}$</td><td>N/m² (pascal), N/cm²</td></tr>
+    <tr><td>Rate of pay</td><td>$\dfrac{\text{pay}}{\text{hours}}$</td><td>£/hour</td></tr>
+    <tr><td>Unit price</td><td>$\dfrac{\text{cost}}{\text{amount}}$</td><td>p/g, £/litre</td></tr>
+    <tr><td>Population density</td><td>$\dfrac{\text{people}}{\text{area}}$</td><td>people/km²</td></tr>
+    <tr><td>Flow rate</td><td>$\dfrac{\text{volume}}{\text{time}}$</td><td>litres/min</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>The unit tells you the formula.</strong> If a quantity is measured in "grams per cubic centimetre", then you find it by working out grams $\div$ cubic centimetres. You never need to memorise a formula you can read off the units.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FORMULA TRIANGLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Formula Triangles</div>
+<div class="section-body">
+
+  <p>A formula triangle helps you rearrange. Cover the quantity you want, and the triangle shows you what to do with the other two.</p>
+
+  <div class="svg-block">
+    <svg width="620" height="200" viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- speed triangle -->
+      <polygon points="100,20 30,160 170,160" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="58" y1="105" x2="142" y2="105" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="100" y1="105" x2="100" y2="160" stroke="#4f46e5" stroke-width="2.5"/>
+      <text x="100" y="85" font-family="Arial" font-size="20" fill="#3730a3" text-anchor="middle" font-weight="bold">D</text>
+      <text x="76" y="142" font-family="Arial" font-size="20" fill="#3730a3" text-anchor="middle" font-weight="bold">S</text>
+      <text x="126" y="142" font-family="Arial" font-size="20" fill="#3730a3" text-anchor="middle" font-weight="bold">T</text>
+      <text x="100" y="185" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">Distance · Speed · Time</text>
+      <!-- density triangle -->
+      <polygon points="310,20 240,160 380,160" fill="#f0fdf4" stroke="#22c55e" stroke-width="2.5"/>
+      <line x1="268" y1="105" x2="352" y2="105" stroke="#22c55e" stroke-width="2.5"/>
+      <line x1="310" y1="105" x2="310" y2="160" stroke="#22c55e" stroke-width="2.5"/>
+      <text x="310" y="85" font-family="Arial" font-size="20" fill="#166534" text-anchor="middle" font-weight="bold">M</text>
+      <text x="286" y="142" font-family="Arial" font-size="18" fill="#166534" text-anchor="middle" font-weight="bold">ρ</text>
+      <text x="336" y="142" font-family="Arial" font-size="20" fill="#166534" text-anchor="middle" font-weight="bold">V</text>
+      <text x="310" y="185" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">Mass · Density · Volume</text>
+      <!-- pressure triangle -->
+      <polygon points="520,20 450,160 590,160" fill="#fef2f2" stroke="#ef4444" stroke-width="2.5"/>
+      <line x1="478" y1="105" x2="562" y2="105" stroke="#ef4444" stroke-width="2.5"/>
+      <line x1="520" y1="105" x2="520" y2="160" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="520" y="85" font-family="Arial" font-size="20" fill="#b91c1c" text-anchor="middle" font-weight="bold">F</text>
+      <text x="496" y="142" font-family="Arial" font-size="20" fill="#b91c1c" text-anchor="middle" font-weight="bold">P</text>
+      <text x="546" y="142" font-family="Arial" font-size="20" fill="#b91c1c" text-anchor="middle" font-weight="bold">A</text>
+      <text x="520" y="185" font-family="Arial" font-size="12" fill="#555" text-anchor="middle">Force · Pressure · Area</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>How to read a triangle.</strong> Cover $D$ and you see $S \times T$, so $D = S \times T$.<br>
+    Cover $S$ and you see $D$ over $T$, so $S = \dfrac{D}{T}$.<br>
+    Cover $T$ and you see $D$ over $S$, so $T = \dfrac{D}{S}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SPEED
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Speed, Distance and Time</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Write down what you know and what you want.</li>
+    <li>Check the units match (convert minutes to hours if the speed is in km/h).</li>
+    <li>Choose the right arrangement of $S = \dfrac{D}{T}$.</li>
+    <li>Calculate, then convert the answer to the units asked for.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>The number one error:</strong> writing $1$ hour $45$ minutes as $1.45$ hours. It is $1.75$ hours, because $45 \div 60 = 0.75$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding speed</div>
+    <div class="example-body">
+      <p>A train travels $273$ km in $3$ hours $30$ minutes. Find its average speed in km/h.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Time in hours: $30 \div 60 = 0.5$, so $T = 3.5$ h.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S = \dfrac{D}{T} = \dfrac{273}{3.5}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 78$</span></div>
+      <p><strong>Answer: $78$ km/h</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Finding time</div>
+    <div class="example-body">
+      <p>A cyclist rides $63$ km at an average speed of $18$ km/h. How long does the ride take, in hours and minutes?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$T = \dfrac{D}{S} = \dfrac{63}{18} = 3.5$ hours</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.5$ hours $= 0.5 \times 60 = 30$ minutes</span></div>
+      <p><strong>Answer: $3$ hours $30$ minutes</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Average speed over two stages</div>
+    <div class="example-body">
+      <p>A driver travels $80$ km at $80$ km/h, then $80$ km at $40$ km/h. Find the average speed for the whole journey.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Stage 1 time $= 80 \div 80 = 1$ hour</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Stage 2 time $= 80 \div 40 = 2$ hours</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total distance $= 160$ km; total time $= 3$ hours</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Average speed $= 160 \div 3 = 53.3$ km/h (1 d.p.)</span></div>
+      <div class="warn"><strong>Not $60$ km/h!</strong> You cannot average the two speeds, because more time is spent at the slower speed. Always use <em>total distance $\div$ total time</em>.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – DENSITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Density, Mass and Volume</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Density</div>
+    $\text{density} = \dfrac{\text{mass}}{\text{volume}}$ &nbsp;&nbsp;·&nbsp;&nbsp; $M = \rho V$ &nbsp;&nbsp;·&nbsp;&nbsp; $V = \dfrac{M}{\rho}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding mass</div>
+    <div class="example-body">
+      <p>A steel bar has volume $250\text{ cm}^3$. Steel has density $7.8\text{ g/cm}^3$. Find the mass of the bar in kilograms.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$M = \rho \times V = 7.8 \times 250$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 1950$ g</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$1950 \div 1000 = 1.95$ kg</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Density with a solid shape</div>
+    <div class="example-body">
+      <p>A solid cylinder of radius $4$ cm and height $10$ cm has mass $1.6$ kg. Find its density in g/cm³, to 2 decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume $= \pi r^2 h = \pi \times 4^2 \times 10 = 160\pi = 502.65\text{ cm}^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Mass $= 1.6$ kg $= 1600$ g</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\rho = \dfrac{1600}{502.65} = 3.183\ldots$</span></div>
+      <p><strong>Answer: $3.18\text{ g/cm}^3$</strong></p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRESSURE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Pressure, Force and Area</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Pressure</div>
+    $\text{pressure} = \dfrac{\text{force}}{\text{area}}$ &nbsp;·&nbsp; $1\text{ N/m}^2 = 1$ pascal (Pa)
+  </div>
+
+  <div class="concept">
+    <strong>Why a drawing pin works.</strong> The same push spread over a tiny area gives an enormous pressure — which is why the point goes into the wood and your thumb is unharmed.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding pressure</div>
+    <div class="example-body">
+      <p>A box exerts a force of $840$ N on the floor through a base measuring $1.2$ m by $0.5$ m. Find the pressure in N/m².</p>
+      <div class="step-row"><span class="arrow">①</span><span>Area $= 1.2 \times 0.5 = 0.6\text{ m}^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P = \dfrac{F}{A} = \dfrac{840}{0.6} = 1400$</span></div>
+      <p><strong>Answer: $1400\text{ N/m}^2$ (1400 Pa)</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Finding area</div>
+    <div class="example-body">
+      <p>A machine must not exert more than $250\text{ N/cm}^2$ on a surface. It presses with a force of $6000$ N. What is the smallest area of contact allowed?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = \dfrac{F}{P} = \dfrac{6000}{250}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 24\text{ cm}^2$</span></div>
+      <p>A smaller area would push the pressure above the limit.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – OTHER RATES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Rates of Pay, Unit Pricing and Other Rates</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Rate of pay with overtime</div>
+    <div class="example-body">
+      <p>Jamal is paid £$11.60$ per hour for the first $35$ hours each week, and time-and-a-half after that. One week he works $42$ hours. Find his pay.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Basic pay $= 35 \times 11.60 = £406$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Overtime hours $= 42 - 35 = 7$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Overtime rate $= 11.60 \times 1.5 = £17.40$ per hour</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Overtime pay $= 7 \times 17.40 = £121.80$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Total $= 406 + 121.80 = £527.80$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Population density</div>
+    <div class="example-body">
+      <p>A county has a population of $486\,000$ and an area of $2700\text{ km}^2$. Find its population density.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Density $= \dfrac{486\,000}{2700}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 180$</span></div>
+      <p><strong>Answer: $180$ people per km²</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Flow rate</div>
+    <div class="example-body">
+      <p>Water flows into a tank at $18$ litres per minute. The tank is a cuboid measuring $1.5$ m by $0.8$ m by $0.75$ m. How long does it take to fill, to the nearest minute?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume $= 1.5 \times 0.8 \times 0.75 = 0.9\text{ m}^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1\text{ m}^3 = 1000$ litres, so volume $= 900$ litres.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Time $= 900 \div 18 = 50$ minutes</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Speed</h4><p>$S = \dfrac{D}{T}$, $D = ST$, $T = \dfrac{D}{S}$.</p></div>
+    <div class="ref-card"><h4>Density</h4><p>$\rho = \dfrac{M}{V}$, $M = \rho V$, $V = \dfrac{M}{\rho}$.</p></div>
+    <div class="ref-card"><h4>Pressure</h4><p>$P = \dfrac{F}{A}$, $F = PA$, $A = \dfrac{F}{P}$.</p></div>
+    <div class="ref-card"><h4>Average speed</h4><p>Total distance $\div$ total time — never average the speeds.</p></div>
+    <div class="ref-card"><h4>Time as a decimal</h4><p>Minutes $\div 60$. $1$ h $45$ min $= 1.75$ h.</p></div>
+    <div class="ref-card"><h4>Units first</h4><p>Match the units to the rate before calculating.</p></div>
+    <div class="ref-card"><h4>km/h ↔ m/s</h4><p>$\div 3.6$ to go to m/s; $\times 3.6$ to come back.</p></div>
+    <div class="ref-card"><h4>Read the unit</h4><p>"per" means divide — the unit is the formula.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A coach travels $153$ km in $2$ hours $15$ minutes. Find its average speed in km/h.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$T = 2 + \dfrac{15}{60} = 2.25$ hours.</p>
+          <p>$S = \dfrac{153}{2.25} = 68$</p>
+          <p><strong>Answer: $68$ km/h</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A runner keeps a steady speed of $4.5$ m/s for $12$ minutes. How far does she run, in kilometres?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$12$ minutes $= 12 \times 60 = 720$ seconds.</p>
+          <p>$D = S \times T = 4.5 \times 720 = 3240$ m</p>
+          <p>$= 3.24$ km</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A block of wood has mass $432$ g and volume $540\text{ cm}^3$. Find its density, and say whether it will float in water (density $1\text{ g/cm}^3$).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\rho = \dfrac{432}{540} = 0.8\text{ g/cm}^3$</p>
+          <p>$0.8 < 1$, so the block is less dense than water and <strong>it will float</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Gold has a density of $19.3\text{ g/cm}^3$. Find the volume of a gold bar of mass $2$ kg, to 1 decimal place.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2$ kg $= 2000$ g.</p>
+          <p>$V = \dfrac{M}{\rho} = \dfrac{2000}{19.3} = 103.626\ldots$</p>
+          <p><strong>Answer: $103.6\text{ cm}^3$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A crate weighing $1560$ N stands on a square base of side $0.4$ m. Find the pressure it exerts in N/m².</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area $= 0.4 \times 0.4 = 0.16\text{ m}^2$</p>
+          <p>$P = \dfrac{1560}{0.16} = 9750$</p>
+          <p><strong>Answer: $9750\text{ N/m}^2$</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Convert a speed of $25$ m/s into km/h.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$25 \times 3.6 = 90$</p>
+          <p><strong>Answer: $90$ km/h</strong></p>
+          <p><em>Full working:</em> $25$ m/s $= 25 \times 3600 = 90\,000$ m per hour $= 90$ km/h ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A driver travels $120$ km at $60$ km/h and then $120$ km at $120$ km/h. Find the average speed for the whole journey.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Stage 1 time $= 120 \div 60 = 2$ hours.</p>
+          <p>Stage 2 time $= 120 \div 120 = 1$ hour.</p>
+          <p>Total distance $= 240$ km; total time $= 3$ hours.</p>
+          <p>Average speed $= 240 \div 3 = \mathbf{80}$ km/h.</p>
+          <p>(Note this is not $90$ km/h — the average of $60$ and $120$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Sofia is paid £$13.20$ per hour for a $37$-hour week, plus double time for weekend hours. One week she works $37$ hours plus $6$ hours at the weekend. Find her total pay.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Basic $= 37 \times 13.20 = £488.40$</p>
+          <p>Weekend rate $= 13.20 \times 2 = £26.40$ per hour</p>
+          <p>Weekend pay $= 6 \times 26.40 = £158.40$</p>
+          <p>Total $= 488.40 + 158.40 = £646.80$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A swimming pool is $25$ m long, $10$ m wide and has a uniform depth of $1.4$ m. Water flows in at $450$ litres per minute. How long, to the nearest hour, does it take to fill?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Volume $= 25 \times 10 \times 1.4 = 350\text{ m}^3$</p>
+          <p>$350\text{ m}^3 = 350 \times 1000 = 350\,000$ litres</p>
+          <p>Time $= 350\,000 \div 450 = 777.78$ minutes</p>
+          <p>$777.78 \div 60 = 12.96$ hours</p>
+          <p><strong>Answer: about $13$ hours</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>An alloy is made by mixing $300\text{ cm}^3$ of metal A (density $8.9\text{ g/cm}^3$) with $200\text{ cm}^3$ of metal B (density $7.1\text{ g/cm}^3$). Assuming the volumes simply add, find the density of the alloy.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Mass of A $= 8.9 \times 300 = 2670$ g</p>
+          <p>Mass of B $= 7.1 \times 200 = 1420$ g</p>
+          <p>Total mass $= 2670 + 1420 = 4090$ g</p>
+          <p>Total volume $= 300 + 200 = 500\text{ cm}^3$</p>
+          <p>Density $= \dfrac{4090}{500} = \mathbf{8.18\text{ g/cm}^3}$</p>
+          <p>Sense check: the answer lies between $7.1$ and $8.9$, and closer to $8.9$ because there is more of metal A ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Compound Measures (R11) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>
