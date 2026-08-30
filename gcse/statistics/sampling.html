@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sampling and Populations – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>👥 Sampling and Populations</h1>
+  <p>GCSE Maths · Statistics (S1)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – POPULATION AND SAMPLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Population and Sample</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>population</strong> is the entire group you want to know about.<br>
+    A <strong>sample</strong> is the smaller part of it that you actually study.<br>
+    A <strong>census</strong> collects data from every single member of the population.
+  </div>
+
+  <table>
+    <tr><th></th><th>Census</th><th>Sample</th></tr>
+    <tr><td><strong>Accuracy</strong></td><td>Completely accurate</td><td>An estimate</td></tr>
+    <tr><td><strong>Cost</strong></td><td>Expensive</td><td>Much cheaper</td></tr>
+    <tr><td><strong>Time</strong></td><td>Slow</td><td>Quick</td></tr>
+    <tr><td><strong>Practicality</strong></td><td>Often impossible</td><td>Nearly always possible</td></tr>
+    <tr><td><strong>Data handling</strong></td><td>Huge amount of data</td><td>Manageable</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Why not always take a census?</strong> Sometimes it destroys the item being tested — you cannot test every match in a box to see if it lights, or every light bulb to find its lifetime. Sampling is the only option.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Identifying the population</div>
+    <div class="example-body">
+      <p>A head teacher wants to know what students at her school think of the canteen. Identify the population, and give one advantage and one disadvantage of using a sample.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Population:</strong> all the students at the school.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Advantage of sampling:</strong> it is quicker and cheaper than asking every student.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Disadvantage:</strong> the results are only an estimate and may not represent everyone.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHAT MAKES A GOOD SAMPLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> What Makes a Good Sample</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Two requirements</div>
+    The sample must be <strong>large enough</strong> &nbsp;·&nbsp; The sample must be <strong>representative</strong>
+  </div>
+
+  <div class="concept">
+    <strong>Representative</strong> means the sample has the same mix of characteristics as the whole population. If $60\%$ of the school is female, roughly $60\%$ of the sample should be too.
+  </div>
+
+  <div class="warn">
+    <strong>Bias</strong> is anything that makes some members of the population more likely to be chosen than others. A biased sample gives misleading results no matter how large it is.
+  </div>
+
+  <table>
+    <tr><th>Sampling method</th><th>Why it is biased</th></tr>
+    <tr><td>Asking people outside a gym about exercise</td><td>Gym-goers exercise more than average</td></tr>
+    <tr><td>Surveying only your friends</td><td>Friends tend to share your views and interests</td></tr>
+    <tr><td>An online poll</td><td>Only reaches people with internet access who choose to respond</td></tr>
+    <tr><td>Asking shoppers on a Tuesday morning</td><td>Misses people who work weekdays</td></tr>
+    <tr><td>Asking the first $20$ people on a register</td><td>Alphabetical order is not random</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – RANDOM SAMPLING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Simple Random Sampling</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Definition</div>
+    In a <strong>simple random sample</strong>, every member of the population has an<br><strong>equal chance</strong> of being selected
+  </div>
+
+  <ul class="steps">
+    <li>Obtain a full list of the population (the <em>sampling frame</em>).</li>
+    <li>Number every member, from $1$ upwards.</li>
+    <li>Generate random numbers using a calculator, computer or random number table.</li>
+    <li>Select the members with those numbers.</li>
+    <li>Ignore any repeats and generate replacements until the sample is full.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Describing a random sample</div>
+    <div class="example-body">
+      <p>Describe how to take a simple random sample of $30$ students from a school of $900$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Get a list of all $900$ students.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Number them $1$ to $900$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Use a random number generator to produce numbers between $1$ and $900$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Select the students with those numbers, ignoring any repeated number.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Continue until $30$ different students have been chosen.</span></div>
+      <div class="tip">Exam answers must mention <strong>numbering the whole list</strong> and <strong>random numbers</strong>. "Pick $30$ students at random" on its own is not enough detail.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>A random sample can still be unrepresentative by chance.</strong> It is possible (though unlikely) that all $30$ students chosen happen to be from Year 7. Random removes <em>bias</em>, but not <em>variation</em>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – STRATIFIED SAMPLING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Stratified Sampling</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>stratified sample</strong> divides the population into groups (strata) — year groups, age bands, departments — and takes a random sample from each, in proportion to its size.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The formula</div>
+    $\text{number from a group} = \dfrac{\text{size of that group}}{\text{total population}} \times \text{sample size}$
+  </div>
+
+  <div class="tip">
+    <strong>Shortcut:</strong> work out the sampling fraction once ($\dfrac{\text{sample size}}{\text{population}}$), then multiply every group by it. Much quicker than doing the full fraction each time.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A stratified sample</div>
+    <div class="example-body">
+      <p>A school has $1200$ students. A stratified sample of $80$ is required.</p>
+      <table>
+        <tr><th>Year</th><td>$9$</td><td>$10$</td><td>$11$</td></tr>
+        <tr><th>Students</th><td>$450$</td><td>$420$</td><td>$330$</td></tr>
+      </table>
+      <p>How many from each year group?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sampling fraction $= \dfrac{80}{1200} = \dfrac{1}{15}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Year 9: $450 \div 15 = 30$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Year 10: $420 \div 15 = 28$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Year 11: $330 \div 15 = 22$</span></div>
+      <p>Check: $30 + 28 + 22 = 80$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — When the numbers do not divide neatly</div>
+    <div class="example-body">
+      <p>A company has $253$ employees in three departments: $118$, $87$ and $48$. A stratified sample of $40$ is taken. How many from each?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sampling fraction $= \dfrac{40}{253} = 0.15810$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Dept A: $118 \times 0.15810 = 18.66 \to 19$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Dept B: $87 \times 0.15810 = 13.75 \to 14$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Dept C: $48 \times 0.15810 = 7.59 \to 8$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Check: $19 + 14 + 8 = 41$ — one too many.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Round down the value whose decimal part is closest to $0.5$ — that is Dept C ($7.59$), so take $7$ instead of $8$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>Final sample: $19 + 14 + 7 = 40$ ✓</span></div>
+      <div class="warn"><strong>Rounding can spoil the total.</strong> Always add up at the end. If the total is out by one, adjust the group whose decimal was closest to $0.5$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Working backwards</div>
+    <div class="example-body">
+      <p>A stratified sample includes $18$ students from Year 8. Year 8 has $360$ students out of a school total of $1500$. Find the total sample size.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sampling fraction $= \dfrac{18}{360} = 0.05$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Total sample $= 0.05 \times 1500 = 75$ students</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – OTHER METHODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Other Sampling Methods</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Method</th><th>How it works</th><th>Main weakness</th></tr>
+    <tr><td><strong>Systematic</strong></td><td>Take every $n$th member from an ordered list</td><td>Bias if the list has a repeating pattern</td></tr>
+    <tr><td><strong>Cluster</strong></td><td>Divide into groups, then survey whole groups chosen at random</td><td>Clusters may differ from each other</td></tr>
+    <tr><td><strong>Quota</strong></td><td>Interviewer fills fixed quotas of each type of person</td><td>The interviewer chooses who to ask, so bias creeps in</td></tr>
+    <tr><td><strong>Opportunity (convenience)</strong></td><td>Ask whoever is available</td><td>Almost always biased; quick but unreliable</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Systematic sampling</div>
+    <div class="example-body">
+      <p>Describe how to take a systematic sample of $50$ from a list of $2000$ people.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2000 \div 50 = 40$, so take every $40$th person.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Choose a random starting point between $1$ and $40$ — say $17$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Select people numbered $17$, $57$, $97$, $137$, and so on.</span></div>
+      <div class="tip">The random start is essential. Always starting at number $1$ would make the method non-random.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – LIMITATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> The Limitations of Sampling</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>A sample can never be certain.</strong> Whatever you conclude about the population is an <em>estimate</em>. Two things determine how good that estimate is:<br>
+    • the <strong>size</strong> of the sample — larger is better;<br>
+    • whether the sample is <strong>representative</strong> — an unbiased method is essential.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Criticising a sampling method</div>
+    <div class="example-body">
+      <p>A council wants to know whether residents support a new car park. It surveys $200$ people leaving a supermarket car park on a Saturday. Give two criticisms and suggest an improvement.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Biased location.</strong> People leaving a car park are drivers, who are far more likely to support more parking.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Biased timing.</strong> A Saturday misses weekday commuters and people who work at weekends.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Improvement:</strong> take a stratified random sample from the electoral roll, covering all areas of the town and both drivers and non-drivers, and survey at a range of times.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Using a sample to estimate a population</div>
+    <div class="example-body">
+      <p>In a random sample of $150$ households, $54$ own two or more cars. The town has $12\,000$ households. Estimate how many own two or more cars, and state one assumption.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Proportion in the sample $= \dfrac{54}{150} = 0.36$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Estimate $= 0.36 \times 12\,000 = 4320$ households</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Assumption:</strong> the sample is representative of all households in the town.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Population</h4><p>The whole group you want to know about.</p></div>
+    <div class="ref-card"><h4>Census</h4><p>Every member — accurate but slow and costly.</p></div>
+    <div class="ref-card"><h4>Sample</h4><p>Part of the population — quick, but only an estimate.</p></div>
+    <div class="ref-card"><h4>Good sample</h4><p>Large enough <em>and</em> representative.</p></div>
+    <div class="ref-card"><h4>Bias</h4><p>Some members more likely to be chosen than others.</p></div>
+    <div class="ref-card"><h4>Random sample</h4><p>Number the whole list, then use random numbers.</p></div>
+    <div class="ref-card"><h4>Stratified</h4><p>$\dfrac{\text{group size}}{\text{population}} \times$ sample size.</p></div>
+    <div class="ref-card"><h4>Rounding</h4><p>Check the strata add to the sample size; adjust if not.</p></div>
+    <div class="ref-card"><h4>Estimating</h4><p>Sample proportion $\times$ population size.</p></div>
+    <div class="ref-card"><h4>Always state</h4><p>The assumption that the sample is representative.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Explain the difference between a census and a sample, and give one advantage of each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A <strong>census</strong> collects data from every member of the population; a <strong>sample</strong> uses only part of it.</p>
+          <p><em>Advantage of a census:</em> the results are completely accurate.</p>
+          <p><em>Advantage of a sample:</em> it is much quicker and cheaper, and is the only option when testing destroys the item.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Describe how to take a simple random sample of $25$ people from a club with $400$ members.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. Obtain a full list of all $400$ members.</p>
+          <p>2. Number them $1$ to $400$.</p>
+          <p>3. Use a random number generator to produce numbers from $1$ to $400$.</p>
+          <p>4. Select the members with those numbers, ignoring repeats.</p>
+          <p>5. Continue until $25$ different members have been chosen.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A school of $900$ students has $500$ girls and $400$ boys. A stratified sample of $45$ is taken. How many girls and boys should be in it?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sampling fraction $= \dfrac{45}{900} = 0.05$</p>
+          <p>Girls: $0.05 \times 500 = 25$</p>
+          <p>Boys: $0.05 \times 400 = 20$</p>
+          <p>Check: $25 + 20 = 45$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Give two reasons why surveying people outside a leisure centre would be a biased way of finding out how much exercise the town's residents do.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. People at a leisure centre are far more likely to exercise regularly than the average resident, so the results would overstate exercise levels.</p>
+          <p>2. It excludes anyone who never visits the leisure centre — including those who do no exercise at all, exactly the group the survey most needs.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A company with $1500$ employees takes a stratified sample of $60$. The sample contains $14$ people from the sales department. How many people work in sales?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sampling fraction $= \dfrac{60}{1500} = 0.04$</p>
+          <p>Sales employees $= \dfrac{14}{0.04} = 350$ people</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Describe how to take a systematic sample of $40$ from a list of $1000$ people.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1000 \div 40 = 25$, so take every $25$th person.</p>
+          <p>Choose a random starting number between $1$ and $25$ — say $8$.</p>
+          <p>Then select people numbered $8$, $33$, $58$, $83$, and so on up to the $40$th selection.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>In a random sample of $200$ light bulbs, $6$ were faulty. Estimate the number of faulty bulbs in a batch of $15\,000$, and state an assumption.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Proportion faulty $= \dfrac{6}{200} = 0.03$</p>
+          <p>Estimate $= 0.03 \times 15\,000 = 450$ faulty bulbs</p>
+          <p><strong>Assumption:</strong> the sample is representative of the whole batch.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A youth club has $260$ members: $95$ aged 11–13, $110$ aged 14–16 and $55$ aged 17–18. A stratified sample of $50$ is taken. Find the number from each age group.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sampling fraction $= \dfrac{50}{260} = 0.19231$</p>
+          <p>11–13: $95 \times 0.19231 = 18.27 \to 18$</p>
+          <p>14–16: $110 \times 0.19231 = 21.15 \to 21$</p>
+          <p>17–18: $55 \times 0.19231 = 10.58 \to 11$</p>
+          <p>Check: $18 + 21 + 11 = 50$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A newspaper places a survey on its website asking readers whether they support a policy. $8000$ people respond and $72\%$ agree. Give three reasons why this may not represent the views of the country.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. <strong>Self-selection bias:</strong> only people who feel strongly enough to respond take part, and they are often those who disagree with the status quo.</p>
+          <p>2. <strong>Readership bias:</strong> the sample only reaches that newspaper's readers, who may share particular political views.</p>
+          <p>3. <strong>Access bias:</strong> it excludes anyone without internet access or who does not visit the website.</p>
+          <p>A large sample size does <em>not</em> fix bias — $8000$ biased responses are still biased.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A town has $8400$ residents. A researcher takes a stratified sample of $120$ by age group.</p>
+      <table>
+        <tr><th>Age</th><td>Under 18</td><td>18–64</td><td>65 and over</td></tr>
+        <tr><th>Residents</th><td>$1890$</td><td>$4830$</td><td>$1680$</td></tr>
+      </table>
+      <p>(a) Find the number in the sample from each age group. &nbsp; (b) In the sample, $27$ of the 18–64 group cycle to work. Estimate how many 18–64 year olds in the town cycle to work. &nbsp; (c) Give one limitation of this estimate.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Sampling fraction $= \dfrac{120}{8400} = \dfrac{1}{70}$</p>
+          <p>Under 18: $1890 \div 70 = 27$</p>
+          <p>18–64: $4830 \div 70 = 69$</p>
+          <p>65+: $1680 \div 70 = 24$</p>
+          <p>Check: $27 + 69 + 24 = 120$ ✓</p>
+          <p><strong>(b)</strong> Proportion cycling $= \dfrac{27}{69} = 0.3913$</p>
+          <p>Estimate $= 0.3913 \times 4830 = 1890$ people</p>
+          <p><em>Or directly:</em> $27 \times 70 = 1890$ ✓</p>
+          <p><strong>(c)</strong> The estimate relies on the $69$ sampled adults being representative of all $4830$. With such a small subgroup, the true figure could differ noticeably — and factors such as where in the town people live, or the weather when the survey was taken, could distort the result.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Sampling &amp; Populations (S1) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

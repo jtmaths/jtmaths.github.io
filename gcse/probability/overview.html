@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability – Overview – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎲 Probability</h1>
+  <p>GCSE Maths · Overview of the whole topic</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Probability</strong> measures how likely something is to happen. It is always a number between $0$ and $1$.</p>
+
+  <div class="formula-box">
+    <div class="label">The definition</div>
+    $P(\text{event}) = \dfrac{\text{number of favourable outcomes}}{\text{total number of possible outcomes}}$<br>
+    <span style="font-size:.85rem;color:#555;">(valid when all outcomes are equally likely)</span>
+  </div>
+
+  <div class="svg-block">
+    <svg width="560" height="120" viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="60" x2="520" y2="60" stroke="#4f46e5" stroke-width="3"/>
+      <g stroke="#4f46e5" stroke-width="2">
+        <line x1="40" y1="50" x2="40" y2="70"/><line x1="160" y1="50" x2="160" y2="70"/>
+        <line x1="280" y1="50" x2="280" y2="70"/><line x1="400" y1="50" x2="400" y2="70"/>
+        <line x1="520" y1="50" x2="520" y2="70"/>
+      </g>
+      <g font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">
+        <text x="40" y="90">0</text><text x="160" y="90">0.25</text><text x="280" y="90">0.5</text>
+        <text x="400" y="90">0.75</text><text x="520" y="90">1</text>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#555" text-anchor="middle">
+        <text x="40" y="40">impossible</text><text x="160" y="40">unlikely</text><text x="280" y="40">even chance</text>
+        <text x="400" y="40">likely</text><text x="520" y="40">certain</text>
+      </g>
+      <text x="280" y="112" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Every probability sits somewhere on this scale</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>A probability can never be negative or bigger than $1$.</strong> If you get $1.4$ or $-0.2$, you have made an arithmetic slip. Check immediately.
+  </div>
+
+  <div class="concept">
+    <strong>Three ways to write a probability:</strong> as a fraction $\tfrac{3}{8}$, a decimal $0.375$, or a percentage $37.5\%$. All are acceptable — but never write it as a ratio like "$3:8$", which means something different.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Outcome</strong></td><td>One possible result of a trial, e.g. rolling a $4$.</td></tr>
+    <tr><td><strong>Event</strong></td><td>A set of outcomes you are interested in, e.g. "an even number".</td></tr>
+    <tr><td><strong>Trial</strong></td><td>One go of the experiment — one roll, one spin, one pick.</td></tr>
+    <tr><td><strong>Sample space</strong></td><td>The list of every possible outcome.</td></tr>
+    <tr><td><strong>Mutually exclusive</strong></td><td>Two events that cannot both happen at once.</td></tr>
+    <tr><td><strong>Exhaustive</strong></td><td>A set of events covering every possibility.</td></tr>
+    <tr><td><strong>Independent</strong></td><td>One event happening does not change the chance of the other.</td></tr>
+    <tr><td><strong>Dependent</strong></td><td>One event <em>does</em> change the chance of the other (e.g. no replacement).</td></tr>
+    <tr><td><strong>Biased</strong></td><td>Not all outcomes are equally likely.</td></tr>
+    <tr><td><strong>Random</strong></td><td>Every outcome has the same chance of being chosen.</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Notation</div>
+    $P(A)$ — the probability of $A$ &nbsp;·&nbsp; $P(A')$ — the probability of <strong>not</strong> $A$<br>
+    $P(A \cap B)$ — $A$ <strong>and</strong> $B$ &nbsp;·&nbsp; $P(A \cup B)$ — $A$ <strong>or</strong> $B$ (or both)
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE FOUR RULES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Four Rules</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Rule 1 — The total is 1</div>
+    The probabilities of all possible outcomes add to $1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rule 2 — The complement</div>
+    $P(\text{not } A) = 1 - P(A)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rule 3 — AND means multiply</div>
+    For independent events: &nbsp;$P(A \text{ and } B) = P(A) \times P(B)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rule 4 — OR means add</div>
+    For mutually exclusive events: &nbsp;$P(A \text{ or } B) = P(A) + P(B)$
+  </div>
+
+  <div class="tip">
+    <strong>The memory hook:</strong> <em>AND — multiply. OR — add.</em> Both rules have conditions attached (independence for AND, mutual exclusivity for OR), so check those before using them.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Using several rules together</div>
+    <div class="example-body">
+      <p>A bag has $4$ red, $3$ blue and $5$ green counters. One counter is taken at random.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total $= 4 + 3 + 5 = 12$ counters.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{red}) = \dfrac{4}{12} = \dfrac{1}{3}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{not red}) = 1 - \dfrac{1}{3} = \dfrac{2}{3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{red or blue}) = \dfrac{4}{12} + \dfrac{3}{12} = \dfrac{7}{12}$ &nbsp;(mutually exclusive, so add)</span></div>
+      <p>Check: $\dfrac{4}{12} + \dfrac{3}{12} + \dfrac{5}{12} = 1$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE 9 SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The 9 Subtopics</div>
+<div class="section-body">
+
+  <p>The National Curriculum splits Probability into nine statements, usually labelled <strong>P1</strong> to <strong>P9</strong>. Each has its own page with explanations, worked examples and ten practice questions.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">P1</span><span><a href="frequency-tables.html">Recording Outcomes: Tables and Frequency Trees</a><span class="desc">Tally charts, frequency tables, two-way tables and frequency trees.</span></span></li>
+    <li><span class="code">P2</span><span><a href="expected-outcomes.html">Randomness, Fairness and Expected Outcomes</a><span class="desc">Predicting how many times an event should happen in $n$ trials.</span></span></li>
+    <li><span class="code">P3</span><span><a href="probability-scale.html">The Probability Scale and Relative Frequency</a><span class="desc">Theoretical vs experimental probability, and the language of likelihood.</span></span></li>
+    <li><span class="code">P4</span><span><a href="exhaustive-events.html">Exhaustive and Mutually Exclusive Events</a><span class="desc">Probabilities summing to one, and the complement rule.</span></span></li>
+    <li><span class="code">P5</span><span><a href="experimental-probability.html">Experimental Probability and Sample Size</a><span class="desc">Why larger samples converge on the theoretical value; detecting bias.</span></span></li>
+    <li><span class="code">P6</span><span><a href="listing-outcomes.html">Listing Outcomes Systematically</a><span class="desc">Ordered lists, product rule, Venn diagrams and set notation.</span></span></li>
+    <li><span class="code">P7</span><span><a href="sample-space.html">Sample Space Diagrams</a><span class="desc">Grids for two dice, two spinners and other combined experiments.</span></span></li>
+    <li><span class="code">P8</span><span><a href="combined-events.html">Combined Events and Tree Diagrams</a><span class="desc">Independent and dependent events, with and without replacement.</span></span></li>
+    <li><span class="code">P9</span><span><a href="conditional-probability.html">Conditional Probability</a><span class="desc">Using two-way tables, Venn diagrams and trees to find $P(A \text{ given } B)$.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Mistake 1 — Adding when you should multiply.</strong> "Two heads in a row" is $\tfrac{1}{2} \times \tfrac{1}{2} = \tfrac{1}{4}$, not $\tfrac{1}{2} + \tfrac{1}{2} = 1$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 2 — Forgetting that the total changes.</strong> If a counter is taken and <em>not</em> replaced, the denominator drops by one for the second pick.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 3 — The gambler's fallacy.</strong> After five heads in a row, the next toss is still $\tfrac{1}{2}$. Coins have no memory.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 4 — Assuming equally likely outcomes.</strong> "It either rains or it doesn't, so $P = \tfrac{1}{2}$" is wrong. The two outcomes are not equally likely.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 5 — Cancelling too early in tree diagrams.</strong> Keep fractions with a common denominator until the very end, so the branches can be added.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 6 — Missing outcomes when listing.</strong> Always list systematically, in a fixed order, so nothing is left out or counted twice.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$P = \dfrac{\text{favourable}}{\text{total}}$ when outcomes are equally likely.</p></div>
+    <div class="ref-card"><h4>The scale</h4><p>Every probability lies between $0$ and $1$ inclusive.</p></div>
+    <div class="ref-card"><h4>Complement</h4><p>$P(\text{not } A) = 1 - P(A)$.</p></div>
+    <div class="ref-card"><h4>AND</h4><p>Multiply — for independent events.</p></div>
+    <div class="ref-card"><h4>OR</h4><p>Add — for mutually exclusive events.</p></div>
+    <div class="ref-card"><h4>Expected number</h4><p>$P \times$ number of trials.</p></div>
+    <div class="ref-card"><h4>Relative frequency</h4><p>$\dfrac{\text{times it happened}}{\text{number of trials}}$.</p></div>
+    <div class="ref-card"><h4>Without replacement</h4><p>Both the numerator and the denominator change.</p></div>
+    <div class="ref-card"><h4>Tree diagrams</h4><p>Multiply along branches, add between them.</p></div>
+    <div class="ref-card"><h4>Always check</h4><p>Do your probabilities add to $1$?</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p style="margin-bottom:12px;">These ten questions sample the whole topic. If one type catches you out, follow the link in Section 4 to the page that covers it.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A fair six-sided die is rolled. Find (a) $P(\text{a } 3)$, (b) $P(\text{an even number})$, (c) $P(\text{more than } 4)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> One favourable outcome out of six: $\dfrac{1}{6}$</p>
+          <p><strong>(b)</strong> Even numbers are $2, 4, 6$: $\dfrac{3}{6} = \dfrac{1}{2}$</p>
+          <p><strong>(c)</strong> More than $4$ means $5$ or $6$: $\dfrac{2}{6} = \dfrac{1}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>The probability that it rains tomorrow is $0.35$. Find the probability that it does not rain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{not rain}) = 1 - 0.35 = 0.65$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A bag contains $7$ red and $5$ yellow beads. One is chosen at random. Find $P(\text{yellow})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total $= 7 + 5 = 12$</p>
+          <p>$P(\text{yellow}) = \dfrac{5}{12}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A fair coin is tossed twice. Find the probability of getting two heads.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The tosses are independent, so multiply:</p>
+          <p>$P(\text{HH}) = \dfrac{1}{2} \times \dfrac{1}{2} = \dfrac{1}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A spinner has probabilities $P(\text{red}) = 0.3$, $P(\text{blue}) = 0.45$ and $P(\text{green}) = x$. Find $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>All probabilities must add to $1$:</p>
+          <p>$0.3 + 0.45 + x = 1$</p>
+          <p>$x = 1 - 0.75 = 0.25$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>The probability of a biased coin landing heads is $0.6$. It is tossed $200$ times. How many heads would you expect?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expected number $= P \times$ trials</p>
+          <p>$= 0.6 \times 200 = 120$ heads</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two fair dice are rolled and the scores added. How many outcomes are there altogether, and what is $P(\text{total} = 7)$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Outcomes: $6 \times 6 = 36$.</p>
+          <p>Totals of $7$: $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$ — six ways.</p>
+          <p>$P(7) = \dfrac{6}{36} = \dfrac{1}{6}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A bag has $5$ black and $3$ white balls. Two are taken without replacement. Find $P(\text{both black})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First ball: $\dfrac{5}{8}$</p>
+          <p>Second ball: only $4$ black left out of $7$: $\dfrac{4}{7}$</p>
+          <p>$P(\text{both black}) = \dfrac{5}{8} \times \dfrac{4}{7} = \dfrac{20}{56} = \dfrac{5}{14}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A spinner is spun $150$ times and lands on red $54$ times. Find the relative frequency of red, and comment on whether the spinner might be biased if red is one of five equal sections.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Relative frequency $= \dfrac{54}{150} = 0.36$</p>
+          <p>If the five sections were equal, we would expect $P(\text{red}) = \dfrac{1}{5} = 0.2$.</p>
+          <p>$0.36$ is well above $0.2$ over a reasonably large number of trials, so <strong>the spinner is probably biased</strong> towards red.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>In a class of $30$ students, $18$ study French, $14$ study German and $7$ study both.</p>
+      <p>(a) How many study neither? &nbsp; (b) A student is chosen at random; find $P(\text{French only})$. &nbsp; (c) Given that a student studies German, find the probability that they also study French.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> French only $= 18 - 7 = 11$; German only $= 14 - 7 = 7$.</p>
+          <p>Studying at least one $= 11 + 7 + 7 = 25$, so neither $= 30 - 25 = 5$.</p>
+          <p><strong>(b)</strong> $P(\text{French only}) = \dfrac{11}{30}$</p>
+          <p><strong>(c)</strong> This is conditional: restrict to the $14$ German students, of whom $7$ also do French.</p>
+          <p>$P(\text{French} \mid \text{German}) = \dfrac{7}{14} = \dfrac{1}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Probability · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

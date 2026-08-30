@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Randomness, Fairness and Expected Outcomes – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Randomness, Fairness and Expected Outcomes</h1>
+  <p>GCSE Maths · Probability (P2)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – RANDOM AND FAIR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Random, Fair and Biased</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Random</strong> — every item has an equal chance of being chosen, and the result cannot be predicted.<br>
+    <strong>Fair</strong> — all outcomes are equally likely. A fair die has $P = \tfrac{1}{6}$ for each face.<br>
+    <strong>Biased</strong> — the outcomes are <em>not</em> equally likely. A weighted die might land on six far too often.
+  </div>
+
+  <div class="warn">
+    <strong>"Random" does not mean "haphazard".</strong> Picking the first five people who walk past is not a random sample — it depends on who happens to be there. A genuine random selection gives every member of the group the same chance.
+  </div>
+
+  <table>
+    <tr><th>Situation</th><th>Fair or biased?</th></tr>
+    <tr><td>An ordinary six-sided die</td><td>Assumed fair unless told otherwise</td></tr>
+    <tr><td>A drawing pin dropped on a table</td><td>Biased — point-up and point-down are not equally likely</td></tr>
+    <tr><td>A spinner with unequal sectors</td><td>Biased — bigger sectors are more likely</td></tr>
+    <tr><td>Names drawn from a hat, well mixed</td><td>Fair</td></tr>
+    <tr><td>A coin balanced on its edge and nudged</td><td>Could be biased — depends on the method</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Exam wording matters.</strong> "A fair die", "an unbiased coin" or "chosen at random" all tell you that outcomes are equally likely, so you may use $P = \dfrac{\text{favourable}}{\text{total}}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EXPECTED NUMBER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Expected Number of Outcomes</div>
+<div class="section-body">
+
+  <p>If you know the probability of an event, you can predict roughly how many times it will happen in a large number of trials.</p>
+
+  <div class="formula-box">
+    <div class="label">The formula</div>
+    $\text{expected number} = P(\text{event}) \times \text{number of trials}$
+  </div>
+
+  <ul class="steps">
+    <li>Work out the probability of the event.</li>
+    <li>Identify how many trials there will be.</li>
+    <li>Multiply the two together.</li>
+    <li>Round to a whole number if the context requires it (people, cars, etc.).</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Rolling a die</div>
+    <div class="example-body">
+      <p>A fair die is rolled $180$ times. How many fours would you expect?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(4) = \dfrac{1}{6}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected number $= \dfrac{1}{6} \times 180$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 30$ fours</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using a decimal probability</div>
+    <div class="example-body">
+      <p>The probability that a bus is late is $0.18$. In a month there are $250$ bus journeys. How many would you expect to be late?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expected $= 0.18 \times 250$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 45$ journeys</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Working backwards to find the probability</div>
+    <div class="example-body">
+      <p>A spinner is spun $400$ times and is expected to land on blue $120$ times. Find $P(\text{blue})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P \times 400 = 120$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P = \dfrac{120}{400} = 0.3$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Working backwards to find the number of trials</div>
+    <div class="example-body">
+      <p>The probability of winning a game is $0.04$. How many games must be played to expect $10$ wins?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$0.04 \times n = 10$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = \dfrac{10}{0.04} = 250$ games</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>"Expected" does not mean "guaranteed".</strong> Rolling a die $180$ times will very rarely give exactly $30$ fours. The expected number is the long-run average, not a prediction of the precise result.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MULTIPLE EXPERIMENTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Expected Outcomes Across Several Sets of Trials</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Combining groups</div>
+    <div class="example-body">
+      <p>A machine produces components. The probability a component is faulty is $0.03$. On Monday it makes $2000$ components and on Tuesday $3500$. How many faulty components would you expect in total?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total components $= 2000 + 3500 = 5500$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected faulty $= 0.03 \times 5500 = 165$</span></div>
+      <div class="tip">Adding the trials first is quicker than working out each day separately — although $60 + 105 = 165$ gives the same answer.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Two-stage expectation</div>
+    <div class="example-body">
+      <p>A coin is tossed twice, and this pair of tosses is repeated $200$ times. How many times would you expect to get two heads?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(\text{two heads}) = \dfrac{1}{2} \times \dfrac{1}{2} = \dfrac{1}{4}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected $= \dfrac{1}{4} \times 200 = 50$ times</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Expected value in money</div>
+    <div class="example-body">
+      <p>In a game, the probability of winning £$5$ is $0.1$, and otherwise you win nothing. It costs £$1$ to play. If you play $300$ times, how much would you expect to win or lose overall?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expected number of wins $= 0.1 \times 300 = 30$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Total winnings $= 30 \times £5 = £150$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total cost $= 300 \times £1 = £300$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Overall $= 150 - 300 = -£150$</span></div>
+      <p><strong>You would expect to lose about £$150$.</strong> The game is not fair to the player.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – IS THE GAME FAIR?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Deciding Whether a Game Is Fair</div>
+<div class="section-body">
+
+  <div class="concept">
+    A game is <strong>fair</strong> if, in the long run, players neither gain nor lose — the expected winnings equal the cost of playing. If the expected winnings are less than the cost, the game favours the organiser.
+  </div>
+
+  <ul class="steps">
+    <li>Find the probability of each possible prize.</li>
+    <li>Multiply each prize by its probability.</li>
+    <li>Add these together to get the expected winnings for one go.</li>
+    <li>Compare with the cost of one go.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Is it fair?</div>
+    <div class="example-body">
+      <p>A game costs £$2$ to play. You spin a spinner: $P(\text{£}10) = 0.05$, $P(\text{£}3) = 0.2$, and otherwise you win nothing. Is the game fair?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expected winnings $= (10 \times 0.05) + (3 \times 0.2) + (0 \times 0.75)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 0.50 + 0.60 + 0 = £1.10$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Cost is £$2$, so on average you lose $2 - 1.10 = £0.90$ per go.</span></div>
+      <p><strong>The game is not fair</strong> — it favours the organiser by $90$p per play.</p>
+      <p><em>Check the probabilities:</em> $0.05 + 0.2 + 0.75 = 1$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Random</h4><p>Every item has the same chance of being chosen.</p></div>
+    <div class="ref-card"><h4>Fair</h4><p>All outcomes equally likely, so $P = \dfrac{\text{favourable}}{\text{total}}$ applies.</p></div>
+    <div class="ref-card"><h4>Biased</h4><p>Outcomes are not equally likely; you need experimental data.</p></div>
+    <div class="ref-card"><h4>Expected number</h4><p>$P \times$ number of trials.</p></div>
+    <div class="ref-card"><h4>Finding $P$</h4><p>Divide the expected number by the number of trials.</p></div>
+    <div class="ref-card"><h4>Finding $n$</h4><p>Divide the expected number by the probability.</p></div>
+    <div class="ref-card"><h4>Not a guarantee</h4><p>The expected number is a long-run average, not a certainty.</p></div>
+    <div class="ref-card"><h4>Fair game</h4><p>Expected winnings equal the cost of a go.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A fair coin is tossed $340$ times. How many tails would you expect?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{tails}) = 0.5$</p>
+          <p>Expected $= 0.5 \times 340 = 170$ tails</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A fair die is rolled $420$ times. How many times would you expect a score greater than $4$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>More than $4$ means $5$ or $6$, so $P = \dfrac{2}{6} = \dfrac{1}{3}$.</p>
+          <p>Expected $= \dfrac{1}{3} \times 420 = 140$ times</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The probability that a seed germinates is $0.85$. A gardener plants $360$ seeds. How many would you expect to germinate, and how many to fail?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Germinate: $0.85 \times 360 = 306$</p>
+          <p>Fail: $360 - 306 = 54$ &nbsp;(or $0.15 \times 360 = 54$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A biased spinner lands on red with probability $0.28$. It is spun $150$ times. How many times would you expect it to land on red? Give your answer to the nearest whole number.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.28 \times 150 = 42$ times</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A machine is expected to produce $84$ faulty items out of every $2400$. Find the probability that an item is faulty.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P = \dfrac{84}{2400} = 0.035$</p>
+          <p>That is $3.5\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>The probability of a raffle ticket winning is $0.008$. How many tickets must be sold to expect $6$ winners?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.008 \times n = 6$</p>
+          <p>$n = \dfrac{6}{0.008} = 750$ tickets</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain why dropping a drawing pin is not a fair experiment, and how you could estimate the probability that it lands point up.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The two outcomes (point up and point down) are <strong>not equally likely</strong> — the shape and weight distribution of the pin favour one of them. So you cannot say $P = \tfrac{1}{2}$.</p>
+          <p>To estimate the probability, drop the pin a large number of times (say $500$), record how many times it lands point up, and calculate the relative frequency $\dfrac{\text{point up}}{500}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A coin is tossed three times, and this is repeated $400$ times. How many times would you expect to get three heads?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{HHH}) = \dfrac{1}{2} \times \dfrac{1}{2} \times \dfrac{1}{2} = \dfrac{1}{8}$</p>
+          <p>Expected $= \dfrac{1}{8} \times 400 = 50$ times</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A game costs £$1$ to play. The probability of winning £$4$ is $0.15$ and the probability of winning £$1$ is $0.25$; otherwise you win nothing.</p>
+      <p>(a) Find the expected winnings per go. &nbsp; (b) Is the game fair? &nbsp; (c) If $600$ people play, what profit would the organiser expect?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $P(\text{nothing}) = 1 - 0.15 - 0.25 = 0.6$</p>
+          <p>Expected winnings $= (4 \times 0.15) + (1 \times 0.25) + (0 \times 0.6)$</p>
+          <p>$= 0.60 + 0.25 = £0.85$</p>
+          <p><strong>(b)</strong> The cost is £$1$ but the expected return is £$0.85$, so the game is <strong>not fair</strong> — the player loses $15$p per go on average.</p>
+          <p><strong>(c)</strong> Profit $= 600 \times £0.15 = £90$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A four-sided spinner has sections numbered $1$, $2$, $3$ and $4$. The probabilities are shown, with $P(3) = P(4)$.</p>
+      <table>
+        <tr><th>Number</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
+        <tr><th>Probability</th><td>$0.36$</td><td>$0.22$</td><td>$x$</td><td>$x$</td></tr>
+      </table>
+      <p>(a) Find $x$. &nbsp; (b) The spinner is spun $250$ times. How many $3$s would you expect? &nbsp; (c) Is the spinner fair? Explain. &nbsp; (d) How many spins would be needed to expect $100$ scores of $1$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> All probabilities add to $1$:</p>
+          <p>$0.36 + 0.22 + x + x = 1$</p>
+          <p>$0.58 + 2x = 1 \Rightarrow 2x = 0.42 \Rightarrow x = 0.21$</p>
+          <p><strong>(b)</strong> $0.21 \times 250 = 52.5$, so about $\mathbf{53}$ threes (you cannot have half a spin, so round sensibly).</p>
+          <p><strong>(c)</strong> <strong>No.</strong> A fair four-sided spinner would have $P = 0.25$ for every number. Here the probabilities are $0.36$, $0.22$, $0.21$, $0.21$ — not equal, so the spinner is <strong>biased</strong> towards $1$.</p>
+          <p><strong>(d)</strong> $0.36 \times n = 100$</p>
+          <p>$n = \dfrac{100}{0.36} = 277.8$, so about $\mathbf{278}$ spins.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Randomness, Fairness &amp; Expected Outcomes (P2) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

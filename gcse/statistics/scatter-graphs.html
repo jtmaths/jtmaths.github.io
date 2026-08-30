@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scatter Graphs and Correlation – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚫ Scatter Graphs and Correlation</h1>
+  <p>GCSE Maths · Statistics (S6)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – SCATTER GRAPHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Scatter Graph Shows</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>scatter graph</strong> plots two variables against each other, one point per item. It shows whether the two variables are <em>related</em> — this is called <strong>bivariate</strong> data.
+  </div>
+
+  <ul class="steps">
+    <li>Put the independent (controlled) variable on the horizontal axis.</li>
+    <li>Put the dependent (measured) variable on the vertical axis.</li>
+    <li>Label both axes, including units.</li>
+    <li>Plot one point for each pair of readings — with a small cross or dot.</li>
+    <li>Do <strong>not</strong> join the points up.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Never join the points on a scatter graph.</strong> Each point is a separate item, not a stage in a sequence. If a line is wanted, it is a single straight line of best fit.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CORRELATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Types of Correlation</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="620" height="200" viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- positive -->
+      <text x="90" y="16" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Positive</text>
+      <line x1="30" y1="160" x2="155" y2="160" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="30" y1="160" x2="30" y2="30" stroke="#4f46e5" stroke-width="1.8"/>
+      <g fill="#7c3aed">
+        <circle cx="45" cy="145" r="3.5"/><circle cx="60" cy="132" r="3.5"/><circle cx="72" cy="138" r="3.5"/>
+        <circle cx="86" cy="112" r="3.5"/><circle cx="98" cy="100" r="3.5"/><circle cx="112" cy="88" r="3.5"/>
+        <circle cx="124" cy="72" r="3.5"/><circle cx="140" cy="55" r="3.5"/>
+      </g>
+      <text x="90" y="184" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">as x rises, y rises</text>
+
+      <!-- negative -->
+      <text x="245" y="16" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Negative</text>
+      <line x1="185" y1="160" x2="310" y2="160" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="185" y1="160" x2="185" y2="30" stroke="#4f46e5" stroke-width="1.8"/>
+      <g fill="#7c3aed">
+        <circle cx="200" cy="50" r="3.5"/><circle cx="214" cy="66" r="3.5"/><circle cx="228" cy="60" r="3.5"/>
+        <circle cx="242" cy="88" r="3.5"/><circle cx="255" cy="102" r="3.5"/><circle cx="268" cy="118" r="3.5"/>
+        <circle cx="282" cy="130" r="3.5"/><circle cx="296" cy="146" r="3.5"/>
+      </g>
+      <text x="245" y="184" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">as x rises, y falls</text>
+
+      <!-- none -->
+      <text x="400" y="16" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">No correlation</text>
+      <line x1="340" y1="160" x2="465" y2="160" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="340" y1="160" x2="340" y2="30" stroke="#4f46e5" stroke-width="1.8"/>
+      <g fill="#7c3aed">
+        <circle cx="358" cy="120" r="3.5"/><circle cx="372" cy="55" r="3.5"/><circle cx="386" cy="140" r="3.5"/>
+        <circle cx="400" cy="80" r="3.5"/><circle cx="414" cy="110" r="3.5"/><circle cx="428" cy="48" r="3.5"/>
+        <circle cx="440" cy="132" r="3.5"/><circle cx="452" cy="92" r="3.5"/>
+      </g>
+      <text x="400" y="184" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">no clear pattern</text>
+
+      <!-- strong vs weak -->
+      <text x="555" y="16" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Strong positive</text>
+      <line x1="495" y1="160" x2="612" y2="160" stroke="#4f46e5" stroke-width="1.8"/>
+      <line x1="495" y1="160" x2="495" y2="30" stroke="#4f46e5" stroke-width="1.8"/>
+      <g fill="#22c55e">
+        <circle cx="508" cy="146" r="3.5"/><circle cx="522" cy="132" r="3.5"/><circle cx="536" cy="120" r="3.5"/>
+        <circle cx="550" cy="105" r="3.5"/><circle cx="564" cy="92" r="3.5"/><circle cx="578" cy="76" r="3.5"/>
+        <circle cx="592" cy="62" r="3.5"/><circle cx="604" cy="50" r="3.5"/>
+      </g>
+      <text x="555" y="184" font-family="Arial" font-size="10" fill="#555" text-anchor="middle">points close to a line</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Correlation</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Positive</strong></td><td>As one increases, the other increases</td><td>Height and shoe size</td></tr>
+    <tr><td><strong>Negative</strong></td><td>As one increases, the other decreases</td><td>Age of a car and its value</td></tr>
+    <tr><td><strong>None</strong></td><td>No clear pattern</td><td>Shoe size and exam score</td></tr>
+    <tr><td><strong>Strong</strong></td><td>Points lie close to a straight line</td><td>—</td></tr>
+    <tr><td><strong>Weak</strong></td><td>Points are scattered but show a tendency</td><td>—</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Describing correlation</div>
+    Always give <strong>both</strong> words: strength <em>and</em> direction<br>
+    e.g. "strong negative correlation", not just "negative"
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Describing correlation</div>
+    <div class="example-body">
+      <p>A scatter graph of a car's age against its value shows points falling steeply and lying close to a straight line. Describe the correlation and what it means.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The points fall from left to right, so the correlation is <strong>negative</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>They lie close to a line, so it is <strong>strong</strong>.</span></div>
+      <p><strong>Strong negative correlation:</strong> as a car gets older, its value tends to decrease.</p>
+      <div class="tip">The interpretation sentence must use the <em>context</em> — "as age increases, value decreases" — not just the word "negative".</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – LINE OF BEST FIT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Line of Best Fit</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Only draw one if the points show clear correlation.</li>
+    <li>Draw a single <strong>straight</strong> line with a ruler.</li>
+    <li>Follow the general direction of the points.</li>
+    <li>Aim for roughly equal numbers of points above and below the line.</li>
+    <li>Do <strong>not</strong> force it through the origin unless the data suggest it.</li>
+    <li>Ignore any obvious outlier when positioning the line.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="420" height="280" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="55" y1="40" x2="380" y2="40"/><line x1="55" y1="80" x2="380" y2="80"/>
+        <line x1="55" y1="120" x2="380" y2="120"/><line x1="55" y1="160" x2="380" y2="160"/>
+        <line x1="110" y1="30" x2="110" y2="210"/><line x1="165" y1="30" x2="165" y2="210"/>
+        <line x1="220" y1="30" x2="220" y2="210"/><line x1="275" y1="30" x2="275" y2="210"/>
+        <line x1="330" y1="30" x2="330" y2="210"/>
+      </g>
+      <line x1="55" y1="210" x2="385" y2="210" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="210" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="70" y1="188" x2="360" y2="52" stroke="#ef4444" stroke-width="2.5"/>
+      <g fill="#7c3aed">
+        <circle cx="85" cy="192" r="4"/><circle cx="120" cy="160" r="4"/><circle cx="145" cy="172" r="4"/>
+        <circle cx="175" cy="140" r="4"/><circle cx="205" cy="118" r="4"/><circle cx="235" cy="128" r="4"/>
+        <circle cx="265" cy="96" r="4"/><circle cx="300" cy="78" r="4"/><circle cx="340" cy="58" r="4"/>
+      </g>
+      <circle cx="150" cy="55" r="5" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <text x="160" y="50" font-family="Arial" font-size="11" fill="#b91c1c">outlier — ignore it</text>
+      <line x1="220" y1="210" x2="220" y2="115" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,4"/>
+      <line x1="220" y1="115" x2="55" y2="115" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,4"/>
+      <text x="228" y="200" font-family="Arial" font-size="10" fill="#166534">read up…</text>
+      <text x="80" y="108" font-family="Arial" font-size="10" fill="#166534">…then across</text>
+      <text x="220" y="245" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle" font-weight="bold">Hours of revision</text>
+      <text x="22" y="120" font-family="Arial" font-size="11" fill="#555" text-anchor="middle" transform="rotate(-90 22 120)">Test score</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using the line to predict</div>
+    <div class="example-body">
+      <p>A line of best fit passes through $(2,\ 30)$ and $(8,\ 66)$ on a graph of revision hours against test score. Estimate the score for $5$ hours of revision.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Gradient $= \dfrac{66 - 30}{8 - 2} = \dfrac{36}{6} = 6$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Equation: $y = 6x + c$. Using $(2, 30)$: $30 = 12 + c$, so $c = 18$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = 6x + 18$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 5$: $y = 30 + 18 = 48$</span></div>
+      <p><strong>Estimated score: $48$ marks.</strong></p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Interpreting the gradient and intercept</div>
+    <div class="example-body">
+      <p>Using $y = 6x + 18$ from above, interpret the gradient and the intercept in context.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Gradient $6$:</strong> for each extra hour of revision, the test score increases by about $6$ marks on average.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Intercept $18$:</strong> a student who does no revision would be predicted to score about $18$ marks.</span></div>
+      <div class="tip">Interpreting the gradient in context — "per extra hour" — is a very common exam question and needs the units.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – INTERPOLATION AND EXTRAPOLATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Interpolation and Extrapolation</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two words</div>
+    <strong>Interpolation</strong> — estimating <em>inside</em> the range of the data. Reliable.<br>
+    <strong>Extrapolation</strong> — estimating <em>outside</em> the range. Unreliable.
+  </div>
+
+  <div class="warn">
+    <strong>Extrapolation is dangerous.</strong> The pattern seen in the data may not continue beyond it. The relationship might level off, reverse, or stop applying altogether — and there is no evidence either way, because no data were collected there.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Judging a prediction</div>
+    <div class="example-body">
+      <p>A scatter graph shows revision hours from $1$ to $9$ against test scores. Comment on the reliability of estimates for (a) $6$ hours, (b) $20$ hours.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $6$ hours is <em>within</em> the range $1$–$9$, so this is <strong>interpolation</strong> — the estimate is reliable.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $20$ hours is far <em>outside</em> the range, so this is <strong>extrapolation</strong> — unreliable.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>In fact the line would predict a score above $100\%$, which is impossible. Beyond a point, extra revision brings diminishing returns.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — When extrapolation gives nonsense</div>
+    <div class="example-body">
+      <p>A line of best fit for children's heights against age is $h = 6a + 75$, fitted using ages $4$ to $11$. Use it to predict the height of a $40$-year-old, and comment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$h = 6(40) + 75 = 240 + 75 = 315$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>That is over three metres tall — clearly impossible.</span></div>
+      <p><strong>The prediction is meaningless</strong> because $40$ is far outside the age range $4$–$11$ used to fit the line. People stop growing in their late teens, so the linear relationship simply does not hold at that age.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – CORRELATION AND CAUSATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Correlation Is Not Causation</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The most important sentence on this page</div>
+    Correlation shows that two things <strong>vary together</strong>.<br>
+    It does <strong>not</strong> show that one <em>causes</em> the other.
+  </div>
+
+  <div class="concept">
+    When two variables correlate, there are four possible explanations:<br>
+    • $A$ causes $B$<br>
+    • $B$ causes $A$<br>
+    • A third factor causes both (a <strong>confounding variable</strong>)<br>
+    • It is pure coincidence
+  </div>
+
+  <table>
+    <tr><th>Correlation observed</th><th>The real explanation</th></tr>
+    <tr><td>Ice cream sales and drownings both rise</td><td>Hot weather causes both</td></tr>
+    <tr><td>Shoe size and reading ability in children</td><td>Age causes both</td></tr>
+    <tr><td>Number of firefighters and damage at a fire</td><td>The size of the fire causes both</td></tr>
+    <tr><td>Chocolate consumption and Nobel prizes by country</td><td>National wealth is linked to both</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Explaining a spurious correlation</div>
+    <div class="example-body">
+      <p>A study finds a strong positive correlation between the number of ice creams sold and the number of people who get sunburnt. Does eating ice cream cause sunburn?</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>No.</strong> There is a correlation, but no causal link between the two.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>A <strong>third factor</strong> — hot, sunny weather — causes both. On hot sunny days more people buy ice cream <em>and</em> more people are outside getting sunburnt.</span></div>
+      <p>This third factor is called a <strong>confounding variable</strong>.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — When causation might be reasonable</div>
+    <div class="example-body">
+      <p>A scatter graph shows strong negative correlation between the amount of insulation in a house and its annual heating bill. Is it reasonable to suggest causation here?</p>
+      <div class="step-row"><span class="arrow">①</span><span>There is a plausible <em>mechanism</em>: insulation reduces heat loss, so less energy is needed.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The direction makes sense: insulation is installed first, and the bill follows.</span></div>
+      <p><strong>Causation is plausible here</strong> — but the scatter graph alone still does not prove it. Other factors (house size, how warm people keep their homes) could also be involved. A controlled experiment would be needed to be sure.</p>
+      <div class="tip">Correlation plus a <em>credible mechanism</em> is stronger evidence than correlation alone — but it is still not proof.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – OUTLIERS ON SCATTER GRAPHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Outliers on Scatter Graphs</div>
+<div class="section-body">
+
+  <div class="concept">
+    An <strong>outlier</strong> on a scatter graph is a point that lies well away from the general pattern. It may be a recording error, or a genuine unusual case.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Dealing with an outlier</div>
+    <div class="example-body">
+      <p>On a graph of revision hours against test score, most points follow a rising pattern, but one student who revised for $2$ hours scored $95$. How should this be treated?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Identify it as an <strong>outlier</strong> — it does not follow the pattern of the other points.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Ignore it</strong> when drawing the line of best fit, so the line represents the general trend.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Possible explanations: the student may already have known the material, or the data may have been recorded wrongly.</span></div>
+      <p>Do not simply delete the point from the graph — plot it, but do not let it pull the line.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Scatter graph</h4><p>One point per item; never join the points.</p></div>
+    <div class="ref-card"><h4>Positive</h4><p>Both variables increase together.</p></div>
+    <div class="ref-card"><h4>Negative</h4><p>One increases as the other decreases.</p></div>
+    <div class="ref-card"><h4>Describe it fully</h4><p>Strength <em>and</em> direction, then interpret in context.</p></div>
+    <div class="ref-card"><h4>Line of best fit</h4><p>Straight, follows the trend, roughly equal points either side.</p></div>
+    <div class="ref-card"><h4>Gradient</h4><p>The change in $y$ per unit increase in $x$ — give the units.</p></div>
+    <div class="ref-card"><h4>Interpolation</h4><p>Inside the data range — reliable.</p></div>
+    <div class="ref-card"><h4>Extrapolation</h4><p>Outside the data range — unreliable.</p></div>
+    <div class="ref-card"><h4>Correlation</h4><p>Never proves causation; look for a third factor.</p></div>
+    <div class="ref-card"><h4>Outliers</h4><p>Plot them, but ignore them when drawing the line.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Describe the correlation you would expect between: (a) a car's engine size and its fuel economy, (b) a person's height and their arm span, (c) a person's house number and their age.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Negative — larger engines generally use more fuel, so economy falls.</p>
+          <p><strong>(b)</strong> Strong positive — taller people generally have longer arm spans.</p>
+          <p><strong>(c)</strong> No correlation — the two are unrelated.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Explain why you should never join the points on a scatter graph.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Each point represents a separate item (a different person, car or day), not consecutive stages of one thing changing.</p>
+          <p>Joining them would suggest a sequence or a path between the points, which has no meaning. If a line is needed, a single straight line of best fit is drawn instead.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A line of best fit passes through $(0,\ 12)$ and $(10,\ 52)$. Find its equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= \dfrac{52 - 12}{10 - 0} = \dfrac{40}{10} = 4$</p>
+          <p>The line crosses the vertical axis at $12$, so $c = 12$.</p>
+          <p>$y = 4x + 12$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Using $y = 4x + 12$ from Question 3, where $x$ is hours worked and $y$ is pay in pounds, interpret the gradient and the intercept.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Gradient $4$:</strong> pay increases by £$4$ for every extra hour worked.</p>
+          <p><strong>Intercept $12$:</strong> a fixed payment of £$12$ is received even for zero hours — perhaps a call-out fee or bonus.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Data were collected for ages $5$ to $16$. Explain whether an estimate for age $12$ and one for age $30$ would be reliable.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Age $12$:</strong> inside the range $5$–$16$, so this is <strong>interpolation</strong> — the estimate is reliable.</p>
+          <p><strong>Age $30$:</strong> well outside the range, so this is <strong>extrapolation</strong> — unreliable, because there is no evidence that the pattern continues beyond age $16$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A study finds a positive correlation between the number of storks nesting in a region and the number of babies born there. Does this mean storks deliver babies? Explain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>No.</strong> The correlation is real but there is no causal link.</p>
+          <p>A likely <strong>third factor</strong> is the size or type of the region: larger rural areas have both more buildings for storks to nest on and more people, and therefore more births.</p>
+          <p>This is a classic example of correlation without causation.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A line of best fit on a graph of a car's age (years) against value (£) is $V = 15\,000 - 1200a$. Interpret the gradient and use the equation to estimate the value of a $6$-year-old car.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Gradient $-1200$:</strong> the car loses about £$1200$ of value each year.</p>
+          <p>At $a = 6$: $V = 15\,000 - 1200(6) = 15\,000 - 7200 = £7800$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Using the equation from Question 7, find the value predicted for a $15$-year-old car, and comment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$V = 15\,000 - 1200(15) = 15\,000 - 18\,000 = -£3000$</p>
+          <p>A negative value is <strong>impossible</strong>, so the prediction is meaningless.</p>
+          <p>This shows the danger of <strong>extrapolating</strong> too far: in reality a car's value falls steeply at first and then levels off towards a small positive amount, rather than continuing to drop by £$1200$ every year.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A scatter graph of temperature (°C) against ice cream sales shows a line of best fit through $(10,\ 40)$ and $(25,\ 130)$.</p>
+      <p>(a) Find the gradient and interpret it. &nbsp; (b) Find the equation. &nbsp; (c) Estimate sales at $18$°C. &nbsp; (d) Would you use the line to estimate sales at $35$°C?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient $= \dfrac{130 - 40}{25 - 10} = \dfrac{90}{15} = 6$</p>
+          <p>Sales increase by about $6$ ice creams for each $1$°C rise in temperature.</p>
+          <p><strong>(b)</strong> $y = 6x + c$; using $(10, 40)$: $40 = 60 + c$, so $c = -20$.</p>
+          <p>$y = 6x - 20$</p>
+          <p><strong>(c)</strong> At $x = 18$: $y = 108 - 20 = 88$ ice creams.</p>
+          <p><strong>(d)</strong> $35$°C is outside the data range $10$–$25$°C, so this would be <strong>extrapolation</strong> and unreliable. The estimate of $190$ might also exceed what the shop can physically sell in a day.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The table shows the hours of sleep and reaction times (milliseconds) for eight people.</p>
+      <table>
+        <tr><th>Sleep (h)</th><td>$4$</td><td>$5$</td><td>$5.5$</td><td>$6$</td><td>$7$</td><td>$7.5$</td><td>$8$</td><td>$9$</td></tr>
+        <tr><th>Reaction (ms)</th><td>$420$</td><td>$390$</td><td>$385$</td><td>$360$</td><td>$330$</td><td>$325$</td><td>$300$</td><td>$285$</td></tr>
+      </table>
+      <p>(a) Describe the correlation. &nbsp; (b) A line of best fit passes through $(4,\ 420)$ and $(9,\ 285)$. Find its equation. &nbsp; (c) Estimate the reaction time for someone who sleeps $6.5$ hours. &nbsp; (d) A newspaper claims "sleeping more makes you react faster". Comment on this claim.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> As sleep increases, reaction time decreases, and the points follow the pattern closely.</p>
+          <p>This is <strong>strong negative correlation</strong> — people who sleep longer tend to have faster reaction times.</p>
+          <p><strong>(b)</strong> Gradient $= \dfrac{285 - 420}{9 - 4} = \dfrac{-135}{5} = -27$</p>
+          <p>Using $(4, 420)$: $420 = -27(4) + c = -108 + c$, so $c = 528$.</p>
+          <p>$y = -27x + 528$</p>
+          <p><strong>(c)</strong> At $x = 6.5$: $y = -27(6.5) + 528 = -175.5 + 528 = 352.5$ ms</p>
+          <p><strong>(d)</strong> The data show a strong <strong>correlation</strong>, but that does not establish <strong>causation</strong>.</p>
+          <p>It is plausible that more sleep improves alertness, so the claim is not unreasonable — but a third factor could explain the pattern. For example, people who are ill, stressed or older may both sleep less <em>and</em> react more slowly. To support the claim properly you would need a controlled experiment in which sleep is varied deliberately.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Scatter Graphs &amp; Correlation (S6) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

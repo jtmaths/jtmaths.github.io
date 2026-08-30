@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined Events and Tree Diagrams – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌳 Combined Events and Tree Diagrams</h1>
+  <p>GCSE Maths · Probability (P8)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE TWO RULES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The AND and OR Rules</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">AND — multiply</div>
+    For independent events: &nbsp;$P(A \text{ and } B) = P(A) \times P(B)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">OR — add</div>
+    For mutually exclusive events: &nbsp;$P(A \text{ or } B) = P(A) + P(B)$
+  </div>
+
+  <div class="concept">
+    <strong>Independent</strong> means one event does not affect the other. Two coin tosses are independent; drawing two cards without replacement is not.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Both rules together</div>
+    <div class="example-body">
+      <p>$P(\text{rain}) = 0.3$ on Saturday and $0.4$ on Sunday, independently. Find (a) $P(\text{rain both days})$, (b) $P(\text{rain on exactly one day})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> AND, so multiply: $0.3 \times 0.4 = 0.12$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Two ways: rain Sat only, or rain Sun only.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Sat only: $0.3 \times 0.6 = 0.18$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Sun only: $0.7 \times 0.4 = 0.28$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>These are mutually exclusive, so add: $0.18 + 0.28 = 0.46$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TREE DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Tree Diagrams</div>
+<div class="section-body">
+
+  <p>A <strong>tree diagram</strong> lays out a two-stage (or three-stage) experiment so that no outcome is missed.</p>
+
+  <div class="svg-block">
+    <svg width="520" height="270" viewBox="0 0 520 270" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="135" r="5" fill="#1e1e2e"/>
+      <line x1="46" y1="132" x2="180" y2="65" stroke="#7c3aed" stroke-width="2.2"/>
+      <line x1="46" y1="138" x2="180" y2="205" stroke="#7c3aed" stroke-width="2.2"/>
+      <text x="100" y="88" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">0.3</text>
+      <text x="100" y="192" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">0.7</text>
+      <circle cx="185" cy="63" r="5" fill="#4f46e5"/>
+      <circle cx="185" cy="207" r="5" fill="#4f46e5"/>
+      <text x="176" y="50" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">R</text>
+      <text x="176" y="230" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">R'</text>
+
+      <line x1="191" y1="60" x2="320" y2="24" stroke="#22c55e" stroke-width="2.2"/>
+      <line x1="191" y1="67" x2="320" y2="103" stroke="#22c55e" stroke-width="2.2"/>
+      <line x1="191" y1="204" x2="320" y2="168" stroke="#22c55e" stroke-width="2.2"/>
+      <line x1="191" y1="211" x2="320" y2="247" stroke="#22c55e" stroke-width="2.2"/>
+      <g font-family="Arial" font-size="12" fill="#166534" font-weight="bold">
+        <text x="248" y="32">0.4</text><text x="248" y="96">0.6</text>
+        <text x="248" y="176">0.4</text><text x="248" y="240">0.6</text>
+      </g>
+      <g font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">
+        <text x="328" y="28">S</text><text x="328" y="108">S'</text>
+        <text x="328" y="172">S</text><text x="328" y="252">S'</text>
+      </g>
+      <g font-family="Arial" font-size="12" fill="#b91c1c">
+        <text x="360" y="28">0.3 × 0.4 = 0.12</text>
+        <text x="360" y="108">0.3 × 0.6 = 0.18</text>
+        <text x="360" y="172">0.7 × 0.4 = 0.28</text>
+        <text x="360" y="252">0.7 × 0.6 = 0.42</text>
+      </g>
+    </svg>
+    <p style="font-size:.85rem;color:#555;">The four end probabilities add to $0.12 + 0.18 + 0.28 + 0.42 = 1$</p>
+  </div>
+
+  <ul class="steps">
+    <li>Draw the first set of branches for the first event, writing the probability on each.</li>
+    <li>From the <em>end</em> of each branch, draw the second set.</li>
+    <li>Check that the probabilities on each <strong>pair</strong> of branches add to $1$.</li>
+    <li><strong>Multiply along</strong> each path to find the probability of that combined outcome.</li>
+    <li><strong>Add</strong> the end probabilities of all the paths that satisfy the event.</li>
+    <li>Check the four end probabilities total $1$.</li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">The two tree-diagram rules</div>
+    <strong>Multiply</strong> along the branches &nbsp;·&nbsp; <strong>Add</strong> between the branches
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – WITH REPLACEMENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> With Replacement (Independent)</div>
+<div class="section-body">
+
+  <div class="concept">
+    If an object is <strong>replaced</strong> before the next pick, the bag is back to its original state. The probabilities on the second set of branches are the <em>same</em> as the first.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — With replacement</div>
+    <div class="example-body">
+      <p>A bag has $4$ red and $6$ blue counters. One is taken, its colour noted, and it is <em>replaced</em>. A second is then taken. Find (a) $P(\text{both red})$, (b) $P(\text{one of each colour})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(\text{red}) = \dfrac{4}{10} = 0.4$ and $P(\text{blue}) = 0.6$, both times.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(a)</strong> $P(\text{RR}) = 0.4 \times 0.4 = 0.16$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(b)</strong> $P(\text{RB}) = 0.4 \times 0.6 = 0.24$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{BR}) = 0.6 \times 0.4 = 0.24$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P(\text{one of each}) = 0.24 + 0.24 = 0.48$</span></div>
+      <div class="warn"><strong>There are two ways to get one of each.</strong> Forgetting the second path is the single most common error in tree diagram questions.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WITHOUT REPLACEMENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Without Replacement (Dependent)</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The key change</div>
+    Both the <strong>numerator</strong> and the <strong>denominator</strong> change for the second pick
+  </div>
+
+  <div class="concept">
+    Taking an object out and keeping it means there is one fewer item in the bag, and one fewer of whatever colour was removed. The events are <strong>dependent</strong>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Without replacement</div>
+    <div class="example-body">
+      <p>A bag has $4$ red and $6$ blue counters. Two are taken <em>without</em> replacement. Find (a) $P(\text{both red})$, (b) $P(\text{both the same colour})$, (c) $P(\text{different colours})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>First pick: $P(\text{red}) = \dfrac{4}{10}$, $P(\text{blue}) = \dfrac{6}{10}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>After a red: $3$ red and $6$ blue remain, out of $9$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>After a blue: $4$ red and $5$ blue remain, out of $9$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(a)</strong> $P(\text{RR}) = \dfrac{4}{10} \times \dfrac{3}{9} = \dfrac{12}{90} = \dfrac{2}{15}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P(\text{BB}) = \dfrac{6}{10} \times \dfrac{5}{9} = \dfrac{30}{90} = \dfrac{1}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><strong>(b)</strong> $P(\text{same}) = \dfrac{12}{90} + \dfrac{30}{90} = \dfrac{42}{90} = \dfrac{7}{15}$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span><strong>(c)</strong> $P(\text{different}) = 1 - \dfrac{7}{15} = \dfrac{8}{15}$</span></div>
+      <div class="tip"><strong>Keep the denominator as $90$</strong> until the very end. Cancelling each fraction separately makes the branches much harder to add.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A three-colour bag</div>
+    <div class="example-body">
+      <p>A bag has $5$ green, $3$ yellow and $2$ white beads. Two are taken without replacement. Find $P(\text{both green})$ and $P(\text{no green})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total $= 10$ beads.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{both green}) = \dfrac{5}{10} \times \dfrac{4}{9} = \dfrac{20}{90} = \dfrac{2}{9}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>"No green" means both from the $5$ non-green beads.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{no green}) = \dfrac{5}{10} \times \dfrac{4}{9} = \dfrac{20}{90} = \dfrac{2}{9}$</span></div>
+      <p>(A coincidence here: there happen to be $5$ green and $5$ non-green.)</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – AT LEAST ONE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> "At Least One" Questions</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The shortcut</div>
+    $P(\text{at least one}) = 1 - P(\text{none})$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — At least one</div>
+    <div class="example-body">
+      <p>A bag has $7$ white and $3$ black balls. Three are taken without replacement. Find $P(\text{at least one black})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The opposite of "at least one black" is "no black at all" — three whites.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{WWW}) = \dfrac{7}{10} \times \dfrac{6}{9} \times \dfrac{5}{8}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{210}{720} = \dfrac{7}{24}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{at least one black}) = 1 - \dfrac{7}{24} = \dfrac{17}{24}$</span></div>
+      <p>Listing all the cases with one, two or three blacks would take far longer.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – ALGEBRAIC TREES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Trees with Algebra</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding an unknown number</div>
+    <div class="example-body">
+      <p>A bag contains $n$ red and $5$ blue counters. Two are taken without replacement. The probability that both are blue is $\dfrac{2}{9}$. Find $n$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total counters $= n + 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{BB}) = \dfrac{5}{n+5} \times \dfrac{4}{n+4} = \dfrac{20}{(n+5)(n+4)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Set equal to $\dfrac{2}{9}$: $\;\dfrac{20}{(n+5)(n+4)} = \dfrac{2}{9}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Cross-multiply: $2(n+5)(n+4) = 180$, so $(n+5)(n+4) = 90$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$n^2 + 9n + 20 = 90 \Rightarrow n^2 + 9n - 70 = 0$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Factorise: $(n + 14)(n - 5) = 0$, so $n = 5$ or $n = -14$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>A count cannot be negative, so $n = \mathbf{5}$.</span></div>
+      <p><em>Check:</em> $10$ counters altogether; $\dfrac{5}{10} \times \dfrac{4}{9} = \dfrac{20}{90} = \dfrac{2}{9}$ ✓</p>
+      <div class="tip">Always discard the negative root and state why — a number of counters must be a positive whole number.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>AND</h4><p>Multiply — for independent events.</p></div>
+    <div class="ref-card"><h4>OR</h4><p>Add — for mutually exclusive events.</p></div>
+    <div class="ref-card"><h4>Tree rule</h4><p>Multiply along the branches, add between them.</p></div>
+    <div class="ref-card"><h4>Branch check</h4><p>Each pair of branches must add to $1$.</p></div>
+    <div class="ref-card"><h4>End check</h4><p>All the final probabilities must add to $1$.</p></div>
+    <div class="ref-card"><h4>With replacement</h4><p>Second-stage probabilities are unchanged.</p></div>
+    <div class="ref-card"><h4>Without replacement</h4><p>Both top and bottom of the fraction change.</p></div>
+    <div class="ref-card"><h4>Two ways</h4><p>"One of each" always has two paths — do not forget the second.</p></div>
+    <div class="ref-card"><h4>At least one</h4><p>Use $1 - P(\text{none})$.</p></div>
+    <div class="ref-card"><h4>Keep denominators</h4><p>Do not cancel until you have added the branches.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$P(A) = 0.4$ and $P(B) = 0.5$, and $A$ and $B$ are independent. Find $P(A \text{ and } B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(A \text{ and } B) = 0.4 \times 0.5 = 0.2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A fair coin is tossed and a fair die rolled. Find $P(\text{a head and a } 6)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Independent events, so multiply:</p>
+          <p>$\dfrac{1}{2} \times \dfrac{1}{6} = \dfrac{1}{12}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A bag has $3$ red and $7$ green counters. One is taken and replaced, then another is taken. Find (a) $P(\text{both red})$, (b) $P(\text{one of each})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{red}) = 0.3$, $P(\text{green}) = 0.7$ each time.</p>
+          <p><strong>(a)</strong> $0.3 \times 0.3 = 0.09$</p>
+          <p><strong>(b)</strong> RG: $0.3 \times 0.7 = 0.21$; GR: $0.7 \times 0.3 = 0.21$</p>
+          <p>Total $= 0.42$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A bag has $3$ red and $7$ green counters. Two are taken <em>without</em> replacement. Find $P(\text{both red})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{RR}) = \dfrac{3}{10} \times \dfrac{2}{9} = \dfrac{6}{90} = \dfrac{1}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Using the bag from Question 4, find $P(\text{both green})$ and $P(\text{different colours})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{GG}) = \dfrac{7}{10} \times \dfrac{6}{9} = \dfrac{42}{90} = \dfrac{7}{15}$</p>
+          <p>$P(\text{same}) = \dfrac{6}{90} + \dfrac{42}{90} = \dfrac{48}{90} = \dfrac{8}{15}$</p>
+          <p>$P(\text{different}) = 1 - \dfrac{8}{15} = \dfrac{7}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>The probability that Ali passes his driving test first time is $0.65$. If he fails, the probability he passes second time is $0.8$. Find $P(\text{he passes within two attempts})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Two paths lead to passing: pass first time, or fail then pass.</p>
+          <p>Pass first: $0.65$</p>
+          <p>Fail then pass: $0.35 \times 0.8 = 0.28$</p>
+          <p>$P(\text{passes within two}) = 0.65 + 0.28 = 0.93$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A fair coin is tossed three times. Find $P(\text{at least one head})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{no heads}) = P(\text{TTT}) = \left(\dfrac{1}{2}\right)^3 = \dfrac{1}{8}$</p>
+          <p>$P(\text{at least one head}) = 1 - \dfrac{1}{8} = \dfrac{7}{8}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A box has $8$ chocolates: $5$ milk and $3$ dark. Two are eaten at random. Find $P(\text{at least one dark})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{no dark}) = P(\text{both milk}) = \dfrac{5}{8} \times \dfrac{4}{7} = \dfrac{20}{56} = \dfrac{5}{14}$</p>
+          <p>$P(\text{at least one dark}) = 1 - \dfrac{5}{14} = \dfrac{9}{14}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The probability that a bus is late is $0.2$ each day, independently. Over three days, find (a) $P(\text{late all three days})$, (b) $P(\text{late exactly once})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $0.2^3 = 0.008$</p>
+          <p><strong>(b)</strong> Late on exactly one day — there are three ways (day 1, day 2 or day 3).</p>
+          <p>Each has probability $0.2 \times 0.8 \times 0.8 = 0.128$</p>
+          <p>Total $= 3 \times 0.128 = 0.384$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A bag contains $6$ blue and $n$ yellow counters. Two counters are taken at random without replacement. The probability that both are blue is $\dfrac{1}{3}$.</p>
+      <p>(a) Form an equation in $n$. &nbsp; (b) Solve it to find $n$. &nbsp; (c) Find $P(\text{both yellow})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Total counters $= 6 + n$.</p>
+          <p>$P(\text{BB}) = \dfrac{6}{6+n} \times \dfrac{5}{5+n} = \dfrac{30}{(6+n)(5+n)}$</p>
+          <p>Setting this equal to $\dfrac{1}{3}$:</p>
+          <p>$$\frac{30}{(6+n)(5+n)} = \frac{1}{3}$$</p>
+          <p><strong>(b)</strong> Cross-multiply: $(6+n)(5+n) = 90$</p>
+          <p>$n^2 + 11n + 30 = 90$</p>
+          <p>$n^2 + 11n - 60 = 0$</p>
+          <p>$(n + 15)(n - 4) = 0$, so $n = 4$ or $n = -15$.</p>
+          <p>A count cannot be negative, so $n = \mathbf{4}$.</p>
+          <p><em>Check:</em> $10$ counters; $\dfrac{6}{10} \times \dfrac{5}{9} = \dfrac{30}{90} = \dfrac{1}{3}$ ✓</p>
+          <p><strong>(c)</strong> $P(\text{both yellow}) = \dfrac{4}{10} \times \dfrac{3}{9} = \dfrac{12}{90} = \dfrac{2}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Combined Events &amp; Tree Diagrams (P8) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

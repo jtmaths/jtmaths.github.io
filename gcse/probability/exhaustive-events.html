@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhaustive and Mutually Exclusive Events – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➕ Exhaustive and Mutually Exclusive Events</h1>
+  <p>GCSE Maths · Probability (P4)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE TOTAL IS ONE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Probabilities Always Add to One</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The fundamental rule</div>
+    The probabilities of all the possible outcomes add up to $1$
+  </div>
+
+  <div class="concept">
+    Something <em>must</em> happen. If you list every possible outcome, one of them is certain to occur — and certainty has probability $1$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding a missing probability</div>
+    <div class="example-body">
+      <p>A biased spinner has four colours. Find the missing probability.</p>
+      <table>
+        <tr><th>Colour</th><td>Red</td><td>Blue</td><td>Green</td><td>White</td></tr>
+        <tr><th>Probability</th><td>$0.31$</td><td>$0.24$</td><td>$0.18$</td><td>$x$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>$0.31 + 0.24 + 0.18 + x = 1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.73 + x = 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 0.27$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Two missing probabilities</div>
+    <div class="example-body">
+      <p>A spinner has three sections. $P(\text{red}) = 0.4$, and green and yellow are equally likely. Find $P(\text{green})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $P(\text{green}) = P(\text{yellow}) = x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.4 + x + x = 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2x = 0.6 \Rightarrow x = 0.3$</span></div>
+      <p>$P(\text{green}) = 0.3$</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Probabilities in a ratio</div>
+    <div class="example-body">
+      <p>A spinner has red, blue and green sections with probabilities in the ratio $3 : 4 : 5$. Find each probability.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total parts $= 3 + 4 + 5 = 12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The total probability is $1$, so one part $= \dfrac{1}{12}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{red}) = \dfrac{3}{12} = \dfrac{1}{4}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{blue}) = \dfrac{4}{12} = \dfrac{1}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P(\text{green}) = \dfrac{5}{12}$</span></div>
+      <p>Check: $\dfrac{3}{12} + \dfrac{4}{12} + \dfrac{5}{12} = 1$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE COMPLEMENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Complement Rule</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Complement</div>
+    $P(\text{not } A) = 1 - P(A)$ &nbsp;&nbsp;often written&nbsp;&nbsp; $P(A') = 1 - P(A)$
+  </div>
+
+  <div class="concept">
+    An event either happens or it does not — there is no third option. So the two probabilities must add to $1$.
+  </div>
+
+  <div class="tip">
+    <strong>The complement is often the shortcut.</strong> "At least one" questions are usually far easier as $1 - P(\text{none})$ than by adding up every case.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using the complement</div>
+    <div class="example-body">
+      <p>The probability that a train arrives on time is $0.87$. Find the probability that it is late.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(\text{late}) = 1 - 0.87 = 0.13$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — "At least one"</div>
+    <div class="example-body">
+      <p>A fair coin is tossed three times. Find the probability of getting at least one head.</p>
+      <div class="step-row"><span class="arrow">①</span><span>"At least one head" is the opposite of "no heads at all", i.e. three tails.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{TTT}) = \dfrac{1}{2} \times \dfrac{1}{2} \times \dfrac{1}{2} = \dfrac{1}{8}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{at least one head}) = 1 - \dfrac{1}{8} = \dfrac{7}{8}$</span></div>
+      <p>Listing all the cases with one, two or three heads would take far longer and risk missing some.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MUTUALLY EXCLUSIVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Mutually Exclusive Events</div>
+<div class="section-body">
+
+  <div class="concept">
+    Two events are <strong>mutually exclusive</strong> if they cannot both happen at the same time. Rolling a $2$ and rolling a $5$ on one die are mutually exclusive; rolling an even number and rolling a number over $3$ are <em>not</em> (because $4$ and $6$ are both).
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The addition rule</div>
+    For mutually exclusive events: &nbsp;$P(A \text{ or } B) = P(A) + P(B)$
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="170" viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg">
+      <text x="120" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">Mutually exclusive</text>
+      <rect x="20" y="32" width="200" height="105" fill="#fafafe" stroke="#94a3b8" stroke-width="1.5"/>
+      <circle cx="78" cy="85" r="38" fill="#c7d2fe" fill-opacity=".7" stroke="#4f46e5" stroke-width="2"/>
+      <circle cx="163" cy="85" r="38" fill="#bbf7d0" fill-opacity=".7" stroke="#22c55e" stroke-width="2"/>
+      <text x="78" y="90" font-family="Arial" font-size="15" fill="#3730a3" text-anchor="middle" font-weight="bold">A</text>
+      <text x="163" y="90" font-family="Arial" font-size="15" fill="#166534" text-anchor="middle" font-weight="bold">B</text>
+      <text x="120" y="158" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">no overlap — just add</text>
+
+      <text x="370" y="20" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">NOT mutually exclusive</text>
+      <rect x="270" y="32" width="200" height="105" fill="#fafafe" stroke="#94a3b8" stroke-width="1.5"/>
+      <circle cx="345" cy="85" r="42" fill="#c7d2fe" fill-opacity=".6" stroke="#4f46e5" stroke-width="2"/>
+      <circle cx="398" cy="85" r="42" fill="#bbf7d0" fill-opacity=".6" stroke="#22c55e" stroke-width="2"/>
+      <text x="318" y="90" font-family="Arial" font-size="15" fill="#3730a3" text-anchor="middle" font-weight="bold">A</text>
+      <text x="426" y="90" font-family="Arial" font-size="15" fill="#166534" text-anchor="middle" font-weight="bold">B</text>
+      <text x="371" y="90" font-family="Arial" font-size="11" fill="#b91c1c" text-anchor="middle" font-weight="bold">both</text>
+      <text x="370" y="158" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">overlap — adding would double-count</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>Only add when the events cannot overlap.</strong> If they can both happen, simply adding counts the overlap twice and gives an answer that is too big — sometimes over $1$, which is an instant giveaway.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Adding mutually exclusive probabilities</div>
+    <div class="example-body">
+      <p>A bag has $5$ red, $4$ blue and $6$ green counters. One is picked at random. Find $P(\text{red or green})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>A counter cannot be both red and green, so the events are mutually exclusive.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Total $= 5 + 4 + 6 = 15$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{red or green}) = \dfrac{5}{15} + \dfrac{6}{15} = \dfrac{11}{15}$</span></div>
+      <div class="tip">Alternatively, $P(\text{not blue}) = 1 - \dfrac{4}{15} = \dfrac{11}{15}$ — the same answer via the complement.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Events that overlap</div>
+    <div class="example-body">
+      <p>A fair die is rolled. $A$ is "an even number" and $B$ is "a number greater than $3$". Are $A$ and $B$ mutually exclusive? Find $P(A \text{ or } B)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = \{2, 4, 6\}$ and $B = \{4, 5, 6\}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>They share $4$ and $6$, so they are <strong>not</strong> mutually exclusive.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Simply adding would give $\dfrac{3}{6} + \dfrac{3}{6} = 1$, which is wrong — rolling a $1$ satisfies neither.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>List the outcomes in $A$ or $B$: $\{2, 4, 5, 6\}$ — four outcomes.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P(A \text{ or } B) = \dfrac{4}{6} = \dfrac{2}{3}$</span></div>
+      <div class="concept">The general rule is $P(A \cup B) = P(A) + P(B) - P(A \cap B)$: add them, then subtract the overlap once. Here $\tfrac{3}{6} + \tfrac{3}{6} - \tfrac{2}{6} = \tfrac{4}{6}$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – EXHAUSTIVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Exhaustive Events</div>
+<div class="section-body">
+
+  <div class="concept">
+    A set of events is <strong>exhaustive</strong> if it covers <em>every</em> possible outcome — at least one of them is bound to happen.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The key result</div>
+    If a set of events is both <strong>mutually exclusive</strong> and <strong>exhaustive</strong>,<br>their probabilities add to exactly $1$
+  </div>
+
+  <table>
+    <tr><th>Set of events for one die roll</th><th>Mutually exclusive?</th><th>Exhaustive?</th></tr>
+    <tr><td>$\{1\}, \{2\}, \{3\}, \{4\}, \{5\}, \{6\}$</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>"even", "odd"</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>"less than 3", "more than 4"</td><td>Yes</td><td><strong>No</strong> — $3$ and $4$ are missed</td></tr>
+    <tr><td>"even", "more than 3"</td><td><strong>No</strong> — $4$ and $6$ are in both</td><td>No — $1$ and $3$ are missed</td></tr>
+    <tr><td>"less than 5", "more than 2"</td><td>No — $3$ and $4$ in both</td><td>Yes</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Testing a set of events</div>
+    <div class="example-body">
+      <p>A card is drawn from a pack. Are the events "a heart", "a diamond" and "a black card" mutually exclusive and exhaustive?</p>
+      <div class="step-row"><span class="arrow">①</span><span>No card can be two of these at once, so they are <strong>mutually exclusive</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Hearts and diamonds are all the red cards; "a black card" covers the rest.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Every card falls into exactly one category, so they are <strong>exhaustive</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Check: $\dfrac{13}{52} + \dfrac{13}{52} + \dfrac{26}{52} = 1$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Total is 1</h4><p>All possible outcomes have probabilities summing to $1$.</p></div>
+    <div class="ref-card"><h4>Complement</h4><p>$P(\text{not } A) = 1 - P(A)$.</p></div>
+    <div class="ref-card"><h4>Mutually exclusive</h4><p>Cannot both happen; no overlap.</p></div>
+    <div class="ref-card"><h4>Addition rule</h4><p>Mutually exclusive: $P(A \text{ or } B) = P(A) + P(B)$.</p></div>
+    <div class="ref-card"><h4>With overlap</h4><p>$P(A \cup B) = P(A) + P(B) - P(A \cap B)$.</p></div>
+    <div class="ref-card"><h4>Exhaustive</h4><p>Covers every possible outcome.</p></div>
+    <div class="ref-card"><h4>Both together</h4><p>Mutually exclusive <em>and</em> exhaustive → probabilities total exactly $1$.</p></div>
+    <div class="ref-card"><h4>"At least one"</h4><p>Use $1 - P(\text{none})$.</p></div>
+    <div class="ref-card"><h4>Ratios</h4><p>Total the parts; each part is worth $\dfrac{1}{\text{total parts}}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A spinner has $P(\text{red}) = 0.15$, $P(\text{blue}) = 0.42$ and $P(\text{green}) = x$. Find $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.15 + 0.42 + x = 1$</p>
+          <p>$x = 1 - 0.57 = 0.43$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>The probability that a student is left-handed is $\dfrac{2}{15}$. Find the probability that a student is not left-handed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{not left-handed}) = 1 - \dfrac{2}{15} = \dfrac{13}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A bag has $6$ red, $8$ blue and $11$ yellow beads. Find (a) $P(\text{red or blue})$, (b) $P(\text{not yellow})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total $= 6 + 8 + 11 = 25$</p>
+          <p><strong>(a)</strong> $\dfrac{6}{25} + \dfrac{8}{25} = \dfrac{14}{25}$</p>
+          <p><strong>(b)</strong> $1 - \dfrac{11}{25} = \dfrac{14}{25}$ — the same, as it must be.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Are these pairs mutually exclusive? (a) Rolling a $3$ and rolling a $5$. (b) Drawing a king and drawing a heart. (c) A person being over $18$ and being under $12$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Yes — one roll cannot be both.</p>
+          <p><strong>(b)</strong> <strong>No</strong> — the king of hearts is both.</p>
+          <p><strong>(c)</strong> Yes — nobody can be both over $18$ and under $12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A spinner has four sections with probabilities in the ratio $2 : 3 : 4 : 6$. Find the probability of each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 2 + 3 + 4 + 6 = 15$.</p>
+          <p>Probabilities: $\dfrac{2}{15}$, $\dfrac{3}{15} = \dfrac{1}{5}$, $\dfrac{4}{15}$, $\dfrac{6}{15} = \dfrac{2}{5}$</p>
+          <p>Check: they add to $\dfrac{15}{15} = 1$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A fair coin is tossed four times. Find the probability of getting at least one tail.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The opposite of "at least one tail" is "no tails", i.e. four heads.</p>
+          <p>$P(\text{HHHH}) = \left(\dfrac{1}{2}\right)^4 = \dfrac{1}{16}$</p>
+          <p>$P(\text{at least one tail}) = 1 - \dfrac{1}{16} = \dfrac{15}{16}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A die is rolled. $A$ = "a multiple of $3$" and $B$ = "an odd number". Find $P(A)$, $P(B)$ and $P(A \text{ or } B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = \{3, 6\}$, so $P(A) = \dfrac{2}{6} = \dfrac{1}{3}$</p>
+          <p>$B = \{1, 3, 5\}$, so $P(B) = \dfrac{3}{6} = \dfrac{1}{2}$</p>
+          <p>They overlap at $3$, so they are not mutually exclusive.</p>
+          <p>$A$ or $B$ is $\{1, 3, 5, 6\}$, so $P(A \text{ or } B) = \dfrac{4}{6} = \dfrac{2}{3}$</p>
+          <p>Check with the formula: $\dfrac{2}{6} + \dfrac{3}{6} - \dfrac{1}{6} = \dfrac{4}{6}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Give an example of two events for a single roll of a die that are exhaustive but <em>not</em> mutually exclusive.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>"Less than $5$" $= \{1,2,3,4\}$ and "more than $2$" $= \{3,4,5,6\}$.</p>
+          <p><strong>Exhaustive:</strong> together they cover $1,2,3,4,5,6$ — every outcome.</p>
+          <p><strong>Not mutually exclusive:</strong> $3$ and $4$ appear in both.</p>
+          <p>(Note their probabilities add to $\tfrac{4}{6} + \tfrac{4}{6} = \tfrac{8}{6} > 1$ — a clear sign of overlap.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A bag contains only red, blue and green counters. $P(\text{red}) = 0.28$ and there are twice as many blue as green. Find $P(\text{blue})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $P(\text{green}) = x$, so $P(\text{blue}) = 2x$.</p>
+          <p>$0.28 + 2x + x = 1$</p>
+          <p>$3x = 0.72 \Rightarrow x = 0.24$</p>
+          <p>$P(\text{blue}) = 2 \times 0.24 = 0.48$</p>
+          <p>Check: $0.28 + 0.48 + 0.24 = 1$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A five-sided spinner has sections $1$ to $5$. $P(1) = 0.1$, $P(2) = 0.25$, $P(4) = 0.15$, and $P(3)$ is three times $P(5)$.</p>
+      <p>(a) Find $P(3)$ and $P(5)$. &nbsp; (b) Find $P(\text{an odd number})$. &nbsp; (c) Find $P(\text{not } 2)$. &nbsp; (d) The spinner is spun $400$ times. How many $3$s would you expect?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $P(5) = x$, so $P(3) = 3x$.</p>
+          <p>$0.1 + 0.25 + 3x + 0.15 + x = 1$</p>
+          <p>$0.5 + 4x = 1 \Rightarrow 4x = 0.5 \Rightarrow x = 0.125$</p>
+          <p>$P(5) = 0.125$ and $P(3) = 0.375$</p>
+          <p><strong>(b)</strong> Odd numbers are $1$, $3$, $5$ — mutually exclusive, so add:</p>
+          <p>$0.1 + 0.375 + 0.125 = 0.6$</p>
+          <p><strong>(c)</strong> $1 - 0.25 = 0.75$</p>
+          <p><strong>(d)</strong> $0.375 \times 400 = 150$ threes</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exhaustive &amp; Mutually Exclusive Events (P4) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

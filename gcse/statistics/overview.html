@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics – Overview – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Statistics</h1>
+  <p>GCSE Maths · Overview of the whole topic</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE STATISTICAL CYCLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Statistical Cycle</div>
+<div class="section-body">
+
+  <p>Statistics is about <strong>turning data into understanding</strong>. Every statistical investigation follows the same four stages.</p>
+
+  <div class="svg-block">
+    <svg width="520" height="180" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="sc" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7c3aed"/></marker></defs>
+      <rect x="15" y="60" width="105" height="52" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <text x="67" y="82" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">1. Ask a</text>
+      <text x="67" y="99" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">question</text>
+      <line x1="124" y1="86" x2="146" y2="86" stroke="#7c3aed" stroke-width="2" marker-end="url(#sc)"/>
+      <rect x="150" y="60" width="105" height="52" rx="8" fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+      <text x="202" y="82" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle" font-weight="bold">2. Collect</text>
+      <text x="202" y="99" font-family="Arial" font-size="12" fill="#4c1d95" text-anchor="middle" font-weight="bold">data</text>
+      <line x1="259" y1="86" x2="281" y2="86" stroke="#7c3aed" stroke-width="2" marker-end="url(#sc)"/>
+      <rect x="285" y="60" width="105" height="52" rx="8" fill="#bbf7d0" stroke="#22c55e" stroke-width="2"/>
+      <text x="337" y="82" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">3. Represent</text>
+      <text x="337" y="99" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">&amp; analyse</text>
+      <line x1="394" y1="86" x2="416" y2="86" stroke="#7c3aed" stroke-width="2" marker-end="url(#sc)"/>
+      <rect x="420" y="60" width="90" height="52" rx="8" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+      <text x="465" y="82" font-family="Arial" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="bold">4. Draw</text>
+      <text x="465" y="99" font-family="Arial" font-size="12" fill="#9a3412" text-anchor="middle" font-weight="bold">conclusions</text>
+      <path d="M 465 118 Q 465 155 265 155 Q 67 155 67 118" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#sc)"/>
+      <text x="265" y="172" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">…which usually raises the next question</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>The two big questions statistics answers:</strong><br>
+    • <strong>What is typical?</strong> — the averages: mean, median, mode.<br>
+    • <strong>How spread out is it?</strong> — the range, interquartile range and the shape of the distribution.<br>
+    A good comparison of two data sets always mentions <em>both</em>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — The whole cycle in one question</div>
+    <div class="example-body">
+      <p>A teacher asks: "Do students in Year 11 sleep less than students in Year 7?" Describe how the four stages would be carried out.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Question:</strong> already clear, and it names both the populations and the variable (hours of sleep).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Collect:</strong> take a stratified random sample from each year group, asking how many hours they slept last night.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Represent and analyse:</strong> draw box plots for the two years, and calculate the median and interquartile range for each.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Conclude:</strong> compare the medians (the average) <em>and</em> the IQRs (the spread), quoting the actual figures and stating any limitations of the sample.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TYPES OF DATA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Types of Data</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Qualitative</strong></td><td>Words or categories</td><td>Eye colour, favourite sport</td></tr>
+    <tr><td><strong>Quantitative</strong></td><td>Numbers</td><td>Height, number of siblings</td></tr>
+    <tr><td><strong>Discrete</strong></td><td>Counted — only certain values</td><td>Number of goals, shoe size</td></tr>
+    <tr><td><strong>Continuous</strong></td><td>Measured — any value in a range</td><td>Mass, time, length</td></tr>
+    <tr><td><strong>Primary</strong></td><td>You collected it yourself</td><td>Your own survey</td></tr>
+    <tr><td><strong>Secondary</strong></td><td>Collected by someone else</td><td>Census data, a website</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The type of data decides the diagram.</strong> Bar charts for categories, vertical line charts for discrete numbers, histograms for grouped continuous data. Choosing the wrong one loses marks.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE KEY FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Key Formulae</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Measure</th><th>How to find it</th></tr>
+    <tr><td><strong>Mean</strong></td><td>$\dfrac{\text{sum of values}}{\text{number of values}}$</td></tr>
+    <tr><td><strong>Median</strong></td><td>The middle value when in order; position $\dfrac{n+1}{2}$</td></tr>
+    <tr><td><strong>Mode</strong></td><td>The most common value</td></tr>
+    <tr><td><strong>Range</strong></td><td>Largest $-$ smallest</td></tr>
+    <tr><td><strong>Lower quartile</strong> $Q_1$</td><td>Position $\dfrac{n+1}{4}$</td></tr>
+    <tr><td><strong>Upper quartile</strong> $Q_3$</td><td>Position $\dfrac{3(n+1)}{4}$</td></tr>
+    <tr><td><strong>Interquartile range</strong></td><td>$Q_3 - Q_1$</td></tr>
+    <tr><td><strong>Mean from a table</strong></td><td>$\dfrac{\sum fx}{\sum f}$</td></tr>
+    <tr><td><strong>Frequency density</strong></td><td>$\dfrac{\text{frequency}}{\text{class width}}$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The interquartile range is a single number.</strong> If $Q_1 = 12$ and $Q_3 = 20$, the IQR is $8$ — not "$12$ to $20$".
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Picking the right formula</div>
+    <div class="example-body">
+      <p>Twelve students scored: $4, 9, 6, 15, 7, 9, 11, 3, 9, 12, 8, 10$. Find the mean, median, mode, range and IQR.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Order first: $3, 4, 6, 7, 8, 9, 9, 9, 10, 11, 12, 15$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Mean:</strong> total $= 103$, so $\dfrac{103}{12} = 8.58$ (2 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Median:</strong> position $\dfrac{13}{2} = 6.5$, so average the 6th and 7th: $\dfrac{9+9}{2} = 9$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Mode:</strong> $9$ (appears three times)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><strong>Range:</strong> $15 - 3 = 12$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><strong>Quartiles:</strong> $Q_1$ at position $\dfrac{13}{4} = 3.25$, between $6$ and $7$, so $Q_1 = 6.5$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$Q_3$ at position $\dfrac{39}{4} = 9.75$, between $10$ and $11$, so $Q_3 = 10.5$</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span><strong>IQR</strong> $= 10.5 - 6.5 = 4$</span></div>
+      <p>Notice the IQR ($4$) is much smaller than the range ($12$) — the extremes $3$ and $15$ stretch the range but not the IQR.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE 6 SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The 6 Subtopics</div>
+<div class="section-body">
+
+  <p>The National Curriculum divides Statistics into six statements, usually labelled <strong>S1</strong> to <strong>S6</strong>. Each has its own page with explanations, worked examples and ten practice questions.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">S1</span><span><a href="sampling.html">Sampling and Populations</a><span class="desc">Random and stratified samples, bias, and the limitations of sampling.</span></span></li>
+    <li><span class="code">S2</span><span><a href="charts-and-tables.html">Tables, Charts and Diagrams</a><span class="desc">Bar charts, pie charts, pictograms, vertical line charts and time series.</span></span></li>
+    <li><span class="code">S3</span><span><a href="histograms-cumulative-frequency.html">Histograms and Cumulative Frequency</a><span class="desc">Grouped and continuous data, unequal class widths, and estimating from a curve.</span></span></li>
+    <li><span class="code">S4</span><span><a href="averages-and-spread.html">Averages, Spread and Box Plots</a><span class="desc">Mean, median, mode, range, quartiles, outliers and comparing distributions.</span></span></li>
+    <li><span class="code">S5</span><span><a href="describing-populations.html">Using Statistics to Describe a Population</a><span class="desc">Drawing valid conclusions, estimating totals, and spotting misleading claims.</span></span></li>
+    <li><span class="code">S6</span><span><a href="scatter-graphs.html">Scatter Graphs and Correlation</a><span class="desc">Lines of best fit, interpolation, extrapolation, and why correlation is not causation.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Mistake 1 — Forgetting to order the data before finding the median.</strong> The median of $7, 2, 9$ is $7$, not $2$.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 2 — Comparing only averages.</strong> A full comparison needs a measure of <em>average</em> and a measure of <em>spread</em>, both interpreted in context.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 3 — Using frequency as the height of a histogram bar.</strong> The height must be the frequency <em>density</em> whenever the class widths differ.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 4 — Treating grouped data as exact.</strong> The mean from a grouped table is only an <em>estimate</em>, because you use midpoints rather than the real values.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 5 — Assuming correlation means causation.</strong> Ice cream sales and drownings both rise in summer, but one does not cause the other.
+  </div>
+
+  <div class="warn">
+    <strong>Mistake 6 — Extrapolating far beyond the data.</strong> A line of best fit is only reliable within the range of the points you actually have.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Mean</h4><p>Total $\div$ how many. Affected by extreme values.</p></div>
+    <div class="ref-card"><h4>Median</h4><p>Middle value in order. Not affected by outliers.</p></div>
+    <div class="ref-card"><h4>Mode</h4><p>Most common. The only average for categories.</p></div>
+    <div class="ref-card"><h4>Range</h4><p>Largest $-$ smallest. Easily distorted by one odd value.</p></div>
+    <div class="ref-card"><h4>IQR</h4><p>$Q_3 - Q_1$. A more robust measure of spread.</p></div>
+    <div class="ref-card"><h4>Grouped mean</h4><p>$\dfrac{\sum fx}{\sum f}$ using midpoints — an estimate.</p></div>
+    <div class="ref-card"><h4>Histogram</h4><p>Height is frequency density; <em>area</em> represents frequency.</p></div>
+    <div class="ref-card"><h4>Cumulative frequency</h4><p>Plot at the <em>upper</em> class boundary; read the median at $\tfrac{n}{2}$.</p></div>
+    <div class="ref-card"><h4>Comparing</h4><p>Always give an average <em>and</em> a spread, in context.</p></div>
+    <div class="ref-card"><h4>Correlation</h4><p>Never implies causation.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p style="margin-bottom:12px;">These ten questions sample the whole topic. If one type catches you out, follow the link in Section 4 to the page that covers it.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the mean, median, mode and range of: $4, 7, 3, 7, 9, 2, 7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Ordered: $2, 3, 4, 7, 7, 7, 9$</p>
+          <p>Mean $= \dfrac{39}{7} = 5.57$ (2 d.p.)</p>
+          <p>Median: the $4$th of $7$ values $= 7$</p>
+          <p>Mode $= 7$ (appears three times)</p>
+          <p>Range $= 9 - 2 = 7$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Classify each as discrete or continuous: (a) number of cars in a car park, (b) the time to run 100 m, (c) shoe size, (d) the mass of a parcel.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Discrete — you count cars.</p>
+          <p><strong>(b)</strong> Continuous — time can take any value.</p>
+          <p><strong>(c)</strong> Discrete — sizes come in fixed steps.</p>
+          <p><strong>(d)</strong> Continuous — mass is measured.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Estimate the mean from this grouped table.</p>
+      <table>
+        <tr><th>Height $h$ (cm)</th><td>$140 \leq h \lt 150$</td><td>$150 \leq h \lt 160$</td><td>$160 \leq h \lt 170$</td></tr>
+        <tr><th>Frequency</th><td>$6$</td><td>$14$</td><td>$10$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Midpoints: $145$, $155$, $165$.</p>
+          <p>$\sum fx = 6(145) + 14(155) + 10(165) = 870 + 2170 + 1650 = 4690$</p>
+          <p>$\sum f = 30$</p>
+          <p>Estimated mean $= \dfrac{4690}{30} = 156.3$ cm (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A pie chart shows $180$ people. The sector for "bus" has an angle of $84^\circ$. How many travelled by bus?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{84}{360} \times 180 = 42$ people</p>
+          <p>(Alternatively, each person is $360 \div 180 = 2^\circ$, so $84 \div 2 = 42$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the interquartile range of: $3, 5, 6, 8, 11, 13, 14, 18, 20$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n = 9$, already in order.</p>
+          <p>$Q_1$ at position $\dfrac{9+1}{4} = 2.5$, so halfway between $5$ and $6$: $Q_1 = 5.5$</p>
+          <p>$Q_3$ at position $\dfrac{3(10)}{4} = 7.5$, so halfway between $14$ and $18$: $Q_3 = 16$</p>
+          <p>IQR $= 16 - 5.5 = 10.5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A histogram has a bar for $10 \leq t \lt 30$ with frequency density $2.5$. How many values are in this class?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Class width $= 30 - 10 = 20$</p>
+          <p>Frequency $= $ density $\times$ width $= 2.5 \times 20 = 50$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A school has $600$ students in the ratio Year 10 : Year 11 $= 7 : 5$. A stratified sample of $60$ is taken. How many Year 11 students should be in the sample?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total parts $= 12$, so Year 11 has $\dfrac{5}{12} \times 600 = 250$ students.</p>
+          <p>Sample fraction $= \dfrac{60}{600} = 0.1$</p>
+          <p>Year 11 in sample $= 0.1 \times 250 = 25$ students</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A scatter graph of hours revised against test score shows strong positive correlation. Explain what this means, and why it does not prove that revising causes higher scores.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Strong positive correlation</strong> means that as revision hours increase, test scores tend to increase too, and the points lie close to a straight line.</p>
+          <p>It does not prove causation because a third factor could explain both — for example, more motivated students may both revise more <em>and</em> pay more attention in lessons. Correlation shows an association, not a cause.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Two classes take the same test. Class A: median $62$, IQR $8$. Class B: median $58$, IQR $19$. Compare the two classes.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Average:</strong> Class A has the higher median ($62$ vs $58$), so on average Class A scored better.</p>
+          <p><strong>Spread:</strong> Class A has a much smaller IQR ($8$ vs $19$), so Class A's scores are more consistent, while Class B's are far more varied.</p>
+          <p>Overall: Class A performed better and more consistently.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The cumulative frequency table shows the times of $80$ runners.</p>
+      <table>
+        <tr><th>Time $t$ (min)</th><td>$\leq 20$</td><td>$\leq 25$</td><td>$\leq 30$</td><td>$\leq 35$</td><td>$\leq 40$</td></tr>
+        <tr><th>Cumulative frequency</th><td>$5$</td><td>$22$</td><td>$50$</td><td>$71$</td><td>$80$</td></tr>
+      </table>
+      <p>(a) How many took between $25$ and $30$ minutes? &nbsp; (b) Estimate the median. &nbsp; (c) Estimate the IQR.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $50 - 22 = 28$ runners</p>
+          <p><strong>(b)</strong> Median is at $\dfrac{80}{2} = 40$th value. That falls between $25$ min (cf $22$) and $30$ min (cf $50$).</p>
+          <p>Reading from the curve gives roughly $\mathbf{28}$ minutes.</p>
+          <p><strong>(c)</strong> $Q_1$ at the $20$th value $\approx 24$ min; $Q_3$ at the $60$th value $\approx 32$ min.</p>
+          <p>IQR $\approx 32 - 24 = \mathbf{8}$ minutes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Statistics · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histograms and Cumulative Frequency – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📶 Histograms and Cumulative Frequency</h1>
+  <p>GCSE Maths · Statistics (S3)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – GROUPED DATA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Grouped Data and Class Intervals</div>
+<div class="section-body">
+
+  <p>Continuous data — heights, times, masses — take too many different values to list individually, so they are collected into <strong>class intervals</strong>.</p>
+
+  <div class="concept">
+    Class intervals are written with inequalities so that every value belongs to exactly one class:<br>
+    $20 \leq t \lt 25$ means "$20$ or more, but less than $25$".<br>
+    A time of exactly $25$ goes in the <em>next</em> class, not this one.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Class width</div>
+    $\text{class width} = \text{upper boundary} - \text{lower boundary}$
+  </div>
+
+  <table>
+    <tr><th>Class</th><th>Width</th><th>Midpoint</th></tr>
+    <tr><td>$0 \leq t \lt 10$</td><td>$10$</td><td>$5$</td></tr>
+    <tr><td>$10 \leq t \lt 20$</td><td>$10$</td><td>$15$</td></tr>
+    <tr><td>$20 \leq t \lt 40$</td><td>$20$</td><td>$30$</td></tr>
+    <tr><td>$40 \leq t \lt 70$</td><td>$30$</td><td>$55$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Grouped data loses information.</strong> Once values are grouped you no longer know the individual figures, so anything you calculate from a grouped table is an <em>estimate</em>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – HISTOGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Histograms</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two histogram facts</div>
+    Height $=$ <strong>frequency density</strong> $= \dfrac{\text{frequency}}{\text{class width}}$<br><br>
+    <strong>Area</strong> of each bar $=$ <strong>frequency</strong>
+  </div>
+
+  <div class="concept">
+    In a bar chart the <em>height</em> tells you the frequency. In a histogram the <em>area</em> does. This is what allows histograms to handle classes of different widths fairly.
+  </div>
+
+  <div class="warn">
+    <strong>Histogram bars touch.</strong> The horizontal axis is a continuous number line, so there are no gaps — unlike a bar chart.
+  </div>
+
+  <ul class="steps">
+    <li>Add a "class width" column to the table.</li>
+    <li>Add a "frequency density" column: frequency $\div$ class width.</li>
+    <li>Draw the horizontal axis as a continuous scale.</li>
+    <li>Label the vertical axis <strong>frequency density</strong>.</li>
+    <li>Draw each bar spanning its class, at the height of its frequency density.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="470" height="260" viewBox="0 0 470 260" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="55" y1="40" x2="440" y2="40"/><line x1="55" y1="75" x2="440" y2="75"/>
+        <line x1="55" y1="110" x2="440" y2="110"/><line x1="55" y1="145" x2="440" y2="145"/>
+      </g>
+      <line x1="55" y1="180" x2="445" y2="180" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="180" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <g fill="#a5b4fc" stroke="#4f46e5" stroke-width="1.8">
+        <rect x="55" y="145" width="50" height="35"/>
+        <rect x="105" y="75" width="50" height="105"/>
+        <rect x="155" y="110" width="100" height="70"/>
+        <rect x="255" y="145" width="150" height="35"/>
+      </g>
+      <g font-family="Arial" font-size="10" fill="#3730a3" text-anchor="middle">
+        <text x="55" y="196">0</text><text x="105" y="196">10</text><text x="155" y="196">20</text>
+        <text x="255" y="196">40</text><text x="405" y="196">70</text>
+      </g>
+      <g font-family="Arial" font-size="10" fill="#3730a3" text-anchor="end">
+        <text x="48" y="184">0</text><text x="48" y="149">1</text><text x="48" y="114">2</text>
+        <text x="48" y="79">3</text><text x="48" y="44">4</text>
+      </g>
+      <text x="18" y="105" font-family="Arial" font-size="10" fill="#555" text-anchor="middle" transform="rotate(-90 18 105)">Frequency density</text>
+      <text x="250" y="216" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle" font-weight="bold">Time (minutes)</text>
+      <text x="250" y="238" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Wider classes have lower bars — but the areas still show the frequencies</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Drawing a histogram</div>
+    <div class="example-body">
+      <p>Complete the table and describe how to draw the histogram.</p>
+      <table>
+        <tr><th>Time $t$ (min)</th><th>Frequency</th><th>Class width</th><th>Frequency density</th></tr>
+        <tr><td>$0 \leq t \lt 10$</td><td>$10$</td><td>$10$</td><td>$1$</td></tr>
+        <tr><td>$10 \leq t \lt 20$</td><td>$30$</td><td>$10$</td><td>$3$</td></tr>
+        <tr><td>$20 \leq t \lt 40$</td><td>$40$</td><td>$20$</td><td>$2$</td></tr>
+        <tr><td>$40 \leq t \lt 70$</td><td>$30$</td><td>$30$</td><td>$1$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Class width $=$ upper $-$ lower for each row.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Frequency density $=$ frequency $\div$ width, e.g. $40 \div 20 = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Draw bars from $0$ to $10$ at height $1$, from $10$ to $20$ at height $3$, and so on.</span></div>
+      <p>Note that the class $20$–$40$ has the <em>largest frequency</em> ($40$) but not the tallest bar — because it is twice as wide.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reading a histogram</div>
+    <div class="example-body">
+      <p>A histogram bar spans $15 \leq x \lt 35$ with height $4.5$. How many values are in that class?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Class width $= 35 - 15 = 20$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Frequency $=$ density $\times$ width $= 4.5 \times 20$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 90$ values</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Part of a class</div>
+    <div class="example-body">
+      <p>A histogram bar covers $20 \leq x \lt 40$ with frequency density $3$. Estimate how many values lie between $25$ and $40$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The portion we want is $40 - 25 = 15$ units wide.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Frequency $= 3 \times 15 = 45$ values</span></div>
+      <div class="tip">This assumes the values are <strong>evenly spread</strong> across the class — which is why the answer is an estimate.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CUMULATIVE FREQUENCY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Cumulative Frequency</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Cumulative frequency</strong> is a running total. Each entry tells you how many values are less than or equal to the top of that class.
+  </div>
+
+  <ul class="steps">
+    <li>Add a cumulative frequency column and fill it with running totals.</li>
+    <li>Plot each cumulative frequency against the <strong>upper class boundary</strong>.</li>
+    <li>Start the curve at the lowest boundary with a cumulative frequency of $0$.</li>
+    <li>Join the points with a smooth curve.</li>
+    <li>The final point must reach the total frequency.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Plot at the UPPER boundary, not the midpoint.</strong> This is the single most common error. "$30$ people took under $25$ minutes" is a fact about the value $25$, so the point goes at $x = 25$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="290" viewBox="0 0 460 290" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="60" y1="40" x2="420" y2="40"/><line x1="60" y1="76" x2="420" y2="76"/>
+        <line x1="60" y1="112" x2="420" y2="112"/><line x1="60" y1="148" x2="420" y2="148"/>
+        <line x1="60" y1="184" x2="420" y2="184"/>
+        <line x1="132" y1="30" x2="132" y2="220"/><line x1="204" y1="30" x2="204" y2="220"/>
+        <line x1="276" y1="30" x2="276" y2="220"/><line x1="348" y1="30" x2="348" y2="220"/>
+      </g>
+      <line x1="60" y1="220" x2="425" y2="220" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="60" y1="220" x2="60" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 60 220 Q 100 216 132 200 Q 170 178 204 130 Q 240 82 276 58 Q 320 40 420 34"
+            fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <g fill="#7c3aed">
+        <circle cx="132" cy="200" r="4"/><circle cx="204" cy="130" r="4"/>
+        <circle cx="276" cy="58" r="4"/><circle cx="348" cy="38" r="4"/><circle cx="420" cy="34" r="4"/>
+      </g>
+      <line x1="60" y1="130" x2="204" y2="130" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5,4"/>
+      <line x1="204" y1="130" x2="204" y2="220" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5,4"/>
+      <text x="90" y="124" font-family="Arial" font-size="11" fill="#b91c1c">half the total</text>
+      <text x="210" y="240" font-family="Arial" font-size="11" fill="#b91c1c">median</text>
+      <text x="240" y="272" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Read across at n/2, then straight down to the median</text>
+      <text x="24" y="120" font-family="Arial" font-size="10" fill="#555" text-anchor="middle" transform="rotate(-90 24 120)">Cumulative frequency</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Reading off the curve</div>
+    Median: read across at $\dfrac{n}{2}$ &nbsp;·&nbsp; $Q_1$ at $\dfrac{n}{4}$ &nbsp;·&nbsp; $Q_3$ at $\dfrac{3n}{4}$
+  </div>
+
+  <div class="tip">
+    <strong>Why $\dfrac{n}{2}$ and not $\dfrac{n+1}{2}$?</strong> On a cumulative frequency <em>curve</em> the data are treated as continuous, so the simpler fractions are used. The $\dfrac{n+1}{2}$ rule is for a list of individual values.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Building the table</div>
+    <div class="example-body">
+      <p>Complete the cumulative frequency column for these $60$ test scores.</p>
+      <table>
+        <tr><th>Score $s$</th><th>Frequency</th><th>Cumulative frequency</th></tr>
+        <tr><td>$0 \leq s \lt 20$</td><td>$4$</td><td>$4$</td></tr>
+        <tr><td>$20 \leq s \lt 40$</td><td>$11$</td><td>$15$</td></tr>
+        <tr><td>$40 \leq s \lt 60$</td><td>$22$</td><td>$37$</td></tr>
+        <tr><td>$60 \leq s \lt 80$</td><td>$17$</td><td>$54$</td></tr>
+        <tr><td>$80 \leq s \lt 100$</td><td>$6$</td><td>$60$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Each entry is the running total: $4$, then $4 + 11 = 15$, then $15 + 22 = 37$, and so on.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The last value must equal the total, $60$ ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Plot at $(20, 4)$, $(40, 15)$, $(60, 37)$, $(80, 54)$, $(100, 60)$ — always the upper boundary.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Estimating from the curve</div>
+    <div class="example-body">
+      <p>Using the table above, estimate the median, the quartiles and the interquartile range.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$n = 60$, so the median is at the $30$th value.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$30$ lies between cf $15$ (at score $40$) and cf $37$ (at score $60$). Reading the curve gives roughly $54$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$Q_1$ at the $15$th value: this is exactly the cf at score $40$, so $Q_1 \approx 40$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$Q_3$ at the $45$th value: between cf $37$ (score $60$) and cf $54$ (score $80$), giving roughly $69$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>IQR $\approx 69 - 40 = 29$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — "How many scored more than…?"</div>
+    <div class="example-body">
+      <p>Using the same data, estimate how many students scored more than $70$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Read the cumulative frequency at $70$ from the curve: about $46$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>That is the number scoring <em>less than</em> $70$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>More than $70$: $60 - 46 = 14$ students.</span></div>
+      <div class="warn"><strong>Subtract from the total.</strong> A cumulative frequency curve always reads "less than", so "more than" questions need this extra step.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHICH DIAGRAM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Which Diagram, and Why</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Diagram</th><th>Best for</th><th>What you can read off</th></tr>
+    <tr><td><strong>Histogram</strong></td><td>Showing the shape of a distribution</td><td>Frequencies (as areas), modal class, skew</td></tr>
+    <tr><td><strong>Cumulative frequency curve</strong></td><td>Finding medians and quartiles</td><td>Median, $Q_1$, $Q_3$, IQR, "how many under $x$"</td></tr>
+    <tr><td><strong>Frequency polygon</strong></td><td>Comparing two distributions</td><td>General shape; plotted at <em>midpoints</em></td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Frequency polygon:</strong> plot the frequency against the <strong>midpoint</strong> of each class and join with straight lines. Note the contrast — cumulative frequency uses upper boundaries, frequency polygons use midpoints.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Choosing a diagram</div>
+    <div class="example-body">
+      <p>A researcher has grouped data on journey times with unequal class widths and wants to (a) show the shape of the distribution, (b) find the median. Which diagram for each?</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> A <strong>histogram</strong> — it handles unequal class widths correctly, because area represents frequency.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> A <strong>cumulative frequency curve</strong> — the median can be read straight off at $\tfrac{n}{2}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Frequency density</h4><p>$\dfrac{\text{frequency}}{\text{class width}}$ — the height of a histogram bar.</p></div>
+    <div class="ref-card"><h4>Area</h4><p>Area of a histogram bar $=$ frequency.</p></div>
+    <div class="ref-card"><h4>Frequency back</h4><p>Frequency $=$ density $\times$ width.</p></div>
+    <div class="ref-card"><h4>Bars touch</h4><p>Histograms have no gaps — the axis is continuous.</p></div>
+    <div class="ref-card"><h4>Part of a class</h4><p>Density $\times$ the width of the part you want.</p></div>
+    <div class="ref-card"><h4>Cumulative frequency</h4><p>A running total; plot at the <em>upper</em> boundary.</p></div>
+    <div class="ref-card"><h4>Median</h4><p>Read across at $\dfrac{n}{2}$.</p></div>
+    <div class="ref-card"><h4>Quartiles</h4><p>$\dfrac{n}{4}$ and $\dfrac{3n}{4}$; IQR $= Q_3 - Q_1$.</p></div>
+    <div class="ref-card"><h4>"More than"</h4><p>Subtract the reading from the total.</p></div>
+    <div class="ref-card"><h4>Frequency polygon</h4><p>Plot at <em>midpoints</em>, not boundaries.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A class $10 \leq x \lt 25$ has frequency $45$. Find the frequency density.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Class width $= 25 - 10 = 15$</p>
+          <p>Frequency density $= \dfrac{45}{15} = 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A histogram bar spans $30 \leq t \lt 50$ with height $6.5$. Find the frequency.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Width $= 20$</p>
+          <p>Frequency $= 6.5 \times 20 = 130$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Complete the frequency density column.</p>
+      <table>
+        <tr><th>Mass $m$ (g)</th><th>Frequency</th></tr>
+        <tr><td>$0 \leq m \lt 5$</td><td>$8$</td></tr>
+        <tr><td>$5 \leq m \lt 15$</td><td>$30$</td></tr>
+        <tr><td>$15 \leq m \lt 40$</td><td>$25$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Widths: $5$, $10$, $25$.</p>
+          <p>Densities: $\dfrac{8}{5} = 1.6$; &nbsp;$\dfrac{30}{10} = 3$; &nbsp;$\dfrac{25}{25} = 1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Explain why a histogram bar for a wide class can be shorter than one for a narrow class, even though it represents more data.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In a histogram the <strong>area</strong> represents the frequency, not the height.</p>
+          <p>A wide class spreads its frequency over a greater width, so the frequency density (and therefore the height) is lower — but the total area can still be larger.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Complete the cumulative frequency column for these $50$ values.</p>
+      <table>
+        <tr><th>Length $L$ (cm)</th><th>Frequency</th></tr>
+        <tr><td>$0 \leq L \lt 5$</td><td>$7$</td></tr>
+        <tr><td>$5 \leq L \lt 10$</td><td>$13$</td></tr>
+        <tr><td>$10 \leq L \lt 15$</td><td>$19$</td></tr>
+        <tr><td>$15 \leq L \lt 20$</td><td>$11$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Running totals: $7$, $20$, $39$, $50$.</p>
+          <p>Plot at the upper boundaries: $(5, 7)$, $(10, 20)$, $(15, 39)$, $(20, 50)$.</p>
+          <p>The final value equals the total of $50$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Using the data from Question 5, state the values of cumulative frequency at which you would read the median, $Q_1$ and $Q_3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n = 50$.</p>
+          <p>Median at $\dfrac{50}{2} = 25$</p>
+          <p>$Q_1$ at $\dfrac{50}{4} = 12.5$</p>
+          <p>$Q_3$ at $\dfrac{3 \times 50}{4} = 37.5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A cumulative frequency curve for $200$ people gives a reading of $145$ at a height of $180$ cm. How many people are taller than $180$ cm?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$145$ people are shorter than $180$ cm.</p>
+          <p>Taller than $180$ cm: $200 - 145 = 55$ people.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A histogram bar covers $10 \leq x \lt 30$ with frequency density $4$. Estimate how many values lie between $10$ and $22$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Width of the part wanted $= 22 - 10 = 12$</p>
+          <p>Frequency $= 4 \times 12 = 48$ values</p>
+          <p>This assumes the values are evenly spread across the class.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The histogram of $180$ journey times has these bars.</p>
+      <table>
+        <tr><th>Time $t$ (min)</th><th>Frequency density</th></tr>
+        <tr><td>$0 \leq t \lt 10$</td><td>$2$</td></tr>
+        <tr><td>$10 \leq t \lt 20$</td><td>$5$</td></tr>
+        <tr><td>$20 \leq t \lt 40$</td><td>$3$</td></tr>
+        <tr><td>$40 \leq t \lt 80$</td><td>$?$</td></tr>
+      </table>
+      <p>(a) Find the frequency of the first three classes. &nbsp; (b) Find the missing frequency density. &nbsp; (c) State the modal class.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $2 \times 10 = 20$; &nbsp;$5 \times 10 = 50$; &nbsp;$3 \times 20 = 60$.</p>
+          <p><strong>(b)</strong> So far $20 + 50 + 60 = 130$. The last class has $180 - 130 = 50$.</p>
+          <p>Width $= 40$, so density $= \dfrac{50}{40} = 1.25$.</p>
+          <p><strong>(c)</strong> The modal class is the one with the <strong>highest frequency density</strong>, which is $10 \leq t \lt 20$ (density $5$).</p>
+          <p><em>Note:</em> the class $20 \leq t \lt 40$ has the largest <em>frequency</em> ($60$), but the modal class in a histogram is judged by density.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The table shows the masses of $120$ parcels.</p>
+      <table>
+        <tr><th>Mass $m$ (kg)</th><th>Frequency</th></tr>
+        <tr><td>$0 \leq m \lt 2$</td><td>$14$</td></tr>
+        <tr><td>$2 \leq m \lt 4$</td><td>$32$</td></tr>
+        <tr><td>$4 \leq m \lt 6$</td><td>$41$</td></tr>
+        <tr><td>$6 \leq m \lt 8$</td><td>$23$</td></tr>
+        <tr><td>$8 \leq m \lt 10$</td><td>$10$</td></tr>
+      </table>
+      <p>(a) Build the cumulative frequency table. &nbsp; (b) Estimate the median. &nbsp; (c) Estimate the IQR. &nbsp; (d) Estimate how many parcels weigh more than $7$ kg.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Running totals: $14$, $46$, $87$, $110$, $120$.</p>
+          <p>Plot at $(2, 14)$, $(4, 46)$, $(6, 87)$, $(8, 110)$, $(10, 120)$.</p>
+          <p><strong>(b)</strong> Median at the $60$th value. This lies between cf $46$ (at $4$ kg) and cf $87$ (at $6$ kg).</p>
+          <p>Interpolating: $60 - 46 = 14$ into a class of $41$, so $4 + \dfrac{14}{41} \times 2 = 4 + 0.68 = \mathbf{4.7}$ kg (1 d.p.).</p>
+          <p><strong>(c)</strong> $Q_1$ at the $30$th value: between cf $14$ (at $2$) and cf $46$ (at $4$).</p>
+          <p>$2 + \dfrac{16}{32} \times 2 = 3.0$ kg</p>
+          <p>$Q_3$ at the $90$th value: between cf $87$ (at $6$) and cf $110$ (at $8$).</p>
+          <p>$6 + \dfrac{3}{23} \times 2 = 6.3$ kg</p>
+          <p>IQR $\approx 6.3 - 3.0 = \mathbf{3.3}$ kg</p>
+          <p><strong>(d)</strong> Reading the curve at $7$ kg: between cf $87$ (at $6$) and cf $110$ (at $8$), roughly $87 + \tfrac{1}{2}(23) = 98.5$, say $99$.</p>
+          <p>More than $7$ kg: $120 - 99 = \mathbf{21}$ parcels.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Histograms &amp; Cumulative Frequency (S3) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

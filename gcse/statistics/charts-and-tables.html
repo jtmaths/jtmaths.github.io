@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables, Charts and Diagrams – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Tables, Charts and Diagrams</h1>
+  <p>GCSE Maths · Statistics (S2)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – CHOOSING THE RIGHT DIAGRAM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Choosing the Right Diagram</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Type of data</th><th>Best diagram</th></tr>
+    <tr><td>Categories (colours, sports)</td><td>Bar chart or pictogram</td></tr>
+    <tr><td>Proportions of a whole</td><td>Pie chart</td></tr>
+    <tr><td>Ungrouped discrete numbers</td><td>Vertical line chart</td></tr>
+    <tr><td>Data over time</td><td>Line graph (time series)</td></tr>
+    <tr><td>Comparing two groups by category</td><td>Dual or composite bar chart</td></tr>
+    <tr><td>Grouped continuous data</td><td>Histogram (see the next page)</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Bars must have gaps for categorical data.</strong> Touching bars are reserved for histograms, where the horizontal axis is a continuous scale.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – BAR CHARTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Bar Charts</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Draw and label both axes, with frequency on the vertical axis.</li>
+    <li>Choose a sensible, even scale that fits the largest frequency.</li>
+    <li>Draw bars of equal width with equal gaps between them.</li>
+    <li>Label every bar with its category.</li>
+    <li>Give the chart a title.</li>
+  </ul>
+
+  <div class="svg-block">
+    <svg width="440" height="260" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="55" y1="40" x2="410" y2="40"/><line x1="55" y1="75" x2="410" y2="75"/>
+        <line x1="55" y1="110" x2="410" y2="110"/><line x1="55" y1="145" x2="410" y2="145"/>
+        <line x1="55" y1="180" x2="410" y2="180"/>
+      </g>
+      <line x1="55" y1="215" x2="415" y2="215" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="215" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <g fill="#a5b4fc" stroke="#4f46e5" stroke-width="1.8">
+        <rect x="80" y="110" width="50" height="105"/>
+        <rect x="155" y="75" width="50" height="140"/>
+        <rect x="230" y="145" width="50" height="70"/>
+        <rect x="305" y="40" width="50" height="175"/>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">
+        <text x="105" y="232">Football</text><text x="180" y="232">Rugby</text>
+        <text x="255" y="232">Tennis</text><text x="330" y="232">Netball</text>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#3730a3" text-anchor="end">
+        <text x="48" y="219">0</text><text x="48" y="184">2</text><text x="48" y="149">4</text>
+        <text x="48" y="114">6</text><text x="48" y="79">8</text><text x="48" y="44">10</text>
+      </g>
+      <text x="20" y="125" font-family="Arial" font-size="11" fill="#555" text-anchor="middle" transform="rotate(-90 20 125)">Frequency</text>
+      <text x="235" y="252" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Favourite sport</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>Dual bar chart</strong> — two bars side by side for each category, letting you compare two groups directly. Always include a key.<br>
+    <strong>Composite (stacked) bar chart</strong> — one bar per category, split into sections. Good for showing totals as well as parts.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reading a bar chart</div>
+    <div class="example-body">
+      <p>From the chart above, find (a) the modal sport, (b) the total number of students, (c) the fraction who chose tennis.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Reading the bars: Football $6$, Rugby $8$, Tennis $4$, Netball $10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(a)</strong> The tallest bar is Netball, so that is the mode.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(b)</strong> $6 + 8 + 4 + 10 = 28$ students.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(c)</strong> $\dfrac{4}{28} = \dfrac{1}{7}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PIE CHARTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Pie Charts</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Drawing a pie chart</div>
+    $\text{angle} = \dfrac{\text{frequency}}{\text{total frequency}} \times 360^\circ$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Reading a pie chart</div>
+    $\text{frequency} = \dfrac{\text{angle}}{360^\circ} \times \text{total frequency}$
+  </div>
+
+  <div class="tip">
+    <strong>The quick way:</strong> work out how many degrees represent one item ($360 \div$ total), then multiply each frequency by that. Far faster than doing a separate fraction for every sector.
+  </div>
+
+  <div class="svg-block">
+    <svg width="420" height="220" viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="120" cy="110" r="85" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 120 110 L 120 25 A 85 85 0 0 1 195 150 Z" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 120 110 L 195 150 A 85 85 0 0 1 60 182 Z" fill="#c4b5fd" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 120 110 L 60 182 A 85 85 0 0 1 120 25 Z" fill="#ddd6fe" stroke="#4f46e5" stroke-width="2"/>
+      <text x="155" y="80" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">Bus</text>
+      <text x="128" y="170" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">Car</text>
+      <text x="66" y="98" font-family="Arial" font-size="12" fill="#1e1e2e" font-weight="bold">Walk</text>
+      <text x="255" y="70" font-family="Arial" font-size="12" fill="#555">Bus 150°</text>
+      <text x="255" y="98" font-family="Arial" font-size="12" fill="#555">Car 120°</text>
+      <text x="255" y="126" font-family="Arial" font-size="12" fill="#555">Walk 90°</text>
+      <text x="255" y="156" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">Total 360°</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Drawing a pie chart</div>
+    <div class="example-body">
+      <p>$40$ people were asked their favourite fruit: apple $14$, banana $10$, orange $9$, pear $7$. Find the angle for each sector.</p>
+      <div class="step-row"><span class="arrow">①</span><span>One person $= 360 \div 40 = 9^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Apple: $14 \times 9 = 126^\circ$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Banana: $10 \times 9 = 90^\circ$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Orange: $9 \times 9 = 81^\circ$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Pear: $7 \times 9 = 63^\circ$</span></div>
+      <p>Check: $126 + 90 + 81 + 63 = 360^\circ$ ✓</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Reading a pie chart</div>
+    <div class="example-body">
+      <p>A pie chart represents $216$ people. The sector for "cycle" is $75^\circ$. How many cycle?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{75}{360} \times 216$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 0.20833 \times 216 = 45$ people</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>You cannot compare two pie charts by sector size alone.</strong> A $90^\circ$ sector of a chart representing $40$ people is $10$ people; the same angle on a chart representing $400$ people is $100$. Always check the totals.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Comparing two pie charts</div>
+    <div class="example-body">
+      <p>Pie chart A represents $60$ students; its "walk" sector is $120^\circ$. Pie chart B represents $200$ students; its "walk" sector is $72^\circ$. Which group has more walkers?</p>
+      <div class="step-row"><span class="arrow">①</span><span>A: $\dfrac{120}{360} \times 60 = 20$ students.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>B: $\dfrac{72}{360} \times 200 = 40$ students.</span></div>
+      <p><strong>Group B has more walkers</strong>, even though its sector angle is much smaller — because the group is far larger.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PICTOGRAMS AND LINE CHARTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Pictograms and Vertical Line Charts</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>pictogram</strong> uses a symbol to represent a fixed number of items. It must always have a <strong>key</strong> saying what one symbol stands for.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Pictogram</div>
+    <div class="example-body">
+      <p>In a pictogram, one circle represents $8$ books. How many books are shown by (a) $4$ circles, (b) $3$ and a half circles?</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $4 \times 8 = 32$ books</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $3.5 \times 8 = 28$ books</span></div>
+      <div class="tip">Half a symbol means half the value. If one symbol is $8$, a quarter-symbol is $2$.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    A <strong>vertical line chart</strong> is like a bar chart but with thin lines instead of bars. It is the correct diagram for <em>ungrouped discrete</em> data such as "number of siblings".
+  </div>
+
+  <div class="svg-block">
+    <svg width="380" height="230" viewBox="0 0 380 230" xmlns="http://www.w3.org/2000/svg">
+      <line x1="55" y1="185" x2="350" y2="185" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="185" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <g stroke="#7c3aed" stroke-width="4">
+        <line x1="100" y1="185" x2="100" y2="80"/>
+        <line x1="150" y1="185" x2="150" y2="50"/>
+        <line x1="200" y1="185" x2="200" y2="110"/>
+        <line x1="250" y1="185" x2="250" y2="155"/>
+        <line x1="300" y1="185" x2="300" y2="170"/>
+      </g>
+      <g fill="#7c3aed">
+        <circle cx="100" cy="80" r="4"/><circle cx="150" cy="50" r="4"/><circle cx="200" cy="110" r="4"/>
+        <circle cx="250" cy="155" r="4"/><circle cx="300" cy="170" r="4"/>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">
+        <text x="100" y="202">0</text><text x="150" y="202">1</text><text x="200" y="202">2</text>
+        <text x="250" y="202">3</text><text x="300" y="202">4</text>
+      </g>
+      <text x="200" y="222" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Number of siblings</text>
+      <text x="22" y="110" font-family="Arial" font-size="11" fill="#555" text-anchor="middle" transform="rotate(-90 22 110)">Frequency</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – TIME SERIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Time Series Graphs</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>time series</strong> plots a quantity against time, with the points joined by straight lines. Time always goes on the <strong>horizontal</strong> axis.
+  </div>
+
+  <div class="svg-block">
+    <svg width="450" height="240" viewBox="0 0 450 240" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="55" y1="40" x2="420" y2="40"/><line x1="55" y1="75" x2="420" y2="75"/>
+        <line x1="55" y1="110" x2="420" y2="110"/><line x1="55" y1="145" x2="420" y2="145"/>
+      </g>
+      <line x1="55" y1="180" x2="425" y2="180" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="55" y1="180" x2="55" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <polyline points="85,150 130,120 175,135 220,95 265,110 310,70 355,85 400,45"
+                fill="none" stroke="#7c3aed" stroke-width="2.6"/>
+      <g fill="#7c3aed">
+        <circle cx="85" cy="150" r="4"/><circle cx="130" cy="120" r="4"/><circle cx="175" cy="135" r="4"/>
+        <circle cx="220" cy="95" r="4"/><circle cx="265" cy="110" r="4"/><circle cx="310" cy="70" r="4"/>
+        <circle cx="355" cy="85" r="4"/><circle cx="400" cy="45" r="4"/>
+      </g>
+      <line x1="85" y1="155" x2="400" y2="60" stroke="#ef4444" stroke-width="2" stroke-dasharray="7,4"/>
+      <text x="330" y="128" font-family="Arial" font-size="11" fill="#b91c1c">overall upward trend</text>
+      <g font-family="Arial" font-size="10" fill="#3730a3" text-anchor="middle">
+        <text x="107" y="197">2021</text><text x="197" y="197">2022</text>
+        <text x="287" y="197">2023</text><text x="377" y="197">2024</text>
+      </g>
+      <text x="240" y="222" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle" font-weight="bold">Quarterly sales</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Two things to describe</div>
+    The <strong>trend</strong> — the overall direction, ignoring the wobbles<br>
+    Any <strong>seasonality</strong> — a pattern that repeats at regular intervals
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Describing a time series</div>
+    <div class="example-body">
+      <p>Describe the pattern in the graph above.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Trend:</strong> sales are generally <em>increasing</em> over the four years.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Seasonality:</strong> within each year there is a rise then a small dip, repeating annually.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The highest point is in the final quarter shown.</span></div>
+      <div class="tip">A good answer separates the long-term <em>trend</em> from the short-term <em>fluctuations</em>. Saying only "it goes up and down" earns little credit.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not read between the plotted points on a time series of discrete measurements.</strong> If sales are recorded quarterly, the joining line is only a visual guide — there is no actual data halfway between two quarters.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – MISLEADING DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Misleading Diagrams</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Trick</th><th>Why it misleads</th></tr>
+    <tr><td>Vertical axis not starting at zero</td><td>Small differences look enormous</td></tr>
+    <tr><td>Uneven scale</td><td>Distorts the shape of the data</td></tr>
+    <tr><td>Bars of different widths</td><td>The eye compares area, not height</td></tr>
+    <tr><td>3D effects</td><td>Front sectors or bars look bigger than they are</td></tr>
+    <tr><td>No key or labels</td><td>The reader cannot tell what is shown</td></tr>
+    <tr><td>Pictogram symbols of different sizes</td><td>Suggests a bigger difference than the data shows</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Spotting a misleading graph</div>
+    <div class="example-body">
+      <p>A bar chart shows sales of $102$, $104$ and $107$ units, but the vertical axis runs from $100$ to $108$. Explain why this is misleading.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Because the axis starts at $100$ rather than $0$, the bar for $107$ appears roughly $3.5$ times the height of the bar for $102$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>In reality the difference is only $5$ units out of about $100$ — an increase of under $5\%$.</span></div>
+      <p><strong>The graph exaggerates the differences.</strong> Starting the axis at zero would show that the three values are very similar.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Bar chart</h4><p>Categories; equal widths, gaps between bars.</p></div>
+    <div class="ref-card"><h4>Pie chart</h4><p>$\dfrac{\text{frequency}}{\text{total}} \times 360^\circ$; sectors must total $360^\circ$.</p></div>
+    <div class="ref-card"><h4>Pie shortcut</h4><p>Find degrees per item first: $360 \div$ total.</p></div>
+    <div class="ref-card"><h4>Comparing pies</h4><p>Always convert angles back to actual numbers first.</p></div>
+    <div class="ref-card"><h4>Pictogram</h4><p>Needs a key; part-symbols mean part of the value.</p></div>
+    <div class="ref-card"><h4>Vertical line chart</h4><p>For ungrouped discrete data.</p></div>
+    <div class="ref-card"><h4>Time series</h4><p>Time on the horizontal axis; describe trend and seasonality.</p></div>
+    <div class="ref-card"><h4>Misleading</h4><p>Watch for a truncated axis, uneven scales and 3D effects.</p></div>
+    <div class="ref-card"><h4>Always</h4><p>Label both axes, add a title, and include a key if needed.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$72$ people were surveyed. Find the pie chart angle for a group of $18$ people.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>One person $= 360 \div 72 = 5^\circ$</p>
+          <p>Angle $= 18 \times 5 = 90^\circ$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A pie chart represents $240$ people. A sector has angle $135^\circ$. How many people does it represent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{135}{360} \times 240 = 0.375 \times 240 = 90$ people</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$45$ students chose a language: French $20$, Spanish $15$, German $10$. Find the angle of each sector.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>One student $= 360 \div 45 = 8^\circ$</p>
+          <p>French: $20 \times 8 = 160^\circ$</p>
+          <p>Spanish: $15 \times 8 = 120^\circ$</p>
+          <p>German: $10 \times 8 = 80^\circ$</p>
+          <p>Check: $160 + 120 + 80 = 360^\circ$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>In a pictogram, one star represents $12$ cars. How many cars are shown by $2$ and a quarter stars?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2.25 \times 12 = 27$ cars</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Name the most suitable diagram for each: (a) the proportion of a budget spent on each category, (b) the number of goals scored per match, (c) monthly rainfall over three years.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A pie chart — it shows proportions of a whole.</p>
+          <p><strong>(b)</strong> A vertical line chart — the data are ungrouped and discrete.</p>
+          <p><strong>(c)</strong> A time series line graph — the data are measured over time.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Pie chart P represents $80$ people with a $90^\circ$ "tea" sector. Pie chart Q represents $300$ people with a $36^\circ$ "tea" sector. Which group has more tea drinkers?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>P: $\dfrac{90}{360} \times 80 = 20$ people</p>
+          <p>Q: $\dfrac{36}{360} \times 300 = 30$ people</p>
+          <p><strong>Group Q has more tea drinkers</strong>, despite its much smaller sector angle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Give two reasons why a bar chart with a vertical axis starting at $50$ could be misleading.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. The bars no longer show the true relative sizes — a bar twice as tall does not represent twice the value.</p>
+          <p>2. Small differences between the values are visually exaggerated, making them look far more significant than they are.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A time series shows shop takings rising each spring and falling each autumn, while gradually increasing year on year. Describe the trend and the seasonality.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Trend:</strong> takings are increasing overall from year to year.</p>
+          <p><strong>Seasonality:</strong> within each year there is a repeating pattern — a peak in spring and a trough in autumn.</p>
+          <p>The two effects are separate: the seasonal rises and falls happen <em>around</em> a steadily rising overall level.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A pie chart shows how $180$ students travel to school. The angles are: walk $140^\circ$, bus $x^\circ$, car $90^\circ$, cycle $50^\circ$.</p>
+      <p>(a) Find $x$. &nbsp; (b) How many travel by bus? &nbsp; (c) What fraction walk?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $140 + x + 90 + 50 = 360$, so $x = 360 - 280 = 80^\circ$.</p>
+          <p><strong>(b)</strong> One student $= 360 \div 180 = 2^\circ$, so bus $= 80 \div 2 = 40$ students.</p>
+          <p><strong>(c)</strong> $\dfrac{140}{360} = \dfrac{7}{18}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A company's quarterly profits (in £1000s) over two years are: $18, 24, 21, 30$ then $22, 28, 25, 35$.</p>
+      <p>(a) Describe the trend. &nbsp; (b) Describe the seasonal pattern. &nbsp; (c) Estimate the profit for the first quarter of year 3, explaining your reasoning. &nbsp; (d) Why should this estimate be treated with caution?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Comparing matching quarters, every one has risen: $18 \to 22$, $24 \to 28$, $21 \to 25$, $30 \to 35$. The <strong>trend is upward</strong>, by roughly £$4000$–£$5000$ per year.</p>
+          <p><strong>(b)</strong> Within each year the pattern is the same: a rise in Q2, a dip in Q3, then the highest value in Q4. This <strong>seasonal pattern repeats</strong> in both years.</p>
+          <p><strong>(c)</strong> Q1 went from $18$ to $22$, an increase of $4$. Continuing that pattern gives an estimate of about $22 + 4 = £26\,000$ for Q1 of year 3.</p>
+          <p><strong>(d)</strong> The estimate assumes the trend continues unchanged, which may not happen — a change in the economy, competition or company circumstances could break the pattern. Two years is also a short record on which to base a prediction.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Tables, Charts &amp; Diagrams (S2) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

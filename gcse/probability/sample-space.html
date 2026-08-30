@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Space Diagrams – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .ss td, .ss th { text-align: center; padding: 7px 9px; font-size: .92rem; }
+    .ss .hi { background: #bbf7d0 !important; font-weight: 700; color: #166534; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⊞ Sample Space Diagrams</h1>
+  <p>GCSE Maths · Probability (P7)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IS A SAMPLE SPACE?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What Is a Sample Space?</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>sample space</strong> is the complete list of every possible outcome of an experiment. A <strong>sample space diagram</strong> is a grid that lays out all the outcomes when <em>two</em> things happen together.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Why it works</div>
+    Every cell of the grid is one outcome, and all cells are <strong>equally likely</strong><br>
+    so $P(\text{event}) = \dfrac{\text{number of cells that work}}{\text{total number of cells}}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Two coins</div>
+    <div class="example-body">
+      <p>Two fair coins are tossed. Draw a sample space diagram and find $P(\text{one head and one tail})$.</p>
+      <table class="ss">
+        <tr><th></th><th>H</th><th>T</th></tr>
+        <tr><th>H</th><td>HH</td><td class="hi">HT</td></tr>
+        <tr><th>T</th><td class="hi">TH</td><td>TT</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>There are $2 \times 2 = 4$ equally likely outcomes.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Two of them have one head and one tail: HT and TH.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P = \dfrac{2}{4} = \dfrac{1}{2}$</span></div>
+      <div class="warn"><strong>HT and TH are different outcomes.</strong> A common error is to say there are only three outcomes (two heads, two tails, one of each) and give $P = \tfrac{1}{3}$. The grid shows why that is wrong.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TWO DICE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Two-Dice Grid</div>
+<div class="section-body">
+
+  <p>The most important sample space at GCSE is the grid of totals when two dice are rolled. It is worth being able to reproduce it quickly.</p>
+
+  <table class="ss">
+    <tr><th>+</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+    <tr><th>1</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td class="hi">7</td></tr>
+    <tr><th>2</th><td>3</td><td>4</td><td>5</td><td>6</td><td class="hi">7</td><td>8</td></tr>
+    <tr><th>3</th><td>4</td><td>5</td><td>6</td><td class="hi">7</td><td>8</td><td>9</td></tr>
+    <tr><th>4</th><td>5</td><td>6</td><td class="hi">7</td><td>8</td><td>9</td><td>10</td></tr>
+    <tr><th>5</th><td>6</td><td class="hi">7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+    <tr><th>6</th><td class="hi">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+  </table>
+
+  <div class="concept">
+    There are $6 \times 6 = 36$ equally likely outcomes. The highlighted diagonal shows the six ways of making $7$ — the most likely total.
+  </div>
+
+  <table>
+    <tr><th>Total</th><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td><td>$6$</td><td>$7$</td><td>$8$</td><td>$9$</td><td>$10$</td><td>$11$</td><td>$12$</td></tr>
+    <tr><th>Ways</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td><td>$6$</td><td>$5$</td><td>$4$</td><td>$3$</td><td>$2$</td><td>$1$</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The ways add to $36$</strong> ($1+2+3+4+5+6+5+4+3+2+1 = 36$), which is a quick way to check you have not miscounted.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reading the grid</div>
+    <div class="example-body">
+      <p>Two fair dice are rolled and the scores added. Find (a) $P(\text{total} = 9)$, (b) $P(\text{total} \geq 10)$, (c) $P(\text{total is even})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Four ways: $(3,6), (4,5), (5,4), (6,3)$. $P = \dfrac{4}{36} = \dfrac{1}{9}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Totals $10$, $11$, $12$ give $3 + 2 + 1 = 6$ ways. $P = \dfrac{6}{36} = \dfrac{1}{6}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> Even totals are $2,4,6,8,10,12$: $1+3+5+5+3+1 = 18$ ways.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P = \dfrac{18}{36} = \dfrac{1}{2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A different rule on the grid</div>
+    <div class="example-body">
+      <p>Two dice are rolled. Find $P(\text{the two scores are the same})$ and $P(\text{the difference is } 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Same score: $(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)$ — the main diagonal, $6$ cells.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P = \dfrac{6}{36} = \dfrac{1}{6}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Difference of $1$: $(1,2),(2,1),(2,3),(3,2),(3,4),(4,3),(4,5),(5,4),(5,6),(6,5)$ — $10$ cells.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P = \dfrac{10}{36} = \dfrac{5}{18}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – OTHER GRIDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Grids for Other Experiments</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Put the outcomes of the first experiment down the side.</li>
+    <li>Put the outcomes of the second along the top.</li>
+    <li>Fill each cell with the combined result (a total, a product, a pair of letters…).</li>
+    <li>Count the total number of cells.</li>
+    <li>Count the cells that satisfy the event, and divide.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A spinner and a die</div>
+    <div class="example-body">
+      <p>A three-sided spinner numbered $1$, $2$, $3$ is spun and a fair four-sided die numbered $1$–$4$ is rolled. The two numbers are multiplied. Find $P(\text{product} \gt 6)$.</p>
+      <table class="ss">
+        <tr><th>×</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+        <tr><th>1</th><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+        <tr><th>2</th><td>2</td><td>4</td><td>6</td><td class="hi">8</td></tr>
+        <tr><th>3</th><td>3</td><td>6</td><td>9</td><td class="hi">12</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Total outcomes $= 3 \times 4 = 12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Products greater than $6$: $8$, $9$ and $12$ — three cells.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P = \dfrac{3}{12} = \dfrac{1}{4}$</span></div>
+      <div class="warn">"Greater than $6$" does <em>not</em> include $6$. If the question said "$6$ or more", the answer would be $\tfrac{5}{12}$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Two unequal spinners</div>
+    <div class="example-body">
+      <p>Spinner A has sections R, B, G. Spinner B has sections $1$, $2$. Both are spun. List the sample space and find $P(\text{a red with an even number})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Outcomes: R1, R2, B1, B2, G1, G2 — six in total.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Red with an even number: just R2.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P = \dfrac{1}{6}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Using the grid twice</div>
+    <div class="example-body">
+      <p>Two dice are rolled. Find $P(\text{the total is a prime number})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Possible totals run from $2$ to $12$. The primes are $2, 3, 5, 7, 11$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ways: $2 \to 1$, $3 \to 2$, $5 \to 4$, $7 \to 6$, $11 \to 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total ways $= 1 + 2 + 4 + 6 + 2 = 15$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P = \dfrac{15}{36} = \dfrac{5}{12}$</span></div>
+      <div class="tip">Remember $9$ is <em>not</em> prime ($9 = 3 \times 3$), and neither is $1$. Listing the primes first prevents slips.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – BIASED OUTCOMES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When the Outcomes Are Not Equally Likely</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>The counting method only works if every cell is equally likely.</strong> If a spinner is biased, you cannot simply count cells — you must multiply the individual probabilities instead.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A biased spinner</div>
+    <div class="example-body">
+      <p>A biased spinner has $P(\text{red}) = 0.6$ and $P(\text{blue}) = 0.4$. It is spun twice. Find $P(\text{two reds})$ and $P(\text{one of each})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The four outcomes are RR, RB, BR, BB — but they are <em>not</em> equally likely.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{RR}) = 0.6 \times 0.6 = 0.36$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{RB}) = 0.6 \times 0.4 = 0.24$ and $P(\text{BR}) = 0.4 \times 0.6 = 0.24$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{one of each}) = 0.24 + 0.24 = 0.48$</span></div>
+      <p>Check: $P(\text{BB}) = 0.16$, and $0.36 + 0.24 + 0.24 + 0.16 = 1$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Sample space</h4><p>The complete list of possible outcomes.</p></div>
+    <div class="ref-card"><h4>Grid method</h4><p>First experiment down the side, second along the top.</p></div>
+    <div class="ref-card"><h4>Two dice</h4><p>$36$ outcomes; totals from $2$ to $12$.</p></div>
+    <div class="ref-card"><h4>Most likely total</h4><p>$7$, with $6$ ways out of $36$.</p></div>
+    <div class="ref-card"><h4>Order matters</h4><p>HT and TH are two different outcomes.</p></div>
+    <div class="ref-card"><h4>Counting</h4><p>$P = \dfrac{\text{cells that work}}{\text{total cells}}$.</p></div>
+    <div class="ref-card"><h4>Check the total</h4><p>Number of cells $=$ outcomes of first $\times$ outcomes of second.</p></div>
+    <div class="ref-card"><h4>Biased?</h4><p>Do not count cells — multiply the individual probabilities.</p></div>
+    <div class="ref-card"><h4>Read carefully</h4><p>"Greater than" excludes the number; "at least" includes it.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Two fair coins are tossed. Find (a) $P(\text{two tails})$, (b) $P(\text{at least one head})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sample space: HH, HT, TH, TT — four outcomes.</p>
+          <p><strong>(a)</strong> One outcome: $\dfrac{1}{4}$</p>
+          <p><strong>(b)</strong> Three outcomes (HH, HT, TH): $\dfrac{3}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Two fair dice are rolled and the scores added. Find (a) $P(\text{total} = 5)$, (b) $P(\text{total} = 12)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(1,4),(2,3),(3,2),(4,1)$ — four ways: $\dfrac{4}{36} = \dfrac{1}{9}$</p>
+          <p><strong>(b)</strong> Only $(6,6)$: $\dfrac{1}{36}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Two fair dice are rolled. Find $P(\text{total is less than } 6)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Totals $2$, $3$, $4$, $5$ give $1 + 2 + 3 + 4 = 10$ ways.</p>
+          <p>$P = \dfrac{10}{36} = \dfrac{5}{18}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Two fair dice are rolled. Find $P(\text{both scores are even})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Each die has $3$ even faces, so the grid has $3 \times 3 = 9$ favourable cells.</p>
+          <p>$P = \dfrac{9}{36} = \dfrac{1}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A four-sided spinner ($1$–$4$) and a coin are used together. Draw the sample space and find $P(\text{a head with an odd number})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Outcomes: H1, H2, H3, H4, T1, T2, T3, T4 — eight in total.</p>
+          <p>Head with odd number: H1, H3 — two outcomes.</p>
+          <p>$P = \dfrac{2}{8} = \dfrac{1}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Two fair dice are rolled and the scores multiplied. Find $P(\text{product is } 12)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Pairs giving $12$: $(2,6), (3,4), (4,3), (6,2)$ — four ways.</p>
+          <p>$P = \dfrac{4}{36} = \dfrac{1}{9}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two dice are rolled. Find $P(\text{the difference between the scores is } 3)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Pairs: $(1,4),(4,1),(2,5),(5,2),(3,6),(6,3)$ — six ways.</p>
+          <p>$P = \dfrac{6}{36} = \dfrac{1}{6}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A biased coin has $P(\text{heads}) = 0.7$. It is tossed twice. Find (a) $P(\text{two heads})$, (b) $P(\text{exactly one head})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The outcomes are not equally likely, so multiply.</p>
+          <p><strong>(a)</strong> $0.7 \times 0.7 = 0.49$</p>
+          <p><strong>(b)</strong> HT: $0.7 \times 0.3 = 0.21$; TH: $0.3 \times 0.7 = 0.21$</p>
+          <p>Total $= 0.42$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A spinner numbered $1$, $2$, $3$ is spun twice and the two numbers are added.</p>
+      <p>(a) Draw the sample space of totals. &nbsp; (b) Find $P(\text{total} = 4)$. &nbsp; (c) Find $P(\text{total is odd})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The grid of totals:</p>
+          <table class="ss">
+            <tr><th>+</th><th>1</th><th>2</th><th>3</th></tr>
+            <tr><th>1</th><td>2</td><td>3</td><td>4</td></tr>
+            <tr><th>2</th><td>3</td><td>4</td><td>5</td></tr>
+            <tr><th>3</th><td>4</td><td>5</td><td>6</td></tr>
+          </table>
+          <p>Nine outcomes in total.</p>
+          <p><strong>(b)</strong> Total $4$ appears three times: $P = \dfrac{3}{9} = \dfrac{1}{3}$</p>
+          <p><strong>(c)</strong> Odd totals are $3$ (twice) and $5$ (twice) — four cells.</p>
+          <p>$P = \dfrac{4}{9}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>In a game, two fair dice are rolled. You win £$5$ if the total is $10$ or more, £$2$ if the total is exactly $7$, and nothing otherwise. It costs £$1$ to play.</p>
+      <p>(a) Find $P(\text{winning £5})$. &nbsp; (b) Find $P(\text{winning nothing})$. &nbsp; (c) Find the expected winnings per game. &nbsp; (d) Is the game fair?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Totals $10$, $11$, $12$: $3 + 2 + 1 = 6$ ways.</p>
+          <p>$P = \dfrac{6}{36} = \dfrac{1}{6}$</p>
+          <p><strong>(b)</strong> Total $7$ has $6$ ways, so winning something covers $6 + 6 = 12$ cells.</p>
+          <p>$P(\text{nothing}) = \dfrac{36 - 12}{36} = \dfrac{24}{36} = \dfrac{2}{3}$</p>
+          <p><strong>(c)</strong> Expected winnings $= \left(5 \times \dfrac{6}{36}\right) + \left(2 \times \dfrac{6}{36}\right) + \left(0 \times \dfrac{24}{36}\right)$</p>
+          <p>$= \dfrac{30}{36} + \dfrac{12}{36} = \dfrac{42}{36} = £1.17$ (to the nearest penny)</p>
+          <p><strong>(d)</strong> The game costs £$1$ but returns about £$1.17$ on average, so it is <strong>not fair — it favours the player</strong> by about $17$p per game. The organiser would lose money in the long run.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Sample Space Diagrams (P7) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

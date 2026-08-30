@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Probability Scale and Relative Frequency – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 The Probability Scale and Relative Frequency</h1>
+  <p>GCSE Maths · Probability (P3)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE SCALE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Probability Scale</div>
+<div class="section-body">
+
+  <p>Every probability is a number from $0$ to $1$ inclusive. Nothing can be more certain than certain, and nothing less likely than impossible.</p>
+
+  <div class="svg-block">
+    <svg width="580" height="150" viewBox="0 0 580 150" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="75" x2="540" y2="75" stroke="#4f46e5" stroke-width="3"/>
+      <g stroke="#4f46e5" stroke-width="2">
+        <line x1="40" y1="63" x2="40" y2="87"/><line x1="165" y1="63" x2="165" y2="87"/>
+        <line x1="290" y1="63" x2="290" y2="87"/><line x1="415" y1="63" x2="415" y2="87"/>
+        <line x1="540" y1="63" x2="540" y2="87"/>
+      </g>
+      <g font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">
+        <text x="40" y="106">0</text><text x="165" y="106">¼</text><text x="290" y="106">½</text>
+        <text x="415" y="106">¾</text><text x="540" y="106">1</text>
+      </g>
+      <g font-family="Arial" font-size="12" fill="#555" text-anchor="middle">
+        <text x="40" y="50">impossible</text><text x="165" y="50">unlikely</text><text x="290" y="50">even chance</text>
+        <text x="415" y="50">likely</text><text x="540" y="50">certain</text>
+      </g>
+      <g font-family="Arial" font-size="11" fill="#7c3aed" text-anchor="middle">
+        <text x="40" y="128">0%</text><text x="165" y="128">25%</text><text x="290" y="128">50%</text>
+        <text x="415" y="128">75%</text><text x="540" y="128">100%</text>
+      </g>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Probability</th><th>Word</th><th>Example</th></tr>
+    <tr><td>$0$</td><td>Impossible</td><td>Rolling a $7$ on an ordinary die</td></tr>
+    <tr><td>Close to $0$</td><td>Very unlikely</td><td>Winning the lottery jackpot</td></tr>
+    <tr><td>$0.5$</td><td>Even chance</td><td>A fair coin landing heads</td></tr>
+    <tr><td>Close to $1$</td><td>Very likely</td><td>Rolling less than $6$ on a die</td></tr>
+    <tr><td>$1$</td><td>Certain</td><td>Rolling a number less than $7$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Never write a probability as a ratio.</strong> "$1$ in $4$" is fine in speech, but write it as $\tfrac{1}{4}$, $0.25$ or $25\%$. Writing "$1:4$" means something different (one part to four parts, which is $\tfrac{1}{5}$).
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Placing probabilities on the scale</div>
+    <div class="example-body">
+      <p>Mark these events on a probability scale: (a) a fair die showing an even number; (b) the sun rising tomorrow; (c) picking a red card from a standard deck; (d) rolling two sixes with two dice.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $\dfrac{3}{6} = 0.5$ — exactly halfway.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $1$ — certain (for all practical purposes), at the far right.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> $\dfrac{26}{52} = 0.5$ — also halfway.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(d)</strong> $\dfrac{1}{6} \times \dfrac{1}{6} = \dfrac{1}{36} \approx 0.028$ — very close to $0$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THEORETICAL PROBABILITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Theoretical Probability</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Theoretical probability</div>
+    $P(\text{event}) = \dfrac{\text{number of favourable outcomes}}{\text{total number of possible outcomes}}$
+  </div>
+
+  <div class="concept">
+    Theoretical probability is worked out by <strong>reasoning</strong> about the situation, before any experiment is done. It only works when all outcomes are <em>equally likely</em>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Cards</div>
+    <div class="example-body">
+      <p>A card is drawn at random from a standard pack of $52$. Find (a) $P(\text{a heart})$, (b) $P(\text{a king})$, (c) $P(\text{a picture card})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $13$ hearts out of $52$: $\dfrac{13}{52} = \dfrac{1}{4}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $4$ kings out of $52$: $\dfrac{4}{52} = \dfrac{1}{13}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> Picture cards are J, Q, K in each of $4$ suits: $12$ cards.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{12}{52} = \dfrac{3}{13}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – RELATIVE FREQUENCY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Relative Frequency (Experimental Probability)</div>
+<div class="section-body">
+
+  <p>Sometimes you cannot reason out a probability — a drawing pin, a bent coin or a real-world event. Then you must <strong>experiment</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Relative frequency</div>
+    $\text{relative frequency} = \dfrac{\text{number of times the event happened}}{\text{total number of trials}}$
+  </div>
+
+  <div class="concept">
+    Relative frequency is also called <strong>experimental probability</strong> or an <strong>estimate of probability</strong>. It is based on what actually happened, not on theory.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Relative frequency</div>
+    <div class="example-body">
+      <p>A drawing pin is dropped $200$ times and lands point up $124$ times. Estimate the probability that it lands point up.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Relative frequency $= \dfrac{124}{200}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 0.62$</span></div>
+      <p>So $P(\text{point up}) \approx 0.62$. Note the word "estimate" — a different set of $200$ drops would give a slightly different value.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using relative frequency to predict</div>
+    <div class="example-body">
+      <p>In a factory, $12$ out of $400$ items sampled were faulty. Estimate how many faulty items there would be in a batch of $5000$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Relative frequency $= \dfrac{12}{400} = 0.03$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected faulty in $5000$ $= 0.03 \times 5000 = 150$ items</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COMPARING THE TWO
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Theoretical vs Experimental</div>
+<div class="section-body">
+
+  <table>
+    <tr><th></th><th>Theoretical</th><th>Experimental (relative frequency)</th></tr>
+    <tr><td><strong>How it is found</strong></td><td>By reasoning</td><td>By carrying out trials</td></tr>
+    <tr><td><strong>Needs</strong></td><td>Equally likely outcomes</td><td>Data from an experiment</td></tr>
+    <tr><td><strong>Exactness</strong></td><td>Exact</td><td>An estimate</td></tr>
+    <tr><td><strong>Useful for</strong></td><td>Fair dice, coins, cards</td><td>Biased objects, real-world events</td></tr>
+    <tr><td><strong>Improves with</strong></td><td>Nothing — it is fixed</td><td>More trials</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Comparing them is how you detect bias.</strong> If an experimental probability stays a long way from the theoretical value even after many trials, the object is probably biased.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Is the die fair?</div>
+    <div class="example-body">
+      <p>A die is rolled $600$ times. A six comes up $148$ times. Is the die likely to be fair?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Theoretical: for a fair die, $P(6) = \dfrac{1}{6} = 0.167$ (3 d.p.).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected number of sixes $= \dfrac{1}{6} \times 600 = 100$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Experimental: relative frequency $= \dfrac{148}{600} = 0.247$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$148$ is well above the expected $100$, and $600$ trials is a large sample.</span></div>
+      <p><strong>The die is probably biased towards six.</strong></p>
+      <div class="tip">Always mention <em>both</em> the size of the difference and the number of trials. A gap of $48$ over $600$ rolls is convincing; the same gap over $20$ rolls would be impossible.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — When you cannot conclude bias</div>
+    <div class="example-body">
+      <p>A coin is tossed $20$ times and lands heads $13$ times. Can you conclude the coin is biased?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Relative frequency $= \dfrac{13}{20} = 0.65$, compared with the theoretical $0.5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected heads $= 10$, actual $= 13$ — a difference of only $3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>With just $20$ trials, this kind of variation happens often by chance.</span></div>
+      <p><strong>No — you cannot conclude bias.</strong> The sample is too small. Tossing the coin many more times would give a much better estimate.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – ESTIMATING FROM A TABLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Estimating Probabilities from a Table</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A spinner's results</div>
+    <div class="example-body">
+      <p>A four-colour spinner is spun $500$ times.</p>
+      <table>
+        <tr><th>Colour</th><td>Red</td><td>Blue</td><td>Green</td><td>Yellow</td></tr>
+        <tr><th>Frequency</th><td>$145$</td><td>$118$</td><td>$96$</td><td>$141$</td></tr>
+      </table>
+      <p>(a) Estimate $P(\text{green})$. (b) Estimate $P(\text{red or yellow})$. (c) Comment on whether the spinner is fair.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $\dfrac{96}{500} = 0.192$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $\dfrac{145 + 141}{500} = \dfrac{286}{500} = 0.572$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> A fair four-section spinner would give about $125$ of each.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The results $145$, $118$, $96$, $141$ vary quite a lot around $125$ — green in particular is well below.</span></div>
+      <p>With $500$ trials this suggests the spinner is <strong>probably slightly biased</strong>, though the evidence is not overwhelming for blue and yellow.</p>
+      <p>Check: $145 + 118 + 96 + 141 = 500$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The scale</h4><p>$0$ impossible, $0.5$ even chance, $1$ certain. Never outside this range.</p></div>
+    <div class="ref-card"><h4>Theoretical</h4><p>$\dfrac{\text{favourable}}{\text{total}}$ — needs equally likely outcomes.</p></div>
+    <div class="ref-card"><h4>Relative frequency</h4><p>$\dfrac{\text{times it happened}}{\text{trials}}$ — from real data.</p></div>
+    <div class="ref-card"><h4>Also called</h4><p>Experimental probability, or an estimate of probability.</p></div>
+    <div class="ref-card"><h4>Detecting bias</h4><p>Compare experimental with theoretical over <em>many</em> trials.</p></div>
+    <div class="ref-card"><h4>Small samples</h4><p>Cannot prove bias — the variation could easily be chance.</p></div>
+    <div class="ref-card"><h4>Predicting</h4><p>Relative frequency $\times$ new number of trials.</p></div>
+    <div class="ref-card"><h4>Writing it</h4><p>Fraction, decimal or percentage — never a ratio.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Describe each probability in words: (a) $0$, (b) $0.5$, (c) $0.95$, (d) $0.03$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Impossible &nbsp; <strong>(b)</strong> An even chance &nbsp; <strong>(c)</strong> Very likely &nbsp; <strong>(d)</strong> Very unlikely</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Explain why a probability of $1.3$ is impossible.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A probability is the fraction of outcomes that are favourable, so it can never exceed the total.</p>
+          <p>The maximum is $1$, meaning the event is certain. A value of $1.3$ would mean "more than certain", which has no meaning.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A card is drawn from a standard pack. Find (a) $P(\text{a spade})$, (b) $P(\text{a black ace})$, (c) $P(\text{not a heart})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{13}{52} = \dfrac{1}{4}$</p>
+          <p><strong>(b)</strong> Two black aces (spades and clubs): $\dfrac{2}{52} = \dfrac{1}{26}$</p>
+          <p><strong>(c)</strong> $1 - \dfrac{1}{4} = \dfrac{3}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A bottle top is flipped $250$ times and lands upright $85$ times. Estimate the probability that it lands upright.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Relative frequency $= \dfrac{85}{250} = 0.34$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In a quality check, $9$ out of $300$ light bulbs were faulty. Estimate how many would be faulty in a delivery of $12\,000$ bulbs.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Relative frequency $= \dfrac{9}{300} = 0.03$</p>
+          <p>Expected faulty $= 0.03 \times 12\,000 = 360$ bulbs</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A five-sided spinner is spun $400$ times and lands on section A $130$ times. Compare this with the theoretical probability and comment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Theoretical (if fair): $P(A) = \dfrac{1}{5} = 0.2$, so expect $0.2 \times 400 = 80$.</p>
+          <p>Experimental: $\dfrac{130}{400} = 0.325$.</p>
+          <p>$130$ is much greater than the expected $80$, and $400$ trials is a large sample.</p>
+          <p><strong>The spinner is probably biased towards section A.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain the difference between theoretical probability and relative frequency, giving one situation where each is the appropriate tool.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Theoretical probability</strong> is calculated by reasoning about equally likely outcomes, e.g. $P(\text{a } 3) = \tfrac{1}{6}$ on a fair die. It is exact and needs no experiment.</p>
+          <p><strong>Relative frequency</strong> is calculated from the results of trials, e.g. dropping a drawing pin $200$ times. It is only an estimate, but it is the only option when outcomes are not equally likely.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A coin is tossed $10$ times and lands heads $7$ times. Josh says "the coin must be biased". Explain why Josh may be wrong.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Ten trials is a very small sample. Getting $7$ heads out of $10$ happens quite often with a perfectly fair coin, just by chance.</p>
+          <p>To decide about bias, Josh would need to toss the coin many more times — several hundred — and see whether the relative frequency stays away from $0.5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The table shows the results of spinning a three-colour spinner $600$ times.</p>
+      <table>
+        <tr><th>Colour</th><td>Red</td><td>Blue</td><td>Green</td></tr>
+        <tr><th>Frequency</th><td>$294$</td><td>$205$</td><td>$?$</td></tr>
+      </table>
+      <p>(a) Find the missing frequency. &nbsp; (b) Estimate $P(\text{green})$. &nbsp; (c) Is the spinner fair?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $600 - 294 - 205 = 101$</p>
+          <p><strong>(b)</strong> $\dfrac{101}{600} = 0.168$ (3 d.p.)</p>
+          <p><strong>(c)</strong> A fair three-colour spinner would give about $200$ of each. The results are $294$, $205$, $101$ — red is far too high and green far too low.</p>
+          <p><strong>The spinner is biased.</strong></p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A researcher records the relative frequency of a biased coin landing heads after different numbers of tosses.</p>
+      <table>
+        <tr><th>Tosses</th><td>$10$</td><td>$50$</td><td>$100$</td><td>$500$</td><td>$2000$</td></tr>
+        <tr><th>Relative frequency</th><td>$0.9$</td><td>$0.68$</td><td>$0.71$</td><td>$0.685$</td><td>$0.679$</td></tr>
+      </table>
+      <p>(a) Which value is the best estimate of $P(\text{heads})$, and why? &nbsp; (b) Estimate the number of heads in $3000$ tosses. &nbsp; (c) Estimate $P(\text{tails})$. &nbsp; (d) Explain the pattern in the table.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The value from <strong>$2000$ tosses, $0.679$</strong>. The larger the number of trials, the more reliable the relative frequency as an estimate of the true probability.</p>
+          <p><strong>(b)</strong> $0.679 \times 3000 = 2037$ heads</p>
+          <p><strong>(c)</strong> $P(\text{tails}) = 1 - 0.679 = 0.321$</p>
+          <p><strong>(d)</strong> The early values jump about a lot ($0.9$ then $0.68$), but as the number of tosses increases the relative frequency <strong>settles down</strong> towards a value of roughly $0.68$. This is the true probability that the experiment is converging on.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The Probability Scale &amp; Relative Frequency (P3) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

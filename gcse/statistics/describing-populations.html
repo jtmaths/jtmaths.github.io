@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using Statistics to Describe a Population – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌍 Using Statistics to Describe a Population</h1>
+  <p>GCSE Maths · Statistics (S5)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – FROM SAMPLE TO POPULATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> From Sample to Population</div>
+<div class="section-body">
+
+  <p>The point of collecting data is to say something about a whole population. This page is about doing that <strong>honestly</strong> — drawing conclusions that the data actually support.</p>
+
+  <div class="formula-box">
+    <div class="label">Scaling up a sample</div>
+    $\text{estimated population figure} = \dfrac{\text{sample figure}}{\text{sample size}} \times \text{population size}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Estimating a total</div>
+    <div class="example-body">
+      <p>In a sample of $250$ households, $95$ have a pet. The town has $14\,000$ households. Estimate how many have a pet.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sample proportion $= \dfrac{95}{250} = 0.38$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Estimate $= 0.38 \times 14\,000 = 5320$ households</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Assumption:</strong> the sample is representative of all households in the town.</span></div>
+      <div class="tip">Always state the assumption. It is usually worth a mark, and it is the honest thing to do.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Estimating a total quantity</div>
+    <div class="example-body">
+      <p>A sample of $40$ apples from an orchard has a mean mass of $118$ g. The orchard has $12\,000$ apples. Estimate the total mass of the crop, in kilograms.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Estimated total mass $= 118 \times 12\,000 = 1\,416\,000$ g</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1\,416\,000 \div 1000 = 1416$ kg</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Assumption:</strong> the $40$ apples are representative of the whole orchard.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WRITING VALID CONCLUSIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Writing a Valid Conclusion</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Quote the actual figures from the data.</li>
+    <li>Name the statistic you are using (median, mean, IQR…).</li>
+    <li>Say what it means <strong>in the context</strong> of the question.</li>
+    <li>Use cautious language: "suggests", "estimates", "on average".</li>
+    <li>Mention any limitation of the data.</li>
+  </ul>
+
+  <table>
+    <tr><th>Weak conclusion</th><th>Strong conclusion</th></tr>
+    <tr><td>"Group A is better."</td><td>"Group A has a higher median score ($68$ vs $61$), so on average they performed better."</td></tr>
+    <tr><td>"The data go up."</td><td>"Sales rose from £$18\,000$ to £$35\,000$ over the two years, an upward trend."</td></tr>
+    <tr><td>"Most people agree."</td><td>"$62\%$ of the $400$ people sampled agreed, suggesting a majority — though the sample was taken in one town only."</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Never overstate what the data show.</strong> A sample gives an <em>estimate</em>, not a certainty. Words like "proves" and "always" are almost never justified.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Improving a conclusion</div>
+    <div class="example-body">
+      <p>A survey of $80$ students found a mean of $2.4$ hours of homework per night. A student writes: "This proves all students do lots of homework." Rewrite the conclusion properly.</p>
+      <div class="step-row"><span class="arrow">①</span><span>"Proves" is too strong — a sample can only suggest.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>"All students" is wrong — the mean says nothing about every individual.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>"Lots" is vague — use the actual figure.</span></div>
+      <p><strong>Better:</strong> "The sample of $80$ students had a mean of $2.4$ hours of homework per night, which suggests that students in this school typically spend a little over two hours on homework. However, the mean alone does not show how much this varies between students."</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MISLEADING STATISTICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Spotting Misleading Statistics</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Trick</th><th>How to spot it</th></tr>
+    <tr><td>Choosing the flattering average</td><td>The mean, median and mode can differ a lot — check which one is quoted</td></tr>
+    <tr><td>No sample size given</td><td>"$80\%$ of people agree" — out of how many? Four?</td></tr>
+    <tr><td>Biased sample</td><td>Who was asked, and where?</td></tr>
+    <tr><td>Percentage without a base</td><td>"Sales up $200\%$" — from $1$ to $3$?</td></tr>
+    <tr><td>Cherry-picked time period</td><td>Starting the graph at an unusually low point</td></tr>
+    <tr><td>Confusing correlation with cause</td><td>Two things rising together need not be linked</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — The convenient average</div>
+    <div class="example-body">
+      <p>A company's salaries are: £$18$k, £$19$k, £$19$k, £$20$k, £$22$k, £$25$k, £$180$k. The manager says "the average salary here is £$43$k". Comment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Mean $= \dfrac{303}{7} = £43.3$k — so the manager has quoted the mean.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Median $= £20$k (the $4$th of $7$ values).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Mode $= £19$k.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Six of the seven employees earn <em>less</em> than the mean.</span></div>
+      <p><strong>The claim is misleading.</strong> The single £$180$k salary is an outlier that drags the mean far above what anyone else earns. The <strong>median of £$20$k</strong> is a much fairer description of a typical salary here.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Percentages without context</div>
+    <div class="example-body">
+      <p>A headline reads: "Cases of a rare illness double — a $100\%$ increase!" The number rose from $3$ to $6$ in a population of $2$ million. Comment on the headline.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The percentage is arithmetically correct: $3 \to 6$ is indeed a $100\%$ rise.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>But the <em>absolute</em> numbers are tiny: an increase of just $3$ cases.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>As a rate, this is $6$ in $2\,000\,000$, or $0.0003\%$ of the population.</span></div>
+      <p><strong>The headline is technically true but highly misleading.</strong> Quoting a percentage change from a very small base makes a negligible change sound alarming. The actual numbers should be given alongside.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COMPARING POPULATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Comparing Two Populations</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    Compare an <strong>average</strong> and a <strong>spread</strong>, both interpreted <strong>in context</strong>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A full comparison</div>
+    <div class="example-body">
+      <p>Rainfall (mm) was recorded for $30$ days in two towns.</p>
+      <table>
+        <tr><th></th><th>Mean</th><th>Median</th><th>Range</th><th>IQR</th></tr>
+        <tr><td><strong>Ashby</strong></td><td>$4.2$</td><td>$3.0$</td><td>$22$</td><td>$3.5$</td></tr>
+        <tr><td><strong>Barton</strong></td><td>$4.0$</td><td>$3.8$</td><td>$9$</td><td>$3.2$</td></tr>
+      </table>
+      <p>Compare the rainfall in the two towns.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Average:</strong> the means are almost the same ($4.2$ vs $4.0$ mm), but Barton has the higher median ($3.8$ vs $3.0$ mm), so on a typical day Barton is slightly wetter.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Spread:</strong> Ashby's range is far larger ($22$ vs $9$ mm), so Ashby has much more variable rainfall.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The IQRs are similar ($3.5$ vs $3.2$), so the middle $50\%$ of days are alike. The big difference in range must come from a few extreme days in Ashby.</span></div>
+      <p><strong>Conclusion:</strong> the two towns have similar typical rainfall, but Ashby experiences occasional very heavy downpours that Barton does not.</p>
+      <div class="tip">Notice how comparing the range <em>and</em> the IQR revealed something neither would show alone — that Ashby's extra spread comes from outliers, not from generally more varied weather.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Compare like with like.</strong> If one data set has $30$ values and the other $300$, comparing raw frequencies is meaningless — compare proportions or averages instead.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – DESIGNING A GOOD QUESTIONNAIRE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Designing a Good Questionnaire</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Fault</th><th>Example</th><th>Fix</th></tr>
+    <tr><td><strong>Leading</strong></td><td>"Don't you agree the café is too expensive?"</td><td>"How would you rate the café's prices?"</td></tr>
+    <tr><td><strong>Vague</strong></td><td>"Do you exercise often?"</td><td>"How many hours did you exercise last week?"</td></tr>
+    <tr><td><strong>Overlapping options</strong></td><td>$0$–$5$, $5$–$10$, $10$–$15$</td><td>$0$–$4$, $5$–$9$, $10$–$14$</td></tr>
+    <tr><td><strong>Gaps in options</strong></td><td>$0$–$5$, $7$–$10$</td><td>Make the boxes continuous</td></tr>
+    <tr><td><strong>No option fits</strong></td><td>Boxes only up to "$10$ or fewer"</td><td>Add "more than $10$"</td></tr>
+    <tr><td><strong>Personal or intrusive</strong></td><td>"How much do you earn?"</td><td>Use broad bands, or omit</td></tr>
+    <tr><td><strong>Two questions in one</strong></td><td>"Do you like maths and science?"</td><td>Split into two questions</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Response boxes must be…</div>
+    <strong>Exhaustive</strong> (cover every possibility) and <strong>non-overlapping</strong> (each answer fits one box only)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Criticising a question</div>
+    <div class="example-body">
+      <p>A questionnaire asks: "How much TV do you watch? &nbsp;□ $0$–$1$ hour &nbsp;□ $1$–$3$ hours &nbsp;□ $3$–$5$ hours". Give two criticisms and write an improved version.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Overlapping boxes.</strong> Someone who watches exactly $1$ hour could tick either of the first two.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Not exhaustive.</strong> There is no box for someone who watches more than $5$ hours.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>There is also no <strong>time frame</strong> — per day? per week?</span></div>
+      <p><strong>Improved:</strong> "How many hours of TV did you watch <em>yesterday</em>?"</p>
+      <p>□ less than $1$ &nbsp;□ $1$ to less than $3$ &nbsp;□ $3$ to less than $5$ &nbsp;□ $5$ or more</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Scaling up</h4><p>Sample proportion $\times$ population size.</p></div>
+    <div class="ref-card"><h4>State the assumption</h4><p>That the sample is representative.</p></div>
+    <div class="ref-card"><h4>Good conclusion</h4><p>Figures $+$ named statistic $+$ context.</p></div>
+    <div class="ref-card"><h4>Cautious language</h4><p>"Suggests", not "proves".</p></div>
+    <div class="ref-card"><h4>Which average?</h4><p>An outlier means the median is usually fairer than the mean.</p></div>
+    <div class="ref-card"><h4>Percentages</h4><p>Always ask "out of how many?"</p></div>
+    <div class="ref-card"><h4>Comparing</h4><p>Average $+$ spread; compare proportions, not raw counts.</p></div>
+    <div class="ref-card"><h4>Questionnaires</h4><p>Non-overlapping, exhaustive, not leading, with a time frame.</p></div>
+    <div class="ref-card"><h4>Limitations</h4><p>Mention sample size and how the sample was chosen.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>In a sample of $120$ people, $42$ cycle to work. The town has $30\,000$ workers. Estimate how many cycle, and state an assumption.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Proportion $= \dfrac{42}{120} = 0.35$</p>
+          <p>Estimate $= 0.35 \times 30\,000 = 10\,500$ workers</p>
+          <p><strong>Assumption:</strong> the sample is representative of all workers in the town.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A sample of $50$ bags of flour has a mean mass of $1.02$ kg. Estimate the total mass of $8000$ bags.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Estimated total $= 1.02 \times 8000 = 8160$ kg</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Give two criticisms of the question: "Do you agree that our excellent new library is a great improvement? Yes / No".</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. <strong>It is leading.</strong> The words "excellent" and "great improvement" push the respondent towards saying yes.</p>
+          <p>2. <strong>The options are too limited.</strong> There is no way to express a neutral view or to say you have not used the library.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A shop's daily takings are £$210$, £$225$, £$218$, £$232$ and £$1450$. Which average best represents a typical day, and why?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Mean $= \dfrac{2335}{5} = £467$; median $= £225$ (the middle value once ordered).</p>
+          <p>The £$1450$ is an outlier that pulls the mean far above four of the five days.</p>
+          <p><strong>The median (£$225$) is the better average</strong>, because it is not distorted by the one exceptional day.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Rewrite these response boxes so they are suitable: "$0$–$10$, $10$–$20$, $20$–$30$".</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The boxes <strong>overlap</strong> at $10$ and $20$, and there is nothing for values above $30$.</p>
+          <p>Improved: "$0$ to less than $10$", "$10$ to less than $20$", "$20$ to less than $30$", "$30$ or more".</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A newspaper reports "Crime up $50\%$ in our village!" The number of reported crimes rose from $4$ to $6$. Comment on the report.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The percentage is correct: $4 \to 6$ is a $50\%$ increase.</p>
+          <p>But the actual change is only <strong>two crimes</strong>. With such small numbers, an increase of two could easily be normal year-to-year variation rather than a real trend.</p>
+          <p>The report is <strong>misleading</strong> because it uses a percentage from a very small base to make a tiny change sound dramatic. The raw figures should be given.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two shops record customer waiting times. Shop A: median $4$ min, IQR $2$ min. Shop B: median $3$ min, IQR $7$ min. Write a comparison and say which shop you would prefer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Average:</strong> Shop B has the lower median ($3$ min vs $4$ min), so a typical wait is shorter at Shop B.</p>
+          <p><strong>Spread:</strong> Shop A has a much smaller IQR ($2$ min vs $7$ min), so waiting times at Shop A are far more predictable.</p>
+          <p><strong>Preference:</strong> Shop A, if you value knowing roughly how long you will wait — at Shop B you might be served very quickly or face a very long wait.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>An advert claims "$9$ out of $10$ dentists recommend our toothpaste". What three questions should you ask before believing it?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>1. <strong>How many dentists were asked?</strong> If only $10$ were surveyed, "$9$ out of $10$" means nine people.</p>
+          <p>2. <strong>How were they chosen?</strong> If the company selected them, or paid them, the sample is biased.</p>
+          <p>3. <strong>Recommend it over what?</strong> Recommending it as better than nothing is very different from recommending it over rival brands.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A school surveys $60$ of its $900$ students about a proposed change to the timetable. $39$ are in favour.</p>
+      <p>(a) Estimate how many of all $900$ students are in favour. &nbsp; (b) The survey was carried out in the sixth-form common room. Explain why the estimate may not be reliable. &nbsp; (c) Suggest an improvement.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Proportion $= \dfrac{39}{60} = 0.65$</p>
+          <p>Estimate $= 0.65 \times 900 = 585$ students</p>
+          <p><strong>(b)</strong> The sample was taken only from sixth-formers, who are not representative of the whole school. Younger students may be affected differently by the timetable change and could hold quite different views, so the sample is <strong>biased</strong>.</p>
+          <p><strong>(c)</strong> Take a <strong>stratified random sample</strong> across all year groups, in proportion to their sizes, so that every year is fairly represented.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A charity surveyed $200$ donors and found the mean donation was £$38$ and the median was £$15$.</p>
+      <p>(a) What does the difference between the mean and median suggest about the data? &nbsp; (b) The charity has $8500$ donors. Estimate the total donated, and say which average you used and why. &nbsp; (c) The charity's advert says "Our typical donor gives £$38$". Comment on this claim. &nbsp; (d) Suggest one further statistic that would make the picture clearer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The mean is much larger than the median, which means the data are <strong>positively skewed</strong> — a small number of very large donations are pulling the mean up, while most donations are much smaller.</p>
+          <p><strong>(b)</strong> To estimate a <em>total</em>, use the <strong>mean</strong>, because mean $\times$ number of items gives the total.</p>
+          <p>Estimate $= 38 \times 8500 = £323\,000$</p>
+          <p>(Using the median would give $15 \times 8500 = £127\,500$, which would <em>underestimate</em> the total because it ignores the large donations.)</p>
+          <p><strong>(c)</strong> The claim is <strong>misleading</strong>. "Typical" suggests what most donors give, and the median of £$15$ shows that half of all donors give £$15$ or less. Very few donors are likely to give close to £$38$.</p>
+          <p><strong>(d)</strong> A measure of <strong>spread</strong> such as the interquartile range, or the quartiles themselves, would show how varied the donations are. A histogram of the donation sizes would show the skew directly.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Describing a Population (S5) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

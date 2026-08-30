@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listing Outcomes Systematically – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📝 Listing Outcomes Systematically</h1>
+  <p>GCSE Maths · Probability (P6)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY SYSTEMATIC
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why You Must Be Systematic</div>
+<div class="section-body">
+
+  <p>To find a probability you often need to know <strong>how many outcomes there are</strong>. Listing them at random almost guarantees you will miss some or repeat others.</p>
+
+  <div class="formula-box">
+    <div class="label">The golden rule</div>
+    Fix an <strong>order</strong> and stick to it — change the last item first, then work backwards
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Listing in order</div>
+    <div class="example-body">
+      <p>A café offers two sizes (Small, Large) and three flavours (Chocolate, Vanilla, Strawberry). List all the possible orders.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Fix the first item as Small and run through every flavour.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>SC, SV, SS</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Now fix the first item as Large and repeat.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>LC, LV, LS</span></div>
+      <p><strong>Six possible orders altogether.</strong></p>
+      <div class="tip">Notice the structure: the first letter stays fixed while the second cycles through all its options. That pattern makes it obvious when you have finished.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE PRODUCT RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Product Rule for Counting</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Product rule</div>
+    If there are $m$ ways of doing the first thing and $n$ ways of doing the second,<br>there are $m \times n$ ways of doing both
+  </div>
+
+  <div class="concept">
+    This extends to any number of stages: multiply the number of choices at each stage together.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Counting without listing</div>
+    <div class="example-body">
+      <p>A menu has $4$ starters, $6$ mains and $3$ desserts. How many different three-course meals are possible?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4$ choices, then $6$, then $3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$4 \times 6 \times 3 = 72$ meals</span></div>
+      <p>Listing all $72$ would be tedious; the product rule gives the count instantly.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using the count in a probability</div>
+    <div class="example-body">
+      <p>A four-digit PIN uses digits $0$–$9$, and digits may repeat. Find (a) how many PINs are possible, (b) the probability of guessing one correctly at random.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Each of the four positions has $10$ choices.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$10 \times 10 \times 10 \times 10 = 10\,000$ PINs</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(b)</strong> $P(\text{correct guess}) = \dfrac{1}{10\,000} = 0.0001$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — When repeats are not allowed</div>
+    <div class="example-body">
+      <p>Three students are chosen from a group of $8$ to be first, second and third in a queue. How many orders are possible?</p>
+      <div class="step-row"><span class="arrow">①</span><span>First place: $8$ choices.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Second place: only $7$ left.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Third place: only $6$ left.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$8 \times 7 \times 6 = 336$ orders</span></div>
+      <div class="warn"><strong>Read whether repeats are allowed.</strong> "Digits may repeat" gives $10 \times 10$; "all digits different" gives $10 \times 9$. This single word changes the answer completely.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VENN DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Venn Diagrams</div>
+<div class="section-body">
+
+  <p>A <strong>Venn diagram</strong> shows how sets overlap. It is the clearest way to handle "both", "either" and "neither" questions.</p>
+
+  <div class="svg-block">
+    <svg width="440" height="240" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="400" height="180" fill="#fafafe" stroke="#94a3b8" stroke-width="2"/>
+      <text x="34" y="40" font-family="Arial" font-size="14" fill="#475569" font-weight="bold">ξ</text>
+      <circle cx="170" cy="110" r="80" fill="#c7d2fe" fill-opacity=".55" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="265" cy="110" r="80" fill="#bbf7d0" fill-opacity=".55" stroke="#22c55e" stroke-width="2.5"/>
+      <text x="120" y="45" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">A</text>
+      <text x="312" y="45" font-family="Arial" font-size="16" fill="#166534" font-weight="bold">B</text>
+      <text x="120" y="118" font-family="Arial" font-size="15" fill="#3730a3" text-anchor="middle" font-weight="bold">only A</text>
+      <text x="217" y="118" font-family="Arial" font-size="14" fill="#4c1d95" text-anchor="middle" font-weight="bold">both</text>
+      <text x="318" y="118" font-family="Arial" font-size="15" fill="#166534" text-anchor="middle" font-weight="bold">only B</text>
+      <text x="380" y="185" font-family="Arial" font-size="13" fill="#64748b" font-weight="bold">neither</text>
+      <text x="220" y="225" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Four regions: only A, both, only B, and neither</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Always fill in the <strong>overlap first</strong> — the "both" region.</li>
+    <li>Subtract to find "only A" and "only B".</li>
+    <li>Add the three regions and subtract from the total to find "neither".</li>
+    <li>Check that all four regions add to the grand total.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Start with the middle.</strong> If $18$ study French and $7$ study both, then "French only" is $18 - 7 = 11$, not $18$. The $18$ already includes the seven who do both.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Filling in a Venn diagram</div>
+    <div class="example-body">
+      <p>In a group of $50$ people, $28$ own a bike, $19$ own a scooter and $9$ own both. Complete the Venn diagram and find $P(\text{owns neither})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Overlap (both) $= 9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Bike only $= 28 - 9 = 19$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Scooter only $= 19 - 9 = 10$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At least one $= 19 + 9 + 10 = 38$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Neither $= 50 - 38 = 12$.</span></div>
+      <p>$P(\text{neither}) = \dfrac{12}{50} = 0.24$</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Working backwards</div>
+    <div class="example-body">
+      <p>Of $40$ students, $25$ play football, $6$ play neither football nor tennis, and $14$ play tennis. How many play both?</p>
+      <div class="step-row"><span class="arrow">①</span><span>At least one sport $= 40 - 6 = 34$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>If nobody played both, the total would be $25 + 14 = 39$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>But only $34$ play at least one, so the excess $39 - 34 = 5$ have been counted twice.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>$5$ students play both.</strong></span></div>
+      <p>Check: football only $= 20$, both $= 5$, tennis only $= 9$, neither $= 6$; total $= 40$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SET NOTATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Set Notation</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Symbol</th><th>Name</th><th>Meaning</th></tr>
+    <tr><td>$\xi$</td><td>Universal set</td><td>Everything being considered</td></tr>
+    <tr><td>$A \cap B$</td><td>Intersection</td><td>In $A$ <strong>and</strong> $B$ — the overlap</td></tr>
+    <tr><td>$A \cup B$</td><td>Union</td><td>In $A$ <strong>or</strong> $B$ (or both)</td></tr>
+    <tr><td>$A'$</td><td>Complement</td><td><strong>Not</strong> in $A$</td></tr>
+    <tr><td>$n(A)$</td><td>Number of elements</td><td>How many things are in $A$</td></tr>
+    <tr><td>$\emptyset$</td><td>Empty set</td><td>Contains nothing</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Remembering the symbols:</strong> $\cap$ looks like a cap or a bridge — you need to be under <em>both</em> ends, so it means AND. $\cup$ is a cup that collects everything, so it means OR.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Reading set notation</div>
+    <div class="example-body">
+      <p>Using the data from Worked Example 5 ($50$ people; bike only $19$, both $9$, scooter only $10$, neither $12$), find:</p>
+      <p>(a) $n(B \cap S)$ &nbsp; (b) $n(B \cup S)$ &nbsp; (c) $n(B')$ &nbsp; (d) $P(B \cap S')$</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> The intersection is "both": $9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> The union is everyone in at least one set: $19 + 9 + 10 = 38$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> Not a bike owner: $50 - 28 = 22$ (scooter only plus neither $= 10 + 12$ ✓).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(d)</strong> Bike but not scooter — that is "bike only", $19$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P = \dfrac{19}{50} = 0.38$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – THREE SETS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Venn Diagrams with Three Sets</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="360" height="290" viewBox="0 0 360 290" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15" y="15" width="330" height="255" fill="#fafafe" stroke="#94a3b8" stroke-width="2"/>
+      <text x="28" y="35" font-family="Arial" font-size="14" fill="#475569" font-weight="bold">ξ</text>
+      <circle cx="140" cy="115" r="75" fill="#c7d2fe" fill-opacity=".5" stroke="#4f46e5" stroke-width="2.2"/>
+      <circle cx="220" cy="115" r="75" fill="#bbf7d0" fill-opacity=".5" stroke="#22c55e" stroke-width="2.2"/>
+      <circle cx="180" cy="185" r="75" fill="#fed7aa" fill-opacity=".5" stroke="#ea580c" stroke-width="2.2"/>
+      <text x="88" y="55" font-family="Arial" font-size="15" fill="#3730a3" font-weight="bold">A</text>
+      <text x="266" y="55" font-family="Arial" font-size="15" fill="#166534" font-weight="bold">B</text>
+      <text x="176" y="262" font-family="Arial" font-size="15" fill="#9a3412" font-weight="bold">C</text>
+      <text x="105" y="105" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">A only</text>
+      <text x="255" y="105" font-family="Arial" font-size="11" fill="#166534" text-anchor="middle">B only</text>
+      <text x="180" y="225" font-family="Arial" font-size="11" fill="#9a3412" text-anchor="middle">C only</text>
+      <text x="180" y="100" font-family="Arial" font-size="10" fill="#4c1d95" text-anchor="middle">A∩B</text>
+      <text x="180" y="145" font-family="Arial" font-size="10" fill="#1e1e2e" text-anchor="middle" font-weight="bold">all 3</text>
+      <text x="132" y="172" font-family="Arial" font-size="10" fill="#7c2d12" text-anchor="middle">A∩C</text>
+      <text x="230" y="172" font-family="Arial" font-size="10" fill="#7c2d12" text-anchor="middle">B∩C</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The order to fill it in</div>
+    Centre (all three) &nbsp;→&nbsp; the three pairwise overlaps &nbsp;→&nbsp; the three "only" regions &nbsp;→&nbsp; outside
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Three sets</div>
+    <div class="example-body">
+      <p>$60$ students were asked which of Maths, Physics and Chemistry they study. $8$ study all three. $15$ study Maths and Physics, $12$ study Physics and Chemistry, $11$ study Maths and Chemistry. Altogether $34$ study Maths, $30$ study Physics and $25$ study Chemistry. How many study none of them?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Centre: all three $= 8$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Maths and Physics only $= 15 - 8 = 7$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Physics and Chemistry only $= 12 - 8 = 4$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Maths and Chemistry only $= 11 - 8 = 3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Maths only $= 34 - 7 - 8 - 3 = 16$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Physics only $= 30 - 7 - 8 - 4 = 11$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>Chemistry only $= 25 - 3 - 8 - 4 = 10$.</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>Total in at least one $= 16 + 7 + 11 + 3 + 8 + 4 + 10 = 59$.</span></div>
+      <div class="step-row"><span class="arrow">⑨</span><span>None $= 60 - 59 = \mathbf{1}$ student.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Be systematic</h4><p>Fix an order; change the last item first.</p></div>
+    <div class="ref-card"><h4>Product rule</h4><p>$m$ ways then $n$ ways gives $m \times n$ altogether.</p></div>
+    <div class="ref-card"><h4>Repeats?</h4><p>Allowed: $10 \times 10$. Not allowed: $10 \times 9$.</p></div>
+    <div class="ref-card"><h4>Venn: start in the middle</h4><p>Fill the overlap first, then subtract outwards.</p></div>
+    <div class="ref-card"><h4>$\cap$ intersection</h4><p>AND — the overlap.</p></div>
+    <div class="ref-card"><h4>$\cup$ union</h4><p>OR — everything in either set.</p></div>
+    <div class="ref-card"><h4>$A'$</h4><p>Not $A$ — everything outside the circle.</p></div>
+    <div class="ref-card"><h4>Three sets</h4><p>Centre, then pairs, then singles, then outside.</p></div>
+    <div class="ref-card"><h4>Always check</h4><p>All regions must add to the grand total.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A shop sells jumpers in $3$ colours and $4$ sizes. How many different jumpers are there?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3 \times 4 = 12$ different jumpers</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>List systematically all the two-digit numbers that can be made using the digits $2$, $5$ and $7$, if digits may be repeated. How many are there?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Fix the first digit and cycle the second:</p>
+          <p>$22, 25, 27$; &nbsp;$52, 55, 57$; &nbsp;$72, 75, 77$</p>
+          <p>That is $3 \times 3 = 9$ numbers.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Repeat Question 2 but with all digits different. How many numbers now?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$25, 27, 52, 57, 72, 75$</p>
+          <p>$3 \times 2 = 6$ numbers.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A password has $3$ letters (A–Z) followed by $2$ digits (0–9), with repeats allowed. How many passwords are possible?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$26 \times 26 \times 26 \times 10 \times 10$</p>
+          <p>$= 17\,576 \times 100 = 1\,757\,600$ passwords</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In a group of $40$ people, $22$ like tea, $17$ like coffee and $8$ like both. Find how many like neither.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Tea only $= 22 - 8 = 14$; coffee only $= 17 - 8 = 9$.</p>
+          <p>At least one $= 14 + 8 + 9 = 31$.</p>
+          <p>Neither $= 40 - 31 = 9$ people.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Using the data from Question 5, find (a) $P(\text{likes tea only})$, (b) $n(T \cup C)$, (c) $n(C')$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{14}{40} = 0.35$</p>
+          <p><strong>(b)</strong> $31$ — everyone who likes at least one drink.</p>
+          <p><strong>(c)</strong> Not coffee $= 40 - 17 = 23$ (tea only $14$ plus neither $9$ ✓).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Of $70$ people surveyed, $45$ own a car, $12$ own neither a car nor a bike, and $30$ own a bike. How many own both?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>At least one $= 70 - 12 = 58$.</p>
+          <p>If nobody owned both: $45 + 30 = 75$.</p>
+          <p>Double-counted $= 75 - 58 = 17$.</p>
+          <p><strong>$17$ people own both.</strong></p>
+          <p>Check: car only $28$, both $17$, bike only $13$, neither $12$; total $= 70$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Four athletes run a race. In how many different orders can they finish, assuming no ties?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First place: $4$ choices; second: $3$; third: $2$; fourth: $1$.</p>
+          <p>$4 \times 3 \times 2 \times 1 = 24$ orders</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A restaurant offers $5$ starters, $8$ mains and $4$ desserts.</p>
+      <p>(a) How many three-course meals are possible? &nbsp; (b) How many meals are possible if you may skip the starter? &nbsp; (c) A customer picks at random. Find the probability they choose one particular three-course combination.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $5 \times 8 \times 4 = 160$ meals</p>
+          <p><strong>(b)</strong> Skipping the starter is now a sixth option for that course: $6 \times 8 \times 4 = 192$ meals.</p>
+          <p><strong>(c)</strong> $\dfrac{1}{160} = 0.00625$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$100$ students were asked about three clubs: Drama, Sport and Music. $12$ do all three; $25$ do Drama and Sport; $20$ do Sport and Music; $18$ do Drama and Music. In total $50$ do Drama, $55$ do Sport and $40$ do Music.</p>
+      <p>(a) How many do Sport only? &nbsp; (b) How many do none of the three? &nbsp; (c) A student is chosen at random; find $P(\text{exactly two clubs})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Fill in from the centre:</strong></p>
+          <p>All three $= 12$.</p>
+          <p>Drama and Sport only $= 25 - 12 = 13$.</p>
+          <p>Sport and Music only $= 20 - 12 = 8$.</p>
+          <p>Drama and Music only $= 18 - 12 = 6$.</p>
+          <p><strong>(a)</strong> Sport only $= 55 - 13 - 12 - 8 = 22$</p>
+          <p><strong>(b)</strong> Drama only $= 50 - 13 - 12 - 6 = 19$; Music only $= 40 - 6 - 12 - 8 = 14$.</p>
+          <p>At least one $= 19 + 13 + 22 + 6 + 12 + 8 + 14 = 94$.</p>
+          <p>None $= 100 - 94 = \mathbf{6}$ students.</p>
+          <p><strong>(c)</strong> Exactly two means the three pairwise-only regions: $13 + 8 + 6 = 27$.</p>
+          <p>$P = \dfrac{27}{100} = 0.27$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Listing Outcomes Systematically (P6) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

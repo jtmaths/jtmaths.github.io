@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experimental Probability and Sample Size – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔬 Experimental Probability and Sample Size</h1>
+  <p>GCSE Maths · Probability (P5)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Law of Large Numbers</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The central idea of this page</div>
+    The more trials you carry out, the <strong>closer</strong> the relative frequency gets<br>to the true (theoretical) probability
+  </div>
+
+  <div class="concept">
+    A small experiment can give a wildly misleading answer purely by chance. A large one cannot — random ups and downs cancel each other out as the number of trials grows.
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#e0e7ff" stroke-width=".8">
+        <line x1="60" y1="40" x2="470" y2="40"/><line x1="60" y1="80" x2="470" y2="80"/>
+        <line x1="60" y1="120" x2="470" y2="120"/><line x1="60" y1="200" x2="470" y2="200"/>
+        <line x1="60" y1="240" x2="470" y2="240"/>
+      </g>
+      <line x1="60" y1="160" x2="470" y2="160" stroke="#ef4444" stroke-width="2" stroke-dasharray="7,4"/>
+      <text x="478" y="164" font-family="Arial" font-size="11" fill="#b91c1c">0.5</text>
+      <line x1="60" y1="270" x2="470" y2="270" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="60" y1="270" x2="60" y2="30" stroke="#4f46e5" stroke-width="2"/>
+      <polyline points="80,60 100,240 125,110 155,205 190,140 230,175 275,152 320,168 370,157 420,162 460,159"
+                fill="none" stroke="#7c3aed" stroke-width="2.6"/>
+      <g font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle">
+        <text x="80" y="286">10</text><text x="190" y="286">100</text><text x="320" y="286">500</text><text x="460" y="286">2000</text>
+      </g>
+      <text x="265" y="299" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Number of trials</text>
+      <text x="22" y="150" font-family="Arial" font-size="11" fill="#555" text-anchor="middle" transform="rotate(-90 22 150)">Relative frequency</text>
+      <text x="330" y="120" font-family="Arial" font-size="11" fill="#6d28d9">settles down towards the true value</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Watching it converge</div>
+    <div class="example-body">
+      <p>A coin is tossed and the relative frequency of heads recorded at various stages.</p>
+      <table>
+        <tr><th>Tosses</th><td>$10$</td><td>$50$</td><td>$100$</td><td>$1000$</td><td>$10\,000$</td></tr>
+        <tr><th>Heads</th><td>$7$</td><td>$27$</td><td>$46$</td><td>$509$</td><td>$5013$</td></tr>
+        <tr><th>Relative frequency</th><td>$0.7$</td><td>$0.54$</td><td>$0.46$</td><td>$0.509$</td><td>$0.5013$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>After $10$ tosses the estimate is $0.7$ — a long way from $0.5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>By $1000$ tosses it is $0.509$, and by $10\,000$ it is $0.5013$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The values are homing in on $0.5$, the theoretical probability for a fair coin.</span></div>
+      <p><strong>The coin appears to be fair</strong>, and the best estimate always comes from the largest sample.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHICH ESTIMATE IS BEST?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Choosing the Best Estimate</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The rule</div>
+    Always use the estimate based on the <strong>largest number of trials</strong>
+  </div>
+
+  <div class="warn">
+    <strong>Do not average the relative frequencies.</strong> If three students get $0.4$, $0.6$ and $0.55$ from different numbers of trials, the answer is <em>not</em> the mean of those three. Combine the raw data instead: add all the successes and divide by all the trials.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Combining several experiments</div>
+    <div class="example-body">
+      <p>Three students test the same biased spinner.</p>
+      <table>
+        <tr><th>Student</th><th>Spins</th><th>Reds</th></tr>
+        <tr><td>Ali</td><td>$50$</td><td>$18$</td></tr>
+        <tr><td>Beth</td><td>$120$</td><td>$39$</td></tr>
+        <tr><td>Cara</td><td>$230$</td><td>$81$</td></tr>
+      </table>
+      <p>Find the best estimate of $P(\text{red})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Combine the raw data: total spins $= 50 + 120 + 230 = 400$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Total reds $= 18 + 39 + 81 = 138$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{red}) \approx \dfrac{138}{400} = 0.345$</span></div>
+      <div class="tip">Using all $400$ spins gives a far better estimate than any student's individual result — and better than averaging $0.36$, $0.325$ and $0.352$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Choosing between estimates</div>
+    <div class="example-body">
+      <p>Two people estimate the probability that a drawing pin lands point up. Sam drops it $30$ times and gets $0.6$. Priya drops it $500$ times and gets $0.54$. Which estimate should be used, and why?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both are valid relative frequencies.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Priya used far more trials, so random variation has had more chance to even out.</span></div>
+      <p><strong>Use Priya's estimate, $0.54$.</strong> It is based on a much larger sample and is therefore more reliable.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – DETECTING BIAS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Detecting Bias</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Work out what the theoretical probability <em>would</em> be if the object were fair.</li>
+    <li>Multiply by the number of trials to find the expected frequency.</li>
+    <li>Compare with the actual frequency.</li>
+    <li>Judge whether the gap is large <strong>relative to the number of trials</strong>.</li>
+    <li>State a conclusion, mentioning the sample size.</li>
+  </ul>
+
+  <div class="concept">
+    <strong>Two things matter:</strong> how big the difference is, <em>and</em> how many trials there were. A difference of $10$ out of $30$ trials proves nothing; the same difference out of $3000$ trials is very strong evidence.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Strong evidence of bias</div>
+    <div class="example-body">
+      <p>A die is rolled $900$ times. A one comes up $205$ times. Is the die biased?</p>
+      <div class="step-row"><span class="arrow">①</span><span>If fair, $P(1) = \dfrac{1}{6}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expected number $= \dfrac{1}{6} \times 900 = 150$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Actual $= 205$ — that is $55$ more than expected.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Relative frequency $= \dfrac{205}{900} = 0.228$, compared with $0.167$.</span></div>
+      <p><strong>Yes, the die appears biased towards one.</strong> The difference is large and the sample of $900$ is big enough to make chance an unlikely explanation.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Weak evidence</div>
+    <div class="example-body">
+      <p>A die is rolled $30$ times and a one comes up $8$ times. Is the die biased?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expected $= \dfrac{1}{6} \times 30 = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Actual $= 8$ — only $3$ more than expected.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>With just $30$ rolls, a difference of $3$ is easily explained by chance.</span></div>
+      <p><strong>There is not enough evidence to say the die is biased.</strong> Rolling it several hundred more times would give a much better test.</p>
+      <div class="warn">Note the careful wording. You can say "there is not enough evidence" — you cannot say "the die <em>is</em> fair". Absence of evidence is not proof of fairness.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – DESIGNING AN EXPERIMENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Designing a Good Experiment</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Feature</th><th>Why it matters</th></tr>
+    <tr><td><strong>Many trials</strong></td><td>Reduces the effect of random variation.</td></tr>
+    <tr><td><strong>Identical conditions</strong></td><td>Drop the pin from the same height onto the same surface each time.</td></tr>
+    <tr><td><strong>No selection by the experimenter</strong></td><td>Stopping when you get the result you like biases the outcome.</td></tr>
+    <tr><td><strong>Record every trial</strong></td><td>Discarding "odd" results distorts the frequency.</td></tr>
+    <tr><td><strong>Fix the number of trials in advance</strong></td><td>Prevents stopping at a convenient moment.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Criticising a method</div>
+    <div class="example-body">
+      <p>Tom wants to estimate the probability that a bent coin lands heads. He tosses it until he gets $10$ heads, which takes $16$ tosses, and concludes $P(\text{heads}) = \dfrac{10}{16} = 0.625$. Give two criticisms.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Too few trials.</strong> Sixteen tosses is a very small sample, so the estimate is unreliable.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>He stopped on a head.</strong> Deciding to stop as soon as the tenth head appears guarantees the last toss is a head, which pushes the estimate upwards.</span></div>
+      <p><strong>Better method:</strong> decide in advance to toss the coin, say, $500$ times, record every result, and then calculate the relative frequency.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – ESTIMATING POPULATION SIZE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using Samples to Estimate Contents</div>
+<div class="section-body">
+
+  <p>A common exam application: use a sample to estimate how many of something there are.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Estimating how many counters</div>
+    <div class="example-body">
+      <p>A bag contains $80$ counters, some red and some blue. A counter is drawn, its colour noted, and it is replaced. This is done $200$ times, and red comes up $130$ times. Estimate how many red counters are in the bag.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Estimated $P(\text{red}) = \dfrac{130}{200} = 0.65$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Estimated number of red counters $= 0.65 \times 80 = 52$</span></div>
+      <p><strong>About $52$ red counters</strong> (and therefore about $28$ blue).</p>
+      <div class="tip">Note the counter is <em>replaced</em> each time. This keeps the probability the same for every draw, which is what makes the estimate valid.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Capture–recapture style reasoning</div>
+    <div class="example-body">
+      <p>A large box contains many identical beads, some white. A sample of $250$ beads is taken and $45$ are white. The box is known to hold $4000$ beads. Estimate how many are white, and say how the estimate could be improved.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Estimated $P(\text{white}) = \dfrac{45}{250} = 0.18$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Estimated number white $= 0.18 \times 4000 = 720$ beads</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>To improve it: take a <strong>larger sample</strong>, and make sure the box is well mixed so the sample is genuinely random.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The main idea</h4><p>More trials → relative frequency converges on the true probability.</p></div>
+    <div class="ref-card"><h4>Best estimate</h4><p>The one from the largest number of trials.</p></div>
+    <div class="ref-card"><h4>Combining experiments</h4><p>Add all successes and all trials; never average the frequencies.</p></div>
+    <div class="ref-card"><h4>Detecting bias</h4><p>Compare actual with expected, and consider the sample size.</p></div>
+    <div class="ref-card"><h4>Small samples</h4><p>Cannot prove bias — differences are easily due to chance.</p></div>
+    <div class="ref-card"><h4>Careful wording</h4><p>"Not enough evidence of bias", not "the die is fair".</p></div>
+    <div class="ref-card"><h4>Good experiment</h4><p>Many trials, identical conditions, number fixed in advance.</p></div>
+    <div class="ref-card"><h4>Estimating contents</h4><p>Relative frequency $\times$ total number in the population.</p></div>
+    <div class="ref-card"><h4>Replacement</h4><p>Replacing keeps each trial identical, which the method requires.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A spinner is spun $600$ times and lands on red $148$ times. Estimate $P(\text{red})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{red}) \approx \dfrac{148}{600} = 0.247$ (3 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Two students estimate the same probability. Ravi uses $40$ trials and gets $0.4$; Nina uses $600$ trials and gets $0.47$. Which estimate is better, and why?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Nina's, $0.47$.</strong></p>
+          <p>She used far more trials, so random variation has had more opportunity to average out. Larger samples give more reliable estimates.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Three people test a coin: $40$ tosses with $24$ heads, $60$ tosses with $33$ heads, and $100$ tosses with $53$ heads. Find the best combined estimate of $P(\text{heads})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total tosses $= 40 + 60 + 100 = 200$</p>
+          <p>Total heads $= 24 + 33 + 53 = 110$</p>
+          <p>$P(\text{heads}) \approx \dfrac{110}{200} = 0.55$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A fair die should give a six about $\tfrac{1}{6}$ of the time. In $1200$ rolls, a six comes up $284$ times. Is the die biased?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expected sixes $= \dfrac{1}{6} \times 1200 = 200$.</p>
+          <p>Actual $= 284$, which is $84$ more than expected.</p>
+          <p>Relative frequency $= \dfrac{284}{1200} = 0.237$, well above $0.167$.</p>
+          <p><strong>Yes — the die appears biased towards six</strong>, and with $1200$ rolls the evidence is strong.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A coin is tossed $12$ times and lands tails $9$ times. Can you conclude that the coin is biased? Explain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expected tails $= 6$; actual $= 9$, a difference of only $3$.</p>
+          <p>Twelve tosses is a very small sample, and this kind of result happens quite often with a fair coin.</p>
+          <p><strong>No — there is not enough evidence.</strong> Many more tosses would be needed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A bag holds $60$ counters. A counter is drawn and replaced $300$ times; green appears $105$ times. Estimate how many green counters are in the bag.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{green}) \approx \dfrac{105}{300} = 0.35$</p>
+          <p>Estimated green counters $= 0.35 \times 60 = 21$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain why a counter must be replaced after each draw when estimating a probability in this way.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Replacing the counter keeps the contents of the bag the same for every draw, so the probability is identical each time.</p>
+          <p>Without replacement the probability changes after every draw, so the relative frequency would no longer estimate a single fixed probability.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Jess wants to estimate the probability that a piece of buttered toast lands butter-side down. She drops it until it lands butter-side down for the fifth time, taking $9$ drops. Give two criticisms of her method.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>1. Too few trials.</strong> Nine drops is far too small a sample for a reliable estimate.</p>
+          <p><strong>2. She stopped on a butter-side-down result.</strong> Because the stopping rule depends on the outcome, the final drop is guaranteed to be butter-side down, which biases the estimate upwards.</p>
+          <p>She should fix the number of drops in advance (say $200$) and record every one.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The relative frequency of a spinner landing yellow is recorded as the number of spins increases.</p>
+      <table>
+        <tr><th>Spins</th><td>$20$</td><td>$60$</td><td>$150$</td><td>$400$</td><td>$1000$</td></tr>
+        <tr><th>Rel. freq.</th><td>$0.45$</td><td>$0.32$</td><td>$0.29$</td><td>$0.272$</td><td>$0.268$</td></tr>
+      </table>
+      <p>(a) Estimate $P(\text{yellow})$. &nbsp; (b) Describe the pattern. &nbsp; (c) How many yellows would you expect in $2500$ spins?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Use the largest sample: $P(\text{yellow}) \approx 0.268$.</p>
+          <p><strong>(b)</strong> The early values vary a lot ($0.45$ down to $0.32$), but as the number of spins increases they settle down and change less and less, converging on roughly $0.27$.</p>
+          <p><strong>(c)</strong> $0.268 \times 2500 = 670$ yellows</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A factory claims that $2\%$ of its products are faulty. A shop receives a delivery of $1500$ items and tests a random sample of $250$, finding $9$ faulty.</p>
+      <p>(a) Estimate the probability that an item is faulty. &nbsp; (b) Estimate the number of faulty items in the whole delivery. &nbsp; (c) Does the sample support the factory's claim? &nbsp; (d) How could the shop improve the reliability of its check?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $P(\text{faulty}) \approx \dfrac{9}{250} = 0.036$, that is $3.6\%$.</p>
+          <p><strong>(b)</strong> $0.036 \times 1500 = 54$ faulty items.</p>
+          <p><strong>(c)</strong> The factory claims $2\%$, which would mean $0.02 \times 250 = 5$ faulty in the sample. The shop found $9$ — nearly double.</p>
+          <p>However, the sample is only $250$ items and the difference is just $4$ items, which could plausibly happen by chance. So the sample <strong>raises doubt about the claim but does not disprove it</strong>.</p>
+          <p><strong>(d)</strong> Test a <strong>larger sample</strong>, chosen at random from throughout the delivery rather than from one box, so that any variation between batches is captured.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Experimental Probability &amp; Sample Size (P5) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

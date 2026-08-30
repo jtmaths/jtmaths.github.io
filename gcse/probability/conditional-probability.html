@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Probability – GCSE Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔍 Conditional Probability</h1>
+  <p>GCSE Maths · Probability (P9)</p>
+  <div class="badge">Ages 15–16 · Foundation &amp; Higher</div><br>
+  <a class="backlink" href="overview.html">← Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IT MEANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What "Given That" Means</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>conditional probability</strong> is the probability of one event <em>given that</em> another has already happened. Knowing the extra information changes the situation — you are no longer looking at everybody, only at a smaller group.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Notation</div>
+    $P(A \mid B)$ &nbsp;means &nbsp;"the probability of $A$ <strong>given</strong> $B$"
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The one idea you need</div>
+    "Given that…" tells you to <strong>shrink the denominator</strong><br>
+    Count only within the group you have been told about
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Seeing the shrink</div>
+    <div class="example-body">
+      <p>In a class of $30$ students, $12$ wear glasses. Of those $12$, $5$ are left-handed. A student is chosen at random.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(\text{wears glasses}) = \dfrac{12}{30} = 0.4$ — denominator is the whole class.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{left-handed} \mid \text{wears glasses}) = \dfrac{5}{12}$ — denominator is only the glasses-wearers.</span></div>
+      <p>The extra information "given that they wear glasses" has cut the group from $30$ down to $12$.</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>The order matters.</strong> $P(A \mid B)$ and $P(B \mid A)$ are usually different numbers. "The probability someone is a doctor given they went to university" is very different from "the probability someone went to university given they are a doctor".
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TWO-WAY TABLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Conditional Probability from a Two-Way Table</div>
+<div class="section-body">
+
+  <p>Two-way tables make conditional probability almost mechanical: the condition tells you which <strong>row or column</strong> to use as the denominator.</p>
+
+  <ul class="steps">
+    <li>Read the condition — the part after "given that".</li>
+    <li>Find the row or column total for that condition. This is your denominator.</li>
+    <li>Find the single cell that satisfies both conditions. This is your numerator.</li>
+    <li>Write the fraction and simplify.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reading a table</div>
+    <div class="example-body">
+      <p>The table shows $200$ people and whether they own a pet.</p>
+      <table>
+        <tr><th></th><th>Owns a pet</th><th>No pet</th><th>Total</th></tr>
+        <tr><td><strong>Adults</strong></td><td>$54$</td><td>$66$</td><td>$120$</td></tr>
+        <tr><td><strong>Children</strong></td><td>$48$</td><td>$32$</td><td>$80$</td></tr>
+        <tr><td><strong>Total</strong></td><td>$102$</td><td>$98$</td><td>$200$</td></tr>
+      </table>
+      <p>Find (a) $P(\text{owns a pet})$, (b) $P(\text{owns a pet} \mid \text{child})$, (c) $P(\text{child} \mid \text{owns a pet})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Whole table: $\dfrac{102}{200} = 0.51$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Given a child, use the children row: $80$ children, $48$ with pets.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{48}{80} = 0.6$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(c)</strong> Given a pet owner, use the pet column: $102$ owners, $48$ of them children.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{48}{102} = \dfrac{8}{17} = 0.471$ (3 d.p.)</span></div>
+      <div class="tip">Notice (b) and (c) use the <em>same</em> numerator, $48$, but different denominators. That is the whole point of conditional probability.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VENN DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Conditional Probability from a Venn Diagram</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="440" height="230" viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="400" height="175" fill="#fafafe" stroke="#94a3b8" stroke-width="2"/>
+      <text x="34" y="40" font-family="Arial" font-size="14" fill="#475569" font-weight="bold">ξ = 50</text>
+      <circle cx="170" cy="110" r="78" fill="#c7d2fe" fill-opacity=".55" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="262" cy="110" r="78" fill="#bbf7d0" fill-opacity=".55" stroke="#22c55e" stroke-width="2.5"/>
+      <text x="112" y="48" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">F</text>
+      <text x="320" y="48" font-family="Arial" font-size="16" fill="#166534" font-weight="bold">G</text>
+      <text x="128" y="118" font-family="Arial" font-size="20" fill="#3730a3" text-anchor="middle" font-weight="bold">14</text>
+      <text x="216" y="118" font-family="Arial" font-size="20" fill="#4c1d95" text-anchor="middle" font-weight="bold">9</text>
+      <text x="304" y="118" font-family="Arial" font-size="20" fill="#166534" text-anchor="middle" font-weight="bold">18</text>
+      <text x="384" y="180" font-family="Arial" font-size="18" fill="#64748b" font-weight="bold">9</text>
+      <text x="220" y="218" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">F = French, G = German. Total: 14 + 9 + 18 + 9 = 50 ✓</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using a Venn diagram</div>
+    <div class="example-body">
+      <p>Using the diagram above, find (a) $P(F)$, (b) $P(F \mid G)$, (c) $P(G \mid F)$, (d) $P(F' \mid G')$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $F$ contains $14 + 9 = 23$ students. $P(F) = \dfrac{23}{50} = 0.46$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Given $G$: the German circle holds $9 + 18 = 27$ students, of whom $9$ also do French.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(F \mid G) = \dfrac{9}{27} = \dfrac{1}{3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(c)</strong> Given $F$: $23$ students, of whom $9$ also do German.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P(G \mid F) = \dfrac{9}{23}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><strong>(d)</strong> Given not German: outside the $G$ circle there are $14 + 9 = 23$ students. Of these, those who also do not do French number $9$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$P(F' \mid G') = \dfrac{9}{23}$</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The formal rule</div>
+    $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$ &nbsp;— which is exactly "the overlap divided by the condition"
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TREE DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Conditional Probability on Tree Diagrams</div>
+<div class="section-body">
+
+  <div class="concept">
+    On a tree diagram, the probabilities on the <strong>second set of branches are already conditional</strong> — they assume the first branch has happened. This is exactly what "without replacement" questions rely on.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Reading a conditional off a tree</div>
+    <div class="example-body">
+      <p>A bag has $5$ red and $3$ blue counters. Two are taken without replacement. What is the probability the second is red, given the first was red?</p>
+      <div class="step-row"><span class="arrow">①</span><span>After removing one red, $4$ red remain out of $7$ counters.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{2nd red} \mid \text{1st red}) = \dfrac{4}{7}$</span></div>
+      <p>This number is written directly on the upper second-stage branch of the tree.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Working backwards through a tree</div>
+    <div class="example-body">
+      <p>A factory has two machines. Machine A makes $60\%$ of items, machine B makes $40\%$. $3\%$ of A's items are faulty and $7\%$ of B's are faulty. An item is chosen at random and found to be faulty. Find the probability it came from machine B.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(\text{A and faulty}) = 0.6 \times 0.03 = 0.018$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{B and faulty}) = 0.4 \times 0.07 = 0.028$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{faulty}) = 0.018 + 0.028 = 0.046$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Given it is faulty, restrict to those $0.046$:</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$P(\text{B} \mid \text{faulty}) = \dfrac{0.028}{0.046} = \dfrac{28}{46} = \dfrac{14}{23} = 0.609$ (3 d.p.)</span></div>
+      <div class="tip"><strong>The pattern:</strong> the numerator is the single path you want; the denominator is the sum of <em>all</em> paths that satisfy the condition.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not just read the branch.</strong> In Worked Example 5, $0.07$ is $P(\text{faulty} \mid \text{B})$, not $P(\text{B} \mid \text{faulty})$. Reversing a conditional always needs the calculation above.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – EXPECTED FREQUENCIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using Expected Frequencies</div>
+<div class="section-body">
+
+  <p>Conditional probability becomes much easier if you convert the probabilities into <strong>numbers of people</strong> first. Choose a convenient total and build a table.</p>
+
+  <ul class="steps">
+    <li>Pick a friendly total — usually $100$, $1000$ or a number that makes all the percentages whole.</li>
+    <li>Work out how many fall into each category.</li>
+    <li>Build a two-way table of counts.</li>
+    <li>Read the conditional probability straight off, using the appropriate row or column total.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — The medical test</div>
+    <div class="example-body">
+      <p>$1\%$ of a population has a disease. A test is $90\%$ accurate for those who have it, and gives a false positive for $5\%$ of those who do not. A person tests positive. What is the probability they actually have the disease?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take a population of $10\,000$ people.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>With the disease: $1\%$ of $10\,000 = 100$. Without: $9900$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Of the $100$ with it, $90\%$ test positive: $90$ people.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Of the $9900$ without it, $5\%$ test positive: $495$ people.</span></div>
+      <table>
+        <tr><th></th><th>Tests positive</th><th>Tests negative</th><th>Total</th></tr>
+        <tr><td><strong>Has disease</strong></td><td>$90$</td><td>$10$</td><td>$100$</td></tr>
+        <tr><td><strong>No disease</strong></td><td>$495$</td><td>$9405$</td><td>$9900$</td></tr>
+        <tr><td><strong>Total</strong></td><td>$585$</td><td>$9415$</td><td>$10\,000$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">⑤</span><span>Given a positive test, restrict to the $585$ positives.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$P(\text{has disease} \mid \text{positive}) = \dfrac{90}{585} = 0.154$ (3 d.p.)</span></div>
+      <p><strong>Only about $15\%$</strong> — surprisingly low, because the disease is rare and there are far more false positives than true ones. This is why real screening programmes always retest.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – TESTING INDEPENDENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Testing for Independence</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Independence test</div>
+    $A$ and $B$ are independent if &nbsp;$P(A \mid B) = P(A)$<br>
+    equivalently, if &nbsp;$P(A \cap B) = P(A) \times P(B)$
+  </div>
+
+  <div class="concept">
+    In words: knowing that $B$ happened tells you <em>nothing new</em> about whether $A$ will happen.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Are they independent?</div>
+    <div class="example-body">
+      <p>In a group of $80$ people, $32$ play a musical instrument and $20$ speak a second language. Of these, $8$ do both. Are "plays an instrument" and "speaks a second language" independent?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(\text{instrument}) = \dfrac{32}{80} = 0.4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(\text{instrument} \mid \text{second language}) = \dfrac{8}{20} = 0.4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>These are equal, so the events are <strong>independent</strong>.</span></div>
+      <p><em>Check with the product rule:</em> $P(\text{both}) = \dfrac{8}{80} = 0.1$, and $P(A) \times P(B) = 0.4 \times 0.25 = 0.1$ ✓</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Notation</h4><p>$P(A \mid B)$ is "$A$ given $B$".</p></div>
+    <div class="ref-card"><h4>The main idea</h4><p>"Given that" shrinks the denominator to the stated group.</p></div>
+    <div class="ref-card"><h4>Two-way table</h4><p>Use one row or one column total as the denominator.</p></div>
+    <div class="ref-card"><h4>Venn diagram</h4><p>Overlap $\div$ the whole condition circle.</p></div>
+    <div class="ref-card"><h4>Formula</h4><p>$P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$.</p></div>
+    <div class="ref-card"><h4>Order matters</h4><p>$P(A \mid B) \neq P(B \mid A)$ in general.</p></div>
+    <div class="ref-card"><h4>Trees</h4><p>Second-stage branches are already conditional.</p></div>
+    <div class="ref-card"><h4>Reversing</h4><p>Wanted path $\div$ sum of all paths meeting the condition.</p></div>
+    <div class="ref-card"><h4>Expected frequencies</h4><p>Convert to counts out of $100$ or $10\,000$ — far easier.</p></div>
+    <div class="ref-card"><h4>Independent?</h4><p>Check whether $P(A \mid B) = P(A)$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>In a class of $25$, $10$ play football. Of those, $4$ also play tennis. Find $P(\text{plays tennis} \mid \text{plays football})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Restrict to the $10$ footballers, of whom $4$ play tennis.</p>
+          <p>$P = \dfrac{4}{10} = 0.4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Use this table to find (a) $P(\text{male})$, (b) $P(\text{drives} \mid \text{male})$, (c) $P(\text{male} \mid \text{drives})$.</p>
+      <table>
+        <tr><th></th><th>Drives</th><th>Does not drive</th><th>Total</th></tr>
+        <tr><td><strong>Male</strong></td><td>$45$</td><td>$15$</td><td>$60$</td></tr>
+        <tr><td><strong>Female</strong></td><td>$35$</td><td>$25$</td><td>$60$</td></tr>
+        <tr><td><strong>Total</strong></td><td>$80$</td><td>$40$</td><td>$120$</td></tr>
+      </table>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{60}{120} = 0.5$</p>
+          <p><strong>(b)</strong> Male row: $\dfrac{45}{60} = 0.75$</p>
+          <p><strong>(c)</strong> Drives column: $\dfrac{45}{80} = 0.5625$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A bag has $6$ red and $4$ green counters. Two are taken without replacement. Find $P(\text{2nd is green} \mid \text{1st is green})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>After removing one green, $3$ green remain out of $9$ counters.</p>
+          <p>$P = \dfrac{3}{9} = \dfrac{1}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A Venn diagram shows: only $A$ = $12$, both = $8$, only $B$ = $15$, neither = $5$. Find (a) $P(A \mid B)$, (b) $P(B \mid A)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n(A) = 12 + 8 = 20$; $n(B) = 8 + 15 = 23$; total $= 40$.</p>
+          <p><strong>(a)</strong> $P(A \mid B) = \dfrac{8}{23}$</p>
+          <p><strong>(b)</strong> $P(B \mid A) = \dfrac{8}{20} = 0.4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$P(A) = 0.5$, $P(B) = 0.3$ and $P(A \cap B) = 0.15$. Are $A$ and $B$ independent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(A) \times P(B) = 0.5 \times 0.3 = 0.15$</p>
+          <p>This equals $P(A \cap B)$, so <strong>yes, they are independent</strong>.</p>
+          <p>Check the other way: $P(A \mid B) = \dfrac{0.15}{0.3} = 0.5 = P(A)$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Of $150$ people surveyed, $90$ own a car. Of the car owners, $54$ also own a bike. Of the non-car-owners, $18$ own a bike. Find $P(\text{owns a car} \mid \text{owns a bike})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Bike owners altogether $= 54 + 18 = 72$.</p>
+          <p>Of these, $54$ also own a car.</p>
+          <p>$P = \dfrac{54}{72} = 0.75$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Two machines make bolts. Machine X makes $70\%$ and $2\%$ of them are faulty; machine Y makes $30\%$ and $6\%$ are faulty. A bolt is faulty. Find the probability it came from machine X.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(\text{X and faulty}) = 0.7 \times 0.02 = 0.014$</p>
+          <p>$P(\text{Y and faulty}) = 0.3 \times 0.06 = 0.018$</p>
+          <p>$P(\text{faulty}) = 0.014 + 0.018 = 0.032$</p>
+          <p>$P(\text{X} \mid \text{faulty}) = \dfrac{0.014}{0.032} = 0.4375$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain, with an example, why $P(A \mid B)$ is not usually the same as $P(B \mid A)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>They use <strong>different denominators</strong>: one restricts to group $B$, the other to group $A$. Unless the two groups happen to be the same size, the answers differ.</p>
+          <p><em>Example:</em> $P(\text{is a professional footballer} \mid \text{owns football boots})$ is tiny, because millions of people own boots.</p>
+          <p>But $P(\text{owns football boots} \mid \text{is a professional footballer})$ is essentially $1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A bag contains $4$ white and $6$ black balls. Two are drawn without replacement.</p>
+      <p>(a) Find $P(\text{both white})$. &nbsp; (b) Find $P(\text{2nd white})$. &nbsp; (c) Find $P(\text{1st white} \mid \text{2nd white})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{4}{10} \times \dfrac{3}{9} = \dfrac{12}{90} = \dfrac{2}{15}$</p>
+          <p><strong>(b)</strong> Two paths give a white second ball:</p>
+          <p>WW: $\dfrac{4}{10} \times \dfrac{3}{9} = \dfrac{12}{90}$; &nbsp;BW: $\dfrac{6}{10} \times \dfrac{4}{9} = \dfrac{24}{90}$</p>
+          <p>$P(\text{2nd white}) = \dfrac{12 + 24}{90} = \dfrac{36}{90} = \dfrac{2}{5}$</p>
+          <p><strong>(c)</strong> $P(\text{1st white} \mid \text{2nd white}) = \dfrac{P(\text{WW})}{P(\text{2nd white})} = \dfrac{12/90}{36/90} = \dfrac{12}{36} = \dfrac{1}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A screening test for a condition affecting $2\%$ of a population detects it correctly $95\%$ of the time. For people without the condition, it wrongly gives a positive result $8\%$ of the time.</p>
+      <p>(a) Using a population of $10\,000$, build a two-way table. &nbsp; (b) Find $P(\text{positive test})$. &nbsp; (c) Find $P(\text{has the condition} \mid \text{positive test})$. &nbsp; (d) Comment on what this means for the usefulness of the test.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> With the condition: $2\%$ of $10\,000 = 200$; without: $9800$.</p>
+          <p>True positives: $95\%$ of $200 = 190$; so $10$ false negatives.</p>
+          <p>False positives: $8\%$ of $9800 = 784$; so $9016$ true negatives.</p>
+          <table>
+            <tr><th></th><th>Positive</th><th>Negative</th><th>Total</th></tr>
+            <tr><td><strong>Has condition</strong></td><td>$190$</td><td>$10$</td><td>$200$</td></tr>
+            <tr><td><strong>No condition</strong></td><td>$784$</td><td>$9016$</td><td>$9800$</td></tr>
+            <tr><td><strong>Total</strong></td><td>$974$</td><td>$9026$</td><td>$10\,000$</td></tr>
+          </table>
+          <p><strong>(b)</strong> $P(\text{positive}) = \dfrac{974}{10\,000} = 0.0974$</p>
+          <p><strong>(c)</strong> $P(\text{has condition} \mid \text{positive}) = \dfrac{190}{974} = 0.195$ (3 d.p.)</p>
+          <p><strong>(d)</strong> Only about $20\%$ of people who test positive actually have the condition — four out of five positives are false alarms.</p>
+          <p>This happens because the condition is <em>rare</em>: even a small false-positive rate applied to the very large healthy group ($784$ people) swamps the true positives ($190$). The test is still useful as a first screen, since it catches $95\%$ of real cases, but a positive result must always be followed up with a more accurate second test.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Conditional Probability (P9) · GCSE Maths Revision · Created with MathJax
+</div>
+
+</main>
+</body>
+</html>
