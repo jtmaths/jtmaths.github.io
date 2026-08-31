@@ -3,7 +3,7 @@ title: Home
 layout: home
 ---
 
-![JTmaths](https://jtmaths.org/static/jtmaths.jpeg "jtmaths.org")
+![JTmaths](https://jtmaths.org/static/logo.png "jtmaths.org")
 
 This website is built as a free resource to help everyone understand school level maths, especially those in resource poor settings.
 It was started by Jonas Thornhill as part of his [Duke of Edinburgh Award] and developed with the assistance of [Google Gemini AI] and [Claude] on [GitHub] using [Jekyll] and the [Just the Docs] theme.
