@@ -22,3 +22,18 @@ nav_order: 2
 * [More Iterative Methods](iterative2.html)
 * [Sequences](sequences1.html)
 * [More Sequences](sequences2.html)
+
+<!-- PAPERS:START -->
+
+## Practice papers
+
+Printable A4 practice papers. Each paper has 10 foundation-level questions and 10 higher-level questions, with the easiest first and the hardest last, and comes with a second PDF that works through every question step by step.
+
+* **Algebra &mdash; whole topic** &middot; [questions](algebra-practice-questions.pdf) &middot; [solutions](algebra-practice-solutions.pdf)
+* **Solving Equations** &middot; [questions](equations-practice-questions.pdf) &middot; [solutions](equations-practice-solutions.pdf)
+* **Expanding and Factorising** &middot; [questions](brackets-practice-questions.pdf) &middot; [solutions](brackets-practice-solutions.pdf)
+* **Simultaneous Equations** &middot; [questions](simultaneous-practice-questions.pdf) &middot; [solutions](simultaneous-practice-solutions.pdf)
+* **Sequences** &middot; [questions](sequences-practice-questions.pdf) &middot; [solutions](sequences-practice-solutions.pdf)
+* **Inequalities** &middot; [questions](inequalities-practice-questions.pdf) &middot; [solutions](inequalities-practice-solutions.pdf)
+
+<!-- PAPERS:END -->

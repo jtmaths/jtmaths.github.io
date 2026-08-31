@@ -33,3 +33,18 @@ nav_order: 5
 Each page contains step-by-step explanations, several worked examples and ten practice
 questions with fully worked solutions. All pages are self-contained HTML files that can be
 downloaded and used offline.
+
+<!-- PAPERS:START -->
+
+## Practice papers
+
+Printable A4 practice papers. Each paper has 10 foundation-level questions and 10 higher-level questions, with the easiest first and the hardest last, and comes with a second PDF that works through every question step by step.
+
+* **Ratio, Proportion and Rates of Change &mdash; whole topic** &middot; [questions](ratio-practice-questions.pdf) &middot; [solutions](ratio-practice-solutions.pdf)
+* **Ratio Notation and Sharing** &middot; [questions](ratio-notation-practice-questions.pdf) &middot; [solutions](ratio-notation-practice-solutions.pdf)
+* **Direct and Inverse Proportion** &middot; [questions](proportion-practice-questions.pdf) &middot; [solutions](proportion-practice-solutions.pdf)
+* **Compound Measures** &middot; [questions](compound-measures-practice-questions.pdf) &middot; [solutions](compound-measures-practice-solutions.pdf)
+* **Similar Shapes** &middot; [questions](similar-shapes-practice-questions.pdf) &middot; [solutions](similar-shapes-practice-solutions.pdf)
+* **Growth and Decay** &middot; [questions](growth-decay-practice-questions.pdf) &middot; [solutions](growth-decay-practice-solutions.pdf)
+
+<!-- PAPERS:END -->

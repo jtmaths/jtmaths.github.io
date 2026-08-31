@@ -23,3 +23,15 @@ nav_order: 8
 Each page contains step-by-step explanations, several worked examples and ten practice
 questions with fully worked solutions. All pages are self-contained HTML files that can be
 downloaded and used offline.
+
+<!-- PAPERS:START -->
+
+## Practice papers
+
+Printable A4 practice papers. Each paper has 10 foundation-level questions and 10 higher-level questions, with the easiest first and the hardest last, and comes with a second PDF that works through every question step by step.
+
+* **Statistics &mdash; whole topic** &middot; [questions](statistics-practice-questions.pdf) &middot; [solutions](statistics-practice-solutions.pdf)
+* **Averages and Spread** &middot; [questions](averages-practice-questions.pdf) &middot; [solutions](averages-practice-solutions.pdf)
+* **Histograms and Cumulative Frequency** &middot; [questions](histograms-practice-questions.pdf) &middot; [solutions](histograms-practice-solutions.pdf)
+
+<!-- PAPERS:END -->

@@ -26,3 +26,15 @@ nav_order: 7
 Each page contains step-by-step explanations, several worked examples and ten practice
 questions with fully worked solutions. All pages are self-contained HTML files that can be
 downloaded and used offline.
+
+<!-- PAPERS:START -->
+
+## Practice papers
+
+Printable A4 practice papers. Each paper has 10 foundation-level questions and 10 higher-level questions, with the easiest first and the hardest last, and comes with a second PDF that works through every question step by step.
+
+* **Probability &mdash; whole topic** &middot; [questions](probability-practice-questions.pdf) &middot; [solutions](probability-practice-solutions.pdf)
+* **Tree Diagrams and Combined Events** &middot; [questions](tree-diagrams-practice-questions.pdf) &middot; [solutions](tree-diagrams-practice-solutions.pdf)
+* **Conditional Probability** &middot; [questions](conditional-probability-practice-questions.pdf) &middot; [solutions](conditional-probability-practice-solutions.pdf)
+
+<!-- PAPERS:END -->
