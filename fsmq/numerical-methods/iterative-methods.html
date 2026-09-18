@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iterative Methods &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔁 Iterative Methods</h1>
+  <p>OCR FSMQ Additional Maths · Numerical Methods (NM2, NM3)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Idea</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>NM2:</strong> use a simple iterative method to solve equations approximately. An <strong>iteration</strong> feeds each answer back into the same formula, so the estimates improve with every step — often very fast.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The method in two steps</div>
+    <strong>1.</strong> Rearrange $\mathrm{f}(x) = 0$ into the form $x = \mathrm{g}(x)$<br>
+    <strong>2.</strong> Iterate: $x_{n+1} = \mathrm{g}(x_n)$, starting from an estimate $x_1$
+  </div>
+
+  <div class="concept">
+    <strong>Why it works when it works.</strong> If the iterates settle on a value $L$, then $L = \mathrm{g}(L)$ — and rearranging that back gives $\mathrm{f}(L) = 0$. So the limit of the sequence <em>is</em> a root of the original equation.
+  </div>
+
+  <div class="tip">
+    <strong>Use the ANS key.</strong> Type your starting value and press $=$. Then type the formula with ANS wherever $x$ appears, and press $=$ repeatedly. Each press gives the next iterate. The specification expects a calculator with this facility.
+  </div>
+
+  <div class="warn">
+    <strong>Never round between steps.</strong> Feed the calculator's full-precision value back in each time. Rounding to 3 decimal places at every step can stop the sequence converging to the right answer at all.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – REARRANGING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Rearranging Into $x = \mathrm{g}(x)$</div>
+<div class="section-body">
+
+  <p>The same equation can be rearranged many ways, and the <em>choice matters enormously</em> — some rearrangements converge and others do not.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Three rearrangements of one equation</div>
+    <div class="example-body">
+      <p>Find three ways of writing $x^3 - 5x + 1 = 0$ in the form $x = \mathrm{g}(x)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Isolate the $x$ term: $5x = x^3 + 1$, so $x = \dfrac{x^3+1}{5}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Isolate the $x^3$: $x^3 = 5x - 1$, so $x = \sqrt[3]{5x-1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide through by $x$: $x^2 - 5 + \tfrac1x = 0$, so $x = \sqrt{5 - \tfrac1x}$</span></div>
+      <div class="tip">All three are algebraically equivalent, but they behave completely differently as iterations. Trying a rearrangement and finding it diverges is normal — switch to another.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A converging iteration</div>
+    <div class="example-body">
+      <p>Use $x_{n+1} = \dfrac{x_n^3+1}{5}$ with $x_1 = 0$ to find a root of $x^3 - 5x + 1 = 0$ to $4$ decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x_1 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_2 = \dfrac{0+1}{5} = 0.2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x_3 = \dfrac{0.008+1}{5} = 0.2016$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x_4 = \dfrac{0.0081936+1}{5} = 0.2016387$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x_5 = 0.2016397$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$x_6 = 0.2016397$ — the value has stabilised.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>The root is $\mathbf{0.2016}$ to $4$ d.p.</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span><em>Verify:</em> $\mathrm{f}(0.2016) = 0.00819 - 1.008 + 1 = 0.00019 \approx 0$ ✓</span></div>
+      <div class="tip"><strong>Always verify.</strong> Substituting your answer back into the original equation should give something very close to zero. It is the only way to be sure you converged to the right thing.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A different root from a different start</div>
+    <div class="example-body">
+      <p>The equation $x^3 - 5x + 1 = 0$ also has a root near $2$. Use $x_{n+1} = \sqrt[3]{5x_n - 1}$ with $x_1 = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x_2 = \sqrt[3]{9} = 2.080084$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_3 = \sqrt[3]{9.400419} = 2.110486$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x_4 = \sqrt[3]{9.552428} = 2.121801$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x_5 = \sqrt[3]{9.609004} = 2.125981$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Continuing, the iterates approach $2.128$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The root is $\mathbf{2.128}$ to $3$ d.p.</span></div>
+      <div class="warn"><strong>An iteration finds one root, not all of them.</strong> Which root you reach depends on both the rearrangement <em>and</em> the starting value. This cubic has three roots; each needs its own approach.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CONVERGENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Convergence and Divergence</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Behaviour</th><th>What you see</th></tr>
+    <tr><td><strong>Converges</strong></td><td>The iterates settle towards one value; successive differences shrink</td></tr>
+    <tr><td><strong>Diverges</strong></td><td>The values grow without limit, or produce a calculator error</td></tr>
+    <tr><td><strong>Oscillates and converges</strong></td><td>Alternates above and below the root, closing in each time</td></tr>
+    <tr><td><strong>Oscillates and diverges</strong></td><td>Alternates, but the swings get bigger</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="440" height="230" viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="120" x2="410" y2="120" stroke="#475569" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="414" y="124" font-family="Arial" font-size="11" fill="#475569">root</text>
+      <g fill="#4f46e5">
+        <circle cx="70" cy="40" r="5"/><circle cx="130" cy="180" r="5"/><circle cx="190" cy="80" r="5"/>
+        <circle cx="250" cy="145" r="5"/><circle cx="310" cy="107" r="5"/><circle cx="370" cy="127" r="5"/>
+      </g>
+      <polyline points="70,40 130,180 190,80 250,145 310,107 370,127" fill="none" stroke="#4f46e5" stroke-width="2" opacity=".6"/>
+      <g font-family="Arial" font-size="10" fill="#3730a3" text-anchor="middle">
+        <text x="70" y="28">x&#8321;</text><text x="130" y="198">x&#8322;</text><text x="190" y="68">x&#8323;</text>
+        <text x="250" y="163">x&#8324;</text><text x="310" y="95">x&#8325;</text><text x="370" y="115">x&#8326;</text>
+      </g>
+      <text x="225" y="220" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">An oscillating but convergent iteration: the swings close in on the root</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">How to report the answer</div>
+    Iterate until successive values <strong>agree to the required accuracy</strong>,<br>
+    then round. Show at least the first four iterates as evidence.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHEN IT FAILS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When Iteration Fails (NM3)</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A diverging rearrangement</div>
+    <div class="example-body">
+      <p>Try $x_{n+1} = x_n^3 - 4x_n$ … or rather, take the equation $x^3 - 5x + 1 = 0$ rearranged as $x = x^3 - 4x + 1$, with $x_1 = 0.2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x_1 = 0.2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_2 = 0.008 - 0.8 + 1 = 0.208$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x_3 = 0.008999 - 0.832 + 1 = 0.176999$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x_4 = 0.005545 - 0.707996 + 1 = 0.297549$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x_5 = 0.026344 - 1.190196 + 1 = -0.163854$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$x_6 = -0.004399 + 0.655408 + 1 = 1.651018$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>The values are swinging further and further apart — the iteration <strong>diverges</strong>, even though it started right next to the root.</span></div>
+      <div class="warn">The same root, the same starting value, a <em>different rearrangement</em> — and now it fails. This is the central lesson of NM3.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The three ways iteration fails</div>
+    <strong>1.</strong> The chosen rearrangement diverges from that root<br>
+    <strong>2.</strong> The starting value is too far away<br>
+    <strong>3.</strong> The formula becomes undefined — a negative square root, or division by zero
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Breaking down completely</div>
+    <div class="example-body">
+      <p>Explain what happens using $x_{n+1} = \sqrt{x_n - 3}$ with $x_1 = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x_2 = \sqrt{2-3} = \sqrt{-1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>This is not a real number, so the calculator returns an error.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The iteration fails <strong>immediately</strong> — not because it diverges, but because it is undefined.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>A starting value of $x_1 = 4$ or more would keep the expression under the root non-negative.</span></div>
+      <div class="tip"><strong>Check the domain before you start.</strong> An iteration involving a square root or a fraction needs a starting value that keeps it defined — and keeps every later iterate defined too.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What to do when an iteration fails</div>
+    Try a <strong>different rearrangement</strong>, or a <strong>different starting value</strong>.<br>
+    Use a <a href="change-of-sign.html">change of sign</a> first, to get a starting value close to the root.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The form</h4><p>Rearrange to $x = \mathrm{g}(x)$.</p></div>
+    <div class="ref-card"><h4>The iteration</h4><p>$x_{n+1} = \mathrm{g}(x_n)$ with a starting value.</p></div>
+    <div class="ref-card"><h4>ANS key</h4><p>One button press per step.</p></div>
+    <div class="ref-card"><h4>Full accuracy</h4><p>Never round between steps.</p></div>
+    <div class="ref-card"><h4>Why it works</h4><p>The limit satisfies $L = \mathrm{g}(L)$.</p></div>
+    <div class="ref-card"><h4>Stop when</h4><p>Successive values agree to the accuracy wanted.</p></div>
+    <div class="ref-card"><h4>Verify</h4><p>Substitute back into $\mathrm{f}(x) = 0$.</p></div>
+    <div class="ref-card"><h4>One root only</h4><p>Which one depends on $\mathrm{g}$ and on $x_1$.</p></div>
+    <div class="ref-card"><h4>Can diverge</h4><p>A different rearrangement may fail.</p></div>
+    <div class="ref-card"><h4>Can be undefined</h4><p>Watch for negative square roots.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Rearrange $x^3 - 7x + 2 = 0$ into the form $x = \mathrm{g}(x)$ in two different ways.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$7x = x^3 + 2$, so $x = \dfrac{x^3+2}{7}$</p>
+          <p>$x^3 = 7x - 2$, so $x = \sqrt[3]{7x-2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Use $x_{n+1} = \dfrac{x_n^3+2}{7}$ with $x_1 = 0$ to find $x_2$, $x_3$ and $x_4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = \dfrac{0+2}{7} = 0.285714$</p>
+          <p>$x_3 = \dfrac{0.023324+2}{7} = 0.289046$</p>
+          <p>$x_4 = \dfrac{0.024148+2}{7} = 0.289164$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Give the root found in Question 2 to $3$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The iterates are settling at $0.28917$, so the root is $\mathbf{0.289}$ to $3$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Use $x_{n+1} = \sqrt{\dfrac{10}{x_n + 1}}$ with $x_1 = 2$ to find $x_2$ and $x_3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = \sqrt{10 \div 3} = \sqrt{3.333333} = 1.825742$</p>
+          <p>$x_3 = \sqrt{10 \div 2.825742} = \sqrt{3.538882} = 1.881195$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>An iteration gives $x_4 = 1.4142$ and $x_5 = 1.4142$. What can you conclude?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The iterates agree to $4$ decimal places, so the sequence has converged and the root is $1.4142$ to $4$ d.p.</p>
+          <p>(Strictly, agreement to $4$ d.p. is strong evidence rather than proof; a change of sign check on either side of $1.4142$ would confirm it.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Explain why $x_{n+1} = \sqrt{x_n - 10}$ with $x_1 = 3$ fails.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = \sqrt{3 - 10} = \sqrt{-7}$, which is not a real number.</p>
+          <p>The iteration is <strong>undefined</strong> at the very first step, so it fails immediately. A starting value of at least $10$ would be needed to keep the expression under the root non-negative.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Use $x_{n+1} = \sqrt[3]{2x_n + 3}$ with $x_1 = 2$ to find the root to $3$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = \sqrt[3]{7} = 1.912931$</p>
+          <p>$x_3 = \sqrt[3]{6.825862} = 1.896935$</p>
+          <p>$x_4 = \sqrt[3]{6.793871} = 1.893967$</p>
+          <p>$x_5 = \sqrt[3]{6.787934} = 1.893415$</p>
+          <p>$x_6 = \sqrt[3]{6.786831} = 1.893313$</p>
+          <p>Converging to $\mathbf{1.893}$ to $3$ d.p.</p>
+          <p><em>Check:</em> this solves $x^3 - 2x - 3 = 0$; and $1.893^3 - 2(1.893) - 3 = 6.783 - 6.786 = -0.003 \approx 0$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Show that the iteration $x_{n+1} = x_n^2 - 2$ with $x_1 = 3$ diverges.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = 9 - 2 = 7$</p>
+          <p>$x_3 = 49 - 2 = 47$</p>
+          <p>$x_4 = 2209 - 2 = 2207$</p>
+          <p>$x_5 = 4\,870\,847$</p>
+          <p>The values grow explosively, so the iteration <strong>diverges</strong>.</p>
+          <p>(The equation $x = x^2 - 2$ does have roots, at $x = 2$ and $x = -1$, but this iteration runs away from both unless started between them.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why two students using the same equation but different rearrangements might get different roots.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>An iteration converges only to roots that are "attracting" for that particular function $\mathrm{g}$, and only from starting values close enough to them.</p>
+          <p>A different rearrangement gives a different $\mathrm{g}$, with a different pattern of which roots attract and which repel.</p>
+          <p>So one student's formula may converge to a root near $0$, while the other's converges to a root near $2$ — both correct roots of the same equation, reached by different routes. Neither student can claim to have found <em>all</em> the roots without further work.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The equation $x^3 - 6x - 4 = 0$ is to be solved.</p>
+      <p>(a) Show there is a root between $2$ and $3$. &nbsp; (b) Show that the equation can be written as $x = \sqrt[3]{6x+4}$. &nbsp; (c) Use this iteration with $x_1 = 2.5$ to find the root to $3$ d.p. &nbsp; (d) Show that the rearrangement $x = \dfrac{x^3-4}{6}$ fails from the same starting value, and explain why.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}(2) = 8 - 12 - 4 = -8 < 0$</p>
+          <p>$\mathrm{f}(3) = 27 - 18 - 4 = 5 > 0$</p>
+          <p>Sign change with $\mathrm{f}$ continuous, so a root lies in $(2, 3)$.</p>
+          <p><strong>(b)</strong> $x^3 - 6x - 4 = 0 \;\Rightarrow\; x^3 = 6x + 4 \;\Rightarrow\; x = \sqrt[3]{6x+4}$ ✓</p>
+          <p><strong>(c)</strong> $x_1 = 2.5$</p>
+          <p>$x_2 = \sqrt[3]{19} = 2.668402$</p>
+          <p>$x_3 = \sqrt[3]{20.010410} = 2.714888$</p>
+          <p>$x_4 = \sqrt[3]{20.289331} = 2.727444$</p>
+          <p>$x_5 = \sqrt[3]{20.364666} = 2.730816$</p>
+          <p>$x_6 = \sqrt[3]{20.384896} = 2.731720$</p>
+          <p>$x_7 = \sqrt[3]{20.390319} = 2.731962$</p>
+          <p>The iterates are converging, so the root is $\mathbf{2.731}$ to $3$ d.p.</p>
+          <p><em>Verify:</em> $2.731^3 - 6(2.731) - 4 = 20.369 - 16.386 - 4 = -0.017 \approx 0$ ✓</p>
+          <p><strong>(d)</strong> Using $x_{n+1} = \dfrac{x_n^3-4}{6}$ from $x_1 = 2.5$:</p>
+          <p>$x_2 = \dfrac{15.625-4}{6} = 1.937500$</p>
+          <p>$x_3 = \dfrac{7.273193-4}{6} = 0.545532$</p>
+          <p>$x_4 = \dfrac{0.162355-4}{6} = -0.639608$</p>
+          <p>$x_5 = \dfrac{-0.261625-4}{6} = -0.710277$</p>
+          <p>$x_6 = -0.726388$, $x_7 = -0.730545$ …</p>
+          <p>The sequence has moved <em>away</em> from the root near $2.731$ and is settling on a <strong>different root</strong>, near $-0.732$.</p>
+          <p><strong>Why:</strong> the cubic $x^3-6x-4$ has three roots, at approximately $-2.000$, $-0.732$ and $2.731$. This rearrangement makes the root at $2.731$ <em>repelling</em> and the one at $-0.732$ <em>attracting</em>, so it converges to the wrong one. The first rearrangement has the opposite behaviour.</p>
+          <p>This is precisely the failure NM3 asks you to recognise: a perfectly valid rearrangement can converge to a root other than the one you wanted, or to none at all.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Iterative Methods (NM2, NM3) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

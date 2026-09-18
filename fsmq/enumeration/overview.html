@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enumeration &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔢 Enumeration</h1>
+  <p>OCR FSMQ Additional Maths · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Enumeration</strong> means <em>counting without listing</em>. Faced with "how many ways…?", the aim is to find the answer by multiplying and dividing, not by writing out every possibility.</p>
+
+  <div class="concept">
+    This section is the newest part of the course for most students. It combines the <strong>binomial expansion</strong> with <strong>permutations</strong>, <strong>combinations</strong> and their use in <strong>probability</strong> — which is why the same numbers, $\binom{n}{r}$, turn up in all of them.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The single most useful fact in this topic</div>
+    The numbers in Pascal's triangle, the coefficients in $(a+b)^n$,<br>
+    and the number of ways of choosing $r$ things from $n$<br>
+    are <strong>all the same numbers</strong>: $\;{}^nC_r$
+  </div>
+
+  <div class="tip">
+    <strong>Your calculator has these built in.</strong> Look for the <code>nCr</code> and <code>nPr</code> buttons. The specification explicitly names both notations, so you are expected to use them.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Factorial</strong></td><td>$n! = n \times (n-1) \times \cdots \times 2 \times 1$</td><td>$5! = 120$</td></tr>
+    <tr><td><strong>Arrangement</strong></td><td>An ordering of objects</td><td>ABC and BAC are different</td></tr>
+    <tr><td><strong>Permutation</strong></td><td>An <em>ordered</em> selection of $r$ from $n$</td><td>Which two win gold and silver</td></tr>
+    <tr><td><strong>Combination</strong></td><td>An <em>unordered</em> selection of $r$ from $n$</td><td>Which two sit on a committee</td></tr>
+    <tr><td><strong>Product rule</strong></td><td>Independent choices multiply</td><td>$3$ starters $\times$ $4$ mains $= 12$ meals</td></tr>
+    <tr><td><strong>Binomial</strong></td><td>An expression with two terms</td><td>$a + b$, &nbsp;$2x - 3$</td></tr>
+    <tr><td><strong>Trial</strong></td><td>One repetition of an experiment</td><td>One roll of a die</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The notations, all meaning the same thing</div>
+    ${}^nC_r \;=\; \binom{n}{r} \;=\; \dfrac{n!}{r!\,(n-r)!}$
+  </div>
+
+  <div class="warn">
+    <strong>Order is the whole question.</strong> Before you compute anything, ask: <em>does swapping two chosen items give a different outcome?</em> If yes, it is a permutation. If no, a combination. Getting this wrong is the single biggest source of lost marks in this topic.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE KEY FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Key Formulae</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Product rule (EN3)</div>
+    $m$ ways then $n$ ways &nbsp;$\Rightarrow$&nbsp; $m \times n$ ways altogether
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Arrangements of $n$ distinct objects</div>
+    $n!$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Permutations — ordered, $r$ from $n$ (EN4)</div>
+    ${}^nP_r = \dfrac{n!}{(n-r)!}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Combinations — unordered, $r$ from $n$ (EN5)</div>
+    ${}^nC_r = \dfrac{n!}{r!\,(n-r)!} = \dfrac{{}^nP_r}{r!}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Binomial expansion (EN1)</div>
+    $(a+b)^n = \displaystyle\sum_{r=0}^{n} \binom{n}{r} a^{n-r} b^{r}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Binomial probability (EN2, EN6)</div>
+    $P(X = r) = \binom{n}{r} p^r (1-p)^{n-r}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Telling the four apart</div>
+    <div class="example-body">
+      <p>Ten athletes run a race. Count the ways for each of these.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Full finishing order:</strong> all ten in order $= 10! = 3\,628\,800$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Gold, silver, bronze:</strong> ordered, $3$ from $10$ $= {}^{10}P_3 = 10 \times 9 \times 8 = 720$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>A team of three to go forward:</strong> unordered $= {}^{10}C_3 = \dfrac{720}{6} = 120$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Each athlete passes or fails a drug test:</strong> two options each, so $2^{10} = 1024$ possible sets of results.</span></div>
+      <div class="tip">Notice ② and ③ differ by exactly $3! = 6$ — the number of ways of ordering the three chosen athletes. That relationship, ${}^nC_r = {}^nP_r \div r!$, is worth remembering.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Enumeration Subtopics</div>
+<div class="section-body">
+
+  <ul class="topic-list">
+    <li><span class="code">EN1</span><span><a href="binomial-expansion.html">The Binomial Expansion</a><span class="desc">Pascal's triangle, $\binom{n}{r}$, and expanding $(a+b)^n$ for positive integer $n$.</span></span></li>
+    <li><span class="code">EN3</span><span><a href="counting-product-rule.html">The Product Rule for Counting</a><span class="desc">Multiplying choices, arrangements, and $n!$.</span></span></li>
+    <li><span class="code">EN4</span><span><a href="permutations.html">Permutations</a><span class="desc">Ordered selections, and the ${}^nP_r$ notation.</span></span></li>
+    <li><span class="code">EN5</span><span><a href="combinations.html">Combinations</a><span class="desc">Unordered selections, and the ${}^nC_r$ notation.</span></span></li>
+    <li><span class="code">EN2</span><span><a href="representing-outcomes.html">Representing Outcomes</a><span class="desc">Tree diagrams, two-way tables and Venn diagrams for enumerating outcomes.</span></span></li>
+    <li><span class="code">EN6</span><span><a href="binomial-probability.html">Counting in Probability</a><span class="desc">The binomial distribution, and "at least" problems.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Using ${}^nP_r$ when order does not matter.</strong> A committee of $3$ from $10$ is ${}^{10}C_3 = 120$, not ${}^{10}P_3 = 720$. You would be counting each committee $6$ times.
+  </div>
+
+  <div class="warn">
+    <strong>Adding when you should multiply.</strong> Independent stages multiply. Only add when you are counting <em>separate, non-overlapping cases</em>.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting that $\binom{n}{r}$ counts, so $r$ must be a whole number</strong> with $0 \leqslant r \leqslant n$. If your working produces $\binom{5}{7}$, you have made a slip.
+  </div>
+
+  <div class="warn">
+    <strong>Mishandling "at least".</strong> $P(\text{at least one}) = 1 - P(\text{none})$. Adding up every case from one upwards is slow and error-prone.
+  </div>
+
+  <div class="warn">
+    <strong>Dropping the coefficient in a binomial term.</strong> In $(2x+3)^5$, the term in $x^2$ is $\binom{5}{2}(2x)^2 3^3$ — the $2$ gets squared and the $3$ gets cubed. Both are easy to forget.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>First question</h4><p>Does order matter?</p></div>
+    <div class="ref-card"><h4>Product rule</h4><p>Stages multiply.</p></div>
+    <div class="ref-card"><h4>$n!$</h4><p>Arrangements of all $n$ objects.</p></div>
+    <div class="ref-card"><h4>${}^nP_r$</h4><p>Ordered: $\dfrac{n!}{(n-r)!}$.</p></div>
+    <div class="ref-card"><h4>${}^nC_r$</h4><p>Unordered: $\dfrac{n!}{r!(n-r)!}$.</p></div>
+    <div class="ref-card"><h4>Link</h4><p>${}^nC_r = {}^nP_r \div r!$.</p></div>
+    <div class="ref-card"><h4>Symmetry</h4><p>$\binom{n}{r} = \binom{n}{n-r}$.</p></div>
+    <div class="ref-card"><h4>Binomial term</h4><p>$\binom{n}{r}a^{n-r}b^r$.</p></div>
+    <div class="ref-card"><h4>Binomial probability</h4><p>$\binom{n}{r}p^r(1-p)^{n-r}$.</p></div>
+    <div class="ref-card"><h4>At least one</h4><p>$1 - P(\text{none})$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Evaluate $6!$ and ${}^6C_2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$6! = 720$</p>
+          <p>${}^6C_2 = \dfrac{6 \times 5}{2 \times 1} = 15$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A menu has $4$ starters, $6$ mains and $3$ desserts. How many three-course meals are possible?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Independent choices, so multiply:</p>
+          <p>$4 \times 6 \times 3 = 72$ meals.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>In how many orders can $7$ books be arranged on a shelf?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>All $7$ arranged, so $7! = 5040$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>From a squad of $15$, how many different teams of $11$ can be picked?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Order does not matter, so ${}^{15}C_{11}$.</p>
+          <p>Using the symmetry $\binom{15}{11} = \binom{15}{4} = \dfrac{15 \times 14 \times 13 \times 12}{4 \times 3 \times 2 \times 1} = 1365$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write out the expansion of $(1 + x)^4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Row $4$ of Pascal's triangle is $1, 4, 6, 4, 1$.</p>
+          <p>$1 + 4x + 6x^2 + 4x^3 + x^4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Three prizes — first, second and third — are awarded among $8$ entrants. In how many ways?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The prizes are different, so order matters:</p>
+          <p>${}^8P_3 = 8 \times 7 \times 6 = 336$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A fair coin is tossed $6$ times. Find the probability of exactly $4$ heads.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(X=4) = \binom{6}{4}(0.5)^4(0.5)^2 = 15 \times (0.5)^6$</p>
+          <p>$= \dfrac{15}{64} = 0.234$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the term in $x^3$ in the expansion of $(2 + x)^5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The term is $\binom{5}{3} 2^{2} x^{3}$</p>
+          <p>$= 10 \times 4 \times x^3 = 40x^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Five dice are rolled. Find the probability of at least one six.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Use the complement. $P(\text{no six on one die}) = \tfrac56$.</p>
+          <p>$P(\text{no sixes at all}) = \left(\tfrac56\right)^5 = \dfrac{3125}{7776}$</p>
+          <p>$P(\text{at least one}) = 1 - \dfrac{3125}{7776} = \dfrac{4651}{7776} = 0.598$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A committee of $4$ is chosen from $6$ women and $5$ men.</p>
+      <p>(a) How many committees are possible altogether? &nbsp; (b) How many contain exactly $2$ women? &nbsp; (c) How many contain at least $1$ man? &nbsp; (d) A chairperson and a secretary are then chosen from the committee of $4$. How many ways?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Choosing $4$ from $11$, order irrelevant:</p>
+          <p>${}^{11}C_4 = \dfrac{11 \times 10 \times 9 \times 8}{4 \times 3 \times 2 \times 1} = 330$</p>
+          <p><strong>(b)</strong> Choose $2$ women from $6$ <em>and</em> $2$ men from $5$ — two independent stages, so multiply:</p>
+          <p>${}^6C_2 \times {}^5C_2 = 15 \times 10 = 150$</p>
+          <p><strong>(c)</strong> "At least one man" is easiest as the complement of "no men", i.e. all four women:</p>
+          <p>${}^6C_4 = 15$ all-women committees.</p>
+          <p>$330 - 15 = 315$</p>
+          <p><strong>(d)</strong> Now order <em>does</em> matter, because chair and secretary are different roles:</p>
+          <p>${}^4P_2 = 4 \times 3 = 12$ ways.</p>
+          <p>This last part is the point of the whole topic in miniature: the same four people give $1$ committee but $12$ officer pairs, purely because order matters in one case and not the other.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Enumeration (EN1–EN6) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

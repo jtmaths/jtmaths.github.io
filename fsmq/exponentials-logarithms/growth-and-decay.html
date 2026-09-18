@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growth and Decay &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌱 Growth and Decay</h1>
+  <p>OCR FSMQ Additional Maths · Exponentials and Logarithms (EL7)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE MODEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Model</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EL7:</strong> use exponentials and logarithms in problems involving exponential growth and decay. This is where the whole topic pays off — the model describes savings, populations, radioactivity, depreciation and cooling.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The standard model</div>
+    $A = A_0 \times r^t$<br>
+    $A_0$ = the initial amount &nbsp;&middot;&nbsp; $r$ = the multiplier per period &nbsp;&middot;&nbsp; $t$ = number of periods
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Getting $r$ right</div>
+    Increase of $p\%$: &nbsp;$r = 1 + \dfrac{p}{100}$<br>
+    Decrease of $p\%$: &nbsp;$r = 1 - \dfrac{p}{100}$
+  </div>
+
+  <table>
+    <tr><th>In words</th><th>Multiplier $r$</th><th>Growth or decay?</th></tr>
+    <tr><td>Increases by $6\%$</td><td>$1.06$</td><td>Growth</td></tr>
+    <tr><td>Increases by $50\%$</td><td>$1.5$</td><td>Growth</td></tr>
+    <tr><td>Decreases by $15\%$</td><td>$0.85$</td><td>Decay</td></tr>
+    <tr><td>Loses $3\%$ a year</td><td>$0.97$</td><td>Decay</td></tr>
+    <tr><td>Halves each period</td><td>$0.5$</td><td>Decay</td></tr>
+    <tr><td>Triples each period</td><td>$3$</td><td>Growth</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The multiplier is not the rate.</strong> A $6\%$ increase means multiplying by $1.06$, not by $0.06$. And a $15\%$ decrease means multiplying by $0.85$, not subtracting $0.15$ each time.
+  </div>
+
+  <div class="tip">
+    <strong>Why repeated percentage change is exponential.</strong> Applying the same multiplier $t$ times gives $r^t$, which puts $t$ in the index. That is what makes compound interest fundamentally different from simple interest.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FINDING THE AMOUNT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding the Amount</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Compound interest</div>
+    <div class="example-body">
+      <p>£$8000$ is invested at $3.5\%$ compound interest per year. Find its value after $7$ years.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$r = 1.035$, $A_0 = 8000$, $t = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = 8000 \times 1.035^7$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$1.035^7 = 1.272279$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$A = £10\,178.23$ (to the nearest penny)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Compare simple interest:</em> $8000 + 7(0.035)(8000) = £9960$ — compounding is worth about £$218$ more over seven years.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Depreciation</div>
+    <div class="example-body">
+      <p>A car worth £$18\,000$ loses $18\%$ of its value each year. Find its value after $4$ years.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Losing $18\%$ leaves $82\%$, so $r = 0.82$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = 18\,000 \times 0.82^4 = 18\,000 \times 0.45212$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$A = £8138.19$ (to the nearest penny)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The car has lost about $55\%$ of its value in four years, even though it loses only $18\%$ each year.</span></div>
+      <div class="warn"><strong>Percentage losses do not add up.</strong> Four years of $18\%$ loss is <em>not</em> $72\%$ — each loss applies to a smaller amount, so the total loss is less than the naive sum.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FINDING THE TIME
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding the Time</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Solving for $t$</div>
+    $A_0 r^t = A \;\Longrightarrow\; r^t = \dfrac{A}{A_0} \;\Longrightarrow\; t = \dfrac{\log\left(A/A_0\right)}{\log r}$
+  </div>
+
+  <ul class="steps">
+    <li>Divide both sides by $A_0$ to isolate the power.</li>
+    <li>Take logarithms of both sides.</li>
+    <li>Use the power law to bring $t$ down.</li>
+    <li>Divide by $\log r$.</li>
+    <li>Interpret: for "how many whole years?", round <em>up</em> for growth targets.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Reaching a target</div>
+    <div class="example-body">
+      <p>£$5000$ is invested at $4.5\%$ per year. After how many complete years does it first exceed £$8000$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5000 \times 1.045^t > 8000$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1.045^t > 1.6$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t\log 1.045 > \log 1.6$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$t > \dfrac{0.204120}{0.019116} = 10.678$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So $t = 11$ <strong>complete years</strong> — rounding <em>up</em>, since after $10$ years the target has not yet been reached.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Check:</em> $5000 \times 1.045^{10} = £7764$ (under) and $5000 \times 1.045^{11} = £8113$ (over) ✓</span></div>
+      <div class="warn"><strong>Round up for a growth target, down for a decay target.</strong> If you want a value to <em>exceed</em> something, you need the next whole period. Always verify with the two neighbouring integers.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Half-life</div>
+    <div class="example-body">
+      <p>A radioactive substance decays at $7\%$ per day. Find its half-life.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$r = 0.93$. Half-life means the amount falls to half, whatever the starting amount.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.93^t = 0.5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t\log 0.93 = \log 0.5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$t = \dfrac{-0.301030}{-0.031517} = 9.551$ days</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The half-life is $9.55$ days (3 s.f.).</span></div>
+      <div class="tip"><strong>The half-life is independent of the starting amount.</strong> Dividing by $A_0$ removes it from the equation entirely, which is why half-life is a property of the substance alone.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding the rate</div>
+    <div class="example-body">
+      <p>A population grows from $4000$ to $9000$ in $6$ years. Find the annual percentage growth rate.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4000 r^6 = 9000$, so $r^6 = 2.25$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$r = 2.25^{1/6} = \sqrt[6]{2.25}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$r = 1.14471$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So the growth rate is $14.5\%$ per year (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> $4000 \times 1.14471^6 = 9000$ ✓</span></div>
+      <div class="warn"><strong>Take the root, do not divide.</strong> The population grew by $125\%$ over six years, but the annual rate is <em>not</em> $125 \div 6 = 20.8\%$. Compounding means the annual rate is much lower.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COOLING AND LIMITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Models with a Limiting Value</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The cooling model</div>
+    $T = T_{\text{room}} + \left(T_0 - T_{\text{room}}\right) r^t$<br>
+    <span style="font-size:.9rem;">It is the <strong>excess</strong> temperature above the surroundings that decays exponentially.</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A cooling drink</div>
+    <div class="example-body">
+      <p>A drink at $80$ °C is left in a room at $20$ °C. After $10$ minutes it is $56$ °C. Find its temperature after $30$ minutes.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Initial excess: $80 - 20 = 60$ °C. Excess after $10$ min: $56 - 20 = 36$ °C.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$60 r^{10} = 36$, so $r^{10} = 0.6$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$r = 0.6^{1/10} = 0.95020$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>After $30$ minutes the excess is $60 \times r^{30} = 60 \times \left(r^{10}\right)^3 = 60 \times 0.6^3 = 60 \times 0.216 = 12.96$ °C.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$T = 20 + 12.96 = 32.96$, so about $33.0$ °C.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Note the neat shortcut: the excess falls to $0.6$ of its value every $10$ minutes, so after $30$ minutes it is $0.6^3$ of the original.</span></div>
+      <div class="warn"><strong>Never apply the exponential to the temperature itself.</strong> A drink cooling in a $20$ °C room approaches $20$ °C, not $0$ °C. Subtract the room temperature first, model the excess, then add it back.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The model</h4><p>$A = A_0 r^t$.</p></div>
+    <div class="ref-card"><h4>Growth</h4><p>$r = 1 + \dfrac{p}{100} > 1$.</p></div>
+    <div class="ref-card"><h4>Decay</h4><p>$r = 1 - \dfrac{p}{100} < 1$.</p></div>
+    <div class="ref-card"><h4>Finding $t$</h4><p>$t = \dfrac{\log(A/A_0)}{\log r}$.</p></div>
+    <div class="ref-card"><h4>Whole periods</h4><p>Round up for growth targets; check both integers.</p></div>
+    <div class="ref-card"><h4>Finding $r$</h4><p>Take the $t$th root, do not divide.</p></div>
+    <div class="ref-card"><h4>Half-life</h4><p>Solve $r^t = 0.5$; independent of $A_0$.</p></div>
+    <div class="ref-card"><h4>Doubling time</h4><p>Solve $r^t = 2$; also independent of $A_0$.</p></div>
+    <div class="ref-card"><h4>Cooling</h4><p>Model the excess above the surroundings.</p></div>
+    <div class="ref-card"><h4>Interpret</h4><p>State units, and comment on the model's limits.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write down the multiplier for (a) a $7\%$ increase, (b) a $22\%$ decrease.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $1.07$</p>
+          <p><strong>(b)</strong> $0.78$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>£$3000$ is invested at $5\%$ per year. Find its value after $8$ years.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3000 \times 1.05^8 = 3000 \times 1.477455$</p>
+          <p>$= £4432.37$ (to the nearest penny)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A machine worth £$25\,000$ depreciates at $12\%$ per year. Find its value after $5$ years.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r = 0.88$</p>
+          <p>$25\,000 \times 0.88^5 = 25\,000 \times 0.527732 = £13\,193.30$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A population of $1200$ grows at $3\%$ per year. How long until it reaches $2000$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1.03^t = \dfrac{2000}{1200} = 1.66667$</p>
+          <p>$t = \dfrac{\log 1.66667}{\log 1.03} = \dfrac{0.221849}{0.012837} = 17.3$ years (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A substance decays at $10\%$ per hour. Find its half-life.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.9^t = 0.5$</p>
+          <p>$t = \dfrac{\log 0.5}{\log 0.9} = \dfrac{-0.301030}{-0.045757} = 6.58$ hours (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>£$4000$ is invested at $6\%$ per year. After how many complete years does it first exceed £$6000$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1.06^t > 1.5$</p>
+          <p>$t > \dfrac{0.176091}{0.025306} = 6.959$</p>
+          <p>So $t = 7$ complete years.</p>
+          <p><em>Check:</em> $4000 \times 1.06^6 = £5674$ (under) and $4000 \times 1.06^7 = £6015$ (over) ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A town's population grew from $20\,000$ to $28\,000$ in $5$ years. Find the annual growth rate.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r^5 = \dfrac{28\,000}{20\,000} = 1.4$</p>
+          <p>$r = 1.4^{1/5} = 1.06961$</p>
+          <p>The growth rate is $6.96\%$ per year (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A quantity halves every $4$ days. Find its daily percentage decay rate.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r^4 = 0.5$, so $r = 0.5^{1/4} = 0.840896$.</p>
+          <p>The daily multiplier is $0.8409$, so the quantity loses $1 - 0.8409 = 0.1591$, i.e. about $15.9\%$ per day.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why a quantity decaying at $50\%$ per year does not disappear after two years.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Each year the quantity is multiplied by $0.5$, so it halves what <em>remains</em> rather than removing a fixed amount.</p>
+          <p>After one year $50\%$ is left; after two years $25\%$; after three, $12.5\%$.</p>
+          <p>Since $0.5^t$ is positive for every $t$, the quantity approaches zero but never reaches it. The percentage losses do not add to $100\%$ because each applies to a progressively smaller base.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cup of coffee at $90$ °C is left in a room at $22$ °C. After $5$ minutes its temperature is $73$ °C.</p>
+      <p>(a) Find the multiplier $r$ for the excess temperature, per minute. &nbsp; (b) Find the temperature after $20$ minutes. &nbsp; (c) Find when the coffee reaches $40$ °C, to the nearest minute. &nbsp; (d) Explain why the model predicts the coffee never reaches room temperature, and whether this is a reasonable feature.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Initial excess: $90 - 22 = 68$ °C. Excess after $5$ min: $73 - 22 = 51$ °C.</p>
+          <p>$68 r^5 = 51 \;\Rightarrow\; r^5 = \dfrac{51}{68} = 0.75$</p>
+          <p>$r = 0.75^{1/5} = 0.944088$, so $r = 0.9441$ (4 d.p.).</p>
+          <p><strong>(b)</strong> Excess after $20$ min $= 68 \times r^{20} = 68 \times \left(r^5\right)^4 = 68 \times 0.75^4$</p>
+          <p>$= 68 \times 0.316406 = 21.52$ °C</p>
+          <p>$T = 22 + 21.52 = \mathbf{43.5}$ °C (3 s.f.)</p>
+          <p><strong>(c)</strong> At $40$ °C the excess is $40 - 22 = 18$ °C:</p>
+          <p>$68 r^t = 18 \;\Rightarrow\; r^t = \dfrac{18}{68} = 0.264706$</p>
+          <p>$t = \dfrac{\log 0.264706}{\log 0.944088} = \dfrac{-0.577005}{-0.024988} = 23.1$ minutes</p>
+          <p>So about $\mathbf{23}$ <strong>minutes</strong>.</p>
+          <p><em>Check:</em> $22 + 68(0.944088)^{23} = 22 + 18.1 = 40.1$ °C ✓</p>
+          <p><strong>(d)</strong> The excess is $68 r^t$, and since $r > 0$ this is positive for every $t$, however large. So the model gives a temperature always <em>slightly above</em> $22$ °C, approaching it asymptotically but never equalling it.</p>
+          <p>This is actually a <strong>reasonable</strong> feature of the model, and it matches the physics: heat flows because of a temperature <em>difference</em>, so as the difference shrinks the cooling slows, and the approach to room temperature genuinely does take longer and longer.</p>
+          <p>In practice the coffee becomes indistinguishable from room temperature once the excess falls below the accuracy of any thermometer — here the excess falls below $0.5$ °C after about $85$ minutes. The asymptote is a mathematical idealisation of a real and observable slowing, not a flaw.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Growth and Decay (EL7) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

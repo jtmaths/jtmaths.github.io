@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inequalities in Two Variables &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🟦 Inequalities in Two Variables</h1>
+  <p>OCR FSMQ Additional Maths · Algebra (AL9)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> From a Line to a Region</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>AL9</strong> asks you to illustrate linear inequalities in two variables. The specification's own note says this means "the use of appropriate shading", and its example is $24x + 28y \leqslant 400$.
+  </div>
+
+  <p>An equation like $x + y = 5$ is satisfied by the points on a <strong>line</strong>. An inequality like $x + y \leqslant 5$ is satisfied by every point on one <strong>side</strong> of that line — a whole region of the plane.</p>
+
+  <div class="formula-box">
+    <div class="label">Line style tells the reader whether the boundary counts</div>
+    <strong>Solid line</strong> for $\leqslant$ or $\geqslant$ — the boundary <em>is</em> included<br>
+    <strong>Dashed line</strong> for $<$ or $>$ — the boundary is <em>not</em> included
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="270" viewBox="0 0 500 270" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#4f46e5" stroke-width="1.6" opacity=".45"/>
+        </pattern>
+      </defs>
+      <polygon points="50,220 50,60 210,220" fill="url(#hatch)"/>
+      <line x1="50" y1="240" x2="470" y2="240" stroke="#475569" stroke-width="2"/>
+      <line x1="50" y1="240" x2="50" y2="20" stroke="#475569" stroke-width="2"/>
+      <text x="474" y="245" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="42" y="18" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <line x1="30" y1="50" x2="290" y2="250" stroke="#4f46e5" stroke-width="3"/>
+      <text x="255" y="90" font-family="Arial" font-size="14" fill="#3730a3" font-weight="bold">x + y = 5</text>
+      <text x="95" y="150" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">x + y &#8804; 5</text>
+      <circle cx="120" cy="200" r="4" fill="#166534"/>
+      <text x="130" y="205" font-family="Arial" font-size="11" fill="#166534">(1,1) satisfies it</text>
+      <circle cx="330" cy="120" r="4" fill="#b91c1c"/>
+      <text x="340" y="125" font-family="Arial" font-size="11" fill="#b91c1c">(7,6) does not</text>
+      <text x="250" y="266" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The shaded region is the set of all points satisfying the inequality</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>Say which side you have shaded.</strong> Some questions want the satisfying region shaded; others want the region <em>excluded</em> shaded so the answer is left clear. Always label your diagram — write "R" inside the region you mean.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Drawing One Inequality</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Replace the inequality sign with $=$ to get the boundary line.</li>
+    <li>Plot the line using the two axis intercepts (set $x=0$, then $y=0$).</li>
+    <li>Draw it solid for $\leqslant$ / $\geqslant$, dashed for $<$ / $>$.</li>
+    <li>Pick a <strong>test point</strong> not on the line — the origin if possible.</li>
+    <li>If the test point satisfies the inequality, its side is the region. If not, the region is the other side.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The specification's example</div>
+    <div class="example-body">
+      <p>Illustrate $24x + 28y \leqslant 400$ on a graph, for $x \geqslant 0$ and $y \geqslant 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Simplify by dividing by $4$: $6x + 7y \leqslant 100$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Boundary $6x + 7y = 100$. When $x = 0$: $y = \tfrac{100}{7} \approx 14.3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>When $y = 0$: $x = \tfrac{100}{6} \approx 16.7$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Draw a <strong>solid</strong> line through $(0, 14.3)$ and $(16.7, 0)$, since the sign is $\leqslant$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Test the origin: $6(0) + 7(0) = 0 \leqslant 100$ ✓ — true, so the region includes the origin.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Shade the triangle between the axes and the line.</span></div>
+      <div class="tip"><strong>Simplify before you plot.</strong> Dividing by the common factor $4$ makes the intercepts far easier to work out, and does not change the region at all (dividing by a <em>positive</em> number never flips the sign).</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — When the origin lies on the line</div>
+    <div class="example-body">
+      <p>Illustrate $y > 2x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Boundary $y = 2x$ passes through the origin, so the origin is <em>not</em> a usable test point.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Draw $y = 2x$ <strong>dashed</strong>, since the sign is strict.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Test $(0, 1)$: is $1 > 0$? Yes.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So the region is the side <em>above</em> the line, containing $(0,1)$.</span></div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Inequality</th><th>Boundary</th><th>Region (when it works out this way)</th></tr>
+    <tr><td>$x \geqslant 3$</td><td>Vertical line $x = 3$</td><td>To the right, solid</td></tr>
+    <tr><td>$y < 4$</td><td>Horizontal line $y = 4$</td><td>Below, dashed</td></tr>
+    <tr><td>$y \leqslant 2x + 1$</td><td>Line of gradient $2$</td><td>Below, solid</td></tr>
+    <tr><td>$x + y > 6$</td><td>Line through $(6,0)$, $(0,6)$</td><td>Away from the origin, dashed</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SEVERAL INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Several Inequalities at Once</div>
+<div class="section-body">
+
+  <div class="concept">
+    When several inequalities must all hold, the answer is the <strong>overlap</strong> of their regions — the set of points satisfying every one. This overlap is called the <strong>feasible region</strong>, and it is the foundation of <a href="../coordinate-geometry/linear-programming.html">linear programming</a> (CG6–CG8).
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding a feasible region</div>
+    <div class="example-body">
+      <p>On one diagram, show the region satisfying $x \geqslant 0$, $y \geqslant 0$, $x + y \leqslant 8$ and $y \leqslant 2x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x \geqslant 0$ and $y \geqslant 0$ restrict us to the first quadrant.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x + y \leqslant 8$: solid line through $(8,0)$ and $(0,8)$; origin satisfies it, so keep the side nearer the origin.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y \leqslant 2x$: solid line through the origin with gradient $2$; test $(1,0)$: $0 \leqslant 2$ ✓, so keep the side <em>below</em> the line.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The overlap is a triangle. Its vertices are where the boundaries meet:</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$(0,0)$; &nbsp;$(8,0)$ where $x+y=8$ meets $y=0$;</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>and where $y = 2x$ meets $x + y = 8$: $x + 2x = 8$, so $x = \tfrac83$ and $y = \tfrac{16}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>Vertices: $(0,0)$, $(8,0)$, $\left(\tfrac83, \tfrac{16}{3}\right)$.</span></div>
+      <div class="tip"><strong>Always find the vertices algebraically</strong>, by solving the boundary lines in pairs. Reading them off a hand-drawn graph is rarely accurate enough for full marks.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FROM WORDS TO INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Turning Words into Inequalities</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>The words say</th><th>You write</th></tr>
+    <tr><td>at most / no more than / maximum</td><td>$\leqslant$</td></tr>
+    <tr><td>at least / no fewer than / minimum</td><td>$\geqslant$</td></tr>
+    <tr><td>fewer than / under</td><td>$<$</td></tr>
+    <tr><td>more than / over / exceeds</td><td>$>$</td></tr>
+    <tr><td>cannot be negative</td><td>$\geqslant 0$</td></tr>
+    <tr><td>at least twice as many $y$ as $x$</td><td>$y \geqslant 2x$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Modelling a constraint</div>
+    <div class="example-body">
+      <p>A baker makes $x$ loaves and $y$ cakes. A loaf needs $400$ g of flour, a cake $250$ g, and only $30$ kg of flour is available. Write this as an inequality in its simplest form.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Work in consistent units: $30$ kg $= 30\,000$ g.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$400x + 250y \leqslant 30\,000$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide by $50$: $8x + 5y \leqslant 600$</span></div>
+      <div class="warn"><strong>Unit mismatches are the commonest modelling error.</strong> Convert everything to grams (or everything to kilograms) before writing the inequality.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Do not forget the hidden constraints.</strong> A count of physical objects cannot be negative, so $x \geqslant 0$ and $y \geqslant 0$ are almost always part of the answer even when the question never mentions them.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Boundary</h4><p>Replace the sign with $=$.</p></div>
+    <div class="ref-card"><h4>Solid line</h4><p>For $\leqslant$ and $\geqslant$.</p></div>
+    <div class="ref-card"><h4>Dashed line</h4><p>For $<$ and $>$.</p></div>
+    <div class="ref-card"><h4>Intercepts</h4><p>Set $x=0$, then $y=0$, to plot fast.</p></div>
+    <div class="ref-card"><h4>Test point</h4><p>Use the origin unless the line passes through it.</p></div>
+    <div class="ref-card"><h4>Simplify first</h4><p>Divide by a positive common factor.</p></div>
+    <div class="ref-card"><h4>Several at once</h4><p>The answer is the overlap.</p></div>
+    <div class="ref-card"><h4>Vertices</h4><p>Solve the boundary lines in pairs.</p></div>
+    <div class="ref-card"><h4>Label it</h4><p>Mark the region "R" so the examiner knows which side you mean.</p></div>
+    <div class="ref-card"><h4>Hidden constraints</h4><p>$x \geqslant 0$, $y \geqslant 0$ for physical counts.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Describe how you would draw the boundary for $y < 3x - 2$, and state which side is the region.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Draw $y = 3x - 2$ as a <strong>dashed</strong> line (the inequality is strict), through $(0,-2)$ with gradient $3$.</p>
+          <p>Test the origin: is $0 < -2$? No. So the origin is <em>not</em> in the region.</p>
+          <p>The region is the other side — below the line.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the $x$- and $y$-intercepts of the boundary of $5x + 3y \leqslant 45$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 0$: $5x = 45$, so $x = 9$ — the point $(9, 0)$.</p>
+          <p>$x = 0$: $3y = 45$, so $y = 15$ — the point $(0, 15)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Does the point $(4, 3)$ satisfy $2x + 5y \leqslant 22$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2(4) + 5(3) = 8 + 15 = 23$</p>
+          <p>$23 \leqslant 22$ is false, so <strong>no</strong> — the point lies outside the region.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Simplify the inequality $18x + 24y \leqslant 360$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The highest common factor of $18$, $24$ and $360$ is $6$.</p>
+          <p>$3x + 4y \leqslant 60$</p>
+          <p>Dividing by a positive number, so the sign does not change.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write inequalities for: "$x$ and $y$ are non-negative, their total is at most $20$, and there are at least three times as many $x$ as $y$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x \geqslant 0$, &nbsp;$y \geqslant 0$</p>
+          <p>$x + y \leqslant 20$</p>
+          <p>$x \geqslant 3y$</p>
+          <p><em>Careful:</em> "three times as many $x$ as $y$" means $x$ is the bigger one, so $x \geqslant 3y$ — not $y \geqslant 3x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the point where the boundaries of $x + y \leqslant 10$ and $2x + y \leqslant 14$ intersect.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Solve $x + y = 10$ and $2x + y = 14$ simultaneously.</p>
+          <p>Subtracting: $x = 4$.</p>
+          <p>Then $y = 6$. The intersection is $(4, 6)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The region $R$ is defined by $x \geqslant 1$, $y \geqslant 1$ and $x + y \leqslant 5$. Find its three vertices.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x=1$ with $y=1$: &nbsp;$(1, 1)$</p>
+          <p>$x=1$ with $x+y=5$: &nbsp;$(1, 4)$</p>
+          <p>$y=1$ with $x+y=5$: &nbsp;$(4, 1)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain why the region defined by $x + y \leqslant 4$ and $x + y \geqslant 7$ is empty.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The first requires $x + y$ to be at most $4$; the second requires it to be at least $7$.</p>
+          <p>No number can be both $\leqslant 4$ and $\geqslant 7$, so no point satisfies both.</p>
+          <p>Geometrically, the two boundary lines are <strong>parallel</strong> (both have gradient $-1$) and the required half-planes point in opposite directions, so they never overlap.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A student writes the region $y \geqslant x^2$. Explain why this is not covered by AL9, and describe the region anyway.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>AL9 concerns <strong>linear</strong> inequalities, whose boundaries are straight lines. $y \geqslant x^2$ has a curved boundary, so it is not a linear inequality.</p>
+          <p>The region is everything on or <em>above</em> the parabola $y = x^2$, with the parabola itself included (solid curve).</p>
+          <p><em>Check with a test point:</em> $(0, 1)$ gives $1 \geqslant 0$ ✓, and $(0,1)$ is above the vertex, confirming the region is the inside of the parabola.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A workshop makes $x$ chairs and $y$ tables. Each chair takes $2$ hours of carpentry and $1$ hour of finishing; each table takes $5$ hours of carpentry and $1$ hour of finishing. There are $40$ carpentry hours and $12$ finishing hours available each week.</p>
+      <p>(a) Write down all four inequalities. &nbsp; (b) Find the vertices of the feasible region. &nbsp; (c) Explain why only whole-number points inside the region are actually usable. &nbsp; (d) Find the largest number of tables that can be made in a week.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Carpentry: $2x + 5y \leqslant 40$</p>
+          <p>Finishing: $x + y \leqslant 12$</p>
+          <p>Non-negativity: $x \geqslant 0$, &nbsp;$y \geqslant 0$</p>
+          <p><strong>(b)</strong> The vertices are where pairs of boundaries meet.</p>
+          <p>$(0,0)$ — both axes.</p>
+          <p>$y = 0$ with $x + y = 12$: $(12, 0)$. &nbsp;<em>Check carpentry:</em> $2(12) = 24 \leqslant 40$ ✓ so this is a genuine vertex.</p>
+          <p>$x = 0$ with $2x + 5y = 40$: $(0, 8)$. &nbsp;<em>Check finishing:</em> $8 \leqslant 12$ ✓ genuine.</p>
+          <p>The two slanted lines meet where $2x + 5y = 40$ and $x + y = 12$. From the second, $x = 12 - y$:</p>
+          <p>$2(12-y) + 5y = 40 \Rightarrow 24 + 3y = 40 \Rightarrow y = \tfrac{16}{3}$, and $x = \tfrac{20}{3}$.</p>
+          <p>Vertices: $(0,0)$, $(12,0)$, $\left(\tfrac{20}{3}, \tfrac{16}{3}\right)$, $(0,8)$.</p>
+          <p><strong>(c)</strong> You cannot make a fraction of a chair or table, so only points with $x$ and $y$ whole numbers are usable. The vertex $\left(\tfrac{20}{3}, \tfrac{16}{3}\right)$ is not itself a possible production plan — it is a corner of the mathematical region only.</p>
+          <p><strong>(d)</strong> Maximising $y$: the carpentry constraint gives $5y \leqslant 40$, so $y \leqslant 8$; the finishing constraint gives $y \leqslant 12$. The binding one is carpentry.</p>
+          <p>$y = 8$ is achievable, with $x = 0$: that uses $40$ carpentry hours and $8$ finishing hours, both within limits.</p>
+          <p>So at most <strong>$8$ tables</strong> per week.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Inequalities in Two Variables (AL9) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

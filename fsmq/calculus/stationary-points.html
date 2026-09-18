@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stationary Points &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⛰️ Stationary Points</h1>
+  <p>OCR FSMQ Additional Maths · Calculus (CA5–CA7)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT THEY ARE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Stationary Point Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>stationary point</strong> is a point where the curve is momentarily flat — the tangent is horizontal, so the gradient is zero. These are the peaks, troughs and levelling-off points of a curve.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">CA5 — how to find them</div>
+    Solve &nbsp;$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="230" viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="190" x2="430" y2="190" stroke="#475569" stroke-width="2"/>
+      <path d="M 50 205 C 90 205 110 45 160 45 C 210 45 230 165 280 165 C 330 165 380 55 420 20" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="120" y1="45" x2="200" y2="45" stroke="#ef4444" stroke-width="2.5"/>
+      <line x1="240" y1="165" x2="320" y2="165" stroke="#22c55e" stroke-width="2.5"/>
+      <circle cx="160" cy="45" r="5.5" fill="#dc2626"/>
+      <circle cx="280" cy="165" r="5.5" fill="#16a34a"/>
+      <text x="142" y="34" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">maximum</text>
+      <text x="258" y="186" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">minimum</text>
+      <text x="230" y="222" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">At each stationary point the tangent is horizontal: dy/dx = 0</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Type</th><th>Description</th></tr>
+    <tr><td><strong>Local maximum</strong></td><td>A peak — the curve rises to it, then falls</td></tr>
+    <tr><td><strong>Local minimum</strong></td><td>A trough — the curve falls to it, then rises</td></tr>
+    <tr><td><strong>Point of inflection</strong></td><td>Flat, but the curve continues in the same direction</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>"Local" matters.</strong> A local maximum is the highest point <em>nearby</em>, not necessarily on the whole curve. A cubic's local maximum is eventually exceeded as the curve rises off to infinity.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FINDING THEM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding Stationary Points</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Differentiate to get $\dfrac{\mathrm{d}y}{\mathrm{d}x}$.</li>
+    <li>Set it equal to zero and solve for $x$.</li>
+    <li><strong>Substitute each $x$ back into the original equation</strong> to get $y$.</li>
+    <li>State the answers as coordinates.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Substitute into $y$, not into the derivative.</strong> The derivative is zero at a stationary point by definition, so putting $x$ back into it just gives $0$ — no use at all.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A quadratic</div>
+    <div class="example-body">
+      <p>Find the stationary point of $y = x^2 - 8x + 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 8 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = 16 - 32 + 3 = -13$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Stationary point at $(4, -13)$.</span></div>
+      <div class="tip"><strong>Cross-check by completing the square:</strong> $x^2 - 8x + 3 \equiv (x-4)^2 - 13$, giving the vertex $(4, -13)$ ✓ A quadratic has exactly one stationary point, its vertex.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A cubic</div>
+    <div class="example-body">
+      <p>Find the stationary points of $y = 2x^3 - 3x^2 - 12x + 5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x^2 - 6x - 12$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$6\left(x^2 - x - 2\right) = 0$, so $6(x-2)(x+1) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 2$ or $x = -1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 2$: $y = 16 - 12 - 24 + 5 = -15$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $x = -1$: $y = -2 - 3 + 12 + 5 = 12$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Stationary points at $(2, -15)$ and $(-1, 12)$.</span></div>
+      <div class="tip"><strong>Take out the common factor first.</strong> Factorising $6x^2-6x-12$ as $6(x-2)(x+1)$ is far easier than using the quadratic formula.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – DETERMINING THE NATURE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Determining the Nature (CA6)</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The second derivative test</div>
+    $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} > 0$ &nbsp;&rarr;&nbsp; <strong>minimum</strong> (curve bends upwards, like a cup)<br>
+    $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} < 0$ &nbsp;&rarr;&nbsp; <strong>maximum</strong> (curve bends downwards, like a cap)<br>
+    $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 0$ &nbsp;&rarr;&nbsp; <strong>inconclusive</strong> — use the gradient-sign test instead
+  </div>
+
+  <div class="tip">
+    <strong>The memory hook:</strong> positive second derivative, <em>positive</em> like a smile — a minimum. Negative second derivative, a frown — a maximum.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Classifying both points</div>
+    <div class="example-body">
+      <p>Determine the nature of the stationary points of $y = 2x^3 - 3x^2 - 12x + 5$, found above at $(-1, 12)$ and $(2, -15)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x^2 - 6x - 12$, so $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x - 6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = -1$: $-12 - 6 = -18 < 0$, so $(-1, 12)$ is a <strong>maximum</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = 2$: $24 - 6 = 18 > 0$, so $(2, -15)$ is a <strong>minimum</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Sense check:</em> for a positive cubic the maximum always comes first (smaller $x$) and the minimum second ✓</span></div>
+      <div class="warn"><strong>You must state the conclusion in words.</strong> Writing "$-18$" alone is not an answer. Write "since $\tfrac{\mathrm{d}^2y}{\mathrm{d}x^2} < 0$, this is a maximum".</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The alternative: the gradient-sign test</div>
+    Check the sign of $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ just <em>before</em> and just <em>after</em> the point:<br>
+    $+ \to 0 \to -$ &nbsp;is a maximum &nbsp;&middot;&nbsp; $- \to 0 \to +$ &nbsp;is a minimum<br>
+    same sign both sides &nbsp;is a point of inflection
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — When the second derivative fails</div>
+    <div class="example-body">
+      <p>Find and classify the stationary point of $y = x^3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 = 0$ gives $x = 0$, and $y = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x$, which at $x = 0$ is $0$ — <strong>inconclusive</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So test the gradient either side. At $x = -0.1$: $3(0.01) = 0.03 > 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = +0.1$: $3(0.01) = 0.03 > 0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The gradient is positive on <em>both</em> sides, so the curve keeps rising through the flat spot.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$(0, 0)$ is a <strong>point of inflection</strong>, not a maximum or minimum.</span></div>
+      <div class="tip">A zero second derivative does <em>not</em> prove there is an inflection — it only means the test has failed and you must look further.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Using a table of signs</div>
+    <div class="example-body">
+      <p>Classify the stationary point of $y = x^4$ at the origin.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3 = 0$ at $x = 0$, and $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 = 0$ there too.</span></div>
+      <table>
+        <tr><th>$x$</th><th>$-1$</th><th>$0$</th><th>$1$</th></tr>
+        <tr><td>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3$</td><td>$-4$</td><td>$0$</td><td>$4$</td></tr>
+        <tr><td>Sign</td><td>negative</td><td>zero</td><td>positive</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">②</span><span>The pattern is $- \to 0 \to +$, so $(0,0)$ is a <strong>minimum</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The second derivative was zero even though this is a genuine minimum — proof that the test can fail either way.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SKETCHING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Sketching with Known Stationary Points (CA7)</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Find the stationary points and classify them.</li>
+    <li>Find the $y$-intercept by setting $x = 0$.</li>
+    <li>Find the $x$-intercepts by factorising, if possible.</li>
+    <li>Decide the end behaviour from the leading term.</li>
+    <li>Draw a smooth curve through everything, and label each feature.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A full sketch</div>
+    <div class="example-body">
+      <p>Sketch $y = x^3 - 3x^2$, showing all key features.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 6x = 3x(x-2) = 0$, so $x = 0$ or $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x=0$: $y = 0$. &nbsp;At $x=2$: $y = 8 - 12 = -4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x - 6$. At $x=0$: $-6 < 0$, <strong>maximum</strong> at $(0,0)$. At $x=2$: $6 > 0$, <strong>minimum</strong> at $(2,-4)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Intercepts: $x^3 - 3x^2 = x^2(x-3)$, so the curve touches at $x=0$ and crosses at $x=3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Positive cubic, so it comes from the bottom left and goes to the top right.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Shape: rises to the maximum at the origin, falls to the minimum $(2,-4)$, then rises through $(3, 0)$.</span></div>
+      <div class="tip"><strong>The repeated factor $x^2$ and the maximum at the origin agree.</strong> A squared factor means the curve touches the axis, which can only happen at a stationary point — two independent methods confirming the same feature.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Find them</h4><p>Solve $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$.</p></div>
+    <div class="ref-card"><h4>Get $y$</h4><p>Substitute into the original equation.</p></div>
+    <div class="ref-card"><h4>Give coordinates</h4><p>Both $x$ and $y$.</p></div>
+    <div class="ref-card"><h4>Minimum</h4><p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} > 0$.</p></div>
+    <div class="ref-card"><h4>Maximum</h4><p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} < 0$.</p></div>
+    <div class="ref-card"><h4>Zero second derivative</h4><p>Inconclusive — use the sign test.</p></div>
+    <div class="ref-card"><h4>Sign test</h4><p>$+\,0\,-$ maximum; $-\,0\,+$ minimum.</p></div>
+    <div class="ref-card"><h4>Say it in words</h4><p>State the conclusion, not just the number.</p></div>
+    <div class="ref-card"><h4>How many?</h4><p>Quadratic: $1$. Cubic: $0$ or $2$.</p></div>
+    <div class="ref-card"><h4>Touching the axis</h4><p>A repeated root is a stationary point.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the stationary point of $y = x^2 - 6x + 2$ and state its nature.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x - 6 = 0$, so $x = 3$ and $y = 9 - 18 + 2 = -7$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 2 > 0$, so $(3, -7)$ is a <strong>minimum</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the stationary point of $y = 5 + 4x - x^2$ and state its nature.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$4 - 2x = 0$, so $x = 2$ and $y = 5 + 8 - 4 = 9$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = -2 < 0$, so $(2, 9)$ is a <strong>maximum</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the stationary points of $y = x^3 - 12x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x^2 - 12 = 0$, so $x^2 = 4$ and $x = \pm 2$.</p>
+          <p>At $x=2$: $y = 8 - 24 = -16$. &nbsp;At $x=-2$: $y = -8 + 24 = 16$.</p>
+          <p>Stationary points $(2, -16)$ and $(-2, 16)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Classify the stationary points found in Question 3.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x$</p>
+          <p>At $x=2$: $12 > 0$, so $(2,-16)$ is a <strong>minimum</strong>.</p>
+          <p>At $x=-2$: $-12 < 0$, so $(-2,16)$ is a <strong>maximum</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find and classify the stationary points of $y = x^3 - 6x^2 + 5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x^2 - 12x = 3x(x-4) = 0$, so $x = 0$ or $x = 4$.</p>
+          <p>At $x=0$: $y = 5$. &nbsp;At $x=4$: $y = 64 - 96 + 5 = -27$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x - 12$.</p>
+          <p>At $x=0$: $-12 < 0$, so $(0, 5)$ is a <strong>maximum</strong>.</p>
+          <p>At $x=4$: $12 > 0$, so $(4, -27)$ is a <strong>minimum</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Show that $y = x^3 + 3x$ has no stationary points.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 + 3$</p>
+          <p>Since $x^2 \geqslant 0$ for all real $x$, we have $3x^2 + 3 \geqslant 3 > 0$.</p>
+          <p>The gradient is never zero, so there are no stationary points. The curve is always increasing.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the stationary points of $y = x^4 - 8x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$4x^3 - 16x = 4x\left(x^2 - 4\right) = 4x(x-2)(x+2) = 0$</p>
+          <p>$x = 0$, $2$ or $-2$.</p>
+          <p>At $x=0$: $y = 0$. &nbsp;At $x=\pm2$: $y = 16 - 32 = -16$.</p>
+          <p>Points: $(0, 0)$, $(2, -16)$ and $(-2, -16)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Classify the stationary points found in Question 7.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 - 16$</p>
+          <p>At $x=0$: $-16 < 0$, so $(0,0)$ is a <strong>maximum</strong>.</p>
+          <p>At $x=2$: $48 - 16 = 32 > 0$, a <strong>minimum</strong>.</p>
+          <p>At $x=-2$: $48 - 16 = 32 > 0$, a <strong>minimum</strong>.</p>
+          <p>A "W" shape, with two equal minima either side of a local maximum at the origin.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The curve $y = x^3 + ax^2 + b$ has a stationary point at $(2, 1)$. Find $a$ and $b$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 + 2ax$, and this is zero at $x = 2$:</p>
+          <p>$12 + 4a = 0$, so $a = -3$.</p>
+          <p>The point $(2,1)$ is on the curve: $8 + a(4) + b = 1$</p>
+          <p>$8 - 12 + b = 1$, so $b = 5$.</p>
+          <p><em>Check:</em> $y = x^3 - 3x^2 + 5$ gives $\tfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2-6x = 0$ at $x = 0, 2$ ✓ and $y(2) = 8-12+5 = 1$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The curve $C$ has equation $y = 2x^3 + 3x^2 - 36x + 5$.</p>
+      <p>(a) Find the coordinates of the stationary points. &nbsp; (b) Determine the nature of each. &nbsp; (c) Find the $y$-intercept and sketch $C$. &nbsp; (d) State the number of real solutions of $2x^3 + 3x^2 - 36x + 5 = 0$, with a reason.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x^2 + 6x - 36 = 6\left(x^2 + x - 6\right) = 6(x+3)(x-2)$</p>
+          <p>Zero when $x = -3$ or $x = 2$.</p>
+          <p>At $x = -3$: $y = 2(-27) + 3(9) + 108 + 5 = -54 + 27 + 108 + 5 = 86$</p>
+          <p>At $x = 2$: $y = 16 + 12 - 72 + 5 = -39$</p>
+          <p>Stationary points: $(-3, 86)$ and $(2, -39)$.</p>
+          <p><strong>(b)</strong> $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x + 6$</p>
+          <p>At $x=-3$: $-36 + 6 = -30 < 0$, so $(-3, 86)$ is a <strong>maximum</strong>.</p>
+          <p>At $x=2$: $24 + 6 = 30 > 0$, so $(2, -39)$ is a <strong>minimum</strong>.</p>
+          <p><strong>(c)</strong> $y$-intercept: $x = 0$ gives $y = 5$, so $(0, 5)$.</p>
+          <p>A positive cubic: rising from the bottom left, up to the maximum $(-3, 86)$, down through $(0, 5)$ to the minimum $(2, -39)$, then rising to the top right.</p>
+          <p><strong>(d)</strong> The local maximum value is $86$, which is <strong>above</strong> the $x$-axis, and the local minimum value is $-39$, which is <strong>below</strong> it.</p>
+          <p>So the curve crosses the axis three times: once on the way up to the maximum, once falling from the maximum to the minimum, and once rising after the minimum.</p>
+          <p>The equation has <strong>three real solutions</strong>.</p>
+          <p><em>The general rule:</em> a cubic has three real roots exactly when its two stationary values lie on <em>opposite</em> sides of the $x$-axis. If they were both positive or both negative, there would be only one root.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Stationary Points (CA5–CA7) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

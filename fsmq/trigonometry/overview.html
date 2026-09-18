@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pythagoras' Theorem and Trigonometry &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Pythagoras' Theorem and Trigonometry</h1>
+  <p>OCR FSMQ Additional Maths · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>At GCSE, $\sin$, $\cos$ and $\tan$ were <em>ratios of sides in a right-angled triangle</em>. At Level 3 they become <strong>functions</strong> defined for every angle, with graphs, identities and equations of their own.</p>
+
+  <div class="concept">
+    That shift is the whole point of this section. A right-angled triangle cannot have an angle of $150°$, yet $\sin 150° = 0.5$ is perfectly meaningful. Understanding <em>why</em> unlocks the ambiguous case of the sine rule and the solving of trigonometric equations.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Measured in degrees only</div>
+    The specification is explicit: angles in this qualification are in <strong>degrees</strong>.<br>
+    Radians are not required. Check your calculator is in DEG mode.
+  </div>
+
+  <div class="warn">
+    <strong>A calculator left in radians is the single most costly setting error in this paper.</strong> Test it: $\sin 30$ should give $0.5$. If it gives $-0.988$, you are in radians.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Hypotenuse</strong></td><td>The longest side of a right-angled triangle, opposite the right angle.</td></tr>
+    <tr><td><strong>Opposite / adjacent</strong></td><td>Defined relative to the angle you are using.</td></tr>
+    <tr><td><strong>Identity</strong></td><td>A relationship true for <em>every</em> angle; written with $\equiv$.</td></tr>
+    <tr><td><strong>Period</strong></td><td>The horizontal length of one complete cycle of a graph.</td></tr>
+    <tr><td><strong>Amplitude</strong></td><td>Half the vertical distance between the maximum and minimum.</td></tr>
+    <tr><td><strong>Ambiguous case</strong></td><td>When the sine rule gives two valid triangles.</td></tr>
+    <tr><td><strong>Angle of elevation</strong></td><td>The angle up from the horizontal.</td></tr>
+    <tr><td><strong>Angle of depression</strong></td><td>The angle down from the horizontal.</td></tr>
+    <tr><td><strong>Angle of greatest slope</strong></td><td>The steepest line of ascent on a sloping plane.</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE KEY FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Key Formulae</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Right-angled triangles (revision)</div>
+    $\sin\theta = \dfrac{\text{opp}}{\text{hyp}}$ &nbsp;&middot;&nbsp; $\cos\theta = \dfrac{\text{adj}}{\text{hyp}}$ &nbsp;&middot;&nbsp; $\tan\theta = \dfrac{\text{opp}}{\text{adj}}$<br>
+    Pythagoras: $a^2 + b^2 = c^2$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The sine rule (PT2)</div>
+    $\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The cosine rule (PT2)</div>
+    $a^2 = b^2 + c^2 - 2bc\cos A$, &nbsp;rearranged as &nbsp;$\cos A = \dfrac{b^2+c^2-a^2}{2bc}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Area of a triangle</div>
+    $\text{Area} = \tfrac12 ab \sin C$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The two identities (PT3, PT4)</div>
+    $\tan\theta \equiv \dfrac{\sin\theta}{\cos\theta}$ &nbsp;&middot;&nbsp; $\sin^2\theta + \cos^2\theta \equiv 1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Which rule to use</div>
+    Right-angled? &rarr; SOHCAHTOA and Pythagoras<br>
+    Two sides and the angle <em>between</em> them, or all three sides? &rarr; <strong>cosine rule</strong><br>
+    A matching side-and-angle pair? &rarr; <strong>sine rule</strong>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Choosing the right tool</div>
+    <div class="example-body">
+      <p>In triangle $ABC$, $AB = 7$ cm, $BC = 9$ cm and angle $B = 62°$. Find $AC$ and then angle $A$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Two sides and the angle between them $\to$ cosine rule.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AC^2 = 7^2 + 9^2 - 2(7)(9)\cos 62°$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 49 + 81 - 126 \times 0.46947 = 130 - 59.153 = 70.847$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$AC = 8.417 = 8.42$ cm (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Now there <em>is</em> a matching pair ($AC$ with $B$), so use the sine rule for angle $A$:</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\dfrac{\sin A}{9} = \dfrac{\sin 62°}{8.417}$, so $\sin A = \dfrac{9 \times 0.88295}{8.417} = 0.94410$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$A = 70.7°$ (1 d.p.)</span></div>
+      <div class="tip"><strong>Keep unrounded values on your calculator.</strong> Using $8.42$ instead of $8.417$ in step ⑥ shifts the final angle. Store $AC$ in a memory and recall it.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Trigonometry Subtopics</div>
+<div class="section-body">
+
+  <ul class="topic-list">
+    <li><span class="code">PT1</span><span><a href="ratios-of-any-angle.html">Ratios of Any Angle</a><span class="desc">$\sin$, $\cos$ and $\tan$ beyond $90°$, and their graphs.</span></span></li>
+    <li><span class="code">PT2</span><span><a href="sine-and-cosine-rules.html">The Sine and Cosine Rules</a><span class="desc">Non-right-angled triangles, including the ambiguous case.</span></span></li>
+    <li><span class="code">PT3<br>PT4</span><span><a href="trigonometric-identities.html">Trigonometric Identities</a><span class="desc">$\tan\theta \equiv \tfrac{\sin\theta}{\cos\theta}$ and $\sin^2\theta + \cos^2\theta \equiv 1$.</span></span></li>
+    <li><span class="code">PT5</span><span><a href="trigonometric-equations.html">Trigonometric Equations</a><span class="desc">Finding every solution in a given interval.</span></span></li>
+    <li><span class="code">PT6</span><span><a href="three-dimensional-problems.html">2-D and 3-D Problems</a><span class="desc">Modelling with Pythagoras and trigonometry, including greatest slope.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>The calculator in radians.</strong> Check with $\sin 30° = 0.5$ before you start.
+  </div>
+
+  <div class="warn">
+    <strong>Missing the second solution.</strong> $\sin^{-1}$ gives only one answer. If the question asks for solutions in $0°$ to $360°$, there are usually two.
+  </div>
+
+  <div class="warn">
+    <strong>Missing the ambiguous case.</strong> When the sine rule finds an <em>angle</em> and the triangle is not fixed by other information, check whether $180° - \theta$ also works.
+  </div>
+
+  <div class="warn">
+    <strong>Rounding too early.</strong> Carry full accuracy through multi-step triangle problems; round only the final answer.
+  </div>
+
+  <div class="warn">
+    <strong>Assuming a triangle is right-angled</strong> because it looks it. Only use SOHCAHTOA when a right angle is stated or proved.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Degrees</h4><p>Always. Check DEG mode.</p></div>
+    <div class="ref-card"><h4>Sine rule</h4><p>Needs a matching side–angle pair.</p></div>
+    <div class="ref-card"><h4>Cosine rule</h4><p>Two sides and the included angle, or all three sides.</p></div>
+    <div class="ref-card"><h4>Area</h4><p>$\tfrac12 ab\sin C$, with $C$ between $a$ and $b$.</p></div>
+    <div class="ref-card"><h4>Identity 1</h4><p>$\tan\theta \equiv \tfrac{\sin\theta}{\cos\theta}$.</p></div>
+    <div class="ref-card"><h4>Identity 2</h4><p>$\sin^2\theta + \cos^2\theta \equiv 1$.</p></div>
+    <div class="ref-card"><h4>Periods</h4><p>$\sin$, $\cos$: $360°$. $\tan$: $180°$.</p></div>
+    <div class="ref-card"><h4>Second solution</h4><p>Sine: $180° - \theta$. Cosine: $360° - \theta$.</p></div>
+    <div class="ref-card"><h4>Ambiguous case</h4><p>Check $180° - \theta$ still fits the triangle.</p></div>
+    <div class="ref-card"><h4>3-D problems</h4><p>Redraw the relevant triangle flat, on its own.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A right-angled triangle has legs $5$ cm and $12$ cm. Find the hypotenuse.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$c^2 = 25 + 144 = 169$, so $c = 13$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $x$ in a right-angled triangle where the hypotenuse is $10$ cm and the angle between it and $x$ is $35°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x$ is adjacent to the $35°$ angle, so $\cos 35° = \dfrac{x}{10}$.</p>
+          <p>$x = 10\cos 35° = 8.19$ cm (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>In triangle $ABC$, $a = 8$, $A = 50°$ and $B = 70°$. Find $b$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sine rule: $\dfrac{b}{\sin 70°} = \dfrac{8}{\sin 50°}$</p>
+          <p>$b = \dfrac{8 \sin 70°}{\sin 50°} = \dfrac{8 \times 0.93969}{0.76604} = 9.81$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A triangle has sides $6$, $7$ and $9$. Find its largest angle.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The largest angle is opposite the longest side, $9$.</p>
+          <p>$\cos\theta = \dfrac{36 + 49 - 81}{2(6)(7)} = \dfrac{4}{84} = 0.047619$</p>
+          <p>$\theta = 87.3°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the area of a triangle with sides $8$ cm and $11$ cm enclosing an angle of $40°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area $= \tfrac12(8)(11)\sin 40° = 44 \times 0.64279$</p>
+          <p>$= 28.3$ cm² (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Given $\sin\theta = 0.6$ and $\theta$ is acute, find $\cos\theta$ exactly.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos^2\theta = 1 - 0.36 = 0.64$</p>
+          <p>$\cos\theta = 0.8$ (positive, since $\theta$ is acute).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $\sin x = 0.5$ for $0° \leqslant x \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin^{-1}(0.5) = 30°$</p>
+          <p>The second solution is $180° - 30° = 150°$.</p>
+          <p>$x = 30°$ or $150°$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>State the period and amplitude of $y = 5\sin(2x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Amplitude $5$; period $\dfrac{360°}{2} = 180°$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The specification's own example: in triangle $ABC$, $AB = 10$ m, $AC = 8$ m and angle $B = 40°$. Find the two possible values of angle $C$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>We know side $AC = 8$ is opposite angle $B = 40°$, and side $AB = 10$ is opposite angle $C$.</p>
+          <p>Sine rule: $\dfrac{\sin C}{10} = \dfrac{\sin 40°}{8}$</p>
+          <p>$\sin C = \dfrac{10 \times 0.64279}{8} = 0.80349$</p>
+          <p>$C = 53.5°$ &nbsp;or&nbsp; $C = 180° - 53.5° = 126.5°$ (1 d.p.)</p>
+          <p><strong>Both are valid</strong>: adding $40°$ to either still leaves a positive third angle ($86.5°$ or $13.5°$), so two different triangles fit the data. This is the <strong>ambiguous case</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A vertical mast $BT$ stands on horizontal ground. From a point $A$ on the ground, $50$ m from the base $B$, the angle of elevation of the top $T$ is $32°$.</p>
+      <p>(a) Find the height of the mast. &nbsp; (b) A second point $C$ is $80$ m from $B$, with angle $ABC = 90°$. Find the distance $AC$. &nbsp; (c) Find the angle of elevation of $T$ from $C$. &nbsp; (d) Find the angle that $AT$ makes with the ground at $A$ — and explain why this is not the same as the angle $TAC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> In the right-angled triangle $ABT$: $\tan 32° = \dfrac{BT}{50}$</p>
+          <p>$BT = 50\tan 32° = 50 \times 0.62487 = 31.24$ m, so the mast is $31.2$ m tall (3 s.f.).</p>
+          <p><strong>(b)</strong> Triangle $ABC$ is right-angled at $B$, with $AB = 50$ and $BC = 80$:</p>
+          <p>$AC = \sqrt{50^2 + 80^2} = \sqrt{2500 + 6400} = \sqrt{8900} = 94.34$ m (2 d.p.)</p>
+          <p><strong>(c)</strong> In the right-angled triangle $CBT$, with $CB = 80$ and $BT = 31.24$:</p>
+          <p>$\tan(\text{elevation}) = \dfrac{31.24}{80} = 0.39053$</p>
+          <p>Elevation $= 21.3°$ (1 d.p.)</p>
+          <p><strong>(d)</strong> The angle $AT$ makes with the ground, measured in the vertical plane through $A$ and $B$, is the angle $TAB = 32°$ given in the question.</p>
+          <p>The angle $TAC$ is a <em>different</em> angle: it is measured in the plane containing $A$, $T$ and $C$, and $AC$ is a line along the ground in a different direction from $AB$.</p>
+          <p>To see the difference, note $AT = \dfrac{50}{\cos 32°} = 58.96$ m, while $CT = \sqrt{80^2 + 31.24^2} = 85.88$ m. In triangle $ATC$ we then have all three sides, so use the cosine rule:</p>
+          <p>$\cos(TAC) = \dfrac{AT^2 + AC^2 - CT^2}{2 \times AT \times AC} = \dfrac{3476 + 8900 - 7376}{2 \times 58.96 \times 94.34} = 0.4495$</p>
+          <p>$\angle TAC = 63.3°$ — very different from $32°$.</p>
+          <p><strong>The lesson:</strong> in a 3-D problem the "angle of elevation" is always measured in the vertical plane containing the observer and the base of the object. An angle to a point in another direction is a genuinely different angle, and you must identify the correct triangle before calculating.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Pythagoras and Trigonometry (PT1–PT6) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

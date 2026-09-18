@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tangents and Normals by Calculus &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📍 Tangents and Normals by Calculus</h1>
+  <p>OCR FSMQ Additional Maths · Calculus (CA4)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Method</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>CA4:</strong> find the equation of a tangent and normal at any point on a curve. This is where <a href="differentiation.html">differentiation</a> meets <a href="../coordinate-geometry/straight-lines.html">straight-line coordinate geometry</a> — the derivative supplies the gradient, and the straight-line formula does the rest.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The five steps</div>
+    <strong>1.</strong> If only $x$ is given, find $y$ by substituting into the curve<br>
+    <strong>2.</strong> Differentiate to get $\dfrac{\mathrm{d}y}{\mathrm{d}x}$<br>
+    <strong>3.</strong> Substitute the $x$-value to get the numerical gradient $m$<br>
+    <strong>4.</strong> For a normal, replace $m$ by $-\dfrac1m$<br>
+    <strong>5.</strong> Use $y - y_1 = m(x - x_1)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The gradients</div>
+    <strong>Tangent:</strong> $m_{\text{T}} = \left.\dfrac{\mathrm{d}y}{\mathrm{d}x}\right|_{x = x_1}$ &nbsp;&middot;&nbsp;
+    <strong>Normal:</strong> $m_{\text{N}} = -\dfrac{1}{m_{\text{T}}}$
+  </div>
+
+  <div class="warn">
+    <strong>Do not substitute the $x$-value before differentiating.</strong> Differentiate the general expression first, then substitute. Substituting first turns the curve into a number, whose derivative is zero.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WORKED EXAMPLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding the Two Lines</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Tangent and normal together</div>
+    <div class="example-body">
+      <p>Find the equations of the tangent and normal to $y = x^2 + 3x - 1$ at the point where $x = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 4 + 6 - 1 = 9$, so the point is $(2, 9)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x + 3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = 2$: $m_{\text{T}} = 4 + 3 = 7$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Tangent:</strong> $y - 9 = 7(x-2)$, so $y = 7x - 5$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$m_{\text{N}} = -\dfrac17$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><strong>Normal:</strong> $y - 9 = -\tfrac17(x-2)$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$7y - 63 = -x + 2$, so $x + 7y = 65$.</span></div>
+      <div class="tip"><strong>Check both lines pass through the point.</strong> Tangent: $7(2) - 5 = 9$ ✓ &nbsp;Normal: $2 + 7(9) = 65$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 &mdash; When the tangent is horizontal</div>
+    <div class="example-body">
+      <p>Find the equations of the tangent and normal to $y = x^3 - 3x + 2$ at the point where $x = 1$.</p>
+      <div class="step-row"><span class="arrow">&#9312;</span><span>$y = 1 - 3 + 2 = 0$, so the point is $(1, 0)$.</span></div>
+      <div class="step-row"><span class="arrow">&#9313;</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 3$</span></div>
+      <div class="step-row"><span class="arrow">&#9314;</span><span>At $x = 1$: $m_{\text{T}} = 3 - 3 = 0$ &mdash; the tangent is <strong>horizontal</strong>.</span></div>
+      <div class="step-row"><span class="arrow">&#9315;</span><span><strong>Tangent:</strong> $y = 0$, the $x$-axis itself.</span></div>
+      <div class="step-row"><span class="arrow">&#9316;</span><span>A line perpendicular to a horizontal line is vertical, so the <strong>normal</strong> is $x = 1$.</span></div>
+      <div class="warn"><strong>Two habits this example teaches.</strong> First, always find the $y$-coordinate and confirm the point lies on the curve. Second, when $m_{\text{T}} = 0$, never write $-\tfrac{1}{0}$ &mdash; state instead that the normal is the vertical line $x = x_1$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A cubic</div>
+    <div class="example-body">
+      <p>Find the tangent to $y = x^3 - 4x$ at the point $(2, 0)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Check: $8 - 8 = 0$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = 2$: $m = 12 - 4 = 8$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y - 0 = 8(x - 2)$, so $y = 8x - 16$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – GOING FURTHER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> What Questions Do Next</div>
+<div class="section-body">
+
+  <p>Finding the line is rarely the end of the question. These are the standard follow-ons.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Intercepts and an area</div>
+    <div class="example-body">
+      <p>The tangent to $y = x^2 + 1$ at $(2, 5)$ meets the axes at $P$ and $Q$. Find the area of the triangle $OPQ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x = 4$ at $x=2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Tangent: $y - 5 = 4(x-2)$, so $y = 4x - 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y$-intercept: $(0, -3)$. &nbsp;$x$-intercept: $0 = 4x - 3$, so $\left(\tfrac34, 0\right)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The legs along the axes have <em>lengths</em> $3$ and $\tfrac34$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Area $= \tfrac12 \times 3 \times \tfrac34 = \dfrac{9}{8}$ square units.</span></div>
+      <div class="tip">Use lengths, not signed coordinates. The intercept is at $-3$ but the side length is $3$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A tangent with a given gradient</div>
+    <div class="example-body">
+      <p>Find the points on $y = x^3 - 6x$ at which the tangent is parallel to $y = 6x + 1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Parallel means the tangent gradient is $6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 6 = 6$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3x^2 = 12$, so $x^2 = 4$ and $x = \pm 2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 2$: $y = 8 - 12 = -4$, giving $(2, -4)$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $x = -2$: $y = -8 + 12 = 4$, giving $(-2, 4)$.</span></div>
+      <div class="warn"><strong>Do not stop at one answer.</strong> Setting the derivative equal to a number usually gives a quadratic, so expect two points.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Where a tangent meets the curve again</div>
+    <div class="example-body">
+      <p>Find where the tangent to $y = x^3$ at $(1, 1)$ meets the curve again.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 = 3$ at $x = 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Tangent: $y - 1 = 3(x-1)$, so $y = 3x - 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Set equal to the curve: $x^3 = 3x - 2$, so $x^3 - 3x + 2 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 1$ is a root (the point of contact). Dividing by $(x-1)$: $x^2 + x - 2$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x^2 + x - 2 = (x+2)(x-1)$, so $x^3 - 3x + 2 = (x-1)^2(x+2)$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The <strong>repeated</strong> factor $(x-1)^2$ is the tangency — it is why the tangent touches rather than crosses.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>The other root is $x = -2$, where $y = -8$. The tangent meets the curve again at $(-2, -8)$.</span></div>
+      <div class="tip"><strong>A repeated root always signals a tangent.</strong> That connects this topic straight back to the discriminant work in <a href="../algebra/equations.html">Setting Up and Solving Equations</a>.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Step order</h4><p>Find $y$, differentiate, substitute, then write the line.</p></div>
+    <div class="ref-card"><h4>Never substitute first</h4><p>Differentiate the expression, not a number.</p></div>
+    <div class="ref-card"><h4>Check the point</h4><p>Confirm it lies on the curve.</p></div>
+    <div class="ref-card"><h4>Tangent gradient</h4><p>Straight from the derivative.</p></div>
+    <div class="ref-card"><h4>Normal gradient</h4><p>$-\dfrac{1}{m}$.</p></div>
+    <div class="ref-card"><h4>$m = 0$</h4><p>Tangent $y = y_1$; normal $x = x_1$.</p></div>
+    <div class="ref-card"><h4>Line form</h4><p>$y - y_1 = m(x-x_1)$.</p></div>
+    <div class="ref-card"><h4>Intercepts</h4><p>Set $x = 0$, then $y = 0$.</p></div>
+    <div class="ref-card"><h4>Given gradient</h4><p>Set the derivative equal to it — expect two answers.</p></div>
+    <div class="ref-card"><h4>Meets again</h4><p>Solve line $=$ curve; tangency gives a repeated root.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the gradient of the tangent to $y = x^2 + 4x$ at $x = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x + 4$</p>
+          <p>At $x = 1$: $m = 6$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the equation of the tangent to $y = x^2$ at $(4, 16)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x = 8$ at $x = 4$.</p>
+          <p>$y - 16 = 8(x - 4)$</p>
+          <p>$y = 8x - 16$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the equation of the normal to $y = x^2$ at $(4, 16)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Tangent gradient $8$, so normal gradient $-\dfrac18$.</p>
+          <p>$y - 16 = -\tfrac18(x-4)$</p>
+          <p>$8y - 128 = -x + 4$, so $x + 8y = 132$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the tangent to $y = 3x^2 - 2x + 1$ at the point where $x = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 3 - 2 + 1 = 2$, so the point is $(1, 2)$.</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x - 2 = 4$ at $x = 1$.</p>
+          <p>$y - 2 = 4(x-1)$, so $y = 4x - 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the normal to $y = x^3 + 2$ at $(-1, 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Check: $-1 + 2 = 1$ ✓</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 = 3$ at $x = -1$.</p>
+          <p>Normal gradient $-\dfrac13$.</p>
+          <p>$y - 1 = -\tfrac13(x+1)$, so $3y - 3 = -x - 1$ and $x + 3y = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the point on $y = x^2 - 4x + 7$ where the tangent is horizontal.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x - 4 = 0$, so $x = 2$.</p>
+          <p>$y = 4 - 8 + 7 = 3$. The point is $(2, 3)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the points on $y = x^3 - 9x$ where the tangent is parallel to the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x^2 - 9 = 0$, so $x^2 = 3$ and $x = \pm\sqrt3$.</p>
+          <p>At $x = \sqrt3$: $y = 3\sqrt3 - 9\sqrt3 = -6\sqrt3$</p>
+          <p>At $x = -\sqrt3$: $y = 6\sqrt3$</p>
+          <p>Points: $\left(\sqrt3,\, -6\sqrt3\right)$ and $\left(-\sqrt3,\, 6\sqrt3\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The tangent to $y = x^2 - 1$ at $(3, 8)$ crosses the $x$-axis. Find where.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x = 6$ at $x = 3$.</p>
+          <p>Tangent: $y - 8 = 6(x-3)$, so $y = 6x - 10$.</p>
+          <p>Setting $y = 0$: $x = \dfrac{10}{6} = \dfrac{5}{3}$.</p>
+          <p>It crosses at $\left(\tfrac53, 0\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the equation of the tangent to $y = x^2 - 5x$ that is parallel to $y = 3x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 5 = 3$, so $x = 4$.</p>
+          <p>Then $y = 16 - 20 = -4$, giving the point $(4, -4)$.</p>
+          <p>$y + 4 = 3(x-4)$, so $y = 3x - 16$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The curve $C$ has equation $y = x^2 - 2x$, and $P$ is the point on $C$ with $x = 3$.</p>
+      <p>(a) Find the equations of the tangent and the normal at $P$. &nbsp; (b) The normal meets $C$ again at $Q$. Find the coordinates of $Q$. &nbsp; (c) Find the length $PQ$ in exact form. &nbsp; (d) Show that the tangent at $P$ and the tangent at the point where $x = -1$ meet on the line $x = 1$, and explain the significance of that line.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $y = 9 - 6 = 3$, so $P(3, 3)$.</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 2 = 4$ at $x = 3$.</p>
+          <p><strong>Tangent:</strong> $y - 3 = 4(x-3)$, so $y = 4x - 9$.</p>
+          <p><strong>Normal:</strong> gradient $-\tfrac14$, so $y - 3 = -\tfrac14(x-3)$, giving $4y = -x + 15$, i.e. $x + 4y = 15$.</p>
+          <p><strong>(b)</strong> Substitute $y = x^2 - 2x$ into $x + 4y = 15$:</p>
+          <p>$x + 4\left(x^2 - 2x\right) = 15$</p>
+          <p>$4x^2 - 7x - 15 = 0$</p>
+          <p>$x = 3$ is a root (that is $P$), so factorise: $(x-3)(4x+5) = 0$.</p>
+          <p>The other root is $x = -\tfrac54$, where $y = \tfrac{25}{16} + \tfrac{5}{2} = \tfrac{25 + 40}{16} = \tfrac{65}{16}$.</p>
+          <p>$Q\left(-\dfrac{5}{4},\; \dfrac{65}{16}\right)$</p>
+          <p><strong>(c)</strong> $\Delta x = 3 - \left(-\tfrac54\right) = \tfrac{17}{4}$ &nbsp;and&nbsp; $\Delta y = 3 - \tfrac{65}{16} = -\tfrac{17}{16}$</p>
+          <p>$PQ^2 = \left(\tfrac{17}{4}\right)^2 + \left(\tfrac{17}{16}\right)^2 = \dfrac{289}{16} + \dfrac{289}{256} = \dfrac{4624 + 289}{256} = \dfrac{4913}{256}$</p>
+          <p>$PQ = \dfrac{\sqrt{4913}}{16} = \dfrac{17\sqrt{17}}{16}$ &nbsp;(since $4913 = 17^3$)</p>
+          <p><em>As a decimal:</em> $4.38$ (3 s.f.)</p>
+          <p><strong>(d)</strong> At $x = -1$: $y = 1 + 2 = 3$, and the gradient is $2(-1) - 2 = -4$.</p>
+          <p>Tangent there: $y - 3 = -4(x+1)$, so $y = -4x - 1$.</p>
+          <p>Setting the two tangents equal: $4x - 9 = -4x - 1 \;\Rightarrow\; 8x = 8 \;\Rightarrow\; x = 1$ ✓</p>
+          <p>They meet at $(1, -5)$, which lies on $x = 1$.</p>
+          <p><strong>The significance:</strong> $x = 1$ is the <strong>line of symmetry</strong> of the parabola (the vertex is at $x = 1$, since $\tfrac{\mathrm{d}y}{\mathrm{d}x} = 0$ there). The two points $x = 3$ and $x = -1$ are equally spaced either side of it, so their tangents are mirror images and must meet on the axis of symmetry.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Tangents and Normals (CA4) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

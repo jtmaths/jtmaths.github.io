@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerical Methods in Context &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🛠️ Numerical Methods in Context</h1>
+  <p>OCR FSMQ Additional Maths · Numerical Methods (NM9)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY IT MATTERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why Numerical Methods Matter in Practice</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>NM9:</strong> apply numerical methods in context where appropriate. The specification's own example is "determine the velocity from a displacement–time curve" — a situation where there is no algebraic formula to differentiate, only measurements.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">When numerical methods are the only option</div>
+    You have <strong>data, not a formula</strong> — measurements from an experiment<br>
+    The equation <strong>cannot be solved algebraically</strong><br>
+    The function <strong>cannot be integrated</strong> by any standard method
+  </div>
+
+  <div class="concept">
+    In real engineering, science and finance, all three are the normal case rather than the exception. Numerical methods are not second-best — for most real problems, they are the method.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The translation table</div>
+    Gradient of a <strong>displacement–time</strong> graph &rarr; <strong>velocity</strong><br>
+    Gradient of a <strong>velocity–time</strong> graph &rarr; <strong>acceleration</strong><br>
+    Area under a <strong>velocity–time</strong> graph &rarr; <strong>distance</strong><br>
+    Area under a <strong>rate of flow</strong> graph &rarr; <strong>total volume</strong>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – RATES FROM DATA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding a Rate from Data</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The specification's own example</div>
+    <div class="example-body">
+      <p>A vehicle's displacement is recorded every second. Estimate its velocity at $t = 3$ s and at $t = 6$ s.</p>
+      <table>
+        <tr><th>$t$ (s)</th><th>$0$</th><th>$1$</th><th>$2$</th><th>$3$</th><th>$4$</th><th>$5$</th><th>$6$</th></tr>
+        <tr><td>$s$ (m)</td><td>$0$</td><td>$3$</td><td>$11$</td><td>$24$</td><td>$40$</td><td>$57$</td><td>$73$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>At $t = 3$, use the straddling chord from $t=2$ to $t=4$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$v \approx \dfrac{40 - 11}{4 - 2} = \dfrac{29}{2} = 14.5$ m s⁻¹</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $t = 6$ there is no data beyond, so only a one-sided chord is available:</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$v \approx \dfrac{73 - 57}{6 - 5} = 16$ m s⁻¹</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The $t=3$ estimate is the more reliable; the $t=6$ one is biased towards the average speed over the preceding second.</span></div>
+      <div class="warn"><strong>Always say which chord you used and why.</strong> Stating that a straddling chord was chosen because data exists on both sides shows the examiner you understand the accuracy issue, not just the arithmetic.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A rate of cooling</div>
+    <div class="example-body">
+      <p>A cup of tea cools as follows. Estimate the rate of cooling at $t = 10$ minutes, and comment on how the rate changes.</p>
+      <table>
+        <tr><th>$t$ (min)</th><th>$0$</th><th>$5$</th><th>$10$</th><th>$15$</th><th>$20$</th></tr>
+        <tr><td>$T$ (°C)</td><td>$90$</td><td>$70$</td><td>$56$</td><td>$46$</td><td>$39$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Straddling chord from $t=5$ to $t=15$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{46 - 70}{15 - 5} = \dfrac{-24}{10} = -2.4$ °C per minute</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The rate is <strong>negative</strong> because the tea is cooling. The tea is losing about $2.4$ °C every minute at that moment.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Early on: $\dfrac{70-90}{5} = -4$ °C min⁻¹. Later: $\dfrac{39-46}{5} = -1.4$ °C min⁻¹.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The cooling is <strong>slowing down</strong> — because the tea is getting closer to room temperature, so the temperature difference driving the heat loss is smaller.</span></div>
+      <div class="tip"><strong>Interpret the sign and the units.</strong> "$-2.4$ °C per minute" carries the direction and the scale; "$2.4$" alone carries neither.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TOTALS FROM RATES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding a Total from a Rate</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Distance from speed readings</div>
+    <div class="example-body">
+      <p>A cyclist's speed is recorded every $10$ seconds. Estimate the distance travelled in the minute.</p>
+      <table>
+        <tr><th>$t$ (s)</th><th>$0$</th><th>$10$</th><th>$20$</th><th>$30$</th><th>$40$</th><th>$50$</th><th>$60$</th></tr>
+        <tr><td>$v$ (m s⁻¹)</td><td>$4$</td><td>$6$</td><td>$9$</td><td>$11$</td><td>$10$</td><td>$8$</td><td>$5$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Distance is the area under the speed–time graph. There are $7$ ordinates, so $6$ strips with $h = 10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ends: $4 + 5 = 9$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Middles: $6 + 9 + 11 + 10 + 8 = 44$, doubled gives $88$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Distance $\approx \tfrac12(10)(9 + 88) = 5 \times 97 = 485$ m</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Sense check:</em> the average speed looks to be around $8$ m s⁻¹ over $60$ s, which would give roughly $480$ m ✓</span></div>
+      <div class="tip"><strong>Always sense-check a large numerical answer.</strong> A rough mental estimate catches a misplaced factor of ten far more reliably than re-reading your arithmetic.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Volume from a flow rate</div>
+    <div class="example-body">
+      <p>Water flows into a tank at the rates shown. Estimate the total volume added in $8$ hours, and say whether your estimate is too high or too low.</p>
+      <table>
+        <tr><th>$t$ (h)</th><th>$0$</th><th>$2$</th><th>$4$</th><th>$6$</th><th>$8$</th></tr>
+        <tr><td>Rate (litres/h)</td><td>$120$</td><td>$100$</td><td>$85$</td><td>$75$</td><td>$70$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Four strips of width $h = 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ends: $120 + 70 = 190$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Middles: $100 + 85 + 75 = 260$, doubled gives $520$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Volume $\approx \tfrac12(2)(190 + 520) = 710$ litres</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The successive drops are $20, 15, 10, 5$ — shrinking, so the graph <strong>bends upwards</strong> (it is falling but levelling off).</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>So the chords lie above the curve, and $710$ litres is an <strong>over-estimate</strong>.</span></div>
+      <div class="tip"><strong>Reading the curvature from the differences</strong> works even without a formula: if the successive changes are shrinking in size, the graph is bending upwards.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SOLVING REAL EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Solving Equations That Arise in Context</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A design problem</div>
+    <div class="example-body">
+      <p>An open cylindrical can of radius $r$ cm and height $2r$ cm must hold $500$ cm³. Find $r$ to $2$ decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$V = \pi r^2 (2r) = 2\pi r^3 = 500$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$r^3 = \dfrac{500}{2\pi} = 79.5775$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Here the cube root can be taken directly: $r = 4.30$ cm — no numerical method needed.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>But suppose the can had a <em>lid</em> and the surface area were fixed at $400$ cm² instead: $2\pi r^2 + 2\pi r(2r) = 6\pi r^2 = 400$, again solvable directly.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The methods become necessary when the equation mixes powers, as in the next example.</span></div>
+      <div class="tip"><strong>Check first whether algebra will do.</strong> Reaching for a numerical method when a direct route exists wastes time and invites error.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — An equation that needs a numerical method</div>
+    <div class="example-body">
+      <p>A box has a square base of side $x$ cm and height $(10 - x)$ cm. Its volume is $200$ cm³. Find $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$V = x^2(10-x) = 200$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$10x^2 - x^3 = 200$, so $x^3 - 10x^2 + 200 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Try factors of $200$: $\mathrm{f}(5) = 125 - 250 + 200 = 75$; $\mathrm{f}(8) = 512 - 640 + 200 = 72$; $\mathrm{f}(10) = 200$. None is zero, so there is no neat root.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(6) = 216 - 360 + 200 = 56$ and $\mathrm{f}(4) = 64 - 160 + 200 = 104$ — both positive.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(7) = 343 - 490 + 200 = 53$, $\mathrm{f}(9) = 729 - 810 + 200 = 119$. The minimum is around $x \approx 6.7$ with value about $52$ — still positive.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>So $\mathrm{f}(x) > 0$ for all $0 < x < 10$: <strong>there is no solution in the physically sensible range</strong>.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>The greatest possible volume is at the maximum of $x^2(10-x)$: $\dfrac{\mathrm{d}V}{\mathrm{d}x} = 20x - 3x^2 = 0$ gives $x = \tfrac{20}{3} = 6.67$, and then $V = 44.44 \times 3.33 = 148$ cm³.</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>Since the maximum volume is only $148$ cm³, a box of $200$ cm³ with these proportions is <strong>impossible</strong>.</span></div>
+      <div class="tip"><strong>A numerical search that finds no sign change is still an answer.</strong> Combined with the maximum from calculus, it proves the target is unreachable — a genuinely useful modelling conclusion.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Gradient</h4><p>A rate of change in the context's units.</p></div>
+    <div class="ref-card"><h4>Area</h4><p>A total accumulated over the interval.</p></div>
+    <div class="ref-card"><h4>$s$–$t$ gradient</h4><p>Velocity.</p></div>
+    <div class="ref-card"><h4>$v$–$t$ area</h4><p>Distance.</p></div>
+    <div class="ref-card"><h4>Rate–time area</h4><p>Total amount.</p></div>
+    <div class="ref-card"><h4>Straddling chord</h4><p>Use it wherever data allows.</p></div>
+    <div class="ref-card"><h4>Units</h4><p>Always state them, with the sign.</p></div>
+    <div class="ref-card"><h4>Curvature from data</h4><p>Shrinking differences $\Rightarrow$ bends upwards.</p></div>
+    <div class="ref-card"><h4>Sense-check</h4><p>Estimate roughly before trusting the answer.</p></div>
+    <div class="ref-card"><h4>Interpret</h4><p>Answer in context, not just as a number.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>What does the gradient of a displacement–time graph represent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The <strong>velocity</strong>, in units of displacement per unit time — for example m s⁻¹.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>What does the area under a velocity–time graph represent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The <strong>distance travelled</strong> (or change in displacement), in metres.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Displacement readings are $s = 12$ m at $t = 2$ s and $s = 30$ m at $t = 4$ s. Estimate the velocity at $t = 3$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Straddling chord: $\dfrac{30-12}{4-2} = \dfrac{18}{2} = 9$ m s⁻¹</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A tap's flow rate is $5$, $7$, $8$ litres per minute at $t = 0, 1, 2$ minutes. Use the trapezium rule to estimate the volume delivered.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Two strips, $h = 1$.</p>
+          <p>$\approx \tfrac12(1)\Big[(5+8) + 2(7)\Big] = \tfrac12(27) = 13.5$ litres</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Temperature readings are $80$ °C at $t=0$ and $65$ °C at $t=4$ min. Estimate the average rate of cooling.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{65-80}{4} = \dfrac{-15}{4} = -3.75$ °C per minute.</p>
+          <p>The negative sign shows the temperature is falling.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Explain why an estimate at the last data point is less reliable than one in the middle.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>At the last point there is no data beyond it, so no straddling chord can be formed.</p>
+          <p>Only a one-sided chord is available, which reflects the average behaviour over the interval <em>before</em> the point rather than at it, so the errors on the two sides cannot cancel.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Speeds of $0$, $8$, $14$, $18$ m s⁻¹ are recorded at $t = 0, 5, 10, 15$ s. Estimate the distance travelled.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Three strips, $h = 5$.</p>
+          <p>Ends: $0 + 18 = 18$. Middles: $8 + 14 = 22$, doubled $= 44$.</p>
+          <p>$\approx \tfrac12(5)(18+44) = 2.5 \times 62 = 155$ m</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Using the data in Question 7, is your answer an over- or under-estimate? Justify it.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The speed increases by $8$, then $6$, then $4$ — the increases are shrinking.</p>
+          <p>So the graph is rising but levelling off: it <strong>bends downwards</strong>, and the chords lie below the curve.</p>
+          <p>The estimate of $155$ m is therefore an <strong>under-estimate</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain how you would improve the estimate in Question 7 if you could take more readings.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Record the speed more often — say every $2.5$ seconds instead of every $5$.</p>
+          <p>That halves the strip width $h$, and since the trapezium rule's error is roughly proportional to $h^2$, the error would fall by a factor of about four.</p>
+          <p>The extra ordinates let the chords follow the curve's bend much more closely.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A rocket's height above the ground is recorded during the first $10$ seconds of flight:</p>
+      <table>
+        <tr><th>$t$ (s)</th><th>$0$</th><th>$2$</th><th>$4$</th><th>$6$</th><th>$8$</th><th>$10$</th></tr>
+        <tr><td>$h$ (m)</td><td>$0$</td><td>$14$</td><td>$52$</td><td>$112$</td><td>$196$</td><td>$300$</td></tr>
+      </table>
+      <p>(a) Estimate the rocket's velocity at $t = 4$ s and at $t = 8$ s. &nbsp; (b) Use these to estimate the acceleration between those times. &nbsp; (c) The mission requires the rocket to pass $250$ m within $10$ seconds. Use a change of sign argument on the data to confirm this happened, and estimate when. &nbsp; (d) Comment on the reliability of your answer to (c).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> At $t = 4$, straddling chord from $t=2$ to $t=6$:</p>
+          <p>$v \approx \dfrac{112 - 14}{6-2} = \dfrac{98}{4} = 24.5$ m s⁻¹</p>
+          <p>At $t = 8$, straddling chord from $t=6$ to $t=10$:</p>
+          <p>$v \approx \dfrac{300 - 112}{10-6} = \dfrac{188}{4} = 47$ m s⁻¹</p>
+          <p><strong>(b)</strong> Acceleration is the rate of change of velocity:</p>
+          <p>$a \approx \dfrac{47 - 24.5}{8 - 4} = \dfrac{22.5}{4} = 5.625$ m s⁻²</p>
+          <p>This is an average over $4 \leqslant t \leqslant 8$, best regarded as the acceleration at the midpoint $t = 6$ s.</p>
+          <p><strong>(c)</strong> Consider $\mathrm{g}(t) = h(t) - 250$, which is zero when the height is exactly $250$ m.</p>
+          <p>$\mathrm{g}(8) = 196 - 250 = -54$ &nbsp;(negative)</p>
+          <p>$\mathrm{g}(10) = 300 - 250 = 50$ &nbsp;(positive)</p>
+          <p>The sign changes, and height varies continuously with time, so the rocket passed $250$ m somewhere between $t=8$ and $t=10$ s.</p>
+          <p>To estimate when, interpolate linearly between the two readings. The height must rise $54$ m of the $104$ m gained over those $2$ seconds:</p>
+          <p>$t \approx 8 + 2 \times \dfrac{54}{104} = 8 + 1.04 = \mathbf{9.0}$ s (2 s.f.)</p>
+          <p><strong>(d)</strong> Two limitations are worth noting.</p>
+          <p>First, the linear interpolation assumes the height rises at a <em>constant</em> rate between $t=8$ and $t=10$. But the rocket is accelerating, so it actually covers less than half the gap in the first half-second and more later — meaning the true crossing is slightly <strong>earlier</strong> than $9.0$ s.</p>
+          <p>Second, the data is only recorded every $2$ seconds. Readings every $0.5$ s would allow a much tighter bracket and remove most of the interpolation error.</p>
+          <p>The conclusion that the rocket <em>did</em> pass $250$ m is nevertheless secure — that rests only on the change of sign, not on the interpolation.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Numerical Methods in Context (NM9) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

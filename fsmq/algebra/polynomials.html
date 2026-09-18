@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polynomials and the Factor Theorem &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧮 Polynomials and the Factor Theorem</h1>
+  <p>OCR FSMQ Additional Maths · Algebra (AL3–AL4)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IS A POLYNOMIAL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Polynomial Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>polynomial</strong> is a sum of terms of the form $kx^n$ where every index $n$ is a non-negative whole number. The <strong>degree</strong> is the highest power present.
+  </div>
+
+  <table>
+    <tr><th>Polynomial</th><th>Degree</th><th>Name</th></tr>
+    <tr><td>$3x + 1$</td><td>$1$</td><td>Linear</td></tr>
+    <tr><td>$2x^2 - x + 5$</td><td>$2$</td><td>Quadratic</td></tr>
+    <tr><td>$x^3 - 4x$</td><td>$3$</td><td>Cubic</td></tr>
+    <tr><td>$x^4 + 2x^2 - 7$</td><td>$4$</td><td>Quartic</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>These are not polynomials:</strong> $\dfrac{1}{x} = x^{-1}$ (negative index), $\sqrt{x} = x^{1/2}$ (fractional index), $2^x$ (variable in the index).
+  </div>
+
+  <div class="tip">
+    <strong>A degree-$n$ polynomial has at most $n$ roots.</strong> So a cubic equation has one, two or three solutions — never more. Use this as a check on your working.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ADDING, SUBTRACTING, MULTIPLYING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Adding, Subtracting and Multiplying</div>
+<div class="section-body">
+
+  <p><strong>AL3</strong> asks for all four operations with polynomials. Addition and subtraction just collect like terms; multiplication means every term times every term.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Addition and subtraction</div>
+    <div class="example-body">
+      <p>$\mathrm{p}(x) = 2x^3 - x + 4$ and $\mathrm{q}(x) = x^3 + 3x^2 - 5$. Find $\mathrm{p}(x) + \mathrm{q}(x)$ and $\mathrm{p}(x) - \mathrm{q}(x)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sum: $(2+1)x^3 + 3x^2 - x + (4-5) = 3x^3 + 3x^2 - x - 1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Difference: $(2-1)x^3 - 3x^2 - x + (4+5)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= x^3 - 3x^2 - x + 9$</span></div>
+      <div class="warn">Subtracting changes the sign of <em>every</em> term of $\mathrm{q}(x)$, including the $-5$, which becomes $+5$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Multiplying two brackets</div>
+    <div class="example-body">
+      <p>Expand $(x - 2)(x^2 + 3x - 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x \times \left(x^2 + 3x - 1\right) = x^3 + 3x^2 - x$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-2 \times \left(x^2 + 3x - 1\right) = -2x^2 - 6x + 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add: $x^3 + (3-2)x^2 + (-1-6)x + 2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= x^3 + x^2 - 7x + 2$</span></div>
+      <div class="tip"><strong>Degree check:</strong> degree $1 \times$ degree $2$ must give degree $3$, and the constant term must be $(-2)(-1) = 2$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – DIVISION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Dividing Polynomials</div>
+<div class="section-body">
+
+  <p>Once you know one factor, division finds the rest. There are two reliable methods.</p>
+
+  <div class="formula-box">
+    <div class="label">Method A — long division</div>
+    Divide the leading terms, multiply back, subtract, bring down the next term, repeat
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Long division</div>
+    <div class="example-body">
+      <p>Divide $x^3 - 4x^2 + x + 6$ by $(x + 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^3 \div x = x^2$. Multiply: $x^2(x+1) = x^3 + x^2$. Subtract: $-5x^2 + x + 6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-5x^2 \div x = -5x$. Multiply: $-5x(x+1) = -5x^2 - 5x$. Subtract: $6x + 6$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$6x \div x = 6$. Multiply: $6(x+1) = 6x + 6$. Subtract: $0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Quotient $x^2 - 5x + 6$, remainder $0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So $x^3 - 4x^2 + x + 6 = (x+1)\left(x^2 - 5x + 6\right)$.</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Method B — comparing coefficients</div>
+    Write $x^3 + bx^2 + cx + d \equiv (x - a)\left(x^2 + px + q\right)$ and match each power
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Comparing coefficients</div>
+    <div class="example-body">
+      <p>Given that $(x - 2)$ is a factor, write $x^3 + x^2 - 8x + 4$ as $(x-2)\left(x^2 + px + q\right)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expand the right side: $x^3 + px^2 + qx - 2x^2 - 2px - 2q$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= x^3 + (p-2)x^2 + (q - 2p)x - 2q$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Constant: $-2q = 4$, so $q = -2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x^2$: $p - 2 = 1$, so $p = 3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Check the $x$ term: $q - 2p = -2 - 6 = -8$ ✓</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$x^3 + x^2 - 8x + 4 = (x-2)\left(x^2 + 3x - 2\right)$</span></div>
+      <div class="tip"><strong>The fastest route:</strong> for a cubic with leading coefficient $1$ and factor $(x-a)$, the quadratic is $x^2 + px + q$ where $-aq$ is the constant term. Start with the constant and the $x^2$ coefficient, then use the $x$ coefficient as a check.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE FACTOR THEOREM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Factor Theorem</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The factor theorem (AL4)</div>
+    If $\mathrm{f}(a) = 0$ &nbsp;then&nbsp; $(x - a)$ is a factor of $\mathrm{f}(x)$<br>
+    and conversely, if $(x-a)$ is a factor then $\mathrm{f}(a) = 0$
+  </div>
+
+  <div class="concept">
+    <strong>Why it works.</strong> If $(x-a)$ is a factor then $\mathrm{f}(x) = (x-a) \times \mathrm{g}(x)$. Putting $x = a$ makes the first bracket zero, so the whole thing is zero.
+  </div>
+
+  <div class="warn">
+    <strong>Mind the sign.</strong> To test the factor $(x + 3)$ you substitute $x = -3$, because $x + 3 = 0$ when $x = -3$. The factor $(x - 3)$ needs $x = +3$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Which values to try</div>
+    Test the <strong>factors of the constant term</strong>, positive and negative
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Fully factorising a cubic</div>
+    <div class="example-body">
+      <p>Factorise $\mathrm{f}(x) = x^3 - 2x^2 - 5x + 6$ completely, and hence solve $\mathrm{f}(x) = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The constant is $6$, so try $x = \pm1, \pm2, \pm3, \pm6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(1) = 1 - 2 - 5 + 6 = 0$ ✓ &nbsp;so $(x-1)$ is a factor.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide: $x^3 - 2x^2 - 5x + 6 = (x-1)\left(x^2 - x - 6\right)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x^2 - x - 6 = (x-3)(x+2)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(x) = (x-1)(x-3)(x+2)$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\mathrm{f}(x) = 0$ when $x = 1$, $x = 3$ or $x = -2$.</span></div>
+      <div class="tip"><strong>Check without expanding:</strong> the three constants multiply to $(-1)(-3)(2) = 6$ ✓, matching the constant term of $\mathrm{f}(x)$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding an unknown coefficient</div>
+    <div class="example-body">
+      <p>$(x - 3)$ is a factor of $\mathrm{f}(x) = 2x^3 - 5x^2 + kx - 6$. Find $k$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The factor theorem gives $\mathrm{f}(3) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2(27) - 5(9) + 3k - 6 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$54 - 45 + 3k - 6 = 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3 + 3k = 0$, so $k = -1$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A repeated factor</div>
+    <div class="example-body">
+      <p>Factorise $\mathrm{f}(x) = x^3 - 3x^2 + 4$ and describe the shape of its graph near each root.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(-1) = -1 - 3 + 4 = 0$, so $(x+1)$ is a factor.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Dividing gives $(x+1)\left(x^2 - 4x + 4\right)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 - 4x + 4 = (x-2)^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(x) = (x+1)(x-2)^2$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $x = -1$ the graph <strong>crosses</strong> the axis. At $x = 2$ the factor is squared, so the graph <strong>touches</strong> the axis and turns back — $x=2$ is a stationary point.</span></div>
+      <div class="tip">A squared factor always means the curve touches rather than crosses. That is a free piece of information for sketching questions (<strong>CG4</strong>).</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – THE REMAINDER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> When There Is a Remainder</div>
+<div class="section-body">
+
+  <div class="concept">
+    If $\mathrm{f}(a) \neq 0$ then $(x-a)$ is not a factor — and the value $\mathrm{f}(a)$ is exactly the <strong>remainder</strong> when you divide $\mathrm{f}(x)$ by $(x-a)$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A non-zero remainder</div>
+    <div class="example-body">
+      <p>Find the remainder when $x^3 + 2x^2 - x + 1$ is divided by $(x - 2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Substitute $x = 2$: $8 + 8 - 2 + 1 = 15$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The remainder is $15$, so $(x-2)$ is <em>not</em> a factor.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Equivalently $x^3 + 2x^2 - x + 1 = (x-2)\left(x^2 + 4x + 7\right) + 15$.</span></div>
+      <div class="tip">A single substitution is far quicker than long division when all you need is the remainder.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Degree</h4><p>Highest power; at most that many roots.</p></div>
+    <div class="ref-card"><h4>Subtracting</h4><p>Change the sign of every term.</p></div>
+    <div class="ref-card"><h4>Multiplying</h4><p>Degrees add; constants multiply.</p></div>
+    <div class="ref-card"><h4>Factor theorem</h4><p>$\mathrm{f}(a) = 0 \iff (x-a)$ is a factor.</p></div>
+    <div class="ref-card"><h4>Sign trap</h4><p>For $(x+3)$, substitute $x = -3$.</p></div>
+    <div class="ref-card"><h4>What to try</h4><p>Factors of the constant term, $\pm$.</p></div>
+    <div class="ref-card"><h4>Remainder</h4><p>Dividing by $(x-a)$ leaves $\mathrm{f}(a)$.</p></div>
+    <div class="ref-card"><h4>Squared factor</h4><p>Graph touches the axis there.</p></div>
+    <div class="ref-card"><h4>Division</h4><p>Long division, or compare coefficients.</p></div>
+    <div class="ref-card"><h4>Final check</h4><p>Roots' constants must multiply to the constant term.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Expand and simplify $(x + 4)\left(x^2 - 2x + 5\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x\left(x^2 - 2x + 5\right) = x^3 - 2x^2 + 5x$</p>
+          <p>$4\left(x^2 - 2x + 5\right) = 4x^2 - 8x + 20$</p>
+          <p>Sum: $x^3 + 2x^2 - 3x + 20$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Show that $(x - 1)$ is a factor of $x^3 + 2x^2 - 5x + 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 + 2 - 5 + 2 = 0$</p>
+          <p>Since $\mathrm{f}(1) = 0$, by the factor theorem $(x-1)$ is a factor.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the remainder when $2x^3 - x^2 + 4$ is divided by $(x + 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Substitute $x = -1$:</p>
+          <p>$2(-1) - (1) + 4 = -2 - 1 + 4 = 1$</p>
+          <p>The remainder is $1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Divide $x^3 - 7x + 6$ by $(x - 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Note there is no $x^2$ term, so treat it as $x^3 + 0x^2 - 7x + 6$.</p>
+          <p>$x^3 \div x = x^2$; subtract $x^3 - x^2$ to leave $x^2 - 7x + 6$.</p>
+          <p>$x^2 \div x = x$; subtract $x^2 - x$ to leave $-6x + 6$.</p>
+          <p>$-6x \div x = -6$; subtract $-6x + 6$ to leave $0$.</p>
+          <p>Quotient $x^2 + x - 6$, remainder $0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Factorise $x^3 + 6x^2 + 11x + 6$ completely.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Try $x = -1$: $-1 + 6 - 11 + 6 = 0$ ✓ so $(x+1)$ is a factor.</p>
+          <p>Dividing: $(x+1)\left(x^2 + 5x + 6\right)$</p>
+          <p>$x^2 + 5x + 6 = (x+2)(x+3)$</p>
+          <p>$= (x+1)(x+2)(x+3)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$(x + 2)$ is a factor of $x^3 + ax^2 + 3x - 2$. Find $a$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(-2) = 0$:</p>
+          <p>$-8 + 4a - 6 - 2 = 0$</p>
+          <p>$4a - 16 = 0$, so $a = 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $x^3 - 4x^2 - 3x + 18 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Try factors of $18$. $\mathrm{f}(3) = 27 - 36 - 9 + 18 = 0$ ✓</p>
+          <p>Dividing by $(x-3)$: $x^2 - x - 6 = (x-3)(x+2)$</p>
+          <p>So $\mathrm{f}(x) = (x-3)^2(x+2)$.</p>
+          <p>$x = 3$ (a repeated root) or $x = -2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 + px^2 + qx + 12$ has factors $(x-1)$ and $(x-2)$. Find $p$ and $q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 0$: $1 + p + q + 12 = 0$, so $p + q = -13$.</p>
+          <p>$\mathrm{f}(2) = 0$: $8 + 4p + 2q + 12 = 0$, so $4p + 2q = -20$, i.e. $2p + q = -10$.</p>
+          <p>Subtracting: $p = -10 - (-13) = 3$.</p>
+          <p>Then $q = -13 - 3 = -16$.</p>
+          <p><em>Check:</em> the third root must satisfy $1 \times 2 \times r = -12$, so $r = -6$, and $1 + 2 - 6 = -3 = -p$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why $x^3 + x + 1$ has no factor of the form $(x - a)$ with $a$ a whole number.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Any such factor requires $a$ to divide the constant term $1$, so the only candidates are $a = 1$ and $a = -1$.</p>
+          <p>$\mathrm{f}(1) = 1 + 1 + 1 = 3 \neq 0$</p>
+          <p>$\mathrm{f}(-1) = -1 - 1 + 1 = -1 \neq 0$</p>
+          <p>Neither gives zero, so there is no linear factor with integer $a$.</p>
+          <p>(The cubic does still have one real root — it just is not a whole number. Finding it is a job for <a href="../numerical-methods/change-of-sign.html">numerical methods</a>.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>An open box is made from a square sheet of card of side $12$ cm by cutting a square of side $x$ cm from each corner and folding up the sides.</p>
+      <p>(a) Show that the volume is $V = x(12-2x)^2$. &nbsp; (b) Expand this to a cubic in $x$. &nbsp; (c) Show that $V = 128$ has a solution $x = 2$, and find the other positive solution, giving it to 2 decimal places. &nbsp; (d) State the range of values of $x$ that make physical sense.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Cutting $x$ from both ends of each side leaves a base of $(12 - 2x)$ by $(12-2x)$, and the height of the folded box is $x$.</p>
+          <p>$V = x(12-2x)^2$</p>
+          <p><strong>(b)</strong> $(12-2x)^2 = 144 - 48x + 4x^2$</p>
+          <p>$V = 144x - 48x^2 + 4x^3$</p>
+          <p><strong>(c)</strong> At $x = 2$: $V = 2(12-4)^2 = 2 \times 64 = 128$ ✓</p>
+          <p>So solve $4x^3 - 48x^2 + 144x - 128 = 0$, i.e. $x^3 - 12x^2 + 36x - 32 = 0$.</p>
+          <p>Since $x=2$ is a root, divide by $(x-2)$: $x^2 - 10x + 16$.</p>
+          <p>$x = \dfrac{10 \pm \sqrt{100 - 64}}{2} = \dfrac{10 \pm 6}{2} = 8 \text{ or } 2$.</p>
+          <p>So the roots are $x = 2$ (twice) and $x = 8$. The other positive solution is $x = 8.00$.</p>
+          <p><strong>(d)</strong> Need $x > 0$ for a box to exist, and $12 - 2x > 0$ for a base to exist, so $x < 6$.</p>
+          <p>Valid range: $0 < x < 6$. This rules out $x = 8$ — it satisfies the algebra but not the geometry, which is exactly the kind of interpretation <strong>AO3</strong> rewards.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Polynomials and the Factor Theorem (AL3–AL4) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

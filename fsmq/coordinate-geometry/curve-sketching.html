@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sketching Curves &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Sketching Curves</h1>
+  <p>OCR FSMQ Additional Maths · Coordinate Geometry (CG4)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A SKETCH NEEDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Sketch Needs</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>CG4:</strong> sketch and plot linear, polynomial, trigonometric and exponential functions. The specification distinguishes the two words carefully — and the mark schemes follow that distinction.
+  </div>
+
+  <table>
+    <tr><th>Command</th><th>What is expected</th></tr>
+    <tr><td><strong>Plot</strong></td><td>Mark points accurately on the given grid, then join them.</td></tr>
+    <tr><td><strong>Sketch</strong></td><td>A diagram, <em>not necessarily to scale</em>, showing the main features.</td></tr>
+    <tr><td><strong>Draw</strong></td><td>To an accuracy appropriate to the problem — a judgement call.</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The features a sketch must show</div>
+    Turning points &nbsp;&middot;&nbsp; asymptotes<br>
+    Intersections with the $y$-axis &nbsp;&middot;&nbsp; intersections with the $x$-axis<br>
+    Behaviour for large $x$ (positive and negative)
+  </div>
+
+  <div class="tip">
+    <strong>A sketch is not a rough guess.</strong> It is a labelled diagram. Every crossing point you can calculate should be marked with its coordinates. An unlabelled curve scores very little.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – LINEAR AND QUADRATIC
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Linear and Quadratic Curves</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">A straight line $y = mx + c$</div>
+    Plot the $y$-intercept $(0, c)$, then use the gradient $m$ to find a second point
+  </div>
+
+  <div class="formula-box">
+    <div class="label">A quadratic $y = ax^2+bx+c$</div>
+    $a > 0$: opens upwards (a minimum) &nbsp;&middot;&nbsp; $a < 0$: opens downwards (a maximum)<br>
+    $y$-intercept at $(0, c)$ &nbsp;&middot;&nbsp; roots from factorising or the formula<br>
+    Vertex from completing the square, or midway between the roots
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Sketching a quadratic</div>
+    <div class="example-body">
+      <p>Sketch $y = x^2 - 2x - 8$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 1 > 0$, so it is a "U" shape with a minimum.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y$-intercept: $(0, -8)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Roots: $x^2 - 2x - 8 = (x-4)(x+2)$, so $(4, 0)$ and $(-2, 0)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Vertex: midway between the roots, at $x = 1$. Then $y = 1 - 2 - 8 = -9$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Minimum at $(1, -9)$. Mark all four points and draw a smooth U through them.</span></div>
+      <div class="tip"><strong>The line of symmetry is the average of the roots:</strong> $\tfrac{4 + (-2)}{2} = 1$. Faster than completing the square when the quadratic factorises.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – POLYNOMIALS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Polynomial Curves</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two things that fix the shape</div>
+    <strong>The degree</strong> — how many times the curve can turn<br>
+    <strong>The leading coefficient</strong> — which way the ends point
+  </div>
+
+  <table>
+    <tr><th>Polynomial</th><th>Ends</th><th>Max turning points</th></tr>
+    <tr><td>Positive cubic</td><td>Down on the left, up on the right</td><td>$2$</td></tr>
+    <tr><td>Negative cubic</td><td>Up on the left, down on the right</td><td>$2$</td></tr>
+    <tr><td>Positive quartic</td><td>Up at both ends</td><td>$3$</td></tr>
+    <tr><td>Negative quartic</td><td>Down at both ends</td><td>$3$</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="460" height="220" viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="120" x2="430" y2="120" stroke="#475569" stroke-width="2"/>
+      <line x1="150" y1="20" x2="150" y2="205" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 205 C 95 205 100 60 150 60 C 200 60 210 175 265 175 C 330 175 360 30 420 20" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <circle cx="98" cy="120" r="4.5" fill="#7c3aed"/>
+      <circle cx="205" cy="120" r="4.5" fill="#7c3aed"/>
+      <circle cx="325" cy="120" r="4.5" fill="#7c3aed"/>
+      <circle cx="150" cy="60" r="4.5" fill="#22c55e"/>
+      <circle cx="265" cy="175" r="4.5" fill="#22c55e"/>
+      <text x="154" y="54" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">max</text>
+      <text x="252" y="196" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">min</text>
+      <text x="84" y="140" font-family="Arial" font-size="11" fill="#6d28d9">root</text>
+      <text x="196" y="140" font-family="Arial" font-size="11" fill="#6d28d9">root</text>
+      <text x="316" y="140" font-family="Arial" font-size="11" fill="#6d28d9">root</text>
+      <text x="230" y="215" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A positive cubic with three roots: starts low, ends high, turns twice</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What each factor does at its root</div>
+    Single factor $(x-a)$ &rarr; the curve <strong>crosses</strong> the axis<br>
+    Squared factor $(x-a)^2$ &rarr; the curve <strong>touches</strong> and turns back
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A factorised cubic</div>
+    <div class="example-body">
+      <p>Sketch $y = (x+1)(x-2)(x-3)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Roots at $x = -1$, $2$ and $3$, all single factors, so the curve crosses at each.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiplying out, the $x^3$ coefficient is $+1$: a positive cubic, so it comes up from the bottom left and goes off to the top right.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y$-intercept: $(1)(-2)(-3) = 6$, so $(0, 6)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Shape: rises through $x=-1$, reaches a maximum, falls through $x=2$, reaches a minimum, rises through $x=3$.</span></div>
+      <div class="tip"><strong>Check the $y$-intercept sign against your shape.</strong> Between $-1$ and $2$ the curve should be above the axis, and $x=0$ lies in that interval with $y = 6 > 0$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A repeated root</div>
+    <div class="example-body">
+      <p>Sketch $y = x(x-3)^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Roots at $x = 0$ (single) and $x = 3$ (repeated).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 0$ the curve crosses; at $x = 3$ it <strong>touches</strong> the axis.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Leading term $x \times x^2 = x^3$: positive cubic.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So it rises through the origin, turns over at a maximum, comes down to touch $(3,0)$, and rises again.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The point $(3, 0)$ is therefore a <strong>minimum</strong> as well as a root.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TRIGONOMETRIC CURVES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Trigonometric Curves</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="100" x2="470" y2="100" stroke="#475569" stroke-width="2"/>
+      <line x1="40" y1="25" x2="40" y2="175" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 100 Q 93 25 146 100 Q 199 175 252 100 Q 305 25 358 100 Q 411 175 464 100" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <path d="M 40 25 Q 93 100 146 100 Q 199 100 252 175 Q 305 100 358 100 Q 411 100 464 25" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-dasharray="7 4"/>
+      <g font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">
+        <text x="146" y="118">180&deg;</text><text x="252" y="118">360&deg;</text>
+        <text x="358" y="118">540&deg;</text><text x="464" y="118">720&deg;</text>
+      </g>
+      <text x="30" y="30" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">1</text>
+      <text x="30" y="178" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">&minus;1</text>
+      <text x="100" y="20" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">y = sin x</text>
+      <text x="300" y="192" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">y = cos x (dashed)</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Curve</th><th>Period</th><th>Range</th><th>Key features</th></tr>
+    <tr><td>$y = \sin x$</td><td>$360°$</td><td>$-1$ to $1$</td><td>Through the origin; zeros at $0°, 180°, 360°$</td></tr>
+    <tr><td>$y = \cos x$</td><td>$360°$</td><td>$-1$ to $1$</td><td>Starts at $(0,1)$; zeros at $90°, 270°$</td></tr>
+    <tr><td>$y = \tan x$</td><td>$180°$</td><td>All values</td><td>Asymptotes at $90°, 270°, \ldots$; zeros at $0°, 180°$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Transformations you should recognise</div>
+    $y = a\sin x$ — amplitude $a$ &nbsp;&middot;&nbsp; $y = \sin(bx)$ — period $\dfrac{360°}{b}$<br>
+    $y = \sin x + c$ — shifted up $c$ &nbsp;&middot;&nbsp; $y = \sin(x - d)$ — shifted right $d$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A transformed sine curve</div>
+    <div class="example-body">
+      <p>Sketch $y = 3\sin(2x)$ for $0° \leqslant x \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Amplitude $3$, so the curve runs from $-3$ to $3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Period $= \dfrac{360°}{2} = 180°$, so <strong>two</strong> complete waves fit in the interval.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Zeros where $2x = 0°, 180°, 360°, 540°, 720°$, i.e. $x = 0°, 90°, 180°, 270°, 360°$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Maxima of $3$ at $x = 45°$ and $225°$; minima of $-3$ at $x = 135°$ and $315°$.</span></div>
+      <div class="warn"><strong>The $2$ squashes horizontally, it does not stretch.</strong> Doubling the coefficient of $x$ halves the period.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – EXPONENTIAL CURVES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Exponential Curves</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">$y = k a^x$ for $a > 0$</div>
+    Always passes through $(0, k)$<br>
+    $a > 1$: <strong>growth</strong> &nbsp;&middot;&nbsp; $0 < a < 1$: <strong>decay</strong><br>
+    The $x$-axis is an <strong>asymptote</strong> — the curve never reaches it
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="220" viewBox="0 0 440 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="180" x2="410" y2="180" stroke="#475569" stroke-width="2"/>
+      <line x1="220" y1="20" x2="220" y2="195" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 178 C 120 176 180 160 220 130 C 260 100 300 50 340 20" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <path d="M 100 20 C 140 50 180 100 220 130 C 260 160 320 176 400 178" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-dasharray="7 4"/>
+      <circle cx="220" cy="130" r="5" fill="#7c3aed"/>
+      <text x="228" y="148" font-family="Arial" font-size="12" fill="#4c1d95" font-weight="bold">(0, k)</text>
+      <text x="336" y="16" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">growth, a &gt; 1</text>
+      <text x="96" y="16" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">decay, 0 &lt; a &lt; 1</text>
+      <text x="360" y="196" font-family="Arial" font-size="11" fill="#64748b">asymptote y = 0</text>
+      <text x="220" y="212" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Both curves pass through (0, k) and approach the x-axis without touching it</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Sketching an exponential</div>
+    <div class="example-body">
+      <p>Sketch $y = 5 \times 2^x$, marking the intercept and describing the behaviour at each end.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y$-intercept: $x = 0$ gives $y = 5 \times 1 = 5$, so $(0, 5)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a = 2 > 1$, so this is growth: as $x$ increases, $y$ increases ever faster.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>As $x \to -\infty$, $2^x \to 0$, so $y \to 0$ from above — the $x$-axis is an asymptote.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>There is <strong>no $x$-intercept</strong>: $5 \times 2^x$ is positive for every $x$.</span></div>
+      <div class="warn"><strong>Never draw an exponential curve touching the $x$-axis.</strong> It gets arbitrarily close but never arrives. Drawing it flat along the axis loses the mark.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Sketch vs plot</h4><p>Sketch shows features; plot needs accuracy.</p></div>
+    <div class="ref-card"><h4>Label everything</h4><p>Intercepts, turning points, asymptotes.</p></div>
+    <div class="ref-card"><h4>$y$-intercept</h4><p>Set $x = 0$.</p></div>
+    <div class="ref-card"><h4>$x$-intercepts</h4><p>Set $y = 0$ and solve.</p></div>
+    <div class="ref-card"><h4>Cubic ends</h4><p>Positive: low-left to high-right.</p></div>
+    <div class="ref-card"><h4>Squared factor</h4><p>Touches the axis, does not cross.</p></div>
+    <div class="ref-card"><h4>Turning points</h4><p>At most degree $-\,1$ of them.</p></div>
+    <div class="ref-card"><h4>$\sin$, $\cos$</h4><p>Period $360°$, range $-1$ to $1$.</p></div>
+    <div class="ref-card"><h4>$\tan$</h4><p>Period $180°$, asymptotes at $90°$, $270°$.</p></div>
+    <div class="ref-card"><h4>Exponential</h4><p>Through $(0,k)$, asymptote $y=0$, never negative.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>State the gradient and $y$-intercept of $y = 5 - 2x$, and sketch it.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $-2$, $y$-intercept $(0, 5)$.</p>
+          <p>It slopes downwards. The $x$-intercept is where $5 - 2x = 0$, i.e. $(2.5, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the intercepts of $y = x^2 - 5x + 6$ and state the shape.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y$-intercept $(0, 6)$.</p>
+          <p>$x^2 - 5x + 6 = (x-2)(x-3)$, so roots at $(2,0)$ and $(3,0)$.</p>
+          <p>$a = 1 > 0$, so a U shape with a minimum, at $x = 2.5$ where $y = -0.25$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Sketch $y = -x^2 + 4$, marking all intercepts.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = -1 < 0$, so an upside-down parabola with a maximum.</p>
+          <p>$y$-intercept $(0, 4)$ — this is also the vertex, since there is no $x$ term.</p>
+          <p>$x$-intercepts: $4 - x^2 = 0$ gives $x = \pm 2$, so $(-2, 0)$ and $(2, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Describe the shape of $y = (x-1)(x+2)(x-4)$ and give its $y$-intercept.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A positive cubic (leading term $x^3$), crossing the axis at $x = -2, 1, 4$.</p>
+          <p>$y$-intercept: $(-1)(2)(-4) = 8$, so $(0, 8)$.</p>
+          <p>It rises from the bottom left, turns twice, and rises to the top right.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Where does $y = (x+2)^2(x-1)$ touch the $x$-axis, and where does it cross?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Touches</strong> at $x = -2$ — the factor is squared.</p>
+          <p><strong>Crosses</strong> at $x = 1$ — a single factor.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>State the amplitude and period of $y = 4\cos(3x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Amplitude $4$, so the range is $-4$ to $4$.</p>
+          <p>Period $= \dfrac{360°}{3} = 120°$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Write down the $y$-intercept of $y = 3 \times 4^x$ and describe its behaviour as $x \to -\infty$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y$-intercept: $3 \times 4^0 = 3$, so $(0, 3)$.</p>
+          <p>As $x \to -\infty$, $4^x \to 0$, so $y \to 0$ from above. The $x$-axis is an asymptote.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Sketch $y = 2^{-x}$ and explain its relationship to $y = 2^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2^{-x} = \left(\tfrac12\right)^x$, so this is exponential <strong>decay</strong> through $(0, 1)$.</p>
+          <p>It is the <strong>reflection of $y = 2^x$ in the $y$-axis</strong>: replacing $x$ by $-x$ always reflects a graph in the $y$-axis.</p>
+          <p>The $x$-axis remains an asymptote, approached as $x \to +\infty$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>State the number of times the line $y = 2$ crosses the curve $y = 3\sin x$ for $0° \leqslant x \leqslant 360°$, and explain why.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 3\sin x$ has amplitude $3$, so it rises to $3$ at $x = 90°$ and falls to $-3$ at $x = 270°$.</p>
+          <p>The horizontal line $y = 2$ lies between $0$ and $3$, so it cuts the curve on the way up and again on the way down within the first hump.</p>
+          <p>In the second half ($180°$ to $360°$) the curve is negative, so it never reaches $2$.</p>
+          <p>The line crosses <strong>twice</strong>.</p>
+          <p>(Solving: $\sin x = \tfrac23$ gives $x = 41.8°$ and $x = 138.2°$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Consider $\mathrm{f}(x) = x^3 - 4x$.</p>
+      <p>(a) Factorise $\mathrm{f}(x)$ fully and state its roots. &nbsp; (b) Describe the end behaviour. &nbsp; (c) Sketch the curve, and use the sketch to solve $\mathrm{f}(x) > 0$. &nbsp; (d) Explain how the sketch of $y = \mathrm{f}(x) + 5$ differs, and how many roots it has.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x^3 - 4x = x\left(x^2 - 4\right) = x(x-2)(x+2)$</p>
+          <p>Roots at $x = -2$, $0$ and $2$, all single factors so the curve crosses at each.</p>
+          <p><strong>(b)</strong> A positive cubic: as $x \to -\infty$, $y \to -\infty$; as $x \to +\infty$, $y \to +\infty$.</p>
+          <p><strong>(c)</strong> The curve rises through $(-2,0)$, reaches a maximum, falls through the origin, reaches a minimum, then rises through $(2,0)$.</p>
+          <p>So it is above the axis between $-2$ and $0$, and again beyond $2$:</p>
+          <p>$-2 < x < 0$ &nbsp;or&nbsp; $x > 2$</p>
+          <p><em>Check at $x = -1$:</em> $-1 + 4 = 3 > 0$ ✓ &nbsp;<em>and at $x = 1$:</em> $1 - 4 = -3 < 0$ ✓</p>
+          <p><strong>(d)</strong> Adding $5$ translates the whole curve <strong>up by $5$</strong>; the shape is unchanged.</p>
+          <p>The local maximum of $\mathrm{f}$ occurs at $x = -\tfrac{2}{\sqrt3} \approx -1.155$, where $\mathrm{f}(x) \approx 3.08$, and the local minimum at $x \approx 1.155$ where $\mathrm{f}(x) \approx -3.08$.</p>
+          <p>After translating up $5$, the maximum sits at about $8.08$ and the minimum at about $1.92$ — <em>both above the axis</em>.</p>
+          <p>So the translated curve only crosses the $x$-axis once, on its way up from the bottom left. $y = \mathrm{f}(x) + 5$ has exactly <strong>one</strong> root.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Sketching Curves (CG4) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

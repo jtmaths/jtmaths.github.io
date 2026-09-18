@@ -1,6 +1,7 @@
 ---
 title: GCSE Level Maths
 layout: page
+nav_order: 1
 ---
 
 GCSE Maths broken down by topic area.

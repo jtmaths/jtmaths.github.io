@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebraic Manipulation &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✏️ Algebraic Manipulation</h1>
+  <p>OCR FSMQ Additional Maths · Algebra (AL1–AL2)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – VOCABULARY AND NOTATION (AL1)
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Vocabulary and Notation</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>AL1</strong> asks you to know and use algebraic vocabulary and notation. The specification gives a <em>complete</em> list, which means each of these words can be asked about directly: constant, coefficient, expression, equation, identity, index, variable, unknown, and $\mathrm{f}(x)$.
+  </div>
+
+  <table>
+    <tr><th>Term</th><th>What it means</th><th>In $\mathrm{f}(x) = 4x^3 - x + 9$</th></tr>
+    <tr><td>Constant</td><td>A number that does not change</td><td>$9$</td></tr>
+    <tr><td>Coefficient</td><td>The number multiplying a power of the variable</td><td>$4$ is the coefficient of $x^3$; $-1$ of $x$</td></tr>
+    <tr><td>Index</td><td>A power</td><td>$3$ and $1$</td></tr>
+    <tr><td>Variable</td><td>The quantity free to change</td><td>$x$</td></tr>
+    <tr><td>Expression</td><td>Terms with no equals sign</td><td>$4x^3 - x + 9$</td></tr>
+    <tr><td>Function notation</td><td>$\mathrm{f}(x)$ is the output for input $x$</td><td>$\mathrm{f}(2) = 32 - 2 + 9 = 39$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Equation vs identity</div>
+    An <strong>equation</strong> holds for particular values: &nbsp;$2x = 6$ only when $x = 3$<br>
+    An <strong>identity</strong> holds for <em>every</em> value: &nbsp;$2(x+1) \equiv 2x + 2$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using function notation</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^2 - 3x$. Find $\mathrm{f}(4)$, $\mathrm{f}(-1)$ and $\mathrm{f}(a+1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(4) = 16 - 12 = 4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(-1) = 1 - (-3) = 1 + 3 = 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(a+1) = (a+1)^2 - 3(a+1)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= a^2 + 2a + 1 - 3a - 3 = a^2 - a - 2$</span></div>
+      <div class="tip">Substituting a bracket into a function is exactly how the <strong>factor theorem</strong> is set up later. Get comfortable with it now.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Watch the negative.</strong> $\mathrm{f}(-1)$ with $\mathrm{f}(x) = x^2 - 3x$ gives $(-1)^2 = +1$, and $-3 \times (-1) = +3$. Both signs catch people out.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ALGEBRAIC FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Algebraic Fractions</div>
+<div class="section-body">
+
+  <p><strong>AL2</strong> requires you to simplify expressions involving algebraic fractions. The specification's own example is $\dfrac{1}{x-1} - \dfrac{2}{x+1}$.</p>
+
+  <ul class="steps">
+    <li>Factorise every numerator and denominator that will factorise.</li>
+    <li>For adding or subtracting, find the lowest common denominator.</li>
+    <li>Combine over the single denominator, expanding carefully.</li>
+    <li>Cancel any factor common to the <em>whole</em> numerator and denominator.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Subtracting two fractions</div>
+    <div class="example-body">
+      <p>Simplify $\dfrac{1}{x-1} - \dfrac{2}{x+1}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Common denominator is $(x-1)(x+1)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{(x+1) - 2(x-1)}{(x-1)(x+1)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Numerator: $x + 1 - 2x + 2 = 3 - x$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \dfrac{3-x}{(x-1)(x+1)}$ &nbsp;or equivalently $\dfrac{3-x}{x^2-1}$</span></div>
+      <div class="warn"><strong>The bracket matters.</strong> Subtracting $2(x-1)$ changes <em>both</em> signs: $-2x + 2$, not $-2x - 2$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Cancelling after factorising</div>
+    <div class="example-body">
+      <p>Simplify $\dfrac{x^2 - 3x}{x^2 - x - 6}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Numerator: $x^2 - 3x = x(x-3)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Denominator: $x^2 - x - 6 = (x-3)(x+2)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{x(x-3)}{(x-3)(x+2)}$ — the factor $(x-3)$ cancels.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \dfrac{x}{x+2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Dividing fractions</div>
+    <div class="example-body">
+      <p>Simplify $\dfrac{x^2 - 4}{3x} \div \dfrac{x+2}{6x^2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Dividing means multiplying by the reciprocal:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{x^2-4}{3x} \times \dfrac{6x^2}{x+2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 - 4 = (x-2)(x+2)$, so $(x+2)$ cancels.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{(x-2) \times 6x^2}{3x} = 2x(x-2)$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>You may never cancel across a $+$ or $-$.</strong> $\dfrac{x+4}{4} \neq x$, and $\dfrac{x^2+1}{x} \neq x + 1$. Factorise first — if it will not factorise, it will not cancel.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – INDICES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Indices</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The index laws</div>
+    $x^a \times x^b = x^{a+b}$ &nbsp;&middot;&nbsp; $\dfrac{x^a}{x^b} = x^{a-b}$ &nbsp;&middot;&nbsp; $(x^a)^b = x^{ab}$<br>
+    $x^0 = 1$ &nbsp;&middot;&nbsp; $x^{-a} = \dfrac{1}{x^a}$ &nbsp;&middot;&nbsp; $x^{1/n} = \sqrt[n]{x}$ &nbsp;&middot;&nbsp; $x^{m/n} = \left(\sqrt[n]{x}\right)^m$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Mixed indices</div>
+    <div class="example-body">
+      <p>Simplify (a) $\dfrac{6x^5 \times 2x^{-3}}{4x}$, &nbsp;(b) $\left(8x^6\right)^{2/3}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Numbers: $\dfrac{6 \times 2}{4} = 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Powers: $x^{5 + (-3) - 1} = x^{1}$, so the answer is $3x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(b)</strong> $\left(8x^6\right)^{2/3} = 8^{2/3} \times x^{6 \times 2/3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$8^{2/3} = \left(\sqrt[3]{8}\right)^2 = 2^2 = 4$, and $x^4$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$= 4x^4$</span></div>
+      <div class="tip">For a fractional power, take the <strong>root first</strong> (denominator) then the power (numerator). $8^{2/3}$ is much easier as $2^2$ than as $\sqrt[3]{64}$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SURDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Square Roots and Surds</div>
+<div class="section-body">
+
+  <p><strong>AL2</strong> also covers square roots. The specification's examples are $\sqrt{125}$, $\sqrt{12} + \sqrt{27}$ and $\dfrac{1}{2 + \sqrt{3}}$ — one of each of the three standard tasks.</p>
+
+  <div class="formula-box">
+    <div class="label">The surd rules</div>
+    $\sqrt{ab} = \sqrt{a}\,\sqrt{b}$ &nbsp;&middot;&nbsp; $\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}$ &nbsp;&middot;&nbsp; $\left(\sqrt{a}\right)^2 = a$<br>
+    <span style="font-size:.85rem;color:#555;">There is no rule for $\sqrt{a+b}$ — it is <em>not</em> $\sqrt a + \sqrt b$.</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Simplifying and collecting</div>
+    <div class="example-body">
+      <p>Simplify (a) $\sqrt{125}$, &nbsp;(b) $\sqrt{12} + \sqrt{27}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Look for the largest square factor: $125 = 25 \times 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt{125} = \sqrt{25}\sqrt{5} = 5\sqrt{5}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(b)</strong> $\sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\sqrt{27} = \sqrt{9 \times 3} = 3\sqrt{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Now they are like terms: $2\sqrt3 + 3\sqrt3 = 5\sqrt{3}$</span></div>
+      <div class="tip">You can only add surds once they share the same surd part. Always simplify each one first.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rationalising the denominator</div>
+    Multiply top and bottom by the <strong>conjugate</strong>:<br>
+    for $a + \sqrt{b}$ use $a - \sqrt{b}$, &nbsp;because $(a+\sqrt b)(a-\sqrt b) = a^2 - b$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Rationalising</div>
+    <div class="example-body">
+      <p>Express $\dfrac{1}{2 + \sqrt{3}}$ with a rational denominator.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The conjugate of $2 + \sqrt3$ is $2 - \sqrt3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{1}{2+\sqrt3} \times \dfrac{2-\sqrt3}{2-\sqrt3} = \dfrac{2-\sqrt3}{(2+\sqrt3)(2-\sqrt3)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Denominator: $2^2 - \left(\sqrt3\right)^2 = 4 - 3 = 1$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 2 - \sqrt{3}$</span></div>
+      <div class="tip">The denominator becoming $1$ is a lucky accident here, but the method is always the same. Check your conjugate by confirming the surd cancels.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Coefficient</h4><p>Includes its sign: in $5-7x$ it is $-7$.</p></div>
+    <div class="ref-card"><h4>Identity</h4><p>Use $\equiv$ when true for every $x$.</p></div>
+    <div class="ref-card"><h4>$\mathrm{f}(a+1)$</h4><p>Substitute the whole bracket, then expand.</p></div>
+    <div class="ref-card"><h4>Adding fractions</h4><p>LCD first; bracket the numerators.</p></div>
+    <div class="ref-card"><h4>Cancelling</h4><p>Only whole factors — never across $+$ or $-$.</p></div>
+    <div class="ref-card"><h4>Dividing fractions</h4><p>Multiply by the reciprocal.</p></div>
+    <div class="ref-card"><h4>$x^{m/n}$</h4><p>Root first, then power.</p></div>
+    <div class="ref-card"><h4>Simplifying surds</h4><p>Pull out the largest square factor.</p></div>
+    <div class="ref-card"><h4>Rationalising</h4><p>Multiply by the conjugate $a - \sqrt b$.</p></div>
+    <div class="ref-card"><h4>No such rule</h4><p>$\sqrt{a+b} \neq \sqrt a + \sqrt b$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = 2x^2 - 5x + 1$. Find $\mathrm{f}(3)$ and $\mathrm{f}(-2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(3) = 2(9) - 15 + 1 = 18 - 15 + 1 = 4$</p>
+          <p>$\mathrm{f}(-2) = 2(4) - 5(-2) + 1 = 8 + 10 + 1 = 19$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>State whether each of these is an equation or an identity: (a) $3(x - 2) = 3x - 6$, &nbsp;(b) $3x - 2 = 7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> An <strong>identity</strong> — expanding the left side gives the right side for every $x$. It should be written $3(x-2) \equiv 3x - 6$.</p>
+          <p><strong>(b)</strong> An <strong>equation</strong> — only true when $x = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{3}{x} + \dfrac{2}{x-2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Common denominator $x(x-2)$:</p>
+          <p>$\dfrac{3(x-2) + 2x}{x(x-2)} = \dfrac{3x - 6 + 2x}{x(x-2)} = \dfrac{5x-6}{x(x-2)}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{x^2 + 5x + 6}{x^2 - 9}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Numerator: $(x+2)(x+3)$</p>
+          <p>Denominator: $(x-3)(x+3)$</p>
+          <p>$(x+3)$ cancels: $\dfrac{x+2}{x-3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{10x^4 \times 3x^{-2}}{6x^3}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Numbers: $\dfrac{10 \times 3}{6} = 5$</p>
+          <p>Powers: $x^{4 + (-2) - 3} = x^{-1}$</p>
+          <p>$= 5x^{-1} = \dfrac{5}{x}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Evaluate (a) $16^{3/4}$, &nbsp;(b) $27^{-2/3}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\sqrt[4]{16} = 2$, then $2^3 = 8$.</p>
+          <p><strong>(b)</strong> $\sqrt[3]{27} = 3$, then $3^2 = 9$, and the negative index gives the reciprocal: $\dfrac{1}{9}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Express $\sqrt{50} - \sqrt{18}$ in the form $k\sqrt{2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{50} = \sqrt{25 \times 2} = 5\sqrt2$</p>
+          <p>$\sqrt{18} = \sqrt{9 \times 2} = 3\sqrt2$</p>
+          <p>$5\sqrt2 - 3\sqrt2 = 2\sqrt{2}$, so $k = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Express $\dfrac{6}{\sqrt{5} - 1}$ with a rational denominator.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiply by the conjugate $\sqrt5 + 1$:</p>
+          <p>$\dfrac{6(\sqrt5+1)}{(\sqrt5-1)(\sqrt5+1)} = \dfrac{6(\sqrt5+1)}{5 - 1} = \dfrac{6(\sqrt5+1)}{4}$</p>
+          <p>$= \dfrac{3(\sqrt5+1)}{2}$ &nbsp;or&nbsp; $\dfrac{3\sqrt5 + 3}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^2 + x$. Show that $\mathrm{f}(x+1) - \mathrm{f}(x) = 2x + 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(x+1) = (x+1)^2 + (x+1) = x^2 + 2x + 1 + x + 1 = x^2 + 3x + 2$</p>
+          <p>$\mathrm{f}(x+1) - \mathrm{f}(x) = \left(x^2 + 3x + 2\right) - \left(x^2 + x\right)$</p>
+          <p>$= 2x + 2$ &nbsp;as required.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A right-angled triangle has legs of length $1 + \sqrt{3}$ and $1 - \sqrt{3}$ … or so a student claims.</p>
+      <p>(a) Explain why those two lengths cannot both be sides of a triangle. &nbsp; (b) A rectangle has width $2 + \sqrt{5}$ and length $2 - \sqrt{5} + 2\sqrt{5}$. Find its exact area, simplified. &nbsp; (c) Show that $\dfrac{1}{1+\sqrt2} + \dfrac{1}{1-\sqrt2} = -2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\sqrt3 \approx 1.732$, so $1 - \sqrt3 \approx -0.732$, which is negative. A length cannot be negative, so this is impossible.</p>
+          <p><strong>(b)</strong> First simplify the length: $2 - \sqrt5 + 2\sqrt5 = 2 + \sqrt5$.</p>
+          <p>Area $= (2+\sqrt5)(2+\sqrt5) = (2+\sqrt5)^2$</p>
+          <p>$= 4 + 4\sqrt5 + 5 = 9 + 4\sqrt{5}$</p>
+          <p><strong>(c)</strong> Common denominator $(1+\sqrt2)(1-\sqrt2) = 1 - 2 = -1$.</p>
+          <p>Numerator: $(1-\sqrt2) + (1+\sqrt2) = 2$</p>
+          <p>So the sum is $\dfrac{2}{-1} = -2$ ✓</p>
+          <p><em>Note</em> how the surds cancelled in the numerator while the denominator became rational on its own — that is the conjugate pair at work.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Algebraic Manipulation (AL1–AL2) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

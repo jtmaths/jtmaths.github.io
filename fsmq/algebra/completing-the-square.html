@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Completing the Square &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⬜ Completing the Square</h1>
+  <p>OCR FSMQ Additional Maths · Algebra (AL5)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDENTITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Identity</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">AL5 — as the specification writes it</div>
+    $ax^2 + bx + c \equiv a(x+p)^2 + q$
+  </div>
+
+  <div class="concept">
+    Completing the square rewrites a quadratic so the variable appears <strong>only once</strong>. That single change unlocks three things at once: the <strong>vertex</strong>, the <strong>maximum or minimum value</strong>, and an <strong>exact solution</strong> without the formula.
+  </div>
+
+  <div class="warn">
+    <strong>It is an identity, not an equation.</strong> The specification uses $\equiv$. You are not solving anything — you are rewriting. Do not add "$=0$".
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHEN a = 1
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Simple Case: $a = 1$</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Halve the coefficient of $x$ — call it $p$.</li>
+    <li>Write $(x + p)^2$.</li>
+    <li>That bracket produces $p^2$ too much, so subtract $p^2$.</li>
+    <li>Add on the original constant.</li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">The shortcut</div>
+    $x^2 + bx + c \equiv \left(x + \tfrac{b}{2}\right)^2 - \left(\tfrac{b}{2}\right)^2 + c$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A positive middle term</div>
+    <div class="example-body">
+      <p>Express $x^2 + 8x + 3$ in completed-square form.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Half of $8$ is $4$, so start with $(x+4)^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x+4)^2 = x^2 + 8x + 16$ — that is $16$ too much.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 + 8x + 3 \equiv (x+4)^2 - 16 + 3$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\equiv (x+4)^2 - 13$</span></div>
+      <div class="tip"><strong>Always check</strong> by expanding: $(x+4)^2 - 13 = x^2 + 8x + 16 - 13 = x^2 + 8x + 3$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A negative middle term</div>
+    <div class="example-body">
+      <p>Express $x^2 - 10x + 21$ in completed-square form.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Half of $-10$ is $-5$, giving $(x-5)^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x-5)^2 = x^2 - 10x + 25$, so subtract $25$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\equiv (x-5)^2 - 25 + 21 = (x-5)^2 - 4$</span></div>
+      <div class="warn">The number inside the bracket keeps the <em>same</em> sign as $\tfrac{b}{2}$. Here $b$ is negative, so the bracket is $(x-5)$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – WHEN a ≠ 1
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> When $a \neq 1$</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Factor $a$ out of the $x^2$ and $x$ terms only.</li>
+    <li>Complete the square inside the bracket.</li>
+    <li>Multiply the whole bracket back out by $a$.</li>
+    <li>Combine the constants.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Positive $a$</div>
+    <div class="example-body">
+      <p>Express $2x^2 + 12x + 5$ in the form $a(x+p)^2 + q$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2x^2 + 12x + 5 = 2\left(x^2 + 6x\right) + 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Inside: $x^2 + 6x = (x+3)^2 - 9$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 2\left[(x+3)^2 - 9\right] + 5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 2(x+3)^2 - 18 + 5$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\equiv 2(x+3)^2 - 13$</span></div>
+      <div class="warn"><strong>The commonest error:</strong> forgetting to multiply the $-9$ by the $2$. It becomes $-18$, not $-9$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Negative $a$</div>
+    <div class="example-body">
+      <p>Express $5 - 4x - x^2$ in the form $q - (x+p)^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rearrange and factor out $-1$: $-\left(x^2 + 4x\right) + 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Inside: $x^2 + 4x = (x+2)^2 - 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= -\left[(x+2)^2 - 4\right] + 5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= -(x+2)^2 + 4 + 5$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\equiv 9 - (x+2)^2$</span></div>
+      <div class="tip">Because $a$ is negative this parabola opens <em>downwards</em>, so $9$ is a <strong>maximum</strong>, reached at $x = -2$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHAT IT TELLS YOU
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Reading Off the Answers</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">From $y = a(x+p)^2 + q$</div>
+    Vertex at $(-p,\; q)$ &nbsp;&middot;&nbsp; line of symmetry $x = -p$<br>
+    If $a > 0$: minimum $y = q$. If $a < 0$: maximum $y = q$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="260" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="220" x2="430" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="230" y1="20" x2="230" y2="240" stroke="#475569" stroke-width="2"/>
+      <text x="436" y="225" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="236" y="18" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <path d="M 110 30 Q 170 245 230 245 Q 290 245 350 30" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="230" y1="20" x2="230" y2="250" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <circle cx="230" cy="245" r="5" fill="#7c3aed"/>
+      <text x="244" y="250" font-family="Arial" font-size="13" fill="#4c1d95" font-weight="bold">(−p, q)</text>
+      <text x="252" y="38" font-family="Arial" font-size="12" fill="#6d28d9">line of symmetry x = −p</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Vertex and minimum</div>
+    <div class="example-body">
+      <p>Find the coordinates of the vertex of $y = x^2 - 6x + 11$ and state the minimum value of $y$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 - 6x + 11 \equiv (x-3)^2 - 9 + 11 = (x-3)^2 + 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Here $p = -3$ and $q = 2$, so the vertex is $(3,\, 2)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(x-3)^2 \geqslant 0$ always, so $y \geqslant 2$. The minimum value of $y$ is $2$ at $x = 3$.</span></div>
+      <div class="tip">This is also a neat proof that the curve never crosses the $x$-axis: $y$ can never reach $0$. Confirm with the discriminant: $36 - 44 = -8 < 0$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SOLVING EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Solving by Completing the Square</div>
+<div class="section-body">
+
+  <p>Because the variable appears once, you can undo the operations one at a time to get an <strong>exact</strong> answer.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — An exact solution</div>
+    <div class="example-body">
+      <p>Solve $x^2 + 6x - 2 = 0$, giving your answers in surd form.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 + 6x - 2 \equiv (x+3)^2 - 9 - 2 = (x+3)^2 - 11$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x+3)^2 - 11 = 0$, so $(x+3)^2 = 11$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x + 3 = \pm\sqrt{11}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = -3 \pm \sqrt{11}$</span></div>
+      <div class="warn"><strong>Never lose the $\pm$.</strong> Square-rooting both sides of an equation always gives two possibilities.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Proving the quadratic formula</div>
+    <div class="example-body">
+      <p>Completing the square on the general quadratic gives the formula itself.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$ax^2 + bx + c = 0 \;\Rightarrow\; a\left[\left(x + \tfrac{b}{2a}\right)^2 - \tfrac{b^2}{4a^2}\right] + c = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\left(x + \tfrac{b}{2a}\right)^2 = \tfrac{b^2}{4a^2} - \tfrac{c}{a} = \tfrac{b^2 - 4ac}{4a^2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x + \tfrac{b}{2a} = \pm\dfrac{\sqrt{b^2-4ac}}{2a}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$</span></div>
+      <div class="tip">This is why $b^2 - 4ac$ decides everything: it is the number you are square-rooting. Negative means no real solutions.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The form</h4><p>$ax^2+bx+c \equiv a(x+p)^2+q$.</p></div>
+    <div class="ref-card"><h4>Finding $p$</h4><p>$p = \tfrac{b}{2a}$ — half the middle coefficient after factoring out $a$.</p></div>
+    <div class="ref-card"><h4>Finding $q$</h4><p>Subtract $ap^2$, then add $c$.</p></div>
+    <div class="ref-card"><h4>Vertex</h4><p>$(-p,\, q)$ — the sign flips.</p></div>
+    <div class="ref-card"><h4>Symmetry</h4><p>The line $x = -p$.</p></div>
+    <div class="ref-card"><h4>$a>0$</h4><p>$q$ is the minimum value.</p></div>
+    <div class="ref-card"><h4>$a<0$</h4><p>$q$ is the maximum value.</p></div>
+    <div class="ref-card"><h4>Solving</h4><p>Isolate the bracket, square-root with $\pm$.</p></div>
+    <div class="ref-card"><h4>No real roots</h4><p>If $a>0$ and $q>0$, the curve misses the axis.</p></div>
+    <div class="ref-card"><h4>Always check</h4><p>Expand your answer back out.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Express $x^2 + 4x + 9$ in the form $(x+p)^2 + q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Half of $4$ is $2$: $(x+2)^2 = x^2 + 4x + 4$.</p>
+          <p>$\equiv (x+2)^2 - 4 + 9 = (x+2)^2 + 5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Express $x^2 - 12x + 40$ in completed-square form and write down the minimum value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\equiv (x-6)^2 - 36 + 40 = (x-6)^2 + 4$</p>
+          <p>Minimum value $4$, at $x = 6$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Express $x^2 + 5x + 1$ in the form $(x+p)^2 + q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Half of $5$ is $\tfrac52$: $\left(x + \tfrac52\right)^2 = x^2 + 5x + \tfrac{25}{4}$.</p>
+          <p>$\equiv \left(x + \dfrac{5}{2}\right)^2 - \dfrac{25}{4} + 1 = \left(x + \dfrac{5}{2}\right)^2 - \dfrac{21}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Express $3x^2 - 6x + 7$ in the form $a(x+p)^2 + q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3\left(x^2 - 2x\right) + 7$</p>
+          <p>$x^2 - 2x = (x-1)^2 - 1$</p>
+          <p>$3\left[(x-1)^2 - 1\right] + 7 = 3(x-1)^2 - 3 + 7$</p>
+          <p>$= 3(x-1)^2 + 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the coordinates of the vertex of $y = 2x^2 + 8x + 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\left(x^2 + 4x\right) + 3 = 2\left[(x+2)^2 - 4\right] + 3$</p>
+          <p>$= 2(x+2)^2 - 8 + 3 = 2(x+2)^2 - 5$</p>
+          <p>Vertex at $(-2,\, -5)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Express $7 - 6x - x^2$ in the form $q - (x+p)^2$ and state the maximum value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$-\left(x^2 + 6x\right) + 7 = -\left[(x+3)^2 - 9\right] + 7$</p>
+          <p>$= -(x+3)^2 + 9 + 7 = 16 - (x+3)^2$</p>
+          <p>Maximum value $16$, at $x = -3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $x^2 - 4x - 6 = 0$ by completing the square, giving exact answers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x-2)^2 - 4 - 6 = 0$</p>
+          <p>$(x-2)^2 = 10$</p>
+          <p>$x - 2 = \pm\sqrt{10}$</p>
+          <p>$x = 2 \pm \sqrt{10}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Show that $x^2 + 2x + 5$ is positive for all real $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + 2x + 5 \equiv (x+1)^2 - 1 + 5 = (x+1)^2 + 4$</p>
+          <p>$(x+1)^2 \geqslant 0$ for every real $x$, so the expression is at least $4$.</p>
+          <p>Since $4 > 0$, the expression is always positive.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The curve $y = x^2 + kx + 9$ touches the $x$-axis. Use completing the square to find the two possible values of $k$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + kx + 9 \equiv \left(x + \dfrac{k}{2}\right)^2 - \dfrac{k^2}{4} + 9$</p>
+          <p>Touching the axis means the minimum value is exactly $0$:</p>
+          <p>$9 - \dfrac{k^2}{4} = 0 \;\Rightarrow\; k^2 = 36 \;\Rightarrow\; k = \pm 6$</p>
+          <p><em>Check with the discriminant:</em> $k^2 - 36 = 0$ gives the same answer ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A ball is thrown so that its height in metres after $t$ seconds is $h = 1 + 14t - 5t^2$.</p>
+      <p>(a) Express $h$ in completed-square form. &nbsp; (b) Find the greatest height and when it occurs. &nbsp; (c) Find, to 2 d.p., when the ball hits the ground. &nbsp; (d) Explain why only one of the two algebraic solutions in (c) is used.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $h = -5t^2 + 14t + 1 = -5\left(t^2 - \dfrac{14}{5}t\right) + 1$</p>
+          <p>Half of $-\tfrac{14}{5}$ is $-\tfrac{7}{5}$, and $\left(\tfrac{7}{5}\right)^2 = \tfrac{49}{25}$:</p>
+          <p>$= -5\left[\left(t - \dfrac{7}{5}\right)^2 - \dfrac{49}{25}\right] + 1 = -5\left(t - \dfrac{7}{5}\right)^2 + \dfrac{49}{5} + 1$</p>
+          <p>$h = \dfrac{54}{5} - 5\left(t - \dfrac{7}{5}\right)^2$</p>
+          <p><strong>(b)</strong> The squared term is subtracted, so $h$ is greatest when it is zero, at $t = \tfrac75 = 1.4$ s.</p>
+          <p>Greatest height $= \tfrac{54}{5} = 10.8$ m.</p>
+          <p><strong>(c)</strong> Ground level is $h = 0$:</p>
+          <p>$5\left(t - \dfrac{7}{5}\right)^2 = \dfrac{54}{5} \;\Rightarrow\; \left(t - 1.4\right)^2 = \dfrac{54}{25} = 2.16$</p>
+          <p>$t - 1.4 = \pm\sqrt{2.16} = \pm 1.4697\ldots$</p>
+          <p>$t = 2.8697\ldots$ or $t = -0.0697\ldots$</p>
+          <p>The ball lands at $t = 2.87$ s (2 d.p.).</p>
+          <p><strong>(d)</strong> The negative root corresponds to a time <em>before</em> the ball was thrown. The model only applies for $t \geqslant 0$, so $t = -0.07$ is rejected as physically meaningless — though it is a genuine root of the quadratic.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Completing the Square (AL5) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

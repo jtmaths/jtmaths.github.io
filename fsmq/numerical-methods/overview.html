@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerical Methods &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔬 Numerical Methods</h1>
+  <p>OCR FSMQ Additional Maths · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>Most equations cannot be solved exactly. Most areas under curves cannot be integrated by formula. <strong>Numerical methods</strong> get a good enough answer anyway — by approximating, then improving.</p>
+
+  <div class="concept">
+    This section is a genuinely different way of thinking. Instead of asking "what is the exact answer?", it asks "how close can I get, and how do I know how close I am?" That second question — <em>assessing your own accuracy</em> — is what the marks are really for.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What the three techniques replace</div>
+    <strong>Change of sign and iteration</strong> replace factorising, when a root is not nice<br>
+    <strong>Chord gradients</strong> replace differentiation, when there is no formula<br>
+    <strong>The trapezium rule</strong> replaces integration, when the integral is intractable
+  </div>
+
+  <div class="tip">
+    <strong>Your calculator is central here.</strong> The specification states that "it is expected that calculators available in the assessment will include an iterative function, such as an ANS key". Learn to use it before the examination.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Root</strong></td><td>A solution of $\mathrm{f}(x) = 0$.</td></tr>
+    <tr><td><strong>Change of sign</strong></td><td>$\mathrm{f}(a)$ and $\mathrm{f}(b)$ have opposite signs, so a root lies between.</td></tr>
+    <tr><td><strong>Iteration</strong></td><td>Repeating a formula, feeding each answer back in.</td></tr>
+    <tr><td><strong>Converge</strong></td><td>The iterates settle towards a fixed value.</td></tr>
+    <tr><td><strong>Diverge</strong></td><td>The iterates run away, without settling.</td></tr>
+    <tr><td><strong>Chord</strong></td><td>A straight line joining two points on a curve.</td></tr>
+    <tr><td><strong>Trapezium rule</strong></td><td>Estimating an area with trapezium-shaped strips.</td></tr>
+    <tr><td><strong>Over-estimate</strong></td><td>An approximation larger than the true value.</td></tr>
+    <tr><td><strong>Ordinate</strong></td><td>One of the $y$-values at a strip boundary.</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE KEY METHODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Key Methods</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Change of sign (NM1)</div>
+    If $\mathrm{f}$ is continuous and $\mathrm{f}(a) \times \mathrm{f}(b) < 0$,<br>
+    then a root lies between $a$ and $b$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Iteration (NM2)</div>
+    Rearrange $\mathrm{f}(x) = 0$ into $x = \mathrm{g}(x)$, then compute $x_{n+1} = \mathrm{g}(x_n)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Gradient from a chord (NM4)</div>
+    $\text{gradient} \approx \dfrac{\mathrm{f}(x+h) - \mathrm{f}(x)}{h}$, &nbsp;improving as $h \to 0$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The trapezium rule (NM7)</div>
+    $\displaystyle\int_a^b y \,\mathrm{d}x \approx \tfrac12 h\Big[\left(y_0 + y_n\right) + 2\left(y_1 + y_2 + \cdots + y_{n-1}\right)\Big]$<br>
+    <span style="font-size:.85rem;color:#555;">where $h = \dfrac{b-a}{n}$. This formula will be provided in the examination.</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Locating a root that will not factorise</div>
+    <div class="example-body">
+      <p>Show that $x^3 + x - 3 = 0$ has a root between $1$ and $2$, and find it to $1$ decimal place.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(1) = 1 + 1 - 3 = -1$ &nbsp;(negative)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(2) = 8 + 2 - 3 = 7$ &nbsp;(positive)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The sign changes and $\mathrm{f}$ is continuous, so there is a root in $(1, 2)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(1.2) = 1.728 + 1.2 - 3 = -0.072$ &nbsp;(negative)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(1.3) = 2.197 + 1.3 - 3 = 0.497$ &nbsp;(positive)</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The root lies in $(1.2, 1.3)$. Test the midpoint: $\mathrm{f}(1.25) = 1.953 + 1.25 - 3 = 0.203 > 0$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>So the root is in $(1.2, 1.25)$, which rounds to $1.2$ to $1$ d.p.</span></div>
+      <div class="tip"><strong>Checking the midpoint is what pins down the rounding.</strong> Knowing only that the root lies in $(1.2, 1.3)$ does not tell you whether it rounds to $1.2$ or $1.3$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Numerical Methods Subtopics</div>
+<div class="section-body">
+
+  <ul class="topic-list">
+    <li><span class="code">NM1<br>NM3</span><span><a href="change-of-sign.html">Change of Sign</a><span class="desc">Locating a root between two values, and decimal search.</span></span></li>
+    <li><span class="code">NM2<br>NM3</span><span><a href="iterative-methods.html">Iterative Methods</a><span class="desc">$x_{n+1} = \mathrm{g}(x_n)$, convergence, and when iteration fails.</span></span></li>
+    <li><span class="code">NM4<br>NM5</span><span><a href="gradient-from-chords.html">Gradients from Chords</a><span class="desc">Estimating a tangent's gradient, and improving the estimate.</span></span></li>
+    <li><span class="code">NM6<br>NM7<br>NM8</span><span><a href="area-estimates.html">Estimating Areas</a><span class="desc">Rectangular strips, the trapezium rule, and over- or under-estimates.</span></span></li>
+    <li><span class="code">NM9</span><span><a href="applications.html">Numerical Methods in Context</a><span class="desc">Applying these techniques to real data and real problems.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Not stating the signs.</strong> "Show that a root lies between…" requires you to write down <em>both</em> function values, note that one is negative and the other positive, and draw the conclusion. All three steps earn marks.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting the continuity condition.</strong> A change of sign proves a root only if the function is continuous. Across an asymptote the sign can flip with no root at all — that is <strong>NM3</strong> in action.
+  </div>
+
+  <div class="warn">
+    <strong>Rounding during an iteration.</strong> Keep every digit your calculator holds; round only the final answer. Rounding at each step accumulates error fast.
+  </div>
+
+  <div class="warn">
+    <strong>Using $h$ as the number of strips.</strong> In the trapezium rule, $n$ is the number of strips and $h$ is their width, $\tfrac{b-a}{n}$. Note also that $n$ strips need $n+1$ ordinates.
+  </div>
+
+  <div class="warn">
+    <strong>Doubling the wrong ordinates.</strong> The <em>first and last</em> ordinates are counted once; every one in between is doubled.
+  </div>
+
+  <div class="warn">
+    <strong>Guessing whether an estimate is too big.</strong> It depends on the curvature: for a curve bending upwards, the trapezium rule over-estimates. Justify your answer with a sketch.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Change of sign</h4><p>Opposite signs at the ends $\Rightarrow$ a root between.</p></div>
+    <div class="ref-card"><h4>State everything</h4><p>Both values, both signs, the conclusion.</p></div>
+    <div class="ref-card"><h4>Continuity</h4><p>Essential — asymptotes can fake a sign change.</p></div>
+    <div class="ref-card"><h4>Iteration</h4><p>$x_{n+1} = \mathrm{g}(x_n)$ with a starting value.</p></div>
+    <div class="ref-card"><h4>ANS key</h4><p>The fastest way to iterate.</p></div>
+    <div class="ref-card"><h4>Full accuracy</h4><p>Never round mid-iteration.</p></div>
+    <div class="ref-card"><h4>Chord gradient</h4><p>$\dfrac{\mathrm{f}(x+h)-\mathrm{f}(x)}{h}$.</p></div>
+    <div class="ref-card"><h4>Improve it</h4><p>Make $h$ smaller.</p></div>
+    <div class="ref-card"><h4>Trapezium rule</h4><p>Ends once, middles doubled, all $\times \tfrac{h}{2}$.</p></div>
+    <div class="ref-card"><h4>Over or under?</h4><p>Decide from the curvature, and say why.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Show that $x^3 - 5 = 0$ has a root between $1$ and $2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 - 5 = -4$ &nbsp;(negative)</p>
+          <p>$\mathrm{f}(2) = 8 - 5 = 3$ &nbsp;(positive)</p>
+          <p>The sign changes and $\mathrm{f}$ is continuous, so a root lies between $1$ and $2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 + 2x - 8$. Evaluate $\mathrm{f}(1)$ and $\mathrm{f}(2)$ and state what you conclude.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 + 2 - 8 = -5$</p>
+          <p>$\mathrm{f}(2) = 8 + 4 - 8 = 4$</p>
+          <p>Opposite signs, so a root lies in $(1, 2)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Use the iteration $x_{n+1} = \sqrt{\dfrac{6}{x_n}}$ with $x_1 = 2$ to find $x_2$ and $x_3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = \sqrt{3} = 1.73205$</p>
+          <p>$x_3 = \sqrt{6 \div 1.73205} = \sqrt{3.46410} = 1.86121$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Estimate the gradient of $y = x^2$ at $x = 3$ using the chord from $x = 3$ to $x = 3.1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{3.1^2 - 3^2}{0.1} = \dfrac{9.61 - 9}{0.1} = \dfrac{0.61}{0.1} = 6.1$</p>
+          <p>(The exact gradient is $6$, so the estimate is slightly high.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Use the trapezium rule with two strips to estimate $\displaystyle\int_0^2 x^2 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$h = 1$; ordinates at $x = 0, 1, 2$ are $0, 1, 4$.</p>
+          <p>$\approx \tfrac12(1)\Big[(0 + 4) + 2(1)\Big] = \tfrac12(6) = 3$</p>
+          <p>(The exact value is $\tfrac83 = 2.667$, so this over-estimates.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>How many ordinates are needed for the trapezium rule with $5$ strips?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$6$ ordinates — always one more than the number of strips.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain how to improve a chord estimate of a gradient.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Use a <strong>smaller</strong> interval $h$, so the second point is closer to the first.</p>
+          <p>The chord then lies closer to the tangent, so its gradient is a better approximation.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain how to improve a trapezium rule estimate.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Use <strong>more strips</strong> (a smaller $h$).</p>
+          <p>Each trapezium's straight top then hugs the curve more closely, so less area is wrongly included or excluded.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Give an example showing that a change of sign does not always mean there is a root.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Take $\mathrm{f}(x) = \dfrac{1}{x}$.</p>
+          <p>$\mathrm{f}(-1) = -1$ and $\mathrm{f}(1) = 1$ — the sign changes.</p>
+          <p>But $\dfrac1x$ is never zero, so there is no root in $(-1, 1)$.</p>
+          <p>The sign change happens because the function is <strong>discontinuous</strong> at $x = 0$, jumping from $-\infty$ to $+\infty$ rather than passing through zero. This is why continuity must always be checked.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 - 2x - 5$.</p>
+      <p>(a) Show that a root lies between $2$ and $3$. &nbsp; (b) Use a decimal search to find it to $1$ d.p. &nbsp; (c) Show that the equation can be written as $x = \sqrt[3]{2x+5}$, and use the iteration $x_{n+1} = \sqrt[3]{2x_n+5}$ with $x_1 = 2$ to find the root to $3$ d.p. &nbsp; (d) Compare the two methods.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}(2) = 8 - 4 - 5 = -1$ &nbsp;(negative)</p>
+          <p>$\mathrm{f}(3) = 27 - 6 - 5 = 16$ &nbsp;(positive)</p>
+          <p>Sign change with $\mathrm{f}$ continuous, so a root lies in $(2, 3)$.</p>
+          <p><strong>(b)</strong> $\mathrm{f}(2.1) = 9.261 - 4.2 - 5 = 0.061$ &nbsp;(positive)</p>
+          <p>So the root is in $(2.0, 2.1)$. Test the midpoint:</p>
+          <p>$\mathrm{f}(2.05) = 8.615 - 4.1 - 5 = -0.485$ &nbsp;(negative)</p>
+          <p>The root is in $(2.05, 2.1)$, so it rounds to $\mathbf{2.1}$ to $1$ d.p.</p>
+          <p><strong>(c)</strong> $x^3 - 2x - 5 = 0 \;\Rightarrow\; x^3 = 2x + 5 \;\Rightarrow\; x = \sqrt[3]{2x+5}$ ✓</p>
+          <p>$x_1 = 2$</p>
+          <p>$x_2 = \sqrt[3]{9} = 2.080084$</p>
+          <p>$x_3 = \sqrt[3]{9.160168} = 2.092351$</p>
+          <p>$x_4 = \sqrt[3]{9.184701} = 2.094217$</p>
+          <p>$x_5 = \sqrt[3]{9.188434} = 2.094501$</p>
+          <p>$x_6 = \sqrt[3]{9.189001} = 2.094544$</p>
+          <p>The iterates are settling, so the root is $\mathbf{2.095}$ to $3$ d.p.</p>
+          <p><strong>(d)</strong> The decimal search is guaranteed to work and gives a <em>bracket</em> containing the root, so the accuracy is certain — but it needs a new function evaluation for every extra digit, and progress is slow.</p>
+          <p>The iteration converged to $3$ decimal places in only five steps, and with the ANS key each step is one button press. But it offers no guarantee: a different rearrangement, such as $x = \tfrac{x^3-5}{2}$, would <a href="iterative-methods.html">diverge</a> from the same start.</p>
+          <p>In practice the two are used together: a change of sign to prove the root exists and locate it roughly, then an iteration to refine it quickly.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Numerical Methods (NM1–NM9) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

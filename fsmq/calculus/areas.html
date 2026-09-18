@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Areas Under and Between Curves &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🟪 Areas Under and Between Curves</h1>
+  <p>OCR FSMQ Additional Maths · Calculus (CA12–CA13)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE AREA UNDER A CURVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Area Under a Curve</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>CA12:</strong> find the area between a curve, two <strong>ordinates</strong> and the $x$-axis. An <em>ordinate</em> is a vertical line at a given $x$-value — the two ordinates are the left and right edges of the region.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The area formula</div>
+    $\text{Area} = \displaystyle\int_a^b y \,\mathrm{d}x$ &nbsp;(provided the curve is <em>above</em> the axis)
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="250" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ar" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#4f46e5" stroke-width="1.6" opacity=".4"/>
+        </pattern>
+      </defs>
+      <path d="M 130 200 L 130 118 C 180 96 240 68 320 52 L 320 200 Z" fill="url(#ar)"/>
+      <line x1="40" y1="200" x2="410" y2="200" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="20" x2="60" y2="220" stroke="#475569" stroke-width="2"/>
+      <path d="M 70 175 C 150 110 240 68 400 40" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="130" y1="200" x2="130" y2="118" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="320" y1="200" x2="320" y2="52" stroke="#7c3aed" stroke-width="2.5"/>
+      <text x="126" y="218" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">a</text>
+      <text x="316" y="218" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">b</text>
+      <text x="220" y="160" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle" font-weight="bold">area</text>
+      <text x="380" y="34" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">y = f(x)</text>
+      <text x="220" y="240" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The two ordinates x = a and x = b are the vertical edges of the region</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A straightforward area</div>
+    <div class="example-body">
+      <p>Find the area between $y = x^2 + 1$, the $x$-axis, and the ordinates $x = 1$ and $x = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The curve is above the axis throughout (since $x^2 + 1 \geqslant 1$), so a single integral works.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int_1^3 \left(x^2+1\right)\mathrm{d}x = \Bigg[\dfrac{x^3}{3} + x\Bigg]_1^3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x=3$: $9 + 3 = 12$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x=1$: $\dfrac13 + 1 = \dfrac43$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Area $= 12 - \dfrac43 = \dfrac{32}{3} = 10\tfrac23$ square units.</span></div>
+      <div class="tip"><strong>Sense check with a trapezium.</strong> The curve runs from $(1,2)$ to $(3,10)$ over a width of $2$, so a straight line would give $\tfrac12(2+10)(2) = 12$. The curve sags below that chord, so an answer a little under $12$ is right ✓</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Always state the units as "square units"</strong> (or cm², m², as appropriate). An area is not a bare number.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – BELOW THE AXIS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> When the Curve Goes Below the Axis</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The crucial distinction</div>
+    An integral over a region <strong>below</strong> the axis comes out <strong>negative</strong>.<br>
+    The <em>area</em> is the size of that number, ignoring the sign.
+  </div>
+
+  <div class="warn">
+    <strong>Never integrate straight across a root.</strong> If the curve crosses the $x$-axis inside your limits, the positive and negative parts will partly cancel, and the answer will be neither the area nor anything useful.
+  </div>
+
+  <ul class="steps">
+    <li>Find where the curve crosses the $x$-axis by solving $y = 0$.</li>
+    <li>Split the integral at each crossing that lies inside the limits.</li>
+    <li>Evaluate each piece separately.</li>
+    <li>Take the size of each result, then add them.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Splitting at a root</div>
+    <div class="example-body">
+      <p>Find the total area enclosed between $y = x^2 - 4$, the $x$-axis, and the ordinates $x = 0$ and $x = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Roots: $x^2 - 4 = 0$ gives $x = \pm 2$. Only $x = 2$ is inside $[0, 3]$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So split at $x = 2$. Between $0$ and $2$ the curve is below the axis; between $2$ and $3$ it is above.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int_0^2 \left(x^2-4\right)\mathrm{d}x = \Bigg[\dfrac{x^3}{3} - 4x\Bigg]_0^2 = \dfrac83 - 8 = -\dfrac{16}{3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int_2^3 \left(x^2-4\right)\mathrm{d}x = \left(9 - 12\right) - \left(\dfrac83 - 8\right) = -3 + \dfrac{16}{3} = \dfrac{7}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Total area $= \dfrac{16}{3} + \dfrac{7}{3} = \dfrac{23}{3} = 7\tfrac23$ square units.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Compare:</em> integrating straight across from $0$ to $3$ would give $-\tfrac{16}{3} + \tfrac{7}{3} = -3$ — the two parts partly cancelling. That is <strong>not</strong> the area.</span></div>
+      <div class="tip"><strong>Sketch the curve first, every time.</strong> It is the only reliable way to see whether a split is needed.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – AREA BETWEEN TWO CURVES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Area Between Two Curves (CA13)</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">CA13 — the formula</div>
+    $\text{Area} = \displaystyle\int_a^b \Big(y_{\text{upper}} - y_{\text{lower}}\Big)\,\mathrm{d}x$<br>
+    <span style="font-size:.9rem;">Upper curve minus lower curve, integrated between the crossing points.</span>
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="240" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ar2" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#22c55e" stroke-width="1.7" opacity=".45"/>
+        </pattern>
+      </defs>
+      <path d="M 120 150 C 170 95 230 65 320 60 C 260 100 190 130 120 150 Z" fill="url(#ar2)"/>
+      <line x1="40" y1="200" x2="410" y2="200" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="20" x2="60" y2="220" stroke="#475569" stroke-width="2"/>
+      <path d="M 80 175 C 150 100 230 62 380 55" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <path d="M 80 195 C 160 155 240 105 380 30" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <circle cx="120" cy="150" r="5" fill="#4c1d95"/><circle cx="320" cy="60" r="5" fill="#4c1d95"/>
+      <text x="200" y="118" font-family="Arial" font-size="13" fill="#166534" text-anchor="middle" font-weight="bold">area between</text>
+      <text x="350" y="50" font-family="Arial" font-size="11" fill="#3730a3" font-weight="bold">curve 1</text>
+      <text x="350" y="24" font-family="Arial" font-size="11" fill="#b91c1c" font-weight="bold">curve 2</text>
+      <text x="220" y="232" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Integrate the difference between the limits where the curves cross</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Find the limits by solving the two equations simultaneously.</li>
+    <li>Decide which curve is on top — test an $x$-value between the limits.</li>
+    <li>Integrate (upper $-$ lower).</li>
+    <li>The answer will be positive; if it is negative, you had them the wrong way round.</li>
+  </ul>
+
+  <div class="concept">
+    <strong>Why "upper minus lower" handles negatives automatically.</strong> The vertical gap between the curves is positive wherever the upper one is above, whether or not either curve is below the $x$-axis. No splitting is needed — provided the curves do not cross inside the interval.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A line and a parabola</div>
+    <div class="example-body">
+      <p>Find the area enclosed between $y = x + 2$ and $y = x^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Crossing points: $x^2 = x + 2$, so $x^2 - x - 2 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x-2)(x+1) = 0$, giving $x = -1$ and $x = 2$. These are the limits.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = 0$: the line gives $2$, the parabola gives $0$. The <strong>line is on top</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\text{Area} = \displaystyle\int_{-1}^{2}\Big[(x+2) - x^2\Big]\mathrm{d}x$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$= \Bigg[\dfrac{x^2}{2} + 2x - \dfrac{x^3}{3}\Bigg]_{-1}^{2}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>At $x=2$: $2 + 4 - \dfrac83 = 6 - \dfrac83 = \dfrac{10}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>At $x=-1$: $\dfrac12 - 2 + \dfrac13 = -\dfrac{7}{6}$</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>Area $= \dfrac{10}{3} - \left(-\dfrac76\right) = \dfrac{20}{6} + \dfrac{7}{6} = \dfrac{27}{6} = \dfrac{9}{2} = 4.5$ square units.</span></div>
+      <div class="tip"><strong>Combine before integrating.</strong> Simplifying $(x+2) - x^2$ into one expression first is much safer than working out two separate integrals and subtracting.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Two parabolas</div>
+    <div class="example-body">
+      <p>Find the area enclosed between $y = 6 - x^2$ and $y = x^2 - 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Crossings: $6 - x^2 = x^2 - 2$, so $2x^2 = 8$ and $x = \pm 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x=0$: $6 - 0 = 6$ and $0 - 2 = -2$. The first curve is on top.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Difference: $\left(6-x^2\right) - \left(x^2-2\right) = 8 - 2x^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int_{-2}^{2}\left(8 - 2x^2\right)\mathrm{d}x = \Bigg[8x - \dfrac{2x^3}{3}\Bigg]_{-2}^{2}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $x=2$: $16 - \dfrac{16}{3} = \dfrac{32}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>At $x=-2$: $-16 + \dfrac{16}{3} = -\dfrac{32}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>Area $= \dfrac{32}{3} + \dfrac{32}{3} = \dfrac{64}{3} = 21\tfrac13$ square units.</span></div>
+      <div class="tip"><strong>Use symmetry when you can.</strong> The region is symmetric about the $y$-axis, so the area is $2\displaystyle\int_0^2\left(8-2x^2\right)\mathrm{d}x = 2 \times \tfrac{32}{3}$ — the same answer with half the arithmetic.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Area under</h4><p>$\displaystyle\int_a^b y\,\mathrm{d}x$, if above the axis.</p></div>
+    <div class="ref-card"><h4>Ordinate</h4><p>A vertical boundary line $x = a$.</p></div>
+    <div class="ref-card"><h4>Below the axis</h4><p>The integral is negative; the area is its size.</p></div>
+    <div class="ref-card"><h4>Crossing inside</h4><p>Split the integral at each root.</p></div>
+    <div class="ref-card"><h4>Never cancel</h4><p>Do not integrate across a root in one go.</p></div>
+    <div class="ref-card"><h4>Between curves</h4><p>$\displaystyle\int_a^b (\text{upper} - \text{lower})\,\mathrm{d}x$.</p></div>
+    <div class="ref-card"><h4>Find the limits</h4><p>Solve the two equations simultaneously.</p></div>
+    <div class="ref-card"><h4>Which is upper?</h4><p>Test an $x$-value in between.</p></div>
+    <div class="ref-card"><h4>Simplify first</h4><p>Combine into one expression, then integrate.</p></div>
+    <div class="ref-card"><h4>Units</h4><p>Square units, always.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the area under $y = 2x$ between $x = 0$ and $x = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Big[x^2\Big]_0^4 = 16$ square units.</p>
+          <p><em>Check:</em> the region is a triangle with base $4$ and height $8$, area $\tfrac12(4)(8) = 16$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the area under $y = x^2$ between $x = 0$ and $x = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Bigg[\dfrac{x^3}{3}\Bigg]_0^3 = 9$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the area under $y = x^2 + 2x$ between $x = 1$ and $x = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Bigg[\dfrac{x^3}{3} + x^2\Bigg]_1^2$</p>
+          <p>At $x=2$: $\dfrac83 + 4 = \dfrac{20}{3}$. At $x=1$: $\dfrac13 + 1 = \dfrac43$.</p>
+          <p>Area $= \dfrac{16}{3} = 5\tfrac13$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the area enclosed between $y = 4 - x^2$ and the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Roots at $x = \pm 2$, and the curve is above the axis between them.</p>
+          <p>$\displaystyle\int_{-2}^{2}\left(4-x^2\right)\mathrm{d}x = \Bigg[4x - \dfrac{x^3}{3}\Bigg]_{-2}^{2}$</p>
+          <p>At $x=2$: $8 - \dfrac83 = \dfrac{16}{3}$. At $x=-2$: $-\dfrac{16}{3}$.</p>
+          <p>Area $= \dfrac{32}{3} = 10\tfrac23$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the area between $y = x^2 - 1$, the $x$-axis and the ordinates $x = -1$ and $x = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Between $-1$ and $1$ the curve is entirely <em>below</em> the axis (at $x=0$, $y = -1$).</p>
+          <p>$\displaystyle\int_{-1}^{1}\left(x^2-1\right)\mathrm{d}x = \Bigg[\dfrac{x^3}{3} - x\Bigg]_{-1}^{1}$</p>
+          <p>At $x=1$: $\dfrac13 - 1 = -\dfrac23$. At $x=-1$: $-\dfrac13 + 1 = \dfrac23$.</p>
+          <p>Integral $= -\dfrac23 - \dfrac23 = -\dfrac43$.</p>
+          <p>Area $= \dfrac{4}{3} = 1\tfrac13$ square units (taking the size).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the area enclosed between $y = x$ and $y = x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Crossings: $x = x^2$, so $x(x-1) = 0$ and $x = 0$ or $1$.</p>
+          <p>At $x = 0.5$: the line gives $0.5$, the parabola $0.25$ — the <strong>line is on top</strong>.</p>
+          <p>$\displaystyle\int_0^1 \left(x - x^2\right)\mathrm{d}x = \Bigg[\dfrac{x^2}{2} - \dfrac{x^3}{3}\Bigg]_0^1 = \dfrac12 - \dfrac13 = \dfrac16$</p>
+          <p>Area $= \dfrac{1}{6}$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the area enclosed between $y = 2x$ and $y = x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Crossings: $x^2 = 2x$, so $x = 0$ or $2$.</p>
+          <p>At $x=1$: the line gives $2$, the parabola $1$ — the line is on top.</p>
+          <p>$\displaystyle\int_0^2 \left(2x - x^2\right)\mathrm{d}x = \Bigg[x^2 - \dfrac{x^3}{3}\Bigg]_0^2 = 4 - \dfrac83 = \dfrac43$</p>
+          <p>Area $= \dfrac{4}{3}$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the total area between $y = x^3$, the $x$-axis and the ordinates $x = -1$ and $x = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The curve crosses the axis at $x = 0$, which lies inside the limits — so split there.</p>
+          <p>$\displaystyle\int_{-1}^{0} x^3\,\mathrm{d}x = \Bigg[\dfrac{x^4}{4}\Bigg]_{-1}^{0} = 0 - \dfrac14 = -\dfrac14$</p>
+          <p>$\displaystyle\int_0^2 x^3\,\mathrm{d}x = \dfrac{16}{4} = 4$</p>
+          <p>Total area $= \dfrac14 + 4 = \dfrac{17}{4} = 4.25$ square units.</p>
+          <p>(Integrating straight through would give $4 - \tfrac14 = 3.75$, which is not the area.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the area enclosed between $y = 9 - x^2$ and $y = x^2 + 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Crossings: $9 - x^2 = x^2 + 1$, so $2x^2 = 8$ and $x = \pm 2$.</p>
+          <p>At $x=0$: $9$ versus $1$ — the first curve is on top.</p>
+          <p>Difference: $\left(9-x^2\right) - \left(x^2+1\right) = 8 - 2x^2$</p>
+          <p>By symmetry, $2\displaystyle\int_0^2 \left(8-2x^2\right)\mathrm{d}x = 2\Bigg[8x - \dfrac{2x^3}{3}\Bigg]_0^2$</p>
+          <p>$= 2\left(16 - \dfrac{16}{3}\right) = 2 \times \dfrac{32}{3} = \dfrac{64}{3}$</p>
+          <p>Area $= \dfrac{64}{3} = 21\tfrac13$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The curve $C$ has equation $y = x^3 - 4x$.</p>
+      <p>(a) Find where $C$ crosses the $x$-axis. &nbsp; (b) Evaluate $\displaystyle\int_{-2}^{2}\left(x^3-4x\right)\mathrm{d}x$ and explain why the answer does not give the area. &nbsp; (c) Find the total area enclosed between $C$ and the $x$-axis. &nbsp; (d) Find the area enclosed between $C$ and the line $y = 0$ for $0 \leqslant x \leqslant 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x^3 - 4x = x\left(x^2-4\right) = x(x-2)(x+2)$</p>
+          <p>Crossings at $x = -2$, $0$ and $2$.</p>
+          <p><strong>(b)</strong> $\Bigg[\dfrac{x^4}{4} - 2x^2\Bigg]_{-2}^{2}$</p>
+          <p>At $x=2$: $4 - 8 = -4$. &nbsp;At $x=-2$: $4 - 8 = -4$.</p>
+          <p>Integral $= -4 - (-4) = 0$.</p>
+          <p>The answer is zero because $C$ is a curve with <strong>odd symmetry</strong> about the origin: the loop above the axis on $[-2,0]$ has exactly the same size as the loop below it on $[0,2]$, and the two signed contributions cancel completely. An area of zero is clearly wrong, which is why the integral must be split at $x = 0$.</p>
+          <p><strong>(c)</strong> On $[-2, 0]$ the curve is above the axis (at $x=-1$, $y = -1+4 = 3 > 0$):</p>
+          <p>$\displaystyle\int_{-2}^{0} = 0 - (-4) = 4$</p>
+          <p>On $[0, 2]$ it is below (at $x=1$, $y = 1-4 = -3 < 0$):</p>
+          <p>$\displaystyle\int_0^2 = -4 - 0 = -4$, so this area is $4$.</p>
+          <p>Total area $= 4 + 4 = \mathbf{8}$ square units.</p>
+          <p><strong>(d)</strong> On $[0,3]$ the curve crosses at $x = 2$, so split there.</p>
+          <p>$[0,2]$: area $4$, from part (c).</p>
+          <p>$[2,3]$: $\Bigg[\dfrac{x^4}{4} - 2x^2\Bigg]_2^3 = \left(\dfrac{81}{4} - 18\right) - (-4) = \dfrac{9}{4} + 4 = \dfrac{25}{4}$</p>
+          <p>This piece is above the axis, so its area is $\dfrac{25}{4} = 6.25$.</p>
+          <p>Total $= 4 + 6.25 = \mathbf{10.25}$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Areas Under and Between Curves (CA12–CA13) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

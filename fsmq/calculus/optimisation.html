@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maximum and Minimum Problems &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Maximum and Minimum Problems</h1>
+  <p>OCR FSMQ Additional Maths · Calculus (CA5–CA6 applied)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Calculus as a Design Tool</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Optimisation</strong> is the practical payoff of <a href="stationary-points.html">stationary points</a>: what dimensions give the largest volume, the smallest surface area, the greatest profit? These questions carry a lot of marks because they test all three assessment objectives at once.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The universal method</div>
+    <strong>1.</strong> Write the quantity to be optimised as a formula<br>
+    <strong>2.</strong> If it has two variables, use a <em>constraint</em> to eliminate one<br>
+    <strong>3.</strong> Differentiate and set the derivative to zero<br>
+    <strong>4.</strong> Solve, and reject any answer that makes no physical sense<br>
+    <strong>5.</strong> Confirm it is a maximum or minimum with the second derivative<br>
+    <strong>6.</strong> Answer the question that was asked, with units
+  </div>
+
+  <div class="warn">
+    <strong>Step 2 is where most marks are lost.</strong> You cannot differentiate an expression in two variables. There is always a second piece of information — a fixed perimeter, a fixed volume, a fixed budget — that lets you write one variable in terms of the other.
+  </div>
+
+  <div class="tip">
+    <strong>Step 5 is not optional.</strong> The question asks for a <em>maximum</em>; showing the derivative is zero only shows the value is stationary. A one-line second-derivative check turns that into a proof.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – AREA PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Maximising an Area</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A rectangular enclosure</div>
+    <div class="example-body">
+      <p>A farmer has $60$ m of fencing to make a rectangular pen against a long straight wall, using the wall as one side. Find the dimensions giving the greatest area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the two sides perpendicular to the wall be $x$ m each, and the side parallel to it be $y$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Constraint:</strong> $2x + y = 60$, so $y = 60 - 2x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Objective:</strong> $A = xy = x(60-2x) = 60x - 2x^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}A}{\mathrm{d}x} = 60 - 4x = 0$, so $x = 15$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{\mathrm{d}^2A}{\mathrm{d}x^2} = -4 < 0$, confirming a <strong>maximum</strong>.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$y = 60 - 30 = 30$, so the pen is $15$ m by $30$ m, with area $450$ m².</span></div>
+      <div class="tip"><strong>A useful pattern:</strong> with a wall on one side, the optimal pen is always twice as long as it is deep. Worth knowing as a check, though you must still show the working.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A window</div>
+    <div class="example-body">
+      <p>A window is a rectangle of width $2r$ and height $h$, topped by a semicircle of radius $r$. The total perimeter is $8$ m. Find $r$ for the greatest area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Perimeter: two heights, one base, plus the semicircular arc: $2h + 2r + \pi r = 8$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So $h = \dfrac{8 - 2r - \pi r}{2} = 4 - r - \dfrac{\pi r}{2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area: rectangle $2rh$ plus semicircle $\tfrac12\pi r^2$:</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$A = 2r\left(4 - r - \tfrac{\pi r}{2}\right) + \tfrac12\pi r^2 = 8r - 2r^2 - \pi r^2 + \tfrac12\pi r^2$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$A = 8r - 2r^2 - \dfrac{\pi r^2}{2}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\dfrac{\mathrm{d}A}{\mathrm{d}r} = 8 - 4r - \pi r = 0$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$r(4 + \pi) = 8$, so $r = \dfrac{8}{4+\pi} = 1.120$ m (3 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>$\dfrac{\mathrm{d}^2A}{\mathrm{d}r^2} = -4 - \pi < 0$, so this is a maximum ✓</span></div>
+      <div class="step-row"><span class="arrow">⑨</span><span>Then $h = 4 - 1.120 - \tfrac{\pi(1.120)}{2} = 1.120$ m — the height equals the radius.</span></div>
+      <div class="warn"><strong>Count the perimeter carefully.</strong> The top edge of the rectangle is <em>not</em> part of the perimeter — it is inside the window, where the glass meets. Missing that gives a different and wrong answer.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VOLUME PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Maximising a Volume</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — The open box</div>
+    <div class="example-body">
+      <p>An open box is made from a $24$ cm square of card by cutting a square of side $x$ cm from each corner and folding up the flaps. Find the value of $x$ giving the greatest volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>After cutting, the base measures $(24 - 2x)$ by $(24 - 2x)$, and the height is $x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = x(24-2x)^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Expand before differentiating: $(24-2x)^2 = 576 - 96x + 4x^2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$V = 576x - 96x^2 + 4x^3$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{\mathrm{d}V}{\mathrm{d}x} = 576 - 192x + 12x^2 = 12\left(x^2 - 16x + 48\right)$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$12(x-4)(x-12) = 0$, so $x = 4$ or $x = 12$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span><strong>Reject $x = 12$:</strong> the base would be $24 - 24 = 0$, so there is no box at all.</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>$\dfrac{\mathrm{d}^2V}{\mathrm{d}x^2} = -192 + 24x$. At $x=4$: $-192 + 96 = -96 < 0$, a <strong>maximum</strong> ✓</span></div>
+      <div class="step-row"><span class="arrow">⑨</span><span>$x = 4$ cm, giving $V = 4 \times 16^2 = 1024$ cm³.</span></div>
+      <div class="tip"><strong>Always state why you reject a root.</strong> "$x = 12$ gives a base of zero, so no box exists" is worth a mark; silently dropping it is not.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Minimising surface area</div>
+    <div class="example-body">
+      <p>A closed rectangular box has a square base of side $x$ cm and a volume of $500$ cm³. Find the dimensions that minimise the surface area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the height be $h$. <strong>Constraint:</strong> $x^2 h = 500$, so $h = \dfrac{500}{x^2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Objective:</strong> two square faces plus four rectangles: $S = 2x^2 + 4xh$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$S = 2x^2 + 4x \times \dfrac{500}{x^2} = 2x^2 + \dfrac{2000}{x}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Write the second term as $2000x^{-1}$ so the rule applies:</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{\mathrm{d}S}{\mathrm{d}x} = 4x - 2000x^{-2} = 4x - \dfrac{2000}{x^2}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Setting this to zero: $4x = \dfrac{2000}{x^2}$, so $4x^3 = 2000$ and $x^3 = 500$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$x = \sqrt[3]{500} = 7.937$ cm (3 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>$h = \dfrac{500}{63.0} = 7.937$ cm — the box is a <strong>cube</strong>.</span></div>
+      <div class="step-row"><span class="arrow">⑨</span><span>$\dfrac{\mathrm{d}^2S}{\mathrm{d}x^2} = 4 + \dfrac{4000}{x^3} > 0$ for $x > 0$, confirming a <strong>minimum</strong> ✓</span></div>
+      <div class="warn"><strong>A note on scope.</strong> This example needs the derivative of $x^{-1}$, which is outside the specification's $kx^n$ with $n$ a positive integer. Expect FSMQ questions to be framed so the expression is a polynomial — but the <em>method</em> is identical, and it is worth seeing that the answer is the cube.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CONTEXT PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Profit, Cost and Other Contexts</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Maximising profit</div>
+    <div class="example-body">
+      <p>A company's profit, in pounds, from selling $n$ hundred items is $P = 180n - 3n^2 - 500$, valid for $0 \leqslant n \leqslant 60$. Find the production level giving the greatest profit.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}P}{\mathrm{d}n} = 180 - 6n = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = 30$, which lies inside the valid range ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2P}{\mathrm{d}n^2} = -6 < 0$, so this is a <strong>maximum</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P = 180(30) - 3(900) - 500 = 5400 - 2700 - 500 = 2200$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Greatest profit £$2200$, from selling $3000$ items.</span></div>
+      <div class="tip"><strong>Read the units of the variable.</strong> $n$ is in <em>hundreds</em>, so $n = 30$ means $3000$ items. Answering "$30$ items" loses the final mark.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Do not forget the endpoints</div>
+    On a restricted interval, the largest value might occur at an <strong>end</strong> rather than at a stationary point.<br>
+    Compare the stationary value with the values at both ends.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — When the maximum is at an endpoint</div>
+    <div class="example-body">
+      <p>Find the greatest value of $y = x^3 - 3x$ for $0 \leqslant x \leqslant 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 3 = 0$ gives $x = \pm 1$; only $x = 1$ is in range.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 1$: $y = 1 - 3 = -2$. The second derivative $6x = 6 > 0$, so this is a <strong>minimum</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the maximum must be at an endpoint. Check both:</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 0$: $y = 0$. &nbsp;At $x = 3$: $y = 27 - 9 = 18$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The greatest value is $18$, at $x = 3$.</span></div>
+      <div class="warn"><strong>Calculus alone would have missed this.</strong> The only stationary point in range was a minimum. Whenever the domain is restricted, always evaluate at the endpoints too.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Objective</h4><p>Write a formula for what is being optimised.</p></div>
+    <div class="ref-card"><h4>Constraint</h4><p>Use it to get down to one variable.</p></div>
+    <div class="ref-card"><h4>Then differentiate</h4><p>Set the derivative to zero and solve.</p></div>
+    <div class="ref-card"><h4>Expand first</h4><p>Multiply out any brackets before differentiating.</p></div>
+    <div class="ref-card"><h4>Reject nonsense</h4><p>Negative lengths, zero bases — and say why.</p></div>
+    <div class="ref-card"><h4>Confirm</h4><p>Second derivative: $<0$ max, $>0$ min.</p></div>
+    <div class="ref-card"><h4>Endpoints</h4><p>On a closed interval, test them as well.</p></div>
+    <div class="ref-card"><h4>Answer fully</h4><p>Give the dimensions <em>and</em> the optimal value.</p></div>
+    <div class="ref-card"><h4>Units</h4><p>Always, and check what the variable counts.</p></div>
+    <div class="ref-card"><h4>Sense check</h4><p>Is the answer physically plausible?</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the minimum value of $y = x^2 - 10x + 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x - 10 = 0$, so $x = 5$.</p>
+          <p>$y = 25 - 50 + 3 = -22$</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 2 > 0$, so the minimum value is $-22$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A rectangle has perimeter $40$ cm. Show that its greatest area is $100$ cm².</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the sides be $x$ and $y$, with $2x + 2y = 40$, so $y = 20 - x$.</p>
+          <p>$A = x(20-x) = 20x - x^2$</p>
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}x} = 20 - 2x = 0$, so $x = 10$.</p>
+          <p>$\dfrac{\mathrm{d}^2A}{\mathrm{d}x^2} = -2 < 0$, a maximum.</p>
+          <p>$A = 10 \times 10 = 100$ cm² — the rectangle is a square.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Two numbers add to $20$. Find the numbers whose product is greatest.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let them be $x$ and $20 - x$. Then $P = 20x - x^2$.</p>
+          <p>$\dfrac{\mathrm{d}P}{\mathrm{d}x} = 20 - 2x = 0$, so $x = 10$.</p>
+          <p>The numbers are both $10$, with product $100$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A stone is thrown so its height is $h = 20t - 5t^2$ metres. Find the greatest height.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}h}{\mathrm{d}t} = 20 - 10t = 0$, so $t = 2$ s.</p>
+          <p>$\dfrac{\mathrm{d}^2h}{\mathrm{d}t^2} = -10 < 0$, a maximum.</p>
+          <p>$h = 40 - 20 = 20$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>An open box is made from a $12$ cm square of card with squares of side $x$ cut from each corner. Find $x$ for maximum volume.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$V = x(12-2x)^2 = x\left(144 - 48x + 4x^2\right) = 144x - 48x^2 + 4x^3$</p>
+          <p>$\dfrac{\mathrm{d}V}{\mathrm{d}x} = 144 - 96x + 12x^2 = 12\left(x^2 - 8x + 12\right) = 12(x-2)(x-6)$</p>
+          <p>$x = 2$ or $x = 6$. Reject $x = 6$, since the base would be zero.</p>
+          <p>$\dfrac{\mathrm{d}^2V}{\mathrm{d}x^2} = -96 + 24x$; at $x = 2$ this is $-48 < 0$, a maximum.</p>
+          <p>$x = 2$ cm, giving $V = 2 \times 64 = 128$ cm³.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A farmer has $100$ m of fencing for a rectangular pen against a wall (wall as one side). Find the maximum area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x + y = 100$, so $y = 100 - 2x$ and $A = 100x - 2x^2$.</p>
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}x} = 100 - 4x = 0$, so $x = 25$.</p>
+          <p>$y = 50$, and $A = 25 \times 50 = 1250$ m².</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the greatest value of $y = 12x - x^3$ for $0 \leqslant x \leqslant 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 12 - 3x^2 = 0$, so $x^2 = 4$ and $x = 2$ (in range).</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = -6x = -12 < 0$, a maximum.</p>
+          <p>$y = 24 - 8 = 16$.</p>
+          <p>Endpoints: $y(0) = 0$ and $y(3) = 36 - 27 = 9$, both less than $16$.</p>
+          <p>Greatest value $16$, at $x = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A profit function is $P = 60n - n^2 - 200$ for $0 \leqslant n \leqslant 25$. Find the maximum profit.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}P}{\mathrm{d}n} = 60 - 2n = 0$ gives $n = 30$ — which is <strong>outside</strong> the range.</p>
+          <p>So the maximum must be at an endpoint. Since $P$ is increasing for $n < 30$, the largest value in range is at $n = 25$:</p>
+          <p>$P = 1500 - 625 - 200 = 675$</p>
+          <p>Maximum profit £$675$ at $n = 25$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A rectangle is inscribed under the curve $y = 9 - x^2$, with its base on the $x$-axis and two corners on the curve at $x = \pm t$. Find $t$ for the greatest area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The width is $2t$ and the height is $9 - t^2$.</p>
+          <p>$A = 2t\left(9 - t^2\right) = 18t - 2t^3$</p>
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}t} = 18 - 6t^2 = 0$, so $t^2 = 3$ and $t = \sqrt3$ (taking $t > 0$).</p>
+          <p>$\dfrac{\mathrm{d}^2A}{\mathrm{d}t^2} = -12t < 0$ for $t > 0$, a maximum.</p>
+          <p>$A = 18\sqrt3 - 2\left(3\sqrt3\right) = 12\sqrt3 = 20.8$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A closed cylindrical tin has radius $r$ cm and height $h$ cm. Its total surface area is fixed at $600\pi$ cm².</p>
+      <p>(a) Show that $h = \dfrac{300 - r^2}{r}$. &nbsp; (b) Show that the volume is $V = \pi\left(300r - r^3\right)$. &nbsp; (c) Find the value of $r$ giving the greatest volume, and confirm it is a maximum. &nbsp; (d) Find that greatest volume, and the corresponding height. Comment on the shape.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A closed cylinder has two circular ends and a curved side:</p>
+          <p>$S = 2\pi r^2 + 2\pi r h = 600\pi$</p>
+          <p>Divide through by $2\pi$: $r^2 + rh = 300$</p>
+          <p>$rh = 300 - r^2$, so $h = \dfrac{300 - r^2}{r}$ &nbsp;as required.</p>
+          <p><strong>(b)</strong> $V = \pi r^2 h = \pi r^2 \times \dfrac{300-r^2}{r}$</p>
+          <p>$= \pi r\left(300 - r^2\right) = \pi\left(300r - r^3\right)$ &nbsp;as required.</p>
+          <p>Note this is now a <em>polynomial</em> in $r$, so the standard differentiation rule applies.</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}V}{\mathrm{d}r} = \pi\left(300 - 3r^2\right) = 0$</p>
+          <p>$r^2 = 100$, so $r = 10$ (rejecting $r = -10$, as a radius cannot be negative).</p>
+          <p>$\dfrac{\mathrm{d}^2V}{\mathrm{d}r^2} = \pi(-6r) = -60\pi < 0$ at $r = 10$, so this is a <strong>maximum</strong>.</p>
+          <p><strong>(d)</strong> $V = \pi\left(3000 - 1000\right) = 2000\pi = 6280$ cm³ (3 s.f.)</p>
+          <p>$h = \dfrac{300 - 100}{10} = 20$ cm.</p>
+          <p><strong>Comment:</strong> the height $20$ cm is exactly <em>twice</em> the radius $10$ cm, so $h = 2r$ — the tin's height equals its diameter.</p>
+          <p>This is the classic result: for a fixed surface area, the cylinder of greatest volume is as tall as it is wide, the shape closest to a sphere that a cylinder can manage. It is why tins of food are roughly this proportion, though in practice manufacturing and stacking costs pull the shape a little off the mathematical optimum.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Maximum and Minimum Problems · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

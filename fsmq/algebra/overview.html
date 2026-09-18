@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebra &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔤 Algebra</h1>
+  <p>OCR FSMQ Additional Maths · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Algebra</strong> is the section that underpins every other part of this qualification. The specification describes the course as four "pure" topics plus two numerical topics, <em>all underpinned by an Algebra section</em> — so the fluency you build here is spent everywhere else.</p>
+
+  <div class="concept">
+    At GCSE you learned to <em>do</em> algebra. At Level 3 you are expected to <strong>choose</strong> the algebra. A question rarely says "factorise this" — it gives you a situation, and you decide that factorising is the way in.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    Cubics and the factor theorem &middot; polynomial division<br>
+    Quadratic inequalities &middot; regions in two variables<br>
+    Recurrence relationships &middot; algebraic fractions with surds
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong> in the FSMQ examination — but read the command words carefully. If a question says <em>"In this question you must show detailed reasoning"</em>, a bare answer from a solver earns nothing. You must write down a complete analytical method.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <p>Statement <strong>AL1</strong> asks you to know and use algebraic vocabulary and notation. The specification gives a complete list, so these words are examinable in their own right.</p>
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Constant</strong></td><td>A fixed number that does not vary.</td><td>The $7$ in $3x + 7$</td></tr>
+    <tr><td><strong>Coefficient</strong></td><td>The number multiplying a variable.</td><td>The $3$ in $3x^2$</td></tr>
+    <tr><td><strong>Expression</strong></td><td>A collection of terms with no equals sign.</td><td>$3x^2 - 5x$</td></tr>
+    <tr><td><strong>Equation</strong></td><td>Two expressions set equal; true for particular values.</td><td>$x^2 = 9$</td></tr>
+    <tr><td><strong>Identity</strong></td><td>True for <em>every</em> value; written with $\equiv$.</td><td>$(x+1)^2 \equiv x^2 + 2x + 1$</td></tr>
+    <tr><td><strong>Index</strong></td><td>A power. Plural: indices.</td><td>The $5$ in $x^5$</td></tr>
+    <tr><td><strong>Variable</strong></td><td>A quantity that is free to change.</td><td>$t$ in a distance–time model</td></tr>
+    <tr><td><strong>Unknown</strong></td><td>A fixed value you are trying to find.</td><td>$x$ in $2x + 1 = 9$</td></tr>
+    <tr><td><strong>$\mathbf{f}(x)$</strong></td><td>Function notation — the output when the input is $x$.</td><td>$\mathrm{f}(x) = x^3 - 2x$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Equation or identity?</strong> $x^2 = 9$ is an equation: it is only true when $x = \pm 3$. But $x^2 - 9 \equiv (x-3)(x+3)$ is an identity: it is true for every $x$. Examiners award marks for using $\equiv$ correctly when completing the square, because <strong>AL5</strong> is written as an identity.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Six Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Factorising a quadratic</div>
+    $ax^2 + bx + c$: find two numbers multiplying to $ac$ and adding to $b$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — The quadratic formula</div>
+    $x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$, &nbsp;discriminant $\Delta = b^2 - 4ac$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Completing the square (AL5)</div>
+    $ax^2 + bx + c \equiv a(x + p)^2 + q$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — The factor theorem (AL4)</div>
+    If $\mathrm{f}(a) = 0$ then $(x - a)$ is a factor of $\mathrm{f}(x)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Solving a quadratic inequality (AL8)</div>
+    Solve the equation, sketch the parabola, then read off the sign you need
+  </div>
+
+  <div class="formula-box">
+    <div class="label">6 — A recurrence relationship (AL10)</div>
+    $x_{n+1} = \mathrm{f}(x_n)$ together with a starting value $x_1$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 - 4x^2 + x + 6$. Show that $(x + 1)$ is a factor, hence solve $\mathrm{f}(x) = 0$, and then solve $\mathrm{f}(x) \geqslant 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(-1) = -1 - 4 - 1 + 6 = 0$, so by the factor theorem $(x+1)$ is a factor.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Dividing: $x^3 - 4x^2 + x + 6 = (x+1)(x^2 - 5x + 6)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 - 5x + 6 = (x-2)(x-3)$, so $\mathrm{f}(x) = (x+1)(x-2)(x-3)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(x) = 0$ when $x = -1,\; 2,\; 3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>A positive cubic starts low and ends high, crossing at $-1, 2, 3$. It is above the axis between $-1$ and $2$, and again after $3$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\mathrm{f}(x) \geqslant 0$ for $-1 \leqslant x \leqslant 2$ or $x \geqslant 3$.</span></div>
+      <div class="tip">This single question uses <strong>AL4</strong>, <strong>AL3</strong>, <strong>AL6</strong> and <strong>AL8</strong>. The specification says explicitly that items "will require learners to use two or more content statements" — expect it.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Algebra Subtopics</div>
+<div class="section-body">
+
+  <p>Every specification statement in the Algebra section, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">AL1<br>AL2</span><span><a href="manipulation.html">Algebraic Manipulation</a><span class="desc">Vocabulary and notation, algebraic fractions, indices and surds.</span></span></li>
+    <li><span class="code">AL3<br>AL4</span><span><a href="polynomials.html">Polynomials and the Factor Theorem</a><span class="desc">Adding, multiplying and dividing polynomials; finding linear factors.</span></span></li>
+    <li><span class="code">AL5</span><span><a href="completing-the-square.html">Completing the Square</a><span class="desc">The identity $ax^2+bx+c \equiv a(x+p)^2+q$ and what it tells you.</span></span></li>
+    <li><span class="code">AL6</span><span><a href="equations.html">Setting Up and Solving Equations</a><span class="desc">Linear, quadratic, cubic and simultaneous equations, in and out of context.</span></span></li>
+    <li><span class="code">AL7<br>AL8</span><span><a href="inequalities.html">Linear and Quadratic Inequalities</a><span class="desc">Manipulating inequalities and solving them algebraically and graphically.</span></span></li>
+    <li><span class="code">AL9</span><span><a href="inequalities-two-variables.html">Inequalities in Two Variables</a><span class="desc">Shading regions — the groundwork for linear programming.</span></span></li>
+    <li><span class="code">AL10<br>AL11</span><span><a href="recurrence-relations.html">Recurrence Relationships</a><span class="desc">$x_{n+1} = \mathrm{f}(x_n)$, sequences, and modelling compound interest.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Dividing an inequality by a negative.</strong> $-2x < 6$ gives $x > -3$, not $x < -3$. The sign flips.
+  </div>
+
+  <div class="warn">
+    <strong>Treating a quadratic inequality like an equation.</strong> $x^2 > 9$ does <em>not</em> give $x > 3$. It gives $x > 3$ <em>or</em> $x < -3$. Always sketch.
+  </div>
+
+  <div class="warn">
+    <strong>Cancelling across a $+$ sign.</strong> $\dfrac{x + 3}{3}$ is <em>not</em> $x$. You may only cancel factors of the <em>whole</em> numerator.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting a root.</strong> A cubic has up to three roots. If you find one with the factor theorem and stop, you have thrown away most of the marks.
+  </div>
+
+  <div class="warn">
+    <strong>Losing the "$\equiv$".</strong> When completing the square you are rewriting an expression, not solving anything. Do not introduce an $= 0$ that was never there.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Identity</h4><p>True for all $x$; use $\equiv$.</p></div>
+    <div class="ref-card"><h4>Discriminant</h4><p>$b^2-4ac$: positive $\to$ 2 roots, zero $\to$ 1, negative $\to$ none.</p></div>
+    <div class="ref-card"><h4>Factor theorem</h4><p>$\mathrm{f}(a)=0 \iff (x-a)$ is a factor.</p></div>
+    <div class="ref-card"><h4>Completed square</h4><p>$a(x+p)^2+q$ gives the vertex at $(-p,\,q)$.</p></div>
+    <div class="ref-card"><h4>Negative multiplier</h4><p>Multiplying or dividing an inequality by a negative reverses it.</p></div>
+    <div class="ref-card"><h4>Quadratic inequality</h4><p>Solve $=0$, sketch, read the interval.</p></div>
+    <div class="ref-card"><h4>Regions</h4><p>Solid line for $\leqslant$ or $\geqslant$, dashed for $<$ or $>$.</p></div>
+    <div class="ref-card"><h4>Recurrence</h4><p>$x_{n+1}=\mathrm{f}(x_n)$ needs a starting term to be useful.</p></div>
+    <div class="ref-card"><h4>Surds</h4><p>Rationalise by multiplying by the conjugate.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Algebra section. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write down the coefficient of $x$ and the constant term in $5 - 7x + 2x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Coefficient of $x$ is $-7$ — the sign belongs to the coefficient.</p>
+          <p>Constant term is $5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{1}{x} - \dfrac{2}{x+1}$ as a single fraction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Common denominator $x(x+1)$:</p>
+          <p>$\dfrac{(x+1) - 2x}{x(x+1)} = \dfrac{1 - x}{x(x+1)}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Express $\sqrt{12} + \sqrt{27}$ in the form $k\sqrt{3}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3}$ and $\sqrt{27} = \sqrt{9 \times 3} = 3\sqrt{3}$.</p>
+          <p>Sum $= 5\sqrt{3}$, so $k = 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Express $x^2 - 6x + 11$ in the form $(x+p)^2 + q$, and hence state the minimum value of the expression.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Half of $-6$ is $-3$, and $(x-3)^2 = x^2 - 6x + 9$.</p>
+          <p>$x^2 - 6x + 11 \equiv (x-3)^2 + 2$</p>
+          <p>A square is never negative, so the minimum value is $2$, when $x = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve the simultaneous equations $3x + 2y = 12$ and $y = x - 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Substitute: $3x + 2(x-1) = 12$</p>
+          <p>$5x - 2 = 12$, so $5x = 14$ and $x = 2.8$.</p>
+          <p>Then $y = 2.8 - 1 = 1.8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Show that $(x - 2)$ is a factor of $\mathrm{f}(x) = x^3 + x^2 - 8x + 4$, and find the remaining quadratic factor.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(2) = 8 + 4 - 16 + 4 = 0$, so $(x-2)$ is a factor.</p>
+          <p>Dividing gives $x^3 + x^2 - 8x + 4 = (x-2)(x^2 + 3x - 2)$.</p>
+          <p><em>Check:</em> $x^2 + 3x - 2$ has discriminant $9 + 8 = 17$, which is not a perfect square, so it does not factorise further over the integers.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve the inequality $2x^2 - 5x - 3 < 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Factorise: $2x^2 - 5x - 3 = (2x + 1)(x - 3)$.</p>
+          <p>Roots at $x = -\tfrac12$ and $x = 3$.</p>
+          <p>The coefficient of $x^2$ is positive, so the parabola is below the axis <em>between</em> the roots.</p>
+          <p>$-\dfrac{1}{2} < x < 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A sequence is defined by $x_{n+1} = 3x_n - 4$ with $x_1 = 3$. Find $x_2$, $x_3$ and $x_4$, and describe the behaviour of the sequence.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = 3(3) - 4 = 5$</p>
+          <p>$x_3 = 3(5) - 4 = 11$</p>
+          <p>$x_4 = 3(11) - 4 = 29$</p>
+          <p>The terms increase without limit — the sequence <strong>diverges</strong>. (The fixed point is $x = 2$, since $3(2)-4=2$; starting above it, the terms run away from it.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A rectangular field has a perimeter of $100$ m and an area of $600$ m$^2$. Set up and solve equations to find its dimensions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the sides be $x$ and $y$. Then $2x + 2y = 100$, so $y = 50 - x$.</p>
+          <p>Area: $x(50 - x) = 600$</p>
+          <p>$50x - x^2 = 600 \;\Rightarrow\; x^2 - 50x + 600 = 0$</p>
+          <p>$(x - 20)(x - 30) = 0$, so $x = 20$ or $x = 30$.</p>
+          <p>Either way the field is $20$ m by $30$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>£$2000$ is invested at $4\%$ compound interest per year, and a further £$500$ is added at the end of each year.</p>
+      <p>(a) Write a recurrence relationship for the amount $A_n$ after $n$ years. &nbsp; (b) Find the amount after $3$ years. &nbsp; (c) Explain why the balance cannot settle down to a fixed value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Each year the balance is multiplied by $1.04$ and then $500$ is added:</p>
+          <p>$A_{n+1} = 1.04\,A_n + 500$, with $A_0 = 2000$.</p>
+          <p><strong>(b)</strong> $A_1 = 1.04(2000) + 500 = 2580$</p>
+          <p>$A_2 = 1.04(2580) + 500 = 3183.20$</p>
+          <p>$A_3 = 1.04(3183.20) + 500 = 3810.53$ (to the nearest penny)</p>
+          <p><strong>(c)</strong> A fixed value $A$ would need $A = 1.04A + 500$, giving $-0.04A = 500$ and so $A = -12\,500$.</p>
+          <p>That fixed point is negative, so it can never be reached from a positive starting balance. Because the multiplier $1.04$ is greater than $1$, the sequence moves <em>away</em> from the fixed point and grows without limit.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Algebra (AL1–AL11) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

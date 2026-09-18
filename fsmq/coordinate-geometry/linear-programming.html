@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Programming &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎛️ Linear Programming</h1>
+  <p>OCR FSMQ Additional Maths · Coordinate Geometry (CG6–CG8)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IT IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What Linear Programming Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Linear programming</strong> finds the best possible value of a quantity when your choices are limited by constraints. It is the most obviously practical topic in the whole qualification — it is used every day in manufacturing, logistics, farming and finance.
+  </div>
+
+  <table>
+    <tr><th>Statement</th><th>What it asks</th></tr>
+    <tr><td><strong>CG6</strong></td><td>Express real situations in terms of linear inequalities</td></tr>
+    <tr><td><strong>CG7</strong></td><td>Use graphs of linear inequalities to solve 2-dimensional maximisation and minimisation problems</td></tr>
+    <tr><td><strong>CG8</strong></td><td>Know the definition of objective function and be able to find it in 2-dimensional cases</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The two ingredients</div>
+    <strong>Constraints:</strong> the inequalities limiting what you can do<br>
+    <strong>Objective function:</strong> the quantity you want to maximise or minimise
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The fact that makes it work</div>
+    The optimum of a linear objective function always occurs at a <strong>vertex</strong> (corner) of the feasible region
+  </div>
+
+  <div class="concept">
+    <strong>Why the optimum is at a vertex.</strong> Lines of constant objective value, such as $3x + 5y = k$, are all parallel. Sliding that line across the region, the last point it touches before leaving is a corner. Only if the line happens to be parallel to an edge does a whole edge tie for the optimum — and the corners of that edge are still among the best.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – SETTING UP
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Setting Up the Problem (CG6, CG8)</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Define your two variables clearly, with units.</li>
+    <li>Write the objective function — the thing to be maximised or minimised.</li>
+    <li>Write one inequality for each limited resource.</li>
+    <li>Add the non-negativity constraints $x \geqslant 0$, $y \geqslant 0$.</li>
+    <li>Simplify each inequality by dividing out common factors.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Translating a situation</div>
+    <div class="example-body">
+      <p>A workshop makes bookcases and desks. A bookcase needs $3$ hours of assembly and $2$ hours of finishing, and sells for a profit of £$40$. A desk needs $5$ hours of assembly and $2$ hours of finishing, for a profit of £$60$. There are $60$ assembly hours and $32$ finishing hours available. Set the problem up.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $x$ = number of bookcases and $y$ = number of desks.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Objective function:</strong> maximise $P = 40x + 60y$ (profit in £).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Assembly: $3x + 5y \leqslant 60$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Finishing: $2x + 2y \leqslant 32$, which simplifies to $x + y \leqslant 16$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Non-negativity: $x \geqslant 0$, $y \geqslant 0$.</span></div>
+      <div class="warn"><strong>Watch which way round the numbers go.</strong> The $3$ and $5$ in the assembly constraint are hours per item; the $60$ is the total available. Swapping rows and columns of the data is the commonest set-up error.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Lay the data out in a table</strong> before writing any inequality — rows for products, columns for resources. The constraints then read straight off the columns.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE FEASIBLE REGION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Feasible Region (CG7)</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>feasible region</strong> is the set of points satisfying every constraint at once — the overlap of all the half-planes. See <a href="../algebra/inequalities-two-variables.html">Inequalities in Two Variables</a> for the shading technique.
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="290" viewBox="0 0 480 290" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="fr" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#22c55e" stroke-width="1.8" opacity=".4"/>
+        </pattern>
+      </defs>
+      <polygon points="60,250 260,250 160,150 60,130" fill="url(#fr)" stroke="#16a34a" stroke-width="2"/>
+      <line x1="60" y1="250" x2="440" y2="250" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="250" x2="60" y2="30" stroke="#475569" stroke-width="2"/>
+      <text x="444" y="255" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="52" y="28" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <line x1="60" y1="130" x2="300" y2="250" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="60" y1="50" x2="360" y2="250" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="0"/>
+      <circle cx="60" cy="250" r="5" fill="#16a34a"/><circle cx="260" cy="250" r="5" fill="#16a34a"/>
+      <circle cx="160" cy="150" r="5" fill="#16a34a"/><circle cx="60" cy="130" r="5" fill="#16a34a"/>
+      <text x="44" y="268" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">O</text>
+      <text x="256" y="268" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">B</text>
+      <text x="168" y="146" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">C</text>
+      <text x="40" y="128" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">D</text>
+      <text x="130" y="220" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">feasible region</text>
+      <text x="306" y="248" font-family="Arial" font-size="11" fill="#3730a3">constraint 1</text>
+      <text x="364" y="256" font-family="Arial" font-size="11" fill="#6d28d9">constraint 2</text>
+      <text x="240" y="284" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Test every vertex O, B, C, D in the objective function &mdash; the best one wins</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Draw each boundary line using its two axis intercepts.</li>
+    <li>Test the origin in each inequality to find the correct side.</li>
+    <li>Shade to leave the feasible region clear, and label it $R$.</li>
+    <li>Find each vertex <strong>algebraically</strong>, by solving pairs of boundary lines.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Never read a vertex off the graph.</strong> Solve the two boundary equations simultaneously. A vertex of $\left(\tfrac{20}{3}, \tfrac{16}{3}\right)$ is impossible to read accurately from a hand-drawn axis.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FINDING THE OPTIMUM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Finding the Optimum</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The vertex method — reliable and quick</div>
+    <strong>1.</strong> Find every vertex of the feasible region<br>
+    <strong>2.</strong> Evaluate the objective function at each one<br>
+    <strong>3.</strong> Pick the largest (or smallest) value
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Completing the workshop problem</div>
+    <div class="example-body">
+      <p>Maximise $P = 40x + 60y$ subject to $3x + 5y \leqslant 60$, $x + y \leqslant 16$, $x \geqslant 0$, $y \geqslant 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Boundary $3x + 5y = 60$ passes through $(20, 0)$ and $(0, 12)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Boundary $x + y = 16$ passes through $(16, 0)$ and $(0, 16)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Vertices on the axes: $(0,0)$; &nbsp;$(0, 12)$ — the lower of $12$ and $16$; &nbsp;$(16, 0)$ — the lower of $20$ and $16$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Where the two slanted lines meet: from $x + y = 16$ we get $x = 16 - y$, so $3(16-y) + 5y = 60$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$48 + 2y = 60$, so $y = 6$ and $x = 10$. The vertex is $(10, 6)$.</span></div>
+      <table>
+        <tr><th>Vertex</th><th>$P = 40x + 60y$</th></tr>
+        <tr><td>$(0, 0)$</td><td>$0$</td></tr>
+        <tr><td>$(16, 0)$</td><td>$640$</td></tr>
+        <tr><td>$(10, 6)$</td><td>$400 + 360 = 760$</td></tr>
+        <tr><td>$(0, 12)$</td><td>$720$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">⑥</span><span>The maximum profit is <strong>£$760$</strong>, making $10$ bookcases and $6$ desks.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span><em>Check the constraints:</em> assembly $3(10)+5(6) = 60$ ✓ (exactly used); finishing $10+6 = 16$ ✓ (exactly used).</span></div>
+      <div class="tip"><strong>Both resources being fully used is typical of the optimum.</strong> If a resource were left over, you could usually make something more.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A minimisation</div>
+    <div class="example-body">
+      <p>A farmer must supply at least $24$ units of nitrogen and at least $16$ units of phosphate. Feed A gives $2$ nitrogen and $2$ phosphate per sack at £$3$; feed B gives $6$ nitrogen and $2$ phosphate per sack at £$5$. Minimise the cost.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $x$ = sacks of A, $y$ = sacks of B. Minimise $C = 3x + 5y$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Nitrogen: $2x + 6y \geqslant 24$, i.e. $x + 3y \geqslant 12$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Phosphate: $2x + 2y \geqslant 16$, i.e. $x + y \geqslant 8$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Both are "at least", so the region is <em>away</em> from the origin and unbounded above.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Vertices: $(12, 0)$ on the $x$-axis (satisfies $x+y \geqslant 8$ ✓); $(0, 8)$ on the $y$-axis (satisfies $x + 3y = 24 \geqslant 12$ ✓).</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The lines meet where $x + 3y = 12$ and $x + y = 8$: subtracting gives $2y = 4$, so $y = 2$ and $x = 6$.</span></div>
+      <table>
+        <tr><th>Vertex</th><th>$C = 3x + 5y$</th></tr>
+        <tr><td>$(12, 0)$</td><td>$36$</td></tr>
+        <tr><td>$(6, 2)$</td><td>$18 + 10 = 28$</td></tr>
+        <tr><td>$(0, 8)$</td><td>$40$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">⑦</span><span>Cheapest is £$28$: $6$ sacks of A and $2$ of B.</span></div>
+      <div class="warn"><strong>For a minimisation the region is unbounded</strong>, so there is no maximum — but the minimum is still at a vertex. Do not look for a fourth corner that does not exist.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – WHOLE NUMBER ANSWERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> When Answers Must Be Whole Numbers</div>
+<div class="section-body">
+
+  <div class="concept">
+    You cannot make $6.67$ bookcases. When the variables count physical objects, the optimum must be a point with whole-number coordinates <em>inside</em> the feasible region.
+  </div>
+
+  <ul class="steps">
+    <li>Find the exact vertex as usual.</li>
+    <li>If it has whole-number coordinates, you are finished.</li>
+    <li>If not, test the nearby whole-number points — checking each one still satisfies <em>every</em> constraint.</li>
+    <li>Choose the best of the valid ones.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Rounding down carefully</div>
+    <div class="example-body">
+      <p>Maximise $P = 5x + 4y$ subject to $2x + 3y \leqslant 13$, $x + y \leqslant 5$, $x, y \geqslant 0$, with $x$ and $y$ whole numbers.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The slanted lines meet where $2x + 3y = 13$ and $x + y = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 5 - y$, so $10 - 2y + 3y = 13$, giving $y = 3$ and $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Happily $(2, 3)$ is already a whole-number point. $P = 10 + 12 = 22$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Other vertices: $(5, 0)$ gives $P = 25$; &nbsp;$(0, 4)$ — from $3y \leqslant 13$, so $y \leqslant 4.33$ — gives $P = 16$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The maximum is $P = 25$ at $(5, 0)$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Verify:</em> $2(5) + 3(0) = 10 \leqslant 13$ ✓ and $5 + 0 = 5 \leqslant 5$ ✓</span></div>
+      <div class="tip">Note that the vertex $(0, 4.33)$ had to be rounded <strong>down</strong> to $(0,4)$ to stay feasible. Rounding up would break the constraint.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Objective function</h4><p>The quantity being optimised.</p></div>
+    <div class="ref-card"><h4>Constraints</h4><p>One inequality per limited resource.</p></div>
+    <div class="ref-card"><h4>Don't forget</h4><p>$x \geqslant 0$, $y \geqslant 0$.</p></div>
+    <div class="ref-card"><h4>Simplify</h4><p>Divide out common factors before plotting.</p></div>
+    <div class="ref-card"><h4>Feasible region</h4><p>The overlap of all the constraints.</p></div>
+    <div class="ref-card"><h4>The key fact</h4><p>The optimum is at a vertex.</p></div>
+    <div class="ref-card"><h4>Vertices</h4><p>Solve boundary lines in pairs — never read them off.</p></div>
+    <div class="ref-card"><h4>Method</h4><p>Tabulate the objective at every vertex.</p></div>
+    <div class="ref-card"><h4>Minimisation</h4><p>"At least" constraints give an unbounded region.</p></div>
+    <div class="ref-card"><h4>Whole numbers</h4><p>Test nearby integer points; recheck all constraints.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Define "objective function".</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The <strong>objective function</strong> is the expression, in the problem's variables, for the quantity being maximised or minimised — for example the profit $P = 40x + 60y$ or the cost $C = 3x + 5y$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A chair needs $2$ m of timber and a table needs $5$ m. There is $40$ m available. Write the constraint.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>With $x$ chairs and $y$ tables: $2x + 5y \leqslant 40$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Evaluate $P = 3x + 7y$ at the vertices $(0,0)$, $(4,0)$, $(2,3)$ and $(0,4)$, and state the maximum.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(0,0)$: $0$</p>
+          <p>$(4,0)$: $12$</p>
+          <p>$(2,3)$: $6 + 21 = 27$</p>
+          <p>$(0,4)$: $28$</p>
+          <p>Maximum $P = 28$ at $(0, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the vertex where $2x + y = 10$ meets $x + 2y = 11$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Double the first: $4x + 2y = 20$.</p>
+          <p>Subtract the second: $3x = 9$, so $x = 3$.</p>
+          <p>Then $y = 10 - 6 = 4$. The vertex is $(3, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Simplify the constraint $15x + 25y \leqslant 300$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Divide by $5$: $3x + 5y \leqslant 60$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Maximise $P = x + y$ subject to $x + 2y \leqslant 8$, $3x + y \leqslant 9$, $x, y \geqslant 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Axis vertices: $(3, 0)$ from $3x \leqslant 9$; $(0, 4)$ from $2y \leqslant 8$.</p>
+          <p>Slanted lines meet: $x + 2y = 8$ and $3x + y = 9$. From the second, $y = 9 - 3x$:</p>
+          <p>$x + 18 - 6x = 8$, so $-5x = -10$ and $x = 2$, $y = 3$.</p>
+          <p>$(0,0)$: $0$; &nbsp;$(3,0)$: $3$; &nbsp;$(2,3)$: $5$; &nbsp;$(0,4)$: $4$</p>
+          <p>Maximum $P = 5$ at $(2, 3)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Minimise $C = 2x + 3y$ subject to $x + y \geqslant 6$, $2x + y \geqslant 8$, $x, y \geqslant 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Axis vertices: $(0, 8)$ from $y \geqslant 8$ — check $x+y = 8 \geqslant 6$ ✓; and $(6, 0)$ from $x \geqslant 6$ — check $2x = 12 \geqslant 8$ ✓</p>
+          <p>Lines meet: subtracting $x+y=6$ from $2x+y=8$ gives $x = 2$, so $y = 4$.</p>
+          <p>$(0,8)$: $24$; &nbsp;$(2,4)$: $4 + 12 = 16$; &nbsp;$(6,0)$: $12$</p>
+          <p>Minimum $C = 12$ at $(6, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain why the optimum of a linear objective function cannot occur strictly inside the feasible region.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>From any interior point you can move a small distance in the direction that increases the objective function, and still remain inside the region.</p>
+          <p>So an interior point can always be improved upon, and therefore cannot be optimal.</p>
+          <p>Moving in that direction repeatedly, you must eventually reach a boundary, and then slide along it to a corner. Hence the optimum lies at a vertex (or along a whole edge, if the objective line happens to be parallel to that edge).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A vertex is found at $\left(\tfrac{7}{2}, \tfrac{9}{2}\right)$, but $x$ and $y$ must be whole numbers. Describe carefully how you would proceed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Test the whole-number points near the vertex: $(3,4)$, $(3,5)$, $(4,4)$ and $(4,5)$.</p>
+          <p>For each, first check it satisfies <strong>every</strong> constraint — some will lie outside the region, because the vertex is a corner and at least one constraint is tight there.</p>
+          <p>Then evaluate the objective function at the surviving points and take the best.</p>
+          <p>You should <em>not</em> simply round the vertex to the nearest integers, because the rounded point may be infeasible.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A bakery makes loaves and rolls. Each loaf needs $500$ g of flour and $10$ minutes of oven time; each roll needs $100$ g of flour and $4$ minutes of oven time. There is $30$ kg of flour and $8$ hours of oven time each day. Loaves sell at a profit of £$1.20$, rolls at £$0.30$.</p>
+      <p>(a) Write down the objective function and the constraints. &nbsp; (b) Find all the vertices of the feasible region. &nbsp; (c) Find the production plan that maximises profit. &nbsp; (d) The bakery is offered extra flour. Explain whether this would increase the maximum profit.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $x$ = loaves and $y$ = rolls.</p>
+          <p><strong>(a)</strong> Maximise $P = 1.2x + 0.3y$.</p>
+          <p>Flour (in grams): $500x + 100y \leqslant 30\,000$, which simplifies to $5x + y \leqslant 300$.</p>
+          <p>Oven (in minutes): $10x + 4y \leqslant 480$, which simplifies to $5x + 2y \leqslant 240$.</p>
+          <p>And $x \geqslant 0$, $y \geqslant 0$.</p>
+          <p><strong>(b)</strong> On the $x$-axis: flour gives $x \leqslant 60$, oven gives $x \leqslant 48$. The binding one is $48$, so $(48, 0)$.</p>
+          <p>On the $y$-axis: flour gives $y \leqslant 300$, oven gives $y \leqslant 120$. The binding one is $120$, so $(0, 120)$.</p>
+          <p>Where the slanted lines meet: subtracting $5x + y = 300$ from $5x + 2y = 240$ gives $y = -60$.</p>
+          <p>A negative $y$ means the lines cross <em>outside</em> the first quadrant, so this is not a vertex of the feasible region.</p>
+          <p>Vertices: $(0,0)$, $(48, 0)$, $(0, 120)$.</p>
+          <p><strong>(c)</strong> $(0,0)$: $P = 0$</p>
+          <p>$(48, 0)$: $P = 1.2 \times 48 = £57.60$</p>
+          <p>$(0, 120)$: $P = 0.3 \times 120 = £36.00$</p>
+          <p>The maximum profit is <strong>£$57.60$</strong>, from $48$ loaves and no rolls.</p>
+          <p><em>Check:</em> flour used $= 48 \times 500 = 24$ kg $\leqslant 30$ kg ✓; oven $= 480$ min $= 8$ h ✓</p>
+          <p><strong>(d)</strong> <strong>No.</strong> At the optimum only $24$ kg of the $30$ kg of flour is used — there is already $6$ kg spare.</p>
+          <p>The binding constraint is <em>oven time</em>, which is fully used. Extra flour cannot be baked, so it would not raise the profit at all. To increase profit the bakery needs more oven capacity, not more flour.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Linear Programming (CG6–CG8) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

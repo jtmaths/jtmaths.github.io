@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reduction to Linear Form &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📉 Reduction to Linear Form</h1>
+  <p>OCR FSMQ Additional Maths · Exponentials and Logarithms (EL4–EL5)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY DO IT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why Reduce to a Straight Line?</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EL4:</strong> convert equations of the form $y = ka^x$ and $y = kx^n$ to a linear form using logarithms. <strong>EL5:</strong> estimate the values of $k$ and $a$, or $k$ and $n$, from graphs.
+  </div>
+
+  <div class="concept">
+    <strong>The reason this is worth doing.</strong> Given a scatter of experimental points, it is easy to judge by eye whether they lie on a <em>straight line</em>, and easy to fit one with a ruler. Judging whether points fit a particular curve is far harder. So we transform the data until the relationship becomes a straight line, fit that line, and transform the answer back.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The target form</div>
+    $Y = mX + c$, &nbsp;where $Y$ and $X$ are the <em>transformed</em> variables
+  </div>
+
+  <div class="warn">
+    <strong>Which transformation you need depends on the model.</strong> An exponential model needs logs of $y$ only; a power model needs logs of <em>both</em>. Identifying the model correctly is the first and most important step.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EXPONENTIAL MODELS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Exponential Model $y = ka^x$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The transformation</div>
+    $y = ka^x$<br>
+    Take logs: &nbsp;$\log y = \log k + x\log a$<br>
+    Compare with $Y = mX + c$: &nbsp;plot $\log y$ against $x$
+  </div>
+
+  <table>
+    <tr><th>Straight-line part</th><th>What it means</th></tr>
+    <tr><td>$Y$-axis</td><td>$\log y$</td></tr>
+    <tr><td>$X$-axis</td><td>$x$ — <em>not</em> transformed</td></tr>
+    <tr><td>Gradient $m$</td><td>$\log a$, so $a = 10^m$</td></tr>
+    <tr><td>Intercept $c$</td><td>$\log k$, so $k = 10^c$</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="440" height="200" viewBox="0 0 440 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="160" x2="190" y2="160" stroke="#475569" stroke-width="2"/>
+      <line x1="45" y1="20" x2="45" y2="175" stroke="#475569" stroke-width="2"/>
+      <path d="M 50 156 C 100 150 135 120 175 25" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <text x="110" y="192" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle" font-weight="bold">y against x: a curve</text>
+      <text x="215" y="95" font-family="Arial" font-size="24" fill="#7c3aed" text-anchor="middle">&rarr;</text>
+      <text x="215" y="118" font-family="Arial" font-size="10" fill="#6d28d9" text-anchor="middle">take log y</text>
+      <line x1="260" y1="160" x2="420" y2="160" stroke="#475569" stroke-width="2"/>
+      <line x1="275" y1="20" x2="275" y2="175" stroke="#475569" stroke-width="2"/>
+      <line x1="280" y1="150" x2="410" y2="30" stroke="#22c55e" stroke-width="3"/>
+      <g fill="#16a34a">
+        <circle cx="298" cy="133" r="3.5"/><circle cx="325" cy="108" r="3.5"/>
+        <circle cx="352" cy="83" r="3.5"/><circle cx="380" cy="57" r="3.5"/>
+      </g>
+      <text x="340" y="192" font-family="Arial" font-size="11" fill="#166534" text-anchor="middle" font-weight="bold">log y against x: a straight line</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding $k$ and $a$ from a graph</div>
+    <div class="example-body">
+      <p>Plotting $\log y$ against $x$ gives a straight line of gradient $0.3$ and intercept $0.7$. Find $k$ and $a$, and write down the model.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Comparing with $\log y = \log k + x \log a$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\log a = 0.3$, so $a = 10^{0.3} = 1.995$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\log k = 0.7$, so $k = 10^{0.7} = 5.012$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y \approx 5.01 \times 1.99^x$, or to sensible accuracy $y \approx 5 \times 2^x$.</span></div>
+      <div class="tip"><strong>Undo the logarithm with a power of $10$.</strong> The gradient and intercept are logarithms, so they must both be raised as powers of $10$ before they mean anything in the original model.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Starting from data</div>
+    <div class="example-body">
+      <p>The following data is believed to fit $y = ka^x$. Confirm this and find $k$ and $a$.</p>
+      <table>
+        <tr><th>$x$</th><th>$1$</th><th>$2$</th><th>$3$</th><th>$4$</th></tr>
+        <tr><td>$y$</td><td>$6$</td><td>$18$</td><td>$54$</td><td>$162$</td></tr>
+        <tr><td>$\log y$</td><td>$0.778$</td><td>$1.255$</td><td>$1.732$</td><td>$2.210$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>The differences in $\log y$ are $0.477$, $0.477$, $0.478$ — <strong>constant</strong>, so $\log y$ against $x$ is a straight line ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Gradient $= 0.477$, so $a = 10^{0.477} = 3.00$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Intercept: extend back to $x = 0$. From $(1, 0.778)$ with gradient $0.477$: $c = 0.778 - 0.477 = 0.301$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$k = 10^{0.301} = 2.00$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$y = 2 \times 3^x$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Check:</em> $x=1 \to 6$ ✓, $x=4 \to 2 \times 81 = 162$ ✓</span></div>
+      <div class="tip"><strong>Constant differences in $\log y$ confirm the model.</strong> This is the neatest way to <em>verify</em> an exponential relationship, and it also gives the gradient directly.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – POWER MODELS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Power Model $y = kx^n$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The transformation</div>
+    $y = kx^n$<br>
+    Take logs: &nbsp;$\log y = \log k + n\log x$<br>
+    Compare with $Y = mX + c$: &nbsp;plot $\log y$ against $\log x$
+  </div>
+
+  <table>
+    <tr><th>Straight-line part</th><th>What it means</th></tr>
+    <tr><td>$Y$-axis</td><td>$\log y$</td></tr>
+    <tr><td>$X$-axis</td><td>$\log x$ — <strong>also</strong> transformed</td></tr>
+    <tr><td>Gradient $m$</td><td>$n$ directly — no undoing needed</td></tr>
+    <tr><td>Intercept $c$</td><td>$\log k$, so $k = 10^c$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The one distinction to hold on to</div>
+    <strong>Exponential</strong> $ka^x$: plot $\log y$ against $x$; the gradient is $\log a$<br>
+    <strong>Power</strong> $kx^n$: plot $\log y$ against $\log x$; the gradient <em>is</em> $n$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A power model from a graph</div>
+    <div class="example-body">
+      <p>Plotting $\log y$ against $\log x$ gives a straight line of gradient $1.5$ and intercept $0.6$. Find $n$ and $k$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The gradient is $n$ directly, so $n = 1.5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\log k = 0.6$, so $k = 10^{0.6} = 3.98$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y \approx 3.98\, x^{1.5}$</span></div>
+      <div class="warn"><strong>Do not raise the gradient to a power of $10$ here.</strong> In a power model the gradient is already the exponent $n$. Only the <em>intercept</em> needs undoing. Mixing these two cases up is the commonest error in this topic.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — From data, with a physical interpretation</div>
+    <div class="example-body">
+      <p>A pendulum's period $T$ seconds is measured against its length $L$ metres. Test the model $T = kL^n$ and find $k$ and $n$.</p>
+      <table>
+        <tr><th>$L$</th><th>$0.25$</th><th>$1$</th><th>$4$</th></tr>
+        <tr><td>$T$</td><td>$1.00$</td><td>$2.00$</td><td>$4.00$</td></tr>
+        <tr><td>$\log L$</td><td>$-0.602$</td><td>$0$</td><td>$0.602$</td></tr>
+        <tr><td>$\log T$</td><td>$0$</td><td>$0.301$</td><td>$0.602$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Gradient: $\dfrac{0.602 - 0}{0.602 - (-0.602)} = \dfrac{0.602}{1.204} = 0.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So $n = 0.5$, i.e. $T \propto \sqrt{L}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Intercept at $\log L = 0$: $\log T = 0.301$, so $k = 10^{0.301} = 2.00$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T = 2\sqrt{L}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> $L = 4$ gives $T = 2 \times 2 = 4$ ✓</span></div>
+      <div class="tip"><strong>A gradient of $\tfrac12$ means a square-root law.</strong> This is exactly the physics result $T = 2\pi\sqrt{L/g}$, whose constant $\tfrac{2\pi}{\sqrt{9.8}} = 2.006$ — a striking confirmation that the log–log method recovers real physical laws from raw measurements.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CHOOSING THE MODEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Deciding Which Model Fits</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Tabulate $x$, $y$, $\log x$ and $\log y$.</li>
+    <li>Check whether $\log y$ against $x$ looks straight — if so, the model is exponential.</li>
+    <li>Check whether $\log y$ against $\log x$ looks straight — if so, the model is a power law.</li>
+    <li>Fit the straight line, read the gradient and intercept, and convert back.</li>
+    <li>Test the model against a data point you did not use.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Distinguishing the two</div>
+    <div class="example-body">
+      <p>For each set of data, decide whether the relationship is exponential or a power law.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Set A:</strong> $(1,3), (2,9), (3,27), (4,81)$. Each $y$ is $3$ times the last, at equal $x$ steps.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Equal <em>additive</em> steps in $x$ giving equal <em>multiplicative</em> steps in $y$ is the signature of an <strong>exponential</strong>: $y = 3^x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Set B:</strong> $(1,2), (2,8), (3,18), (4,32)$. Here $y \div x^2 = 2$ every time.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>That constant ratio to a power of $x$ is the signature of a <strong>power law</strong>: $y = 2x^2$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Note that doubling $x$ in Set B multiplies $y$ by $4$ — a fixed factor for a fixed <em>ratio</em> of $x$, rather than a fixed difference.</span></div>
+      <div class="tip"><strong>The quick test:</strong> if equal <em>steps</em> in $x$ multiply $y$ by a constant, it is exponential. If equal <em>ratios</em> of $x$ multiply $y$ by a constant, it is a power law.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Target</h4><p>$Y = mX + c$.</p></div>
+    <div class="ref-card"><h4>$y = ka^x$</h4><p>$\log y = \log k + x\log a$.</p></div>
+    <div class="ref-card"><h4>Plot</h4><p>$\log y$ against $x$.</p></div>
+    <div class="ref-card"><h4>Then</h4><p>$a = 10^{\text{gradient}}$, $k = 10^{\text{intercept}}$.</p></div>
+    <div class="ref-card"><h4>$y = kx^n$</h4><p>$\log y = \log k + n\log x$.</p></div>
+    <div class="ref-card"><h4>Plot</h4><p>$\log y$ against $\log x$.</p></div>
+    <div class="ref-card"><h4>Then</h4><p>$n = $ gradient directly; $k = 10^{\text{intercept}}$.</p></div>
+    <div class="ref-card"><h4>The key difference</h4><p>Power: gradient needs no undoing.</p></div>
+    <div class="ref-card"><h4>Verifying</h4><p>Constant differences in $\log y$ $\Rightarrow$ exponential.</p></div>
+    <div class="ref-card"><h4>Always</h4><p>Test the model on an unused point.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>What should be plotted against what to linearise $y = ka^x$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Plot $\log y$ (vertical) against $x$ (horizontal).</p>
+          <p>Only $y$ is transformed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>What should be plotted against what to linearise $y = kx^n$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Plot $\log y$ against $\log x$ — both variables are transformed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Plotting $\log y$ against $x$ gives gradient $0.5$ and intercept $1$. Find $k$ and $a$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = 10^{0.5} = 3.16$ (3 s.f.)</p>
+          <p>$k = 10^1 = 10$</p>
+          <p>$y = 10 \times 3.16^x$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Plotting $\log y$ against $\log x$ gives gradient $2$ and intercept $0.48$. Find $k$ and $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n = 2$ (the gradient directly).</p>
+          <p>$k = 10^{0.48} = 3.02$ (3 s.f.)</p>
+          <p>$y \approx 3x^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write $y = 5 \times 4^x$ in linear form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log y = \log 5 + x\log 4$</p>
+          <p>$= 0.699 + 0.602x$</p>
+          <p>A straight line of gradient $0.602$ and intercept $0.699$ when $\log y$ is plotted against $x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Write $y = 3x^4$ in linear form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log y = \log 3 + 4\log x$</p>
+          <p>$= 0.477 + 4\log x$</p>
+          <p>Gradient $4$, intercept $0.477$, plotting $\log y$ against $\log x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A log–log plot has gradient $0.5$. What does this tell you about the relationship?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n = 0.5$, so $y = kx^{0.5} = k\sqrt{x}$.</p>
+          <p>The relationship is a <strong>square-root law</strong>: quadrupling $x$ doubles $y$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Data gives $\log y$ values of $0.5$, $0.8$, $1.1$, $1.4$ at $x = 1, 2, 3, 4$. Find the model.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Differences in $\log y$ are all $0.3$, so plotting against $x$ gives a straight line of gradient $0.3$ — an exponential model.</p>
+          <p>$a = 10^{0.3} = 2.00$</p>
+          <p>Intercept: from $(1, 0.5)$ back to $x=0$ gives $c = 0.5 - 0.3 = 0.2$, so $k = 10^{0.2} = 1.58$.</p>
+          <p>$y \approx 1.58 \times 2^x$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why plotting $\log y$ against $x$ for a power-law relationship would <em>not</em> give a straight line.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>For $y = kx^n$, taking logarithms gives $\log y = \log k + n\log x$.</p>
+          <p>The right-hand side involves $\log x$, not $x$. Plotting against $x$ would therefore graph $\log k + n\log x$ against $x$, which is still a curve (a logarithmic one).</p>
+          <p>Only plotting against $\log x$ makes the right-hand side linear in the horizontal variable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The braking distance $d$ metres of a car at speed $v$ mph is recorded:</p>
+      <table>
+        <tr><th>$v$</th><th>$20$</th><th>$40$</th><th>$60$</th><th>$80$</th></tr>
+        <tr><td>$d$</td><td>$6.0$</td><td>$24.0$</td><td>$54.0$</td><td>$96.0$</td></tr>
+      </table>
+      <p>(a) Explain why a power model $d = kv^n$ is more likely than an exponential one. &nbsp; (b) Complete a table of $\log v$ and $\log d$, and find $n$ and $k$. &nbsp; (c) State the model and check it against a data point. &nbsp; (d) Use it to predict the braking distance at $70$ mph, and comment on the reliability of that prediction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Doubling $v$ from $20$ to $40$ multiplies $d$ by $4$; doubling again from $40$ to $80$ multiplies $d$ by $4$ once more ($24 \to 96$).</p>
+          <p>A constant factor for a constant <em>ratio</em> of $v$ is the signature of a <strong>power law</strong>. An exponential would need a constant factor for a constant <em>difference</em> in $v$, and here the step from $20$ to $40$ ($\times 4$) differs from $40$ to $60$ ($\times 2.25$).</p>
+          <p><strong>(b)</strong></p>
+          <table>
+            <tr><th>$v$</th><th>$20$</th><th>$40$</th><th>$60$</th><th>$80$</th></tr>
+            <tr><td>$\log v$</td><td>$1.301$</td><td>$1.602$</td><td>$1.778$</td><td>$1.903$</td></tr>
+            <tr><td>$\log d$</td><td>$0.778$</td><td>$1.380$</td><td>$1.732$</td><td>$1.982$</td></tr>
+          </table>
+          <p>Gradient, using the first and last points:</p>
+          <p>$n = \dfrac{1.982 - 0.778}{1.903 - 1.301} = \dfrac{1.204}{0.602} = 2.00$</p>
+          <p>Intercept: from $(1.301, 0.778)$ with gradient $2$:</p>
+          <p>$c = 0.778 - 2(1.301) = 0.778 - 2.602 = -1.824$</p>
+          <p>$k = 10^{-1.824} = 0.0150$</p>
+          <p><strong>(c)</strong> $d = 0.015\,v^2$</p>
+          <p><em>Check at $v = 60$ (a point not used for the gradient):</em> $0.015 \times 3600 = 54.0$ ✓ — exactly the recorded value.</p>
+          <p><strong>(d)</strong> At $v = 70$: $d = 0.015 \times 4900 = 73.5$ m.</p>
+          <p><strong>Reliability:</strong> this is an <em>interpolation</em> — $70$ mph lies between the data values $60$ and $80$ — and the model fitted every recorded point exactly. So the prediction is well founded.</p>
+          <p>Extrapolating far beyond the data would be much less safe: at $150$ mph the model gives $337$ m, but tyre and brake behaviour changes at high speed, so the simple $v^2$ law may no longer hold. Predictions inside the range of the data are always more trustworthy than those outside it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Reduction to Linear Form (EL4–EL5) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

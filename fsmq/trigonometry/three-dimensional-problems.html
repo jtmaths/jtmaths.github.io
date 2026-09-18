@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2-D and 3-D Problems &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧊 2-D and 3-D Problems</h1>
+  <p>OCR FSMQ Additional Maths · Trigonometry (PT6)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE GOLDEN RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Golden Rule of 3-D Trigonometry</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>PT6:</strong> apply Pythagoras' Theorem and trigonometry to 2- and 3-dimensional problems. The specification's own example is "find the angle of greatest slope".
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The golden rule</div>
+    Never do trigonometry on a 3-D picture.<br>
+    <strong>Identify the right triangle, redraw it flat and on its own, label it, then solve.</strong>
+  </div>
+
+  <div class="concept">
+    A 3-D diagram is drawn in perspective, so angles and lengths on the page are distorted. A right angle can look like $60°$. Once you have extracted the relevant triangle onto a fresh 2-D sketch, every ordinary technique works.
+  </div>
+
+  <ul class="steps">
+    <li>Mark on the 3-D diagram the points involved in the quantity you want.</li>
+    <li>Find a triangle containing those points — often with one vertical edge.</li>
+    <li>Redraw that triangle separately, marking every length and angle you know.</li>
+    <li>You may need a "bridging" length first — usually a face diagonal found by Pythagoras.</li>
+    <li>Solve with SOHCAHTOA, Pythagoras, or the sine and cosine rules.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>Do not round the bridging length.</strong> If a face diagonal is $\sqrt{61}$, keep it as $\sqrt{61}$ (or in a calculator memory) for the next step. Rounding to $7.81$ early can move the final angle by a whole degree.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CUBOIDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Diagonals of a Cuboid</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="420" height="250" viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,180 240,180 300,130 120,130" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="60,180 240,180 240,80 60,80" fill="#c7d2fe" fill-opacity=".45" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="240,180 300,130 300,30 240,80" fill="#ddd6fe" fill-opacity=".55" stroke="#4f46e5" stroke-width="2"/>
+      <polygon points="60,80 240,80 300,30 120,30" fill="#f5f3ff" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="60" y1="180" x2="240" y2="180" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <line x1="60" y1="180" x2="300" y2="130" stroke="#22c55e" stroke-width="2.5"/>
+      <line x1="60" y1="180" x2="300" y2="30" stroke="#ef4444" stroke-width="3"/>
+      <circle cx="60" cy="180" r="4" fill="#1e1e2e"/><circle cx="300" cy="30" r="4" fill="#1e1e2e"/>
+      <circle cx="300" cy="130" r="4" fill="#1e1e2e"/>
+      <text x="48" y="196" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">A</text>
+      <text x="306" y="142" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">C</text>
+      <text x="306" y="26" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">G</text>
+      <text x="160" y="164" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">face diagonal AC</text>
+      <text x="196" y="96" font-family="Arial" font-size="11" fill="#b91c1c" font-weight="bold">space diagonal AG</text>
+      <text x="210" y="240" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Find AC first (2-D Pythagoras on the base), then use triangle ACG</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The two-stage Pythagoras</div>
+    Base diagonal: &nbsp;$AC^2 = a^2 + b^2$<br>
+    Space diagonal: &nbsp;$AG^2 = AC^2 + c^2 = a^2 + b^2 + c^2$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A cuboid's space diagonal and angle</div>
+    <div class="example-body">
+      <p>A cuboid measures $6$ cm by $4$ cm by $3$ cm. Find the length of the space diagonal, and the angle it makes with the base.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Base diagonal: $AC = \sqrt{6^2 + 4^2} = \sqrt{52} = 7.2111$ cm</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Space diagonal: $AG = \sqrt{52 + 3^2} = \sqrt{61} = 7.8102$ cm, so $7.81$ cm (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Now redraw triangle $ACG$ flat.</strong> It is right-angled at $C$, with base $AC = \sqrt{52}$ and height $CG = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\tan(\angle GAC) = \dfrac{3}{\sqrt{52}} = \dfrac{3}{7.2111} = 0.41603$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\angle GAC = 22.6°$ (1 d.p.)</span></div>
+      <div class="tip"><strong>The formula $\sqrt{a^2+b^2+c^2}$</strong> gives the space diagonal in one step, but you still need $AC$ separately for the angle — so compute it anyway.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — The angle between a diagonal and an edge</div>
+    <div class="example-body">
+      <p>For the same cuboid, find the angle between the space diagonal $AG$ and the vertical edge $CG$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Same triangle $ACG$, right-angled at $C$, but now the angle at $G$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tan(\angle AGC) = \dfrac{AC}{CG} = \dfrac{7.2111}{3} = 2.4037$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\angle AGC = 67.4°$ (1 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Check:</em> $22.6° + 67.4° = 90°$ ✓ — the two non-right angles of the triangle.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PYRAMIDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Pyramids</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The key construction</div>
+    Drop a perpendicular from the apex to the centre of the base.<br>
+    That vertical line is the <strong>height</strong>, and it forms a right angle with every line in the base.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A square-based pyramid</div>
+    <div class="example-body">
+      <p>A pyramid has a square base of side $8$ cm and four equal sloping edges of length $10$ cm. Find (a) the vertical height, (b) the angle a sloping edge makes with the base, (c) the angle a sloping <em>face</em> makes with the base.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> Half the base diagonal: the full diagonal is $\sqrt{8^2+8^2} = \sqrt{128} = 11.314$, so half is $5.6569$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Redraw the triangle: apex, base centre, base corner. Right-angled at the centre, hypotenuse $10$, base $5.6569$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$h = \sqrt{100 - 32} = \sqrt{68} = 8.2462$, so $8.25$ cm (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>(b)</strong> In that same triangle, $\cos\theta = \dfrac{5.6569}{10} = 0.56569$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\theta = 55.6°$ (1 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><strong>(c)</strong> For a <em>face</em>, use the midpoint of a base edge instead of a corner. Its distance from the centre is half the side, $4$ cm.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$\tan\phi = \dfrac{h}{4} = \dfrac{8.2462}{4} = 2.0616$</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>$\phi = 64.1°$ (1 d.p.)</span></div>
+      <div class="warn"><strong>Edge angle and face angle are different.</strong> The face angle ($64.1°$) is steeper than the edge angle ($55.6°$), because the midpoint of a side is closer to the centre than a corner is. Read the question very carefully.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – GREATEST SLOPE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Angle of Greatest Slope</div>
+<div class="section-body">
+
+  <div class="concept">
+    On a sloping plane, different directions climb at different rates. Walking along a contour is level; walking straight up the fall line is steepest. The <strong>angle of greatest slope</strong> is the angle of that steepest direction.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">How to find it</div>
+    The line of greatest slope runs <strong>perpendicular to the horizontal contour</strong> of the plane.<br>
+    $\tan(\text{greatest slope}) = \dfrac{\text{vertical rise}}{\text{shortest horizontal distance}}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A ramp</div>
+    <div class="example-body">
+      <p>A rectangular ramp $ABCD$ has $AB$ horizontal on the ground, of length $5$ m. The opposite edge $DC$ is also horizontal but raised $2$ m, and the ramp's sloping width (from $AB$ to $DC$) is $6$ m. Find the angle of greatest slope.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AB$ and $DC$ are both horizontal, so they are the contours. The line of greatest slope is perpendicular to them — that is, straight across the $6$ m width.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Redraw the vertical triangle: hypotenuse $6$ m (up the slope), vertical rise $2$ m.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin\theta = \dfrac{2}{6} = 0.33333$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\theta = 19.5°$ (1 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The horizontal distance covered is $\sqrt{36-4} = \sqrt{32} = 5.657$ m, and indeed $\tan^{-1}\left(\tfrac{2}{5.657}\right) = 19.5°$ ✓</span></div>
+      <div class="tip"><strong>Walking along $AB$ gives a slope of $0°$</strong> — it is level. Any diagonal route is somewhere between $0°$ and $19.5°$. That is why $19.5°$ is the <em>greatest</em> slope.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A diagonal route</div>
+    <div class="example-body">
+      <p>On the same ramp, a person walks from $A$ diagonally to $C$. Find the angle of elevation of this route.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Horizontally, $A$ to $C$ covers $5$ m along the contour and $5.657$ m across.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Horizontal distance $= \sqrt{5^2 + 5.657^2} = \sqrt{25 + 32} = \sqrt{57} = 7.550$ m</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The rise is still $2$ m.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\tan\theta = \dfrac{2}{7.550} = 0.26489$, so $\theta = 14.8°$ (1 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>As expected, $14.8° < 19.5°$ — the diagonal is a gentler climb, which is why paths zigzag up hills.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Golden rule</h4><p>Redraw the triangle flat before calculating.</p></div>
+    <div class="ref-card"><h4>Bridging length</h4><p>Usually a face diagonal, by Pythagoras.</p></div>
+    <div class="ref-card"><h4>Keep it exact</h4><p>Store surds; do not round mid-problem.</p></div>
+    <div class="ref-card"><h4>Space diagonal</h4><p>$\sqrt{a^2+b^2+c^2}$.</p></div>
+    <div class="ref-card"><h4>Pyramid height</h4><p>Apex to base centre, perpendicular.</p></div>
+    <div class="ref-card"><h4>Edge angle</h4><p>Use half the base <em>diagonal</em>.</p></div>
+    <div class="ref-card"><h4>Face angle</h4><p>Use half the base <em>side</em>.</p></div>
+    <div class="ref-card"><h4>Greatest slope</h4><p>Perpendicular to the contour.</p></div>
+    <div class="ref-card"><h4>Diagonal routes</h4><p>Always gentler than the greatest slope.</p></div>
+    <div class="ref-card"><h4>Elevation</h4><p>$\tan\theta = \dfrac{\text{rise}}{\text{horizontal distance}}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the length of the space diagonal of a cube of side $5$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{25+25+25} = \sqrt{75} = 5\sqrt3 = 8.66$ cm (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A cuboid is $9$ cm by $12$ cm by $8$ cm. Find the length of the base diagonal of the $9 \times 12$ face.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{81 + 144} = \sqrt{225} = 15$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For the cuboid in Question 2, find the space diagonal.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{15^2 + 8^2} = \sqrt{225 + 64} = \sqrt{289} = 17$ cm</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>For the same cuboid, find the angle the space diagonal makes with the $9 \times 12$ base.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In the right-angled triangle with base $15$ and height $8$:</p>
+          <p>$\tan\theta = \dfrac{8}{15} = 0.53333$</p>
+          <p>$\theta = 28.1°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the angle a space diagonal of a cube makes with the base.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Take side $1$. Base diagonal $= \sqrt2$, height $= 1$.</p>
+          <p>$\tan\theta = \dfrac{1}{\sqrt2} = 0.70711$</p>
+          <p>$\theta = 35.3°$ (1 d.p.) — the same for every cube, whatever its size.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A ramp rises $1.5$ m over a sloping length of $9$ m. Find its angle of slope.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin\theta = \dfrac{1.5}{9} = 0.16667$</p>
+          <p>$\theta = 9.6°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A pyramid has a square base of side $6$ cm and vertical height $4$ cm. Find the length of a sloping edge.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Base diagonal $= \sqrt{36+36} = \sqrt{72} = 8.4853$, so half is $4.2426$ cm.</p>
+          <p>Sloping edge $= \sqrt{4.2426^2 + 4^2} = \sqrt{18 + 16} = \sqrt{34}$</p>
+          <p>$= 5.83$ cm (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>For the pyramid in Question 7, find the angle a sloping face makes with the base.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>For a face, use half the <em>side</em>: $3$ cm.</p>
+          <p>$\tan\phi = \dfrac{4}{3} = 1.33333$</p>
+          <p>$\phi = 53.1°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A vertical flagpole is held by a wire from its top to a point $7$ m from its base. The wire is $12$ m long. Find the height of the pole and the angle the wire makes with the ground.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$h = \sqrt{144 - 49} = \sqrt{95} = 9.75$ m (3 s.f.)</p>
+          <p>$\cos\theta = \dfrac{7}{12} = 0.58333$, so $\theta = 54.3°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A rectangular field $ABCD$ lies on a hillside. $AB = 40$ m runs horizontally along a contour. The edge $BC = 30$ m runs directly up the slope, rising $9$ m vertically from $B$ to $C$.</p>
+      <p>(a) Find the angle of greatest slope of the field. &nbsp; (b) Find the horizontal distance from $B$ to $C$. &nbsp; (c) Find the straight-line distance $AC$. &nbsp; (d) Find the angle of elevation of $C$ from $A$, and explain why it is smaller than the answer to (a).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $BC$ runs directly up the slope, so it <em>is</em> the line of greatest slope.</p>
+          <p>$\sin\theta = \dfrac{9}{30} = 0.3$</p>
+          <p>$\theta = 17.5°$ (1 d.p.)</p>
+          <p><strong>(b)</strong> Let $B'$ be the point directly below $C$ at the level of $AB$.</p>
+          <p>$BB' = \sqrt{30^2 - 9^2} = \sqrt{900 - 81} = \sqrt{819} = 28.618$ m, so $28.6$ m (3 s.f.).</p>
+          <p><strong>(c)</strong> $AB$ is horizontal and perpendicular to the direction of $BB'$ (since $AB$ follows a contour and $BB'$ runs directly away from it).</p>
+          <p>So the horizontal distance from $A$ to the point below $C$ is</p>
+          <p>$\sqrt{40^2 + 819} = \sqrt{1600 + 819} = \sqrt{2419} = 49.183$ m</p>
+          <p>Then $AC = \sqrt{2419 + 9^2} = \sqrt{2500} = 50$ m exactly.</p>
+          <p><strong>(d)</strong> $\tan(\text{elevation}) = \dfrac{9}{49.183} = 0.18299$</p>
+          <p>Elevation $= 10.4°$ (1 d.p.)</p>
+          <p>It is smaller because the route from $A$ to $C$ is a <em>diagonal</em> across the slope, not straight up it. The same $9$ m of climb is spread over $49.2$ m of horizontal travel instead of $28.6$ m, so the average gradient is gentler.</p>
+          <p>Only the direction perpendicular to the contours achieves the greatest slope; every other direction on the plane is less steep, and moving along a contour ($A$ to $B$) is not a climb at all.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  2-D and 3-D Problems (PT6) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

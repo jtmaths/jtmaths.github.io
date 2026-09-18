@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting Up and Solving Equations &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Setting Up and Solving Equations</h1>
+  <p>OCR FSMQ Additional Maths · Algebra (AL6)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT AL6 ASKS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What This Statement Asks</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>AL6:</strong> set up <em>and</em> solve problems leading to linear, quadratic and cubic equations in one unknown, and to simultaneous equations in two unknowns. The specification adds that problems "could be set in mathematical or non-mathematical contexts".
+  </div>
+
+  <div class="tip">
+    <strong>"Set up" carries as many marks as "solve".</strong> In a worded problem, define your variable in writing — "let $x$ be the number of adult tickets" — before you write any algebra. Examiners credit that line.
+  </div>
+
+  <ul class="steps">
+    <li>Read the question twice; identify the quantity you are asked for.</li>
+    <li>Define a letter for it, with units.</li>
+    <li>Translate each sentence into an equation.</li>
+    <li>Solve, choosing the appropriate method.</li>
+    <li>Check the answer against the <em>original words</em>, and reject impossible solutions.</li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – LINEAR EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Linear Equations</div>
+<div class="section-body">
+
+  <p>At this level linear equations rarely appear on their own — they arrive wrapped in a context, with fractions or brackets.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Unknown on both sides, with fractions</div>
+    <div class="example-body">
+      <p>Solve $\dfrac{2x - 1}{3} = \dfrac{x + 4}{5}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cross-multiply: $5(2x-1) = 3(x+4)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$10x - 5 = 3x + 12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$7x = 17$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = \dfrac{17}{7}$</span></div>
+      <div class="tip">Leave it as an exact fraction unless the question asks for a decimal. An <em>exact</em> answer is never rounded.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Setting one up</div>
+    <div class="example-body">
+      <p>A taxi charges a fixed £$3.50$ plus £$1.20$ per mile. A journey cost £$15.50$. How long was it?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the journey be $m$ miles.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3.50 + 1.20m = 15.50$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$1.20m = 12.00$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$m = 10$ miles.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – QUADRATIC EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Quadratic Equations — Choosing a Method</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Situation</th><th>Best method</th></tr>
+    <tr><td>Factorises easily over the integers</td><td>Factorise</td></tr>
+    <tr><td>No middle term, e.g. $x^2 = 7$</td><td>Square-root both sides ($\pm$!)</td></tr>
+    <tr><td>Exact answer wanted, or vertex needed</td><td>Complete the square</td></tr>
+    <tr><td>Nothing obvious, or ugly numbers</td><td>The formula</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The formula and the discriminant</div>
+    $x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$, &nbsp;where $\Delta = b^2 - 4ac$<br>
+    $\Delta > 0$: two roots &nbsp;&middot;&nbsp; $\Delta = 0$: one repeated root &nbsp;&middot;&nbsp; $\Delta < 0$: no real roots
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Rearrange before you solve</div>
+    <div class="example-body">
+      <p>Solve $x(x + 3) = 4x + 6$, giving exact answers.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expand: $x^2 + 3x = 4x + 6$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Collect to one side: $x^2 - x - 6 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Factorise: $(x-3)(x+2) = 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 3$ or $x = -2$</span></div>
+      <div class="warn"><strong>Never divide by $x$</strong> to "simplify" $x(x+3) = 4x+6$. You would lose a root and the marks with it. Always move everything to one side first.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using the discriminant</div>
+    <div class="example-body">
+      <p>Find the values of $k$ for which $x^2 + kx + 4 = 0$ has exactly one solution.</p>
+      <div class="step-row"><span class="arrow">①</span><span>One solution means $\Delta = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$k^2 - 4(1)(4) = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k^2 = 16$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$k = 4$ or $k = -4$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CUBIC EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Cubic Equations</div>
+<div class="section-body">
+
+  <p>Cubics are new at this level. The route is always the same: find one root by the factor theorem, divide out, then solve the quadratic that remains.</p>
+
+  <ul class="steps">
+    <li>Rearrange to $\mathrm{f}(x) = 0$.</li>
+    <li>Test factors of the constant term until $\mathrm{f}(a) = 0$.</li>
+    <li>Divide $\mathrm{f}(x)$ by $(x-a)$.</li>
+    <li>Solve the resulting quadratic.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 &mdash; A cubic in context</div>
+    <div class="example-body">
+      <p>A cuboid has height $x$ cm, width $(x+1)$ cm and length $(x+4)$ cm. Its volume is $84$ cm&sup3;. Find $x$.</p>
+      <div class="step-row"><span class="arrow">&#9312;</span><span>$x(x+1)(x+4) = 84$</span></div>
+      <div class="step-row"><span class="arrow">&#9313;</span><span>Expand: $x\left(x^2 + 5x + 4\right) = x^3 + 5x^2 + 4x$</span></div>
+      <div class="step-row"><span class="arrow">&#9314;</span><span>$x^3 + 5x^2 + 4x - 84 = 0$</span></div>
+      <div class="step-row"><span class="arrow">&#9315;</span><span>Test factors of $84$. $\mathrm{f}(3) = 27 + 45 + 12 - 84 = 0$ &#10003; so $(x-3)$ is a factor.</span></div>
+      <div class="step-row"><span class="arrow">&#9316;</span><span>Dividing gives $(x-3)\left(x^2 + 8x + 28\right) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">&#9317;</span><span>The quadratic has $\Delta = 64 - 112 = -48 < 0$, so it contributes no real roots.</span></div>
+      <div class="step-row"><span class="arrow">&#9318;</span><span>$x = 3$ cm, giving a $3 \times 4 \times 7$ cuboid. <em>Check:</em> $3 \times 4 \times 7 = 84$ &#10003;</span></div>
+      <div class="tip"><strong>Why check the discriminant?</strong> It shows $x=3$ is the <em>only</em> answer, so you have not missed a second cuboid. Stopping at the first root leaves the question incompletely answered.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — One that does factorise</div>
+    <div class="example-body">
+      <p>Solve $x^3 + 2x^2 - 13x + 10 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Try $x = 1$: $1 + 2 - 13 + 10 = 0$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide by $(x-1)$: quotient $x^2 + 3x - 10$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 + 3x - 10 = (x+5)(x-2)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 1$, $x = 2$ or $x = -5$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SIMULTANEOUS EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Simultaneous Equations</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Two linear equations</div>
+    <strong>Elimination:</strong> scale one or both, then add or subtract to remove a variable
+  </div>
+
+  <div class="formula-box">
+    <div class="label">One linear, one quadratic</div>
+    <strong>Substitution:</strong> rearrange the linear one, substitute into the quadratic
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two linear equations</div>
+    <div class="example-body">
+      <p>Solve $3x + 4y = 18$ and $5x - 2y = 4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Double the second: $10x - 4y = 8$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Add to the first: $13x = 26$, so $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Substitute: $6 + 4y = 18$, so $y = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Check in the <em>other</em> equation: $5(2) - 2(3) = 4$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — One linear, one quadratic</div>
+    <div class="example-body">
+      <p>Solve $y = 2x - 1$ and $x^2 + y^2 = 25$. Interpret the answer geometrically.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Substitute: $x^2 + (2x-1)^2 = 25$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x^2 + 4x^2 - 4x + 1 = 25$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5x^2 - 4x - 24 = 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$(5x + 12)(x - 2) = 0$, so $x = -\tfrac{12}{5}$ or $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x = 2 \Rightarrow y = 3$; &nbsp;$x = -2.4 \Rightarrow y = -5.8$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The two solutions are the points where the line <strong>cuts the circle</strong> of radius $5$ centred at the origin: $(2, 3)$ and $(-2.4, -5.8)$.</span></div>
+      <div class="warn"><strong>Pair them up correctly.</strong> Each $x$ goes with its own $y$. Writing "$x = 2$ or $-2.4$, $y = 3$ or $-5.8$" without pairing loses marks.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>The discriminant tells you the geometry.</strong> Two solutions: the line cuts the curve. One solution: it is a <em>tangent</em>. None: they never meet. This is a favourite FSMQ question.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Define first</h4><p>Write "let $x$ be…" with units.</p></div>
+    <div class="ref-card"><h4>Quadratics</h4><p>Everything to one side, $=0$, then choose a method.</p></div>
+    <div class="ref-card"><h4>Never divide by $x$</h4><p>You lose the root $x=0$.</p></div>
+    <div class="ref-card"><h4>Discriminant</h4><p>$b^2-4ac$ counts the real roots.</p></div>
+    <div class="ref-card"><h4>Cubics</h4><p>Factor theorem, divide, solve the quadratic.</p></div>
+    <div class="ref-card"><h4>Two linear</h4><p>Eliminate by scaling and adding.</p></div>
+    <div class="ref-card"><h4>Linear + quadratic</h4><p>Substitute the linear one in.</p></div>
+    <div class="ref-card"><h4>Pair solutions</h4><p>Each $x$ with its matching $y$.</p></div>
+    <div class="ref-card"><h4>Tangency</h4><p>One repeated solution $\Rightarrow$ tangent.</p></div>
+    <div class="ref-card"><h4>Reject nonsense</h4><p>Negative lengths, times before zero.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Solve $\dfrac{3x+1}{4} = \dfrac{x-2}{2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2(3x+1) = 4(x-2)$</p>
+          <p>$6x + 2 = 4x - 8$</p>
+          <p>$2x = -10$, so $x = -5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $2x^2 + 7x - 15 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$ac = -30$; two numbers multiplying to $-30$ and adding to $7$ are $10$ and $-3$.</p>
+          <p>$2x^2 + 10x - 3x - 15 = 2x(x+5) - 3(x+5) = (2x-3)(x+5)$</p>
+          <p>$x = \tfrac32$ or $x = -5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $3x^2 - 5x - 1 = 0$, giving answers to 3 significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Delta = 25 + 12 = 37$</p>
+          <p>$x = \dfrac{5 \pm \sqrt{37}}{6}$</p>
+          <p>$x = \dfrac{5 + 6.0828}{6} = 1.85$ &nbsp;or&nbsp; $x = \dfrac{5 - 6.0828}{6} = -0.180$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $x^3 - 6x^2 + 11x - 6 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 - 6 + 11 - 6 = 0$ ✓</p>
+          <p>Dividing by $(x-1)$: $x^2 - 5x + 6 = (x-2)(x-3)$</p>
+          <p>$x = 1$, $2$ or $3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $4x - 3y = 11$ and $2x + y = 8$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>From the second, $y = 8 - 2x$.</p>
+          <p>$4x - 3(8-2x) = 11$</p>
+          <p>$4x - 24 + 6x = 11$, so $10x = 35$ and $x = 3.5$.</p>
+          <p>$y = 8 - 7 = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $y = x + 2$ and $y = x^2 - 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x + 2 = x^2 - 4$</p>
+          <p>$x^2 - x - 6 = 0$, so $(x-3)(x+2) = 0$.</p>
+          <p>$x = 3 \Rightarrow y = 5$; &nbsp;$x = -2 \Rightarrow y = 0$.</p>
+          <p>Solutions: $(3, 5)$ and $(-2, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the values of $k$ for which $2x^2 + kx + 8 = 0$ has no real solutions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>No real solutions means $\Delta < 0$:</p>
+          <p>$k^2 - 4(2)(8) < 0 \;\Rightarrow\; k^2 < 64$</p>
+          <p>$-8 < k < 8$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The sum of two numbers is $13$ and the sum of their squares is $97$. Find them.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let them be $x$ and $y$. Then $x + y = 13$ and $x^2 + y^2 = 97$.</p>
+          <p>From the first, $y = 13 - x$:</p>
+          <p>$x^2 + (13-x)^2 = 97$</p>
+          <p>$x^2 + 169 - 26x + x^2 = 97$</p>
+          <p>$2x^2 - 26x + 72 = 0 \;\Rightarrow\; x^2 - 13x + 36 = 0$</p>
+          <p>$(x-4)(x-9) = 0$, so the numbers are $4$ and $9$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that the line $y = 2x + 1$ is a tangent to the curve $y = x^2 + 4x + 2$, and find the point of contact.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Set them equal: $2x + 1 = x^2 + 4x + 2$</p>
+          <p>$x^2 + 2x + 1 = 0$</p>
+          <p>$\Delta = 4 - 4 = 0$, so there is exactly one solution — the line meets the curve once, i.e. it is a tangent.</p>
+          <p>$(x+1)^2 = 0$ gives $x = -1$, and then $y = 2(-1) + 1 = -1$.</p>
+          <p>The point of contact is $(-1,\, -1)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cinema sells adult tickets at £$9$ and child tickets at £$5$. On one evening $240$ tickets were sold for a total of £$1720$.</p>
+      <p>(a) Set up and solve simultaneous equations to find how many of each were sold. &nbsp; (b) The next evening the same total number of tickets raised £$1960$. Explain whether this is possible. &nbsp; (c) The manager says "if we sell $x$ adult tickets out of $240$, income is $I = 1200 + 4x$." Verify this formula and use it to answer (b) directly.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $a$ = adult tickets and $c$ = child tickets.</p>
+          <p>$a + c = 240$ &nbsp;and&nbsp; $9a + 5c = 1720$</p>
+          <p>From the first, $c = 240 - a$:</p>
+          <p>$9a + 5(240 - a) = 1720$</p>
+          <p>$9a + 1200 - 5a = 1720 \;\Rightarrow\; 4a = 520 \;\Rightarrow\; a = 130$</p>
+          <p>So $130$ adult and $110$ child tickets. <em>Check:</em> $9(130) + 5(110) = 1170 + 550 = 1720$ ✓</p>
+          <p><strong>(b)</strong> $9a + 5(240-a) = 1960$ gives $4a = 760$, so $a = 190$.</p>
+          <p>That is a whole number and $0 \leqslant 190 \leqslant 240$, so <strong>yes, it is possible</strong> — $190$ adult and $50$ child tickets.</p>
+          <p><strong>(c)</strong> $I = 9x + 5(240 - x) = 9x + 1200 - 5x = 1200 + 4x$ ✓</p>
+          <p>Setting $1200 + 4x = 1960$ gives $x = 190$ immediately, agreeing with (b).</p>
+          <p>The formula also shows the income must lie between $I(0) = £1200$ and $I(240) = £2160$, and must be a multiple of $4$ above $1200$ — a quick test for whether any claimed total is achievable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Setting Up and Solving Equations (AL6) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

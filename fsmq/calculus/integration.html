@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>∑ Integration</h1>
+  <p>OCR FSMQ Additional Maths · Calculus (CA8–CA11)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – REVERSING DIFFERENTIATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Reversing Differentiation</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>CA9:</strong> be aware that integration is the reverse of differentiation. The question integration answers is: <em>"what function would I have to differentiate to get this?"</em>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">CA8 — the integration rule</div>
+    $\displaystyle\int kx^n \,\mathrm{d}x = \dfrac{kx^{n+1}}{n+1} + c$<br>
+    <span style="font-size:.9rem;">Raise the power by one, then divide by the new power.</span>
+  </div>
+
+  <div class="concept">
+    Differentiating multiplies by the old power and drops it by one. Integrating raises the power by one and divides by the new one. Each step of one is precisely undone by the other.
+  </div>
+
+  <table>
+    <tr><th>Integrand</th><th>Integral</th><th>Check by differentiating</th></tr>
+    <tr><td>$x^3$</td><td>$\dfrac{x^4}{4} + c$</td><td>$\dfrac{4x^3}{4} = x^3$ ✓</td></tr>
+    <tr><td>$6x^2$</td><td>$2x^3 + c$</td><td>$6x^2$ ✓</td></tr>
+    <tr><td>$x$</td><td>$\dfrac{x^2}{2} + c$</td><td>$x$ ✓</td></tr>
+    <tr><td>$5$</td><td>$5x + c$</td><td>$5$ ✓</td></tr>
+    <tr><td>$-2x^4$</td><td>$-\dfrac{2x^5}{5} + c$</td><td>$-2x^4$ ✓</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>A constant integrates to $kx$.</strong> Think of $5$ as $5x^0$: raising the power gives $5x^1$, and dividing by $1$ leaves $5x$.
+  </div>
+
+  <div class="warn">
+    <strong>Every indefinite integral needs $+c$.</strong> Differentiation destroys constant terms, so integration cannot know what the constant was. Omitting $+c$ costs a mark every time.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – INDEFINITE INTEGRALS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Indefinite Integrals (CA10)</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Indefinite versus definite</div>
+    <strong>Indefinite:</strong> $\displaystyle\int \mathrm{f}(x)\,\mathrm{d}x$ — no limits, answer is a <em>function</em>, needs $+c$<br>
+    <strong>Definite:</strong> $\displaystyle\int_a^b \mathrm{f}(x)\,\mathrm{d}x$ — with limits, answer is a <em>number</em>, no $c$ needed
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A polynomial</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \left(6x^2 - 4x + 3\right)\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$6x^2 \to \dfrac{6x^3}{3} = 2x^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-4x \to -\dfrac{4x^2}{2} = -2x^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3 \to 3x$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 2x^3 - 2x^2 + 3x + c$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check by differentiating:</em> $6x^2 - 4x + 3$ ✓</span></div>
+      <div class="tip"><strong>Always check by differentiating.</strong> It takes five seconds and catches every arithmetic slip.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Expand first</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int x(x-3)^2\,\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>There is no product rule for integration either — <strong>expand</strong>:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x-3)^2 = x^2 - 6x + 9$, so $x(x-3)^2 = x^3 - 6x^2 + 9x$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int \left(x^3 - 6x^2 + 9x\right)\mathrm{d}x = \dfrac{x^4}{4} - 2x^3 + \dfrac{9x^2}{2} + c$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FINDING THE CONSTANT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding a Curve From Its Gradient Function</div>
+<div class="section-body">
+
+  <div class="concept">
+    The specification's note under CA8 says you should "be able to find the equation of a curve, given its gradient function and one point". The extra point is what determines $c$.
+  </div>
+
+  <ul class="steps">
+    <li>Integrate the gradient function, including $+c$.</li>
+    <li>Substitute the coordinates of the known point.</li>
+    <li>Solve for $c$.</li>
+    <li>Write out the full equation with $c$ replaced by its value.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding the curve</div>
+    <div class="example-body">
+      <p>A curve has $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 4x$ and passes through $(2, 5)$. Find its equation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = \displaystyle\int \left(3x^2 - 4x\right)\mathrm{d}x = x^3 - 2x^2 + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Substitute $(2,5)$: $5 = 8 - 8 + c$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$c = 5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = x^3 - 2x^2 + 5$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> differentiating gives $3x^2 - 4x$ ✓ and $y(2) = 8 - 8 + 5 = 5$ ✓</span></div>
+      <div class="tip"><strong>Geometrically</strong>, the gradient function describes a whole <em>family</em> of parallel curves, one for each value of $c$. The point selects the single member that passes through it.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Through the origin</div>
+    <div class="example-body">
+      <p>A curve has $\mathrm{f}'(x) = 4x - 1$ and passes through the origin. Find $\mathrm{f}(x)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(x) = 2x^2 - x + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Through the origin means $\mathrm{f}(0) = 0$: $0 = 0 - 0 + c$, so $c = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(x) = 2x^2 - x$</span></div>
+      <div class="tip">Passing through the origin is the one case where $c = 0$ — but you should still show the substitution.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – DEFINITE INTEGRALS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Definite Integrals (CA11)</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Evaluating a definite integral</div>
+    $\displaystyle\int_a^b \mathrm{f}(x)\,\mathrm{d}x = \Big[\mathrm{F}(x)\Big]_a^b = \mathrm{F}(b) - \mathrm{F}(a)$<br>
+    <span style="font-size:.9rem;">where $\mathrm{F}$ is any integral of $\mathrm{f}$ — "top minus bottom"</span>
+  </div>
+
+  <div class="concept">
+    <strong>Why $c$ disappears.</strong> Including it would give $\left(\mathrm{F}(b)+c\right) - \left(\mathrm{F}(a)+c\right)$, and the two $c$'s cancel. So there is no need to write it.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A definite integral in full</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\int_1^3 \left(2x + 1\right)\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Integrate: $\Big[x^2 + x\Big]_1^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Top limit: $3^2 + 3 = 12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Bottom limit: $1^2 + 1 = 2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$12 - 2 = 10$</span></div>
+      <div class="warn"><strong>Show the square brackets and both substitutions.</strong> The specification is explicit: writing the answer straight from a calculator's integral function "would therefore not be awarded full marks" when detailed reasoning is required.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — The specification's own example</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\int_0^1 \left(4x^3 + x - 1\right)\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\Bigg[x^4 + \dfrac{x^2}{2} - x\Bigg]_0^1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 1$: $1 + \dfrac12 - 1 = \dfrac12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = 0$: $0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \dfrac{1}{2}$</span></div>
+      <div class="tip">The specification's exemplar for "detailed reasoning" is exactly this kind of question: the bracket line and the substitution line are the evidence of method, and both are needed.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Negative limits</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\int_{-2}^{1} 3x^2 \,\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\Big[x^3\Big]_{-2}^{1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 1$: $1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = -2$: $(-2)^3 = -8$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$1 - (-8) = 9$</span></div>
+      <div class="warn"><strong>Subtracting a negative adds.</strong> This is the commonest arithmetic error in definite integration. Write out the bracket: $1 - (-8)$, not $1 - 8$.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Two useful properties</div>
+    $\displaystyle\int_a^b = -\int_b^a$ &nbsp;(swapping the limits changes the sign)<br>
+    $\displaystyle\int_a^a = 0$ &nbsp;(equal limits give zero)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A negative answer</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\int_0^2 \left(x^2 - 4\right)\mathrm{d}x$ and interpret the result.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\Bigg[\dfrac{x^3}{3} - 4x\Bigg]_0^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x=2$: $\dfrac83 - 8 = -\dfrac{16}{3}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x=0$: $0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= -\dfrac{16}{3}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The answer is <strong>negative</strong> because the curve $y = x^2 - 4$ lies <em>below</em> the $x$-axis throughout $0 < x < 2$.</span></div>
+      <div class="tip">The <em>area</em> is $\tfrac{16}{3}$ square units; the <em>integral</em> is $-\tfrac{16}{3}$. Keeping that distinction clear matters for <a href="areas.html">area questions</a>.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The rule</h4><p>$kx^n \to \dfrac{kx^{n+1}}{n+1} + c$.</p></div>
+    <div class="ref-card"><h4>Constants</h4><p>$k \to kx$.</p></div>
+    <div class="ref-card"><h4>$+c$</h4><p>Compulsory for every indefinite integral.</p></div>
+    <div class="ref-card"><h4>Brackets</h4><p>Expand before integrating.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Differentiate your answer.</p></div>
+    <div class="ref-card"><h4>Finding $c$</h4><p>Substitute the given point.</p></div>
+    <div class="ref-card"><h4>Definite</h4><p>$\mathrm{F}(b) - \mathrm{F}(a)$, no $c$.</p></div>
+    <div class="ref-card"><h4>Show the brackets</h4><p>Method marks live there.</p></div>
+    <div class="ref-card"><h4>Negative limits</h4><p>Subtracting a negative adds.</p></div>
+    <div class="ref-card"><h4>Negative answer</h4><p>Means the curve is below the axis.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int x^5 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{x^6}{6} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(8x^3 - 6x + 5\right)\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{8x^4}{4} - \dfrac{6x^2}{2} + 5x + c$</p>
+          <p>$= 2x^4 - 3x^2 + 5x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\int_0^3 2x \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Big[x^2\Big]_0^3 = 9 - 0 = 9$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\int_1^2 \left(3x^2 + 2\right)\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Big[x^3 + 2x\Big]_1^2$</p>
+          <p>$= (8 + 4) - (1 + 2) = 12 - 3 = 9$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int (2x+1)^2 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand: $(2x+1)^2 = 4x^2 + 4x + 1$</p>
+          <p>$\displaystyle\int \left(4x^2+4x+1\right)\mathrm{d}x = \dfrac{4x^3}{3} + 2x^2 + x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A curve has $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x - 2$ and passes through $(1, 4)$. Find its equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 3x^2 - 2x + c$</p>
+          <p>$4 = 3 - 2 + c$, so $c = 3$.</p>
+          <p>$y = 3x^2 - 2x + 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\int_{-1}^{2} \left(x^2 + 1\right)\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Bigg[\dfrac{x^3}{3} + x\Bigg]_{-1}^{2}$</p>
+          <p>At $x=2$: $\dfrac83 + 2 = \dfrac{14}{3}$</p>
+          <p>At $x=-1$: $-\dfrac13 - 1 = -\dfrac43$</p>
+          <p>$\dfrac{14}{3} - \left(-\dfrac43\right) = \dfrac{18}{3} = 6$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A curve has $\mathrm{f}'(x) = 3x^2 + 4x - 1$ and $\mathrm{f}(0) = 7$. Find $\mathrm{f}(2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(x) = x^3 + 2x^2 - x + c$</p>
+          <p>$\mathrm{f}(0) = c = 7$, so $\mathrm{f}(x) = x^3 + 2x^2 - x + 7$.</p>
+          <p>$\mathrm{f}(2) = 8 + 8 - 2 + 7 = 21$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the value of $k$ for which $\displaystyle\int_0^k 4x \,\mathrm{d}x = 50$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Big[2x^2\Big]_0^k = 2k^2$</p>
+          <p>$2k^2 = 50$, so $k^2 = 25$ and $k = \pm 5$.</p>
+          <p>Taking the positive value (so that $k$ is above the lower limit $0$): $k = 5$.</p>
+          <p><em>Note</em> $k = -5$ also satisfies the algebra, since $\int_0^{-5} 4x\,\mathrm{d}x = 2(25) = 50$ as well — the sign is lost in the squaring. Most questions intend $k > 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A curve $C$ has gradient function $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 12x + 9$ and passes through the point $(0, 4)$.</p>
+      <p>(a) Find the equation of $C$. &nbsp; (b) Find the coordinates of the stationary points of $C$ and determine their nature. &nbsp; (c) Evaluate $\displaystyle\int_0^4 \dfrac{\mathrm{d}y}{\mathrm{d}x}\,\mathrm{d}x$ and explain what the answer represents. &nbsp; (d) Verify your answer to (c) using the equation from (a).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $y = \displaystyle\int \left(3x^2 - 12x + 9\right)\mathrm{d}x = x^3 - 6x^2 + 9x + c$</p>
+          <p>Substituting $(0,4)$: $4 = 0 - 0 + 0 + c$, so $c = 4$.</p>
+          <p>$y = x^3 - 6x^2 + 9x + 4$</p>
+          <p><strong>(b)</strong> $3x^2 - 12x + 9 = 3\left(x^2-4x+3\right) = 3(x-1)(x-3) = 0$</p>
+          <p>$x = 1$ or $x = 3$.</p>
+          <p>At $x=1$: $y = 1 - 6 + 9 + 4 = 8$. &nbsp;At $x=3$: $y = 27 - 54 + 27 + 4 = 4$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x - 12$.</p>
+          <p>At $x=1$: $-6 < 0$, so $(1, 8)$ is a <strong>maximum</strong>.</p>
+          <p>At $x=3$: $6 > 0$, so $(3, 4)$ is a <strong>minimum</strong>.</p>
+          <p><strong>(c)</strong> $\displaystyle\int_0^4 \left(3x^2 - 12x + 9\right)\mathrm{d}x = \Big[x^3 - 6x^2 + 9x\Big]_0^4$</p>
+          <p>At $x=4$: $64 - 96 + 36 = 4$. &nbsp;At $x=0$: $0$.</p>
+          <p>The integral equals $4$.</p>
+          <p>Integrating a <em>gradient function</em> between two limits gives the <strong>total change in $y$</strong> over that interval — not an area under $C$ itself. So the value $4$ means $y$ has risen by $4$ between $x=0$ and $x=4$.</p>
+          <p><strong>(d)</strong> From (a), $y(0) = 4$ and $y(4) = 64 - 96 + 36 + 4 = 8$.</p>
+          <p>Change in $y = 8 - 4 = 4$ ✓ — exactly the value of the integral.</p>
+          <p>This is the fundamental relationship between the two halves of calculus: differentiating $y$ gives the rate of change, and integrating that rate back over an interval recovers the net change in $y$. Notice that the constant $4$ played no part in (c), which is precisely why an indefinite integral cannot determine it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Integration (CA8–CA11) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

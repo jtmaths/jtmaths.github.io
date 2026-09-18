@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logarithms and Their Laws &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🪵 Logarithms and Their Laws</h1>
+  <p>OCR FSMQ Additional Maths · Exponentials and Logarithms (EL2–EL3)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE DEFINITION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Definition</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">EL2 — $\log_a x$ as the inverse of $a^x$</div>
+    $\log_a x = y \;\Longleftrightarrow\; a^y = x$
+  </div>
+
+  <div class="concept">
+    <strong>Say it in words:</strong> $\log_a x$ is <em>the power you must raise $a$ to in order to get $x$</em>. Almost every logarithm question can be answered by translating it into that sentence.
+  </div>
+
+  <div class="svg-block">
+    <svg width="420" height="130" viewBox="0 0 420 130" xmlns="http://www.w3.org/2000/svg">
+      <text x="110" y="50" font-family="Arial" font-size="22" fill="#3730a3" font-weight="bold" text-anchor="middle">log&#8322; 8 = 3</text>
+      <text x="310" y="50" font-family="Arial" font-size="22" fill="#166534" font-weight="bold" text-anchor="middle">2&#179; = 8</text>
+      <text x="210" y="46" font-family="Arial" font-size="20" fill="#7c3aed" text-anchor="middle">&#8660;</text>
+      <path d="M 92 60 Q 110 92 152 62" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <text x="120" y="108" font-family="Arial" font-size="11" fill="#6d28d9" text-anchor="middle">base, answer, power</text>
+      <text x="310" y="108" font-family="Arial" font-size="11" fill="#166534" text-anchor="middle">base to the power gives the answer</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Logarithm form</th><th>Index form</th><th>Read as</th></tr>
+    <tr><td>$\log_2 8 = 3$</td><td>$2^3 = 8$</td><td>"$2$ to the power $3$ is $8$"</td></tr>
+    <tr><td>$\log_{10} 1000 = 3$</td><td>$10^3 = 1000$</td><td>"$10$ cubed is $1000$"</td></tr>
+    <tr><td>$\log_5 25 = 2$</td><td>$5^2 = 25$</td><td>"$5$ squared is $25$"</td></tr>
+    <tr><td>$\log_3 \tfrac19 = -2$</td><td>$3^{-2} = \tfrac19$</td><td>"$3$ to the power $-2$ is $\tfrac19$"</td></tr>
+    <tr><td>$\log_7 1 = 0$</td><td>$7^0 = 1$</td><td>Anything to the power $0$ is $1$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Notation conventions</div>
+    $\log x$ with no base written means <strong>base $10$</strong><br>
+    $\ln x$ means base $\mathrm{e}$ — the <em>natural</em> logarithm
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The inverse relationships</div>
+    $\log_a\left(a^x\right) = x$ &nbsp;&middot;&nbsp; $a^{\log_a x} = x$<br>
+    <span style="font-size:.9rem;">Each operation completely undoes the other.</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Evaluating without a calculator</div>
+    <div class="example-body">
+      <p>Evaluate (a) $\log_4 64$, &nbsp;(b) $\log_2 \tfrac{1}{16}$, &nbsp;(c) $\log_9 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> What power of $4$ gives $64$? &nbsp;$4^3 = 64$, so the answer is $3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> $2^4 = 16$, so $2^{-4} = \tfrac{1}{16}$. The answer is $-4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> What power of $9$ gives $3$? Since $9^{1/2} = 3$, the answer is $\tfrac12$.</span></div>
+      <div class="tip"><strong>Fractional and negative answers are perfectly normal.</strong> A logarithm can be any real number — it is the <em>input</em> that must be positive, not the output.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>The input must be positive.</strong> $\log_a x$ requires $x > 0$, because $a^y$ is always positive. There is no logarithm of $0$ or of a negative number.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LAWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Three Laws (EL3)</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The laws, as the specification lists them</div>
+    $\log x + \log y = \log(xy)$<br>
+    $\log x - \log y = \log\!\left(\dfrac{x}{y}\right)$<br>
+    $n\log x = \log\left(x^n\right)$
+  </div>
+
+  <div class="concept">
+    <strong>Where they come from.</strong> Each law is an index law in disguise. Because $a^p \times a^q = a^{p+q}$, multiplying numbers corresponds to <em>adding</em> their logarithms. The other two laws follow from the division and power index laws in the same way.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Combining into one logarithm</div>
+    <div class="example-body">
+      <p>Write $2\log 3 + \log 5 - \log 9$ as a single logarithm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Deal with the coefficient first: $2\log 3 = \log\left(3^2\right) = \log 9$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\log 9 + \log 5 = \log 45$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\log 45 - \log 9 = \log\!\left(\dfrac{45}{9}\right) = \log 5$</span></div>
+      <div class="tip"><strong>Always apply the power law first.</strong> Coefficients must be absorbed into the logarithm before you can combine anything.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Splitting one up</div>
+    <div class="example-body">
+      <p>Express $\log\!\left(\dfrac{x^3 y}{z^2}\right)$ in terms of $\log x$, $\log y$ and $\log z$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The quotient law: $\log\left(x^3 y\right) - \log\left(z^2\right)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The product law on the first part: $\log\left(x^3\right) + \log y - \log\left(z^2\right)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The power law: $3\log x + \log y - 2\log z$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Solving a logarithmic equation</div>
+    <div class="example-body">
+      <p>Solve $\log_2 x + \log_2 (x - 2) = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Combine the left side: $\log_2\big[x(x-2)\big] = 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Convert to index form: $x(x-2) = 2^3 = 8$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 - 2x - 8 = 0$, so $(x-4)(x+2) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 4$ or $x = -2$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><strong>Reject $x = -2$:</strong> it would require $\log_2(-2)$, which does not exist.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$x = 4$. <em>Check:</em> $\log_2 4 + \log_2 2 = 2 + 1 = 3$ ✓</span></div>
+      <div class="warn"><strong>Always check for rejected solutions.</strong> Combining logarithms can introduce answers that make the original expression undefined. Stating the rejection and the reason earns a mark.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THINGS THAT ARE NOT LAWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Things That Are Not Laws</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Tempting but wrong</th><th>Why, and what is actually true</th></tr>
+    <tr><td>$\log(x+y) = \log x + \log y$</td><td>No. $\log x + \log y = \log(xy)$. There is no law for $\log$ of a sum.</td></tr>
+    <tr><td>$\dfrac{\log x}{\log y} = \log\!\left(\dfrac{x}{y}\right)$</td><td>No. The quotient law needs the division <em>inside</em>: $\log x - \log y$.</td></tr>
+    <tr><td>$(\log x)^2 = 2\log x$</td><td>No. $2\log x = \log\left(x^2\right)$, which is different from $(\log x)^2$.</td></tr>
+    <tr><td>$\log(xy) = \log x \times \log y$</td><td>No. Multiplying inside gives <em>adding</em> outside.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Testing a false claim with numbers</div>
+    <div class="example-body">
+      <p>Disprove the claim that $\log(x+y) = \log x + \log y$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take $x = y = 10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Left side: $\log(10+10) = \log 20 = 1.301$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Right side: $\log 10 + \log 10 = 1 + 1 = 2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$1.301 \neq 2$, so the claim is false.</span></div>
+      <div class="tip"><strong>A single numerical counter-example settles it.</strong> If you are ever unsure whether a "law" is real, test it with $x = y = 10$ in base $10$ — the arithmetic is trivial.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE GRAPH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Graph of a Logarithm</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="420" height="270" viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="140" x2="400" y2="140" stroke="#475569" stroke-width="2"/>
+      <line x1="120" y1="20" x2="120" y2="250" stroke="#475569" stroke-width="2"/>
+      <line x1="20" y1="240" x2="330" y2="30" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <path d="M 130 240 C 145 175 175 148 220 140 C 265 132 320 105 390 45" fill="none" stroke="#22c55e" stroke-width="3"/>
+      <path d="M 25 248 C 85 200 112 175 120 130 C 128 85 150 40 220 25" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <circle cx="220" cy="140" r="5" fill="#16a34a"/>
+      <text x="228" y="158" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">(1, 0)</text>
+      <text x="350" y="42" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">y = log&#8322; x</text>
+      <text x="196" y="22" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">y = 2&#739;</text>
+      <text x="300" y="52" font-family="Arial" font-size="10" fill="#64748b">y = x</text>
+      <text x="210" y="264" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Inverse functions: each is the reflection of the other in the line y = x</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Features of $y = \log_a x$ for $a > 1$</div>
+    Passes through $(1, 0)$ &nbsp;&middot;&nbsp; defined only for $x > 0$<br>
+    Increasing, but ever more slowly &nbsp;&middot;&nbsp; the <strong>$y$-axis</strong> is a vertical asymptote
+  </div>
+
+  <div class="concept">
+    <strong>The mirror-image relationship.</strong> Because logarithms and exponentials are inverses, their graphs are reflections in $y = x$. Every feature swaps over: the exponential's $y$-intercept $(0,1)$ becomes the logarithm's $x$-intercept $(1,0)$, and the horizontal asymptote becomes a vertical one.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$\log_a x = y \iff a^y = x$.</p></div>
+    <div class="ref-card"><h4>In words</h4><p>The power $a$ needs to reach $x$.</p></div>
+    <div class="ref-card"><h4>$\log$ alone</h4><p>Means base $10$.</p></div>
+    <div class="ref-card"><h4>Product law</h4><p>$\log x + \log y = \log(xy)$.</p></div>
+    <div class="ref-card"><h4>Quotient law</h4><p>$\log x - \log y = \log\!\left(\tfrac{x}{y}\right)$.</p></div>
+    <div class="ref-card"><h4>Power law</h4><p>$n\log x = \log\left(x^n\right)$ — use it first.</p></div>
+    <div class="ref-card"><h4>$\log_a 1 = 0$</h4><p>And $\log_a a = 1$.</p></div>
+    <div class="ref-card"><h4>No law for</h4><p>$\log$ of a sum.</p></div>
+    <div class="ref-card"><h4>Domain</h4><p>$x > 0$ only.</p></div>
+    <div class="ref-card"><h4>Check answers</h4><p>Reject any making a logarithm undefined.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write $\log_5 125 = 3$ in index form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5^3 = 125$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Evaluate $\log_2 32$, $\log_{10} 100$ and $\log_6 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2^5 = 32$, so $\log_2 32 = 5$.</p>
+          <p>$10^2 = 100$, so $\log_{10} 100 = 2$.</p>
+          <p>$6^0 = 1$, so $\log_6 1 = 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Evaluate $\log_3 \tfrac{1}{27}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3^3 = 27$, so $3^{-3} = \tfrac{1}{27}$.</p>
+          <p>$\log_3 \tfrac{1}{27} = -3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Evaluate $\log_{16} 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$16^{1/2} = 4$, so $\log_{16} 4 = \dfrac{1}{2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write $\log 8 + \log 5 - \log 2$ as a single logarithm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log 8 + \log 5 = \log 40$</p>
+          <p>$\log 40 - \log 2 = \log 20$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Write $3\log 2 - 2\log 4$ as a single logarithm, and evaluate it.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3\log 2 = \log 8$ and $2\log 4 = \log 16$.</p>
+          <p>$\log 8 - \log 16 = \log\!\left(\dfrac{8}{16}\right) = \log 0.5$</p>
+          <p>$= -0.301$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Express $\log\!\left(\dfrac{a^2}{b}\right)$ in terms of $\log a$ and $\log b$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log\left(a^2\right) - \log b = 2\log a - \log b$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $\log_3 x = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = 3^4 = 81$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Solve $\log_5 x + \log_5 4 = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log_5 (4x) = 2$</p>
+          <p>$4x = 5^2 = 25$</p>
+          <p>$x = 6.25$</p>
+          <p><em>Check:</em> $\log_5 6.25 + \log_5 4 = \log_5 25 = 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Solve $\log_2 (x+3) + \log_2 (x-1) = 5$. &nbsp; (b) Explain why one solution must be rejected. &nbsp; (c) Solve $\log x + \log(x-3) = 1$. &nbsp; (d) Show that $\log_a b \times \log_b a = 1$ for any valid bases.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Combine: $\log_2\big[(x+3)(x-1)\big] = 5$</p>
+          <p>$(x+3)(x-1) = 2^5 = 32$</p>
+          <p>$x^2 + 2x - 3 = 32$, so $x^2 + 2x - 35 = 0$.</p>
+          <p>$(x+7)(x-5) = 0$, giving $x = -7$ or $x = 5$.</p>
+          <p><strong>(b)</strong> $x = -7$ makes $x + 3 = -4$ and $x - 1 = -8$, so the original expression would need $\log_2(-4)$ and $\log_2(-8)$ — neither exists.</p>
+          <p>Only $x = 5$ is valid. <em>Check:</em> $\log_2 8 + \log_2 4 = 3 + 2 = 5$ ✓</p>
+          <p>The spurious root appears because <em>combining</em> the logarithms produced $(x+3)(x-1)$, which is positive when both brackets are negative — a case the original equation never allowed.</p>
+          <p><strong>(c)</strong> $\log\big[x(x-3)\big] = 1$, and base $10$ gives</p>
+          <p>$x(x-3) = 10^1 = 10$</p>
+          <p>$x^2 - 3x - 10 = 0$, so $(x-5)(x+2) = 0$.</p>
+          <p>$x = 5$ or $x = -2$; reject $x = -2$ as $\log(-2)$ is undefined.</p>
+          <p>$x = 5$. <em>Check:</em> $\log 5 + \log 2 = \log 10 = 1$ ✓</p>
+          <p><strong>(d)</strong> Let $\log_a b = p$, so by the definition $a^p = b$.</p>
+          <p>Taking $\log_b$ of both sides: $\log_b\left(a^p\right) = \log_b b = 1$.</p>
+          <p>By the power law, $p\log_b a = 1$.</p>
+          <p>Substituting back $p = \log_a b$:</p>
+          <p>$\log_a b \times \log_b a = 1$ &nbsp;as required.</p>
+          <p><em>Verify with numbers:</em> $\log_2 8 = 3$ and $\log_8 2 = \tfrac13$, and $3 \times \tfrac13 = 1$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Logarithms and Their Laws (EL2–EL3) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

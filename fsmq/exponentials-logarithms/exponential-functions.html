@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponential Functions &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Exponential Functions</h1>
+  <p>OCR FSMQ Additional Maths · Exponentials and Logarithms (EL1)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE FUNCTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Function $ka^x$</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EL1:</strong> know and use the function $ka^x$ and its graph, where $a$ is positive. The defining feature is that the <strong>variable is in the index</strong>.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The two parameters</div>
+    $y = k\,a^x$<br>
+    $k$ is the value when $x = 0$ — the <strong>starting amount</strong><br>
+    $a$ is the <strong>multiplier</strong> per unit increase in $x$
+  </div>
+
+  <div class="concept">
+    <strong>What makes it exponential.</strong> Each time $x$ goes up by $1$, $y$ is <em>multiplied</em> by $a$. Compare a linear function, where each step <em>adds</em> a fixed amount. Multiplying repeatedly is what produces the explosive behaviour.
+  </div>
+
+  <table>
+    <tr><th>$x$</th><th>$y = 3x$ (linear)</th><th>$y = 3^x$ (exponential)</th></tr>
+    <tr><td>$0$</td><td>$0$</td><td>$1$</td></tr>
+    <tr><td>$1$</td><td>$3$</td><td>$3$</td></tr>
+    <tr><td>$2$</td><td>$6$</td><td>$9$</td></tr>
+    <tr><td>$3$</td><td>$9$</td><td>$27$</td></tr>
+    <tr><td>$5$</td><td>$15$</td><td>$243$</td></tr>
+    <tr><td>$10$</td><td>$30$</td><td>$59\,049$</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The linear one wins at first and then loses forever.</strong> At $x = 1$ they are equal; by $x = 10$ the exponential is nearly two thousand times larger. That crossover is the whole reason exponential models are taken seriously.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE GRAPH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Graph</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="460" height="260" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="210" x2="430" y2="210" stroke="#475569" stroke-width="2"/>
+      <line x1="230" y1="20" x2="230" y2="230" stroke="#475569" stroke-width="2"/>
+      <text x="434" y="215" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="236" y="18" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <path d="M 40 208 C 120 206 180 190 230 160 C 275 132 320 70 355 20" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <path d="M 105 20 C 140 70 185 132 230 160 C 280 190 340 206 420 208" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="8 4"/>
+      <circle cx="230" cy="160" r="5.5" fill="#7c3aed"/>
+      <text x="240" y="180" font-family="Arial" font-size="12" fill="#4c1d95" font-weight="bold">(0, k)</text>
+      <text x="356" y="16" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">a &gt; 1 (growth)</text>
+      <text x="40" y="16" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">0 &lt; a &lt; 1 (decay)</text>
+      <text x="350" y="228" font-family="Arial" font-size="11" fill="#64748b">asymptote y = 0</text>
+      <text x="230" y="252" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Both curves pass through (0, k) and approach the x-axis without ever reaching it</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Features of $y = ka^x$ for $k > 0$</div>
+    Passes through $(0, k)$ &nbsp;&middot;&nbsp; never crosses the $x$-axis<br>
+    $a > 1$: <strong>growth</strong>, rising ever faster &nbsp;&middot;&nbsp; $0 < a < 1$: <strong>decay</strong>, falling ever more slowly<br>
+    The $x$-axis is a <strong>horizontal asymptote</strong>
+  </div>
+
+  <div class="warn">
+    <strong>There is never an $x$-intercept.</strong> $ka^x$ is positive for every real $x$ when $k$ and $a$ are positive. A sketch showing the curve meeting or crossing the $x$-axis is wrong.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Sketching a growth curve</div>
+    <div class="example-body">
+      <p>Sketch $y = 4 \times 2^x$, marking the intercept and describing both ends.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y$-intercept: $x = 0$ gives $y = 4 \times 1 = 4$, so $(0, 4)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>A few more points: $x=1 \to 8$; $x=2 \to 16$; $x=3 \to 32$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Negative side: $x=-1 \to 2$; $x=-2 \to 1$; $x=-3 \to 0.5$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>As $x \to +\infty$, $y \to \infty$ increasingly steeply.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>As $x \to -\infty$, $y \to 0$ from above but never reaches it.</span></div>
+      <div class="tip"><strong>Plot a couple of negative $x$-values.</strong> They show the asymptotic tail clearly and stop you drawing the curve stopping at the $y$-axis.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A decay curve</div>
+    <div class="example-body">
+      <p>Sketch $y = 100 \times 0.5^x$ and find when $y$ falls below $10$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y$-intercept $(0, 100)$; $a = 0.5 < 1$, so this is decay.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Values: $x=1 \to 50$; $x=2 \to 25$; $x=3 \to 12.5$; $x=4 \to 6.25$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $y$ first falls below $10$ between $x = 3$ and $x = 4$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Exactly: $100(0.5)^x = 10 \Rightarrow 0.5^x = 0.1 \Rightarrow x = \dfrac{\log 0.1}{\log 0.5} = 3.32$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Each unit increase in $x$ <strong>halves</strong> the value — so this function has a "half-life" of exactly $1$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FINDING k AND a
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding $k$ and $a$ from Information</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>The value at $x = 0$ gives $k$ directly, since $a^0 = 1$.</li>
+    <li>Substitute a second point to get an equation in $a$.</li>
+    <li>Solve for $a$, taking an appropriate root.</li>
+    <li>Check both points satisfy your final formula.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Two points</div>
+    <div class="example-body">
+      <p>A curve $y = ka^x$ passes through $(0, 5)$ and $(3, 40)$. Find $k$ and $a$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>At $x=0$: $y = k$, so $k = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x=3$: $5a^3 = 40$, so $a^3 = 8$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$a = 2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = 5 \times 2^x$. <em>Check:</em> at $x=3$, $5 \times 8 = 40$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Neither point at zero</div>
+    <div class="example-body">
+      <p>$y = ka^x$ passes through $(1, 12)$ and $(4, 324)$. Find $k$ and $a$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$ka = 12$ &nbsp;and&nbsp; $ka^4 = 324$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Divide</strong> the second by the first to eliminate $k$:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{ka^4}{ka} = a^3 = \dfrac{324}{12} = 27$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$a = 3$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Then $3k = 12$, so $k = 4$, and $y = 4 \times 3^x$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Check at $x=4$:</em> $4 \times 81 = 324$ ✓</span></div>
+      <div class="tip"><strong>Dividing the two equations is the key move.</strong> It removes $k$ in one step, leaving a simple power equation in $a$. Subtracting would not work, because $k$ is a factor rather than a term.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TRANSFORMATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Related Forms</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Two forms worth recognising</div>
+    $y = a^{-x} = \left(\dfrac1a\right)^x$ &nbsp;— decay; the reflection of $a^x$ in the $y$-axis<br>
+    $y = ka^x + c$ &nbsp;— shifted up by $c$, so the asymptote becomes $y = c$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A shifted asymptote</div>
+    <div class="example-body">
+      <p>Describe the graph of $y = 20 \times 0.7^x + 15$, including its asymptote, and interpret it as a cooling model.</p>
+      <div class="step-row"><span class="arrow">①</span><span>At $x = 0$: $y = 20 + 15 = 35$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>As $x \to \infty$, $0.7^x \to 0$, so $y \to 15$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The asymptote is $y = 15$, <em>not</em> $y = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>As a model: an object starting at $35$ °C cooling towards a room temperature of $15$ °C.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The $20$ is the initial <em>excess</em> temperature above the room, and it is that excess which decays by $30\%$ each period.</span></div>
+      <div class="warn"><strong>In a cooling model the exponential applies to the difference, not the temperature.</strong> Reading the $15$ as "the temperature falls to $15$ and stops" is right; reading it as part of the decaying term is not.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The form</h4><p>$y = ka^x$, variable in the index.</p></div>
+    <div class="ref-card"><h4>$k$</h4><p>The value at $x = 0$.</p></div>
+    <div class="ref-card"><h4>$a$</h4><p>The multiplier per unit step.</p></div>
+    <div class="ref-card"><h4>$a > 1$</h4><p>Growth.</p></div>
+    <div class="ref-card"><h4>$0 < a < 1$</h4><p>Decay.</p></div>
+    <div class="ref-card"><h4>Asymptote</h4><p>$y = 0$, never reached.</p></div>
+    <div class="ref-card"><h4>No $x$-intercept</h4><p>$ka^x$ is always positive.</p></div>
+    <div class="ref-card"><h4>Two points</h4><p>Divide the equations to eliminate $k$.</p></div>
+    <div class="ref-card"><h4>$a^{-x}$</h4><p>Reflection in the $y$-axis.</p></div>
+    <div class="ref-card"><h4>$+c$</h4><p>Moves the asymptote to $y = c$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write down the $y$-intercept of $y = 9 \times 5^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(0, 9)$, since $5^0 = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>State whether each shows growth or decay: (a) $y = 3 \times 1.4^x$, (b) $y = 50 \times 0.9^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $a = 1.4 > 1$, so <strong>growth</strong>.</p>
+          <p><strong>(b)</strong> $a = 0.9 < 1$, so <strong>decay</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $y$ when $x = 3$ for $y = 6 \times 2^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 6 \times 8 = 48$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find $y$ when $x = -2$ for $y = 20 \times 3^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3^{-2} = \dfrac19$</p>
+          <p>$y = \dfrac{20}{9} = 2.22$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A curve $y = ka^x$ passes through $(0, 7)$ and $(2, 63)$. Find $k$ and $a$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = 7$ from the first point.</p>
+          <p>$7a^2 = 63$, so $a^2 = 9$ and $a = 3$ (taking the positive root).</p>
+          <p>$y = 7 \times 3^x$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A curve $y = ka^x$ passes through $(1, 6)$ and $(3, 54)$. Find $k$ and $a$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$ka = 6$ and $ka^3 = 54$.</p>
+          <p>Dividing: $a^2 = 9$, so $a = 3$.</p>
+          <p>Then $3k = 6$, giving $k = 2$, so $y = 2 \times 3^x$.</p>
+          <p><em>Check:</em> at $x=3$, $2 \times 27 = 54$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>State the equation of the asymptote of $y = 8 \times 0.5^x + 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>As $x \to \infty$, $0.5^x \to 0$, so $y \to 3$.</p>
+          <p>The asymptote is $y = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain why $y = 5 \times 2^x$ never equals zero.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2^x$ is positive for every real $x$: for large negative $x$ it becomes very small, but a positive number raised to any real power stays positive.</p>
+          <p>Multiplying by the positive $5$ keeps it positive, so $y > 0$ always and the curve never meets the $x$-axis.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Compare $y = 100x$ and $y = 2^x$ at $x = 5$, $10$ and $20$, and comment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <table>
+            <tr><th>$x$</th><th>$100x$</th><th>$2^x$</th></tr>
+            <tr><td>$5$</td><td>$500$</td><td>$32$</td></tr>
+            <tr><td>$10$</td><td>$1000$</td><td>$1024$</td></tr>
+            <tr><td>$20$</td><td>$2000$</td><td>$1\,048\,576$</td></tr>
+          </table>
+          <p>The linear function is far ahead at $x=5$, they are almost level at $x=10$, and by $x=20$ the exponential is over five hundred times larger.</p>
+          <p>An exponential with $a > 1$ always overtakes any linear function eventually, no matter how large the linear gradient.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A colony of bacteria is modelled by $N = 400 \times 1.3^t$, where $t$ is in hours.</p>
+      <p>(a) State the initial population and the hourly growth rate as a percentage. &nbsp; (b) Find the population after $6$ hours. &nbsp; (c) Find how long it takes the population to double, to the nearest minute. &nbsp; (d) The dish can hold $50\,000$ bacteria. Find when the model predicts it becomes full, and comment on the model's realism.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> At $t = 0$: $N = 400 \times 1 = 400$ bacteria.</p>
+          <p>The multiplier $1.3$ means a $\mathbf{30\%}$ increase each hour.</p>
+          <p><strong>(b)</strong> $N = 400 \times 1.3^6 = 400 \times 4.826809 = 1930.7$</p>
+          <p>About $\mathbf{1931}$ bacteria (a whole number, since bacteria are counted).</p>
+          <p><strong>(c)</strong> Doubling means $N = 800$:</p>
+          <p>$400 \times 1.3^t = 800 \;\Rightarrow\; 1.3^t = 2$</p>
+          <p>$t = \dfrac{\log 2}{\log 1.3} = \dfrac{0.301030}{0.113943} = 2.6419$ hours</p>
+          <p>$0.6419 \times 60 = 38.5$ minutes, so about $\mathbf{2}$ <strong>hours $39$ minutes</strong>.</p>
+          <p>Note the doubling time is the same wherever you start — from $400$ to $800$, or $5000$ to $10\,000$. That is characteristic of exponential growth.</p>
+          <p><strong>(d)</strong> $400 \times 1.3^t = 50\,000 \;\Rightarrow\; 1.3^t = 125$</p>
+          <p>$t = \dfrac{\log 125}{\log 1.3} = \dfrac{2.096910}{0.113943} = 18.4$ hours</p>
+          <p><strong>Comment:</strong> the model is likely to be good early on, while food and space are plentiful, but unrealistic as the dish fills. Real populations slow as resources run short, so growth tapers off well before the hard limit is reached.</p>
+          <p>In practice the true population would level off towards $50\,000$ rather than hitting it abruptly at $18.4$ hours — so that figure should be read as "the model breaks down by about then", not as a prediction.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exponential Functions (EL1) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

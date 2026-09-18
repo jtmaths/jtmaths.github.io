@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solving Exponential Equations &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧩 Solving Exponential Equations</h1>
+  <p>OCR FSMQ Additional Maths · Exponentials and Logarithms (EL6)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BASIC METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Basic Method</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EL6:</strong> solve equations of the form $a^x = b$ for $a > 0$. The obstacle is that $x$ is in the <em>index</em>, where none of your usual moves can reach it. Logarithms bring it down.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The three-step method</div>
+    <strong>1.</strong> Take logarithms of both sides<br>
+    <strong>2.</strong> Use the power law to bring the index down: $\log\left(a^x\right) = x\log a$<br>
+    <strong>3.</strong> Divide to isolate $x$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The result</div>
+    $a^x = b \;\Longrightarrow\; x = \dfrac{\log b}{\log a}$
+  </div>
+
+  <div class="warn">
+    <strong>Any base works, provided you use the same one on both sides.</strong> Base $10$ ($\log$) and base $\mathrm{e}$ ($\ln$) both give identical final answers — use whichever button you prefer.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The standard case</div>
+    <div class="example-body">
+      <p>Solve $5^x = 300$, to $3$ significant figures.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\log\left(5^x\right) = \log 300$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x\log 5 = \log 300$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \dfrac{\log 300}{\log 5} = \dfrac{2.477121}{0.698970}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 3.54$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> $5^{3.54} = 298$ — close to $300$, the small difference being the rounding ✓</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Sanity check without a calculator:</em> $5^3 = 125$ and $5^4 = 625$, so $x$ must be between $3$ and $4$ ✓</span></div>
+      <div class="tip"><strong>The bracketing check is worth doing every time.</strong> It catches the commonest error — accidentally computing $\tfrac{\log 5}{\log 300}$ instead.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — The specification's own example</div>
+    <div class="example-body">
+      <p>Use logarithms to solve $3^{4x+1} = 100$, giving your answer correct to $3$ significant figures.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\log\left(3^{4x+1}\right) = \log 100$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(4x+1)\log 3 = \log 100$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$4x + 1 = \dfrac{\log 100}{\log 3} = \dfrac{2}{0.477121} = 4.19180$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$4x = 3.19180$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x = 0.797949\ldots = 0.798$ (3 s.f.)</span></div>
+      <div class="warn"><strong>This is the specification's worked exemplar for "detailed reasoning".</strong> It states that the learner must show the logarithm line, the bracketed line, and an intermediate evaluation such as $4x + 1 = 4.19\ldots$. Using a calculator's solver to skip any of these "would not result in a complete analytical method".</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A decay equation</div>
+    <div class="example-body">
+      <p>Solve $0.8^x = 0.2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x\log 0.8 = \log 0.2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = \dfrac{\log 0.2}{\log 0.8} = \dfrac{-0.698970}{-0.096910}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 7.21$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Both logarithms are <strong>negative</strong> (because both numbers are less than $1$), and the negatives cancel to give a positive $x$.</span></div>
+      <div class="tip">A positive answer is what you should expect: $0.8^x$ shrinks as $x$ grows, so it takes a positive number of steps to fall to $0.2$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – HARDER FORMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Harder Forms</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A coefficient in front</div>
+    <div class="example-body">
+      <p>Solve $7 \times 2^x = 500$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Divide by the coefficient first</strong>: $2^x = \dfrac{500}{7} = 71.42857$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x\log 2 = \log 71.42857$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \dfrac{1.853872}{0.301030} = 6.16$ (3 s.f.)</span></div>
+      <div class="warn"><strong>Do not take logarithms before dividing.</strong> $\log(7 \times 2^x)$ is $\log 7 + x\log 2$, which works but is more error-prone. Isolate the power first.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Unknown in both indices</div>
+    <div class="example-body">
+      <p>Solve $3^{x+1} = 5^x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take logarithms: $(x+1)\log 3 = x\log 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expand: $x\log 3 + \log 3 = x\log 5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Collect the $x$ terms: $\log 3 = x\log 5 - x\log 3 = x\left(\log 5 - \log 3\right)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = \dfrac{\log 3}{\log 5 - \log 3} = \dfrac{0.477121}{0.698970 - 0.477121} = \dfrac{0.477121}{0.221849}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x = 2.15$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Check:</em> $3^{3.15} = 31.8$ and $5^{2.15} = 31.8$ ✓</span></div>
+      <div class="tip"><strong>Treat $\log 3$ and $\log 5$ as ordinary numbers</strong> and the algebra is just "collect like terms". You can also write the denominator as $\log\tfrac53$, using the quotient law.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A hidden quadratic</div>
+    <div class="example-body">
+      <p>Solve $2^{2x} - 6 \times 2^x + 8 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Notice $2^{2x} = \left(2^x\right)^2$. Substitute $y = 2^x$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y^2 - 6y + 8 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(y-2)(y-4) = 0$, so $y = 2$ or $y = 4$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$2^x = 2$ gives $x = 1$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$2^x = 4$ gives $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$x = 1$ or $x = 2$.</span></div>
+      <div class="tip"><strong>Spot the pattern:</strong> an equation containing both $a^{2x}$ and $a^x$ is a quadratic in disguise. Substituting $y = a^x$ makes it obvious.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A hidden quadratic with a rejection</div>
+    <div class="example-body">
+      <p>Solve $3^{2x} - 3^x - 6 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $y = 3^x$: &nbsp;$y^2 - y - 6 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(y-3)(y+2) = 0$, so $y = 3$ or $y = -2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Reject $y = -2$:</strong> $3^x$ is always positive, so it can never equal $-2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3^x = 3$ gives $x = 1$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> $3^2 - 3 - 6 = 9 - 9 = 0$ ✓</span></div>
+      <div class="warn"><strong>Always check whether a value of $y$ is attainable.</strong> Since $y = a^x > 0$ for any real $x$, a negative or zero value of $y$ must be rejected — and you should say why.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Exponential Inequalities</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The sign rule</div>
+    If $a > 1$, the function $a^x$ is <strong>increasing</strong>, so the inequality is <em>preserved</em><br>
+    If $0 < a < 1$, it is <strong>decreasing</strong>, so the inequality <em>reverses</em>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — An increasing base</div>
+    <div class="example-body">
+      <p>Solve $2^x > 1000$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x\log 2 > \log 1000 = 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\log 2 > 0$, so dividing does not flip the sign:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x > \dfrac{3}{0.301030} = 9.97$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Check:</em> $2^9 = 512 < 1000$ and $2^{10} = 1024 > 1000$ ✓ — so for whole numbers, $x \geqslant 10$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — A decaying base</div>
+    <div class="example-body">
+      <p>Solve $0.9^x < 0.1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x\log 0.9 < \log 0.1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\log 0.9 = -0.045757$ is <strong>negative</strong>, so dividing by it <strong>reverses</strong> the inequality:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x > \dfrac{-1}{-0.045757} = 21.85$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Check:</em> $0.9^{22} = 0.0985 < 0.1$ ✓ and $0.9^{21} = 0.1094 > 0.1$ ✓</span></div>
+      <div class="tip"><strong>The direction should make sense:</strong> a decaying quantity gets <em>smaller</em> as $x$ increases, so "below $0.1$" must mean "after a certain point", i.e. $x$ greater than something.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The core result</h4><p>$a^x = b \Rightarrow x = \dfrac{\log b}{\log a}$.</p></div>
+    <div class="ref-card"><h4>Any base</h4><p>$\log$ or $\ln$ — same answer.</p></div>
+    <div class="ref-card"><h4>Isolate first</h4><p>Divide out any coefficient before taking logs.</p></div>
+    <div class="ref-card"><h4>Show the steps</h4><p>Log line, bracket line, intermediate value.</p></div>
+    <div class="ref-card"><h4>Index with $+1$</h4><p>Solve for the whole index, then for $x$.</p></div>
+    <div class="ref-card"><h4>Both sides unknown</h4><p>Expand and collect the $x$ terms.</p></div>
+    <div class="ref-card"><h4>$a^{2x}$ present</h4><p>Substitute $y = a^x$ for a quadratic.</p></div>
+    <div class="ref-card"><h4>Reject $y \leqslant 0$</h4><p>$a^x$ is always positive.</p></div>
+    <div class="ref-card"><h4>Inequality, $a>1$</h4><p>Direction preserved.</p></div>
+    <div class="ref-card"><h4>Inequality, $a<1$</h4><p>Direction reversed.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Solve $2^x = 50$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = \dfrac{\log 50}{\log 2} = \dfrac{1.698970}{0.301030} = 5.64$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $3^x = 200$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = \dfrac{\log 200}{\log 3} = \dfrac{2.301030}{0.477121} = 4.82$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $0.5^x = 0.02$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = \dfrac{\log 0.02}{\log 0.5} = \dfrac{-1.698970}{-0.301030} = 5.64$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $4 \times 3^x = 100$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3^x = 25$</p>
+          <p>$x = \dfrac{\log 25}{\log 3} = \dfrac{1.397940}{0.477121} = 2.93$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $2^{3x} = 40$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x\log 2 = \log 40$</p>
+          <p>$3x = \dfrac{1.602060}{0.301030} = 5.32193$</p>
+          <p>$x = 1.77$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $5^{x-2} = 30$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x-2)\log 5 = \log 30$</p>
+          <p>$x - 2 = \dfrac{1.477121}{0.698970} = 2.11329$</p>
+          <p>$x = 4.11$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $3^{2x} - 4 \times 3^x + 3 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $y = 3^x$: &nbsp;$y^2 - 4y + 3 = 0$</p>
+          <p>$(y-1)(y-3) = 0$, so $y = 1$ or $y = 3$.</p>
+          <p>$3^x = 1$ gives $x = 0$; &nbsp;$3^x = 3$ gives $x = 1$.</p>
+          <p>$x = 0$ or $x = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $2^x > 500$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x > \dfrac{\log 500}{\log 2} = \dfrac{2.698970}{0.301030} = 8.966$</p>
+          <p>So $x > 8.97$ (3 s.f.), and for whole numbers $x \geqslant 9$.</p>
+          <p><em>Check:</em> $2^9 = 512 > 500$ ✓ and $2^8 = 256 < 500$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Solve $2^{x+1} = 3^x$, to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x+1)\log 2 = x\log 3$</p>
+          <p>$x\log 2 + \log 2 = x\log 3$</p>
+          <p>$\log 2 = x\left(\log 3 - \log 2\right)$</p>
+          <p>$x = \dfrac{0.301030}{0.477121 - 0.301030} = \dfrac{0.301030}{0.176091} = 1.71$ (3 s.f.)</p>
+          <p><em>Check:</em> $2^{2.71} = 6.54$ and $3^{1.71} = 6.54$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A savings account pays $4\%$ interest per year. £$2500$ is invested.</p>
+      <p>(a) Write a formula for the value $V$ after $t$ years. &nbsp; (b) Find the value after $10$ years. &nbsp; (c) Find how long it takes to reach £$4000$, to the nearest month. &nbsp; (d) Find how long it takes to double, and show that this does not depend on the amount invested.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $V = 2500 \times 1.04^t$</p>
+          <p><strong>(b)</strong> $V = 2500 \times 1.04^{10} = 2500 \times 1.480244 = £3700.61$ (to the nearest penny)</p>
+          <p><strong>(c)</strong> $2500 \times 1.04^t = 4000$</p>
+          <p>$1.04^t = 1.6$</p>
+          <p>$t\log 1.04 = \log 1.6$</p>
+          <p>$t = \dfrac{0.204120}{0.017033} = 11.984$ years</p>
+          <p>The fractional part is $0.984 \times 12 = 11.8$ months, which rounds to $12$ months &mdash; so the value reaches &pound;$4000$ after $\mathbf{12}$ <strong>years</strong> (to the nearest month).</p>
+          <p><em>Check:</em> $2500 \times 1.04^{12} = £4002.58$ ✓ (just over £4000), while $1.04^{11}$ gives £3849 ✓</p>
+          <p><strong>(d)</strong> Doubling means $V = 5000$:</p>
+          <p>$2500 \times 1.04^t = 5000 \;\Rightarrow\; 1.04^t = 2$</p>
+          <p>$t = \dfrac{\log 2}{\log 1.04} = \dfrac{0.301030}{0.017033} = 17.67$ years.</p>
+          <p><strong>Why the initial amount is irrelevant:</strong> starting with any amount $P$, doubling requires $P \times 1.04^t = 2P$. The $P$ <em>cancels</em>, leaving $1.04^t = 2$ regardless of its value.</p>
+          <p>So £$100$ and £$1$ million both take $17.67$ years to double at $4\%$. This constant doubling time is the defining property of exponential growth — and the reason the "rule of 72" works: $\tfrac{72}{4} = 18$ years, a good quick approximation to $17.67$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Solving Exponential Equations (EL6) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

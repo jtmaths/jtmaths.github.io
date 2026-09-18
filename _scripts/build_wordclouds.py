@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate the GCSE word-cloud blocks for index.md and gcse/index.md.
+"""Generate the word-cloud blocks for index.md, gcse/index.md and fsmq/index.md.
 
-Single source of truth for every topic/subtopic link. Validates that each
-target file actually exists before writing anything.
+Single source of truth for every topic/subtopic link across both qualifications.
+Validates that each target file actually exists before writing anything.
 """
 import os
 import re
@@ -11,7 +11,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repo root
 
 # (folder, Topic label, size, [(label, file, size), ...])
-TOPICS = [
+GCSE_TOPICS = [
     ("number", "Number", "xl", [
         ("Overview of Numbers", "overview.html", "md"),
         ("BIDMAS / BODMAS", "bidmas.html", "sm"),
@@ -143,20 +143,91 @@ TOPICS = [
     ]),
 ]
 
+FSMQ_TOPICS = [
+    ("algebra", "Algebra", "xl", [
+        ("Algebra Overview", "overview.html", "md"),
+        ("Algebraic Manipulation", "manipulation.html", "sm"),
+        ("Polynomials and the Factor Theorem", "polynomials.html", "md"),
+        ("Completing the Square", "completing-the-square.html", "sm"),
+        ("Setting Up and Solving Equations", "equations.html", "md"),
+        ("Linear and Quadratic Inequalities", "inequalities.html", "sm"),
+        ("Inequalities in Two Variables", "inequalities-two-variables.html", "xs"),
+        ("Recurrence Relationships", "recurrence-relations.html", "sm"),
+    ]),
+    ("enumeration", "Enumeration", "lg", [
+        ("Enumeration Overview", "overview.html", "md"),
+        ("The Binomial Expansion", "binomial-expansion.html", "md"),
+        ("The Product Rule for Counting", "counting-product-rule.html", "sm"),
+        ("Permutations", "permutations.html", "sm"),
+        ("Combinations", "combinations.html", "sm"),
+        ("Representing Outcomes", "representing-outcomes.html", "xs"),
+        ("Counting in Probability", "binomial-probability.html", "md"),
+    ]),
+    ("coordinate-geometry", "Coordinate Geometry", "lg", [
+        ("Coordinate Geometry Overview", "overview.html", "md"),
+        ("Straight Lines", "straight-lines.html", "md"),
+        ("The Geometry of Circles", "circles.html", "md"),
+        ("Sketching Curves", "curve-sketching.html", "sm"),
+        ("Tangents and Normals", "tangents-and-normals.html", "sm"),
+        ("Linear Programming", "linear-programming.html", "md"),
+    ]),
+    ("trigonometry", "Pythagoras and Trigonometry", "lg", [
+        ("Trigonometry Overview", "overview.html", "md"),
+        ("Ratios of Any Angle", "ratios-of-any-angle.html", "md"),
+        ("The Sine and Cosine Rules", "sine-and-cosine-rules.html", "md"),
+        ("Trigonometric Identities", "trigonometric-identities.html", "sm"),
+        ("Trigonometric Equations", "trigonometric-equations.html", "sm"),
+        ("2-D and 3-D Problems", "three-dimensional-problems.html", "sm"),
+    ]),
+    ("calculus", "Calculus", "xl", [
+        ("Calculus Overview", "overview.html", "md"),
+        ("Differentiation", "differentiation.html", "md"),
+        ("Tangents and Normals by Calculus", "tangents-normals.html", "sm"),
+        ("Stationary Points", "stationary-points.html", "md"),
+        ("Maximum and Minimum Problems", "optimisation.html", "sm"),
+        ("Integration", "integration.html", "md"),
+        ("Areas Under and Between Curves", "areas.html", "sm"),
+        ("Application to Kinematics", "kinematics.html", "sm"),
+    ]),
+    ("numerical-methods", "Numerical Methods", "lg", [
+        ("Numerical Methods Overview", "overview.html", "md"),
+        ("Change of Sign", "change-of-sign.html", "md"),
+        ("Iterative Methods", "iterative-methods.html", "md"),
+        ("Gradients from Chords", "gradient-from-chords.html", "sm"),
+        ("Estimating Areas", "area-estimates.html", "sm"),
+        ("Numerical Methods in Context", "applications.html", "xs"),
+    ]),
+    ("exponentials-logarithms", "Exponentials and Logarithms", "lg", [
+        ("Exponentials and Logarithms Overview", "overview.html", "md"),
+        ("Exponential Functions", "exponential-functions.html", "md"),
+        ("Logarithms and Their Laws", "logarithms.html", "md"),
+        ("Solving Exponential Equations", "exponential-equations.html", "sm"),
+        ("Reduction to Linear Form", "reduction-to-linear-form.html", "sm"),
+        ("Growth and Decay", "growth-and-decay.html", "sm"),
+    ]),
+]
+
+# section key -> (url/folder prefix, topic list)
+SECTIONS = {
+    "gcse": ("gcse", GCSE_TOPICS),
+    "fsmq": ("fsmq", FSMQ_TOPICS),
+}
+
 START = "<!-- WORDCLOUD:START -->"
 END = "<!-- WORDCLOUD:END -->"
 
 
 def validate():
-    """Every link target must exist on disk."""
+    """Every link target must exist on disk, in every section."""
     missing = []
-    for folder, _, _, subs in TOPICS:
-        if not os.path.isfile(os.path.join(ROOT, "gcse", folder, "index.md")):
-            missing.append(f"gcse/{folder}/index.md")
-        for _, f, _ in subs:
-            p = os.path.join(ROOT, "gcse", folder, f)
-            if not os.path.isfile(p):
-                missing.append(f"gcse/{folder}/{f}")
+    for prefix, topics in SECTIONS.values():
+        for folder, _, _, subs in topics:
+            idx = os.path.join(ROOT, prefix, folder, "index.md")
+            if not os.path.isfile(idx):
+                missing.append(f"{prefix}/{folder}/index.md")
+            for _, f, _ in subs:
+                if not os.path.isfile(os.path.join(ROOT, prefix, folder, f)):
+                    missing.append(f"{prefix}/{folder}/{f}")
     return missing
 
 
@@ -164,15 +235,18 @@ def link(label, href, size):
     return f'<a class="{size}" href="{href}">{label}</a>'
 
 
-def topics_cloud():
-    items = [link(name, f"/gcse/{folder}/", size) for folder, name, size, _ in TOPICS]
+def topics_cloud(section):
+    prefix, topics = SECTIONS[section]
+    items = [link(name, f"/{prefix}/{folder}/", size)
+             for folder, name, size, _ in topics]
     return '<div class="wc wc-topics">' + "".join(items) + "</div>"
 
 
-def mixed_cloud():
+def mixed_cloud(section):
     """All subtopics interleaved round-robin, so the cloud mixes subjects."""
-    lists = [[(l, f"/gcse/{folder}/{f}", s) for l, f, s in subs]
-             for folder, _, _, subs in TOPICS]
+    prefix, topics = SECTIONS[section]
+    lists = [[(l, f"/{prefix}/{folder}/{f}", s) for l, f, s in subs]
+             for folder, _, _, subs in topics]
     out, i = [], 0
     while any(lists):
         for lst in lists:
@@ -184,16 +258,21 @@ def mixed_cloud():
     return '<div class="wc">' + "".join(link(*x) for x in out) + "</div>"
 
 
-def grouped_clouds():
+def grouped_clouds(section):
+    prefix, topics = SECTIONS[section]
     parts = []
-    for folder, name, _, subs in TOPICS:
+    for folder, name, _, subs in topics:
         parts.append(
-            f'<p class="wc-label"><a href="/gcse/{folder}/">{name}</a> '
+            f'<p class="wc-label"><a href="/{prefix}/{folder}/">{name}</a> '
             f'&middot; {len(subs)} pages</p>'
         )
-        items = "".join(link(l, f"/gcse/{folder}/{f}", s) for l, f, s in subs)
+        items = "".join(link(l, f"/{prefix}/{folder}/{f}", s) for l, f, s in subs)
         parts.append(f'<div class="wc">{items}</div>')
     return "\n".join(parts)
+
+
+def count(section):
+    return sum(len(subs) for _, _, _, subs in SECTIONS[section][1])
 
 
 def splice(path, block):
@@ -220,29 +299,49 @@ if __name__ == "__main__":
             print("  ", m)
         sys.exit(1)
 
-    total = sum(len(s) for _, _, _, s in TOPICS)
-    print(f"{len(TOPICS)} topics, {total} subtopics — all targets verified")
+    n_gcse, n_fsmq = count("gcse"), count("fsmq")
+    for key, label in (("gcse", "GCSE"), ("fsmq", "FSMQ")):
+        topics = SECTIONS[key][1]
+        print(f"{label}: {len(topics)} topics, {count(key)} subtopics "
+              "\u2014 all targets verified")
 
     home = (
         '{% include wordcloud-style.html %}\n'
         '<h2 id="explore-gcse-maths">Explore GCSE Maths</h2>\n'
         '<p>Every topic, with full notes, worked examples and practice questions '
         'with answers. Pick a topic:</p>\n'
-        + topics_cloud() + "\n"
+        + topics_cloud("gcse") + "\n"
         '<p class="wc-label">&hellip;or jump straight to any of the '
-        f'{total} subtopics</p>\n'
-        + mixed_cloud()
+        f'{n_gcse} subtopics</p>\n'
+        + mixed_cloud("gcse") + "\n"
+        '<h2 id="explore-fsmq-additional-maths">Explore FSMQ Additional Maths</h2>\n'
+        '<p>The full OCR Level 3 FSMQ: Additional Maths (6993) course, with notes, '
+        'worked examples and practice questions with answers:</p>\n'
+        + topics_cloud("fsmq") + "\n"
+        '<p class="wc-label">&hellip;or jump straight to any of the '
+        f'{n_fsmq} FSMQ pages</p>\n'
+        + mixed_cloud("fsmq")
     )
 
     gcse = (
         '{% include wordcloud-style.html %}\n'
         '<h2 id="all-topics">All topics</h2>\n'
-        + topics_cloud() + "\n"
+        + topics_cloud("gcse") + "\n"
         '<h2 id="all-subtopics">Every subtopic</h2>\n'
-        + grouped_clouds()
+        + grouped_clouds("gcse")
+    )
+
+    fsmq = (
+        '{% include wordcloud-style.html %}\n'
+        '<h2 id="all-topics">All topics</h2>\n'
+        + topics_cloud("fsmq") + "\n"
+        '<h2 id="all-pages">Every page</h2>\n'
+        + grouped_clouds("fsmq")
     )
 
     n1 = splice("index.md", home)
     n2 = splice("gcse/index.md", gcse)
-    print(f"index.md      → {n1} links")
-    print(f"gcse/index.md → {n2} links")
+    n3 = splice("fsmq/index.md", fsmq)
+    print(f"index.md      \u2192 {n1} links")
+    print(f"gcse/index.md \u2192 {n2} links")
+    print(f"fsmq/index.md \u2192 {n3} links")

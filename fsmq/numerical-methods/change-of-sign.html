@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change of Sign &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔀 Change of Sign</h1>
+  <p>OCR FSMQ Additional Maths · Numerical Methods (NM1, NM3)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE PRINCIPLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Principle</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>NM1:</strong> solve equations approximately by considering the change of sign. The idea is disarmingly simple — if a continuous curve is below the axis at one point and above it at another, it must have crossed somewhere in between.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The change of sign test</div>
+    If $\mathrm{f}$ is <strong>continuous</strong> on $[a, b]$ and $\mathrm{f}(a)$, $\mathrm{f}(b)$ have <strong>opposite signs</strong>,<br>
+    then $\mathrm{f}(x) = 0$ has at least one root between $a$ and $b$
+  </div>
+
+  <div class="svg-block">
+    <svg width="420" height="220" viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="110" x2="400" y2="110" stroke="#475569" stroke-width="2"/>
+      <path d="M 70 190 C 140 185 190 60 320 35" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="100" y1="110" x2="100" y2="188" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 4"/>
+      <line x1="280" y1="110" x2="280" y2="45" stroke="#22c55e" stroke-width="2" stroke-dasharray="5 4"/>
+      <circle cx="100" cy="188" r="5" fill="#dc2626"/><circle cx="280" cy="45" r="5" fill="#16a34a"/>
+      <circle cx="176" cy="110" r="6" fill="#7c3aed"/>
+      <text x="80" y="208" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">f(a) &lt; 0</text>
+      <text x="262" y="36" font-family="Arial" font-size="12" fill="#166534" font-weight="bold">f(b) &gt; 0</text>
+      <text x="166" y="98" font-family="Arial" font-size="12" fill="#4c1d95" font-weight="bold">root</text>
+      <text x="215" y="212" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">A continuous curve cannot get from below to above without crossing</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">How to write the answer</div>
+    <strong>1.</strong> Evaluate $\mathrm{f}$ at both ends, showing the numbers<br>
+    <strong>2.</strong> Say that one is negative and the other positive<br>
+    <strong>3.</strong> State that $\mathrm{f}$ is continuous<br>
+    <strong>4.</strong> Conclude that a root lies between them
+  </div>
+
+  <div class="warn">
+    <strong>All four steps carry marks.</strong> Writing just "$\mathrm{f}(1) = -1$, $\mathrm{f}(2) = 7$" and stopping loses the conclusion mark. Write the sentence.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A full, properly written answer</div>
+    <div class="example-body">
+      <p>Show that $x^3 - 4x - 1 = 0$ has a root between $2$ and $3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $\mathrm{f}(x) = x^3 - 4x - 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(2) = 8 - 8 - 1 = -1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(3) = 27 - 12 - 1 = 14$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(2) < 0$ and $\mathrm{f}(3) > 0$, so there is a change of sign.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}$ is a polynomial and therefore continuous, so a root lies between $2$ and $3$.</span></div>
+      <div class="tip"><strong>Polynomials are always continuous</strong>, so for a polynomial that step is a single phrase. It still needs saying.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DECIMAL SEARCH
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Decimal Search</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>decimal search</strong> narrows the interval one decimal place at a time: test $x$ at each tenth across the interval until the sign changes, then repeat with hundredths.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Two decimal places</div>
+    <div class="example-body">
+      <p>Find the root of $x^3 - 4x - 1 = 0$ between $2$ and $3$, correct to $2$ decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(2.1) = 9.261 - 8.4 - 1 = -0.139$ &nbsp;(negative)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(2.2) = 10.648 - 8.8 - 1 = 0.848$ &nbsp;(positive)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The root is in $(2.1, 2.2)$. Now search in hundredths.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(2.11) = 9.394 - 8.44 - 1 = -0.046$ &nbsp;(negative)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(2.12) = 9.528 - 8.48 - 1 = 0.048$ &nbsp;(positive)</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The root is in $(2.11, 2.12)$. To decide the rounding, test the midpoint:</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$\mathrm{f}(2.115) = 9.461 - 8.46 - 1 = 0.001 > 0$</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>So the root lies in $(2.11, 2.115)$ and rounds to $\mathbf{2.11}$ to $2$ d.p.</span></div>
+      <div class="tip"><strong>Why the midpoint check matters.</strong> Without it, the root could be anywhere in $(2.11, 2.12)$ and could round either way. The midpoint test resolves it — and this one was very close indeed.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – BISECTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Interval Bisection</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The bisection method</div>
+    Test the <strong>midpoint</strong> of the interval, then keep whichever half still shows a sign change.<br>
+    Each step <strong>halves</strong> the interval containing the root.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Four bisections</div>
+    <div class="example-body">
+      <p>The equation $x^3 + x - 4 = 0$ has a root in $(1, 2)$. Use bisection four times to narrow the interval.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(1) = -2$, $\mathrm{f}(2) = 6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(1.5) = 3.375 + 1.5 - 4 = 0.875 > 0$ &rarr; root in $(1, 1.5)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(1.25) = 1.953 + 1.25 - 4 = -0.797 < 0$ &rarr; root in $(1.25, 1.5)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(1.375) = 2.600 + 1.375 - 4 = -0.025 < 0$ &rarr; root in $(1.375, 1.5)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(1.4375) = 2.970 + 1.4375 - 4 = 0.408 > 0$ &rarr; root in $(1.375, 1.4375)$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>After four steps the interval has width $0.0625$, down from $1$.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>The root is $1.4$ to $1$ d.p. (the whole interval rounds to $1.4$).</span></div>
+      <div class="tip"><strong>Bisection's great virtue is certainty.</strong> Each step is guaranteed to halve the uncertainty, so after $n$ steps the interval is $\tfrac{1}{2^n}$ of the original. Ten steps reduce an interval of $1$ to under $0.001$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHEN IT FAILS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When the Method Fails (NM3)</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>NM3</strong> asks you to recognise when these numerical methods may fail. For change of sign there are three distinct traps, and each can be asked about directly.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Failure 1 — a discontinuity</div>
+    A sign change across an <strong>asymptote</strong> does not mean a root
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A false positive</div>
+    <div class="example-body">
+      <p>A student claims $\mathrm{f}(x) = \dfrac{1}{x-2}$ has a root between $1$ and $3$, because $\mathrm{f}(1) = -1$ and $\mathrm{f}(3) = 1$. Explain the error.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The values and the signs are correct.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>But $\mathrm{f}$ is <strong>not continuous</strong> on $[1,3]$ — it has a vertical asymptote at $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The function jumps from $-\infty$ to $+\infty$ there without passing through zero.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>In fact $\dfrac{1}{x-2}$ is never zero, so there is no root anywhere.</span></div>
+      <div class="warn"><strong>This is why "continuous" must appear in your answer.</strong> Without continuity, a change of sign proves nothing.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Failure 2 — two roots in one interval</div>
+    If a curve dips below and comes back, the signs at the ends are the <strong>same</strong> — and the test finds nothing
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Roots hiding in plain sight</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^2 - 4x + 3$. Show that $\mathrm{f}(0)$ and $\mathrm{f}(4)$ have the same sign, yet there are two roots in $(0, 4)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(0) = 3 > 0$ and $\mathrm{f}(4) = 16 - 16 + 3 = 3 > 0$ — no sign change.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Yet $x^2 - 4x + 3 = (x-1)(x-3)$, so there are roots at $x = 1$ and $x = 3$, both in $(0, 4)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The curve dips below the axis between them and comes back up, so the two crossings cancel out as far as the end signs are concerned.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>A midpoint check would reveal them: $\mathrm{f}(2) = -1 < 0$, exposing sign changes in both $(0,2)$ and $(2,4)$.</span></div>
+      <div class="tip"><strong>An even number of roots is invisible to the test.</strong> Always sketch, or test extra points, before concluding there is no root.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Failure 3 — a repeated root</div>
+    A curve that <strong>touches</strong> the axis has a root but <strong>no sign change</strong>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A touching root</div>
+    <div class="example-body">
+      <p>Explain why a change of sign search will never find the root of $(x-3)^2 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(x-3)^2 \geqslant 0$ for every $x$, and it equals zero only at $x = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So the function is <em>never negative</em> — there is no sign change anywhere.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The curve touches the axis at $x=3$ and turns back, rather than crossing it.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The root exists but is undetectable by this method; it must be found algebraically, or by looking for a minimum value of zero.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The test</h4><p>Opposite signs at the ends of the interval.</p></div>
+    <div class="ref-card"><h4>Condition</h4><p>The function must be continuous.</p></div>
+    <div class="ref-card"><h4>Write it out</h4><p>Values, signs, continuity, conclusion.</p></div>
+    <div class="ref-card"><h4>Decimal search</h4><p>Step through tenths, then hundredths.</p></div>
+    <div class="ref-card"><h4>Midpoint check</h4><p>Needed to settle the rounding.</p></div>
+    <div class="ref-card"><h4>Bisection</h4><p>Halves the interval every step.</p></div>
+    <div class="ref-card"><h4>After $n$ steps</h4><p>Interval is $\dfrac{1}{2^n}$ of the original.</p></div>
+    <div class="ref-card"><h4>Fails at asymptotes</h4><p>Sign change but no root.</p></div>
+    <div class="ref-card"><h4>Fails for two roots</h4><p>Same sign at both ends.</p></div>
+    <div class="ref-card"><h4>Fails for touching roots</h4><p>Root with no sign change.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Show that $x^3 - 7 = 0$ has a root between $1$ and $2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 - 7 = -6 < 0$</p>
+          <p>$\mathrm{f}(2) = 8 - 7 = 1 > 0$</p>
+          <p>The sign changes and $\mathrm{f}$ is a continuous polynomial, so a root lies in $(1, 2)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Show that $x^3 + 3x - 10 = 0$ has a root between $1$ and $2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 + 3 - 10 = -6 < 0$</p>
+          <p>$\mathrm{f}(2) = 8 + 6 - 10 = 4 > 0$</p>
+          <p>Sign change with a continuous function, so a root lies in $(1, 2)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For $\mathrm{f}(x) = x^3 - 7$, evaluate $\mathrm{f}(1.9)$ and $\mathrm{f}(1.95)$, and hence give the root to $1$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1.9) = 6.859 - 7 = -0.141 < 0$</p>
+          <p>$\mathrm{f}(1.95) = 7.415 - 7 = 0.415 > 0$</p>
+          <p>The root is in $(1.9, 1.95)$, so it rounds to $\mathbf{1.9}$ to $1$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>The root of $x^3 + x - 6 = 0$ lies in $(1, 2)$. Perform one bisection step.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1.5) = 3.375 + 1.5 - 6 = -1.125 < 0$</p>
+          <p>$\mathrm{f}(2) = 8 + 2 - 6 = 4 > 0$</p>
+          <p>So the root now lies in $(1.5, 2)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Starting from an interval of width $1$, how many bisections are needed to locate a root to within $0.01$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>After $n$ steps the width is $\dfrac{1}{2^n}$.</p>
+          <p>$\dfrac{1}{2^6} = 0.015625$ — not yet small enough.</p>
+          <p>$\dfrac{1}{2^7} = 0.0078125 < 0.01$ ✓</p>
+          <p>So $7$ bisections are needed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Explain why $\mathrm{f}(x) = \dfrac{1}{x+1}$ having a sign change between $x = -2$ and $x = 0$ does not prove there is a root.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(-2) = -1$ and $\mathrm{f}(0) = 1$, so the signs do differ.</p>
+          <p>But $\mathrm{f}$ has an asymptote at $x = -1$, so it is <strong>not continuous</strong> on $[-2, 0]$.</p>
+          <p>The change of sign test requires continuity, so no conclusion can be drawn. In fact $\dfrac{1}{x+1}$ is never zero.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Show that $\mathrm{f}(x) = x^2 - 6x + 8$ has the same sign at $x = 1$ and $x = 5$, and explain what this hides.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = 1 - 6 + 8 = 3 > 0$</p>
+          <p>$\mathrm{f}(5) = 25 - 30 + 8 = 3 > 0$</p>
+          <p>No sign change — yet $\mathrm{f}(x) = (x-2)(x-4)$ has roots at $x = 2$ and $x = 4$, both inside $(1,5)$.</p>
+          <p>An <strong>even</strong> number of roots leaves the end signs unchanged, so the test misses them entirely. Testing $\mathrm{f}(3) = -1 < 0$ would reveal both.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Show that $x^3 - 6x^2 + 9x - 2 = 0$ has a root between $0$ and $1$, and find it to $1$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(0) = -2 < 0$ &nbsp;and&nbsp; $\mathrm{f}(1) = 1 - 6 + 9 - 2 = 2 > 0$, so a root lies in $(0,1)$.</p>
+          <p>$\mathrm{f}(0.2) = 0.008 - 0.24 + 1.8 - 2 = -0.432 < 0$</p>
+          <p>$\mathrm{f}(0.3) = 0.027 - 0.54 + 2.7 - 2 = 0.187 > 0$</p>
+          <p>Root in $(0.2, 0.3)$. Midpoint: $\mathrm{f}(0.25) = 0.016 - 0.375 + 2.25 - 2 = -0.109 < 0$.</p>
+          <p>So the root is in $(0.25, 0.3)$, giving $\mathbf{0.3}$ to $1$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why a change of sign search cannot find the root of $x^2 - 6x + 9 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 - 6x + 9 = (x-3)^2$, which is a perfect square.</p>
+          <p>So the function is never negative, and its only zero is at $x = 3$, where the curve <em>touches</em> the axis rather than crossing it.</p>
+          <p>With no sign change anywhere, the method has nothing to detect. A repeated root is always invisible to it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 - 3x^2 + 1$.</p>
+      <p>(a) Evaluate $\mathrm{f}(x)$ at $x = -1, 0, 1, 2, 3$. &nbsp; (b) State how many roots the equation $\mathrm{f}(x)=0$ has, and locate each between consecutive integers. &nbsp; (c) Find the largest root to $2$ d.p. &nbsp; (d) Explain how you know you have found <em>all</em> the roots.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong></p>
+          <table>
+            <tr><th>$x$</th><th>$-1$</th><th>$0$</th><th>$1$</th><th>$2$</th><th>$3$</th></tr>
+            <tr><td>$\mathrm{f}(x)$</td><td>$-3$</td><td>$1$</td><td>$-1$</td><td>$-3$</td><td>$1$</td></tr>
+          </table>
+          <p><strong>(b)</strong> There are three sign changes: between $-1$ and $0$, between $0$ and $1$, and between $2$ and $3$.</p>
+          <p>So the equation has <strong>three roots</strong>, one in each of $(-1, 0)$, $(0, 1)$ and $(2, 3)$.</p>
+          <p><strong>(c)</strong> Searching in $(2,3)$:</p>
+          <p>$\mathrm{f}(2.8) = 21.952 - 23.52 + 1 = -0.568 < 0$</p>
+          <p>$\mathrm{f}(2.9) = 24.389 - 25.23 + 1 = 0.159 > 0$</p>
+          <p>Root in $(2.8, 2.9)$. Refining:</p>
+          <p>$\mathrm{f}(2.87) = 23.640 - 24.711 + 1 = -0.071 < 0$</p>
+          <p>$\mathrm{f}(2.88) = 23.888 - 24.883 + 1 = 0.005 > 0$</p>
+          <p>Root in $(2.87, 2.88)$. Midpoint: $\mathrm{f}(2.875) = 23.764 - 24.797 + 1 = -0.033 < 0$.</p>
+          <p>So the root lies in $(2.875, 2.88)$ and rounds to $\mathbf{2.88}$ to $2$ d.p.</p>
+          <p><strong>(d)</strong> $\mathrm{f}$ is a <strong>cubic</strong>, and a cubic has at most three roots. We have located three, so there cannot be any more.</p>
+          <p>This is the key safeguard: the change of sign test alone can never prove you have found them all — it is the <em>degree of the polynomial</em> that caps the count. Without that argument, extra roots could always be hiding between the points you happened to test.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Change of Sign (NM1, NM3) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

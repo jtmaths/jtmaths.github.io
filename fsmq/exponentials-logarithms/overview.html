@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponentials and Logarithms &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Exponentials and Logarithms</h1>
+  <p>OCR FSMQ Additional Maths · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>In every function you have met so far, the variable sat in the <em>base</em>: $x^2$, $x^3$, $\sqrt{x}$. An <strong>exponential</strong> function puts the variable in the <em>index</em> instead: $2^x$, $10^x$, $1.05^x$. That single change produces growth of an entirely different character.</p>
+
+  <div class="concept">
+    <strong>The contrast worth remembering.</strong> $x^{10}$ grows fast at first but $2^x$ overtakes it and never looks back. Exponential growth always wins in the end, which is why it describes compound interest, population, and the spread of anything that multiplies.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The central relationship</div>
+    A <strong>logarithm</strong> is the inverse of an exponential:<br>
+    $\log_a x = y \;\Longleftrightarrow\; a^y = x$
+  </div>
+
+  <div class="concept">
+    In words: <em>$\log_a x$ is the power you must raise $a$ to in order to get $x$.</em> That sentence is worth learning verbatim — almost every logarithm question yields to it.
+  </div>
+
+  <div class="tip">
+    <strong>Why logarithms matter here.</strong> An equation like $3^x = 20$ cannot be solved by any algebra you have met: you cannot "undo" a variable index by rooting or dividing. Logarithms are the tool that brings the $x$ down where you can reach it.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Exponential function</strong></td><td>$y = ka^x$ — the variable is in the index.</td></tr>
+    <tr><td><strong>Base</strong></td><td>The $a$ in $a^x$ or in $\log_a x$.</td></tr>
+    <tr><td><strong>Logarithm</strong></td><td>The inverse of raising to a power.</td></tr>
+    <tr><td><strong>$\log$</strong></td><td>Written without a base, this conventionally means base $10$.</td></tr>
+    <tr><td><strong>$\ln$</strong></td><td>The natural logarithm, base $\mathrm{e}$.</td></tr>
+    <tr><td><strong>Growth factor</strong></td><td>The multiplier per period: $1.05$ for $5\%$ growth.</td></tr>
+    <tr><td><strong>Decay factor</strong></td><td>A multiplier between $0$ and $1$.</td></tr>
+    <tr><td><strong>Asymptote</strong></td><td>A line the curve approaches but never reaches.</td></tr>
+    <tr><td><strong>Linear form</strong></td><td>$Y = mX + c$ — what a log transformation produces.</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>You cannot take the logarithm of zero or of a negative number.</strong> There is no power of $10$ that gives $-5$, since $10^x$ is always positive. If a calculation produces $\log(-3)$, an earlier step is wrong.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE KEY LAWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Key Laws</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">EL3 — the three laws of logarithms</div>
+    $\log x + \log y = \log(xy)$<br>
+    $\log x - \log y = \log\!\left(\dfrac{x}{y}\right)$<br>
+    $n\log x = \log\left(x^n\right)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Two values to know</div>
+    $\log_a 1 = 0$ &nbsp;(because $a^0 = 1$) &nbsp;&middot;&nbsp; $\log_a a = 1$ &nbsp;(because $a^1 = a$)
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The single most useful law</div>
+    $\log\left(x^n\right) = n\log x$<br>
+    <span style="font-size:.9rem;">This is what brings an unknown index down to ground level.</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Solving an exponential equation</div>
+    <div class="example-body">
+      <p>Solve $3^x = 20$, giving your answer to $3$ significant figures.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take logarithms of both sides: $\log\left(3^x\right) = \log 20$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Use the power law to bring $x$ down: $x\log 3 = \log 20$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \dfrac{\log 20}{\log 3} = \dfrac{1.30103}{0.47712}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 2.73$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> $3^{2.73} = 20.07 \approx 20$ ✓</span></div>
+      <div class="warn"><strong>$\dfrac{\log 20}{\log 3}$ is not $\log\!\left(\tfrac{20}{3}\right)$.</strong> The quotient law applies to a logarithm <em>of</em> a quotient, not to a quotient <em>of</em> logarithms. This is the single commonest error in the topic.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Exponentials and Logarithms Subtopics</div>
+<div class="section-body">
+
+  <ul class="topic-list">
+    <li><span class="code">EL1</span><span><a href="exponential-functions.html">Exponential Functions</a><span class="desc">The function $ka^x$ and its graph, for positive $a$.</span></span></li>
+    <li><span class="code">EL2<br>EL3</span><span><a href="logarithms.html">Logarithms and Their Laws</a><span class="desc">$\log_a x$ as the inverse of $a^x$, and the three laws.</span></span></li>
+    <li><span class="code">EL6</span><span><a href="exponential-equations.html">Solving Exponential Equations</a><span class="desc">Equations of the form $a^x = b$, and disguised quadratics.</span></span></li>
+    <li><span class="code">EL4<br>EL5</span><span><a href="reduction-to-linear-form.html">Reduction to Linear Form</a><span class="desc">Turning $y = ka^x$ and $y = kx^n$ into straight lines, then estimating $k$, $a$ and $n$.</span></span></li>
+    <li><span class="code">EL7</span><span><a href="growth-and-decay.html">Growth and Decay</a><span class="desc">Compound interest, populations, half-life and cooling.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>$\dfrac{\log a}{\log b} \neq \log\!\left(\dfrac{a}{b}\right)$.</strong> Dividing two logarithms is not the logarithm of a quotient.
+  </div>
+
+  <div class="warn">
+    <strong>$\log(x+y) \neq \log x + \log y$.</strong> The sum law works the other way: $\log x + \log y = \log(xy)$. There is no law at all for the logarithm of a sum.
+  </div>
+
+  <div class="warn">
+    <strong>$2^x$ is not $2x$.</strong> At $x = 10$, one is $1024$ and the other is $20$.
+  </div>
+
+  <div class="warn">
+    <strong>Confusing the growth factor with the rate.</strong> $5\%$ growth means multiplying by $1.05$, not by $0.05$.
+  </div>
+
+  <div class="warn">
+    <strong>Drawing an exponential curve touching the $x$-axis.</strong> It approaches the axis asymptotically but never reaches it.
+  </div>
+
+  <div class="warn">
+    <strong>Rounding too early.</strong> $\log 20$ and $\log 3$ should be kept at full precision until the final division.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$\log_a x = y \iff a^y = x$.</p></div>
+    <div class="ref-card"><h4>In words</h4><p>The power $a$ needs to give $x$.</p></div>
+    <div class="ref-card"><h4>Product</h4><p>$\log x + \log y = \log(xy)$.</p></div>
+    <div class="ref-card"><h4>Quotient</h4><p>$\log x - \log y = \log\!\left(\tfrac{x}{y}\right)$.</p></div>
+    <div class="ref-card"><h4>Power</h4><p>$\log\left(x^n\right) = n\log x$.</p></div>
+    <div class="ref-card"><h4>$\log_a 1$</h4><p>Always $0$.</p></div>
+    <div class="ref-card"><h4>Solving $a^x=b$</h4><p>$x = \dfrac{\log b}{\log a}$.</p></div>
+    <div class="ref-card"><h4>Graph of $ka^x$</h4><p>Through $(0,k)$, asymptote $y = 0$.</p></div>
+    <div class="ref-card"><h4>Growth factor</h4><p>$1 + \dfrac{\text{rate}}{100}$.</p></div>
+    <div class="ref-card"><h4>No logs of</h4><p>Zero or negative numbers.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write $\log_2 8 = 3$ in index form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2^3 = 8$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Evaluate $\log_3 81$ and $\log_5 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3^4 = 81$, so $\log_3 81 = 4$.</p>
+          <p>$5^0 = 1$, so $\log_5 1 = 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Write $\log 6 + \log 4$ as a single logarithm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log 6 + \log 4 = \log(6 \times 4) = \log 24$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $2^x = 15$, to $3$ significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x\log 2 = \log 15$</p>
+          <p>$x = \dfrac{\log 15}{\log 2} = \dfrac{1.17609}{0.30103} = 3.91$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write down the $y$-intercept of $y = 7 \times 3^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>At $x = 0$: $y = 7 \times 1 = 7$, so the intercept is $(0, 7)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A population grows by $8\%$ a year from $5000$. Write a formula for the population after $t$ years.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Growth factor $1.08$, so $P = 5000 \times 1.08^t$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Simplify $3\log 2 + \log 5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3\log 2 = \log\left(2^3\right) = \log 8$</p>
+          <p>$\log 8 + \log 5 = \log 40$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $\log_2 x = 5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>By the definition, $x = 2^5 = 32$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why $\log(-4)$ has no value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log(-4)$ would be the power of $10$ giving $-4$.</p>
+          <p>But $10^x$ is positive for every real $x$ — it approaches zero for large negative $x$ but never becomes negative.</p>
+          <p>So no such power exists, and $\log(-4)$ is undefined.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A radioactive sample of mass $80$ mg decays so that $12\%$ is lost each year.</p>
+      <p>(a) Write a formula for the mass $m$ after $t$ years. &nbsp; (b) Find the mass after $5$ years. &nbsp; (c) Find the half-life, to $3$ significant figures. &nbsp; (d) Explain why the sample never completely disappears according to this model, and comment on whether that is realistic.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Losing $12\%$ leaves $88\%$, so the decay factor is $0.88$:</p>
+          <p>$m = 80 \times 0.88^t$</p>
+          <p><strong>(b)</strong> $m = 80 \times 0.88^5 = 80 \times 0.527732 = 42.2$ mg (3 s.f.)</p>
+          <p><strong>(c)</strong> Half-life is when $m = 40$:</p>
+          <p>$80 \times 0.88^t = 40 \;\Rightarrow\; 0.88^t = 0.5$</p>
+          <p>$t\log 0.88 = \log 0.5$</p>
+          <p>$t = \dfrac{\log 0.5}{\log 0.88} = \dfrac{-0.30103}{-0.055517} = 5.42$ years (3 s.f.)</p>
+          <p><em>Check:</em> $0.88^{5.42} = 0.500$ ✓</p>
+          <p><strong>(d)</strong> $0.88^t$ is positive for every $t$, however large — each year removes $12\%$ of what remains, never the last of it. So the model gives a mass that shrinks towards zero without ever reaching it: the $t$-axis is an <strong>asymptote</strong>.</p>
+          <p>Physically this is only an approximation. A real sample consists of a whole number of atoms, so once very few remain the smooth exponential model breaks down, and eventually the last atom decays and the sample genuinely is gone. The model is excellent while the number of atoms is large, and unrealistic at the very end — a limitation worth stating in any answer about long-term behaviour.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exponentials and Logarithms (EL1–EL7) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

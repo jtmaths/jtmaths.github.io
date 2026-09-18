@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculus &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>∫ Calculus</h1>
+  <p>OCR FSMQ Additional Maths · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Calculus</strong> is the mathematics of change. It is almost certainly the most important new idea in this qualification, and it is the foundation of AS and A Level Mathematics.</p>
+
+  <div class="formula-box">
+    <div class="label">The two halves, and how they relate</div>
+    <strong>Differentiation</strong> finds a rate of change — the gradient of a curve<br>
+    <strong>Integration</strong> reverses differentiation, and finds an area<br>
+    Each undoes the other
+  </div>
+
+  <div class="concept">
+    <strong>What calculus adds to what you know.</strong> At GCSE you found the gradient of a <em>straight line</em> — the same everywhere. A curve's gradient changes from point to point, and differentiation gives you a formula for it: the <strong>gradient function</strong>.
+  </div>
+
+  <div class="warn">
+    <strong>The scope is deliberately limited.</strong> The specification restricts differentiation and integration to $kx^n$ where $n$ is a <em>positive integer or zero</em>, and sums of such terms. No products, quotients, chain rule, trigonometric or exponential calculus is required.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language and Notation</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Notation for the derivative (CA1)</div>
+    $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ &nbsp;&middot;&nbsp; $\mathrm{f}'(x)$ &nbsp;&middot;&nbsp; $\dot{x}$ &nbsp;(for differentiation with respect to <em>time</em>)
+  </div>
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Derivative</strong></td><td>The result of differentiating — the gradient function.</td></tr>
+    <tr><td><strong>Gradient function</strong></td><td>A formula giving the gradient at any $x$.</td></tr>
+    <tr><td><strong>Tangent</strong></td><td>The line touching the curve, with the curve's gradient.</td></tr>
+    <tr><td><strong>Normal</strong></td><td>Perpendicular to the tangent at the same point.</td></tr>
+    <tr><td><strong>Stationary point</strong></td><td>Where $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$ — the tangent is horizontal.</td></tr>
+    <tr><td><strong>Second derivative</strong></td><td>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$: the rate of change of the gradient.</td></tr>
+    <tr><td><strong>Indefinite integral</strong></td><td>An integral with no limits, needing $+c$.</td></tr>
+    <tr><td><strong>Definite integral</strong></td><td>An integral between two limits — a number.</td></tr>
+    <tr><td><strong>Ordinate</strong></td><td>A vertical line at a given $x$, bounding an area.</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The dot notation matters for kinematics.</strong> If $x$ is displacement and $t$ is time, $\dot{x}$ is velocity and $\ddot{x}$ is acceleration. The specification names this notation explicitly.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE TWO RULES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Two Rules That Do Everything</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">To differentiate (CA1)</div>
+    $y = kx^n \;\Longrightarrow\; \dfrac{\mathrm{d}y}{\mathrm{d}x} = knx^{n-1}$<br>
+    <span style="font-size:.9rem;">Multiply by the power, then reduce the power by one</span>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">To integrate (CA8)</div>
+    $\displaystyle\int kx^n \,\mathrm{d}x = \dfrac{kx^{n+1}}{n+1} + c$<br>
+    <span style="font-size:.9rem;">Raise the power by one, then divide by the new power</span>
+  </div>
+
+  <div class="concept">
+    Notice that these are exact opposites. Differentiating multiplies by the old power and drops it; integrating raises the power and divides by the new one. That is what "integration is the reverse of differentiation" (<strong>CA9</strong>) means in practice.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — There and back again</div>
+    <div class="example-body">
+      <p>Differentiate $y = 4x^3 - 5x + 7$, then integrate the result.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4x^3 \to 4 \times 3 x^2 = 12x^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-5x \to -5$ &nbsp;(since $-5x^1 \to -5x^0 = -5$)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$+7 \to 0$ &nbsp;(a constant has zero gradient)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 12x^2 - 5$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Now integrate: $\displaystyle\int \left(12x^2 - 5\right)\mathrm{d}x = \dfrac{12x^3}{3} - 5x + c = 4x^3 - 5x + c$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>We recover the original — except the $7$ has become an unknown $c$.</span></div>
+      <div class="warn"><strong>This is exactly why $+c$ is needed.</strong> Differentiating destroyed the constant term, so integrating cannot recover it. Only extra information — a point on the curve — can pin $c$ down.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Calculus Subtopics</div>
+<div class="section-body">
+
+  <ul class="topic-list">
+    <li><span class="code">CA1<br>CA2<br>CA3</span><span><a href="differentiation.html">Differentiation</a><span class="desc">The gradient function, the rule for $kx^n$, and what the answer means.</span></span></li>
+    <li><span class="code">CA4</span><span><a href="tangents-normals.html">Tangents and Normals</a><span class="desc">Finding the equation of a tangent or normal at any point.</span></span></li>
+    <li><span class="code">CA5<br>CA6<br>CA7</span><span><a href="stationary-points.html">Stationary Points</a><span class="desc">Locating them, determining their nature, and sketching the curve.</span></span></li>
+    <li><span class="code">CA5<br>CA6</span><span><a href="optimisation.html">Maximum and Minimum Problems</a><span class="desc">Using calculus to find the best design or the largest volume.</span></span></li>
+    <li><span class="code">CA8<br>CA9<br>CA10<br>CA11</span><span><a href="integration.html">Integration</a><span class="desc">Indefinite and definite integrals, and finding a curve from its gradient.</span></span></li>
+    <li><span class="code">CA12<br>CA13</span><span><a href="areas.html">Areas Under and Between Curves</a><span class="desc">Areas bounded by a curve and the axis, and between two curves.</span></span></li>
+    <li><span class="code">CA14<br>CA15</span><span><a href="kinematics.html">Application to Kinematics</a><span class="desc">Displacement, velocity and acceleration, with variable acceleration.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Forgetting $+c$.</strong> Every indefinite integral needs it. It is usually a whole mark.
+  </div>
+
+  <div class="warn">
+    <strong>Differentiating a constant to itself.</strong> The derivative of $7$ is $0$, not $7$.
+  </div>
+
+  <div class="warn">
+    <strong>Mishandling $kx$.</strong> The derivative of $5x$ is $5$, not $5x$ and not $0$.
+  </div>
+
+  <div class="warn">
+    <strong>Stopping at the stationary point.</strong> If the question asks for the <em>nature</em> of the point, you must test it with the second derivative and state the conclusion.
+  </div>
+
+  <div class="warn">
+    <strong>Giving only the $x$-coordinate.</strong> "Find the stationary points" wants coordinates — substitute back to get $y$.
+  </div>
+
+  <div class="warn">
+    <strong>Using the calculator's integral function when detailed reasoning is demanded.</strong> The specification is explicit: writing down a definite integral's value straight from the calculator will not be awarded full marks.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Differentiate</h4><p>$kx^n \to knx^{n-1}$.</p></div>
+    <div class="ref-card"><h4>Integrate</h4><p>$kx^n \to \dfrac{kx^{n+1}}{n+1} + c$.</p></div>
+    <div class="ref-card"><h4>Constants</h4><p>Differentiate to $0$; integrate to $kx$.</p></div>
+    <div class="ref-card"><h4>Gradient at a point</h4><p>Substitute $x$ into the derivative.</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>$y - y_1 = m(x-x_1)$ with $m$ from the derivative.</p></div>
+    <div class="ref-card"><h4>Normal</h4><p>Gradient $-\dfrac1m$.</p></div>
+    <div class="ref-card"><h4>Stationary</h4><p>Solve $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$.</p></div>
+    <div class="ref-card"><h4>Nature</h4><p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} > 0$ minimum; $< 0$ maximum.</p></div>
+    <div class="ref-card"><h4>Definite integral</h4><p>$\left[F(x)\right]_a^b = F(b) - F(a)$.</p></div>
+    <div class="ref-card"><h4>Kinematics</h4><p>Differentiate to go $s \to v \to a$; integrate to come back.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate $y = x^4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Differentiate $y = 3x^2 - 7x + 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x - 7$</p>
+          <p>The constant $4$ differentiates to $0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(6x^2 + 2\right)\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{6x^3}{3} + 2x + c = 2x^3 + 2x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = x^3 - 2x$ at $x = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 2$</p>
+          <p>At $x = 2$: $12 - 2 = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\int_0^2 3x^2 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\left[x^3\right]_0^2 = 8 - 0 = 8$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the $x$-coordinates of the stationary points of $y = x^3 - 3x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 3 = 0$</p>
+          <p>$x^2 = 1$, so $x = 1$ or $x = -1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Determine the nature of the stationary point of $y = x^2 - 6x + 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 6 = 0$ gives $x = 3$, and then $y = 9 - 18 + 1 = -8$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 2 > 0$, so $(3, -8)$ is a <strong>minimum</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A curve has gradient function $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x$ and passes through $(1, 5)$. Find its equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 2x^2 + c$</p>
+          <p>Substituting $(1,5)$: $5 = 2 + c$, so $c = 3$.</p>
+          <p>$y = 2x^2 + 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A particle has displacement $s = t^3 - 4t^2$ metres at time $t$ seconds. Find its velocity and acceleration at $t = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = \dfrac{\mathrm{d}s}{\mathrm{d}t} = 3t^2 - 8t$</p>
+          <p>At $t = 3$: $v = 27 - 24 = 3$ m s⁻¹</p>
+          <p>$a = \dfrac{\mathrm{d}v}{\mathrm{d}t} = 6t - 8$</p>
+          <p>At $t = 3$: $a = 18 - 8 = 10$ m s⁻²</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The curve $C$ has equation $y = x^3 - 6x^2 + 9x$.</p>
+      <p>(a) Find the coordinates of the stationary points and determine their nature. &nbsp; (b) Find where $C$ crosses the $x$-axis. &nbsp; (c) Sketch $C$. &nbsp; (d) Find the area enclosed between $C$ and the $x$-axis between $x=0$ and $x=3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 12x + 9 = 3\left(x^2 - 4x + 3\right) = 3(x-1)(x-3)$</p>
+          <p>Stationary where this is zero: $x = 1$ or $x = 3$.</p>
+          <p>At $x=1$: $y = 1 - 6 + 9 = 4$. &nbsp;At $x=3$: $y = 27 - 54 + 27 = 0$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x - 12$</p>
+          <p>At $x=1$: $6 - 12 = -6 < 0$, so $(1, 4)$ is a <strong>maximum</strong>.</p>
+          <p>At $x=3$: $18 - 12 = 6 > 0$, so $(3, 0)$ is a <strong>minimum</strong>.</p>
+          <p><strong>(b)</strong> $x^3 - 6x^2 + 9x = x\left(x^2-6x+9\right) = x(x-3)^2$</p>
+          <p>So $C$ crosses at $x = 0$ and <em>touches</em> at $x = 3$ (a repeated factor) — consistent with $(3,0)$ being a stationary point.</p>
+          <p><strong>(c)</strong> A positive cubic: rising from the bottom left, through the origin, up to the maximum $(1,4)$, down to touch the axis at the minimum $(3,0)$, then rising again.</p>
+          <p><strong>(d)</strong> The curve is above the axis throughout $0 < x < 3$ (it only meets the axis at the two ends), so a single integral gives the area.</p>
+          <p>$\displaystyle\int_0^3 \left(x^3 - 6x^2 + 9x\right)\mathrm{d}x = \left[\dfrac{x^4}{4} - 2x^3 + \dfrac{9x^2}{2}\right]_0^3$</p>
+          <p>At $x=3$: $\dfrac{81}{4} - 54 + \dfrac{81}{2} = 20.25 - 54 + 40.5 = 6.75$</p>
+          <p>At $x=0$: $0$</p>
+          <p>Area $= \dfrac{27}{4} = 6.75$ square units.</p>
+          <p><em>Sense check:</em> the region sits inside a $3 \times 4$ rectangle of area $12$, and the curve dips well below the top of it, so $6.75$ is plausible.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Calculus (CA1–CA15) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Representing Outcomes &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌳 Representing Outcomes</h1>
+  <p>OCR FSMQ Additional Maths · Enumeration (EN2)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE FOUR REPRESENTATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Four Representations</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EN2:</strong> construct and use <strong>tree diagrams</strong>, <strong>two-way tables</strong>, <strong>Venn diagrams</strong> or the <strong>binomial distribution</strong> to enumerate outcomes. The specification lists exactly these four — and part of the skill is choosing the right one.
+  </div>
+
+  <table>
+    <tr><th>Representation</th><th>Use it when…</th></tr>
+    <tr><td><strong>Tree diagram</strong></td><td>There are successive stages, especially with changing probabilities</td></tr>
+    <tr><td><strong>Two-way table</strong></td><td>Each item is classified by two attributes at once</td></tr>
+    <tr><td><strong>Venn diagram</strong></td><td>Categories overlap, and you need "both", "neither" or "only one"</td></tr>
+    <tr><td><strong>Binomial distribution</strong></td><td>The same trial is repeated many times with a fixed success probability</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>A tree diagram with more than three stages becomes unmanageable.</strong> That is exactly when the <a href="binomial-probability.html">binomial distribution</a> takes over — it is the tree diagram's shortcut for many identical stages.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TREE DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Tree Diagrams</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two rules</div>
+    <strong>Along</strong> a branch: <strong>multiply</strong> &nbsp;&middot;&nbsp; <strong>between</strong> branches: <strong>add</strong>
+  </div>
+
+  <div class="svg-block">
+    <svg width="470" height="250" viewBox="0 0 470 250" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="125" r="5" fill="#4f46e5"/>
+      <line x1="45" y1="125" x2="170" y2="65" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="45" y1="125" x2="170" y2="185" stroke="#4f46e5" stroke-width="2"/>
+      <text x="95" y="83" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">5/9</text>
+      <text x="95" y="172" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">4/9</text>
+      <text x="176" y="69" font-family="Arial" font-size="13" fill="#1e1e2e" font-weight="bold">R</text>
+      <text x="176" y="189" font-family="Arial" font-size="13" fill="#1e1e2e" font-weight="bold">B</text>
+      <line x1="190" y1="62" x2="300" y2="30" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="190" y1="68" x2="300" y2="98" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="190" y1="182" x2="300" y2="152" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="190" y1="188" x2="300" y2="220" stroke="#7c3aed" stroke-width="2"/>
+      <g font-family="Arial" font-size="12" fill="#6d28d9" font-weight="bold">
+        <text x="232" y="38">4/8</text><text x="232" y="94">4/8</text>
+        <text x="232" y="152">5/8</text><text x="232" y="212">3/8</text>
+      </g>
+      <g font-family="Arial" font-size="13" fill="#1e1e2e" font-weight="bold">
+        <text x="306" y="34">R</text><text x="306" y="103">B</text>
+        <text x="306" y="157">R</text><text x="306" y="225">B</text>
+      </g>
+      <g font-family="Arial" font-size="12" fill="#166534">
+        <text x="330" y="34">RR = 20/72</text><text x="330" y="103">RB = 20/72</text>
+        <text x="330" y="157">BR = 20/72</text><text x="330" y="225">BB = 12/72</text>
+      </g>
+      <text x="235" y="245" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">5 red, 4 blue, two taken without replacement. The four path totals add to 1.</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Without replacement</div>
+    <div class="example-body">
+      <p>A bag holds $5$ red and $4$ blue counters. Two are taken without replacement. Find the probability of one of each colour.</p>
+      <div class="step-row"><span class="arrow">①</span><span>First pick: $P(R) = \tfrac59$, $P(B) = \tfrac49$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>After a red, $4$ red and $4$ blue remain out of $8$; after a blue, $5$ red and $3$ blue.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(RB) = \tfrac59 \times \tfrac48 = \tfrac{20}{72}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(BR) = \tfrac49 \times \tfrac58 = \tfrac{20}{72}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>These are different branches, so add: $\tfrac{40}{72} = \dfrac{5}{9}$</span></div>
+      <div class="warn"><strong>"One of each" means two paths, not one.</strong> Forgetting the second ordering halves the answer — one of the most common errors in the whole qualification.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reading a conditional off a tree</div>
+    <div class="example-body">
+      <p>Two machines make components. A makes $60\%$ with a $4\%$ fault rate; B makes $40\%$ with a $9\%$ fault rate. A component is faulty. Find the probability it came from B.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P(A \text{ and faulty}) = 0.6 \times 0.04 = 0.024$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(B \text{ and faulty}) = 0.4 \times 0.09 = 0.036$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{faulty}) = 0.024 + 0.036 = 0.060$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Restrict to the faulty ones: $P(B \mid \text{faulty}) = \dfrac{0.036}{0.060} = 0.6$</span></div>
+      <div class="tip"><strong>The pattern:</strong> the path you want, divided by the sum of all paths meeting the condition.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TWO-WAY TABLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Two-Way Tables</div>
+<div class="section-body">
+
+  <p>A two-way table classifies every item by two attributes. Its great strength is that the <strong>row and column totals check each other</strong>.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Completing a table</div>
+    <div class="example-body">
+      <p>Of $200$ students, $120$ study maths, $90$ study physics and $40$ study neither. Build a two-way table and find how many study both.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Studying at least one subject: $200 - 40 = 160$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>If $b$ study both: $120 + 90 - b = 160$, so $b = 50$.</span></div>
+      <table>
+        <tr><th></th><th>Physics</th><th>No physics</th><th>Total</th></tr>
+        <tr><td><strong>Maths</strong></td><td>$50$</td><td>$70$</td><td>$120$</td></tr>
+        <tr><td><strong>No maths</strong></td><td>$40$</td><td>$40$</td><td>$80$</td></tr>
+        <tr><td><strong>Total</strong></td><td>$90$</td><td>$110$</td><td>$200$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">③</span><span>$50$ students study both.</span></div>
+      <div class="tip"><strong>Fill in the totals first</strong>, then work inwards. Every row and every column must add up, which catches mistakes immediately.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – VENN DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Venn Diagrams</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Set notation</div>
+    $A \cap B$ — in both ("and") &nbsp;&middot;&nbsp; $A \cup B$ — in at least one ("or")<br>
+    $A'$ — not in $A$ &nbsp;&middot;&nbsp; $n(A)$ — the number of elements in $A$ &nbsp;&middot;&nbsp; $\xi$ — the universal set
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The addition rule</div>
+    $n(A \cup B) = n(A) + n(B) - n(A \cap B)$
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="230" viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="20" width="400" height="175" fill="#fafafe" stroke="#94a3b8" stroke-width="2"/>
+      <text x="34" y="40" font-family="Arial" font-size="14" fill="#475569" font-weight="bold">&#958; = 200</text>
+      <circle cx="170" cy="110" r="78" fill="#c7d2fe" fill-opacity=".55" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="262" cy="110" r="78" fill="#bbf7d0" fill-opacity=".55" stroke="#22c55e" stroke-width="2.5"/>
+      <text x="110" y="48" font-family="Arial" font-size="16" fill="#3730a3" font-weight="bold">M</text>
+      <text x="322" y="48" font-family="Arial" font-size="16" fill="#166534" font-weight="bold">P</text>
+      <text x="128" y="118" font-family="Arial" font-size="19" fill="#3730a3" text-anchor="middle" font-weight="bold">70</text>
+      <text x="216" y="118" font-family="Arial" font-size="19" fill="#4c1d95" text-anchor="middle" font-weight="bold">50</text>
+      <text x="304" y="118" font-family="Arial" font-size="19" fill="#166534" text-anchor="middle" font-weight="bold">40</text>
+      <text x="382" y="180" font-family="Arial" font-size="18" fill="#64748b" font-weight="bold">40</text>
+      <text x="220" y="216" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">M = maths, P = physics. Total: 70 + 50 + 40 + 40 = 200 &#10003;</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Working from the overlap outwards</div>
+    <div class="example-body">
+      <p>Using the diagram above, find (a) $n(M \cup P)$, (b) the number studying exactly one subject, (c) $P(M \mid P)$ for a randomly chosen student.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>(a)</strong> $70 + 50 + 40 = 160$. Or by the rule: $120 + 90 - 50 = 160$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>(b)</strong> Exactly one means the two outer regions: $70 + 40 = 110$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>(c)</strong> Given physics, restrict to the $90$ physicists; $50$ of them also do maths.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(M \mid P) = \dfrac{50}{90} = \dfrac{5}{9}$</span></div>
+      <div class="warn"><strong>Always fill the overlap first.</strong> The $120$ maths students consist of $50$ in the overlap and $70$ in maths only — the $120$ does not go in the "maths only" region.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – CHOOSING A REPRESENTATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Choosing the Right Representation</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Are there successive stages, with probabilities that change? $\to$ tree diagram.</li>
+    <li>Is each item classified two ways, with totals given? $\to$ two-way table.</li>
+    <li>Do the words "both", "neither" or "only" appear? $\to$ Venn diagram.</li>
+    <li>Is the same trial repeated $n$ times with fixed probability $p$? $\to$ binomial distribution.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — The same data three ways</div>
+    <div class="example-body">
+      <p>In a club of $50$, $30$ play tennis, $25$ play badminton and $10$ play both. Find the probability a random member plays neither.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Venn:</strong> tennis only $= 20$, both $= 10$, badminton only $= 15$. Total playing something $= 45$, so neither $= 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Addition rule:</strong> $n(T \cup B) = 30 + 25 - 10 = 45$, so $n((T \cup B)') = 50 - 45 = 5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Two-way table:</strong> the "no tennis, no badminton" cell is $50 - 30 - 15 = 5$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$P(\text{neither}) = \dfrac{5}{50} = 0.1$</span></div>
+      <div class="tip">Three representations, one answer. Pick whichever you find fastest — but a Venn diagram is usually clearest when an overlap is given.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Along a branch</h4><p>Multiply.</p></div>
+    <div class="ref-card"><h4>Between branches</h4><p>Add.</p></div>
+    <div class="ref-card"><h4>All paths</h4><p>Must total $1$.</p></div>
+    <div class="ref-card"><h4>"One of each"</h4><p>Two paths — remember both orders.</p></div>
+    <div class="ref-card"><h4>Without replacement</h4><p>The denominator drops by one.</p></div>
+    <div class="ref-card"><h4>Tables</h4><p>Fill the totals first, then work inwards.</p></div>
+    <div class="ref-card"><h4>Venn</h4><p>Fill the overlap first.</p></div>
+    <div class="ref-card"><h4>Addition rule</h4><p>$n(A \cup B) = n(A)+n(B)-n(A\cap B)$.</p></div>
+    <div class="ref-card"><h4>Conditional</h4><p>Wanted path $\div$ all paths meeting the condition.</p></div>
+    <div class="ref-card"><h4>Many stages</h4><p>Switch to the binomial distribution.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A coin is tossed twice. List all the outcomes and state the probability of exactly one head.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>HH, HT, TH, TT — four equally likely outcomes.</p>
+          <p>Exactly one head: HT and TH, so $P = \dfrac{2}{4} = 0.5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A bag has $3$ red and $7$ green counters. Two are taken with replacement. Find $P(\text{both red})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>With replacement, the probabilities do not change.</p>
+          <p>$P = \dfrac{3}{10} \times \dfrac{3}{10} = \dfrac{9}{100} = 0.09$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Repeat Question 2 without replacement.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>After one red is removed, $2$ reds remain out of $9$.</p>
+          <p>$P = \dfrac{3}{10} \times \dfrac{2}{9} = \dfrac{6}{90} = \dfrac{1}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>In a class of $30$, $18$ have a bike, $14$ have a scooter and $6$ have both. How many have neither?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n(B \cup S) = 18 + 14 - 6 = 26$</p>
+          <p>Neither: $30 - 26 = 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Of $150$ people, $80$ are female and $95$ own a car, of whom $50$ are female. Complete a two-way table.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <table>
+            <tr><th></th><th>Car</th><th>No car</th><th>Total</th></tr>
+            <tr><td><strong>Female</strong></td><td>$50$</td><td>$30$</td><td>$80$</td></tr>
+            <tr><td><strong>Male</strong></td><td>$45$</td><td>$25$</td><td>$70$</td></tr>
+            <tr><td><strong>Total</strong></td><td>$95$</td><td>$55$</td><td>$150$</td></tr>
+          </table>
+          <p>Male total $= 150 - 80 = 70$; male car owners $= 95 - 50 = 45$; the rest follow.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A bag has $4$ white and $6$ black balls. Two are drawn without replacement. Find $P(\text{one of each colour})$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>WB: $\dfrac{4}{10} \times \dfrac{6}{9} = \dfrac{24}{90}$</p>
+          <p>BW: $\dfrac{6}{10} \times \dfrac{4}{9} = \dfrac{24}{90}$</p>
+          <p>$P = \dfrac{48}{90} = \dfrac{8}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$P(A) = 0.4$, $P(B) = 0.5$, $P(A \cap B) = 0.2$. Find $P(A \cup B)$ and $P(A' \cap B')$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(A \cup B) = 0.4 + 0.5 - 0.2 = 0.7$</p>
+          <p>$P(A' \cap B')$ means "neither", which is the complement of "at least one":</p>
+          <p>$= 1 - 0.7 = 0.3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Two factories supply parts. X supplies $70\%$ with $3\%$ faulty; Y supplies $30\%$ with $8\%$ faulty. Find the overall fault rate.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P(X \text{ and faulty}) = 0.7 \times 0.03 = 0.021$</p>
+          <p>$P(Y \text{ and faulty}) = 0.3 \times 0.08 = 0.024$</p>
+          <p>$P(\text{faulty}) = 0.045$, i.e. $4.5\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain why a tree diagram would be a poor choice for finding the probability of exactly $5$ heads in $12$ coin tosses.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A tree diagram for $12$ tosses would have $2^{12} = 4096$ end branches — impossible to draw.</p>
+          <p>Worse, you would need to identify the ones with exactly $5$ heads, and there are $\binom{12}{5} = 792$ of them.</p>
+          <p>The binomial distribution does this in one line: $P(X=5) = \binom{12}{5}(0.5)^5(0.5)^7 = 792 \times (0.5)^{12} = \dfrac{792}{4096} = 0.193$ (3 s.f.).</p>
+          <p>The tree diagram is the right tool for two or three stages; beyond that, use the binomial.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A screening test for a condition affecting $3\%$ of a population correctly detects it $92\%$ of the time, and wrongly gives a positive result for $6\%$ of healthy people.</p>
+      <p>(a) Using a population of $10\,000$, build a two-way table. &nbsp; (b) Find $P(\text{positive test})$. &nbsp; (c) Find $P(\text{has the condition} \mid \text{positive test})$. &nbsp; (d) Comment on what this means in practice.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> With the condition: $3\%$ of $10\,000 = 300$; without: $9700$.</p>
+          <p>True positives: $92\%$ of $300 = 276$, leaving $24$ false negatives.</p>
+          <p>False positives: $6\%$ of $9700 = 582$, leaving $9118$ true negatives.</p>
+          <table>
+            <tr><th></th><th>Positive</th><th>Negative</th><th>Total</th></tr>
+            <tr><td><strong>Has condition</strong></td><td>$276$</td><td>$24$</td><td>$300$</td></tr>
+            <tr><td><strong>No condition</strong></td><td>$582$</td><td>$9118$</td><td>$9700$</td></tr>
+            <tr><td><strong>Total</strong></td><td>$858$</td><td>$9142$</td><td>$10\,000$</td></tr>
+          </table>
+          <p><strong>(b)</strong> $P(\text{positive}) = \dfrac{858}{10\,000} = 0.0858$</p>
+          <p><strong>(c)</strong> Restrict to the $858$ positives, of whom $276$ genuinely have it:</p>
+          <p>$P = \dfrac{276}{858} = 0.322$ (3 s.f.)</p>
+          <p><strong>(d)</strong> Only about a third of people who test positive actually have the condition — two in three positives are false alarms.</p>
+          <p>This happens because the condition is rare: a $6\%$ error rate applied to $9700$ healthy people produces $582$ false positives, which swamps the $276$ true ones. The test is still valuable as a first screen, catching $92\%$ of real cases, but every positive result must be confirmed by a more specific second test before anyone is told they have the condition.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Representing Outcomes (EN2) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

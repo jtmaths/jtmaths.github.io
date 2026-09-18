@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimating Areas &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>▨ Estimating Areas</h1>
+  <p>OCR FSMQ Additional Maths · Numerical Methods (NM6–NM8)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – RECTANGULAR STRIPS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Rectangular Strips (NM6)</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>NM6:</strong> use rectangular strips to estimate the area between a curve and the $x$-axis. Divide the region into vertical strips, treat each as a rectangle, and add up their areas. Crude, but it always works — and the errors are easy to see.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Two choices of height</div>
+    <strong>Left-hand rectangles:</strong> take each strip's height from its <em>left</em> edge<br>
+    <strong>Right-hand rectangles:</strong> take each height from its <em>right</em> edge
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="230" viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#c7d2fe" fill-opacity=".55" stroke="#4f46e5" stroke-width="1.6">
+        <rect x="70" y="170" width="70" height="30"/>
+        <rect x="140" y="140" width="70" height="60"/>
+        <rect x="210" y="98" width="70" height="102"/>
+        <rect x="280" y="45" width="70" height="155"/>
+      </g>
+      <line x1="40" y1="200" x2="400" y2="200" stroke="#475569" stroke-width="2"/>
+      <line x1="70" y1="20" x2="70" y2="215" stroke="#475569" stroke-width="2"/>
+      <path d="M 70 190 C 140 178 200 130 350 25" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <text x="300" y="20" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">y = f(x)</text>
+      <text x="220" y="222" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Left-hand rectangles under-estimate an increasing curve</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The bracket this gives you</div>
+    For an <strong>increasing</strong> curve, the left-hand estimate is <em>too small</em> and the right-hand estimate is <em>too large</em>.<br>
+    The true area lies between them.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Both estimates, and a bracket</div>
+    <div class="example-body">
+      <p>Estimate $\displaystyle\int_0^4 x^2 \,\mathrm{d}x$ using four rectangles of width $1$, by both methods.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Values of $x^2$ at $x = 0, 1, 2, 3, 4$ are $0, 1, 4, 9, 16$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Left-hand:</strong> heights $0, 1, 4, 9$, so area $\approx 1(0+1+4+9) = 14$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Right-hand:</strong> heights $1, 4, 9, 16$, so area $\approx 1(1+4+9+16) = 30$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So $14 < \text{true area} < 30$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Exact value:</em> $\Bigg[\dfrac{x^3}{3}\Bigg]_0^4 = \dfrac{64}{3} = 21.33$ ✓ — comfortably inside the bracket.</span></div>
+      <div class="tip"><strong>Averaging the two gives $22$</strong>, which is much closer than either. That average is exactly what the trapezium rule computes.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE TRAPEZIUM RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Trapezium Rule (NM7)</div>
+<div class="section-body">
+
+  <div class="concept">
+    Instead of a flat top, give each strip a <strong>sloping</strong> top joining the curve at both edges. Each strip is then a trapezium, which hugs the curve far more closely than a rectangle.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The trapezium rule — provided in the examination</div>
+    $\displaystyle\int_a^b y \,\mathrm{d}x \approx \tfrac{1}{2}h\Big[\left(y_0 + y_n\right) + 2\left(y_1 + y_2 + \cdots + y_{n-1}\right)\Big]$<br>
+    <span style="font-size:.85rem;color:#555;">with $n$ strips of width $h = \dfrac{b-a}{n}$, and $n+1$ ordinates $y_0, \ldots, y_n$</span>
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="230" viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#bbf7d0" fill-opacity=".55" stroke="#16a34a" stroke-width="1.6">
+        <polygon points="70,200 140,200 140,170 70,190"/>
+        <polygon points="140,200 210,200 210,128 140,170"/>
+        <polygon points="210,200 280,200 280,78 210,128"/>
+        <polygon points="280,200 350,200 350,25 280,78"/>
+      </g>
+      <line x1="40" y1="200" x2="400" y2="200" stroke="#475569" stroke-width="2"/>
+      <line x1="70" y1="20" x2="70" y2="215" stroke="#475569" stroke-width="2"/>
+      <path d="M 70 190 C 140 178 200 130 350 25" fill="none" stroke="#ef4444" stroke-width="3"/>
+      <g font-family="Arial" font-size="10" fill="#166534" text-anchor="middle" font-weight="bold">
+        <text x="70" y="214">y&#8320;</text><text x="140" y="214">y&#8321;</text><text x="210" y="214">y&#8322;</text>
+        <text x="280" y="214">y&#8323;</text><text x="350" y="214">y&#8324;</text>
+      </g>
+      <text x="220" y="228" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Sloping tops follow the curve much more closely than flat ones</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li>Work out $h = \dfrac{b-a}{n}$.</li>
+    <li>Make a table of the $n+1$ ordinates, from $y_0$ at $x=a$ to $y_n$ at $x=b$.</li>
+    <li>Add the <strong>first and last</strong> ordinates.</li>
+    <li>Add all the <strong>middle</strong> ordinates and double the total.</li>
+    <li>Add those two results and multiply by $\tfrac{h}{2}$.</li>
+  </ul>
+
+  <div class="warn">
+    <strong>The two commonest errors.</strong> Using $n+1$ as the number of strips instead of the number of ordinates; and doubling the end ordinates instead of the middle ones. A clear table prevents both.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Four strips</div>
+    <div class="example-body">
+      <p>Use the trapezium rule with four strips to estimate $\displaystyle\int_0^4 x^2 \,\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$h = \dfrac{4-0}{4} = 1$, so ordinates at $x = 0, 1, 2, 3, 4$.</span></div>
+      <table>
+        <tr><th>$x$</th><th>$0$</th><th>$1$</th><th>$2$</th><th>$3$</th><th>$4$</th></tr>
+        <tr><td>$y = x^2$</td><td>$0$</td><td>$1$</td><td>$4$</td><td>$9$</td><td>$16$</td></tr>
+        <tr><td>Weight</td><td>$\times 1$</td><td>$\times 2$</td><td>$\times 2$</td><td>$\times 2$</td><td>$\times 1$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">②</span><span>Ends: $y_0 + y_4 = 0 + 16 = 16$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Middles: $1 + 4 + 9 = 14$, doubled gives $28$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\approx \tfrac12(1)(16 + 28) = \tfrac12(44) = 22$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Exact value $\dfrac{64}{3} = 21.33$, so the estimate is $0.67$ too high — an error of about $3\%$.</span></div>
+      <div class="tip"><strong>The weights row in the table is worth writing out.</strong> It makes the "ends once, middles twice" pattern visible and checkable.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — More strips, better answer</div>
+    <div class="example-body">
+      <p>Repeat with eight strips.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$h = 0.5$, with ordinates at $0, 0.5, 1, \ldots, 4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Values: $0,\; 0.25,\; 1,\; 2.25,\; 4,\; 6.25,\; 9,\; 12.25,\; 16$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Ends: $0 + 16 = 16$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Middles: $0.25 + 1 + 2.25 + 4 + 6.25 + 9 + 12.25 = 35$, doubled gives $70$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\approx \tfrac12(0.5)(16 + 70) = 0.25 \times 86 = 21.5$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The error has dropped from $0.67$ to $0.17$ — <strong>quartered</strong> when the number of strips doubled.</span></div>
+      <div class="tip"><strong>The error is roughly proportional to $h^2$.</strong> Halving the strip width divides the error by about four, which is why the trapezium rule improves so quickly.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – OVER OR UNDER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Over-Estimate or Under-Estimate? (NM8)</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>NM8:</strong> recognise whether an estimate would be an over- or under-estimate, and understand how to calculate an improved estimate. The answer depends on <strong>curvature</strong>, not on whether the curve is rising or falling.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The rule for the trapezium rule</div>
+    Curve bending <strong>upwards</strong> (convex, like $y = x^2$) &rarr; the chord lies <em>above</em> the curve &rarr; <strong>over-estimate</strong><br>
+    Curve bending <strong>downwards</strong> (concave, like $y = \sqrt{x}$) &rarr; the chord lies <em>below</em> &rarr; <strong>under-estimate</strong>
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="180" viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 40 140 C 90 130 120 60 160 30" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="40" y1="140" x2="160" y2="30" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="100" y="168" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle" font-weight="bold">bends upwards:</text>
+      <text x="100" y="20" font-family="Arial" font-size="11" fill="#b91c1c" text-anchor="middle">chord above &rarr; over-estimate</text>
+      <path d="M 280 140 C 320 60 350 35 400 30" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="280" y1="140" x2="400" y2="30" stroke="#ef4444" stroke-width="2.5"/>
+      <text x="340" y="168" font-family="Arial" font-size="11" fill="#3730a3" text-anchor="middle" font-weight="bold">bends downwards:</text>
+      <text x="340" y="20" font-family="Arial" font-size="11" fill="#b91c1c" text-anchor="middle">chord below &rarr; under-estimate</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>Do not confuse rising with bending.</strong> $y = x^2$ is <em>decreasing</em> for $x<0$ and increasing for $x>0$, but it bends upwards throughout, so the trapezium rule over-estimates on either side. It is the second derivative, not the first, that decides.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Justifying the direction of the error</div>
+    <div class="example-body">
+      <p>State, with a reason, whether the trapezium rule over- or under-estimates $\displaystyle\int_1^4 x^2 \,\mathrm{d}x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = x^2$ gives $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 2 > 0$, so the curve bends upwards everywhere.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Each trapezium's sloping top is therefore a chord lying <em>above</em> the curve.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Every strip includes a sliver of area that is not under the curve, so the total is an <strong>over-estimate</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Confirmed numerically:</em> with three strips the rule gives $21.5$, while the exact value is $\dfrac{63}{3} = 21$.</span></div>
+      <div class="tip"><strong>A sketch is the best justification.</strong> Draw the curve with one trapezium on top and the overshoot is obvious — worth a mark on its own.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">How to improve an estimate</div>
+    <strong>Use more strips</strong> — a smaller $h$ means each chord hugs the curve more closely.<br>
+    Or <strong>average</strong> the left-hand and right-hand rectangle estimates.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Bracketing the true value</div>
+    <div class="example-body">
+      <p>For $\displaystyle\int_0^2 x^3 \,\mathrm{d}x$, use two strips to find a trapezium-rule estimate, state whether it is over or under, and give a bracket for the true value.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$h = 1$; ordinates at $x = 0, 1, 2$ are $0, 1, 8$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\approx \tfrac12(1)\Big[(0+8) + 2(1)\Big] = \tfrac12(10) = 5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>For $x \geqslant 0$, $\dfrac{\mathrm{d}^2}{\mathrm{d}x^2}\left(x^3\right) = 6x \geqslant 0$, so the curve bends upwards and this is an <strong>over-estimate</strong>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Left-hand rectangles give $1(0 + 1) = 1$, an under-estimate.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So $1 < \text{true value} < 5$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Exact:</em> $\Bigg[\dfrac{x^4}{4}\Bigg]_0^2 = 4$ ✓ — inside the bracket, and just below the trapezium estimate as predicted.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Strip width</h4><p>$h = \dfrac{b-a}{n}$.</p></div>
+    <div class="ref-card"><h4>Ordinates</h4><p>$n+1$ of them for $n$ strips.</p></div>
+    <div class="ref-card"><h4>The rule</h4><p>$\tfrac12 h\big[(\text{ends}) + 2(\text{middles})\big]$.</p></div>
+    <div class="ref-card"><h4>Weights</h4><p>Ends once, middles twice.</p></div>
+    <div class="ref-card"><h4>Tabulate</h4><p>A table of ordinates prevents most errors.</p></div>
+    <div class="ref-card"><h4>Bends upwards</h4><p>Over-estimate.</p></div>
+    <div class="ref-card"><h4>Bends downwards</h4><p>Under-estimate.</p></div>
+    <div class="ref-card"><h4>Not rising/falling</h4><p>Curvature decides, not gradient.</p></div>
+    <div class="ref-card"><h4>To improve</h4><p>More strips; error falls like $h^2$.</p></div>
+    <div class="ref-card"><h4>Bracket</h4><p>Left and right rectangles trap the true value.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>How many ordinates are needed for the trapezium rule with $6$ strips, and what is $h$ if the limits are $2$ and $8$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$7$ ordinates, and $h = \dfrac{8-2}{6} = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Use the trapezium rule with two strips to estimate $\displaystyle\int_0^2 x^2 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$h = 1$; ordinates $0, 1, 4$.</p>
+          <p>$\approx \tfrac12(1)\Big[(0+4) + 2(1)\Big] = \tfrac12(6) = 3$</p>
+          <p>(Exact: $\tfrac83 = 2.67$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Use the trapezium rule with four strips to estimate $\displaystyle\int_0^2 x^2 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$h = 0.5$; ordinates at $0, 0.5, 1, 1.5, 2$ are $0, 0.25, 1, 2.25, 4$.</p>
+          <p>Ends: $0 + 4 = 4$. Middles: $0.25 + 1 + 2.25 = 3.5$, doubled $= 7$.</p>
+          <p>$\approx \tfrac12(0.5)(4 + 7) = 0.25 \times 11 = 2.75$</p>
+          <p>Closer to $2.67$ than the two-strip answer of $3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>State, with a reason, whether your answer to Question 3 is an over- or under-estimate.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 2 > 0$, so $y = x^2$ bends upwards.</p>
+          <p>The chords therefore lie above the curve, making it an <strong>over-estimate</strong>.</p>
+          <p>Confirmed: $2.75 > 2.67$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Use left-hand rectangles of width $1$ to estimate $\displaystyle\int_1^4 x^2 \,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Heights at $x = 1, 2, 3$ are $1, 4, 9$.</p>
+          <p>Area $\approx 1(1 + 4 + 9) = 14$</p>
+          <p>(Exact: $21$. The curve is increasing, so left-hand rectangles under-estimate badly.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Repeat Question 5 with right-hand rectangles, and give a bracket for the true value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Heights at $x = 2, 3, 4$ are $4, 9, 16$.</p>
+          <p>Area $\approx 1(4+9+16) = 29$</p>
+          <p>So $14 < \text{true area} < 29$. (The exact value $21$ lies inside.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Use the trapezium rule with three strips to estimate $\displaystyle\int_1^4 x^2 \,\mathrm{d}x$, and compare with Questions 5 and 6.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$h = 1$; ordinates $1, 4, 9, 16$.</p>
+          <p>Ends: $1 + 16 = 17$. Middles: $4 + 9 = 13$, doubled $= 26$.</p>
+          <p>$\approx \tfrac12(1)(17 + 26) = 21.5$</p>
+          <p>Far better than either rectangle estimate — and it is exactly their average, $\tfrac{14+29}{2} = 21.5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain why the trapezium rule gives the <em>exact</em> answer for $\displaystyle\int_0^5 (2x+1)\,\mathrm{d}x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 2x+1$ is a <strong>straight line</strong>, so it has zero curvature.</p>
+          <p>Each trapezium's sloping top lies exactly <em>on</em> the line, with nothing over- or under-counted.</p>
+          <p>The trapezia fit the region perfectly, so the rule is exact — for any number of strips.</p>
+          <p>(Check with one strip: $\tfrac12(5)(1 + 11) = 30$, and $\int_0^5(2x+1)\mathrm{d}x = [x^2+x]_0^5 = 30$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A student uses the trapezium rule with four strips and gets $8.4$, then with eight strips and gets $8.1$. Estimate the true value, with a reason.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The estimates are decreasing, and the error falls by roughly a factor of four each time the strips double.</p>
+          <p>If the error with four strips is $E$, the error with eight is about $\tfrac{E}{4}$. The difference between the estimates is $0.3$, which is about $E - \tfrac{E}{4} = \tfrac{3E}{4}$.</p>
+          <p>So $E \approx 0.4$, and the true value is roughly $8.4 - 0.4 = 8.0$.</p>
+          <p>Equivalently, the eight-strip error is about $0.1$, giving $8.1 - 0.1 = 8.0$ — the same answer.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The speed of a car, in m s⁻¹, is recorded every $2$ seconds:</p>
+      <table>
+        <tr><th>$t$ (s)</th><th>$0$</th><th>$2$</th><th>$4$</th><th>$6$</th><th>$8$</th><th>$10$</th></tr>
+        <tr><td>$v$ (m s⁻¹)</td><td>$0$</td><td>$6$</td><td>$11$</td><td>$15$</td><td>$18$</td><td>$20$</td></tr>
+      </table>
+      <p>(a) Explain what the area under the speed–time graph represents. &nbsp; (b) Use the trapezium rule with all the data to estimate it. &nbsp; (c) State, with a reason, whether this is likely to be an over- or under-estimate. &nbsp; (d) Estimate the car's acceleration at $t = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The area under a speed–time graph is the <strong>distance travelled</strong>, in metres — because distance is speed multiplied by time, and the area accumulates exactly that product.</p>
+          <p><strong>(b)</strong> There are $6$ ordinates, so $5$ strips, with $h = 2$.</p>
+          <p>Ends: $y_0 + y_5 = 0 + 20 = 20$</p>
+          <p>Middles: $6 + 11 + 15 + 18 = 50$, doubled $= 100$</p>
+          <p>Distance $\approx \tfrac12(2)(20 + 100) = 1 \times 120 = \mathbf{120}$ m</p>
+          <p><strong>(c)</strong> Look at how the speed is rising: the increases are $6, 5, 4, 3, 2$ — getting smaller each time.</p>
+          <p>So the graph is rising ever more gently: it <strong>bends downwards</strong> (concave). The chords therefore lie <em>below</em> the true curve, and the estimate is an <strong>under-estimate</strong>.</p>
+          <p><strong>(d)</strong> Acceleration is the gradient of the speed–time graph. Use the <a href="gradient-from-chords.html">straddling chord</a> from $t=2$ to $t=6$:</p>
+          <p>$a \approx \dfrac{15 - 6}{6 - 2} = \dfrac{9}{4} = \mathbf{2.25}$ m s⁻²</p>
+          <p>(The one-sided chords give $\tfrac{11-6}{2} = 2.5$ and $\tfrac{15-11}{2} = 2$; the straddling value $2.25$ is their average and the better estimate.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Estimating Areas (NM6–NM8) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

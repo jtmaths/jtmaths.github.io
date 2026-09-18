@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combinations &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Combinations</h1>
+  <p>OCR FSMQ Additional Maths · Enumeration (EN5)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A COMBINATION IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Combination Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EN5:</strong> enumerate an <em>unordered subset</em> — a <strong>combination</strong> — of $r$ elements from a set of $n$ distinct objects, using the notation ${}^nC_r$.
+  </div>
+
+  <p>In a combination you care only <strong>which</strong> objects were chosen, never the order they were chosen in. $\{A, B, C\}$ and $\{C, A, B\}$ are the same combination.</p>
+
+  <div class="formula-box">
+    <div class="label">The combination formula</div>
+    ${}^nC_r = \binom{n}{r} = \dfrac{n!}{r!\,(n-r)!} = \dfrac{{}^nP_r}{r!}$
+  </div>
+
+  <div class="concept">
+    <strong>Where the $r!$ comes from.</strong> Start with the ${}^nP_r$ ordered selections. Every unordered set of $r$ objects has been counted $r!$ times, once for each of its orderings — so divide by $r!$ to count each set exactly once.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The specification's example</div>
+    <div class="example-body">
+      <p>How many ways are there of choosing two people out of a group of ten to sit on a committee?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both committee members have the same role, so order does not matter.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>${}^{10}C_2 = \dfrac{10 \times 9}{2 \times 1} = 45$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Compare with the <a href="permutations.html">two different prizes</a> version: ${}^{10}P_2 = 90$, exactly twice as many.</span></div>
+      <div class="tip">The factor of $2$ is $2!$ — each pair $\{A,B\}$ gave two orderings, $AB$ and $BA$. Seeing where that factor comes from is the heart of this topic.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CALCULATING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Calculating ${}^nC_r$ Efficiently</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Write $r$ descending factors starting at $n$ on the top.</li>
+    <li>Write $r!$ on the bottom.</li>
+    <li>Cancel before multiplying — the answer is always a whole number.</li>
+    <li>If $r$ is more than half of $n$, use the symmetry first.</li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">Useful values and identities</div>
+    $\binom{n}{0} = 1$ &nbsp;&middot;&nbsp; $\binom{n}{1} = n$ &nbsp;&middot;&nbsp; $\binom{n}{2} = \dfrac{n(n-1)}{2}$ &nbsp;&middot;&nbsp; $\binom{n}{n} = 1$<br>
+    $\binom{n}{r} = \binom{n}{n-r}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Cancel as you go</div>
+    <div class="example-body">
+      <p>Evaluate ${}^{12}C_4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>${}^{12}C_4 = \dfrac{12 \times 11 \times 10 \times 9}{4 \times 3 \times 2 \times 1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cancel: $\dfrac{12}{4 \times 3} = 1$, and $\dfrac{10}{2} = 5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Left with $11 \times 5 \times 9 = 495$</span></div>
+      <div class="tip"><strong>The answer must be a whole number.</strong> If yours is not, you have made an arithmetic error — ${}^nC_r$ counts things, so it cannot be a fraction.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using the symmetry</div>
+    <div class="example-body">
+      <p>Evaluate ${}^{50}C_{48}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$48$ factors would be absurd. Use $\binom{n}{r} = \binom{n}{n-r}$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>${}^{50}C_{48} = {}^{50}C_2 = \dfrac{50 \times 49}{2} = 1225$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><em>Why it works:</em> choosing $48$ to include is the same as choosing the $2$ to leave out.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SEVERAL GROUPS AT ONCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Choosing From Several Groups</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The pattern</div>
+    Choose from each group separately, then <strong>multiply</strong> — the product rule again
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A mixed committee</div>
+    <div class="example-body">
+      <p>A committee of $5$ is chosen from $7$ women and $6$ men. How many committees contain exactly $3$ women?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3$ women from $7$: ${}^7C_3 = \dfrac{7 \times 6 \times 5}{6} = 35$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Then $2$ men from $6$: ${}^6C_2 = \dfrac{6 \times 5}{2} = 15$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>These choices are independent, so multiply: $35 \times 15 = 525$</span></div>
+      <div class="warn"><strong>Multiply, do not add.</strong> Every choice of women can pair with every choice of men, which is multiplication. Adding would answer a completely different question.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — "At least" by cases</div>
+    <div class="example-body">
+      <p>From the same $7$ women and $6$ men, how many committees of $5$ contain <em>at least</em> $4$ women?</p>
+      <div class="step-row"><span class="arrow">①</span><span>"At least $4$" means exactly $4$ or exactly $5$ — two separate cases, so we will add.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Exactly $4$ women: ${}^7C_4 \times {}^6C_1 = 35 \times 6 = 210$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Exactly $5$ women: ${}^7C_5 \times {}^6C_0 = 21 \times 1 = 21$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$210 + 21 = 231$</span></div>
+      <div class="tip"><strong>Multiply within a case, add between cases.</strong> Note ${}^7C_4 = {}^7C_3 = 35$ by symmetry, and ${}^6C_0 = 1$ — there is exactly one way to choose no men.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — "At least one" by complement</div>
+    <div class="example-body">
+      <p>A team of $4$ is chosen from $10$ players, of whom $3$ are goalkeepers. How many teams include at least one goalkeeper?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total teams: ${}^{10}C_4 = \dfrac{10 \times 9 \times 8 \times 7}{24} = 210$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Teams with <em>no</em> goalkeeper use only the $7$ others: ${}^7C_4 = 35$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$210 - 35 = 175$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>By cases, as a check:</em> one keeper $3 \times {}^7C_3 = 3 \times 35 = 105$; two keepers $3 \times {}^7C_2 = 3 \times 21 = 63$; three keepers $1 \times {}^7C_1 = 7$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$105 + 63 + 7 = 175$ ✓</span></div>
+      <div class="tip"><strong>Use the complement when you can.</strong> One subtraction beat three cases here, and there was less to get wrong.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COMBINATIONS AND PROBABILITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Combinations in Probability</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">When every selection is equally likely</div>
+    $P(\text{event}) = \dfrac{\text{number of selections giving the event}}{\text{total number of selections}}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A probability by counting</div>
+    <div class="example-body">
+      <p>Three counters are drawn at random from a bag containing $5$ red and $4$ blue. Find the probability that all three are red.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total ways to draw $3$ from $9$: ${}^9C_3 = \dfrac{9 \times 8 \times 7}{6} = 84$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ways to draw $3$ reds from $5$: ${}^5C_3 = 10$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(\text{all red}) = \dfrac{10}{84} = \dfrac{5}{42}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Check with a tree-diagram calculation:</em> $\dfrac{5}{9} \times \dfrac{4}{8} \times \dfrac{3}{7} = \dfrac{60}{504} = \dfrac{5}{42}$ ✓</span></div>
+      <div class="tip">Both methods always agree. Counting with combinations is usually quicker when the question asks about a <em>mixture</em>, such as "exactly two red".</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Meaning</h4><p>An unordered selection of $r$ from $n$.</p></div>
+    <div class="ref-card"><h4>Formula</h4><p>${}^nC_r = \dfrac{n!}{r!(n-r)!}$.</p></div>
+    <div class="ref-card"><h4>Link to $P$</h4><p>${}^nC_r = {}^nP_r \div r!$.</p></div>
+    <div class="ref-card"><h4>Symmetry</h4><p>$\binom{n}{r} = \binom{n}{n-r}$.</p></div>
+    <div class="ref-card"><h4>Edge cases</h4><p>$\binom{n}{0} = \binom{n}{n} = 1$.</p></div>
+    <div class="ref-card"><h4>Whole number</h4><p>Always — a fraction means an error.</p></div>
+    <div class="ref-card"><h4>Several groups</h4><p>Choose from each, then multiply.</p></div>
+    <div class="ref-card"><h4>Within / between</h4><p>Multiply within a case, add between cases.</p></div>
+    <div class="ref-card"><h4>"At least one"</h4><p>Total minus none.</p></div>
+    <div class="ref-card"><h4>Probability</h4><p>Favourable selections over total selections.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Evaluate ${}^7C_2$ and ${}^9C_4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^7C_2 = \dfrac{7 \times 6}{2} = 21$</p>
+          <p>${}^9C_4 = \dfrac{9 \times 8 \times 7 \times 6}{24} = 126$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>How many ways are there of choosing $3$ pizza toppings from a list of $8$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Order irrelevant: ${}^8C_3 = \dfrac{8 \times 7 \times 6}{6} = 56$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Evaluate ${}^{30}C_{28}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Use the symmetry: ${}^{30}C_{28} = {}^{30}C_2$.</p>
+          <p>$= \dfrac{30 \times 29}{2} = 435$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A team of $5$ is chosen from $6$ boys and $5$ girls. How many teams have exactly $2$ boys?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2$ boys from $6$: ${}^6C_2 = 15$</p>
+          <p>$3$ girls from $5$: ${}^5C_3 = 10$</p>
+          <p>$15 \times 10 = 150$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>From a pack of $52$ cards, how many different hands of $5$ cards are possible?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^{52}C_5 = \dfrac{52 \times 51 \times 50 \times 49 \times 48}{120}$</p>
+          <p>$= 2\,598\,960$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve ${}^nC_2 = 36$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{n(n-1)}{2} = 36$, so $n(n-1) = 72$.</p>
+          <p>$n^2 - n - 72 = 0$, giving $(n-9)(n+8) = 0$.</p>
+          <p>$n = 9$ (rejecting $n = -8$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A group of $4$ is chosen from $9$ people, two of whom are twins. How many groups contain at least one twin?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total: ${}^9C_4 = 126$</p>
+          <p>Groups with no twin, from the other $7$: ${}^7C_4 = 35$</p>
+          <p>$126 - 35 = 91$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Two counters are taken at random from a bag of $6$ green and $4$ yellow. Find the probability that both are green.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total ways: ${}^{10}C_2 = 45$</p>
+          <p>Both green: ${}^6C_2 = 15$</p>
+          <p>$P = \dfrac{15}{45} = \dfrac{1}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain, without computing either side, why $\binom{n}{0} + \binom{n}{1} + \cdots + \binom{n}{n} = 2^n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The left side counts all the subsets of a set of $n$ objects, grouped by size: those with $0$ elements, then $1$, and so on up to $n$.</p>
+          <p>The right side counts the same subsets a different way: for each of the $n$ objects, decide independently whether to include it. That is $2$ choices, $n$ times, so $2^n$ subsets.</p>
+          <p>Both sides count every subset exactly once, so they are equal.</p>
+          <p>(Equivalently, substitute $x = 1$ into the expansion of $(1+x)^n$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A box holds $12$ light bulbs, of which $3$ are faulty. Four bulbs are chosen at random.</p>
+      <p>(a) How many selections are possible? &nbsp; (b) Find the probability that none is faulty. &nbsp; (c) Find the probability that exactly one is faulty. &nbsp; (d) Find the probability that at least two are faulty, and check your three probabilities are consistent.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> ${}^{12}C_4 = \dfrac{12 \times 11 \times 10 \times 9}{24} = 495$</p>
+          <p><strong>(b)</strong> All four from the $9$ good bulbs: ${}^9C_4 = 126$</p>
+          <p>$P(\text{none faulty}) = \dfrac{126}{495} = \dfrac{14}{55} = 0.2545\ldots$</p>
+          <p><strong>(c)</strong> One faulty from $3$ <em>and</em> three good from $9$:</p>
+          <p>${}^3C_1 \times {}^9C_3 = 3 \times 84 = 252$</p>
+          <p>$P(\text{exactly one}) = \dfrac{252}{495} = \dfrac{28}{55} = 0.5090\ldots$</p>
+          <p><strong>(d)</strong> "At least two" is the complement of "none or exactly one":</p>
+          <p>$P = 1 - \dfrac{14}{55} - \dfrac{28}{55} = 1 - \dfrac{42}{55} = \dfrac{13}{55} = 0.2363\ldots$</p>
+          <p><em>Consistency check by direct counting:</em></p>
+          <p>Exactly two faulty: ${}^3C_2 \times {}^9C_2 = 3 \times 36 = 108$</p>
+          <p>Exactly three faulty: ${}^3C_3 \times {}^9C_1 = 1 \times 9 = 9$</p>
+          <p>$108 + 9 = 117$, and $\dfrac{117}{495} = \dfrac{13}{55}$ ✓</p>
+          <p>Also $126 + 252 + 108 + 9 = 495$, accounting for every possible selection — a complete check on all four cases.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Combinations (EN5) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

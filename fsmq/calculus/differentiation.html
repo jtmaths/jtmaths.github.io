@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Differentiation &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📉 Differentiation</h1>
+  <p>OCR FSMQ Additional Maths · Calculus (CA1–CA3)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE GRADIENT OF A CURVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Gradient of a Curve</div>
+<div class="section-body">
+
+  <div class="concept">
+    A straight line has one gradient everywhere. A curve's steepness <em>changes</em> from point to point, so "the gradient of the curve" only makes sense <strong>at a particular point</strong> — and it means the gradient of the tangent there (<strong>CA3</strong>).
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="240" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="200" x2="410" y2="200" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="20" x2="60" y2="215" stroke="#475569" stroke-width="2"/>
+      <path d="M 70 195 C 150 185 230 140 300 40" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="90" y1="205" x2="200" y2="180" stroke="#22c55e" stroke-width="2.5"/>
+      <line x1="200" y1="175" x2="330" y2="30" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="140" cy="188" r="5" fill="#16a34a"/>
+      <circle cx="268" cy="82" r="5" fill="#dc2626"/>
+      <text x="100" y="228" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">shallow tangent here</text>
+      <text x="300" y="70" font-family="Arial" font-size="11" fill="#b91c1c" font-weight="bold">steep tangent here</text>
+      <text x="220" y="236" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The same curve has a different gradient at every point</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">CA2 — what the derivative means</div>
+    $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ is the <strong>gradient function</strong>: substitute an $x$-value and it gives the gradient there.<br>
+    It also measures the <strong>rate of change of $y$ with respect to $x$</strong>.
+  </div>
+
+  <div class="tip">
+    <strong>The two readings matter equally.</strong> Geometrically, the derivative is a gradient. In a context, it is a rate: if $V$ is volume and $t$ is time, $\dfrac{\mathrm{d}V}{\mathrm{d}t}$ is how fast the volume is changing, in units of volume per unit time.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Rule for $kx^n$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">CA1 — the only differentiation rule you need</div>
+    $y = kx^n \;\Longrightarrow\; \dfrac{\mathrm{d}y}{\mathrm{d}x} = knx^{n-1}$<br>
+    <span style="font-size:.9rem;">Multiply by the power, then knock one off the power.</span>
+  </div>
+
+  <div class="concept">
+    <strong>And for sums:</strong> differentiate each term separately and add the results. That is all you need, because the specification restricts you to sums of terms of the form $kx^n$.
+  </div>
+
+  <table>
+    <tr><th>$y$</th><th>$\dfrac{\mathrm{d}y}{\mathrm{d}x}$</th><th>Why</th></tr>
+    <tr><td>$x^5$</td><td>$5x^4$</td><td>Power $5$ comes down, becomes $4$</td></tr>
+    <tr><td>$7x^3$</td><td>$21x^2$</td><td>$7 \times 3 = 21$</td></tr>
+    <tr><td>$x$</td><td>$1$</td><td>$x = x^1 \to 1x^0 = 1$</td></tr>
+    <tr><td>$6x$</td><td>$6$</td><td>The gradient of a straight line</td></tr>
+    <tr><td>$9$</td><td>$0$</td><td>A constant does not change</td></tr>
+    <tr><td>$-4x^2$</td><td>$-8x$</td><td>The sign is carried through</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The three traps.</strong> $\dfrac{\mathrm{d}}{\mathrm{d}x}(9) = 0$, not $9$. $\dfrac{\mathrm{d}}{\mathrm{d}x}(6x) = 6$, not $6x$ or $0$. And a power of $1$ reduces to a power of $0$, which is $1$ — not zero.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A polynomial</div>
+    <div class="example-body">
+      <p>Differentiate $y = 5x^4 - 2x^3 + 7x - 11$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5x^4 \to 5 \times 4 x^3 = 20x^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-2x^3 \to -2 \times 3 x^2 = -6x^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$7x \to 7$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$-11 \to 0$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 20x^3 - 6x^2 + 7$</span></div>
+      <div class="tip"><strong>Degree check:</strong> differentiating a quartic must give a cubic. If your answer still has an $x^4$, you have slipped.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Expand before differentiating</div>
+    <div class="example-body">
+      <p>Differentiate $y = x^2(3x - 4)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>There is no product rule in this course, so <strong>expand first</strong>:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y = 3x^3 - 4x^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 9x^2 - 8x$</span></div>
+      <div class="warn"><strong>You may not differentiate each bracket separately.</strong> $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ is <em>not</em> $2x \times 3$. Expanding is compulsory, and always possible for the functions in this specification.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using function notation</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = 2x^3 - 9x^2 + 12x$. Find $\mathrm{f}'(x)$ and evaluate $\mathrm{f}'(1)$ and $\mathrm{f}'(2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 6x^2 - 18x + 12$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}'(1) = 6 - 18 + 12 = 0$ — the curve is momentarily <strong>flat</strong> at $x = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}'(2) = 24 - 36 + 12 = 0$ — flat again at $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Both are <a href="stationary-points.html">stationary points</a>. Between them, $\mathrm{f}'(1.5) = 13.5 - 27 + 12 = -1.5 < 0$, so the curve is falling there.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – READING THE SIGN
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> What the Sign of the Derivative Tells You</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>$\dfrac{\mathrm{d}y}{\mathrm{d}x}$</th><th>The curve is…</th></tr>
+    <tr><td>Positive</td><td><strong>Increasing</strong> — going uphill as $x$ increases</td></tr>
+    <tr><td>Negative</td><td><strong>Decreasing</strong> — going downhill</td></tr>
+    <tr><td>Zero</td><td><strong>Stationary</strong> — momentarily flat</td></tr>
+    <tr><td>Large in size</td><td>Steep</td></tr>
+    <tr><td>Close to zero</td><td>Nearly flat</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Where is a curve increasing?</div>
+    <div class="example-body">
+      <p>Find the values of $x$ for which $y = x^3 - 12x$ is increasing.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Increasing means $\dfrac{\mathrm{d}y}{\mathrm{d}x} > 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 12 > 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3\left(x^2 - 4\right) > 0$, so $(x-2)(x+2) > 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>A positive quadratic is above zero <em>outside</em> its roots:</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x < -2$ &nbsp;or&nbsp; $x > 2$</span></div>
+      <div class="tip">Notice this is an <a href="../algebra/inequalities.html">quadratic inequality</a> question in disguise. The calculus provides the inequality; the algebra solves it.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A rate of change in context</div>
+    <div class="example-body">
+      <p>A balloon's volume after $t$ seconds is $V = 4t^2 + 3t$ cm³. Find the rate at which it is inflating at $t = 5$, and state the units.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}V}{\mathrm{d}t} = 8t + 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $t = 5$: $40 + 3 = 43$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The rate is $43$ <strong>cm³ per second</strong>.</span></div>
+      <div class="warn"><strong>Always state units for a rate.</strong> They are the units of the top variable divided by the units of the bottom one — here cm³ per second.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SECOND DERIVATIVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Second Derivative</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Differentiating twice</div>
+    $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$ &nbsp;or&nbsp; $\mathrm{f}''(x)$ — the rate of change <em>of the gradient</em>
+  </div>
+
+  <div class="concept">
+    If the first derivative says whether the curve is going up or down, the second says whether it is <strong>bending</strong> upwards or downwards. That is what makes it the test for maxima and minima.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Two derivatives</div>
+    <div class="example-body">
+      <p>$y = x^4 - 2x^3 + 5x$. Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ and $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3 - 6x^2 + 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Differentiate again: $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 - 12x$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Note the $+5$ vanished at the second step, as every constant does.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The rule</h4><p>$kx^n \to knx^{n-1}$.</p></div>
+    <div class="ref-card"><h4>Sums</h4><p>Differentiate term by term.</p></div>
+    <div class="ref-card"><h4>$kx$</h4><p>Differentiates to $k$.</p></div>
+    <div class="ref-card"><h4>Constants</h4><p>Differentiate to $0$.</p></div>
+    <div class="ref-card"><h4>Brackets</h4><p>Expand first — no product rule here.</p></div>
+    <div class="ref-card"><h4>Notation</h4><p>$\dfrac{\mathrm{d}y}{\mathrm{d}x}$, $\mathrm{f}'(x)$, $\dot{x}$.</p></div>
+    <div class="ref-card"><h4>Gradient at a point</h4><p>Substitute the $x$-value.</p></div>
+    <div class="ref-card"><h4>Positive derivative</h4><p>Increasing.</p></div>
+    <div class="ref-card"><h4>Rates</h4><p>State the units.</p></div>
+    <div class="ref-card"><h4>Degree check</h4><p>Differentiating drops the degree by one.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate $y = x^7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 7x^6$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Differentiate $y = 4x^3 - 6x^2 + 2x - 9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 12x^2 - 12x + 2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\mathrm{f}'(x)$ when $\mathrm{f}(x) = 5 - 3x + x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = -3 + 2x$, or $2x - 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Differentiate $y = x(x+5)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand: $y = x^2 + 5x$</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x + 5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = 2x^3 - x^2$ at $x = -1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x^2 - 2x$</p>
+          <p>At $x = -1$: $6(1) - 2(-1) = 6 + 2 = 8$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$ when $y = x^4 - 3x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3 - 6x$</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 - 6$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the value of $x$ at which $y = x^2 - 10x$ has gradient $4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 10 = 4$</p>
+          <p>$2x = 14$, so $x = 7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the values of $x$ for which $y = x^3 - 3x^2$ is decreasing.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Decreasing means $\dfrac{\mathrm{d}y}{\mathrm{d}x} < 0$.</p>
+          <p>$3x^2 - 6x < 0 \;\Rightarrow\; 3x(x-2) < 0$</p>
+          <p>Between the roots: $0 < x < 2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Differentiate $y = (2x-1)(x+3)$ and hence find the gradient at $x = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand: $y = 2x^2 + 6x - x - 3 = 2x^2 + 5x - 3$</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x + 5$</p>
+          <p>At $x = 2$: $8 + 5 = 13$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cylindrical tank is being filled. After $t$ minutes the depth of water is $h = 0.5t^2 - 0.02t^3$ cm, valid for $0 \leqslant t \leqslant 16$.</p>
+      <p>(a) Find $\dfrac{\mathrm{d}h}{\mathrm{d}t}$ and state what it represents, with units. &nbsp; (b) Find the rate of filling at $t = 5$ and at $t = 15$. &nbsp; (c) Find when the water level stops rising. &nbsp; (d) Explain what the model predicts after that time, and why the restriction $t \leqslant 16$ is sensible.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{\mathrm{d}h}{\mathrm{d}t} = t - 0.06t^2$</p>
+          <p>This is the rate at which the depth is increasing, in <strong>cm per minute</strong>.</p>
+          <p><strong>(b)</strong> At $t = 5$: $5 - 0.06(25) = 5 - 1.5 = 3.5$ cm min⁻¹</p>
+          <p>At $t = 15$: $15 - 0.06(225) = 15 - 13.5 = 1.5$ cm min⁻¹</p>
+          <p>The tank is filling more slowly at $t = 15$ than at $t = 5$.</p>
+          <p><strong>(c)</strong> The level stops rising when the rate is zero:</p>
+          <p>$t - 0.06t^2 = 0 \;\Rightarrow\; t(1 - 0.06t) = 0$</p>
+          <p>$t = 0$ or $t = \dfrac{1}{0.06} = 16.67$ minutes.</p>
+          <p>$t = 0$ is the start (the tank begins at rest), so the level stops rising at $t = 16.7$ minutes (3 s.f.).</p>
+          <p><strong>(d)</strong> Beyond $t = 16.67$, the derivative becomes negative, so the model predicts the depth would <em>fall</em> — water leaving the tank of its own accord.</p>
+          <p>That is physically impossible for a tank being filled, so the model has broken down. Restricting to $t \leqslant 16$ keeps the model inside the range where the rate is still positive, which is exactly the sort of limitation on a model that <strong>AO3</strong> expects you to identify and comment on.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Differentiation (CA1–CA3) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

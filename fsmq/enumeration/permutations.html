@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permutations &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔠 Permutations</h1>
+  <p>OCR FSMQ Additional Maths · Enumeration (EN4)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A PERMUTATION IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Permutation Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>EN4:</strong> enumerate the number of ways of obtaining an <em>ordered linear subset</em> — a <strong>permutation</strong> — of $r$ elements from a set of $n$ distinct objects. The specification also requires the notation ${}^nP_r$.
+  </div>
+
+  <p>"Ordered" is the key word. In a permutation, <strong>who goes where matters</strong>. Choosing Amy then Ben is a different permutation from choosing Ben then Amy.</p>
+
+  <div class="formula-box">
+    <div class="label">The permutation formula</div>
+    ${}^nP_r = \dfrac{n!}{(n-r)!} = \underbrace{n \times (n-1) \times \cdots \times (n-r+1)}_{r \text{ factors}}$
+  </div>
+
+  <div class="tip">
+    <strong>The second form is the one to use.</strong> For ${}^{10}P_3$, just write $10 \times 9 \times 8 = 720$. There is no need to go anywhere near $10!$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The specification's example</div>
+    <div class="example-body">
+      <p>In how many ways can two prizes — a first prize and a second prize — be awarded in a group of ten people?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The prizes are different, so order matters: this is a permutation.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>${}^{10}P_2 = 10 \times 9 = 90$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check with the formula: $\dfrac{10!}{8!} = 10 \times 9 = 90$ ✓</span></div>
+      <div class="warn">If the two prizes were <em>identical</em>, order would not matter and the answer would be ${}^{10}C_2 = 45$ — exactly half. Read the question carefully.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHY THE FORMULA WORKS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Why the Formula Works</div>
+<div class="section-body">
+
+  <p>The formula is just the product rule applied to $r$ stages, with one object used up at each stage.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Building it from the product rule</div>
+    <div class="example-body">
+      <p>Three positions are filled from $7$ candidates. Count the ways.</p>
+      <div class="step-row"><span class="arrow">①</span><span>First position: $7$ choices.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Second position: that person is gone, so $6$ choices.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Third position: $5$ choices.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$7 \times 6 \times 5 = 210$, which is exactly ${}^7P_3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>As a factorial: $\dfrac{7!}{4!} = \dfrac{5040}{24} = 210$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Two special cases</div>
+    ${}^nP_n = n!$ &nbsp;— arranging <em>all</em> the objects<br>
+    ${}^nP_1 = n$ &nbsp;— just choosing one
+  </div>
+
+  <div class="concept">
+    ${}^nP_n = \dfrac{n!}{0!} = \dfrac{n!}{1} = n!$. This is the reason mathematicians define $0! = 1$ — it makes the formula work at the extreme.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PERMUTATION OR COMBINATION?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Permutation or Combination?</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The test</div>
+    Pick two of your chosen items and <strong>swap them</strong>.<br>
+    Is the result a genuinely different outcome? &nbsp;<strong>Yes</strong> $\to$ permutation. &nbsp;<strong>No</strong> $\to$ combination.
+  </div>
+
+  <table>
+    <tr><th>Situation</th><th>Which?</th><th>Why</th></tr>
+    <tr><td>Gold, silver, bronze medals</td><td>Permutation</td><td>The medals are different</td></tr>
+    <tr><td>Three finalists chosen</td><td>Combination</td><td>All three are just "finalists"</td></tr>
+    <tr><td>President and treasurer</td><td>Permutation</td><td>Different roles</td></tr>
+    <tr><td>A committee of two</td><td>Combination</td><td>Same role</td></tr>
+    <tr><td>A PIN code</td><td>Permutation</td><td>$1234 \neq 4321$</td></tr>
+    <tr><td>A lottery ticket</td><td>Combination</td><td>The balls are drawn in any order</td></tr>
+    <tr><td>Seating people in a row</td><td>Permutation</td><td>Positions differ</td></tr>
+    <tr><td>Dealing a hand of cards</td><td>Combination</td><td>The hand is the same however it arrives</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The word "combination" in everyday English is misleading.</strong> A "combination lock" actually needs a <em>permutation</em> — the order of the digits matters. Ignore the everyday usage and apply the swap test.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PERMUTATIONS WITH RESTRICTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Permutations with Restrictions</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Identify the restriction and deal with that position or item first.</li>
+    <li>Count the choices remaining for the free positions.</li>
+    <li>Multiply.</li>
+    <li>If the restriction is "not…", it is often easier to count the total and subtract.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A fixed first choice</div>
+    <div class="example-body">
+      <p>Four different prizes are awarded among $9$ people, no one winning twice. In how many ways can this happen if Priya must win the first prize?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The first prize is fixed: $1$ way.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The remaining three prizes go to $3$ of the other $8$ people, in order.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>${}^8P_3 = 8 \times 7 \times 6 = 336$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$1 \times 336 = 336$ ways.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Counting the complement</div>
+    <div class="example-body">
+      <p>Three officers — chair, secretary and treasurer — are chosen from $8$ members. In how many ways, if Tom must <em>not</em> be the chair?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total without restriction: ${}^8P_3 = 8 \times 7 \times 6 = 336$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Those with Tom as chair: chair fixed, then ${}^7P_2 = 7 \times 6 = 42$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$336 - 42 = 294$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Direct check:</em> $7$ choices of chair (not Tom), then ${}^7P_2 = 42$ for the rest: $7 \times 42 = 294$ ✓</span></div>
+      <div class="tip">Two independent routes to the same number is the best evidence you have counted correctly.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Repeated letters</div>
+    <div class="example-body">
+      <p>How many distinct arrangements are there of all the letters of the word LEVEL?</p>
+      <div class="step-row"><span class="arrow">①</span><span>There are $5$ letters, so $5! = 120$ if all were different.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>But there are two Ls and two Es. Swapping the two Ls gives the same word.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Each arrangement has been counted $2!$ times for the Ls and $2!$ times for the Es.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{5!}{2!\,2!} = \dfrac{120}{4} = 30$</span></div>
+      <div class="tip"><strong>Divide by the factorial of each repeat count.</strong> This is the same "divide out the overcounting" idea that turns ${}^nP_r$ into ${}^nC_r$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Meaning</h4><p>An ordered selection of $r$ from $n$.</p></div>
+    <div class="ref-card"><h4>Formula</h4><p>${}^nP_r = \dfrac{n!}{(n-r)!}$.</p></div>
+    <div class="ref-card"><h4>Fast method</h4><p>$r$ descending factors from $n$.</p></div>
+    <div class="ref-card"><h4>${}^nP_n$</h4><p>Equals $n!$.</p></div>
+    <div class="ref-card"><h4>The swap test</h4><p>Different outcome after swapping $\Rightarrow$ permutation.</p></div>
+    <div class="ref-card"><h4>Different roles</h4><p>Signals a permutation.</p></div>
+    <div class="ref-card"><h4>Same role</h4><p>Signals a combination.</p></div>
+    <div class="ref-card"><h4>Restrictions</h4><p>Fix the restricted position first.</p></div>
+    <div class="ref-card"><h4>"Not…"</h4><p>Total minus the forbidden cases.</p></div>
+    <div class="ref-card"><h4>Repeats</h4><p>Divide by the factorial of each repeat count.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Evaluate ${}^9P_2$ and ${}^6P_4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^9P_2 = 9 \times 8 = 72$</p>
+          <p>${}^6P_4 = 6 \times 5 \times 4 \times 3 = 360$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Five different books are placed in $3$ of $5$ slots on a shelf. How many arrangements?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Choosing and ordering $3$ books from $5$:</p>
+          <p>${}^5P_3 = 5 \times 4 \times 3 = 60$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A $4$-digit PIN uses the digits $0$–$9$ with no repeats. How many PINs are possible?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^{10}P_4 = 10 \times 9 \times 8 \times 7 = 5040$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>State whether each needs a permutation or a combination: (a) choosing $3$ pizza toppings, (b) choosing a captain and a vice-captain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a) Combination.</strong> Swapping two toppings gives the same pizza.</p>
+          <p><strong>(b) Permutation.</strong> Swapping the two people changes who is captain.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In how many ways can $6$ people be seated in a row of $6$ chairs?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^6P_6 = 6! = 720$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the number of distinct arrangements of the letters of BANANA.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$6$ letters, with three As and two Ns.</p>
+          <p>$\dfrac{6!}{3!\,2!} = \dfrac{720}{6 \times 2} = 60$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Three different medals are awarded among $12$ athletes. In how many ways, if a particular athlete must win the gold?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gold is fixed: $1$ way.</p>
+          <p>Silver and bronze from the remaining $11$, in order: ${}^{11}P_2 = 11 \times 10 = 110$.</p>
+          <p>$110$ ways.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve ${}^nP_2 = 56$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^nP_2 = n(n-1) = 56$</p>
+          <p>$n^2 - n - 56 = 0$</p>
+          <p>$(n-8)(n+7) = 0$, so $n = 8$ or $n = -7$.</p>
+          <p>$n$ must be a positive whole number, so $n = 8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that ${}^nP_r = r! \times {}^nC_r$, and explain in words what this means.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>${}^nC_r = \dfrac{n!}{r!(n-r)!}$, so</p>
+          <p>$r! \times {}^nC_r = r! \times \dfrac{n!}{r!(n-r)!} = \dfrac{n!}{(n-r)!} = {}^nP_r$ ✓</p>
+          <p><strong>In words:</strong> to make an ordered selection, first choose <em>which</em> $r$ objects (that is ${}^nC_r$ ways), then arrange them in order (that is $r!$ ways).</p>
+          <p>Equivalently, every combination corresponds to exactly $r!$ permutations.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A code is made by arranging $4$ of the $7$ letters A, B, C, D, E, F, G, with no repeats.</p>
+      <p>(a) How many codes are possible? &nbsp; (b) How many begin with a vowel? &nbsp; (c) How many contain the letter A somewhere? &nbsp; (d) How many have A and B adjacent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> ${}^7P_4 = 7 \times 6 \times 5 \times 4 = 840$</p>
+          <p><strong>(b)</strong> The vowels available are A and E: $2$ choices for the first letter.</p>
+          <p>Then ${}^6P_3 = 6 \times 5 \times 4 = 120$ for the remaining three positions.</p>
+          <p>$2 \times 120 = 240$</p>
+          <p><strong>(c)</strong> Count the complement: codes with <em>no</em> A use only the other $6$ letters.</p>
+          <p>${}^6P_4 = 6 \times 5 \times 4 \times 3 = 360$</p>
+          <p>Codes containing A $= 840 - 360 = 480$</p>
+          <p><strong>(d)</strong> Treat AB as a block. The code has $4$ positions, so the block can start in position $1$, $2$ or $3$: that is $3$ placements.</p>
+          <p>The block can be AB or BA: $\times 2$.</p>
+          <p>The remaining $2$ positions are filled from the other $5$ letters, in order: ${}^5P_2 = 5 \times 4 = 20$.</p>
+          <p>$3 \times 2 \times 20 = 120$</p>
+          <p><em>Sense check:</em> $120$ out of $840$ is about $1$ in $7$, which is plausible for such a specific requirement.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Permutations (EN4) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

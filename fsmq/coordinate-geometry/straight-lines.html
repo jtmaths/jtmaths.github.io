@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Straight Lines &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 Straight Lines</h1>
+  <p>OCR FSMQ Additional Maths · Coordinate Geometry (CG1–CG2)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – DISTANCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Distance Between Two Points</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>CG1</strong> asks you to calculate the distance between two points. The formula is simply Pythagoras' theorem applied to the horizontal and vertical gaps.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The distance formula</div>
+    $d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$
+  </div>
+
+  <div class="svg-block">
+    <svg width="400" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="200" x2="370" y2="200" stroke="#475569" stroke-width="2"/>
+      <line x1="40" y1="200" x2="40" y2="20" stroke="#475569" stroke-width="2"/>
+      <text x="374" y="205" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="32" y="18" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <line x1="100" y1="170" x2="280" y2="60" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="100" y1="170" x2="280" y2="170" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>
+      <line x1="280" y1="170" x2="280" y2="60" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>
+      <circle cx="100" cy="170" r="5" fill="#4f46e5"/><circle cx="280" cy="60" r="5" fill="#4f46e5"/>
+      <text x="72" y="188" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">(x&#8321;, y&#8321;)</text>
+      <text x="288" y="56" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">(x&#8322;, y&#8322;)</text>
+      <text x="190" y="190" font-family="Arial" font-size="12" fill="#6d28d9" text-anchor="middle" font-weight="bold">x&#8322; &minus; x&#8321;</text>
+      <text x="290" y="120" font-family="Arial" font-size="12" fill="#6d28d9" font-weight="bold">y&#8322; &minus; y&#8321;</text>
+      <text x="170" y="105" font-family="Arial" font-size="13" fill="#4c1d95" font-weight="bold">d</text>
+      <rect x="264" y="154" width="16" height="16" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+      <text x="200" y="230" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">The distance is the hypotenuse of a right-angled triangle</text>
+    </svg>
+  </div>
+
+  <div class="tip">
+    <strong>The order does not matter here.</strong> Because the differences are squared, $(x_2-x_1)^2 = (x_1-x_2)^2$. Distance is the one formula in this topic where you cannot get the sign wrong.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A basic distance</div>
+    <div class="example-body">
+      <p>Find the distance between $A(-2, 1)$ and $B(4, 9)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x$ difference: $4 - (-2) = 6$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y$ difference: $9 - 1 = 8$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$d = \sqrt{6^2 + 8^2} = \sqrt{36+64} = \sqrt{100} = 10$</span></div>
+      <div class="warn"><strong>Mind the double negative.</strong> $4 - (-2) = 6$, not $2$. Write the subtraction out rather than doing it in your head.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — An exact answer</div>
+    <div class="example-body">
+      <p>Find the exact distance between $P(1, 3)$ and $Q(5, 6)$… and then between $P(1,3)$ and $R(4, 8)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$PQ = \sqrt{4^2 + 3^2} = \sqrt{25} = 5$ — a whole number.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$PR = \sqrt{3^2 + 5^2} = \sqrt{34}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$34$ has no square factor, so $\sqrt{34}$ is already in simplest form. Leave it exact.</span></div>
+      <div class="tip"><strong>"Exact" means do not round.</strong> $\sqrt{34}$ is exact; $5.83$ is not. If the answer simplifies, though, do simplify it: $\sqrt{72} = 6\sqrt2$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – MID-POINT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Mid-Point of a Line Segment</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">CG2 — the mid-point</div>
+    $M = \left(\dfrac{x_1+x_2}{2},\; \dfrac{y_1+y_2}{2}\right)$
+  </div>
+
+  <div class="concept">
+    In words: <strong>average the $x$-coordinates, average the $y$-coordinates</strong>. Nothing is squared and nothing is square-rooted, so this is the simplest formula in the topic.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A mid-point with negatives</div>
+    <div class="example-body">
+      <p>Find the mid-point of the segment joining $(-5, 8)$ and $(3, -2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x$: $\dfrac{-5+3}{2} = \dfrac{-2}{2} = -1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y$: $\dfrac{8+(-2)}{2} = \dfrac{6}{2} = 3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$M = (-1, 3)$</span></div>
+      <div class="tip"><strong>Sense-check</strong> by confirming the mid-point lies <em>between</em> the two given points in both coordinates: $-5 < -1 < 3$ ✓ and $-2 < 3 < 8$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Working backwards to an endpoint</div>
+    <div class="example-body">
+      <p>$M(4, 1)$ is the mid-point of $AB$, where $A$ is $(1, 7)$. Find $B$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Going from $A$ to $M$, the $x$-coordinate increases by $3$. The same step again reaches $B$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_B = 4 + 3 = 7$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>From $7$ to $1$ the $y$-coordinate falls by $6$, so $y_B = 1 - 6 = -5$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$B = (7, -5)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Or algebraically:</em> $x_B = 2x_M - x_A = 8 - 1 = 7$ and $y_B = 2y_M - y_A = 2 - 7 = -5$ ✓</span></div>
+      <div class="formula-box"><div class="label">The reverse formula</div>$B = (2x_M - x_A,\; 2y_M - y_A)$</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – GRADIENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Gradient</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Gradient</div>
+    $m = \dfrac{y_2-y_1}{x_2-x_1} = \dfrac{\text{change in } y}{\text{change in } x}$
+  </div>
+
+  <div class="warn">
+    <strong>Be consistent.</strong> Whichever point you call "point 2" on top, use the same one on the bottom. Mixing them reverses the sign.
+  </div>
+
+  <table>
+    <tr><th>Gradient</th><th>The line</th></tr>
+    <tr><td>Positive</td><td>Slopes upwards, left to right</td></tr>
+    <tr><td>Negative</td><td>Slopes downwards</td></tr>
+    <tr><td>Zero</td><td>Horizontal, $y = c$</td></tr>
+    <tr><td>Undefined</td><td>Vertical, $x = k$ — the denominator is zero</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Parallel and perpendicular</div>
+    <strong>Parallel:</strong> $m_1 = m_2$<br>
+    <strong>Perpendicular:</strong> $m_1 \times m_2 = -1$, &nbsp;i.e. $m_2 = -\dfrac{1}{m_1}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Testing perpendicularity</div>
+    <div class="example-body">
+      <p>Are the lines through $A(0,1)$, $B(4,3)$ and through $C(1,5)$, $D(3,1)$ perpendicular?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$m_{AB} = \dfrac{3-1}{4-0} = \dfrac{2}{4} = \dfrac12$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$m_{CD} = \dfrac{1-5}{3-1} = \dfrac{-4}{2} = -2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac12 \times (-2) = -1$ ✓</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Yes, the lines are perpendicular.</span></div>
+      <div class="tip"><strong>The shortcut:</strong> to get a perpendicular gradient, turn the fraction upside down and change its sign. $\tfrac23 \to -\tfrac32$; &nbsp;$-4 \to \tfrac14$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – EQUATION OF A LINE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Equation of a Line</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Two standard forms</div>
+    $y = mx + c$ &nbsp;— gradient $m$, $y$-intercept $c$<br>
+    $y - y_1 = m(x - x_1)$ &nbsp;— gradient $m$ through the point $(x_1, y_1)$
+  </div>
+
+  <div class="tip">
+    <strong>Use the second form whenever you are given a point.</strong> It avoids having to find $c$ separately, and there is one fewer step to get wrong.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A line through two points</div>
+    <div class="example-body">
+      <p>Find the equation of the line through $(2, -1)$ and $(6, 7)$, giving your answer in the form $ax + by + c = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$m = \dfrac{7-(-1)}{6-2} = \dfrac{8}{4} = 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y - (-1) = 2(x - 2)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y + 1 = 2x - 4$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = 2x - 5$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>In the requested form: $2x - y - 5 = 0$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span><em>Check with the other point:</em> $2(6) - 7 - 5 = 0$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A perpendicular bisector</div>
+    <div class="example-body">
+      <p>Find the perpendicular bisector of the segment joining $A(-1, 2)$ and $B(5, 6)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Mid-point: $\left(\tfrac{-1+5}{2}, \tfrac{2+6}{2}\right) = (2, 4)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$m_{AB} = \dfrac{6-2}{5-(-1)} = \dfrac{4}{6} = \dfrac23$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Perpendicular gradient: $-\dfrac32$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y - 4 = -\tfrac32(x - 2)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$y = -\tfrac32 x + 3 + 4 = -\tfrac32 x + 7$, or $2y + 3x = 14$.</span></div>
+      <div class="tip"><strong>The perpendicular bisector is the set of points equidistant from $A$ and $B$.</strong> That makes it the key to finding a circle's centre from two points on its circumference.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Where two lines meet</div>
+    <div class="example-body">
+      <p>Find the point of intersection of $y = 3x - 4$ and $2x + y = 11$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Substitute the first into the second: $2x + (3x - 4) = 11$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$5x = 15$, so $x = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = 3(3) - 4 = 5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>They meet at $(3, 5)$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><em>Check:</em> $2(3) + 5 = 11$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Distance</h4><p>$\sqrt{(\Delta x)^2 + (\Delta y)^2}$.</p></div>
+    <div class="ref-card"><h4>Mid-point</h4><p>Average both coordinates.</p></div>
+    <div class="ref-card"><h4>Other endpoint</h4><p>$(2x_M - x_A,\; 2y_M - y_A)$.</p></div>
+    <div class="ref-card"><h4>Gradient</h4><p>$\dfrac{\Delta y}{\Delta x}$, same order top and bottom.</p></div>
+    <div class="ref-card"><h4>Vertical line</h4><p>$x = k$; gradient undefined.</p></div>
+    <div class="ref-card"><h4>Parallel</h4><p>Equal gradients.</p></div>
+    <div class="ref-card"><h4>Perpendicular</h4><p>Flip and change sign.</p></div>
+    <div class="ref-card"><h4>Best line form</h4><p>$y - y_1 = m(x-x_1)$.</p></div>
+    <div class="ref-card"><h4>Bisector</h4><p>Through the mid-point, perpendicular gradient.</p></div>
+    <div class="ref-card"><h4>Intersection</h4><p>Solve the two equations simultaneously.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the distance between $(1, 2)$ and $(7, 10)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{6^2 + 8^2} = \sqrt{100} = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the exact distance between $(-3, 1)$ and $(2, 5)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Delta x = 5$, $\Delta y = 4$</p>
+          <p>$d = \sqrt{25 + 16} = \sqrt{41}$</p>
+          <p>$41$ is prime, so this cannot be simplified.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the mid-point of the segment joining $(8, -3)$ and $(-2, 7)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\left(\dfrac{8+(-2)}{2}, \dfrac{-3+7}{2}\right) = (3, 2)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$M(1, -2)$ is the mid-point of $PQ$, where $P = (-3, 4)$. Find $Q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_Q = 2(1) - (-3) = 5$</p>
+          <p>$y_Q = 2(-2) - 4 = -8$</p>
+          <p>$Q = (5, -8)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the gradient of the line through $(2, 9)$ and $(6, 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$m = \dfrac{1-9}{6-2} = \dfrac{-8}{4} = -2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the equation of the line through $(-1, 5)$ parallel to $y = 4x - 7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Parallel means the same gradient, $m = 4$.</p>
+          <p>$y - 5 = 4(x + 1)$</p>
+          <p>$y = 4x + 9$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the equation of the line through $(6, 2)$ perpendicular to $y = \tfrac12 x + 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Perpendicular gradient: $-\dfrac{1}{1/2} = -2$</p>
+          <p>$y - 2 = -2(x - 6)$</p>
+          <p>$y = -2x + 14$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the point of intersection of $y = 2x + 1$ and $3x + 2y = 16$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x + 2(2x+1) = 16$</p>
+          <p>$7x + 2 = 16$, so $x = 2$.</p>
+          <p>$y = 2(2) + 1 = 5$. They meet at $(2, 5)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that $A(1,1)$, $B(4,2)$, $C(3,5)$ and $D(0,4)$ form a parallelogram, and determine whether it is a rectangle.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$m_{AB} = \dfrac{2-1}{4-1} = \dfrac13$ &nbsp;and&nbsp; $m_{DC} = \dfrac{5-4}{3-0} = \dfrac13$ — equal, so $AB \parallel DC$.</p>
+          <p>$m_{AD} = \dfrac{4-1}{0-1} = -3$ &nbsp;and&nbsp; $m_{BC} = \dfrac{5-2}{3-4} = -3$ — equal, so $AD \parallel BC$.</p>
+          <p>Both pairs of opposite sides are parallel, so $ABCD$ is a <strong>parallelogram</strong>.</p>
+          <p>Now test the corner: $\tfrac13 \times (-3) = -1$, so adjacent sides are perpendicular.</p>
+          <p>Therefore it is also a <strong>rectangle</strong>. (In fact $AB = \sqrt{10}$ and $AD = \sqrt{10}$, so it is a square.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$A(-2, 1)$, $B(6, 5)$ and $C(4, 9)$ are three points.</p>
+      <p>(a) Find the lengths of all three sides, in exact form. &nbsp; (b) Show that the triangle is right-angled, and state at which vertex. &nbsp; (c) Find the area of the triangle. &nbsp; (d) Find the equation of the perpendicular bisector of $AB$, and verify that $C$ does not lie on it.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $AB = \sqrt{8^2 + 4^2} = \sqrt{80} = 4\sqrt5$</p>
+          <p>$BC = \sqrt{(4-6)^2 + (9-5)^2} = \sqrt{4 + 16} = \sqrt{20} = 2\sqrt5$</p>
+          <p>$AC = \sqrt{(4+2)^2 + (9-1)^2} = \sqrt{36+64} = \sqrt{100} = 10$</p>
+          <p><strong>(b)</strong> $AB^2 + BC^2 = 80 + 20 = 100 = AC^2$</p>
+          <p>By the converse of Pythagoras' theorem the triangle is right-angled, at <strong>$B$</strong> (the vertex opposite the longest side $AC$).</p>
+          <p><em>Confirming with gradients:</em> $m_{AB} = \tfrac{4}{8} = \tfrac12$, $m_{BC} = \tfrac{4}{-2} = -2$, and $\tfrac12 \times (-2) = -1$ ✓</p>
+          <p><strong>(c)</strong> The right angle is at $B$, so $AB$ and $BC$ are the base and height.</p>
+          <p>Area $= \tfrac12 \times 4\sqrt5 \times 2\sqrt5 = \tfrac12 \times 8 \times 5 = 20$ square units.</p>
+          <p><strong>(d)</strong> Mid-point of $AB$: $\left(\tfrac{-2+6}{2}, \tfrac{1+5}{2}\right) = (2, 3)$</p>
+          <p>$m_{AB} = \tfrac12$, so the bisector has gradient $-2$:</p>
+          <p>$y - 3 = -2(x - 2)$, giving $y = -2x + 7$.</p>
+          <p>Testing $C(4, 9)$: $-2(4) + 7 = -1 \neq 9$, so $C$ does <strong>not</strong> lie on the bisector.</p>
+          <p>This tells us $C$ is <em>not</em> equidistant from $A$ and $B$ — consistent with part (a), where $AC = 10$ but $BC = 2\sqrt5 \approx 4.47$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Straight Lines (CG1–CG2) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigonometric Equations &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧭 Trigonometric Equations</h1>
+  <p>OCR FSMQ Additional Maths · Trigonometry (PT5)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY THERE IS MORE THAN ONE ANSWER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why There Is More Than One Answer</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>PT5:</strong> solve simple trigonometric equations in given intervals. The phrase "in given intervals" is the whole difficulty — because trigonometric functions repeat, there is almost never just one solution.
+  </div>
+
+  <div class="warn">
+    <strong>Your calculator gives one solution only.</strong> $\sin^{-1}$, $\cos^{-1}$ and $\tan^{-1}$ each return a single "principal" value. Finding the rest is your job, and most of the marks are there.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The symmetry rules for a second solution</div>
+    $\sin\theta = k$ &nbsp;&rarr;&nbsp; if $\theta_1$ works, so does $180° - \theta_1$<br>
+    $\cos\theta = k$ &nbsp;&rarr;&nbsp; if $\theta_1$ works, so does $360° - \theta_1$<br>
+    $\tan\theta = k$ &nbsp;&rarr;&nbsp; if $\theta_1$ works, so does $180° + \theta_1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Then add or subtract whole periods</div>
+    For $\sin$ and $\cos$: add or subtract $360°$ as needed<br>
+    For $\tan$: add or subtract $180°$
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="110" x2="470" y2="110" stroke="#475569" stroke-width="2"/>
+      <line x1="40" y1="30" x2="40" y2="185" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 110 Q 93 35 146 110 Q 199 185 252 110 Q 305 35 358 110 Q 411 185 464 110" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="40" y1="65" x2="470" y2="65" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="474" y="69" font-family="Arial" font-size="11" fill="#b91c1c" font-weight="bold">y = k</text>
+      <circle cx="72" cy="65" r="5" fill="#dc2626"/><circle cx="114" cy="65" r="5" fill="#dc2626"/>
+      <circle cx="284" cy="65" r="5" fill="#dc2626"/><circle cx="326" cy="65" r="5" fill="#dc2626"/>
+      <g font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">
+        <text x="146" y="128">180&deg;</text><text x="252" y="128">360&deg;</text>
+        <text x="358" y="128">540&deg;</text><text x="464" y="128">720&deg;</text>
+      </g>
+      <text x="250" y="196" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Every period contributes two solutions &mdash; count them off the graph</text>
+    </svg>
+  </div>
+
+  <div class="tip">
+    <strong>Always sketch the curve and the horizontal line.</strong> Counting the crossings in the given interval tells you immediately how many answers to look for, which stops you stopping early.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE BASIC METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Basic Method</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Rearrange until the equation reads $\sin\theta = k$, $\cos\theta = k$ or $\tan\theta = k$.</li>
+    <li>Find the principal value from the calculator.</li>
+    <li>Use the symmetry rule to find a second solution.</li>
+    <li>Add or subtract whole periods to reach every solution in the interval.</li>
+    <li>Discard anything outside the interval, and check nothing is missing against your sketch.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A sine equation</div>
+    <div class="example-body">
+      <p>Solve $\sin\theta = 0.4$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sin^{-1}(0.4) = 23.6°$ (1 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Second solution: $180° - 23.6° = 156.4°$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Adding $360°$ takes us past the interval, so we stop.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\theta = 23.6°$ or $156.4°$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A negative cosine</div>
+    <div class="example-body">
+      <p>Solve $\cos\theta = -0.7$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\cos^{-1}(-0.7) = 134.4°$ (1 d.p.) — the calculator handles the negative itself.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Second solution: $360° - 134.4° = 225.6°$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\theta = 134.4°$ or $225.6°$</span></div>
+      <div class="tip">For cosine, the two solutions in $0°$–$360°$ are always <strong>symmetric about $180°$</strong>. Check: $134.4$ and $225.6$ average to $180$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — The specification's own example</div>
+    <div class="example-body">
+      <p>Solve $\tan 2x = 0.5$ for $0° \leqslant x \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Work with the whole angle $2x$ first. As $x$ runs from $0°$ to $360°$, $2x$ runs from $0°$ to $720°$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tan^{-1}(0.5) = 26.565°$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Tangent has period $180°$, so in $0°$ to $720°$: $2x = 26.565°,\; 206.565°,\; 386.565°,\; 566.565°$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The next would be $746.565° > 720°$, so stop.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Halve each: $x = 13.3°,\; 103.3°,\; 193.3°,\; 283.3°$ (1 d.p.)</span></div>
+      <div class="warn"><strong>Extend the interval <em>before</em> solving, not after.</strong> If you find only $x = 13.3°$ and then try to add $180°$, you will miss half the answers. Multiply the interval by the coefficient first.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – A MULTIPLE OR SHIFTED ANGLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> When the Angle Is Not Just $\theta$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The substitution method</div>
+    <strong>1.</strong> Let $u$ be the whole expression in the bracket<br>
+    <strong>2.</strong> Convert the interval for $\theta$ into an interval for $u$<br>
+    <strong>3.</strong> Find <em>every</em> solution for $u$ in that wider interval<br>
+    <strong>4.</strong> Convert each one back to $\theta$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A multiple angle</div>
+    <div class="example-body">
+      <p>Solve $\sin 3\theta = 0.5$ for $0° \leqslant \theta \leqslant 180°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $u = 3\theta$. As $\theta$ goes from $0°$ to $180°$, $u$ goes from $0°$ to $540°$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin u = 0.5$: principal value $u = 30°$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Symmetry: $u = 180° - 30° = 150°$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Add $360°$ to each: $u = 390°$ and $u = 510°$. Both are under $540°$ ✓</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So $u = 30°,\; 150°,\; 390°,\; 510°$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Divide by $3$: $\theta = 10°,\; 50°,\; 130°,\; 170°$</span></div>
+      <div class="tip"><strong>Count the answers you expect.</strong> Multiplying the angle by $3$ triples the number of cycles, so expect roughly three times as many solutions.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A shifted angle</div>
+    <div class="example-body">
+      <p>Solve $\cos(\theta + 40°) = 0.6$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $u = \theta + 40°$. The interval becomes $40° \leqslant u \leqslant 400°$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos^{-1}(0.6) = 53.13°$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Symmetry: $u = 360° - 53.13° = 306.87°$</span></div>
+      <div class="step-row"><span class="arrow">&#9315;</span><span>Both lie in $40° \leqslant u \leqslant 400°$ &#10003;. Adding $360°$ gives $413.13°$, which is outside, so there are no more.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So $u = 53.13°$ or $306.87°$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Subtract $40°$: $\theta = 13.1°$ or $266.9°$ (1 d.p.)</span></div>
+      <div class="warn"><strong>Check each $u$ against the shifted interval, not the original.</strong> A value of $u$ below $40°$ would give a negative $\theta$ and must be rejected.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUADRATIC TRIG EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quadratic Trigonometric Equations</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The strategy</div>
+    Get everything in terms of <strong>one</strong> ratio, then treat it as a quadratic
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A quadratic in sine</div>
+    <div class="example-body">
+      <p>Solve $2\sin^2\theta - \sin\theta - 1 = 0$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $s = \sin\theta$: &nbsp;$2s^2 - s - 1 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(2s+1)(s-1) = 0$, so $s = -\tfrac12$ or $s = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin\theta = -\tfrac12$: the related acute angle is $30°$, and sine is negative in the third and fourth quadrants.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\theta = 180° + 30° = 210°$ &nbsp;or&nbsp; $\theta = 360° - 30° = 330°$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\sin\theta = 1$: &nbsp;$\theta = 90°$ only (the maximum is reached once).</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\theta = 90°,\; 210°,\; 330°$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Needing an identity first</div>
+    <div class="example-body">
+      <p>Solve $3\cos^2\theta + 5\sin\theta = 1$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Mixed ratios, so use $\cos^2\theta = 1 - \sin^2\theta$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3\left(1-\sin^2\theta\right) + 5\sin\theta = 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3 - 3\sin^2\theta + 5\sin\theta = 1$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3\sin^2\theta - 5\sin\theta - 2 = 0$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$(3\sin\theta + 1)(\sin\theta - 2) = 0$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\sin\theta = 2$ is <strong>impossible</strong> — reject it, and say so.</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>$\sin\theta = -\tfrac13$: related acute angle $19.47°$; sine negative in the third and fourth quadrants.</span></div>
+      <div class="step-row"><span class="arrow">⑧</span><span>$\theta = 199.5°$ or $340.5°$ (1 d.p.)</span></div>
+      <div class="tip"><strong>State the rejection explicitly.</strong> Writing "$\sin\theta = 2$ has no solutions since $|\sin\theta| \leqslant 1$" earns a mark; silently ignoring it does not.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Converting to a tangent</div>
+    <div class="example-body">
+      <p>Solve $3\sin\theta = 2\cos\theta$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Divide both sides by $\cos\theta$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3\tan\theta = 2$, so $\tan\theta = \tfrac23$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tan^{-1}\left(\tfrac23\right) = 33.69°$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Tangent has period $180°$: $\theta = 33.69°$ or $213.69°$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\theta = 33.7°$ or $213.7°$ (1 d.p.)</span></div>
+      <div class="warn"><strong>Dividing by $\cos\theta$ is safe here</strong> because if $\cos\theta$ were $0$ the equation would force $\sin\theta = 0$ too, and sine and cosine are never both zero. Where such a check is not automatic, treat $\cos\theta = 0$ as a separate case.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Sketch first</h4><p>Count the crossings to know how many answers.</p></div>
+    <div class="ref-card"><h4>Sine second</h4><p>$180° - \theta_1$.</p></div>
+    <div class="ref-card"><h4>Cosine second</h4><p>$360° - \theta_1$.</p></div>
+    <div class="ref-card"><h4>Tangent second</h4><p>$180° + \theta_1$.</p></div>
+    <div class="ref-card"><h4>Periods</h4><p>Add $360°$ ($\sin$, $\cos$) or $180°$ ($\tan$).</p></div>
+    <div class="ref-card"><h4>Multiple angle</h4><p>Widen the interval <em>before</em> solving.</p></div>
+    <div class="ref-card"><h4>Shifted angle</h4><p>Substitute $u$, shift the interval, solve, shift back.</p></div>
+    <div class="ref-card"><h4>Quadratics</h4><p>Get one ratio only, then factorise.</p></div>
+    <div class="ref-card"><h4>Mixed ratios</h4><p>Use $\sin^2 + \cos^2 \equiv 1$.</p></div>
+    <div class="ref-card"><h4>Reject clearly</h4><p>Say why $\sin\theta = 2$ is impossible.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Solve $\sin\theta = 0.8$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin^{-1}(0.8) = 53.1°$</p>
+          <p>Second: $180° - 53.1° = 126.9°$</p>
+          <p>$\theta = 53.1°$ or $126.9°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $\cos\theta = 0.25$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos^{-1}(0.25) = 75.5°$</p>
+          <p>Second: $360° - 75.5° = 284.5°$</p>
+          <p>$\theta = 75.5°$ or $284.5°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $\tan\theta = 3$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tan^{-1}(3) = 71.6°$</p>
+          <p>Adding the period $180°$: $251.6°$</p>
+          <p>$\theta = 71.6°$ or $251.6°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $\sin\theta = -0.3$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Related acute angle: $\sin^{-1}(0.3) = 17.46°$.</p>
+          <p>Sine is negative in the third and fourth quadrants:</p>
+          <p>$180° + 17.46° = 197.5°$ &nbsp;and&nbsp; $360° - 17.46° = 342.5°$</p>
+          <p>$\theta = 197.5°$ or $342.5°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $2\cos\theta + 1 = 0$ for $0° \leqslant \theta \leqslant 360°$, giving exact answers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos\theta = -\dfrac12$</p>
+          <p>Related acute angle $60°$; cosine negative in the second and third quadrants.</p>
+          <p>$\theta = 120°$ or $240°$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $\sin 2\theta = 0.5$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $u = 2\theta$, so $0° \leqslant u \leqslant 720°$.</p>
+          <p>$\sin u = 0.5$: $u = 30°$, $150°$, and adding $360°$: $390°$, $510°$.</p>
+          <p>Halving: $\theta = 15°,\; 75°,\; 195°,\; 255°$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $\cos 3\theta = 0$ for $0° \leqslant \theta \leqslant 180°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $u = 3\theta$, so $0° \leqslant u \leqslant 540°$.</p>
+          <p>$\cos u = 0$ at $u = 90°$, $270°$, $450°$ — all within range.</p>
+          <p>$\theta = 30°,\; 90°,\; 150°$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $2\sin^2\theta = \sin\theta$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Do <strong>not</strong> divide by $\sin\theta$ — that loses roots. Factorise instead:</p>
+          <p>$2\sin^2\theta - \sin\theta = 0 \;\Rightarrow\; \sin\theta\left(2\sin\theta - 1\right) = 0$</p>
+          <p>$\sin\theta = 0$: &nbsp;$\theta = 0°,\; 180°,\; 360°$</p>
+          <p>$\sin\theta = \tfrac12$: &nbsp;$\theta = 30°,\; 150°$</p>
+          <p>$\theta = 0°,\; 30°,\; 150°,\; 180°,\; 360°$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Solve $5\sin\theta = 3\cos\theta$ for $0° \leqslant \theta \leqslant 360°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Dividing by $\cos\theta$: $\tan\theta = \dfrac{3}{5} = 0.6$</p>
+          <p>$\tan^{-1}(0.6) = 31.0°$</p>
+          <p>Adding $180°$: $211.0°$</p>
+          <p>$\theta = 31.0°$ or $211.0°$ (1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The depth of water in a harbour, in metres, is modelled by $d = 7 + 3\sin(30t)°$, where $t$ is the time in hours after midnight.</p>
+      <p>(a) Find the depth at midnight and the maximum depth. &nbsp; (b) Find the period of the model and explain what it represents. &nbsp; (c) A boat needs a depth of at least $8.5$ m. Find, to the nearest minute, the first two times after midnight at which the depth is exactly $8.5$ m. &nbsp; (d) State the total time in each cycle during which the boat can enter.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> At $t = 0$: $d = 7 + 3\sin 0° = 7$ m.</p>
+          <p>The sine term is at most $1$, so the maximum depth is $7 + 3 = 10$ m.</p>
+          <p><strong>(b)</strong> The angle is $30t$ degrees, so one full cycle needs $30t = 360$, giving $t = 12$ hours.</p>
+          <p>The period is <strong>$12$ hours</strong>, representing the time from one high tide to the next.</p>
+          <p><strong>(c)</strong> Set $d = 8.5$:</p>
+          <p>$7 + 3\sin(30t)° = 8.5 \;\Rightarrow\; \sin(30t)° = 0.5$</p>
+          <p>Let $u = 30t$. For $0 \leqslant t \leqslant 12$ we have $0° \leqslant u \leqslant 360°$.</p>
+          <p>$\sin u = 0.5$ gives $u = 30°$ or $u = 150°$.</p>
+          <p>$t = \dfrac{30}{30} = 1$ hour, &nbsp;and&nbsp; $t = \dfrac{150}{30} = 5$ hours.</p>
+          <p>So the depth is $8.5$ m at <strong>01:00</strong> and <strong>05:00</strong>.</p>
+          <p><strong>(d)</strong> Between $t = 1$ and $t = 5$ the value of $\sin(30t)°$ exceeds $0.5$ — the sine curve is above the line $y = 0.5$ between those two crossings, peaking at $t = 3$ where $d = 10$ m.</p>
+          <p>So the depth is at least $8.5$ m for $5 - 1 = \mathbf{4}$ <strong>hours</strong> in each $12$-hour cycle.</p>
+          <p><em>Check at $t = 3$:</em> $d = 7 + 3\sin 90° = 10 \geqslant 8.5$ ✓ &nbsp;<em>and at $t = 6$:</em> $d = 7 + 3\sin 180° = 7 < 8.5$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Trigonometric Equations (PT5) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

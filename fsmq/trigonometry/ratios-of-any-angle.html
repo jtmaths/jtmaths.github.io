@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratios of Any Angle &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔄 Ratios of Any Angle</h1>
+  <p>OCR FSMQ Additional Maths · Trigonometry (PT1)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – BEYOND THE RIGHT-ANGLED TRIANGLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Beyond the Right-Angled Triangle</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>PT1:</strong> use the definitions of $\sin\theta$, $\cos\theta$ and $\tan\theta$ for <em>any</em> angle, and their graphs. This is the step that takes trigonometry past GCSE.
+  </div>
+
+  <p>In a right-angled triangle an angle must be less than $90°$. But $\sin 200°$ and $\cos 340°$ are perfectly well defined. The trick is to stop thinking about triangles and think instead about a <strong>point going round a circle</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">The unit circle definition</div>
+    Take a point $P$ on a circle of radius $1$ centred at the origin,<br>
+    with $\theta$ measured anticlockwise from the positive $x$-axis. Then<br>
+    $\cos\theta$ is the $x$-coordinate of $P$ &nbsp;&middot;&nbsp; $\sin\theta$ is the $y$-coordinate of $P$
+  </div>
+
+  <div class="svg-block">
+    <svg width="380" height="330" viewBox="0 0 380 330" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="165" x2="350" y2="165" stroke="#475569" stroke-width="2"/>
+      <line x1="190" y1="20" x2="190" y2="310" stroke="#475569" stroke-width="2"/>
+      <circle cx="190" cy="165" r="110" fill="none" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="190" y1="165" x2="268" y2="87" stroke="#7c3aed" stroke-width="2.5"/>
+      <circle cx="268" cy="87" r="5" fill="#7c3aed"/>
+      <line x1="268" y1="87" x2="268" y2="165" stroke="#22c55e" stroke-width="2" stroke-dasharray="5 4"/>
+      <line x1="190" y1="165" x2="268" y2="165" stroke="#ef4444" stroke-width="3"/>
+      <text x="276" y="82" font-family="Arial" font-size="12" fill="#4c1d95" font-weight="bold">P(cos&#952;, sin&#952;)</text>
+      <text x="274" y="130" font-family="Arial" font-size="11" fill="#166534" font-weight="bold">sin&#952;</text>
+      <text x="216" y="182" font-family="Arial" font-size="11" fill="#b91c1c" font-weight="bold">cos&#952;</text>
+      <path d="M 216 165 A 26 26 0 0 0 208 147" fill="none" stroke="#6d28d9" stroke-width="2"/>
+      <text x="222" y="152" font-family="Arial" font-size="12" fill="#6d28d9" font-weight="bold">&#952;</text>
+      <g font-family="Arial" font-size="14" fill="#64748b" font-weight="bold" text-anchor="middle">
+        <text x="120" y="98">S</text><text x="262" y="142">A</text>
+        <text x="120" y="230">T</text><text x="262" y="230">C</text>
+      </g>
+      <text x="190" y="324" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">CAST: the letter in each quadrant names the ratio that is POSITIVE there</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Which ratios are positive where</div>
+    $0°$–$90°$: <strong>All</strong> positive &nbsp;&middot;&nbsp; $90°$–$180°$: <strong>Sine</strong> only<br>
+    $180°$–$270°$: <strong>Tangent</strong> only &nbsp;&middot;&nbsp; $270°$–$360°$: <strong>Cosine</strong> only
+  </div>
+
+  <div class="tip">
+    <strong>Remember it as "All Students Take Care"</strong> going anticlockwise from the first quadrant: <strong>A</strong>ll, <strong>S</strong>ine, <strong>T</strong>angent, <strong>C</strong>osine.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE GRAPHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Three Graphs</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="100" x2="470" y2="100" stroke="#475569" stroke-width="2"/>
+      <line x1="40" y1="25" x2="40" y2="175" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 100 Q 93 25 146 100 Q 199 175 252 100 Q 305 25 358 100 Q 411 175 464 100" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <g font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">
+        <text x="146" y="118">180&deg;</text><text x="252" y="118">360&deg;</text>
+        <text x="358" y="118">540&deg;</text><text x="464" y="118">720&deg;</text>
+      </g>
+      <text x="32" y="30" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">1</text>
+      <text x="32" y="178" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">&minus;1</text>
+      <text x="90" y="20" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">y = sin x</text>
+    </svg>
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="100" x2="470" y2="100" stroke="#475569" stroke-width="2"/>
+      <line x1="40" y1="25" x2="40" y2="175" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 25 Q 93 25 119 100 Q 146 175 199 175 Q 252 175 278 100 Q 305 25 358 25 Q 411 25 437 100 Q 450 138 464 155" fill="none" stroke="#22c55e" stroke-width="3"/>
+      <g font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">
+        <text x="119" y="118">90&deg;</text><text x="278" y="118">270&deg;</text>
+        <text x="437" y="118">450&deg;</text>
+      </g>
+      <text x="32" y="30" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">1</text>
+      <text x="32" y="178" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">&minus;1</text>
+      <text x="200" y="40" font-family="Arial" font-size="13" fill="#166534" font-weight="bold">y = cos x</text>
+    </svg>
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="220" viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="110" x2="470" y2="110" stroke="#475569" stroke-width="2"/>
+      <line x1="40" y1="20" x2="40" y2="195" stroke="#475569" stroke-width="2"/>
+      <path d="M 40 110 C 80 100 110 60 128 20" fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <path d="M 164 195 C 182 155 212 118 252 110 C 292 100 322 60 340 20" fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <path d="M 376 195 C 394 155 424 118 464 110" fill="none" stroke="#7c3aed" stroke-width="3"/>
+      <line x1="146" y1="20" x2="146" y2="195" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4"/>
+      <line x1="358" y1="20" x2="358" y2="195" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4"/>
+      <g font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">
+        <text x="146" y="212" fill="#b91c1c" font-weight="bold">90&deg;</text>
+        <text x="252" y="128">180&deg;</text>
+        <text x="358" y="212" fill="#b91c1c" font-weight="bold">270&deg;</text>
+        <text x="464" y="128">360&deg;</text>
+      </g>
+      <text x="200" y="40" font-family="Arial" font-size="13" fill="#6d28d9" font-weight="bold">y = tan x</text>
+      <text x="255" y="16" font-family="Arial" font-size="11" fill="#b91c1c" text-anchor="middle">asymptotes at 90&deg;, 270&deg;, &hellip;</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th>Graph</th><th>Period</th><th>Range</th><th>Zeros</th><th>Other features</th></tr>
+    <tr><td>$y = \sin x$</td><td>$360°$</td><td>$-1 \leqslant y \leqslant 1$</td><td>$0°, 180°, 360°$</td><td>Max $1$ at $90°$, min $-1$ at $270°$</td></tr>
+    <tr><td>$y = \cos x$</td><td>$360°$</td><td>$-1 \leqslant y \leqslant 1$</td><td>$90°, 270°$</td><td>Max $1$ at $0°$ and $360°$</td></tr>
+    <tr><td>$y = \tan x$</td><td>$180°$</td><td>All real values</td><td>$0°, 180°, 360°$</td><td>Asymptotes at $90°, 270°$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The symmetries worth memorising</div>
+    $\sin(180° - \theta) = \sin\theta$ &nbsp;&middot;&nbsp; $\cos(360° - \theta) = \cos\theta$<br>
+    $\sin(-\theta) = -\sin\theta$ &nbsp;&middot;&nbsp; $\cos(-\theta) = \cos\theta$ &nbsp;&middot;&nbsp; $\tan(180° + \theta) = \tan\theta$
+  </div>
+
+  <div class="concept">
+    <strong>Why $\cos$ is just $\sin$ shifted.</strong> The cosine graph is the sine graph translated $90°$ to the left: $\cos x = \sin(x + 90°)$. If you can draw one, you can draw the other.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – EXACT VALUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Exact Values</div>
+<div class="section-body">
+
+  <p>When a question asks for an <strong>exact</strong> answer, a decimal from the calculator will not do. These values come from the two special triangles.</p>
+
+  <table>
+    <tr><th>$\theta$</th><th>$0°$</th><th>$30°$</th><th>$45°$</th><th>$60°$</th><th>$90°$</th></tr>
+    <tr><td>$\sin\theta$</td><td>$0$</td><td>$\dfrac12$</td><td>$\dfrac{1}{\sqrt2}$</td><td>$\dfrac{\sqrt3}{2}$</td><td>$1$</td></tr>
+    <tr><td>$\cos\theta$</td><td>$1$</td><td>$\dfrac{\sqrt3}{2}$</td><td>$\dfrac{1}{\sqrt2}$</td><td>$\dfrac12$</td><td>$0$</td></tr>
+    <tr><td>$\tan\theta$</td><td>$0$</td><td>$\dfrac{1}{\sqrt3}$</td><td>$1$</td><td>$\sqrt3$</td><td>undefined</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The two triangles.</strong> Half an equilateral triangle of side $2$ gives sides $1$, $\sqrt3$, $2$ with angles $30°$, $60°$, $90°$. A right-angled isosceles triangle with legs $1$ gives $1$, $1$, $\sqrt2$ with angles $45°$, $45°$, $90°$. Sketch them rather than memorising the table.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — An exact value of an obtuse angle</div>
+    <div class="example-body">
+      <p>Find the exact value of $\sin 150°$ and of $\cos 150°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$150°$ is in the second quadrant, where <strong>only sine is positive</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The related acute angle is $180° - 150° = 30°$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin 150° = +\sin 30° = \dfrac{1}{2}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\cos 150° = -\cos 30° = -\dfrac{\sqrt3}{2}$</span></div>
+      <div class="tip"><strong>The universal method:</strong> find the related acute angle, look up its value, then attach the sign from CAST.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A reflex angle</div>
+    <div class="example-body">
+      <p>Find the exact value of $\tan 225°$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$225°$ is in the third quadrant, where <strong>tangent is positive</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Related acute angle: $225° - 180° = 45°$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tan 225° = +\tan 45° = 1$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding an angle from a negative ratio</div>
+    <div class="example-body">
+      <p>Find all values of $\theta$ in $0° \leqslant \theta \leqslant 360°$ for which $\cos\theta = -\dfrac{1}{2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Ignore the sign for a moment: $\cos^{-1}\left(\tfrac12\right) = 60°$, the related acute angle.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cosine is <em>negative</em> in the second and third quadrants.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Second quadrant: $180° - 60° = 120°$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Third quadrant: $180° + 60° = 240°$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\theta = 120°$ or $240°$</span></div>
+      <div class="warn"><strong>Your calculator gives only one answer.</strong> $\cos^{-1}(-0.5)$ returns $120°$, and you must find $240°$ yourself from the symmetry.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$(\cos\theta, \sin\theta)$ is a point on the unit circle.</p></div>
+    <div class="ref-card"><h4>CAST</h4><p>All, Sine, Tangent, Cosine — anticlockwise.</p></div>
+    <div class="ref-card"><h4>Related angle</h4><p>Find the acute angle, then attach the sign.</p></div>
+    <div class="ref-card"><h4>$\sin$ symmetry</h4><p>$\sin(180°-\theta) = \sin\theta$.</p></div>
+    <div class="ref-card"><h4>$\cos$ symmetry</h4><p>$\cos(360°-\theta) = \cos\theta$.</p></div>
+    <div class="ref-card"><h4>Periods</h4><p>$\sin$, $\cos$: $360°$. $\tan$: $180°$.</p></div>
+    <div class="ref-card"><h4>Ranges</h4><p>$\sin$, $\cos$: $[-1,1]$. $\tan$: everything.</p></div>
+    <div class="ref-card"><h4>$\tan$ asymptotes</h4><p>Where $\cos\theta = 0$: $90°$, $270°$, …</p></div>
+    <div class="ref-card"><h4>Exact values</h4><p>From the $30$–$60$–$90$ and $45$–$45$–$90$ triangles.</p></div>
+    <div class="ref-card"><h4>Impossible</h4><p>$\sin\theta = 1.4$ has no solution.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>In which quadrants is $\sin\theta$ negative?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The third and fourth — that is, $180° < \theta < 360°$.</p>
+          <p>From CAST, sine is positive only in the first and second quadrants.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Write down the exact value of $\sin 60°$ and $\cos 45°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin 60° = \dfrac{\sqrt3}{2}$</p>
+          <p>$\cos 45° = \dfrac{1}{\sqrt2}$ &nbsp;(equivalently $\dfrac{\sqrt2}{2}$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the exact value of $\cos 120°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Second quadrant, so cosine is negative. Related acute angle $180° - 120° = 60°$.</p>
+          <p>$\cos 120° = -\cos 60° = -\dfrac{1}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the exact value of $\sin 240°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Third quadrant, so sine is negative. Related acute angle $240° - 180° = 60°$.</p>
+          <p>$\sin 240° = -\dfrac{\sqrt3}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>State the period and range of $y = \tan x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Period $180°$.</p>
+          <p>Range: all real values — $\tan x$ is unbounded, with asymptotes at $90°$, $270°$ and so on.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Given $\sin 35° = 0.574$, write down the value of $\sin 145°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$145° = 180° - 35°$, and $\sin(180° - \theta) = \sin\theta$.</p>
+          <p>$\sin 145° = 0.574$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find all $\theta$ in $0° \leqslant \theta \leqslant 360°$ with $\sin\theta = -0.5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Related acute angle: $\sin^{-1}(0.5) = 30°$.</p>
+          <p>Sine is negative in the third and fourth quadrants:</p>
+          <p>$180° + 30° = 210°$ &nbsp;and&nbsp; $360° - 30° = 330°$</p>
+          <p>$\theta = 210°$ or $330°$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Explain why $\cos\theta = 1.2$ has no solutions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos\theta$ is the $x$-coordinate of a point on the <em>unit</em> circle, so it can never exceed $1$ in magnitude.</p>
+          <p>The range of $\cos\theta$ is $-1 \leqslant \cos\theta \leqslant 1$, and $1.2$ lies outside it.</p>
+          <p>If a calculation ever produces this, you have made an arithmetic error earlier.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Sketch $y = \sin x$ for $0° \leqslant x \leqslant 360°$ and use it to explain why $\sin x = 0.8$ has exactly two solutions in that interval.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The curve starts at $(0,0)$, rises to a maximum of $1$ at $90°$, falls back through $(180°, 0)$, down to $-1$ at $270°$, and returns to $(360°, 0)$.</p>
+          <p>The horizontal line $y = 0.8$ lies between $0$ and $1$, so it cuts the rising part of the first hump once and the falling part once — two crossings.</p>
+          <p>In the second half of the interval the curve is negative, so it never reaches $0.8$ again.</p>
+          <p>(Solving: $x = 53.1°$ and $x = 180° - 53.1° = 126.9°$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\theta$ is an angle with $\sin\theta = \tfrac{3}{5}$.</p>
+      <p>(a) If $\theta$ is acute, find the exact values of $\cos\theta$ and $\tan\theta$. &nbsp; (b) If instead $\theta$ is obtuse, find the exact values of $\cos\theta$ and $\tan\theta$. &nbsp; (c) Find both possible values of $\theta$, to 1 d.p. &nbsp; (d) Explain why the question must tell you whether $\theta$ is acute or obtuse.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Use $\sin^2\theta + \cos^2\theta = 1$:</p>
+          <p>$\cos^2\theta = 1 - \dfrac{9}{25} = \dfrac{16}{25}$, so $\cos\theta = \pm\dfrac45$.</p>
+          <p>$\theta$ acute means the first quadrant, where cosine is positive: $\cos\theta = \dfrac{4}{5}$.</p>
+          <p>$\tan\theta = \dfrac{\sin\theta}{\cos\theta} = \dfrac{3/5}{4/5} = \dfrac{3}{4}$</p>
+          <p>(This is the familiar $3$–$4$–$5$ triangle.)</p>
+          <p><strong>(b)</strong> $\theta$ obtuse means the second quadrant, where cosine is negative:</p>
+          <p>$\cos\theta = -\dfrac{4}{5}$ &nbsp;and&nbsp; $\tan\theta = \dfrac{3/5}{-4/5} = -\dfrac{3}{4}$</p>
+          <p>Sine is unchanged at $\tfrac35$, consistent with CAST: sine is positive in both quadrants.</p>
+          <p><strong>(c)</strong> $\sin^{-1}(0.6) = 36.9°$ (1 d.p.)</p>
+          <p>The obtuse solution is $180° - 36.9° = 143.1°$.</p>
+          <p>So $\theta = 36.9°$ or $143.1°$.</p>
+          <p><strong>(d)</strong> Knowing $\sin\theta$ alone does not determine $\theta$: two angles in $0°$ to $180°$ share the same sine, because of the symmetry $\sin(180° - \theta) = \sin\theta$.</p>
+          <p>Those two angles have <em>opposite-signed</em> cosines and tangents, so without being told which one is meant, $\cos\theta$ and $\tan\theta$ are genuinely ambiguous.</p>
+          <p>This is exactly the source of the <a href="sine-and-cosine-rules.html">ambiguous case</a> of the sine rule.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Ratios of Any Angle (PT1) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

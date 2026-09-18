@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear and Quadratic Inequalities &ndash; OCR FSMQ Additional Maths</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔀 Linear and Quadratic Inequalities</h1>
+  <p>OCR FSMQ Additional Maths · Algebra (AL7–AL8)</p>
+  <div class="badge">Level 3 &middot; Ages 15&ndash;16</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – MANIPULATING INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Manipulating Inequalities</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>AL7</strong> is about manipulating inequalities. Almost everything you do to an equation you may also do to an inequality — with <em>one</em> crucial exception.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The one rule that is different</div>
+    Multiplying or dividing by a <strong>negative</strong> number <strong>reverses</strong> the inequality<br>
+    $-2x < 6 \;\Longrightarrow\; x > -3$
+  </div>
+
+  <table>
+    <tr><th>Operation</th><th>Safe?</th><th>Example</th></tr>
+    <tr><td>Add or subtract anything</td><td>Always safe</td><td>$x - 3 < 5 \Rightarrow x < 8$</td></tr>
+    <tr><td>Multiply/divide by a positive</td><td>Safe</td><td>$3x < 12 \Rightarrow x < 4$</td></tr>
+    <tr><td>Multiply/divide by a negative</td><td><strong>Reverse the sign</strong></td><td>$-x < 4 \Rightarrow x > -4$</td></tr>
+    <tr><td>Multiply by an unknown</td><td><strong>Avoid</strong> — you do not know its sign</td><td>Rearrange instead</td></tr>
+    <tr><td>Square both sides</td><td><strong>Avoid</strong> — squaring is not order-preserving</td><td>$-3 < 2$ but $9 > 4$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The specification's own example</div>
+    <div class="example-body">
+      <p>Solve $3 - 2x < 11$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Subtract $3$: $-2x < 8$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide by $-2$ — and <strong>flip</strong>: $x > -4$</span></div>
+      <div class="tip"><strong>Avoid the flip entirely</strong> by moving the $x$ to the positive side instead: $3 - 2x < 11 \Rightarrow 3 < 11 + 2x \Rightarrow -8 < 2x \Rightarrow -4 < x$. Same answer, no sign rule to remember.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A double inequality</div>
+    <div class="example-body">
+      <p>Solve $-5 \leqslant 3x - 2 < 7$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Do the same thing to all three parts. Add $2$: $-3 \leqslant 3x < 9$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide by $3$ (positive, so no flip): $-1 \leqslant x < 3$</span></div>
+      <div class="warn">Keep the strictness of each end. The left was $\leqslant$ and stays $\leqslant$; the right was $<$ and stays $<$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – QUADRATIC INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Quadratic Inequalities</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>You cannot solve a quadratic inequality the way you solve a quadratic equation.</strong> $x^2 > 9$ does <em>not</em> give $x > 3$. The correct answer is $x > 3$ <strong>or</strong> $x < -3$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The reliable three-step method (AL8)</div>
+    <strong>1.</strong> Rearrange to $(\ldots) > 0$ or $(\ldots) < 0$<br>
+    <strong>2.</strong> Solve the corresponding <em>equation</em> to find the critical values<br>
+    <strong>3.</strong> Sketch the parabola and read off the region you need
+  </div>
+
+  <div class="svg-block">
+    <svg width="520" height="220" viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="150" x2="490" y2="150" stroke="#475569" stroke-width="2"/>
+      <path d="M 110 30 C 160 200 210 205 260 205 C 310 205 360 200 410 30" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <circle cx="168" cy="150" r="5" fill="#7c3aed"/><circle cx="352" cy="150" r="5" fill="#7c3aed"/>
+      <text x="163" y="172" font-family="Arial" font-size="14" fill="#4c1d95" font-weight="bold">α</text>
+      <text x="347" y="172" font-family="Arial" font-size="14" fill="#4c1d95" font-weight="bold">β</text>
+      <line x1="168" y1="150" x2="352" y2="150" stroke="#22c55e" stroke-width="6" opacity=".55"/>
+      <text x="260" y="142" font-family="Arial" font-size="12" fill="#166534" text-anchor="middle" font-weight="bold">below axis: expression &lt; 0</text>
+      <text x="95" y="60" font-family="Arial" font-size="12" fill="#3730a3">above axis</text>
+      <text x="400" y="60" font-family="Arial" font-size="12" fill="#3730a3">above axis</text>
+      <text x="260" y="212" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Positive x² coefficient: negative BETWEEN the roots, positive OUTSIDE them</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The pattern worth memorising</div>
+    For a positive $x^2$ coefficient with roots $\alpha < \beta$:<br>
+    expression $< 0$ &nbsp;$\Rightarrow$&nbsp; $\alpha < x < \beta$ &nbsp;(<em>between</em> — one interval)<br>
+    expression $> 0$ &nbsp;$\Rightarrow$&nbsp; $x < \alpha$ or $x > \beta$ &nbsp;(<em>outside</em> — two intervals)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Less than zero</div>
+    <div class="example-body">
+      <p>Solve $x^2 - 5x + 6 < 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Already in the right form. Solve $x^2 - 5x + 6 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x-2)(x-3) = 0$, so the critical values are $2$ and $3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The $x^2$ coefficient is positive, so the curve dips below the axis between the roots.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$2 < x < 3$</span></div>
+      <div class="tip"><strong>Test a point to be sure.</strong> At $x = 2.5$: $6.25 - 12.5 + 6 = -0.25 < 0$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Greater than zero</div>
+    <div class="example-body">
+      <p>Solve $x^2 + 2x - 15 \geqslant 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 + 2x - 15 = (x+5)(x-3)$, so critical values $-5$ and $3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Positive $x^2$ coefficient, and we want $\geqslant 0$ — that is <em>outside</em> the roots.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x \leqslant -5$ &nbsp;or&nbsp; $x \geqslant 3$</span></div>
+      <div class="warn"><strong>Write "or", not "and".</strong> No number is both $\leqslant -5$ and $\geqslant 3$. Writing "$3 \leqslant x \leqslant -5$" is meaningless and scores zero.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A negative $x^2$ coefficient</div>
+    <div class="example-body">
+      <p>Solve $8 - 2x - x^2 > 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiply through by $-1$ and <strong>flip</strong>: $x^2 + 2x - 8 < 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x+4)(x-2) = 0$, critical values $-4$ and $2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Now the coefficient is positive and we want $< 0$: between the roots.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$-4 < x < 2$</span></div>
+      <div class="tip">Turning the coefficient positive first means you only ever need to remember <em>one</em> picture. Just do not forget to flip the inequality when you multiply by $-1$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Rearranging first</div>
+    <div class="example-body">
+      <p>Solve $x^2 < 4x + 5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Move everything to the left: $x^2 - 4x - 5 < 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x-5)(x+1) = 0$, critical values $5$ and $-1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Between the roots: $-1 < x < 5$</span></div>
+      <div class="warn"><strong>Do not divide by $x$</strong> to turn $x^2 < 4x + 5$ into $x < 4 + \tfrac5x$. You do not know the sign of $x$, so you do not know whether to flip.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SOLVING GRAPHICALLY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Solving Graphically</div>
+<div class="section-body">
+
+  <p><strong>AL8</strong> asks for solutions <em>algebraically and graphically</em>. The graphical version answers the question "for which $x$ is one curve above the other?"</p>
+
+  <ul class="steps">
+    <li>Sketch both sides of the inequality as separate graphs.</li>
+    <li>Find where they cross by solving the equation.</li>
+    <li>Read off the $x$-values where the required graph is higher.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Reading a graph</div>
+    <div class="example-body">
+      <p>The graphs of $y = x^2$ and $y = x + 2$ cross at $x = -1$ and $x = 2$. Use this to solve $x^2 < x + 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>We want where the parabola is <em>below</em> the line.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Between the crossing points the line is on top.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$-1 < x < 2$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><em>Algebraic check:</em> $x^2 - x - 2 < 0 \Rightarrow (x-2)(x+1) < 0 \Rightarrow -1 < x < 2$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The flip</h4><p>Multiply or divide by a negative $\Rightarrow$ reverse the sign.</p></div>
+    <div class="ref-card"><h4>Avoid the flip</h4><p>Move the $x$ term to the positive side instead.</p></div>
+    <div class="ref-card"><h4>Never square</h4><p>Squaring does not preserve order.</p></div>
+    <div class="ref-card"><h4>Never divide by $x$</h4><p>Its sign is unknown.</p></div>
+    <div class="ref-card"><h4>Step 1</h4><p>Get everything on one side, compared with $0$.</p></div>
+    <div class="ref-card"><h4>Step 2</h4><p>Solve the equation for critical values.</p></div>
+    <div class="ref-card"><h4>Step 3</h4><p>Sketch, then read the region.</p></div>
+    <div class="ref-card"><h4>$<0$, positive $a$</h4><p>Between the roots: one interval.</p></div>
+    <div class="ref-card"><h4>$>0$, positive $a$</h4><p>Outside the roots: two intervals, joined by "or".</p></div>
+    <div class="ref-card"><h4>Verify</h4><p>Test one value from your answer region.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Solve $5x - 3 \geqslant 2x + 9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x \geqslant 12$</p>
+          <p>$x \geqslant 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $4 - 3x > 19$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$-3x > 15$</p>
+          <p>Dividing by $-3$ reverses the sign: $x < -5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $-7 < 2x + 1 \leqslant 9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Subtract $1$: $-8 < 2x \leqslant 8$</p>
+          <p>Divide by $2$: $-4 < x \leqslant 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $x^2 - 7x + 12 < 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x-3)(x-4) = 0$, critical values $3$ and $4$.</p>
+          <p>Positive $x^2$ coefficient and $< 0$, so between the roots:</p>
+          <p>$3 < x < 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $x^2 \geqslant 16$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 - 16 \geqslant 0$, so $(x-4)(x+4) \geqslant 0$.</p>
+          <p>Critical values $\pm 4$; we want outside:</p>
+          <p>$x \leqslant -4$ &nbsp;or&nbsp; $x \geqslant 4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $2x^2 + 5x - 3 \leqslant 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x^2 + 5x - 3 = (2x - 1)(x + 3)$</p>
+          <p>Critical values $x = \tfrac12$ and $x = -3$.</p>
+          <p>Positive coefficient, $\leqslant 0$, so between (inclusive):</p>
+          <p>$-3 \leqslant x \leqslant \dfrac{1}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $12 - x - x^2 \geqslant 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiply by $-1$ and flip: $x^2 + x - 12 \leqslant 0$</p>
+          <p>$(x+4)(x-3) \leqslant 0$, critical values $-4$ and $3$.</p>
+          <p>Between the roots: $-4 \leqslant x \leqslant 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $x(x - 1) > 6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand and rearrange: $x^2 - x - 6 > 0$</p>
+          <p>$(x-3)(x+2) > 0$, critical values $3$ and $-2$.</p>
+          <p>Outside the roots: $x < -2$ or $x > 3$</p>
+          <p><em>Check</em> $x = 4$: $4 \times 3 = 12 > 6$ ✓; &nbsp;$x = 1$: $1 \times 0 = 0 \not> 6$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the values of $x$ for which $x^2 + 4x + 7$ is less than $4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + 4x + 7 < 4 \;\Rightarrow\; x^2 + 4x + 3 < 0$</p>
+          <p>$(x+1)(x+3) < 0$, critical values $-1$ and $-3$.</p>
+          <p>$-3 < x < -1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A rectangular pen is made with $40$ m of fencing, using a wall as one long side. The width is $x$ m.</p>
+      <p>(a) Show that the area is $A = x(40 - 2x)$. &nbsp; (b) Find the values of $x$ for which the area is at least $150$ m². &nbsp; (c) State the range of $x$ for which the pen exists at all, and combine this with (b). &nbsp; (d) Find the greatest possible area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Two widths of $x$ use $2x$ m of fencing, leaving $40 - 2x$ m for the side opposite the wall.</p>
+          <p>$A = x(40 - 2x)$</p>
+          <p><strong>(b)</strong> $x(40-2x) \geqslant 150$</p>
+          <p>$40x - 2x^2 \geqslant 150 \;\Rightarrow\; -2x^2 + 40x - 150 \geqslant 0$</p>
+          <p>Divide by $-2$ and flip: $x^2 - 20x + 75 \leqslant 0$</p>
+          <p>$(x-5)(x-15) \leqslant 0$, so $5 \leqslant x \leqslant 15$.</p>
+          <p><strong>(c)</strong> For the pen to exist, $x > 0$ and $40 - 2x > 0$, i.e. $0 < x < 20$.</p>
+          <p>The interval $5 \leqslant x \leqslant 15$ sits entirely inside $0 < x < 20$, so the answer to (b) stands unchanged: $5 \leqslant x \leqslant 15$.</p>
+          <p><strong>(d)</strong> Complete the square: $A = -2\left(x^2 - 20x\right) = -2\left[(x-10)^2 - 100\right] = 200 - 2(x-10)^2$.</p>
+          <p>The greatest area is $200$ m², when $x = 10$ m (so the pen is $10$ m by $20$ m).</p>
+          <p>Note $x = 10$ lies in the middle of the interval from (b), as you would expect — the maximum is as far as possible from both ends where $A$ drops to $150$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Linear and Quadratic Inequalities (AL7–AL8) · OCR FSMQ Additional Maths &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>
