@@ -17,6 +17,8 @@ normal distribution, and mechanics adds moments, friction and projectiles.
 
 Use the menu on the left, or the links below, to reach any topic.
 
+**Summary notes:** [download the PDF](Edexcel_A-Level_Mathematics_Comprehensive_Notes.pdf) covering the full A Level in one document.
+
 ## Pure mathematics
 
 * [Proof](proof/) — **A** · proof by contradiction

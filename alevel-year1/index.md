@@ -16,6 +16,8 @@ teaches: about two thirds **pure mathematics**, with the remaining third shared 
 
 Use the menu on the left, or the links below, to reach any topic.
 
+**Summary notes:** [download the PDF](Edexcel_AS_Mathematics_Comprehensive_Notes.pdf) covering the whole of Year 1 (AS) in one document.
+
 ## Pure mathematics
 
 * [Proof](proof/) — **A** · deduction, exhaustion and disproof by counter-example
