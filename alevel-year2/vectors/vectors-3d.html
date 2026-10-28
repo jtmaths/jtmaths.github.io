@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectors in Three Dimensions &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧊 Vectors in Three Dimensions</h1>
+  <p>A Level Maths Year 2 · Vectors</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – i, j, k AND COLUMN VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Vectors in Three Dimensions</div>
+<div class="section-body">
+
+  <p>Everything from <a href="../../alevel-year1/vectors/vectors-2d.html">Vectors in Two Dimensions</a> carries straight over to 3-D: you just add a third component. The axes $x$, $y$ and $z$ are at right angles to each other, with unit vectors $\mathbf{i}$, $\mathbf{j}$ and $\mathbf{k}$ along them.</p>
+
+  <div class="formula-box">
+    <div class="label">Two ways to write a 3-D vector</div>
+    $\mathbf{a} = a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}$
+  </div>
+
+  <div class="svg-block">
+<svg width="340" height="260" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="12">
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker><marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4f46e5"/></marker></defs>
+<line x1="150.0" y1="190.0" x2="69.6" y2="250.3" stroke="#333" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="150.0" y1="190.0" x2="313.2" y2="190.0" stroke="#333" stroke-width="1.5" marker-end="url(#ah)"/>
+<line x1="150.0" y1="190.0" x2="150.0" y2="26.8" stroke="#333" stroke-width="1.5" marker-end="url(#ah)"/>
+<text x="57.6" y="258.3" font-style="italic">x</text>
+<text x="319.2" y="194.0" font-style="italic">y</text>
+<text x="146.0" y="20.8" font-style="italic">z</text>
+<line x1="112.6" y1="218.1" x2="214.6" y2="218.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="252.0" y1="190.0" x2="214.6" y2="218.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="214.6" y1="218.1" x2="214.6" y2="82.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="150.0" y1="54.0" x2="214.6" y2="82.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="150.0" y1="54.0" x2="252.0" y2="54.0" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="252.0" y1="54.0" x2="214.6" y2="82.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="252.0" y1="190.0" x2="252.0" y2="54.0" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="112.6" y1="218.1" x2="112.6" y2="82.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="112.6" y1="82.1" x2="150.0" y2="54.0" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="112.6" y1="82.1" x2="214.6" y2="82.1" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4,3" />
+<line x1="150.0" y1="190.0" x2="214.6" y2="82.1" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ap)"/>
+<circle cx="214.6" cy="82.1" r="3.5" fill="#4f46e5"/><text x="222.6" y="76.1" fill="#3730a3" font-weight="700">P(2, 3, 4)</text>
+<text x="98.6" y="230.1">2</text>
+<text x="249.0" y="206.0">3</text>
+<text x="134.0" y="58.0">4</text>
+<text x="136.0" y="194.0">O</text>
+<text x="100.3" y="138.0" fill="#4f46e5">2i + 3j + 4k</text>
+</svg>
+    <p style="font-size:.85rem;color:#555;">The point $P(2, 3, 4)$ has position vector $\overrightarrow{OP} = 2\mathbf{i} + 3\mathbf{j} + 4\mathbf{k}$: go $2$ along $x$, $3$ along $y$, then $4$ up in the $z$ direction.</p>
+  </div>
+
+  <div class="concept">
+    <strong>The axes are right-handed.</strong> Point the fingers of your right hand along the $x$-axis and curl them towards the $y$-axis: your thumb points along the $z$-axis. All diagrams and textbooks use this convention.
+  </div>
+
+  <p>Adding, subtracting and multiplying by a scalar all work <strong>component by component</strong>, exactly as in 2-D:</p>
+
+  <div class="formula-box">
+    <div class="label">Arithmetic</div>
+    $\begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} + \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \\ a_3 + b_3 \end{pmatrix}$ &nbsp;&middot;&nbsp;
+    $\lambda\begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} = \begin{pmatrix} \lambda a_1 \\ \lambda a_2 \\ \lambda a_3 \end{pmatrix}$
+  </div>
+
+  <div class="tip">
+    <strong>Parallel vectors</strong> are scalar multiples of each other. $\begin{pmatrix} 3 \\ -6 \\ 9 \end{pmatrix} = -3\begin{pmatrix} -1 \\ 2 \\ -3 \end{pmatrix}$, so these are parallel (in opposite directions). If the ratios of the components are not all equal, the vectors are not parallel.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – MAGNITUDE, DISTANCE, UNIT VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Magnitude, Distance and Unit Vectors</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Magnitude (Pythagoras in 3-D)</div>
+    $|\mathbf{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Distance between $A(x_1, y_1, z_1)$ and $B(x_2, y_2, z_2)$</div>
+    $AB = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Unit vector in the direction of a</div>
+    $\hat{\mathbf{a}} = \dfrac{\mathbf{a}}{|\mathbf{a}|}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Magnitude and unit vector</div>
+    <div class="example-body">
+      <p>$\mathbf{a} = 2\mathbf{i} - 3\mathbf{j} + 6\mathbf{k}$. Find $|\mathbf{a}|$, a unit vector in the direction of $\mathbf{a}$, and a vector of magnitude $21$ in the same direction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$|\mathbf{a}| = \sqrt{2^2 + (-3)^2 + 6^2} = \sqrt{4 + 9 + 36} = \sqrt{49} = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\hat{\mathbf{a}} = \tfrac{1}{7}(2\mathbf{i} - 3\mathbf{j} + 6\mathbf{k}) = \tfrac{2}{7}\mathbf{i} - \tfrac{3}{7}\mathbf{j} + \tfrac{6}{7}\mathbf{k}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Magnitude $21$: $21\hat{\mathbf{a}} = 3\mathbf{a} = 6\mathbf{i} - 9\mathbf{j} + 18\mathbf{k}$</span></div>
+      <div class="warn">Square the negative component <em>with</em> its sign: $(-3)^2 = 9$, never $-9$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Distance between two points</div>
+    <div class="example-body">
+      <p>Find the distance between $A(1, 2, -1)$ and $B(4, -2, 11)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \begin{pmatrix} 4 - 1 \\ -2 - 2 \\ 11 - (-1) \end{pmatrix} = \begin{pmatrix} 3 \\ -4 \\ 12 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AB = \sqrt{9 + 16 + 144} = \sqrt{169} = 13$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — An unknown component</div>
+    <div class="example-body">
+      <p>The vector $k\mathbf{i} + 2k\mathbf{j} + 2\mathbf{k}$ has magnitude $7$. Find the possible values of $k$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$k^2 + (2k)^2 + 2^2 = 49$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$5k^2 + 4 = 49 \Rightarrow k^2 = 9 \Rightarrow k = \pm 3$</span></div>
+      <div class="tip">Square both sides <em>before</em> doing anything else — it removes the square root and usually leaves a quadratic.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — The angle a vector makes with an axis</div>
+    <div class="example-body">
+      <p>Find the angle between $\mathbf{a} = 2\mathbf{i} - 3\mathbf{j} + 6\mathbf{k}$ and each of the coordinate axes.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The component along an axis is the adjacent side of a right-angled triangle whose hypotenuse is $|\mathbf{a}| = 7$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x$-axis: $\cos\theta_x = \tfrac{2}{7} \Rightarrow \theta_x = 73.4^\circ$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y$-axis: $\cos\theta_y = -\tfrac{3}{7} \Rightarrow \theta_y = 115.4^\circ$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$z$-axis: $\cos\theta_z = \tfrac{6}{7} \Rightarrow \theta_z = 31.0^\circ$</span></div>
+      <div class="tip">The angle is measured to the <em>positive</em> direction of the axis, so a negative component gives an obtuse angle.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – POSITION VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Position Vectors</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>position vector</strong> of a point $A$ is $\mathbf{a} = \overrightarrow{OA}$, the vector from the origin to $A$. Its components are just the coordinates of $A$. The vector <em>from</em> $A$ <em>to</em> $B$ is "end minus start".
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Key results</div>
+    $\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$ &nbsp;&middot;&nbsp; midpoint of $AB$: $\tfrac{1}{2}(\mathbf{a} + \mathbf{b})$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Vector, length and midpoint</div>
+    <div class="example-body">
+      <p>$A$ and $B$ have position vectors $2\mathbf{i} + \mathbf{j} + 3\mathbf{k}$ and $5\mathbf{i} + 7\mathbf{j} - 3\mathbf{k}$. Find $\overrightarrow{AB}$, $|\overrightarrow{AB}|$ and the midpoint of $AB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a} = 3\mathbf{i} + 6\mathbf{j} - 6\mathbf{k}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$|\overrightarrow{AB}| = \sqrt{9 + 36 + 36} = \sqrt{81} = 9$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Midpoint: $\tfrac{1}{2}(7\mathbf{i} + 8\mathbf{j} + 0\mathbf{k}) = 3.5\mathbf{i} + 4\mathbf{j}$, i.e. the point $(3.5, 4, 0)$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – GEOMETRY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Geometric Problems in 3-D</div>
+<div class="section-body">
+
+  <p>The methods from <a href="../../alevel-year1/vectors/vector-geometry.html">Vector Geometry</a> work unchanged in three dimensions.</p>
+
+  <table>
+    <tr><th>To show&hellip;</th><th>Show that&hellip;</th></tr>
+    <tr><td>$A$, $B$, $C$ are collinear</td><td>$\overrightarrow{AC} = \lambda\overrightarrow{AB}$ — parallel <em>and</em> sharing the point $A$</td></tr>
+    <tr><td>$ABCD$ is a parallelogram</td><td>$\overrightarrow{AB} = \overrightarrow{DC}$ (equivalently $\overrightarrow{AD} = \overrightarrow{BC}$)</td></tr>
+    <tr><td>$P$ divides $AB$ in the ratio $m : n$</td><td>$\mathbf{p} = \mathbf{a} + \dfrac{m}{m+n}(\mathbf{b} - \mathbf{a})$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Collinear points</div>
+    <div class="example-body">
+      <p>Show that $A(1, 2, 3)$, $B(3, 5, 4)$ and $C(7, 11, 6)$ are collinear, and find the ratio $AB : BC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix}$, &nbsp;$\overrightarrow{BC} = \begin{pmatrix} 4 \\ 6 \\ 2 \end{pmatrix} = 2\overrightarrow{AB}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AB}$ and $\overrightarrow{BC}$ are parallel and share the point $B$, so $A$, $B$, $C$ lie on one straight line.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$AB : BC = 1 : 2$</span></div>
+      <div class="warn">Parallel alone is not enough — two parallel vectors could lie on different lines. Always state the common point.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Completing a parallelogram</div>
+    <div class="example-body">
+      <p>$A(1, 0, 2)$, $B(4, 1, 3)$ and $C(6, 4, 1)$ are three vertices of parallelogram $ABCD$. Find $D$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>In $ABCD$, $\overrightarrow{AD} = \overrightarrow{BC} = \mathbf{c} - \mathbf{b} = \begin{pmatrix} 2 \\ 3 \\ -2 \end{pmatrix}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{d} = \mathbf{a} + \overrightarrow{AD} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} + \begin{pmatrix} 2 \\ 3 \\ -2 \end{pmatrix} = \begin{pmatrix} 3 \\ 3 \\ 0 \end{pmatrix}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$D$ is $(3, 3, 0)$. <em>Check:</em> $\overrightarrow{DC} = (3, 1, 1)$ and $\overrightarrow{AB} = (3, 1, 1)$ ✓</span></div>
+      <div class="tip">The order of the letters matters: in $ABCD$ the vertices go round the shape, so $A$ is opposite $C$. A quick sketch avoids putting $D$ in the wrong place.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Dividing a line in a ratio</div>
+    <div class="example-body">
+      <p>$A(1, -2, 4)$ and $B(6, 8, -1)$. Find the point $P$ on $AB$ with $AP : PB = 2 : 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P$ is $\tfrac{2}{5}$ of the way from $A$ to $B$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AB} = \begin{pmatrix} 5 \\ 10 \\ -5 \end{pmatrix}$, so $\tfrac{2}{5}\overrightarrow{AB} = \begin{pmatrix} 2 \\ 4 \\ -2 \end{pmatrix}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{p} = \begin{pmatrix} 1 \\ -2 \\ 4 \end{pmatrix} + \begin{pmatrix} 2 \\ 4 \\ -2 \end{pmatrix} = \begin{pmatrix} 3 \\ 2 \\ 2 \end{pmatrix}$, so $P$ is $(3, 2, 2)$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – FORCES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Forces as 3-D Vectors</div>
+<div class="section-body">
+
+  <p>Forces, velocities and accelerations are vectors, so in 3-D they are written with $\mathbf{i}$, $\mathbf{j}$ and $\mathbf{k}$ components. The mechanics is the same as in 2-D:</p>
+
+  <div class="formula-box">
+    <div class="label">Resultant and Newton's second law</div>
+    $\mathbf{R} = \mathbf{F}_1 + \mathbf{F}_2 + \cdots$ &nbsp;&middot;&nbsp; $\mathbf{R} = m\mathbf{a}$ &nbsp;&middot;&nbsp; equilibrium: $\mathbf{R} = \mathbf{0}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Resultant, acceleration and equilibrium</div>
+    <div class="example-body">
+      <p>Forces $\mathbf{F}_1 = (2\mathbf{i} - \mathbf{j} + 3\mathbf{k})$ N and $\mathbf{F}_2 = (-4\mathbf{i} + 3\mathbf{j} + \mathbf{k})$ N act on a particle of mass $2$ kg. (a) Find the magnitude of the acceleration. (b) Find the third force $\mathbf{F}_3$ that would keep the particle in equilibrium.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{R} = \mathbf{F}_1 + \mathbf{F}_2 = (-2\mathbf{i} + 2\mathbf{j} + 4\mathbf{k})$ N</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{a} = \dfrac{\mathbf{R}}{m} = (-\mathbf{i} + \mathbf{j} + 2\mathbf{k})$ m s$^{-2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|\mathbf{a}| = \sqrt{1 + 1 + 4} = \sqrt{6} \approx 2.45$ m s$^{-2}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) Equilibrium needs $\mathbf{F}_1 + \mathbf{F}_2 + \mathbf{F}_3 = \mathbf{0}$, so $\mathbf{F}_3 = -\mathbf{R} = (2\mathbf{i} - 2\mathbf{j} - 4\mathbf{k})$ N.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$|\mathbf{F}_3| = \sqrt{4 + 4 + 16} = \sqrt{24} = 2\sqrt{6} \approx 4.90$ N</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Not on these pages:</strong> the scalar (dot) product and vector equations of lines are Further Mathematics topics. A Level Mathematics only needs the ideas above.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Notation</h4><p>$a_1\mathbf{i} + a_2\mathbf{j} + a_3\mathbf{k}$ or a column of three.</p></div>
+    <div class="ref-card"><h4>Magnitude</h4><p>$\sqrt{a_1^2 + a_2^2 + a_3^2}$</p></div>
+    <div class="ref-card"><h4>Unit vector</h4><p>$\hat{\mathbf{a}} = \mathbf{a} \div |\mathbf{a}|$</p></div>
+    <div class="ref-card"><h4>Between points</h4><p>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$; distance $= |\mathbf{b} - \mathbf{a}|$.</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>$\tfrac{1}{2}(\mathbf{a} + \mathbf{b})$</p></div>
+    <div class="ref-card"><h4>Parallel</h4><p>One vector is a scalar multiple of the other.</p></div>
+    <div class="ref-card"><h4>Collinear</h4><p>Parallel <em>and</em> a common point.</p></div>
+    <div class="ref-card"><h4>Parallelogram</h4><p>$\overrightarrow{AB} = \overrightarrow{DC}$</p></div>
+    <div class="ref-card"><h4>Ratio m : n</h4><p>$\mathbf{a} + \tfrac{m}{m+n}(\mathbf{b} - \mathbf{a})$</p></div>
+    <div class="ref-card"><h4>Angle with axis</h4><p>$\cos\theta_x = \dfrac{a_1}{|\mathbf{a}|}$, and similarly for $y$, $z$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the magnitude of $4\mathbf{i} - 4\mathbf{j} + 2\mathbf{k}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{16 + 16 + 4} = \sqrt{36} = 6$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find a unit vector in the direction of $\begin{pmatrix} 1 \\ -2 \\ 2 \end{pmatrix}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Magnitude $\sqrt{1 + 4 + 4} = 3$.</p>
+          <p>Unit vector $\tfrac{1}{3}\begin{pmatrix} 1 \\ -2 \\ 2 \end{pmatrix} = \begin{pmatrix} 1/3 \\ -2/3 \\ 2/3 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the distance between the points $(3, -1, 2)$ and $(-1, 2, 14)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Difference: $(-4, 3, 12)$.</p>
+          <p>Distance $= \sqrt{16 + 9 + 144} = \sqrt{169} = 13$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$A$ is $(2, 0, -1)$ and $B$ is $(5, 4, -1)$. Find $|\overrightarrow{AB}|$ and a vector of magnitude $15$ in the direction of $\overrightarrow{AB}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = 3\mathbf{i} + 4\mathbf{j} + 0\mathbf{k}$, &nbsp;$|\overrightarrow{AB}| = \sqrt{9 + 16} = 5$.</p>
+          <p>Magnitude $15$ is $3$ times as long: $9\mathbf{i} + 12\mathbf{j}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The vector $t\mathbf{i} + 2\mathbf{j} + (t - 1)\mathbf{k}$ has magnitude $3$. Find the possible values of $t$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$t^2 + 4 + (t-1)^2 = 9$</p>
+          <p>$2t^2 - 2t + 5 = 9 \Rightarrow 2t^2 - 2t - 4 = 0 \Rightarrow t^2 - t - 2 = 0$</p>
+          <p>$(t - 2)(t + 1) = 0$, so $t = 2$ or $t = -1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$A(1, 1, 1)$, $B(2, 3, 0)$ and $C(5, 9, p)$ are collinear. Find $p$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = (1, 2, -1)$ and $\overrightarrow{AC} = (4, 8, p - 1)$.</p>
+          <p>The $x$ and $y$ components show $\overrightarrow{AC} = 4\overrightarrow{AB}$, so $p - 1 = -4$ and $p = -3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$ABCD$ is a parallelogram with $A(2, 1, 0)$, $B(5, 3, 1)$ and $D(1, 4, 2)$. Find $C$, and the lengths of both diagonals in exact form.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{BC} = \overrightarrow{AD} = (-1, 3, 2)$, so $\mathbf{c} = (5, 3, 1) + (-1, 3, 2) = (4, 6, 3)$.</p>
+          <p>$\overrightarrow{AC} = (2, 5, 3)$, $|\overrightarrow{AC}| = \sqrt{4 + 25 + 9} = \sqrt{38}$.</p>
+          <p>$\overrightarrow{BD} = (-4, 1, 1)$, $|\overrightarrow{BD}| = \sqrt{16 + 1 + 1} = \sqrt{18} = 3\sqrt{2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$A(1, 2, 3)$, $B(4, 6, 3)$ and $C(1, 2, 15)$. Show that triangle $ABC$ is right-angled, and find its area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = (3, 4, 0)$, $AB = 5$. &nbsp;$\overrightarrow{AC} = (0, 0, 12)$, $AC = 12$. &nbsp;$\overrightarrow{BC} = (-3, -4, 12)$, $BC = \sqrt{9 + 16 + 144} = 13$.</p>
+          <p>$5^2 + 12^2 = 25 + 144 = 169 = 13^2$, so by the converse of Pythagoras the triangle is right-angled at $A$.</p>
+          <p>Area $= \tfrac{1}{2} \times 5 \times 12 = 30$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Three forces $\mathbf{F}_1 = (3\mathbf{i} + 2\mathbf{j} - \mathbf{k})$ N, $\mathbf{F}_2 = (-\mathbf{i} + 4\mathbf{j} + 5\mathbf{k})$ N and $\mathbf{F}_3$ act on a particle of mass $0.5$ kg, which accelerates at $(2\mathbf{i} - 2\mathbf{j} + 4\mathbf{k})$ m s$^{-2}$. Find $\mathbf{F}_3$ and its magnitude.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Resultant $= m\mathbf{a} = 0.5(2\mathbf{i} - 2\mathbf{j} + 4\mathbf{k}) = \mathbf{i} - \mathbf{j} + 2\mathbf{k}$.</p>
+          <p>$\mathbf{F}_1 + \mathbf{F}_2 = 2\mathbf{i} + 6\mathbf{j} + 4\mathbf{k}$.</p>
+          <p>$\mathbf{F}_3 = (\mathbf{i} - \mathbf{j} + 2\mathbf{k}) - (2\mathbf{i} + 6\mathbf{j} + 4\mathbf{k}) = (-\mathbf{i} - 7\mathbf{j} - 2\mathbf{k})$ N</p>
+          <p>$|\mathbf{F}_3| = \sqrt{1 + 49 + 4} = \sqrt{54} = 3\sqrt{6} \approx 7.35$ N</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Triangle $ABC$ has vertices $A(2, -1, 3)$, $B(6, 1, -1)$ and $C(-2, 5, 3)$. $M$ is the midpoint of $AB$ and $N$ is the midpoint of $BC$.</p>
+      <p>(a) Find the length $AB$. &nbsp; (b) Find the coordinates of $M$ and $N$. &nbsp; (c) The point $G$ lies on $CM$ with $CG : GM = 2 : 1$. Find $G$. &nbsp; (d) Show that $A$, $G$ and $N$ are collinear, and find the ratio $AG : GN$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{AB} = (4, 2, -4)$, $AB = \sqrt{16 + 4 + 16} = 6$.</p>
+          <p><strong>(b)</strong> $\mathbf{m} = \tfrac{1}{2}(\mathbf{a} + \mathbf{b}) = (4, 0, 1)$; &nbsp;$\mathbf{n} = \tfrac{1}{2}(\mathbf{b} + \mathbf{c}) = (2, 3, 1)$.</p>
+          <p><strong>(c)</strong> $\overrightarrow{CM} = (6, -5, -2)$, and $G$ is $\tfrac{2}{3}$ of the way from $C$ to $M$:</p>
+          <p>$\mathbf{g} = (-2, 5, 3) + \tfrac{2}{3}(6, -5, -2) = \left(2, \tfrac{5}{3}, \tfrac{5}{3}\right)$</p>
+          <p><strong>(d)</strong> $\overrightarrow{AG} = \left(0, \tfrac{8}{3}, -\tfrac{4}{3}\right)$ and $\overrightarrow{AN} = (0, 4, -2)$, so $\overrightarrow{AG} = \tfrac{2}{3}\overrightarrow{AN}$.</p>
+          <p>They are parallel and share the point $A$, so $A$, $G$, $N$ are collinear. $G$ is $\tfrac{2}{3}$ of the way along $AN$, so $AG : GN = 2 : 1$.</p>
+          <p>($G$ is the <em>centroid</em>: all three medians pass through it, and $\mathbf{g} = \tfrac{1}{3}(\mathbf{a} + \mathbf{b} + \mathbf{c})$ — check: $\tfrac{1}{3}(6, 5, 5)$ ✓.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vectors in Three Dimensions &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

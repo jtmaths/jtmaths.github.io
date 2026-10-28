@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polynomials and the Factor Theorem &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧮 Polynomials and the Factor Theorem</h1>
+  <p>A Level Maths Year 1 · Algebra and Functions</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A POLYNOMIAL IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Polynomial Is</div>
+<div class="section-body">
+
+  <p>DfE content area B (Algebra and functions) asks you to <strong>manipulate polynomials algebraically</strong>: expanding brackets, collecting like terms, factorising, simple algebraic division, and using the <strong>factor theorem</strong>. These are the tools that let you solve cubic equations and sketch cubic graphs.</p>
+
+  <div class="concept">
+    A <strong>polynomial</strong> in $x$ is a finite sum of terms of the form $kx^n$, where each index $n$ is a non-negative whole number ($0, 1, 2, 3, \ldots$). The <strong>degree</strong> is the highest power that appears with a non-zero coefficient.
+  </div>
+
+  <table>
+    <tr><th>Polynomial</th><th>Degree</th><th>Name</th><th>Leading coefficient</th></tr>
+    <tr><td>$5 - 2x$</td><td>$1$</td><td>Linear</td><td>$-2$</td></tr>
+    <tr><td>$3x^2 - x + 7$</td><td>$2$</td><td>Quadratic</td><td>$3$</td></tr>
+    <tr><td>$x^3 - 6x^2 + 4$</td><td>$3$</td><td>Cubic</td><td>$1$</td></tr>
+    <tr><td>$2x^4 - x$</td><td>$4$</td><td>Quartic</td><td>$2$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Not polynomials:</strong> $\dfrac{3}{x} = 3x^{-1}$ (negative index), $\sqrt{x} = x^{1/2}$ (fractional index), $2^x$ (the variable is in the index). You meet these in <a href="indices-surds.html">Indices and Surds</a> and later in exponentials.
+  </div>
+
+  <div class="tip">
+    <strong>Function notation.</strong> Polynomials are usually named $\mathrm{f}(x)$, $\mathrm{p}(x)$ and so on. $\mathrm{f}(2)$ simply means "substitute $x = 2$". This notation is exactly what the factor theorem is written in.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EXPANDING AND COLLECTING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Expanding Brackets and Collecting Like Terms</div>
+<div class="section-body">
+
+  <p>To multiply two polynomials, multiply <strong>every term</strong> of the first by <strong>every term</strong> of the second, then collect terms with the same power of $x$. With three brackets, multiply two together first, then multiply the result by the third.</p>
+
+  <div class="formula-box">
+    <div class="label">Two quick checks on any expansion</div>
+    degree of product $=$ sum of the degrees &nbsp;&middot;&nbsp; constant term $=$ product of the constants
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A linear times a quadratic</div>
+    <div class="example-body">
+      <p>Expand and simplify $(2x - 1)\left(x^2 + 3x - 4\right)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2x\left(x^2 + 3x - 4\right) = 2x^3 + 6x^2 - 8x$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-1\left(x^2 + 3x - 4\right) = -x^2 - 3x + 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Collect: $2x^3 + (6 - 1)x^2 + (-8 - 3)x + 4$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 2x^3 + 5x^2 - 11x + 4$</span></div>
+      <div class="tip"><strong>Check:</strong> degree $1 + 2 = 3$ ✓; constant $(-1)(-4) = 4$ ✓.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Three brackets</div>
+    <div class="example-body">
+      <p>Expand $(x + 1)(x - 2)(2x + 3)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>First pair: $(x+1)(x-2) = x^2 - x - 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply by $(2x + 3)$: $2x\left(x^2 - x - 2\right) + 3\left(x^2 - x - 2\right)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 2x^3 - 2x^2 - 4x + 3x^2 - 3x - 6$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 2x^3 + x^2 - 7x - 6$</span></div>
+      <div class="tip"><strong>Check:</strong> leading coefficient $1 \times 1 \times 2 = 2$ ✓; constant $1 \times (-2) \times 3 = -6$ ✓.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Subtracting a polynomial changes every sign.</strong> $\left(x^3 + 2x - 5\right) - \left(x^3 - 4x + 1\right) = 6x - 6$, not $-2x - 4$. Put the second polynomial in brackets before you subtract.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FACTORISING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Factorising Polynomials</div>
+<div class="section-body">
+
+  <p>Factorising is expanding in reverse. For a cubic, try these in order:</p>
+
+  <ul class="steps">
+    <li><span><strong>Common factor.</strong> If every term contains $x$, take it out: $x^3 - 5x^2 + 6x = x\left(x^2 - 5x + 6\right)$.</span></li>
+    <li><span><strong>Recognise a pattern.</strong> Difference of two squares $a^2 - b^2 = (a-b)(a+b)$, or a perfect square.</span></li>
+    <li><span><strong>Grouping.</strong> Pair terms that share a factor, and look for a repeated bracket.</span></li>
+    <li><span><strong>Factor theorem.</strong> If nothing else works, find a root by trial (Section 5) and divide.</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Common factor, then grouping</div>
+    <div class="example-body">
+      <p>Factorise fully (a) $2x^3 - 8x$ &nbsp; (b) $x^3 + 2x^2 - 9x - 18$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Common factor $2x$: $2x\left(x^2 - 4\right)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Difference of two squares: $2x(x - 2)(x + 2)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) Group in pairs: $x^2(x + 2) - 9(x + 2)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Common bracket: $(x + 2)\left(x^2 - 9\right) = (x + 2)(x - 3)(x + 3)$.</span></div>
+      <div class="warn">"Factorise <strong>fully</strong>" means keep going. Stopping at $2x\left(x^2-4\right)$ loses a mark.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – ALGEBRAIC DIVISION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Simple Algebraic Division</div>
+<div class="section-body">
+
+  <p>At this stage you only need to divide a polynomial by a <strong>linear</strong> expression $(x \pm p)$, usually when it is known to be a factor. Dividing a cubic by a linear factor leaves a quadratic.</p>
+
+  <div class="formula-box">
+    <div class="label">Method A — long division</div>
+    Divide the leading terms &rarr; multiply back &rarr; subtract &rarr; bring down &rarr; repeat
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Long division</div>
+    <div class="example-body">
+      <p>Divide $2x^3 - 3x^2 - 11x + 6$ by $(x - 3)$, and hence factorise it fully.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2x^3 \div x = 2x^2$. &nbsp;$2x^2(x - 3) = 2x^3 - 6x^2$. &nbsp;Subtract: $3x^2 - 11x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3x^2 \div x = 3x$. &nbsp;$3x(x - 3) = 3x^2 - 9x$. &nbsp;Subtract: $-2x + 6$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$-2x \div x = -2$. &nbsp;$-2(x - 3) = -2x + 6$. &nbsp;Subtract: $0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Quotient $2x^2 + 3x - 2$, remainder $0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$2x^2 + 3x - 2 = (2x - 1)(x + 2)$, so $2x^3 - 3x^2 - 11x + 6 = (x - 3)(2x - 1)(x + 2)$.</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Method B — comparing coefficients</div>
+    Write $\mathrm{f}(x) \equiv (x - a)\left(Ax^2 + Bx + C\right)$, expand, and match each power of $x$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A missing term</div>
+    <div class="example-body">
+      <p>Given that $(x + 1)$ is a factor of $x^3 - 7x - 6$, find the quadratic factor by comparing coefficients.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write $x^3 + 0x^2 - 7x - 6 \equiv (x + 1)\left(x^2 + Bx + C\right)$. The leading coefficient must be $1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Right side: $x^3 + (B + 1)x^2 + (C + B)x + C$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Constant: $C = -6$. &nbsp;$x^2$: $B + 1 = 0$, so $B = -1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Check $x$: $C + B = -6 - 1 = -7$ ✓</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x^3 - 7x - 6 = (x + 1)\left(x^2 - x - 6\right) = (x + 1)(x - 3)(x + 2)$.</span></div>
+      <div class="warn">In long division, write the missing $x^2$ term as $0x^2$ to keep the columns lined up. Forgetting it is the most common division error.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – THE FACTOR THEOREM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> The Factor Theorem</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The factor theorem</div>
+    $\mathrm{f}(a) = 0 \iff (x - a)$ is a factor of $\mathrm{f}(x)$<br>
+    More generally: $\mathrm{f}\!\left(\tfrac{b}{a}\right) = 0 \iff (ax - b)$ is a factor
+  </div>
+
+  <div class="concept">
+    <strong>Why it is true.</strong> Dividing $\mathrm{f}(x)$ by $(x - a)$ always gives $\mathrm{f}(x) \equiv (x - a)\,\mathrm{q}(x) + r$ for some quotient $\mathrm{q}(x)$ and constant remainder $r$. Substituting $x = a$ kills the first term, so $\mathrm{f}(a) = r$. The remainder is zero — that is, $(x - a)$ is a factor — exactly when $\mathrm{f}(a) = 0$.
+  </div>
+
+  <div class="warn">
+    <strong>Mind the sign.</strong> To test $(x + 3)$, substitute $x = -3$. To test $(2x - 1)$, substitute $x = \tfrac12$ — the value that makes the bracket zero.
+  </div>
+
+  <div class="tip">
+    <strong>Which values to try?</strong> If the leading coefficient is $1$, any integer root must be a factor of the constant term. So for $x^3 + 2x^2 - 5x - 6$ try $\pm1, \pm2, \pm3, \pm6$. A calculator's table function speeds this up — but write down the substitution that gives $0$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="clip1"><rect x="30" y="15" width="400" height="255"/></clipPath></defs>
+      <line x1="30" y1="128.3" x2="430" y2="128.3" stroke="#475569" stroke-width="1.5"/>
+      <line x1="258.6" y1="15" x2="258.6" y2="270" stroke="#475569" stroke-width="1.5"/>
+      <text x="434" y="133.3" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="263.6" y="17" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <line x1="87.1" y1="125.3" x2="87.1" y2="131.3" stroke="#475569"/>
+      <text x="87.1" y="144.3" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">−3</text>
+      <line x1="201.4" y1="125.3" x2="201.4" y2="131.3" stroke="#475569"/>
+      <text x="201.4" y="144.3" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">−1</text>
+      <line x1="372.9" y1="125.3" x2="372.9" y2="131.3" stroke="#475569"/>
+      <text x="372.9" y="144.3" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">2</text>
+      <line x1="255.6" y1="213.3" x2="261.6" y2="213.3" stroke="#475569"/>
+      <text x="252.6" y="217.3" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">−6</text>
+      <polyline points="30.0,383.3 30.7,378.9 31.3,374.5 32.0,370.1 32.7,365.8 33.3,361.5 34.0,357.2 34.7,353.0 35.3,348.9 36.0,344.7 36.7,340.6 37.3,336.5 38.0,332.5 38.7,328.5 39.3,324.6 40.0,320.7 40.7,316.8 41.3,312.9 42.0,309.1 42.7,305.4 43.3,301.6 44.0,297.9 44.7,294.3 45.3,290.6 46.0,287.0 46.7,283.5 47.3,279.9 48.0,276.5 48.7,273.0 49.3,269.6 50.0,266.2 50.7,262.9 51.3,259.5 52.0,256.3 52.7,253.0 53.3,249.8 54.0,246.6 54.7,243.5 55.3,240.4 56.0,237.3 56.7,234.2 57.3,231.2 58.0,228.3 58.7,225.3 59.3,222.4 60.0,219.5 60.7,216.7 61.3,213.9 62.0,211.1 62.7,208.3 63.3,205.6 64.0,202.9 64.7,200.3 65.3,197.6 66.0,195.0 66.7,192.5 67.3,190.0 68.0,187.5 68.7,185.0 69.3,182.5 70.0,180.1 70.7,177.8 71.3,175.4 72.0,173.1 72.7,170.8 73.3,168.6 74.0,166.3 74.7,164.1 75.3,162.0 76.0,159.8 76.7,157.7 77.3,155.6 78.0,153.6 78.7,151.6 79.3,149.6 80.0,147.6 80.7,145.7 81.3,143.8 82.0,141.9 82.7,140.0 83.3,138.2 84.0,136.4 84.7,134.7 85.3,132.9 86.0,131.2 86.7,129.5 87.3,127.9 88.0,126.2 88.7,124.6 89.3,123.0 90.0,121.5 90.7,120.0 91.3,118.5 92.0,117.0 92.7,115.6 93.3,114.1 94.0,112.7 94.7,111.4 95.3,110.0 96.0,108.7 96.7,107.4 97.3,106.1 98.0,104.9 98.7,103.7 99.3,102.5 100.0,101.3 100.7,100.2 101.3,99.1 102.0,98.0 102.7,96.9 103.3,95.8 104.0,94.8 104.7,93.8 105.3,92.8 106.0,91.9 106.7,90.9 107.3,90.0 108.0,89.1 108.7,88.3 109.3,87.4 110.0,86.6 110.7,85.8 111.3,85.1 112.0,84.3 112.7,83.6 113.3,82.9 114.0,82.2 114.7,81.5 115.3,80.9 116.0,80.3 116.7,79.7 117.3,79.1 118.0,78.5 118.7,78.0 119.3,77.5 120.0,77.0 120.7,76.5 121.3,76.0 122.0,75.6 122.7,75.2 123.3,74.8 124.0,74.4 124.7,74.1 125.3,73.7 126.0,73.4 126.7,73.1 127.3,72.8 128.0,72.6 128.7,72.3 129.3,72.1 130.0,71.9 130.7,71.7 131.3,71.5 132.0,71.4 132.7,71.2 133.3,71.1 134.0,71.0 134.7,71.0 135.3,70.9 136.0,70.8 136.7,70.8 137.3,70.8 138.0,70.8 138.7,70.8 139.3,70.9 140.0,70.9 140.7,71.0 141.3,71.1 142.0,71.2 142.7,71.3 143.3,71.4 144.0,71.6 144.7,71.8 145.3,71.9 146.0,72.1 146.7,72.4 147.3,72.6 148.0,72.8 148.7,73.1 149.3,73.4 150.0,73.6 150.7,73.9 151.3,74.2 152.0,74.6 152.7,74.9 153.3,75.3 154.0,75.6 154.7,76.0 155.3,76.4 156.0,76.8 156.7,77.3 157.3,77.7 158.0,78.1 158.7,78.6 159.3,79.1 160.0,79.6 160.7,80.1 161.3,80.6 162.0,81.1 162.7,81.6 163.3,82.2 164.0,82.7 164.7,83.3 165.3,83.9 166.0,84.5 166.7,85.1 167.3,85.7 168.0,86.3 168.7,86.9 169.3,87.6 170.0,88.2 170.7,88.9 171.3,89.6 172.0,90.3 172.7,90.9 173.3,91.7 174.0,92.4 174.7,93.1 175.3,93.8 176.0,94.6 176.7,95.3 177.3,96.1 178.0,96.8 178.7,97.6 179.3,98.4 180.0,99.2 180.7,100.0 181.3,100.8 182.0,101.6 182.7,102.5 183.3,103.3 184.0,104.1 184.7,105.0 185.3,105.8 186.0,106.7 186.7,107.6 187.3,108.4 188.0,109.3 188.7,110.2 189.3,111.1 190.0,112.0 190.7,112.9 191.3,113.8 192.0,114.8 192.7,115.7 193.3,116.6 194.0,117.6 194.7,118.5 195.3,119.4 196.0,120.4 196.7,121.4 197.3,122.3 198.0,123.3 198.7,124.3 199.3,125.2 200.0,126.2 200.7,127.2 201.3,128.2 202.0,129.2 202.7,130.2 203.3,131.2 204.0,132.2 204.7,133.2 205.3,134.2 206.0,135.2 206.7,136.2 207.3,137.3 208.0,138.3 208.7,139.3 209.3,140.3 210.0,141.4 210.7,142.4 211.3,143.4 212.0,144.5 212.7,145.5 213.3,146.5 214.0,147.6 214.7,148.6 215.3,149.7 216.0,150.7 216.7,151.7 217.3,152.8 218.0,153.8 218.7,154.9 219.3,155.9 220.0,157.0 220.7,158.0 221.3,159.1 222.0,160.1 222.7,161.2 223.3,162.2 224.0,163.2 224.7,164.3 225.3,165.3 226.0,166.4 226.7,167.4 227.3,168.5 228.0,169.5 228.7,170.5 229.3,171.6 230.0,172.6 230.7,173.6 231.3,174.7 232.0,175.7 232.7,176.7 233.3,177.7 234.0,178.8 234.7,179.8 235.3,180.8 236.0,181.8 236.7,182.8 237.3,183.8 238.0,184.8 238.7,185.8 239.3,186.8 240.0,187.8 240.7,188.8 241.3,189.8 242.0,190.8 242.7,191.7 243.3,192.7 244.0,193.7 244.7,194.6 245.3,195.6 246.0,196.5 246.7,197.5 247.3,198.4 248.0,199.3 248.7,200.3 249.3,201.2 250.0,202.1 250.7,203.0 251.3,203.9 252.0,204.8 252.7,205.7 253.3,206.6 254.0,207.5 254.7,208.4 255.3,209.2 256.0,210.1 256.7,210.9 257.3,211.8 258.0,212.6 258.7,213.5 259.3,214.3 260.0,215.1 260.7,215.9 261.3,216.7 262.0,217.5 262.7,218.3 263.3,219.0 264.0,219.8 264.7,220.5 265.3,221.3 266.0,222.0 266.7,222.8 267.3,223.5 268.0,224.2 268.7,224.9 269.3,225.6 270.0,226.3 270.7,226.9 271.3,227.6 272.0,228.2 272.7,228.9 273.3,229.5 274.0,230.1 274.7,230.7 275.3,231.3 276.0,231.9 276.7,232.5 277.3,233.0 278.0,233.6 278.7,234.1 279.3,234.6 280.0,235.2 280.7,235.7 281.3,236.2 282.0,236.6 282.7,237.1 283.3,237.6 284.0,238.0 284.7,238.4 285.3,238.8 286.0,239.2 286.7,239.6 287.3,240.0 288.0,240.4 288.7,240.7 289.3,241.0 290.0,241.4 290.7,241.7 291.3,242.0 292.0,242.2 292.7,242.5 293.3,242.7 294.0,243.0 294.7,243.2 295.3,243.4 296.0,243.6 296.7,243.8 297.3,243.9 298.0,244.1 298.7,244.2 299.3,244.3 300.0,244.4 300.7,244.5 301.3,244.5 302.0,244.6 302.7,244.6 303.3,244.6 304.0,244.6 304.7,244.6 305.3,244.6 306.0,244.5 306.7,244.4 307.3,244.3 308.0,244.2 308.7,244.1 309.3,244.0 310.0,243.8 310.7,243.6 311.3,243.4 312.0,243.2 312.7,243.0 313.3,242.7 314.0,242.5 314.7,242.2 315.3,241.9 316.0,241.5 316.7,241.2 317.3,240.8 318.0,240.4 318.7,240.0 319.3,239.6 320.0,239.1 320.7,238.7 321.3,238.2 322.0,237.7 322.7,237.1 323.3,236.6 324.0,236.0 324.7,235.4 325.3,234.8 326.0,234.2 326.7,233.5 327.3,232.9 328.0,232.2 328.7,231.4 329.3,230.7 330.0,229.9 330.7,229.1 331.3,228.3 332.0,227.5 332.7,226.7 333.3,225.8 334.0,224.9 334.7,224.0 335.3,223.0 336.0,222.0 336.7,221.1 337.3,220.0 338.0,219.0 338.7,217.9 339.3,216.9 340.0,215.7 340.7,214.6 341.3,213.4 342.0,212.3 342.7,211.1 343.3,209.8 344.0,208.6 344.7,207.3 345.3,206.0 346.0,204.6 346.7,203.3 347.3,201.9 348.0,200.5 348.7,199.1 349.3,197.6 350.0,196.1 350.7,194.6 351.3,193.1 352.0,191.5 352.7,189.9 353.3,188.3 354.0,186.6 354.7,185.0 355.3,183.3 356.0,181.5 356.7,179.8 357.3,178.0 358.0,176.2 358.7,174.3 359.3,172.5 360.0,170.6 360.7,168.6 361.3,166.7 362.0,164.7 362.7,162.7 363.3,160.7 364.0,158.6 364.7,156.5 365.3,154.4 366.0,152.2 366.7,150.0 367.3,147.8 368.0,145.6 368.7,143.3 369.3,141.0 370.0,138.7 370.7,136.3 371.3,133.9 372.0,131.5 372.7,129.0 373.3,126.6 374.0,124.0 374.7,121.5 375.3,118.9 376.0,116.3 376.7,113.7 377.3,111.0 378.0,108.3 378.7,105.5 379.3,102.8 380.0,100.0 380.7,97.1 381.3,94.3 382.0,91.4 382.7,88.4 383.3,85.5 384.0,82.5 384.7,79.5 385.3,76.4 386.0,73.3 386.7,70.2 387.3,67.0 388.0,63.8 388.7,60.6 389.3,57.3 390.0,54.0 390.7,50.7 391.3,47.3 392.0,43.9 392.7,40.5 393.3,37.0 394.0,33.5 394.7,29.9 395.3,26.4 396.0,22.7 396.7,19.1 397.3,15.4 398.0,11.7 398.7,7.9 399.3,4.1 400.0,0.3 400.7,-3.6 401.3,-7.5 402.0,-11.4 402.7,-15.4 403.3,-19.4 404.0,-23.4 404.7,-27.5 405.3,-31.6 406.0,-35.8 406.7,-40.0 407.3,-44.2 408.0,-48.5 408.7,-52.8 409.3,-57.2 410.0,-61.6 410.7,-66.0 411.3,-70.5 412.0,-75.0 412.7,-79.5 413.3,-84.1 414.0,-88.7 414.7,-93.4 415.3,-98.1 416.0,-102.8 416.7,-107.6 417.3,-112.4 418.0,-117.3 418.7,-122.2 419.3,-127.1 420.0,-132.1 420.7,-137.1 421.3,-142.1 422.0,-147.2 422.7,-152.4 423.3,-157.6 424.0,-162.8 424.7,-168.1 425.3,-173.4 426.0,-178.7 426.7,-184.1 427.3,-189.5 428.0,-195.0 428.7,-200.5 429.3,-206.1 430.0,-211.7" fill="none" stroke="#4f46e5" stroke-width="2.5" clip-path="url(#clip1)"/>
+      <circle cx="87.1" cy="128.3" r="4" fill="#dc2626"/>
+      <circle cx="201.4" cy="128.3" r="4" fill="#dc2626"/>
+      <circle cx="372.9" cy="128.3" r="4" fill="#dc2626"/>
+      <circle cx="258.6" cy="213.3" r="4" fill="#4f46e5"/>
+      <text x="35.7" y="29.2" font-family="Arial" font-size="12" fill="#4f46e5" font-weight="bold">y = (x+1)(x+3)(x−2)</text>
+      <text x="267.1" y="221.8" font-family="Arial" font-size="12" fill="#4f46e5" font-weight="bold">(0, −6)</text>
+      <text x="230" y="294" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Each root of f(x) = 0 gives a factor: x = −3, −1, 2 ↔ (x+3), (x+1), (x−2)</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Factorise and solve a cubic</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 + 2x^2 - 5x - 6$. Factorise $\mathrm{f}(x)$ fully and solve $\mathrm{f}(x) = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(1) = 1 + 2 - 5 - 6 = -8 \neq 0$. &nbsp;$\mathrm{f}(-1) = -1 + 2 + 5 - 6 = 0$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>By the factor theorem $(x + 1)$ is a factor.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Divide: $\mathrm{f}(x) = (x + 1)\left(x^2 + x - 6\right)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x^2 + x - 6 = (x + 3)(x - 2)$, so $\mathrm{f}(x) = (x + 1)(x + 3)(x - 2)$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Solutions: $x = -3,\; -1,\; 2$ — the three crossing points on the graph above.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A factor of the form $(ax - b)$</div>
+    <div class="example-body">
+      <p>Show that $(2x - 1)$ is a factor of $\mathrm{f}(x) = 2x^3 + x^2 - 13x + 6$, and factorise $\mathrm{f}(x)$ fully.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2x - 1 = 0$ when $x = \tfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}\!\left(\tfrac12\right) = 2\left(\tfrac18\right) + \tfrac14 - \tfrac{13}{2} + 6 = \tfrac14 + \tfrac14 - \tfrac{13}{2} + 6 = 0$ ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $(2x - 1)$ is a factor. Compare coefficients: $\mathrm{f}(x) \equiv (2x - 1)\left(x^2 + Bx + C\right)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Constant: $-C = 6 \Rightarrow C = -6$. &nbsp;$x^2$: $2B - 1 = 1 \Rightarrow B = 1$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(x) = (2x - 1)\left(x^2 + x - 6\right) = (2x - 1)(x + 3)(x - 2)$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Two unknown coefficients</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 + ax^2 + bx - 6$. Both $(x - 1)$ and $(x + 2)$ are factors of $\mathrm{f}(x)$. Find $a$ and $b$, and the third factor.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(1) = 0$: $1 + a + b - 6 = 0$, so $a + b = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(-2) = 0$: $-8 + 4a - 2b - 6 = 0$, so $4a - 2b = 14$, i.e. $2a - b = 7$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add the equations: $3a = 12$, so $a = 4$ and $b = 1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{f}(x) = x^3 + 4x^2 + x - 6$. The constants of the factors multiply to $-6$: $(-1)(2)(k) = -6$ gives $k = 3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Third factor $(x + 3)$. Check: $(x - 1)(x + 2)(x + 3) = x^3 + 4x^2 + x - 6$ ✓</span></div>
+      <div class="tip">Two unknowns need two equations — one from each factor. This is a classic place where <a href="simultaneous-equations.html">simultaneous equations</a> turn up inside another topic.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>When the quadratic will not factorise.</strong> After dividing out one factor, check the discriminant $b^2 - 4ac$ of the quadratic. If it is negative, the cubic has <strong>only one</strong> real root; if it is positive but not a perfect square, use the quadratic formula for the other two roots (see <a href="quadratics.html">Quadratic Functions</a>).
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Degree</h4><p>The highest power; a degree-$n$ polynomial has at most $n$ real roots.</p></div>
+    <div class="ref-card"><h4>Expanding</h4><p>Every term times every term; degrees add, constants multiply.</p></div>
+    <div class="ref-card"><h4>Factorising order</h4><p>Common factor &rarr; pattern &rarr; grouping &rarr; factor theorem.</p></div>
+    <div class="ref-card"><h4>Division</h4><p>Long division (use $0x^2$ for gaps) or compare coefficients.</p></div>
+    <div class="ref-card"><h4>Factor theorem</h4><p>$\mathrm{f}(a) = 0 \iff (x-a)$ is a factor.</p></div>
+    <div class="ref-card"><h4>$(ax - b)$</h4><p>A factor exactly when $\mathrm{f}\!\left(\tfrac{b}{a}\right) = 0$.</p></div>
+    <div class="ref-card"><h4>Sign trap</h4><p>For $(x + 3)$ substitute $x = -3$.</p></div>
+    <div class="ref-card"><h4>Unknown coefficients</h4><p>One equation per known factor; solve simultaneously.</p></div>
+    <div class="ref-card"><h4>Leftover quadratic</h4><p>Discriminant $< 0$ means the cubic has only one real root.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Expand and simplify $(x + 3)\left(2x^2 - x + 4\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x\left(2x^2 - x + 4\right) = 2x^3 - x^2 + 4x$</p>
+          <p>$3\left(2x^2 - x + 4\right) = 6x^2 - 3x + 12$</p>
+          <p>Sum: $2x^3 + 5x^2 + x + 12$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Expand $(x - 1)(x + 2)(x - 4)$, giving your answer in the form $x^3 + ax^2 + bx + c$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x - 1)(x + 2) = x^2 + x - 2$</p>
+          <p>$\left(x^2 + x - 2\right)(x - 4) = x^3 - 4x^2 + x^2 - 4x - 2x + 8$</p>
+          <p>$= x^3 - 3x^2 - 6x + 8$, so $a = -3$, $b = -6$, $c = 8$.</p>
+          <p><em>Check:</em> constant $(-1)(2)(-4) = 8$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Factorise fully (a) $x^3 - 5x^2 + 6x$ &nbsp; (b) $4x^3 - 9x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x\left(x^2 - 5x + 6\right) = x(x - 2)(x - 3)$</p>
+          <p><strong>(b)</strong> $x\left(4x^2 - 9\right) = x(2x - 3)(2x + 3)$ — a difference of two squares, since $4x^2 = (2x)^2$ and $9 = 3^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Divide $x^3 + 4x^2 - 7x - 10$ by $(x + 1)$, and hence factorise it fully.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^3 \div x = x^2$: $x^2(x + 1) = x^3 + x^2$; subtract to get $3x^2 - 7x$.</p>
+          <p>$3x^2 \div x = 3x$: $3x(x + 1) = 3x^2 + 3x$; subtract to get $-10x - 10$.</p>
+          <p>$-10x \div x = -10$: $-10(x + 1) = -10x - 10$; remainder $0$.</p>
+          <p>Quotient $x^2 + 3x - 10 = (x + 5)(x - 2)$.</p>
+          <p>$x^3 + 4x^2 - 7x - 10 = (x + 1)(x + 5)(x - 2)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 - 3x^2 - 4x + 12$. Use the factor theorem to show that $(x - 2)$ is a factor of $\mathrm{f}(x)$, and hence solve $\mathrm{f}(x) = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(2) = 8 - 12 - 8 + 12 = 0$, so by the factor theorem $(x - 2)$ is a factor.</p>
+          <p>$\mathrm{f}(x) \equiv (x - 2)\left(x^2 + Bx + C\right)$: constant $-2C = 12 \Rightarrow C = -6$; $x^2$: $B - 2 = -3 \Rightarrow B = -1$.</p>
+          <p>$\mathrm{f}(x) = (x - 2)\left(x^2 - x - 6\right) = (x - 2)(x - 3)(x + 2)$</p>
+          <p>$x = -2,\; 2,\; 3$</p>
+          <p><em>Alternative:</em> grouping gives $x^2(x - 3) - 4(x - 3) = (x - 3)(x^2 - 4)$ — the same answer.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$(x + 3)$ is a factor of $\mathrm{f}(x) = 2x^3 + kx^2 - 7x + 6$. (a) Find $k$. &nbsp; (b) Show that $\mathrm{f}(x) = 0$ has exactly one real root.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}(-3) = 0$: $2(-27) + 9k + 21 + 6 = 0$</p>
+          <p>$-54 + 9k + 27 = 0 \Rightarrow 9k = 27 \Rightarrow k = 3$.</p>
+          <p><strong>(b)</strong> $2x^3 + 3x^2 - 7x + 6 \equiv (x + 3)\left(2x^2 + Bx + C\right)$.</p>
+          <p>Constant: $3C = 6 \Rightarrow C = 2$. &nbsp;$x^2$: $B + 6 = 3 \Rightarrow B = -3$. &nbsp;Check $x$: $C + 3B = 2 - 9 = -7$ ✓</p>
+          <p>$\mathrm{f}(x) = (x + 3)\left(2x^2 - 3x + 2\right)$. The quadratic has discriminant $(-3)^2 - 4(2)(2) = 9 - 16 = -7 < 0$, so it has no real roots.</p>
+          <p>The only real root is $x = -3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $2x^3 - 5x^2 - 4x + 3 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Try $x = 1$: $2 - 5 - 4 + 3 = -4$. &nbsp;Try $x = -1$: $-2 - 5 + 4 + 3 = 0$ ✓, so $(x + 1)$ is a factor.</p>
+          <p>$2x^3 - 5x^2 - 4x + 3 = (x + 1)\left(2x^2 - 7x + 3\right)$ (constant: $C = 3$; $x^2$: $B + 2 = -5 \Rightarrow B = -7$).</p>
+          <p>$2x^2 - 7x + 3 = (2x - 1)(x - 3)$</p>
+          <p>$x = -1,\; \tfrac12,\; 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = 2x^3 + px^2 + qx - 4$. Given that $(x - 2)$ is a factor of $\mathrm{f}(x)$ and that $\mathrm{f}(-1) = -6$, find $p$ and $q$. Hence factorise $\mathrm{f}(x)$ as far as possible.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(2) = 0$: $16 + 4p + 2q - 4 = 0 \Rightarrow 2p + q = -6$.</p>
+          <p>$\mathrm{f}(-1) = -6$: $-2 + p - q - 4 = -6 \Rightarrow p - q = 0$.</p>
+          <p>So $p = q$, and $3p = -6$ gives $p = -2$, $q = -2$.</p>
+          <p>$\mathrm{f}(x) = 2x^3 - 2x^2 - 2x - 4 = 2\left(x^3 - x^2 - x - 2\right) = 2(x - 2)\left(x^2 + x + 1\right)$</p>
+          <p>$x^2 + x + 1$ has discriminant $1 - 4 = -3 < 0$, so it does not factorise further.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that $(3x - 2)$ is a factor of $\mathrm{f}(x) = 3x^3 - 2x^2 - 12x + 8$, and hence factorise $\mathrm{f}(x)$ completely.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x - 2 = 0$ when $x = \tfrac23$.</p>
+          <p>$\mathrm{f}\!\left(\tfrac23\right) = 3\left(\tfrac{8}{27}\right) - 2\left(\tfrac49\right) - 8 + 8 = \tfrac89 - \tfrac89 = 0$ ✓, so $(3x - 2)$ is a factor.</p>
+          <p>Grouping: $x^2(3x - 2) - 4(3x - 2) = (3x - 2)\left(x^2 - 4\right)$</p>
+          <p>$\mathrm{f}(x) = (3x - 2)(x - 2)(x + 2)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A cuboid has edges of length $x$ cm, $(x + 2)$ cm and $(x + 5)$ cm, and its volume is $120$ cm$^3$.</p>
+      <p>(a) Show that $x^3 + 7x^2 + 10x - 120 = 0$. &nbsp; (b) Show that $(x - 3)$ is a factor of $x^3 + 7x^2 + 10x - 120$. &nbsp; (c) Show that $x = 3$ is the only real solution, and state the dimensions of the cuboid. &nbsp; (d) Find the surface area of the cuboid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x(x + 2)(x + 5) = 120$. Expanding: $x\left(x^2 + 7x + 10\right) = x^3 + 7x^2 + 10x$, so $x^3 + 7x^2 + 10x - 120 = 0$.</p>
+          <p><strong>(b)</strong> With $\mathrm{g}(x) = x^3 + 7x^2 + 10x - 120$: $\mathrm{g}(3) = 27 + 63 + 30 - 120 = 0$, so $(x - 3)$ is a factor.</p>
+          <p><strong>(c)</strong> $\mathrm{g}(x) \equiv (x - 3)\left(x^2 + Bx + C\right)$: constant $-3C = -120 \Rightarrow C = 40$; $x^2$: $B - 3 = 7 \Rightarrow B = 10$. Check $x$: $C - 3B = 40 - 30 = 10$ ✓</p>
+          <p>$x^2 + 10x + 40$ has discriminant $100 - 160 = -60 < 0$, so no further real roots. Hence $x = 3$ only.</p>
+          <p>The cuboid is $3$ cm by $5$ cm by $8$ cm. (Check: $3 \times 5 \times 8 = 120$ ✓)</p>
+          <p><strong>(d)</strong> Surface area $= 2(3 \times 5 + 3 \times 8 + 5 \times 8) = 2(15 + 24 + 40) = 158$ cm$^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Polynomials and the Factor Theorem &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Differentiation Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Differentiation Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>In Year 1 you could differentiate sums of powers of $x$. That is enough for polynomials, but almost nothing in the real world is a polynomial. Year 2 differentiation (DfE content area G) gives you the tools to differentiate <strong>any function you can write down</strong>: exponentials, logarithms, trigonometric functions, and every combination of them.</p>
+
+  <div class="concept">
+    The whole topic rests on two things: a short list of <strong>standard derivatives</strong>, and three <strong>rules for combining them</strong> — chain (functions inside functions), product (functions multiplied) and quotient (functions divided). Once you have those, implicit and parametric differentiation and connected rates of change are all the chain rule in disguise.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with Year 1</div>
+    $\mathrm{e}^{kx}$, $a^{kx}$, $\ln x$, $\sin kx$, $\cos kx$, $\tan kx$ &middot; chain, product and quotient rules<br>
+    Implicit and parametric curves &middot; concavity and points of inflection &middot; connected rates of change
+  </div>
+
+  <div class="tip">
+    <strong>Radians, always.</strong> Every trigonometric derivative on these pages assumes $x$ is in radians. And keep exact values ($\ln 2$, $\tfrac{\pi}{4}$, $\mathrm{e}^{-1}$) unless a question asks for decimals.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Composite function</strong></td><td>A function of a function — needs the chain rule.</td><td>$\sin(x^2)$, $(3x - 1)^5$</td></tr>
+    <tr><td><strong>Product / quotient</strong></td><td>Two functions multiplied / divided.</td><td>$x^2\mathrm{e}^x$, $\dfrac{\ln x}{x}$</td></tr>
+    <tr><td><strong>Parametric</strong></td><td>$x$ and $y$ both given in terms of a parameter $t$.</td><td>$x = t^2$, $y = 2t$</td></tr>
+    <tr><td><strong>Implicit</strong></td><td>An equation in $x$ and $y$ not solved for $y$.</td><td>$x^2 + xy + y^2 = 7$</td></tr>
+    <tr><td><strong>Convex</strong></td><td>$\mathrm{f}''(x) \geqslant 0$: the curve bends upwards.</td><td>$y = \mathrm{e}^x$</td></tr>
+    <tr><td><strong>Concave</strong></td><td>$\mathrm{f}''(x) \leqslant 0$: the curve bends downwards.</td><td>$y = \ln x$</td></tr>
+    <tr><td><strong>Point of inflection</strong></td><td>Where the curve changes between concave and convex.</td><td>$(0, 0)$ on $y = x^3$</td></tr>
+    <tr><td><strong>Rate of change</strong></td><td>A derivative with respect to time.</td><td>$\dfrac{\mathrm{d}V}{\mathrm{d}t}$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Standard derivatives</div>
+    $\mathrm{e}^{kx} \to k\mathrm{e}^{kx}$ &nbsp; $a^{kx} \to ka^{kx}\ln a$ &nbsp; $\ln x \to \dfrac1x$ &nbsp; $\sin kx \to k\cos kx$ &nbsp; $\cos kx \to -k\sin kx$ &nbsp; $\tan kx \to k\sec^2 kx$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — The chain rule</div>
+    $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{\mathrm{d}y}{\mathrm{d}u} \times \dfrac{\mathrm{d}u}{\mathrm{d}x}$ &nbsp;&nbsp; and &nbsp;&nbsp; $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 1 \Big/ \dfrac{\mathrm{d}x}{\mathrm{d}y}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Product and quotient rules</div>
+    $(uv)' = uv' + vu'$ &nbsp;&nbsp;&nbsp; $\left(\dfrac{u}{v}\right)' = \dfrac{vu' - uv'}{v^2}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Parametric and implicit</div>
+    $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{\mathrm{d}y/\mathrm{d}t}{\mathrm{d}x/\mathrm{d}t}$ &nbsp;&nbsp;&nbsp; $\dfrac{\mathrm{d}}{\mathrm{d}x}\big(\mathrm{f}(y)\big) = \mathrm{f}'(y)\dfrac{\mathrm{d}y}{\mathrm{d}x}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Second derivative and rates</div>
+    $\mathrm{f}'' &gt; 0$ convex, $\mathrm{f}'' &lt; 0$ concave, sign change of $\mathrm{f}''$ = inflection &nbsp;&nbsp; $\dfrac{\mathrm{d}V}{\mathrm{d}t} = \dfrac{\mathrm{d}V}{\mathrm{d}r}\dfrac{\mathrm{d}r}{\mathrm{d}t}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>$y = x^2\ln x$, $x &gt; 0$. Find the exact coordinates of the stationary point, determine its nature, and find where the curve is convex.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Product rule: $\dfrac{\mathrm{d}y}{\mathrm{d}x} = x^2 \cdot \dfrac1x + 2x\ln x = x(1 + 2\ln x)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x &gt; 0$, so stationary when $\ln x = -\tfrac12$, i.e. $x = \mathrm{e}^{-1/2}$. Then $y = \mathrm{e}^{-1}\left(-\tfrac12\right) = -\dfrac{1}{2\mathrm{e}}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Differentiate $x + 2x\ln x$: $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 1 + 2\ln x + 2 = 3 + 2\ln x$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = \mathrm{e}^{-1/2}$: $3 + 2\left(-\tfrac12\right) = 2 &gt; 0$, so a <strong>minimum</strong> at $\left(\mathrm{e}^{-1/2}, -\tfrac{1}{2\mathrm{e}}\right)$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Convex when $3 + 2\ln x &gt; 0 \Rightarrow x &gt; \mathrm{e}^{-3/2}$; there is a point of inflection at $x = \mathrm{e}^{-3/2}$.</span></div>
+      <div class="tip">One question, four ideas: the derivative of $\ln x$, the product rule, solving a log equation, and concavity. Expect topics to be mixed like this.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Differentiation Subtopics</div>
+<div class="section-body">
+
+  <p>Each part of DfE content area G covered in Year 2, and the page that covers it. The Year 1 basics are in <a href="../../alevel-year1/differentiation/overview.html">A Level Maths Year 1 · Differentiation</a>.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">G</span><span><a href="standard-derivatives.html">Exponentials, Logs and Trig</a><span class="desc">Derivatives of $\mathrm{e}^{kx}$, $a^{kx}$, $\ln x$, $\sin kx$, $\cos kx$, $\tan kx$, with first-principles proofs for $\sin x$ and $\cos x$.</span></span></li>
+    <li><span class="code">G</span><span><a href="chain-product-quotient.html">Chain, Product and Quotient Rules</a><span class="desc">Differentiating composite functions, products and quotients, and $\frac{\mathrm{d}y}{\mathrm{d}x} = 1/\frac{\mathrm{d}x}{\mathrm{d}y}$.</span></span></li>
+    <li><span class="code">G</span><span><a href="implicit-parametric.html">Implicit and Parametric Differentiation</a><span class="desc">Gradients, tangents, normals and stationary points of implicit and parametric curves.</span></span></li>
+    <li><span class="code">G</span><span><a href="concavity.html">Concavity and Points of Inflection</a><span class="desc">Using the second derivative to find where a curve is convex or concave.</span></span></li>
+    <li><span class="code">G</span><span><a href="connected-rates.html">Connected Rates of Change</a><span class="desc">Related rates with the chain rule, and setting up simple differential equations.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Forgetting the inside derivative.</strong> $\dfrac{\mathrm{d}}{\mathrm{d}x}\sin 3x = 3\cos 3x$, not $\cos 3x$. $\dfrac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{x^2} = 2x\mathrm{e}^{x^2}$, not $\mathrm{e}^{x^2}$.
+  </div>
+
+  <div class="warn">
+    <strong>Differentiating a product term by term.</strong> $\dfrac{\mathrm{d}}{\mathrm{d}x}(x^2\sin x) \neq 2x\cos x$. Use the product rule.
+  </div>
+
+  <div class="warn">
+    <strong>Getting the quotient rule backwards.</strong> It is $vu' - uv'$ on top. Swapping the order flips the sign of the answer.
+  </div>
+
+  <div class="warn">
+    <strong>Treating $a^x$ like $x^n$.</strong> $\dfrac{\mathrm{d}}{\mathrm{d}x}2^x = 2^x\ln 2$, not $x \cdot 2^{x-1}$.
+  </div>
+
+  <div class="warn">
+    <strong>Missing the $\frac{\mathrm{d}y}{\mathrm{d}x}$ in implicit differentiation</strong>, especially on $xy$ terms, which need the product rule.
+  </div>
+
+  <div class="warn">
+    <strong>Assuming $\mathrm{f}''(x) = 0$ means a point of inflection.</strong> You must show that $\mathrm{f}''$ changes sign.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Exponentials</h4><p>$\mathrm{e}^{kx} \to k\mathrm{e}^{kx}$; $a^x \to a^x\ln a$</p></div>
+    <div class="ref-card"><h4>Logs</h4><p>$\ln x \to \tfrac1x$; $\ln\mathrm{f}(x) \to \tfrac{\mathrm{f}'(x)}{\mathrm{f}(x)}$</p></div>
+    <div class="ref-card"><h4>Trig</h4><p>$\sin \to \cos$, $\cos \to -\sin$, $\tan \to \sec^2$ (times $k$)</p></div>
+    <div class="ref-card"><h4>Chain</h4><p>Outside derivative × inside derivative.</p></div>
+    <div class="ref-card"><h4>Product</h4><p>$uv' + vu'$</p></div>
+    <div class="ref-card"><h4>Quotient</h4><p>$\dfrac{vu' - uv'}{v^2}$</p></div>
+    <div class="ref-card"><h4>Parametric</h4><p>$\dot y / \dot x$</p></div>
+    <div class="ref-card"><h4>Implicit</h4><p>Differentiate $y$-terms, then multiply by $\frac{\mathrm{d}y}{\mathrm{d}x}$.</p></div>
+    <div class="ref-card"><h4>Inflection</h4><p>$\mathrm{f}'' = 0$ and changes sign.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Differentiation topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate $y = \mathrm{e}^{5x} + 3\ln x - 2\sin x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 5\mathrm{e}^{5x} + \dfrac{3}{x} - 2\cos x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Differentiate $y = (x^2 + 3)^4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Chain rule: $4(x^2 + 3)^3 \times 2x = 8x(x^2 + 3)^3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Differentiate $y = x\cos x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Product rule: $x(-\sin x) + \cos x \cdot 1 = \cos x - x\sin x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Show that the derivative of $y = \dfrac{\mathrm{e}^x}{x + 1}$ is $\dfrac{x\mathrm{e}^x}{(x + 1)^2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Quotient rule: $\dfrac{(x + 1)\mathrm{e}^x - \mathrm{e}^x \cdot 1}{(x + 1)^2} = \dfrac{\mathrm{e}^x(x + 1 - 1)}{(x + 1)^2} = \dfrac{x\mathrm{e}^x}{(x + 1)^2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A curve has parametric equations $x = t^2 + 1$, $y = 4t$. Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ in terms of $t$ and the gradient at $(5, 8)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{4}{2t} = \dfrac{2}{t}$.</p>
+          <p>$y = 8 \Rightarrow t = 2$ (check $x = 5$ ✓), so the gradient is $1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the gradient of the curve $x^2 + xy + y^2 = 7$ at the point $(1, 2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x + x\dfrac{\mathrm{d}y}{\mathrm{d}x} + y + 2y\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0 \Rightarrow \dfrac{\mathrm{d}y}{\mathrm{d}x} = -\dfrac{2x + y}{x + 2y}$.</p>
+          <p>At $(1, 2)$: $-\dfrac{4}{5}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the point of inflection on $y = x^3 - 3x^2 + 2x$, showing that it is a point of inflection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y'' = 6x - 6 = 0 \Rightarrow x = 1$; $y''$ is negative for $x &lt; 1$ and positive for $x &gt; 1$, so it changes sign.</p>
+          <p>$y = 1 - 3 + 2 = 0$: point of inflection $(1, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The radius of a spherical balloon increases at $0.5$ cm s$^{-1}$. Find the rate of increase of its volume when $r = 2$ cm, in terms of $\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}V}{\mathrm{d}r} = 4\pi r^2 = 16\pi$. $\;\dfrac{\mathrm{d}V}{\mathrm{d}t} = 16\pi \times 0.5 = 8\pi$ cm$^3$ s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Prove from first principles, using small angle approximations, that $\dfrac{\mathrm{d}}{\mathrm{d}x}(\cos x) = -\sin x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\cos(x + h) - \cos x}{h} = \dfrac{\cos x\cos h - \sin x\sin h - \cos x}{h}$.</p>
+          <p>With $\cos h \approx 1 - \tfrac12 h^2$ and $\sin h \approx h$: $\approx \dfrac{-\tfrac12 h^2\cos x - h\sin x}{h} = -\tfrac12 h\cos x - \sin x$.</p>
+          <p>As $h \to 0$ this tends to $-\sin x$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \mathrm{e}^{-x}\sin x$, $\;0 \leqslant x \leqslant \pi$.</p>
+      <p>(a) Show that $\mathrm{f}'(x) = \mathrm{e}^{-x}(\cos x - \sin x)$.<br>(b) Find the exact coordinates of the stationary point.<br>(c) Show that $\mathrm{f}''(x) = -2\mathrm{e}^{-x}\cos x$, and hence determine the nature of the stationary point.<br>(d) Find the exact coordinates of the point of inflection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Product rule: $\mathrm{e}^{-x}\cos x + \sin x \cdot (-\mathrm{e}^{-x}) = \mathrm{e}^{-x}(\cos x - \sin x)$.</p>
+          <p><strong>(b)</strong> $\mathrm{e}^{-x} &gt; 0$, so $\cos x = \sin x \Rightarrow \tan x = 1 \Rightarrow x = \dfrac{\pi}{4}$. $\;\mathrm{f}\!\left(\tfrac{\pi}{4}\right) = \dfrac{\sqrt2}{2}\mathrm{e}^{-\pi/4}$ ($\approx 0.322$).</p>
+          <p><strong>(c)</strong> $\mathrm{f}''(x) = -\mathrm{e}^{-x}(\cos x - \sin x) + \mathrm{e}^{-x}(-\sin x - \cos x) = -2\mathrm{e}^{-x}\cos x$.</p>
+          <p>At $x = \tfrac{\pi}{4}$: $-2\mathrm{e}^{-\pi/4} \cdot \tfrac{\sqrt2}{2} &lt; 0$, so a <strong>maximum</strong>.</p>
+          <p><strong>(d)</strong> $\mathrm{f}''(x) = 0$ when $\cos x = 0$, so $x = \dfrac{\pi}{2}$; $\cos x$ changes sign there, so it is a point of inflection: $\left(\dfrac{\pi}{2}, \mathrm{e}^{-\pi/2}\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Differentiation Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

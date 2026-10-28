@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Integration Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>In Year 1 you could integrate only powers of $x$ (see <a href="../../alevel-year1/integration/overview.html">Year 1 Integration</a>). Year 2 extends integration to every function you can now differentiate — exponentials, logarithms and trig functions — and gives you a toolkit of techniques for products, compositions and fractions.</p>
+
+  <div class="concept">
+    Integration is <strong>reverse differentiation</strong>, and every technique on these pages is a differentiation rule run backwards: the <strong>chain rule</strong> becomes recognition and substitution, the <strong>product rule</strong> becomes integration by parts. Unlike differentiation, though, there is no single routine that always works — the skill is <strong>choosing</strong> the right method.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with Year 1</div>
+    $e^x$, $\dfrac{1}{x}$, $\sin x$, $\cos x$, $\sec^2 x$ &middot; the reverse chain rule &middot; trig identities<br>
+    Substitution &middot; integration by parts &middot; partial fractions<br>
+    Integration as the limit of a sum &middot; areas between curves &middot; parametric areas<br>
+    First-order separable differential equations and modelling
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong>, and many will evaluate a definite integral numerically. But questions that ask for an <em>exact</em> answer, or say <em>"show detailed reasoning"</em> or <em>"use algebraic integration"</em>, need full working — a decimal from the calculator earns nothing. Use it to <em>check</em> your exact answer instead.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Integrand</strong></td><td>The function being integrated.</td><td>$x e^x$ in $\int x e^x\,dx$</td></tr>
+    <tr><td><strong>Indefinite integral</strong></td><td>A family of functions, with $+\,c$.</td><td>$\int\cos x\,dx = \sin x + c$</td></tr>
+    <tr><td><strong>Definite integral</strong></td><td>A number found using limits.</td><td>$\int_0^{\pi}\sin x\,dx = 2$</td></tr>
+    <tr><td><strong>Limits</strong></td><td>The values at the ends of the interval.</td><td>$0$ and $\pi$ above</td></tr>
+    <tr><td><strong>Substitution</strong></td><td>Changing the variable to simplify an integral.</td><td>$u = x^2 + 1$</td></tr>
+    <tr><td><strong>By parts</strong></td><td>The reverse of the product rule.</td><td>$\int u\,v'\,dx = uv - \int v\,u'\,dx$</td></tr>
+    <tr><td><strong>Differential equation</strong></td><td>An equation containing a derivative.</td><td>$\dfrac{dy}{dx} = ky$</td></tr>
+    <tr><td><strong>Separable</strong></td><td>Can be written $\dfrac{dy}{dx} = \mathrm{f}(x)\mathrm{g}(y)$.</td><td>$\dfrac{dy}{dx} = xy^2$</td></tr>
+    <tr><td><strong>General / particular solution</strong></td><td>With an unknown constant / with the constant found.</td><td>$y = Ae^{3x}$ / $y = 5e^{3x}$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Radians only.</strong> Every trigonometric integral (and derivative) result assumes $x$ is in radians. Set your calculator to radians before evaluating any definite trig integral.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CHOOSING A METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Choosing a Method</div>
+<div class="section-body">
+
+  <p>Work down this list. Stop at the first one that fits.</p>
+
+  <div class="formula-box">
+    <div class="label">1 — Is it a standard result, possibly with a linear inside?</div>
+    $\int e^{ax+b}\,dx = \tfrac{1}{a}e^{ax+b} + c$ &nbsp;&middot;&nbsp; $\int\dfrac{1}{ax+b}\,dx = \tfrac{1}{a}\ln|ax+b| + c$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Can it be rewritten? (expand, split, use an identity)</div>
+    $\sin^2 x = \tfrac{1}{2}(1 - \cos 2x)$ &nbsp;&middot;&nbsp; $\tan^2 x = \sec^2 x - 1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Is the derivative of an "inside" function present?</div>
+    $\displaystyle\int\frac{\mathrm{f}'(x)}{\mathrm{f}(x)}\,dx = \ln|\mathrm{f}(x)| + c$ &nbsp;&middot;&nbsp; $\displaystyle\int\mathrm{f}'(x)[\mathrm{f}(x)]^n\,dx = \frac{[\mathrm{f}(x)]^{n+1}}{n+1} + c$ &nbsp;— or substitute
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Is it a product of unrelated functions?</div>
+    By parts: $\displaystyle\int u\frac{dv}{dx}\,dx = uv - \int v\frac{du}{dx}\,dx$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Is it a fraction with a factorising denominator?</div>
+    Partial fractions, then logs
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Five integrals, five methods</div>
+    <div class="example-body">
+      <p>Find (a) $\int xe^{x^2}\,dx$ &nbsp; (b) $\int xe^x\,dx$ &nbsp; (c) $\int\dfrac{e^x}{e^x+1}\,dx$ &nbsp; (d) $\displaystyle\int_3^4\frac{4}{x^2-4}\,dx$ &nbsp; (e) $\displaystyle\int_0^{\pi}\sin^2 x\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $2x$ is the derivative of $x^2$ and $x$ is half of it — recognition: $\tfrac{1}{2}e^{x^2} + c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) No inside derivative present; a product — by parts with $u = x$: $xe^x - e^x + c$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) The numerator is the derivative of the denominator: $\ln(e^x + 1) + c$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(d) $\dfrac{4}{(x-2)(x+2)} \equiv \dfrac{1}{x-2} - \dfrac{1}{x+2}$, so $\Big[\ln\dfrac{x-2}{x+2}\Big]_3^4 = \ln\tfrac{1}{3} - \ln\tfrac{1}{5} = \ln\tfrac{5}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>(e) Identity: $\displaystyle\int_0^{\pi}\tfrac{1}{2}(1 - \cos 2x)\,dx = \Big[\tfrac{1}{2}x - \tfrac{1}{4}\sin 2x\Big]_0^{\pi} = \tfrac{\pi}{2}$.</span></div>
+      <div class="tip">(a) and (b) look almost identical, but one is a chain-rule pattern and the other a product. Asking <em>"is the derivative of the inside sitting outside?"</em> separates them instantly.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Integration Subtopics</div>
+<div class="section-body">
+
+  <p>Every part of DfE content area H (Integration) in the second year, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">H</span><span><a href="standard-integrals.html">Standard Integrals</a><span class="desc">$e^x$, $\tfrac{1}{x}$, trig functions; $\mathrm{f}(ax+b)$, $\tfrac{\mathrm{f}'}{\mathrm{f}}$, $\mathrm{f}'\mathrm{f}^n$; using trig identities.</span></span></li>
+    <li><span class="code">H</span><span><a href="substitution.html">Integration by Substitution</a><span class="desc">Choosing a substitution, replacing $dx$, and changing the limits.</span></span></li>
+    <li><span class="code">H</span><span><a href="by-parts.html">Integration by Parts</a><span class="desc">The formula, choosing $u$, repeated parts and $\int\ln x\,dx$.</span></span></li>
+    <li><span class="code">H</span><span><a href="partial-fractions.html">Integrating with Partial Fractions</a><span class="desc">Distinct and repeated linear factors, and improper fractions.</span></span></li>
+    <li><span class="code">H</span><span><a href="areas.html">Areas and Integration as a Limit</a><span class="desc">The limit of a sum, areas between curves and under parametric curves.</span></span></li>
+    <li><span class="code">H</span><span><a href="differential-equations.html">Differential Equations</a><span class="desc">Separating variables, general and particular solutions, and modelling.</span></span></li>
+  </ul>
+
+  <div class="tip">
+    Numerical integration with the <a href="../numerical-methods/trapezium-rule.html">trapezium rule</a> belongs to content area I and is on the Numerical Methods pages.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Multiplying instead of dividing.</strong> $\int e^{3x}\,dx = \tfrac{1}{3}e^{3x} + c$, not $3e^{3x}$. Differentiating multiplies by the inside's coefficient; integrating divides.
+  </div>
+
+  <div class="warn">
+    <strong>Dividing by a variable.</strong> $\int e^{x^2}\,dx$ is <em>not</em> $\dfrac{e^{x^2}}{2x}$. The reverse chain rule only adjusts by constants.
+  </div>
+
+  <div class="warn">
+    <strong>Wrong sign on trig.</strong> $\int\sin x\,dx = -\cos x + c$. Remember: differentiating $\cos$ gives a minus, so integrating $\sin$ does too.
+  </div>
+
+  <div class="warn">
+    <strong>Treating $\sin^2 x$ as a power.</strong> $\int\sin^2 x\,dx \neq \tfrac{1}{3}\sin^3 x$. Use the double-angle identity.
+  </div>
+
+  <div class="warn">
+    <strong>Keeping $x$-limits after substituting.</strong> Once the integral is in $u$, the limits must be $u$-values.
+  </div>
+
+  <div class="warn">
+    <strong>Losing the constant in a differential equation.</strong> Add $+\,c$ as soon as you integrate, and find it <em>before</em> exponentiating: $\ln y = x + c$ gives $y = Ae^x$, not $e^x + c$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Standard</h4><p>$\int e^x = e^x$, $\int\tfrac{1}{x} = \ln|x|$, $\int\cos x = \sin x$, $\int\sin x = -\cos x$, $\int\sec^2 x = \tan x$.</p></div>
+    <div class="ref-card"><h4>Linear inside</h4><p>Divide by the coefficient of $x$.</p></div>
+    <div class="ref-card"><h4>f′/f</h4><p>$\ln|\mathrm{f}(x)| + c$</p></div>
+    <div class="ref-card"><h4>Substitution</h4><p>Replace $dx$ and the limits.</p></div>
+    <div class="ref-card"><h4>Parts</h4><p>$uv - \int v\,u'\,dx$; $u$ = $\ln x$ or the polynomial.</p></div>
+    <div class="ref-card"><h4>Partial fractions</h4><p>Split, then each piece is a log or a power.</p></div>
+    <div class="ref-card"><h4>Between curves</h4><p>$\int(\text{top} - \text{bottom})\,dx$</p></div>
+    <div class="ref-card"><h4>Parametric area</h4><p>$\int y\,\dfrac{dx}{dt}\,dt$</p></div>
+    <div class="ref-card"><h4>Separable DE</h4><p>$\int\tfrac{1}{\mathrm{g}(y)}\,dy = \int\mathrm{f}(x)\,dx$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Integration topic. Decide on the method before you start writing.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\left(e^{2x} + \frac{1}{x}\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$= \tfrac{1}{2}e^{2x} + \ln|x| + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\cos(3x + 1)\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Linear inside, so divide by $3$: $\tfrac{1}{3}\sin(3x+1) + c$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\frac{x}{x^2+4}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{d}{dx}(x^2 + 4) = 2x$, and we have half of it.</p>
+          <p>$= \tfrac{1}{2}\ln(x^2 + 4) + c$ (no modulus needed since $x^2 + 4 &gt; 0$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\cos x\sin^4 x\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos x$ is the derivative of $\sin x$, so this is $\mathrm{f}'(x)[\mathrm{f}(x)]^4$.</p>
+          <p>$= \tfrac{1}{5}\sin^5 x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int xe^{3x}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>By parts: $u = x$, $\dfrac{dv}{dx} = e^{3x} \Rightarrow v = \tfrac{1}{3}e^{3x}$.</p>
+          <p>$= \tfrac{1}{3}xe^{3x} - \displaystyle\int\tfrac{1}{3}e^{3x}\,dx = \tfrac{1}{3}xe^{3x} - \tfrac{1}{9}e^{3x} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\frac{1}{x(x+2)}\,dx$ for $x &gt; 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{1}{x(x+2)} \equiv \dfrac{1/2}{x} - \dfrac{1/2}{x+2}$</p>
+          <p>$= \tfrac{1}{2}\ln x - \tfrac{1}{2}\ln(x+2) + c = \tfrac{1}{2}\ln\dfrac{x}{x+2} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Use the substitution $u = 1 - x$ to evaluate $\displaystyle\int_0^1 x(1-x)^4\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = 1 - u$, $dx = -du$. Limits: $x = 0 \Rightarrow u = 1$; $x = 1 \Rightarrow u = 0$.</p>
+          <p>$\displaystyle\int_1^0(1-u)u^4(-du) = \int_0^1\left(u^4 - u^5\right)du = \tfrac{1}{5} - \tfrac{1}{6} = \tfrac{1}{30}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the area enclosed between $y = x^2$ and $y = 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 = 2x \Rightarrow x = 0$ or $2$. The line is on top between them.</p>
+          <p>$\displaystyle\int_0^2(2x - x^2)\,dx = \Big[x^2 - \tfrac{1}{3}x^3\Big]_0^2 = 4 - \tfrac{8}{3} = \tfrac{4}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Solve $\dfrac{dy}{dx} = xy$, given $y = 2$ when $x = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\int\frac{1}{y}\,dy = \int x\,dx \Rightarrow \ln y = \tfrac{1}{2}x^2 + c$.</p>
+          <p>$x = 0$, $y = 2$: $c = \ln 2$. So $y = e^{x^2/2 + \ln 2} = 2e^{x^2/2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Show that $\displaystyle\int_1^e\ln x\,dx = 1$. &nbsp; (b) Find the exact value of $\displaystyle\int_0^{\pi}x\cos x\,dx$. &nbsp; (c) A student says "the answer to (b) is negative, so the question is wrong". Explain why the student is mistaken.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> By parts with $u = \ln x$, $\dfrac{dv}{dx} = 1$: $\int\ln x\,dx = x\ln x - x$.</p>
+          <p>$\Big[x\ln x - x\Big]_1^e = (e - e) - (0 - 1) = 1$ ✓</p>
+          <p><strong>(b)</strong> $u = x$, $v = \sin x$: $\displaystyle\int x\cos x\,dx = x\sin x - \int\sin x\,dx = x\sin x + \cos x$.</p>
+          <p>$\Big[x\sin x + \cos x\Big]_0^{\pi} = (0 - 1) - (0 + 1) = -2$</p>
+          <p><strong>(c)</strong> A definite integral is a signed area. For $\tfrac{\pi}{2} &lt; x &lt; \pi$, $x\cos x &lt; 0$, and that part of the curve below the axis outweighs the part above it, so a negative value is perfectly possible.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Integration Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

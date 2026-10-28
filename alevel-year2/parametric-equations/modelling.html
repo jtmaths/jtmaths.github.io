@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parametric Modelling &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎡 Parametric Modelling</h1>
+  <p>A Level Maths Year 2 · Parametric Equations</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE PARAMETER AS TIME
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Parameter as Time (or Angle)</div>
+<div class="section-body">
+
+  <div class="concept">
+    In a model, the parameter usually has a physical meaning. Most often it is <strong>time</strong> $t$: then $(x(t), y(t))$ is <em>where the object is at time $t$</em>. For a wheel or a ride it is often an <strong>angle</strong> $\theta$ turned through. The Cartesian equation tells you the shape of the path; only the parametric form tells you <em>when</em> the object is at each point.
+  </div>
+
+  <table>
+    <tr><th>Question asks…</th><th>What to do</th></tr>
+    <tr><td>Where is it at time $t = 2$?</td><td>Substitute $t = 2$ into both equations</td></tr>
+    <tr><td>When does it reach the ground?</td><td>Solve $y(t) = 0$ (taking the sensible root)</td></tr>
+    <tr><td>When is it highest?</td><td>Find the maximum of $y(t)$ — complete the square, or use calculus</td></tr>
+    <tr><td>What shape is the path?</td><td>Eliminate $t$ to get a Cartesian equation</td></tr>
+    <tr><td>For what values is the model valid?</td><td>Restrict $t$ so that the situation makes sense (e.g. $y \geqslant 0$, $t \geqslant 0$)</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Always state units</strong> and interpret answers in context: "the ball lands $38.4$ m from the point of projection after $3.2$ seconds", not just "$t = 3.2$".
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PROJECTILE-LIKE PATHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Projectile-like Paths</div>
+<div class="section-body">
+
+  <p>A ball thrown through the air moves at a steady speed horizontally while its height follows a quadratic in $t$. That gives parametric equations of the form $x = at$, $y = bt - ct^2$. (Where these come from is covered in Year 2 mechanics, on <a href="../mechanics/projectiles.html">Projectiles</a>.)</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A thrown ball</div>
+    <div class="example-body">
+      <p>A ball is thrown from ground level. Its position $t$ seconds later is $x = 12t$, $y = 16t - 5t^2$, where $x$ and $y$ are the horizontal and vertical distances in metres.</p>
+      <p>(a) When and where does it land? &nbsp;(b) Find its greatest height. &nbsp;(c) Find the Cartesian equation of its path, with the domain for which the model is valid.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $y = 0$: $t(16 - 5t) = 0$, so $t = 0$ (launch) or $t = 3.2$. It lands after $3.2$ s, at $x = 12 \times 3.2 = 38.4$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $y = -5(t^2 - 3.2t) = -5(t - 1.6)^2 + 12.8$. Greatest height $12.8$ m, at $t = 1.6$ s (halfway through the flight), where $x = 19.2$ m.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $t = \dfrac{x}{12}$, so $y = 16\left(\dfrac{x}{12}\right) - 5\left(\dfrac{x}{12}\right)^2 = \dfrac{4x}{3} - \dfrac{5x^2}{144}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The model applies while the ball is in the air: $0 \leqslant t \leqslant 3.2$, so $0 \leqslant x \leqslant 38.4$.</span></div>
+      <div class="svg-block">
+    <svg width="440" height="260" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="12">
+    <line x1="94.5" y1="198.9" x2="94.5" y2="204.9" stroke="#555"/>
+    <text x="94.5" y="216.9" text-anchor="middle" fill="#555">5</text>
+    <line x1="136.4" y1="198.9" x2="136.4" y2="204.9" stroke="#555"/>
+    <text x="136.4" y="216.9" text-anchor="middle" fill="#555">10</text>
+    <line x1="178.2" y1="198.9" x2="178.2" y2="204.9" stroke="#555"/>
+    <text x="178.2" y="216.9" text-anchor="middle" fill="#555">15</text>
+    <line x1="220.0" y1="198.9" x2="220.0" y2="204.9" stroke="#555"/>
+    <text x="220.0" y="216.9" text-anchor="middle" fill="#555">20</text>
+    <line x1="261.8" y1="198.9" x2="261.8" y2="204.9" stroke="#555"/>
+    <text x="261.8" y="216.9" text-anchor="middle" fill="#555">25</text>
+    <line x1="303.6" y1="198.9" x2="303.6" y2="204.9" stroke="#555"/>
+    <text x="303.6" y="216.9" text-anchor="middle" fill="#555">30</text>
+    <line x1="345.5" y1="198.9" x2="345.5" y2="204.9" stroke="#555"/>
+    <text x="345.5" y="216.9" text-anchor="middle" fill="#555">35</text>
+    <line x1="387.3" y1="198.9" x2="387.3" y2="204.9" stroke="#555"/>
+    <text x="387.3" y="216.9" text-anchor="middle" fill="#555">40</text>
+    <line x1="49.7" y1="224.0" x2="55.7" y2="224.0" stroke="#555"/>
+    <text x="46.7" y="228.0" text-anchor="end" fill="#555">-2</text>
+    <line x1="49.7" y1="179.8" x2="55.7" y2="179.8" stroke="#555"/>
+    <text x="46.7" y="183.8" text-anchor="end" fill="#555">2</text>
+    <line x1="49.7" y1="157.6" x2="55.7" y2="157.6" stroke="#555"/>
+    <text x="46.7" y="161.6" text-anchor="end" fill="#555">4</text>
+    <line x1="49.7" y1="135.5" x2="55.7" y2="135.5" stroke="#555"/>
+    <text x="46.7" y="139.5" text-anchor="end" fill="#555">6</text>
+    <line x1="49.7" y1="113.4" x2="55.7" y2="113.4" stroke="#555"/>
+    <text x="46.7" y="117.4" text-anchor="end" fill="#555">8</text>
+    <line x1="49.7" y1="91.3" x2="55.7" y2="91.3" stroke="#555"/>
+    <text x="46.7" y="95.3" text-anchor="end" fill="#555">10</text>
+    <line x1="49.7" y1="69.2" x2="55.7" y2="69.2" stroke="#555"/>
+    <text x="46.7" y="73.2" text-anchor="end" fill="#555">12</text>
+    <line x1="49.7" y1="47.1" x2="55.7" y2="47.1" stroke="#555"/>
+    <text x="46.7" y="51.1" text-anchor="end" fill="#555">14</text>
+    <line x1="26" y1="201.9" x2="416" y2="201.9" stroke="#333" stroke-width="1.5"/>
+    <line x1="52.7" y1="234" x2="52.7" y2="24" stroke="#333" stroke-width="1.5"/>
+    <text x="420" y="205.9" font-style="italic" font-size="14">x</text>
+    <text x="58.7" y="22" font-style="italic" font-size="14">y</text>
+    <polyline points="52.7,201.9 53.8,200.0 54.9,198.1 55.9,196.3 57.0,194.4 58.1,192.6 59.2,190.8 60.2,189.0 61.3,187.2 62.4,185.4 63.4,183.6 64.5,181.9 65.6,180.1 66.6,178.4 67.7,176.7 68.8,175.0 69.9,173.3 70.9,171.6 72.0,169.9 73.1,168.3 74.1,166.7 75.2,165.0 76.3,163.4 77.3,161.8 78.4,160.2 79.5,158.6 80.6,157.1 81.6,155.5 82.7,154.0 83.8,152.4 84.8,150.9 85.9,149.4 87.0,147.9 88.1,146.5 89.1,145.0 90.2,143.5 91.3,142.1 92.3,140.7 93.4,139.2 94.5,137.8 95.5,136.5 96.6,135.1 97.7,133.7 98.8,132.4 99.8,131.0 100.9,129.7 102.0,128.4 103.0,127.1 104.1,125.8 105.2,124.5 106.3,123.2 107.3,122.0 108.4,120.8 109.5,119.5 110.5,118.3 111.6,117.1 112.7,115.9 113.7,114.7 114.8,113.6 115.9,112.4 117.0,111.3 118.0,110.2 119.1,109.0 120.2,107.9 121.2,106.9 122.3,105.8 123.4,104.7 124.5,103.7 125.5,102.6 126.6,101.6 127.7,100.6 128.7,99.6 129.8,98.6 130.9,97.6 131.9,96.7 133.0,95.7 134.1,94.8 135.2,93.9 136.2,92.9 137.3,92.0 138.4,91.2 139.4,90.3 140.5,89.4 141.6,88.6 142.7,87.7 143.7,86.9 144.8,86.1 145.9,85.3 146.9,84.5 148.0,83.7 149.1,83.0 150.1,82.2 151.2,81.5 152.3,80.8 153.4,80.1 154.4,79.4 155.5,78.7 156.6,78.0 157.6,77.3 158.7,76.7 159.8,76.1 160.9,75.4 161.9,74.8 163.0,74.2 164.1,73.6 165.1,73.1 166.2,72.5 167.3,72.0 168.3,71.4 169.4,70.9 170.5,70.4 171.6,69.9 172.6,69.4 173.7,68.9 174.8,68.5 175.8,68.0 176.9,67.6 178.0,67.2 179.1,66.8 180.1,66.4 181.2,66.0 182.3,65.6 183.3,65.3 184.4,64.9 185.5,64.6 186.5,64.3 187.6,64.0 188.7,63.7 189.8,63.4 190.8,63.1 191.9,62.8 193.0,62.6 194.0,62.4 195.1,62.1 196.2,61.9 197.3,61.7 198.3,61.6 199.4,61.4 200.5,61.2 201.5,61.1 202.6,61.0 203.7,60.8 204.7,60.7 205.8,60.6 206.9,60.6 208.0,60.5 209.0,60.4 210.1,60.4 211.2,60.4 212.2,60.3 213.3,60.3 214.4,60.3 215.5,60.4 216.5,60.4 217.6,60.4 218.7,60.5 219.7,60.6 220.8,60.6 221.9,60.7 222.9,60.8 224.0,61.0 225.1,61.1 226.2,61.2 227.2,61.4 228.3,61.6 229.4,61.7 230.4,61.9 231.5,62.1 232.6,62.4 233.6,62.6 234.7,62.8 235.8,63.1 236.9,63.4 237.9,63.7 239.0,64.0 240.1,64.3 241.1,64.6 242.2,64.9 243.3,65.3 244.4,65.6 245.4,66.0 246.5,66.4 247.6,66.8 248.6,67.2 249.7,67.6 250.8,68.0 251.8,68.5 252.9,68.9 254.0,69.4 255.1,69.9 256.1,70.4 257.2,70.9 258.3,71.4 259.3,72.0 260.4,72.5 261.5,73.1 262.6,73.6 263.6,74.2 264.7,74.8 265.8,75.4 266.8,76.1 267.9,76.7 269.0,77.3 270.0,78.0 271.1,78.7 272.2,79.4 273.3,80.1 274.3,80.8 275.4,81.5 276.5,82.2 277.5,83.0 278.6,83.7 279.7,84.5 280.8,85.3 281.8,86.1 282.9,86.9 284.0,87.7 285.0,88.6 286.1,89.4 287.2,90.3 288.2,91.2 289.3,92.0 290.4,92.9 291.5,93.9 292.5,94.8 293.6,95.7 294.7,96.7 295.7,97.6 296.8,98.6 297.9,99.6 299.0,100.6 300.0,101.6 301.1,102.6 302.2,103.7 303.2,104.7 304.3,105.8 305.4,106.9 306.4,107.9 307.5,109.0 308.6,110.2 309.7,111.3 310.7,112.4 311.8,113.6 312.9,114.7 313.9,115.9 315.0,117.1 316.1,118.3 317.2,119.5 318.2,120.8 319.3,122.0 320.4,123.2 321.4,124.5 322.5,125.8 323.6,127.1 324.6,128.4 325.7,129.7 326.8,131.0 327.9,132.4 328.9,133.7 330.0,135.1 331.1,136.5 332.1,137.8 333.2,139.2 334.3,140.7 335.4,142.1 336.4,143.5 337.5,145.0 338.6,146.5 339.6,147.9 340.7,149.4 341.8,150.9 342.8,152.4 343.9,154.0 345.0,155.5 346.1,157.1 347.1,158.6 348.2,160.2 349.3,161.8 350.3,163.4 351.4,165.0 352.5,166.7 353.6,168.3 354.6,169.9 355.7,171.6 356.8,173.3 357.8,175.0 358.9,176.7 360.0,178.4 361.0,180.1 362.1,181.9 363.2,183.6 364.3,185.4 365.3,187.2 366.4,189.0 367.5,190.8 368.5,192.6 369.6,194.4 370.7,196.3 371.7,198.1 372.8,200.0 373.9,201.9" fill="none" stroke="#4f46e5" stroke-width="2.5"/>
+    <circle cx="213.3" cy="60.3" r="3.5" fill="#7c3aed"/>
+    <text x="153.3" y="50.3" fill="#3730a3">max (19.2, 12.8), t = 1.6</text>
+    <circle cx="373.9" cy="201.9" r="3.5" fill="#7c3aed"/>
+    <text x="343.9" y="191.9" fill="#3730a3">(38.4, 0)</text>
+    <text x="353.8" y="52.6" fill="#fff" font-weight="600">y</text>
+    </svg>
+      </div>
+      <div class="tip"><strong>Does it clear a 2 m wall 30 m away?</strong> $x = 30$ when $t = 2.5$, and then $y = 40 - 31.25 = 8.75$ m. Yes, comfortably.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CIRCULAR MOTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Circular Motion: A Big Wheel</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Moving round a circle of radius $r$, centre $(a, b)$</div>
+    $x = a + r\sin(\omega t)$, &nbsp;$y = b - r\cos(\omega t)$ &nbsp;— starts at the bottom $(a,\, b - r)$ when $t = 0$<br>
+    One revolution takes $\dfrac{2\pi}{\omega}$ (with the angle in radians)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — An observation wheel</div>
+    <div class="example-body">
+      <p>A capsule on an observation wheel has position $x = 20\sin\left(\dfrac{\pi t}{15}\right)$, $y = 22 - 20\cos\left(\dfrac{\pi t}{15}\right)$, where $t$ is in minutes, $y$ is the height above the ground in metres and $x$ is the horizontal displacement from the vertical line through the centre.</p>
+      <p>(a) Find the radius, the height of the centre, and the time for one revolution. &nbsp;(b) Find the lowest and greatest heights. &nbsp;(c) For how long in each revolution is the capsule more than $32$ m above the ground?</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $x^2 + (y - 22)^2 = 400$: a circle, radius $20$ m, centre $22$ m above the ground. One revolution when $\dfrac{\pi t}{15} = 2\pi$: $t = 30$ minutes.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\cos$ ranges from $-1$ to $1$, so $y$ ranges from $22 - 20 = 2$ m (at $t = 0$) to $22 + 20 = 42$ m (at $t = 15$).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $22 - 20\cos\left(\dfrac{\pi t}{15}\right) > 32 \Rightarrow \cos\left(\dfrac{\pi t}{15}\right) < -\dfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>For $0 \leqslant \dfrac{\pi t}{15} \leqslant 2\pi$ this holds when $\dfrac{2\pi}{3} < \dfrac{\pi t}{15} < \dfrac{4\pi}{3}$, i.e. $10 < t < 20$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So the capsule is above $32$ m for $10$ minutes of each $30$-minute revolution.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – A ROLLING WHEEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> A Point on a Rolling Wheel</div>
+<div class="section-body">
+
+  <div class="concept">
+    A bicycle wheel of radius $r$ rolls along flat ground. A small stone stuck in the tyre traces a <strong>cycloid</strong>: $x = r(\theta - \sin\theta)$, $y = r(1 - \cos\theta)$, where $\theta$ is the angle (in radians) the wheel has turned. The $r\theta$ term is how far the wheel's centre has moved; the $\sin$ and $\cos$ terms describe the stone's position relative to the centre.
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="200" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="12">
+    <line x1="129.1" y1="131.5" x2="129.1" y2="137.5" stroke="#555"/>
+    <text x="129.1" y="149.5" text-anchor="middle" fill="#555">1</text>
+    <line x1="206.7" y1="131.5" x2="206.7" y2="137.5" stroke="#555"/>
+    <text x="206.7" y="149.5" text-anchor="middle" fill="#555">2</text>
+    <line x1="284.3" y1="131.5" x2="284.3" y2="137.5" stroke="#555"/>
+    <text x="284.3" y="149.5" text-anchor="middle" fill="#555">3</text>
+    <line x1="361.9" y1="131.5" x2="361.9" y2="137.5" stroke="#555"/>
+    <text x="361.9" y="149.5" text-anchor="middle" fill="#555">4</text>
+    <line x1="48.5" y1="85.2" x2="54.5" y2="85.2" stroke="#555"/>
+    <text x="45.5" y="89.2" text-anchor="end" fill="#555">0.5</text>
+    <line x1="48.5" y1="36.0" x2="54.5" y2="36.0" stroke="#555"/>
+    <text x="45.5" y="40.0" text-anchor="end" fill="#555">1</text>
+    <line x1="26" y1="134.5" x2="436" y2="134.5" stroke="#333" stroke-width="1.5"/>
+    <line x1="51.5" y1="174" x2="51.5" y2="24" stroke="#333" stroke-width="1.5"/>
+    <text x="440" y="138.5" font-style="italic" font-size="14">x</text>
+    <text x="57.5" y="22" font-style="italic" font-size="14">y</text>
+    <polyline points="51.5,134.5 51.5,134.4 51.5,134.4 51.5,134.3 51.5,134.2 51.5,134.0 51.6,133.9 51.6,133.6 51.6,133.4 51.6,133.1 51.7,132.8 51.7,132.4 51.8,132.0 51.8,131.6 51.9,131.2 52.0,130.7 52.1,130.2 52.2,129.7 52.3,129.1 52.5,128.5 52.6,127.9 52.8,127.2 53.0,126.6 53.2,125.8 53.4,125.1 53.6,124.4 53.9,123.6 54.2,122.8 54.5,122.0 54.8,121.1 55.1,120.3 55.5,119.4 55.9,118.5 56.3,117.5 56.7,116.6 57.2,115.6 57.7,114.7 58.2,113.7 58.7,112.7 59.2,111.7 59.8,110.6 60.4,109.6 61.1,108.6 61.7,107.5 62.4,106.5 63.1,105.4 63.8,104.3 64.6,103.2 65.4,102.2 66.2,101.1 67.0,100.0 67.9,98.9 68.8,97.8 69.7,96.8 70.7,95.7 71.6,94.6 72.6,93.5 73.6,92.5 74.7,91.4 75.8,90.4 76.9,89.4 78.0,88.3 79.2,87.3 80.3,86.3 81.6,85.3 82.8,84.4 84.0,83.4 85.3,82.5 86.6,81.5 87.9,80.6 89.3,79.7 90.6,78.9 92.0,78.0 93.4,77.2 94.9,76.4 96.3,75.6 97.8,74.9 99.3,74.2 100.8,73.4 102.3,72.8 103.8,72.1 105.4,71.5 106.9,70.9 108.5,70.3 110.1,69.8 111.7,69.3 113.3,68.8 115.0,68.4 116.6,68.0 118.3,67.6 119.9,67.2 121.6,66.9 123.3,66.6 124.9,66.4 126.6,66.1 128.3,66.0 130.0,65.8 131.7,65.7 133.4,65.6 135.1,65.6 136.8,65.5 138.6,65.6 140.3,65.6 142.0,65.7 143.7,65.8 145.4,66.0 147.1,66.1 148.7,66.4 150.4,66.6 152.1,66.9 153.8,67.2 155.4,67.6 157.1,68.0 158.7,68.4 160.4,68.8 162.0,69.3 163.6,69.8 165.2,70.3 166.8,70.9 168.3,71.5 169.9,72.1 171.4,72.8 172.9,73.4 174.4,74.2 175.9,74.9 177.4,75.6 178.8,76.4 180.3,77.2 181.7,78.0 183.1,78.9 184.4,79.7 185.8,80.6 187.1,81.5 188.4,82.5 189.7,83.4 190.9,84.4 192.1,85.3 193.3,86.3 194.5,87.3 195.7,88.3 196.8,89.4 197.9,90.4 199.0,91.4 200.0,92.5 201.1,93.5 202.1,94.6 203.0,95.7 204.0,96.8 204.9,97.8 205.8,98.9 206.7,100.0 207.5,101.1 208.3,102.2 209.1,103.2 209.9,104.3 210.6,105.4 211.3,106.5 212.0,107.5 212.6,108.6 213.3,109.6 213.9,110.6 214.4,111.7 215.0,112.7 215.5,113.7 216.0,114.7 216.5,115.6 217.0,116.6 217.4,117.5 217.8,118.5 218.2,119.4 218.5,120.3 218.9,121.1 219.2,122.0 219.5,122.8 219.8,123.6 220.0,124.4 220.3,125.1 220.5,125.8 220.7,126.6 220.9,127.2 221.1,127.9 221.2,128.5 221.4,129.1 221.5,129.7 221.6,130.2 221.7,130.7 221.8,131.2 221.9,131.6 221.9,132.0 222.0,132.4 222.0,132.8 222.1,133.1 222.1,133.4 222.1,133.6 222.1,133.9 222.2,134.0 222.2,134.2 222.2,134.3 222.2,134.4 222.2,134.4 222.2,134.5 222.2,134.4 222.2,134.4 222.2,134.3 222.2,134.2 222.2,134.0 222.2,133.9 222.2,133.6 222.2,133.4 222.3,133.1 222.3,132.8 222.4,132.4 222.4,132.0 222.5,131.6 222.6,131.2 222.6,130.7 222.7,130.2 222.9,129.7 223.0,129.1 223.1,128.5 223.3,127.9 223.4,127.2 223.6,126.6 223.8,125.8 224.1,125.1 224.3,124.4 224.6,123.6 224.8,122.8 225.1,122.0 225.5,121.1 225.8,120.3 226.2,119.4 226.5,118.5 227.0,117.5 227.4,116.6 227.8,115.6 228.3,114.7 228.8,113.7 229.3,112.7 229.9,111.7 230.5,110.6 231.1,109.6 231.7,108.6 232.4,107.5 233.0,106.5 233.7,105.4 234.5,104.3 235.2,103.2 236.0,102.2 236.8,101.1 237.7,100.0 238.5,98.9 239.4,97.8 240.4,96.8 241.3,95.7 242.3,94.6 243.3,93.5 244.3,92.5 245.4,91.4 246.4,90.4 247.5,89.4 248.7,88.3 249.8,87.3 251.0,86.3 252.2,85.3 253.4,84.4 254.7,83.4 256.0,82.5 257.3,81.5 258.6,80.6 259.9,79.7 261.3,78.9 262.7,78.0 264.1,77.2 265.5,76.4 267.0,75.6 268.4,74.9 269.9,74.2 271.4,73.4 272.9,72.8 274.5,72.1 276.0,71.5 277.6,70.9 279.2,70.3 280.8,69.8 282.4,69.3 284.0,68.8 285.6,68.4 287.3,68.0 288.9,67.6 290.6,67.2 292.2,66.9 293.9,66.6 295.6,66.4 297.3,66.1 299.0,66.0 300.7,65.8 302.4,65.7 304.1,65.6 305.8,65.6 307.5,65.5 309.2,65.6 310.9,65.6 312.6,65.7 314.3,65.8 316.0,66.0 317.7,66.1 319.4,66.4 321.1,66.6 322.8,66.9 324.4,67.2 326.1,67.6 327.7,68.0 329.4,68.4 331.0,68.8 332.6,69.3 334.2,69.8 335.8,70.3 337.4,70.9 339.0,71.5 340.5,72.1 342.1,72.8 343.6,73.4 345.1,74.2 346.6,74.9 348.0,75.6 349.5,76.4 350.9,77.2 352.3,78.0 353.7,78.9 355.1,79.7 356.4,80.6 357.7,81.5 359.0,82.5 360.3,83.4 361.6,84.4 362.8,85.3 364.0,86.3 365.2,87.3 366.3,88.3 367.5,89.4 368.6,90.4 369.6,91.4 370.7,92.5 371.7,93.5 372.7,94.6 373.7,95.7 374.6,96.8 375.6,97.8 376.5,98.9 377.3,100.0 378.2,101.1 379.0,102.2 379.8,103.2 380.5,104.3 381.3,105.4 382.0,106.5 382.6,107.5 383.3,108.6 383.9,109.6 384.5,110.6 385.1,111.7 385.7,112.7 386.2,113.7 386.7,114.7 387.2,115.6 387.6,116.6 388.0,117.5 388.5,118.5 388.8,119.4 389.2,120.3 389.5,121.1 389.9,122.0 390.2,122.8 390.4,123.6 390.7,124.4 390.9,125.1 391.2,125.8 391.4,126.6 391.6,127.2 391.7,127.9 391.9,128.5 392.0,129.1 392.1,129.7 392.3,130.2 392.4,130.7 392.4,131.2 392.5,131.6 392.6,132.0 392.6,132.4 392.7,132.8 392.7,133.1 392.8,133.4 392.8,133.6 392.8,133.9 392.8,134.0 392.8,134.2 392.8,134.3 392.8,134.4 392.8,134.4 392.8,134.5" fill="none" stroke="#4f46e5" stroke-width="2.5"/>
+    <circle cx="136.8" cy="65.5" r="3.5" fill="#7c3aed"/>
+    <text x="144.8" y="61.5" fill="#3730a3">θ = π</text>
+    <circle cx="222.2" cy="134.5" r="3.5" fill="#7c3aed"/>
+    <text x="162.2" y="166.5" fill="#3730a3">θ = 2π: x = 2πr ≈ 2.20</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A stone in a tyre</div>
+    <div class="example-body">
+      <p>A wheel has radius $0.35$ m. Using the cycloid model, find (a) the greatest height of the stone and where it occurs in the first revolution, (b) how far the bicycle moves in one revolution, and (c) the first value of $\theta$ at which the stone is $0.525$ m above the ground.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $y = 0.35(1 - \cos\theta)$ is greatest when $\cos\theta = -1$, i.e. $\theta = \pi$: $y = 0.7$ m (the top of the wheel). Then $x = 0.35\pi \approx 1.10$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) One revolution is $\theta = 2\pi$: $x = 0.35(2\pi - 0) = 0.7\pi \approx 2.20$ m — the circumference, as expected.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $0.35(1 - \cos\theta) = 0.525 \Rightarrow 1 - \cos\theta = 1.5 \Rightarrow \cos\theta = -\tfrac12 \Rightarrow \theta = \dfrac{2\pi}{3}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – RESTRICTING THE DOMAIN
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Restricting the Domain and Criticising the Model</div>
+<div class="section-body">
+
+  <div class="concept">
+    The equations of a model usually make sense mathematically for all $t$, but physically only for some. State the restriction, and say why.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Two boats: paths cross, but do they collide?</div>
+    <div class="example-body">
+      <p>Two boats move so that, $t$ hours after noon, boat A is at $x = t$, $y = 2t$ and boat B is at $x = 6 - t$, $y = t + 3$ (distances in km). Do their paths cross? Do the boats collide?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Paths: A lies on $y = 2x$; B lies on $y = (6 - x) + 3 = 9 - x$. These meet where $2x = 9 - x$: $x = 3$, $y = 6$. So the paths cross at $(3, 6)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>A is at $(3, 6)$ when $t = 3$. B is at $x = 3$ when $t = 3$, and then $y = 6$. Both are there at the <strong>same time</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the boats collide at 3 pm (if the model is right and the boats are treated as points).</span></div>
+      <div class="warn">Paths crossing is not the same as a collision. The Cartesian equations only tell you about the paths; you need the parameter to check whether the objects are there <em>at the same time</em>.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Limitations</div>
+    <div class="example-body">
+      <p>Give three limitations of the model $x = 12t$, $y = 16t - 5t^2$ for the ball in Worked Example 1.</p>
+      <div class="step-row"><span class="arrow">①</span><span>It ignores air resistance, which would slow the ball and shorten its range.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>It treats the ball as a particle, ignoring its size and any spin.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>It does not apply for $t > 3.2$: the formula would give negative heights, but the ball has hit the ground.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Position at time $t$</h4><p>Substitute into both equations.</p></div>
+    <div class="ref-card"><h4>Lands</h4><p>Solve $y(t) = 0$, take $t > 0$.</p></div>
+    <div class="ref-card"><h4>Highest point</h4><p>Complete the square on $y(t)$.</p></div>
+    <div class="ref-card"><h4>Path</h4><p>Eliminate $t$; state the domain.</p></div>
+    <div class="ref-card"><h4>Circle</h4><p>$x = a + r\sin\omega t$, $y = b - r\cos\omega t$; period $\tfrac{2\pi}{\omega}$.</p></div>
+    <div class="ref-card"><h4>Cycloid</h4><p>$x = r(\theta - \sin\theta)$, $y = r(1 - \cos\theta)$.</p></div>
+    <div class="ref-card"><h4>Collision</h4><p>Same point at the <strong>same</strong> $t$.</p></div>
+    <div class="ref-card"><h4>Validity</h4><p>Restrict $t$: e.g. $t \geqslant 0$, $y \geqslant 0$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A cyclist's position $t$ hours after setting off is $x = 2t$, $y = 3t + 1$ (km). (a) Where is she when $t = 2$? &nbsp;(b) Find the Cartesian equation of her path. &nbsp;(c) Find her speed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(4, 7)$.</p>
+          <p><strong>(b)</strong> $t = \tfrac{x}{2}$, so $y = \tfrac32 x + 1$ — a straight line.</p>
+          <p><strong>(c)</strong> Each hour $x$ increases by $2$ and $y$ by $3$, so she travels $\sqrt{2^2 + 3^2} = \sqrt{13} \approx 3.61$ km per hour.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A particle moves so that $x = t^2 - 4$, $y = 2t$, for $0 \leqslant t \leqslant 3$. Find its start and end points, and when and where it crosses the $y$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$t = 0$: $(-4, 0)$. &nbsp; $t = 3$: $(5, 6)$.</p>
+          <p>$x = 0$: $t^2 = 4$, $t = 2$ (as $t \geqslant 0$). Position $(0, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A ball is hit from a height of $1.5$ m. Its position after $t$ seconds is $x = 15t$, $y = 1.5 + 10t - 4.9t^2$ (metres). Find (a) its greatest height, (b) the horizontal distance travelled before it hits the ground. Give answers to 3 significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $y = -4.9\left(t - \tfrac{10}{9.8}\right)^2 + 1.5 + \dfrac{10^2}{4 \times 4.9}$, so the greatest height is $1.5 + \dfrac{100}{19.6} = 6.60$ m (3 s.f.), at $t \approx 1.02$ s.</p>
+          <p><strong>(b)</strong> $4.9t^2 - 10t - 1.5 = 0 \Rightarrow t = \dfrac{10 + \sqrt{100 + 29.4}}{9.8} = 2.181\ldots$ (the other root is negative).</p>
+          <p>$x = 15 \times 2.181\ldots = 32.7$ m (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A car drives round a roundabout with $x = 15\cos\left(\dfrac{t}{3}\right)$, $y = 15\sin\left(\dfrac{t}{3}\right)$ (metres, seconds). Find the Cartesian equation of the path and the time for one full circuit.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + y^2 = 225$: a circle of radius $15$ m centred on the origin.</p>
+          <p>One circuit when $\tfrac{t}{3} = 2\pi$: $t = 6\pi \approx 18.8$ seconds.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A capsule on a big wheel has $x = 60\sin\left(\dfrac{\pi t}{15}\right)$, $y = 65 - 60\cos\left(\dfrac{\pi t}{15}\right)$, with $t$ in minutes and $y$ the height in metres. Find the greatest height, and how long in each revolution the capsule is more than $35$ m above the ground.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Greatest height $65 + 60 = 125$ m. One revolution takes $30$ minutes.</p>
+          <p>$65 - 60\cos\left(\dfrac{\pi t}{15}\right) > 35 \Rightarrow \cos\left(\dfrac{\pi t}{15}\right) < \dfrac12$.</p>
+          <p>For one revolution: $\dfrac{\pi}{3} < \dfrac{\pi t}{15} < \dfrac{5\pi}{3}$, so $5 < t < 25$.</p>
+          <p>That is $20$ minutes of each revolution.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A stone in a tyre of radius $0.3$ m follows $x = 0.3(\theta - \sin\theta)$, $y = 0.3(1 - \cos\theta)$. Find the horizontal position of the stone when it first reaches a height of $0.45$ m.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.3(1 - \cos\theta) = 0.45 \Rightarrow \cos\theta = -0.5 \Rightarrow \theta = \dfrac{2\pi}{3}$ (first time).</p>
+          <p>$x = 0.3\left(\dfrac{2\pi}{3} - \dfrac{\sqrt3}{2}\right) = 0.3(2.0944 - 0.8660) = 0.369$ m (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A stone is thrown with $x = 20t$, $y = 30t - 5t^2$ (metres, seconds). Find the Cartesian equation of its path, and state the values of $x$ for which the model is valid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$t = \tfrac{x}{20}$, so $y = \dfrac{30x}{20} - \dfrac{5x^2}{400} = \dfrac{3x}{2} - \dfrac{x^2}{80}$.</p>
+          <p>Valid while $y \geqslant 0$: $5t(6 - t) \geqslant 0$, so $0 \leqslant t \leqslant 6$, i.e. $0 \leqslant x \leqslant 120$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Drone P is at $x = 2t$, $y = t + 1$ and drone Q at $x = t + 3$, $y = 3t - 4$, $t$ seconds after launch (in metres, at the same height). Show that their paths cross, and determine whether they collide.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>P's path: $y = \tfrac{x}{2} + 1$. Q's path: $t = x - 3$, so $y = 3(x - 3) - 4 = 3x - 13$.</p>
+          <p>Paths meet when $\tfrac{x}{2} + 1 = 3x - 13 \Rightarrow \tfrac52 x = 14 \Rightarrow x = 5.6$, $y = 3.8$.</p>
+          <p>P reaches $x = 5.6$ at $t = 2.8$; Q reaches $x = 5.6$ at $t = 2.6$.</p>
+          <p>They are at the crossing point at different times, so they do <strong>not</strong> collide.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A bird flies with $x = 10t$, $y = 20 + 5\sin\left(\dfrac{\pi t}{2}\right)$ (metres, seconds). (a) State its lowest and greatest heights. &nbsp;(b) Find the Cartesian equation of its path. &nbsp;(c) Find when and where it first reaches a height of $22.5$ m.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $15$ m and $25$ m.</p>
+          <p><strong>(b)</strong> $t = \tfrac{x}{10}$, so $y = 20 + 5\sin\left(\dfrac{\pi x}{20}\right)$.</p>
+          <p><strong>(c)</strong> $5\sin\left(\dfrac{\pi t}{2}\right) = 2.5 \Rightarrow \sin\left(\dfrac{\pi t}{2}\right) = \tfrac12 \Rightarrow \dfrac{\pi t}{2} = \dfrac{\pi}{6} \Rightarrow t = \tfrac13$ s.</p>
+          <p>Then $x = \tfrac{10}{3} \approx 3.33$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A golf ball is struck from ground level. Its position after $t$ seconds is modelled by $x = 30t$, $y = 20t - 4.9t^2$, in metres.</p>
+      <p>(a) Find the Cartesian equation of the path. &nbsp;(b) Find the horizontal distance to where the ball lands. &nbsp;(c) A tree $10$ m tall stands $90$ m away along the line of flight. Does the ball clear it? &nbsp;(d) Find the greatest height. &nbsp;(e) State the domain of $t$ for which the model applies, and give one reason why the actual distance might be shorter.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $t = \tfrac{x}{30}$: $y = \dfrac{20x}{30} - \dfrac{4.9x^2}{900} = \dfrac{2x}{3} - \dfrac{49x^2}{9000}$.</p>
+          <p><strong>(b)</strong> $y = 0$: $t(20 - 4.9t) = 0 \Rightarrow t = \dfrac{20}{4.9} = 4.08\ldots$ s. Then $x = 30 \times 4.0816\ldots = 122$ m (3 s.f.).</p>
+          <p><strong>(c)</strong> $x = 90$ when $t = 3$: $y = 60 - 4.9 \times 9 = 15.9$ m. That is more than $10$ m, so the ball clears the tree by about $5.9$ m.</p>
+          <p><strong>(d)</strong> $y = -4.9\left(t - \tfrac{20}{9.8}\right)^2 + \dfrac{20^2}{4 \times 4.9}$, so the greatest height is $\dfrac{400}{19.6} = 20.4$ m (3 s.f.), at $t \approx 2.04$ s.</p>
+          <p><strong>(e)</strong> $0 \leqslant t \leqslant \dfrac{20}{4.9}$ (about $4.08$ s), while the ball is in the air. Air resistance, ignored by the model, would slow the ball and reduce the distance.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Parametric Modelling &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connected Rates of Change &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎈 Connected Rates of Change</h1>
+  <p>A Level Maths Year 2 · Differentiation</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – RATES OF CHANGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Rates of Change With Respect to Time</div>
+<div class="section-body">
+
+  <p>A derivative with respect to time, $\dfrac{\mathrm{d}V}{\mathrm{d}t}$, is a <strong>rate</strong>: how fast $V$ is changing per second, per minute or per year. In many problems several quantities change together — as a balloon inflates, its radius, surface area and volume all grow — and we know the rate for one quantity but want it for another.</p>
+
+  <div class="formula-box">
+    <div class="label">Connecting rates with the chain rule</div>
+    $\dfrac{\mathrm{d}V}{\mathrm{d}t} = \dfrac{\mathrm{d}V}{\mathrm{d}r} \times \dfrac{\mathrm{d}r}{\mathrm{d}t}$
+  </div>
+
+  <div class="concept">
+    The middle link $\dfrac{\mathrm{d}V}{\mathrm{d}r}$ comes from <strong>geometry</strong> (a formula connecting $V$ and $r$). The given rate comes from the <strong>question</strong>. The chain rule glues them together. The "fractions" can be checked by imagining the $\mathrm{d}r$'s cancelling.
+  </div>
+
+  <div class="tip">
+    <strong>Signs carry meaning.</strong> A quantity that is <em>decreasing</em> has a <em>negative</em> rate of change. "Water leaks out at $5$ cm$^3$ s$^{-1}$" means $\dfrac{\mathrm{d}V}{\mathrm{d}t} = -5$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – RELATED RATES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Related Rates Problems</div>
+<div class="section-body">
+
+  <ol class="steps">
+    <li><span>Write down the rate you are <strong>given</strong> and the rate you <strong>want</strong>, in $\dfrac{\mathrm{d}}{\mathrm{d}t}$ notation.</span></li>
+    <li><span>Find a formula linking the two quantities, and differentiate it.</span></li>
+    <li><span>Write the chain rule so that the "fractions" cancel to give the rate you want.</span></li>
+    <li><span>Substitute the values at the instant asked about — <strong>only after</strong> differentiating.</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A ripple</div>
+    <div class="example-body">
+      <p>A stone dropped in a pond makes a circular ripple whose radius increases at $3$ cm s$^{-1}$. Find the rate at which the area is increasing when the radius is $10$ cm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Given $\dfrac{\mathrm{d}r}{\mathrm{d}t} = 3$; want $\dfrac{\mathrm{d}A}{\mathrm{d}t}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = \pi r^2 \Rightarrow \dfrac{\mathrm{d}A}{\mathrm{d}r} = 2\pi r$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}A}{\mathrm{d}t} = \dfrac{\mathrm{d}A}{\mathrm{d}r} \times \dfrac{\mathrm{d}r}{\mathrm{d}t} = 2\pi r \times 3 = 6\pi r$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>When $r = 10$: $60\pi \approx 188$ cm$^2$ s$^{-1}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Inflating a balloon</div>
+    <div class="example-body">
+      <p>Air is pumped into a spherical balloon at $50$ cm$^3$ s$^{-1}$. When the radius is $5$ cm, find the rate of increase of (a) the radius &nbsp;(b) the surface area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Given $\dfrac{\mathrm{d}V}{\mathrm{d}t} = 50$. $\;V = \tfrac43\pi r^3 \Rightarrow \dfrac{\mathrm{d}V}{\mathrm{d}r} = 4\pi r^2 = 100\pi$ when $r = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(a) $\dfrac{\mathrm{d}r}{\mathrm{d}t} = \dfrac{\mathrm{d}V}{\mathrm{d}t} \div \dfrac{\mathrm{d}V}{\mathrm{d}r} = \dfrac{50}{100\pi} = \dfrac{1}{2\pi} \approx 0.159$ cm s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $S = 4\pi r^2 \Rightarrow \dfrac{\mathrm{d}S}{\mathrm{d}r} = 8\pi r = 40\pi$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}S}{\mathrm{d}t} = \dfrac{\mathrm{d}S}{\mathrm{d}r} \times \dfrac{\mathrm{d}r}{\mathrm{d}t} = 40\pi \times \dfrac{1}{2\pi} = 20$ cm$^2$ s$^{-1}$.</span></div>
+      <div class="tip">Dividing by $\dfrac{\mathrm{d}V}{\mathrm{d}r}$ is the same as multiplying by $\dfrac{\mathrm{d}r}{\mathrm{d}V}$ — this is $\dfrac{\mathrm{d}r}{\mathrm{d}V} = 1 \Big/ \dfrac{\mathrm{d}V}{\mathrm{d}r}$ from <a href="chain-product-quotient.html">the rules page</a>.</div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+<svg width="260" height="240" viewBox="0 0 260 240" role="img" aria-label="An inverted cone of radius 8 cm and height 20 cm containing water to depth h with surface radius r" font-family="Segoe UI, Arial, sans-serif">
+<polyline points="48.6,41.5 130.0,211.3 211.4,41.5" fill="none" fill-opacity="1" stroke="#333" stroke-width="2"/>
+<polyline points="48.6,41.5 211.4,41.5" fill="none" fill-opacity="1" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+<polygon points="81.1,109.4 130.0,211.3 178.9,109.4" fill="#93c5fd" fill-opacity="0.7" stroke="#2563eb" stroke-width="1"/>
+<line x1="130.0" y1="211.3" x2="130.0" y2="109.4" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="135.0" y="160.3" font-size="13" fill="#ea580c" text-anchor="start" font-style="italic">h</text>
+<line x1="130.0" y1="109.4" x2="178.9" y2="109.4" stroke="#16a34a" stroke-width="1.4"/>
+<text x="154.4" y="104.4" font-size="13" fill="#16a34a" text-anchor="middle" font-style="italic">r</text>
+<line x1="130.0" y1="41.5" x2="211.4" y2="41.5" stroke="#666" stroke-width="1.2"/>
+<text x="170.7" y="35.5" font-size="11" fill="#333" text-anchor="middle">radius 8 cm</text>
+<line x1="223.6" y1="211.3" x2="223.6" y2="41.5" stroke="#666" stroke-width="1"/>
+<text x="221.6" y="126.4" font-size="11" fill="#333" text-anchor="end">20 cm</text>
+</svg>
+</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Filling a cone</div>
+    <div class="example-body">
+      <p>A container is an inverted cone of radius $8$ cm and height $20$ cm. Water is poured in at $30$ cm$^3$ s$^{-1}$. How fast is the depth rising when the water is $10$ cm deep?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Similar triangles: $\dfrac{r}{h} = \dfrac{8}{20}$, so $r = \dfrac{2h}{5}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = \tfrac13\pi r^2 h = \tfrac13\pi\left(\dfrac{4h^2}{25}\right)h = \dfrac{4\pi h^3}{75}$ — volume in terms of $h$ alone.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}V}{\mathrm{d}h} = \dfrac{4\pi h^2}{25} = 16\pi$ when $h = 10$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}h}{\mathrm{d}t} = \dfrac{30}{16\pi} \approx 0.597$ cm s$^{-1}$.</span></div>
+      <div class="warn">Eliminate $r$ <strong>before</strong> differentiating. If you differentiate $\tfrac13\pi r^2 h$ treating $r$ as constant, you get the wrong answer — $r$ changes as the water rises.</div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+<svg width="320" height="280" viewBox="0 0 320 280" role="img" aria-label="A 5 m ladder leaning against a vertical wall, with its foot x metres from the wall and its top y metres up the wall" font-family="Segoe UI, Arial, sans-serif">
+<polyline points="30.4,234.2 289.6,234.2" fill="none" fill-opacity="1" stroke="#333" stroke-width="2"/>
+<polyline points="61.5,233.3 61.5,28.9" fill="none" fill-opacity="1" stroke="#333" stroke-width="2"/>
+<line x1="48.5" y1="222.2" x2="61.5" y2="233.3" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="200.0" x2="61.5" y2="211.1" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="177.8" x2="61.5" y2="188.9" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="155.6" x2="61.5" y2="166.7" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="133.3" x2="61.5" y2="144.4" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="111.1" x2="61.5" y2="122.2" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="88.9" x2="61.5" y2="100.0" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="66.7" x2="61.5" y2="77.8" stroke="#999" stroke-width="1"/>
+<line x1="48.5" y1="44.4" x2="61.5" y2="55.6" stroke="#999" stroke-width="1"/>
+<line x1="217.0" y1="233.3" x2="61.5" y2="55.6" stroke="#7c3aed" stroke-width="4"/>
+<text x="150.4" y="133.3" font-size="13" fill="#7c3aed" text-anchor="start">5 m</text>
+<line x1="61.5" y1="248.9" x2="217.0" y2="248.9" stroke="#16a34a" stroke-width="1.2"/>
+<text x="139.3" y="263.9" font-size="13" fill="#16a34a" text-anchor="middle" font-style="italic">x</text>
+<line x1="74.4" y1="233.3" x2="74.4" y2="55.6" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="80.4" y="144.4" font-size="13" fill="#ea580c" text-anchor="start" font-style="italic">y</text>
+<text x="221.0" y="227.3" font-size="11" fill="#16a34a" text-anchor="start">→ foot slides out</text>
+<text x="69.5" y="49.6" font-size="11" fill="#ea580c" text-anchor="start">↓ top slides down</text>
+</svg>
+</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — The sliding ladder</div>
+    <div class="example-body">
+      <p>A $5$ m ladder leans against a vertical wall. The foot slides away from the wall at $0.4$ m s$^{-1}$. How fast is the top sliding down when the foot is $3$ m from the wall?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the foot be $x$ m from the wall and the top $y$ m high. Pythagoras: $x^2 + y^2 = 25$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Differentiate with respect to $t$ (implicitly): $2x\dfrac{\mathrm{d}x}{\mathrm{d}t} + 2y\dfrac{\mathrm{d}y}{\mathrm{d}t} = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>When $x = 3$, $y = 4$, and $\dfrac{\mathrm{d}x}{\mathrm{d}t} = 0.4$: $\;2(3)(0.4) + 2(4)\dfrac{\mathrm{d}y}{\mathrm{d}t} = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}t} = -\dfrac{2.4}{8} = -0.3$. The top slides down at $0.3$ m s$^{-1}$.</span></div>
+      <div class="tip">This uses <a href="implicit-parametric.html">implicit differentiation</a>, but with respect to $t$ instead of $x$. The negative sign confirms that $y$ is decreasing.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A growing cube</div>
+    <div class="example-body">
+      <p>The volume of a cube is increasing at $12$ cm$^3$ s$^{-1}$. Find the rate of increase of the surface area when the edge is $2$ cm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$V = x^3$, $\dfrac{\mathrm{d}V}{\mathrm{d}x} = 3x^2 = 12$ when $x = 2$, so $\dfrac{\mathrm{d}x}{\mathrm{d}t} = \dfrac{12}{12} = 1$ cm s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S = 6x^2$, $\dfrac{\mathrm{d}S}{\mathrm{d}x} = 12x = 24$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}S}{\mathrm{d}t} = 24 \times 1 = 24$ cm$^2$ s$^{-1}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SETTING UP DIFFERENTIAL EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Constructing Simple Differential Equations</div>
+<div class="section-body">
+
+  <p>A <strong>differential equation</strong> is an equation involving a derivative. Many models are written in words about rates; your job is to translate them. Solving them is covered in <a href="../integration/differential-equations.html">Differential Equations</a>.</p>
+
+  <table>
+    <tr><th>Words</th><th>Mathematics</th></tr>
+    <tr><td>"the rate of change of $P$"</td><td>$\dfrac{\mathrm{d}P}{\mathrm{d}t}$</td></tr>
+    <tr><td>"is proportional to $P$"</td><td>$= kP$ &nbsp;(with $k$ a constant)</td></tr>
+    <tr><td>"decreases at a rate proportional to $m$"</td><td>$\dfrac{\mathrm{d}m}{\mathrm{d}t} = -km$, $\;k &gt; 0$</td></tr>
+    <tr><td>"inversely proportional to $x$"</td><td>$= \dfrac{k}{x}$</td></tr>
+    <tr><td>"proportional to the square root of $h$"</td><td>$= k\sqrt{h}$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Newton's law of cooling</div>
+    <div class="example-body">
+      <p>A cup of tea at temperature $\theta$ °C cools in a room at $20$ °C. The rate at which the temperature falls is proportional to the difference between the temperature of the tea and the room. Write down a differential equation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rate of change of temperature: $\dfrac{\mathrm{d}\theta}{\mathrm{d}t}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Difference in temperature: $\theta - 20$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Falling, so negative: $\dfrac{\mathrm{d}\theta}{\mathrm{d}t} = -k(\theta - 20)$, where $k &gt; 0$ is a constant.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A melting snowball</div>
+    <div class="example-body">
+      <p>A spherical snowball melts so that its volume decreases at a rate proportional to its surface area. Show that its radius decreases at a constant rate.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The model: $\dfrac{\mathrm{d}V}{\mathrm{d}t} = -kS = -4k\pi r^2$, $k &gt; 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Chain rule: $\dfrac{\mathrm{d}V}{\mathrm{d}t} = \dfrac{\mathrm{d}V}{\mathrm{d}r} \times \dfrac{\mathrm{d}r}{\mathrm{d}t} = 4\pi r^2\dfrac{\mathrm{d}r}{\mathrm{d}t}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $4\pi r^2\dfrac{\mathrm{d}r}{\mathrm{d}t} = -4k\pi r^2 \Rightarrow \dfrac{\mathrm{d}r}{\mathrm{d}t} = -k$, a constant. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Chain rule</h4><p>$\dfrac{\mathrm{d}A}{\mathrm{d}t} = \dfrac{\mathrm{d}A}{\mathrm{d}r}\times\dfrac{\mathrm{d}r}{\mathrm{d}t}$</p></div>
+    <div class="ref-card"><h4>Decreasing</h4><p>Negative rate.</p></div>
+    <div class="ref-card"><h4>Order</h4><p>Differentiate first, substitute values second.</p></div>
+    <div class="ref-card"><h4>Circle</h4><p>$A = \pi r^2$, $C = 2\pi r$</p></div>
+    <div class="ref-card"><h4>Sphere</h4><p>$V = \tfrac43\pi r^3$, $S = 4\pi r^2$</p></div>
+    <div class="ref-card"><h4>Cone</h4><p>$V = \tfrac13\pi r^2 h$; use similar triangles to remove $r$.</p></div>
+    <div class="ref-card"><h4>Ladder</h4><p>$x^2 + y^2 = L^2 \Rightarrow x\dot{x} + y\dot{y} = 0$</p></div>
+    <div class="ref-card"><h4>Proportional</h4><p>"$\propto P$" $\to$ $kP$; include a minus sign for decrease.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>The side of a square is increasing at $0.2$ cm s$^{-1}$. Find the rate of increase of the area when the side is $5$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = x^2$, $\dfrac{\mathrm{d}A}{\mathrm{d}x} = 2x = 10$.</p>
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}t} = 10 \times 0.2 = 2$ cm$^2$ s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$y = x^3 + 2x$ and $x$ is increasing at $3$ units per second. Find $\dfrac{\mathrm{d}y}{\mathrm{d}t}$ when $x = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 + 2 = 5$ at $x = 1$.</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}t} = 5 \times 3 = 15$ units per second.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The area of a circle increases at $20$ cm$^2$ s$^{-1}$. Find the rate of increase of the radius when $r = 4$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}r} = 2\pi r = 8\pi$.</p>
+          <p>$\dfrac{\mathrm{d}r}{\mathrm{d}t} = \dfrac{20}{8\pi} = \dfrac{5}{2\pi} \approx 0.796$ cm s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A radioactive substance decays so that its mass $m$ grams decreases at a rate proportional to the mass present. Write down a differential equation for $m$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}m}{\mathrm{d}t} = -km$, where $k$ is a positive constant.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>In a school of $1000$ students, the rate at which a rumour spreads is proportional to the product of the number $N$ who have heard it and the number who have not. Write a differential equation for $N$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Number who have not heard: $1000 - N$.</p>
+          <p>$\dfrac{\mathrm{d}N}{\mathrm{d}t} = kN(1000 - N)$, $k &gt; 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>The radius of a sphere increases at $0.1$ cm s$^{-1}$. Find the rate of increase of the volume when $r = 6$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}V}{\mathrm{d}r} = 4\pi r^2 = 144\pi$.</p>
+          <p>$\dfrac{\mathrm{d}V}{\mathrm{d}t} = 144\pi \times 0.1 = 14.4\pi \approx 45.2$ cm$^3$ s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A $10$ m ladder leans against a wall. The top slides down at $0.5$ m s$^{-1}$. How fast is the foot moving away from the wall when the top is $6$ m above the ground?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + y^2 = 100$; when $y = 6$, $x = 8$.</p>
+          <p>$2x\dfrac{\mathrm{d}x}{\mathrm{d}t} + 2y\dfrac{\mathrm{d}y}{\mathrm{d}t} = 0$ with $\dfrac{\mathrm{d}y}{\mathrm{d}t} = -0.5$:</p>
+          <p>$16\dfrac{\mathrm{d}x}{\mathrm{d}t} + 12(-0.5) = 0 \Rightarrow \dfrac{\mathrm{d}x}{\mathrm{d}t} = \dfrac{6}{16} = 0.375$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Water is poured at $5$ cm$^3$ s$^{-1}$ into an inverted cone whose semi-vertical angle is $30°$. Show that $V = \dfrac{\pi h^3}{9}$, and find the rate at which the depth is rising when $h = 3$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r = h\tan 30° = \dfrac{h}{\sqrt3}$, so $V = \tfrac13\pi\left(\dfrac{h^2}{3}\right)h = \dfrac{\pi h^3}{9}$.</p>
+          <p>$\dfrac{\mathrm{d}V}{\mathrm{d}h} = \dfrac{\pi h^2}{3} = 3\pi$ when $h = 3$.</p>
+          <p>$\dfrac{\mathrm{d}h}{\mathrm{d}t} = \dfrac{5}{3\pi} \approx 0.531$ cm s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>An oil slick is circular and its area increases at a constant $6$ m$^2$ s$^{-1}$. Find the rate of increase of the circumference when the radius is $3$ m.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}t} = 2\pi r\dfrac{\mathrm{d}r}{\mathrm{d}t} \Rightarrow 6 = 6\pi\dfrac{\mathrm{d}r}{\mathrm{d}t} \Rightarrow \dfrac{\mathrm{d}r}{\mathrm{d}t} = \dfrac{1}{\pi}$.</p>
+          <p>$C = 2\pi r \Rightarrow \dfrac{\mathrm{d}C}{\mathrm{d}t} = 2\pi \times \dfrac{1}{\pi} = 2$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A water trough is $2$ m long. Its cross-section is an inverted isosceles triangle, $0.6$ m wide at the top and $0.4$ m deep. Water flows in at $0.03$ m$^3$ per minute.</p>
+      <p>(a) Show that when the depth is $h$ m the volume is $V = 1.5h^2$ m$^3$.<br>(b) Find the rate at which the depth is rising when $h = 0.2$.<br>(c) Starting empty, how long does the trough take to fill?<br>(d) Find the rate at which the depth is rising just as the trough becomes full, and explain why it is smaller than in (b).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> By similar triangles the water surface has width $w = \dfrac{0.6}{0.4}h = 1.5h$. Cross-section area $= \tfrac12 \times 1.5h \times h = 0.75h^2$. Volume $= 0.75h^2 \times 2 = 1.5h^2$.</p>
+          <p><strong>(b)</strong> $\dfrac{\mathrm{d}V}{\mathrm{d}h} = 3h = 0.6$. $\;\dfrac{\mathrm{d}h}{\mathrm{d}t} = \dfrac{0.03}{0.6} = 0.05$ m per minute.</p>
+          <p><strong>(c)</strong> Full volume $= 1.5 \times 0.4^2 = 0.24$ m$^3$; time $= 0.24 \div 0.03 = 8$ minutes.</p>
+          <p><strong>(d)</strong> At $h = 0.4$: $\dfrac{\mathrm{d}V}{\mathrm{d}h} = 1.2$, so $\dfrac{\mathrm{d}h}{\mathrm{d}t} = \dfrac{0.03}{1.2} = 0.025$ m per minute.</p>
+          <p>The trough is wider near the top, so the same volume of water spreads over a larger surface and raises the level less.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Connected Rates of Change &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound and Double Angles &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➗ Compound and Double Angles</h1>
+  <p>A Level Maths Year 2 · Trigonometry</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE ADDITION FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Addition Formulae</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>The tempting mistake.</strong> $\sin(A + B)$ is <em>not</em> $\sin A + \sin B$. Try $A = B = 90^\circ$: $\sin 180^\circ = 0$, but $\sin 90^\circ + \sin 90^\circ = 2$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Compound angle formulae</div>
+    $\sin(A \pm B) \equiv \sin A\cos B \pm \cos A\sin B$<br>
+    $\cos(A \pm B) \equiv \cos A\cos B \mp \sin A\sin B$<br>
+    $\tan(A \pm B) \equiv \dfrac{\tan A \pm \tan B}{1 \mp \tan A\tan B}$
+  </div>
+
+  <div class="tip">
+    <strong>Watch the signs in the cosine formula.</strong> $\cos(A + B)$ has a <em>minus</em> in the middle and $\cos(A - B)$ has a <em>plus</em>. The sine formula keeps the same sign as the bracket.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Proof — $\tan(A + B)$ from the sine and cosine formulae</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$\tan(A + B) = \dfrac{\sin(A+B)}{\cos(A+B)} = \dfrac{\sin A\cos B + \cos A\sin B}{\cos A\cos B - \sin A\sin B}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide every term, top and bottom, by $\cos A\cos B$:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{\frac{\sin A}{\cos A} + \frac{\sin B}{\cos B}}{1 - \frac{\sin A}{\cos A}\cdot\frac{\sin B}{\cos B}} = \dfrac{\tan A + \tan B}{1 - \tan A\tan B}$ $\blacksquare$</span></div>
+      <div class="tip">Replacing $B$ by $-B$, and using $\sin(-B) = -\sin B$, $\cos(-B) = \cos B$, $\tan(-B) = -\tan B$, gives every "minus" version from the "plus" version.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Exact values</div>
+    <div class="example-body">
+      <p>Find the exact values of $\sin 75^\circ$ and $\tan 15^\circ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sin 75^\circ = \sin(45^\circ + 30^\circ) = \dfrac{\sqrt2}{2}\cdot\dfrac{\sqrt3}{2} + \dfrac{\sqrt2}{2}\cdot\dfrac12 = \dfrac{\sqrt6 + \sqrt2}{4}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tan 15^\circ = \tan(45^\circ - 30^\circ) = \dfrac{1 - \frac{1}{\sqrt3}}{1 + \frac{1}{\sqrt3}} = \dfrac{\sqrt3 - 1}{\sqrt3 + 1}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Rationalise: $\dfrac{(\sqrt3 - 1)^2}{3 - 1} = \dfrac{4 - 2\sqrt3}{2} = 2 - \sqrt3$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using given ratios</div>
+    <div class="example-body">
+      <p>$A$ and $B$ are acute, with $\sin A = \tfrac35$ and $\cos B = \tfrac{5}{13}$. Find the exact values of $\sin(A + B)$ and $\cos(A - B)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Right-angled triangles (3-4-5 and 5-12-13) give $\cos A = \tfrac45$ and $\sin B = \tfrac{12}{13}$ — both positive, as the angles are acute.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin(A + B) = \tfrac35\cdot\tfrac{5}{13} + \tfrac45\cdot\tfrac{12}{13} = \tfrac{15 + 48}{65} = \tfrac{63}{65}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\cos(A - B) = \tfrac45\cdot\tfrac{5}{13} + \tfrac35\cdot\tfrac{12}{13} = \tfrac{20 + 36}{65} = \tfrac{56}{65}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DOUBLE ANGLE FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Double Angle Formulae</div>
+<div class="section-body">
+
+  <p>Put $B = A$ in the addition formulae:</p>
+
+  <div class="formula-box">
+    <div class="label">Double angle formulae</div>
+    $\sin 2A \equiv 2\sin A\cos A$<br>
+    $\cos 2A \equiv \cos^2 A - \sin^2 A \equiv 2\cos^2 A - 1 \equiv 1 - 2\sin^2 A$<br>
+    $\tan 2A \equiv \dfrac{2\tan A}{1 - \tan^2 A}$
+  </div>
+
+  <div class="concept">
+    <strong>Choosing the form of $\cos 2A$.</strong> Pick the version that leaves you with only <em>one</em> trig function. If the rest of the equation has $\sin x$, use $1 - 2\sin^2 x$; if it has $\cos x$, use $2\cos^2 x - 1$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rearranged — essential for integration later</div>
+    $\cos^2 A \equiv \tfrac12(1 + \cos 2A) \qquad \sin^2 A \equiv \tfrac12(1 - \cos 2A)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Double angles from a given ratio</div>
+    <div class="example-body">
+      <p>Given $\cos x = -\tfrac13$ and $\tfrac{\pi}{2} < x < \pi$, find the exact values of $\sin 2x$ and $\cos 2x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sin^2 x = 1 - \tfrac19 = \tfrac89$. In the second quadrant $\sin x > 0$, so $\sin x = \tfrac{2\sqrt2}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin 2x = 2\cdot\tfrac{2\sqrt2}{3}\cdot\left(-\tfrac13\right) = -\tfrac{4\sqrt2}{9}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\cos 2x = 2\cos^2 x - 1 = \tfrac29 - 1 = -\tfrac79$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A triple angle</div>
+    <div class="example-body">
+      <p>Show that $\cos 3x \equiv 4\cos^3 x - 3\cos x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\cos 3x = \cos(2x + x) = \cos 2x\cos x - \sin 2x\sin x$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= (2\cos^2 x - 1)\cos x - 2\sin^2 x\cos x$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 2\cos^3 x - \cos x - 2(1 - \cos^2 x)\cos x$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 2\cos^3 x - \cos x - 2\cos x + 2\cos^3 x = 4\cos^3 x - 3\cos x$ $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Proving an identity</div>
+    <div class="example-body">
+      <p>Prove that $\dfrac{1 - \cos 2x}{\sin 2x} \equiv \tan x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Use $1 - \cos 2x = 2\sin^2 x$ (choosing the form that cancels the $1$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>LHS $= \dfrac{2\sin^2 x}{2\sin x\cos x} = \dfrac{\sin x}{\cos x} = \tan x = $ RHS $\blacksquare$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SOLVING EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Solving Equations</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Use a double angle formula to get every term in terms of $x$, not $2x$.</li>
+    <li>Rearrange to $= 0$ and factorise. <strong>Never divide by $\sin x$ or $\cos x$</strong> — you would lose the solutions where it is zero.</li>
+    <li>Solve each factor in the given interval.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Factorise, don't divide</div>
+    <div class="example-body">
+      <p>Solve $\sin 2x = \sin x$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2\sin x\cos x - \sin x = 0 \Rightarrow \sin x(2\cos x - 1) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin x = 0$: $x = 0, \pi, 2\pi$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\cos x = \tfrac12$: $x = \tfrac{\pi}{3}, \tfrac{5\pi}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 0, \tfrac{\pi}{3}, \pi, \tfrac{5\pi}{3}, 2\pi$.</span></div>
+      <div class="warn">Dividing both sides by $\sin x$ gives only $\cos x = \tfrac12$ and loses three of the five answers.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A quadratic in $\cos x$</div>
+    <div class="example-body">
+      <p>Solve $\cos 2x + 3\cos x + 2 = 0$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The other term is in $\cos x$, so use $2\cos^2 x - 1$: $\;2\cos^2 x + 3\cos x + 1 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(2\cos x + 1)(\cos x + 1) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\cos x = -\tfrac12$: $x = \tfrac{2\pi}{3}, \tfrac{4\pi}{3}$. &nbsp;$\cos x = -1$: $x = \pi$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Expanding a compound angle</div>
+    <div class="example-body">
+      <p>Solve $\sin\left(x + \tfrac{\pi}{6}\right) = 2\cos x$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sin x\cdot\tfrac{\sqrt3}{2} + \cos x\cdot\tfrac12 = 2\cos x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tfrac{\sqrt3}{2}\sin x = \tfrac32\cos x$. Here $\cos x \neq 0$ (otherwise $\sin x = 0$ too, which is impossible), so divide by $\cos x$:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tan x = \dfrac{3}{\sqrt3} = \sqrt3 \Rightarrow x = \tfrac{\pi}{3}, \tfrac{4\pi}{3}$.</span></div>
+      <div class="tip">Dividing to get $\tan x$ is fine here because you have justified that $\cos x$ cannot be zero. That justification is worth writing down.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>sin(A ± B)</h4><p>$\sin A\cos B \pm \cos A\sin B$</p></div>
+    <div class="ref-card"><h4>cos(A ± B)</h4><p>$\cos A\cos B \mp \sin A\sin B$ — sign flips.</p></div>
+    <div class="ref-card"><h4>tan(A ± B)</h4><p>$\dfrac{\tan A \pm \tan B}{1 \mp \tan A\tan B}$</p></div>
+    <div class="ref-card"><h4>sin 2A</h4><p>$2\sin A\cos A$</p></div>
+    <div class="ref-card"><h4>cos 2A</h4><p>$\cos^2 A - \sin^2 A = 2\cos^2 A - 1 = 1 - 2\sin^2 A$</p></div>
+    <div class="ref-card"><h4>tan 2A</h4><p>$\dfrac{2\tan A}{1 - \tan^2 A}$</p></div>
+    <div class="ref-card"><h4>Squares</h4><p>$\cos^2 A = \tfrac12(1 + \cos 2A)$, &nbsp;$\sin^2 A = \tfrac12(1 - \cos 2A)$</p></div>
+    <div class="ref-card"><h4>Equations</h4><p>Factorise; never divide by a function that could be zero.</p></div>
+    <div class="ref-card"><h4>Exact values</h4><p>$75^\circ = 45^\circ + 30^\circ$, &nbsp;$15^\circ = 45^\circ - 30^\circ$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the exact value of $\cos 105^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos(60^\circ + 45^\circ) = \tfrac12\cdot\tfrac{\sqrt2}{2} - \tfrac{\sqrt3}{2}\cdot\tfrac{\sqrt2}{2} = \dfrac{\sqrt2 - \sqrt6}{4}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Simplify $\sin 3x\cos x - \cos 3x\sin x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>This is $\sin(A - B)$ with $A = 3x$, $B = x$: $\;\sin(3x - x) = \sin 2x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that $\tan\left(x + \tfrac{\pi}{4}\right) \equiv \dfrac{1 + \tan x}{1 - \tan x}$, and find its value when $\tan x = \tfrac13$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tan\tfrac{\pi}{4} = 1$, so $\dfrac{\tan x + 1}{1 - \tan x \times 1} = \dfrac{1 + \tan x}{1 - \tan x}$ ✓</p>
+          <p>With $\tan x = \tfrac13$: $\dfrac{4/3}{2/3} = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$A$ is obtuse with $\sin A = \tfrac45$, and $B$ is acute with $\cos B = \tfrac{12}{13}$. Find the exact value of $\cos(A + B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A$ obtuse: $\cos A = -\tfrac35$. &nbsp;$B$ acute: $\sin B = \tfrac{5}{13}$.</p>
+          <p>$\cos(A + B) = \left(-\tfrac35\right)\tfrac{12}{13} - \tfrac45\cdot\tfrac{5}{13} = -\tfrac{36}{65} - \tfrac{20}{65} = -\tfrac{56}{65}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Given that $\tan x = \tfrac34$ and $\pi < x < \tfrac{3\pi}{2}$, find the exact values of $\sin 2x$ and $\tan 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Third quadrant: $\sin x = -\tfrac35$, $\cos x = -\tfrac45$.</p>
+          <p>$\sin 2x = 2\left(-\tfrac35\right)\left(-\tfrac45\right) = \tfrac{24}{25}$.</p>
+          <p>$\tan 2x = \dfrac{2\cdot\frac34}{1 - \frac{9}{16}} = \dfrac{3/2}{7/16} = \dfrac{24}{7}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $\cos 2x = \sin x$ for $0^\circ \leqslant x \leqslant 360^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 - 2\sin^2 x = \sin x \Rightarrow 2\sin^2 x + \sin x - 1 = 0 \Rightarrow (2\sin x - 1)(\sin x + 1) = 0$.</p>
+          <p>$\sin x = \tfrac12$: $x = 30^\circ, 150^\circ$. &nbsp;$\sin x = -1$: $x = 270^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Prove that $\dfrac{\sin 2x}{1 + \cos 2x} \equiv \tan x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 + \cos 2x = 2\cos^2 x$, so LHS $= \dfrac{2\sin x\cos x}{2\cos^2 x} = \dfrac{\sin x}{\cos x} = \tan x$ $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Prove that $\sin 3x \equiv 3\sin x - 4\sin^3 x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin 3x = \sin 2x\cos x + \cos 2x\sin x = 2\sin x\cos^2 x + (1 - 2\sin^2 x)\sin x$</p>
+          <p>$= 2\sin x(1 - \sin^2 x) + \sin x - 2\sin^3 x = 3\sin x - 4\sin^3 x$ $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Solve $3\cos 2x - \cos x + 2 = 0$ for $0^\circ \leqslant x \leqslant 360^\circ$, giving answers to $1$ decimal place.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3(2\cos^2 x - 1) - \cos x + 2 = 0 \Rightarrow 6\cos^2 x - \cos x - 1 = 0 \Rightarrow (2\cos x - 1)(3\cos x + 1) = 0$.</p>
+          <p>$\cos x = \tfrac12$: $x = 60^\circ, 300^\circ$.</p>
+          <p>$\cos x = -\tfrac13$: $x = 109.5^\circ$, $360^\circ - 109.5^\circ = 250.5^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Prove that $\cos^4 x - \sin^4 x \equiv \cos 2x$. &nbsp; (b) Hence solve $\cos^4 x - \sin^4 x = \tfrac12$ for $0 \leqslant x \leqslant \pi$. &nbsp; (c) Use a double angle formula to show that $\cos\dfrac{\pi}{8} = \dfrac{\sqrt{2 + \sqrt2}}{2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Difference of two squares: $(\cos^2 x - \sin^2 x)(\cos^2 x + \sin^2 x) = \cos 2x \times 1 = \cos 2x$ $\blacksquare$</p>
+          <p><strong>(b)</strong> $\cos 2x = \tfrac12$ with $0 \leqslant 2x \leqslant 2\pi$: $2x = \tfrac{\pi}{3}, \tfrac{5\pi}{3}$, so $x = \tfrac{\pi}{6}, \tfrac{5\pi}{6}$.</p>
+          <p><strong>(c)</strong> $\cos\tfrac{\pi}{4} = 2\cos^2\tfrac{\pi}{8} - 1$, so $\cos^2\tfrac{\pi}{8} = \dfrac{1 + \frac{\sqrt2}{2}}{2} = \dfrac{2 + \sqrt2}{4}$.</p>
+          <p>$\tfrac{\pi}{8}$ is acute, so take the positive root: $\cos\tfrac{\pi}{8} = \dfrac{\sqrt{2 + \sqrt2}}{2}$ $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Compound and Double Angles &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

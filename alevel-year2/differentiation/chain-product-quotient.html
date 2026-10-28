@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chain, Product and Quotient Rules &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⛓️ Chain, Product and Quotient Rules</h1>
+  <p>A Level Maths Year 2 · Differentiation</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE CHAIN RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Chain Rule</div>
+<div class="section-body">
+
+  <p>Year 1 differentiation handled sums of powers. Real functions are built by <strong>composing</strong> (one function inside another), <strong>multiplying</strong> and <strong>dividing</strong> simpler ones. Each operation has its own rule.</p>
+
+  <div class="concept">
+    A <strong>composite function</strong> has an "inside" and an "outside". In $y = (3x^2 - 1)^5$, the inside is $u = 3x^2 - 1$ and the outside is $y = u^5$. If $u$ changes $\dfrac{\mathrm{d}u}{\mathrm{d}x}$ times as fast as $x$, and $y$ changes $\dfrac{\mathrm{d}y}{\mathrm{d}u}$ times as fast as $u$, then $y$ changes at the product of the two rates.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The chain rule</div>
+    $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{\mathrm{d}y}{\mathrm{d}u} \times \dfrac{\mathrm{d}u}{\mathrm{d}x}$ &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp; $\dfrac{\mathrm{d}}{\mathrm{d}x}\,\mathrm{f}\big(\mathrm{g}(x)\big) = \mathrm{f}'\big(\mathrm{g}(x)\big) \times \mathrm{g}'(x)$
+  </div>
+
+  <p>In words: <strong>differentiate the outside (leaving the inside alone), then multiply by the derivative of the inside.</strong></p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A power of a bracket</div>
+    <div class="example-body">
+      <p>Differentiate $y = (3x^2 - 1)^5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $u = 3x^2 - 1$, so $y = u^5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}u} = 5u^4$ and $\dfrac{\mathrm{d}u}{\mathrm{d}x} = 6x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 5u^4 \times 6x = 30x(3x^2 - 1)^4$.</span></div>
+      <div class="tip">With practice you can skip the substitution: "$5(\ldots)^4$ times the derivative of the bracket".</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — The chain rule with standard functions</div>
+    <div class="example-body">
+      <p>Differentiate (a) $\sqrt{1 + 4x}$ &nbsp;(b) $\mathrm{e}^{x^2}$ &nbsp;(c) $\ln(x^2 + 1)$ &nbsp;(d) $\sin^3 x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $(1 + 4x)^{1/2} \to \tfrac12(1 + 4x)^{-1/2} \times 4 = \dfrac{2}{\sqrt{1 + 4x}}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\mathrm{e}^{x^2} \to \mathrm{e}^{x^2} \times 2x = 2x\mathrm{e}^{x^2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $\ln(x^2 + 1) \to \dfrac{1}{x^2 + 1} \times 2x = \dfrac{2x}{x^2 + 1}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(d) $\sin^3 x = (\sin x)^3 \to 3(\sin x)^2 \times \cos x = 3\sin^2 x\cos x$</span></div>
+      <div class="formula-box">
+        <div class="label">Two shortcuts worth knowing</div>
+        $\dfrac{\mathrm{d}}{\mathrm{d}x}\mathrm{e}^{\mathrm{f}(x)} = \mathrm{f}'(x)\,\mathrm{e}^{\mathrm{f}(x)}$ &nbsp;&nbsp;&nbsp; $\dfrac{\mathrm{d}}{\mathrm{d}x}\ln\mathrm{f}(x) = \dfrac{\mathrm{f}'(x)}{\mathrm{f}(x)}$
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE PRODUCT RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Product Rule</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The product rule</div>
+    If $y = uv$ then $\dfrac{\mathrm{d}y}{\mathrm{d}x} = u\dfrac{\mathrm{d}v}{\mathrm{d}x} + v\dfrac{\mathrm{d}u}{\mathrm{d}x}$
+  </div>
+
+  <div class="warn">
+    <strong>The derivative of a product is not the product of the derivatives.</strong> For $y = x^2 \cdot x^3 = x^5$, the derivative is $5x^4$, but $2x \times 3x^2 = 6x^3$. The product rule gives $x^2(3x^2) + x^3(2x) = 5x^4$ ✓.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Product rule and stationary points</div>
+    <div class="example-body">
+      <p>$y = x^2\mathrm{e}^{3x}$. Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ in factorised form, and the $x$-coordinates of the stationary points.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u = x^2$, $v = \mathrm{e}^{3x}$; $\;\dfrac{\mathrm{d}u}{\mathrm{d}x} = 2x$, $\dfrac{\mathrm{d}v}{\mathrm{d}x} = 3\mathrm{e}^{3x}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = x^2 \cdot 3\mathrm{e}^{3x} + \mathrm{e}^{3x} \cdot 2x = x\mathrm{e}^{3x}(3x + 2)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{e}^{3x} &gt; 0$ always, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$ when $x = 0$ or $x = -\dfrac23$.</span></div>
+      <div class="tip"><strong>Always factorise</strong> after the product rule. A common factor such as $\mathrm{e}^{3x}$ can never be zero, which makes solving $\frac{\mathrm{d}y}{\mathrm{d}x} = 0$ easy.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — With a logarithm</div>
+    <div class="example-body">
+      <p>Differentiate $y = x^3\ln x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u = x^3$, $v = \ln x$; $\;u' = 3x^2$, $v' = \dfrac1x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = x^3 \cdot \dfrac1x + \ln x \cdot 3x^2 = x^2 + 3x^2\ln x = x^2(1 + 3\ln x)$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE QUOTIENT RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Quotient Rule</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The quotient rule</div>
+    If $y = \dfrac{u}{v}$ then $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{v\dfrac{\mathrm{d}u}{\mathrm{d}x} - u\dfrac{\mathrm{d}v}{\mathrm{d}x}}{v^2}$
+  </div>
+
+  <div class="warn">
+    <strong>The order matters</strong> because of the minus sign: "bottom times derivative of top, minus top times derivative of bottom, all over bottom squared".
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A rational function</div>
+    <div class="example-body">
+      <p>Differentiate $y = \dfrac{2x + 1}{x - 3}$ and explain why the curve has no stationary points.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u = 2x + 1$, $v = x - 3$; $\;u' = 2$, $v' = 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{(x - 3)(2) - (2x + 1)(1)}{(x - 3)^2} = \dfrac{-7}{(x - 3)^2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The numerator is the constant $-7$, never zero: no stationary points. (The gradient is always negative.)</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Proving the derivative of $\tan x$</div>
+    <div class="example-body">
+      <p>Show that $\dfrac{\mathrm{d}}{\mathrm{d}x}(\tan x) = \sec^2 x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\tan x = \dfrac{\sin x}{\cos x}$; $u = \sin x$, $v = \cos x$, $u' = \cos x$, $v' = -\sin x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{\cos x \cdot \cos x - \sin x \cdot (-\sin x)}{\cos^2 x} = \dfrac{\cos^2 x + \sin^2 x}{\cos^2 x}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{1}{\cos^2 x} = \sec^2 x$. $\blacksquare$ &nbsp;(By the chain rule, $\tan kx \to k\sec^2 kx$.)</span></div>
+    </div>
+  </div>
+
+  <p>The same method gives the derivatives of the reciprocal trigonometric functions (they are in the formula booklet):</p>
+
+  <table>
+    <tr><th>$y$</th><th>$\sec x$</th><th>$\operatorname{cosec} x$</th><th>$\cot x$</th></tr>
+    <tr><td>$\dfrac{\mathrm{d}y}{\mathrm{d}x}$</td><td>$\sec x\tan x$</td><td>$-\operatorname{cosec} x\cot x$</td><td>$-\operatorname{cosec}^2 x$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Exponential over a polynomial</div>
+    <div class="example-body">
+      <p>Differentiate $y = \dfrac{\mathrm{e}^{2x}}{x}$ and find the exact stationary point.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{x \cdot 2\mathrm{e}^{2x} - \mathrm{e}^{2x} \cdot 1}{x^2} = \dfrac{\mathrm{e}^{2x}(2x - 1)}{x^2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Zero when $2x - 1 = 0$, so $x = \tfrac12$ and $y = \dfrac{\mathrm{e}}{1/2} = 2\mathrm{e}$. Stationary point $\left(\tfrac12, 2\mathrm{e}\right)$.</span></div>
+      <div class="tip">You could use the product rule on $\mathrm{e}^{2x}x^{-1}$ instead. Both give the same answer; choose whichever you find more reliable.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – dy/dx = 1/(dx/dy)
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Turning a Derivative Upside Down</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Reciprocal of a derivative</div>
+    $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{1}{\;\dfrac{\mathrm{d}x}{\mathrm{d}y}\;}$
+  </div>
+
+  <div class="concept">
+    This follows from the chain rule: $\dfrac{\mathrm{d}y}{\mathrm{d}x} \times \dfrac{\mathrm{d}x}{\mathrm{d}y} = \dfrac{\mathrm{d}y}{\mathrm{d}y} = 1$. It is useful when $x$ is given as a function of $y$ and it is hard or impossible to rearrange for $y$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — $x$ as a function of $y$</div>
+    <div class="example-body">
+      <p>A curve has equation $x = y^3 + y$. Find the gradient at the point $(2, 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Check the point: $1^3 + 1 = 2$ ✓.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}x}{\mathrm{d}y} = 3y^2 + 1$, which is $4$ when $y = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac14$.</span></div>
+      <div class="tip">Rearranging $x = y^3 + y$ for $y$ would need the cubic formula. Turning the derivative upside down avoids it completely.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Chain</h4><p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{\mathrm{d}y}{\mathrm{d}u}\cdot\dfrac{\mathrm{d}u}{\mathrm{d}x}$: outside, then times inside's derivative.</p></div>
+    <div class="ref-card"><h4>Product</h4><p>$(uv)' = uv' + vu'$</p></div>
+    <div class="ref-card"><h4>Quotient</h4><p>$\left(\dfrac uv\right)' = \dfrac{vu' - uv'}{v^2}$</p></div>
+    <div class="ref-card"><h4>$\mathrm{e}^{\mathrm{f}(x)}$</h4><p>$\to \mathrm{f}'(x)\mathrm{e}^{\mathrm{f}(x)}$</p></div>
+    <div class="ref-card"><h4>$\ln\mathrm{f}(x)$</h4><p>$\to \dfrac{\mathrm{f}'(x)}{\mathrm{f}(x)}$</p></div>
+    <div class="ref-card"><h4>Reciprocal</h4><p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 1 \Big/ \dfrac{\mathrm{d}x}{\mathrm{d}y}$</p></div>
+    <div class="ref-card"><h4>$\tan x$</h4><p>$\sec^2 x$; $\;\sec x \to \sec x\tan x$</p></div>
+    <div class="ref-card"><h4>Tidy up</h4><p>Factorise; exponentials are never zero.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate $y = (2x - 5)^6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6(2x - 5)^5 \times 2 = 12(2x - 5)^5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Differentiate (a) $\mathrm{e}^{\sin x}$ &nbsp;(b) $\ln(\cos x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\cos x\,\mathrm{e}^{\sin x}$.</p>
+          <p>(b) $\dfrac{-\sin x}{\cos x} = -\tan x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Differentiate $y = x^2\sin x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u = x^2$, $v = \sin x$: $\dfrac{\mathrm{d}y}{\mathrm{d}x} = x^2\cos x + 2x\sin x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Differentiate $y = \dfrac{x}{x^2 + 1}$ and find the stationary points.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{(x^2 + 1)(1) - x(2x)}{(x^2 + 1)^2} = \dfrac{1 - x^2}{(x^2 + 1)^2}$.</p>
+          <p>Zero when $x = \pm1$: stationary points $\left(1, \tfrac12\right)$ and $\left(-1, -\tfrac12\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Show that $\dfrac{\mathrm{d}}{\mathrm{d}x}(\sec x) = \sec x\tan x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sec x = (\cos x)^{-1}$. By the chain rule: $-1(\cos x)^{-2} \times (-\sin x) = \dfrac{\sin x}{\cos^2 x}$.</p>
+          <p>$= \dfrac{1}{\cos x}\cdot\dfrac{\sin x}{\cos x} = \sec x\tan x$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A curve has equation $x = y^2 - 4y$. Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ at the point where $y = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>When $y = 3$, $x = 9 - 12 = -3$: the point $(-3, 3)$.</p>
+          <p>$\dfrac{\mathrm{d}x}{\mathrm{d}y} = 2y - 4 = 2$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the exact coordinates of the stationary point of $y = x\mathrm{e}^{-2x}$ and determine its nature.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = x(-2\mathrm{e}^{-2x}) + \mathrm{e}^{-2x} = \mathrm{e}^{-2x}(1 - 2x)$. Zero at $x = \tfrac12$, $y = \tfrac12\mathrm{e}^{-1} = \dfrac{1}{2\mathrm{e}}$.</p>
+          <p>For $x$ slightly less than $\tfrac12$, $1 - 2x &gt; 0$ (increasing); slightly more, $1 - 2x &lt; 0$ (decreasing). So $\left(\tfrac12, \tfrac{1}{2\mathrm{e}}\right)$ is a <strong>maximum</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{\ln x}{x}$, $x &gt; 0$. Find the exact maximum value of $\mathrm{f}(x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = \dfrac{x \cdot \frac1x - \ln x \cdot 1}{x^2} = \dfrac{1 - \ln x}{x^2}$.</p>
+          <p>Zero when $\ln x = 1$, i.e. $x = \mathrm{e}$. $\mathrm{f}'(x) &gt; 0$ for $x &lt; \mathrm{e}$ and $&lt; 0$ for $x &gt; \mathrm{e}$, so this is a maximum.</p>
+          <p>Maximum value $\mathrm{f}(\mathrm{e}) = \dfrac{1}{\mathrm{e}}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Differentiate $y = \sqrt{x}\,(x + 2)^3$, giving your answer as a single fraction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Product rule with $u = x^{1/2}$, $v = (x + 2)^3$: $u' = \dfrac{1}{2\sqrt x}$, $v' = 3(x + 2)^2$.</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3\sqrt{x}(x + 2)^2 + \dfrac{(x + 2)^3}{2\sqrt x} = \dfrac{6x(x + 2)^2 + (x + 2)^3}{2\sqrt x}$</p>
+          <p>$= \dfrac{(x + 2)^2(6x + x + 2)}{2\sqrt x} = \dfrac{(x + 2)^2(7x + 2)}{2\sqrt x}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{\sin x}{2 + \cos x}$, $\;0 \leqslant x \leqslant 2\pi$.</p>
+      <p>(a) Show that $\mathrm{f}'(x) = \dfrac{1 + 2\cos x}{(2 + \cos x)^2}$.<br>(b) Find the exact coordinates of the stationary points.<br>(c) Find the equation of the tangent at $x = \dfrac{\pi}{2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $u = \sin x$, $v = 2 + \cos x$, $u' = \cos x$, $v' = -\sin x$:</p>
+          <p>$\mathrm{f}'(x) = \dfrac{(2 + \cos x)\cos x + \sin^2 x}{(2 + \cos x)^2} = \dfrac{2\cos x + \cos^2 x + \sin^2 x}{(2 + \cos x)^2} = \dfrac{1 + 2\cos x}{(2 + \cos x)^2}$.</p>
+          <p><strong>(b)</strong> $\cos x = -\tfrac12 \Rightarrow x = \dfrac{2\pi}{3}$ or $\dfrac{4\pi}{3}$.</p>
+          <p>$\mathrm{f}\!\left(\tfrac{2\pi}{3}\right) = \dfrac{\sqrt3/2}{3/2} = \dfrac{\sqrt3}{3}$ and $\mathrm{f}\!\left(\tfrac{4\pi}{3}\right) = -\dfrac{\sqrt3}{3}$.</p>
+          <p>Stationary points $\left(\tfrac{2\pi}{3}, \tfrac{\sqrt3}{3}\right)$ (maximum) and $\left(\tfrac{4\pi}{3}, -\tfrac{\sqrt3}{3}\right)$ (minimum).</p>
+          <p><strong>(c)</strong> $\mathrm{f}\!\left(\tfrac{\pi}{2}\right) = \tfrac12$, $\mathrm{f}'\!\left(\tfrac{\pi}{2}\right) = \dfrac{1}{4}$.</p>
+          <p>$y - \tfrac12 = \tfrac14\left(x - \tfrac{\pi}{2}\right)$, i.e. $y = \tfrac14 x + \tfrac12 - \tfrac{\pi}{8}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Chain, Product and Quotient Rules &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

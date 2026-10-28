@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stationary Points and Optimisation &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⛰️ Stationary Points and Optimisation</h1>
+  <p>A Level Maths Year 1 · Differentiation</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – INCREASING AND DECREASING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Increasing and Decreasing Functions</div>
+<div class="section-body">
+
+  <div class="concept">
+    The sign of the gradient tells you which way the curve is going. DfE content area G asks you to use the gradient to identify where a function is <strong>increasing</strong> or <strong>decreasing</strong>.
+  </div>
+
+  <table>
+    <tr><th>Gradient</th><th>Function is</th><th>Graph, left to right</th></tr>
+    <tr><td>$\mathrm{f}'(x) > 0$</td><td>Increasing</td><td>Going uphill</td></tr>
+    <tr><td>$\mathrm{f}'(x) < 0$</td><td>Decreasing</td><td>Going downhill</td></tr>
+    <tr><td>$\mathrm{f}'(x) = 0$</td><td>Stationary</td><td>Momentarily flat</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding where a function increases</div>
+    <div class="example-body">
+      <p>Find the values of $x$ for which $\mathrm{f}(x) = x^3 - 6x^2 + 9x + 1$ is increasing.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 3x^2 - 12x + 9 = 3(x - 1)(x - 3)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Solve $\mathrm{f}'(x) > 0$: a positive quadratic with roots $1$ and $3$ is positive outside the roots.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Increasing for $x < 1$ or $x > 3$. (Decreasing for $1 < x < 3$.)</span></div>
+      <div class="tip">Many textbooks include the end points and write $x \leqslant 1$ or $x \geqslant 3$; both are normally accepted. This is the <a href="../algebra/inequalities.html">quadratic inequality</a> technique applied to $\mathrm{f}'(x)$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Increasing everywhere</div>
+    <div class="example-body">
+      <p>Show that $\mathrm{f}(x) = x^3 + 3x - 5$ is an increasing function.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 3x^2 + 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x^2 \geqslant 0$ for all $x$, so $3x^2 + 3 \geqslant 3 > 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}'(x) > 0$ for all $x$, so $\mathrm{f}$ is increasing for all $x$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – STATIONARY POINTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding and Classifying Stationary Points</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Stationary point</div>
+    A point where $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$
+  </div>
+
+    <div class="svg-block">
+    <svg width="440" height="300" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="clip-cubic_sp"><rect x="34" y="16" width="386" height="242"/></clipPath></defs>
+    <line x1="149.8" y1="16" x2="149.8" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="227.0" y1="16" x2="227.0" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="304.2" y1="16" x2="304.2" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="381.4" y1="16" x2="381.4" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="150.4" x2="420" y2="150.4" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="96.7" x2="420" y2="96.7" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="42.9" x2="420" y2="42.9" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="204.2" x2="420" y2="204.2" stroke="#475569" stroke-width="1.5"/>
+    <line x1="72.6" y1="16" x2="72.6" y2="258" stroke="#475569" stroke-width="1.5"/>
+    <text x="424" y="208.2" font-family="Arial" font-size="13" font-style="italic" fill="#334155">x</text>
+    <text x="77.6" y="26" font-family="Arial" font-size="13" font-style="italic" fill="#334155">y</text>
+    <text x="149.8" y="218.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">1</text>
+    <text x="227.0" y="218.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">2</text>
+    <text x="304.2" y="218.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">3</text>
+    <text x="381.4" y="218.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">4</text>
+    <text x="68.6" y="153.9" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">2</text>
+    <text x="68.6" y="100.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">4</text>
+    <text x="68.6" y="46.4" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">6</text>
+    <text x="68.6" y="217.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">O</text>
+    <path d="M 34.0 342.0 L 35.0 336.8 L 35.9 331.6 L 36.9 326.4 L 37.9 321.4 L 38.8 316.3 L 39.8 311.4 L 40.8 306.5 L 41.7 301.7 L 42.7 296.9 L 43.6 292.2 L 44.6 287.5 L 45.6 282.9 L 46.5 278.4 L 47.5 273.9 L 48.5 269.5 L 49.4 265.2 L 50.4 260.9 L 51.4 256.6 L 52.3 252.5 L 53.3 248.3 L 54.3 244.3 L 55.2 240.3 L 56.2 236.3 L 57.2 232.4 L 58.1 228.6 L 59.1 224.8 L 60.1 221.0 L 61.0 217.4 L 62.0 213.7 L 63.0 210.2 L 63.9 206.6 L 64.9 203.2 L 65.8 199.8 L 66.8 196.4 L 67.8 193.1 L 68.7 189.8 L 69.7 186.6 L 70.7 183.5 L 71.6 180.4 L 72.6 177.3 L 73.6 174.3 L 74.5 171.4 L 75.5 168.5 L 76.5 165.6 L 77.4 162.8 L 78.4 160.1 L 79.4 157.4 L 80.3 154.7 L 81.3 152.1 L 82.2 149.6 L 83.2 147.0 L 84.2 144.6 L 85.1 142.2 L 86.1 139.8 L 87.1 137.5 L 88.0 135.2 L 89.0 132.9 L 90.0 130.7 L 90.9 128.6 L 91.9 126.5 L 92.9 124.4 L 93.8 122.4 L 94.8 120.5 L 95.8 118.5 L 96.7 116.6 L 97.7 114.8 L 98.7 113.0 L 99.6 111.2 L 100.6 109.5 L 101.5 107.9 L 102.5 106.2 L 103.5 104.6 L 104.4 103.1 L 105.4 101.6 L 106.4 100.1 L 107.3 98.7 L 108.3 97.3 L 109.3 95.9 L 110.2 94.6 L 111.2 93.3 L 112.2 92.1 L 113.1 90.9 L 114.1 89.7 L 115.1 88.6 L 116.0 87.5 L 117.0 86.4 L 118.0 85.4 L 118.9 84.4 L 119.9 83.5 L 120.9 82.5 L 121.8 81.7 L 122.8 80.8 L 123.7 80.0 L 124.7 79.2 L 125.7 78.5 L 126.6 77.8 L 127.6 77.1 L 128.6 76.4 L 129.5 75.8 L 130.5 75.2 L 131.5 74.7 L 132.4 74.2 L 133.4 73.7 L 134.4 73.2 L 135.3 72.8 L 136.3 72.4 L 137.3 72.0 L 138.2 71.7 L 139.2 71.4 L 140.2 71.1 L 141.1 70.8 L 142.1 70.6 L 143.0 70.4 L 144.0 70.2 L 145.0 70.1 L 145.9 70.0 L 146.9 69.9 L 147.9 69.8 L 148.8 69.8 L 149.8 69.8 L 150.8 69.8 L 151.7 69.8 L 152.7 69.9 L 153.7 70.0 L 154.6 70.1 L 155.6 70.2 L 156.6 70.4 L 157.5 70.6 L 158.5 70.8 L 159.4 71.0 L 160.4 71.2 L 161.4 71.5 L 162.3 71.8 L 163.3 72.1 L 164.3 72.4 L 165.2 72.8 L 166.2 73.2 L 167.2 73.6 L 168.1 74.0 L 169.1 74.4 L 170.1 74.8 L 171.0 75.3 L 172.0 75.8 L 173.0 76.3 L 173.9 76.8 L 174.9 77.4 L 175.9 77.9 L 176.8 78.5 L 177.8 79.1 L 178.8 79.7 L 179.7 80.3 L 180.7 81.0 L 181.6 81.6 L 182.6 82.3 L 183.6 83.0 L 184.5 83.7 L 185.5 84.4 L 186.5 85.1 L 187.4 85.8 L 188.4 86.6 L 189.4 87.3 L 190.3 88.1 L 191.3 88.9 L 192.3 89.7 L 193.2 90.5 L 194.2 91.3 L 195.2 92.2 L 196.1 93.0 L 197.1 93.9 L 198.0 94.7 L 199.0 95.6 L 200.0 96.5 L 200.9 97.4 L 201.9 98.3 L 202.9 99.2 L 203.8 100.1 L 204.8 101.0 L 205.8 101.9 L 206.7 102.9 L 207.7 103.8 L 208.7 104.8 L 209.6 105.7 L 210.6 106.7 L 211.6 107.6 L 212.5 108.6 L 213.5 109.6 L 214.5 110.6 L 215.4 111.5 L 216.4 112.5 L 217.3 113.5 L 218.3 114.5 L 219.3 115.5 L 220.2 116.5 L 221.2 117.5 L 222.2 118.5 L 223.1 119.5 L 224.1 120.5 L 225.1 121.5 L 226.0 122.5 L 227.0 123.6 L 228.0 124.6 L 228.9 125.6 L 229.9 126.6 L 230.9 127.6 L 231.8 128.6 L 232.8 129.6 L 233.8 130.6 L 234.7 131.6 L 235.7 132.6 L 236.7 133.6 L 237.6 134.6 L 238.6 135.6 L 239.5 136.5 L 240.5 137.5 L 241.5 138.5 L 242.4 139.5 L 243.4 140.4 L 244.4 141.4 L 245.3 142.4 L 246.3 143.3 L 247.3 144.2 L 248.2 145.2 L 249.2 146.1 L 250.2 147.0 L 251.1 147.9 L 252.1 148.8 L 253.1 149.7 L 254.0 150.6 L 255.0 151.5 L 255.9 152.4 L 256.9 153.2 L 257.9 154.1 L 258.8 154.9 L 259.8 155.8 L 260.8 156.6 L 261.7 157.4 L 262.7 158.2 L 263.7 159.0 L 264.6 159.8 L 265.6 160.5 L 266.6 161.3 L 267.5 162.0 L 268.5 162.7 L 269.5 163.4 L 270.4 164.1 L 271.4 164.8 L 272.4 165.5 L 273.3 166.1 L 274.3 166.8 L 275.2 167.4 L 276.2 168.0 L 277.2 168.6 L 278.1 169.2 L 279.1 169.7 L 280.1 170.3 L 281.0 170.8 L 282.0 171.3 L 283.0 171.8 L 283.9 172.3 L 284.9 172.7 L 285.9 173.1 L 286.8 173.6 L 287.8 173.9 L 288.8 174.3 L 289.7 174.7 L 290.7 175.0 L 291.7 175.3 L 292.6 175.6 L 293.6 175.9 L 294.6 176.1 L 295.5 176.4 L 296.5 176.6 L 297.4 176.7 L 298.4 176.9 L 299.4 177.0 L 300.3 177.1 L 301.3 177.2 L 302.3 177.3 L 303.2 177.3 L 304.2 177.3 L 305.2 177.3 L 306.1 177.3 L 307.1 177.2 L 308.1 177.1 L 309.0 177.0 L 310.0 176.9 L 311.0 176.7 L 311.9 176.5 L 312.9 176.3 L 313.8 176.0 L 314.8 175.7 L 315.8 175.4 L 316.7 175.1 L 317.7 174.7 L 318.7 174.3 L 319.6 173.9 L 320.6 173.4 L 321.6 172.9 L 322.5 172.4 L 323.5 171.9 L 324.5 171.3 L 325.4 170.7 L 326.4 170.0 L 327.4 169.3 L 328.3 168.6 L 329.3 167.9 L 330.3 167.1 L 331.2 166.3 L 332.2 165.5 L 333.2 164.6 L 334.1 163.7 L 335.1 162.7 L 336.0 161.7 L 337.0 160.7 L 338.0 159.6 L 338.9 158.5 L 339.9 157.4 L 340.9 156.3 L 341.8 155.0 L 342.8 153.8 L 343.8 152.5 L 344.7 151.2 L 345.7 149.9 L 346.7 148.5 L 347.6 147.0 L 348.6 145.6 L 349.6 144.0 L 350.5 142.5 L 351.5 140.9 L 352.4 139.3 L 353.4 137.6 L 354.4 135.9 L 355.3 134.1 L 356.3 132.3 L 357.3 130.5 L 358.2 128.6 L 359.2 126.7 L 360.2 124.7 L 361.1 122.7 L 362.1 120.6 L 363.1 118.5 L 364.0 116.4 L 365.0 114.2 L 366.0 111.9 L 366.9 109.7 L 367.9 107.3 L 368.9 105.0 L 369.8 102.5 L 370.8 100.1 L 371.8 97.6 L 372.7 95.0 L 373.7 92.4 L 374.6 89.7 L 375.6 87.0 L 376.6 84.3 L 377.5 81.5 L 378.5 78.6 L 379.5 75.7 L 380.4 72.8 L 381.4 69.8 L 382.4 66.7 L 383.3 63.6 L 384.3 60.5 L 385.3 57.3 L 386.2 54.0 L 387.2 50.7 L 388.2 47.3 L 389.1 43.9 L 390.1 40.5 L 391.1 37.0 L 392.0 33.4 L 393.0 29.8 L 393.9 26.1 L 394.9 22.3 L 395.9 18.6 L 396.8 14.7 L 397.8 10.8 L 398.8 6.9 L 399.7 2.8 L 400.7 -1.2 L 401.7 -5.4 L 402.6 -9.5 L 403.6 -13.8 L 404.6 -18.1 L 405.5 -22.4 L 406.5 -26.8 L 407.5 -31.3 L 408.4 -35.8 L 409.4 -40.4 L 410.3 -45.1 L 411.3 -49.8 L 412.3 -54.6 L 413.2 -59.4 L 414.2 -64.3 L 415.2 -69.2 L 416.1 -74.2 L 417.1 -79.3 L 418.1 -84.5 L 419.0 -89.7 L 420.0 -94.9" fill="none" stroke="#4f46e5" stroke-width="2.5" clip-path="url(#clip-cubic_sp)"/>
+    <line x1="103.5" y1="69.8" x2="196.1" y2="69.8" stroke="#ef4444" stroke-width="2" clip-path="url(#clip-cubic_sp)"/>
+    <line x1="257.9" y1="177.3" x2="350.5" y2="177.3" stroke="#16a34a" stroke-width="2" clip-path="url(#clip-cubic_sp)"/>
+    <circle cx="149.8" cy="69.8" r="4.5" fill="#dc2626"/>
+    <text x="129.8" y="59.8" font-family="Arial" font-size="11" fill="#dc2626" font-weight="bold">max (1, 5)</text>
+    <circle cx="304.2" cy="177.3" r="4.5" fill="#16a34a"/>
+    <text x="284.2" y="197.3" font-family="Arial" font-size="11" fill="#16a34a" font-weight="bold">min (3, 1)</text>
+    <text x="242.4" y="80.5" font-family="Arial" font-size="11" fill="#4f46e5">y = x³ − 6x² + 9x + 1</text>
+    <text x="220.0" y="294" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Gradient zero at both points; the second derivative tells them apart</text>
+    </svg>
+  </div>
+
+  <p>There are two ways to decide the <strong>nature</strong> of a stationary point.</p>
+
+  <table>
+    <tr><th>Method</th><th>Local maximum</th><th>Local minimum</th></tr>
+    <tr><td><strong>Second derivative</strong></td><td>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} < 0$</td><td>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} > 0$</td></tr>
+    <tr><td><strong>Sign of gradient either side</strong></td><td>$+ \;\; 0 \;\; -$ &nbsp;(up, flat, down)</td><td>$- \;\; 0 \;\; +$ &nbsp;(down, flat, up)</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Why the second derivative works.</strong> At a maximum the gradient goes from positive, through zero, to negative — it is <em>decreasing</em>, so its derivative $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$ is negative. At a minimum the gradient is increasing, so $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} > 0$.
+  </div>
+
+  <div class="warn">
+    <strong>If $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 0$ the test tells you nothing.</strong> The point could be a maximum, a minimum or a stationary point of inflection. Use the sign of the gradient either side instead.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using the second derivative</div>
+    <div class="example-body">
+      <p>Find the stationary points of $y = x^3 - 6x^2 + 9x + 1$ and determine their nature.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 12x + 9 = 3(x - 1)(x - 3) = 0$, so $x = 1$ or $x = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 1$: $y = 1 - 6 + 9 + 1 = 5$. &nbsp; $x = 3$: $y = 27 - 54 + 27 + 1 = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x - 12$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 1$: $-6 < 0$, so $(1, 5)$ is a local maximum.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $x = 3$: $6 > 0$, so $(3, 1)$ is a local minimum.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A curve with negative powers</div>
+    <div class="example-body">
+      <p>Find and classify the stationary points of $y = x + \dfrac{4}{x}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 1 - 4x^{-2} = 0 \Rightarrow x^2 = 4 \Rightarrow x = \pm 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 2$: $y = 4$. &nbsp; $x = -2$: $y = -4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 8x^{-3} = \dfrac{8}{x^3}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 2$: $1 > 0$, minimum $(2, 4)$. &nbsp; At $x = -2$: $-1 < 0$, maximum $(-2, -4)$.</span></div>
+      <div class="tip">The maximum is <em>lower</em> than the minimum. That is fine: "local" means highest or lowest <em>nearby</em>, and the curve has two separate branches.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — When the second derivative is zero</div>
+    <div class="example-body">
+      <p>Find and classify the stationary points of $y = x^4 - 4x^3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3 - 12x^2 = 4x^2(x - 3) = 0$, so $x = 0$ or $x = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Points: $(0, 0)$ and $(3, 81 - 108) = (3, -27)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 - 24x$. At $x = 3$: $108 - 72 = 36 > 0$, so $(3, -27)$ is a minimum.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 0$: $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 0$ — inconclusive. Test the gradient either side:</span></div>
+      <table>
+        <tr><th>$x$</th><td>$-0.1$</td><td>$0$</td><td>$0.1$</td></tr>
+        <tr><th>$4x^2(x-3)$</th><td>$-0.124$</td><td>$0$</td><td>$-0.116$</td></tr>
+        <tr><th>Slope</th><td>$\searrow$</td><td>$\rightarrow$</td><td>$\searrow$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">⑤</span><span>Negative on both sides, so $(0, 0)$ is a <strong>stationary point of inflection</strong>.</span></div>
+      <div class="tip">Choose test values close enough that no other stationary point lies between them and the point being tested.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – GRADIENT FUNCTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Sketching the Gradient Function</div>
+<div class="section-body">
+
+  <p>Given the graph of $y = \mathrm{f}(x)$, you can sketch $y = \mathrm{f}'(x)$ without knowing the equation, by reading off the sign and size of the gradient.</p>
+
+  <table>
+    <tr><th>On $y = \mathrm{f}(x)$</th><th>On $y = \mathrm{f}'(x)$</th></tr>
+    <tr><td>Stationary point</td><td>Crosses or touches the $x$-axis</td></tr>
+    <tr><td>Increasing section</td><td>Above the $x$-axis</td></tr>
+    <tr><td>Decreasing section</td><td>Below the $x$-axis</td></tr>
+    <tr><td>Steepest point</td><td>A maximum or minimum of $\mathrm{f}'$</td></tr>
+  </table>
+
+    <div class="svg-block">
+    <svg width="440" height="320" viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="clip-grad_fn"><rect x="34" y="16" width="386" height="262"/></clipPath></defs>
+    <line x1="78.5" y1="16" x2="78.5" y2="278" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="152.8" y1="16" x2="152.8" y2="278" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="301.2" y1="16" x2="301.2" y2="278" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="375.5" y1="16" x2="375.5" y2="278" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="278.0" x2="420" y2="278.0" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="225.6" x2="420" y2="225.6" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="120.8" x2="420" y2="120.8" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="68.4" x2="420" y2="68.4" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="16.0" x2="420" y2="16.0" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="173.2" x2="420" y2="173.2" stroke="#475569" stroke-width="1.5"/>
+    <line x1="227.0" y1="16" x2="227.0" y2="278" stroke="#475569" stroke-width="1.5"/>
+    <text x="424" y="177.2" font-family="Arial" font-size="13" font-style="italic" fill="#334155">x</text>
+    <text x="232.0" y="26" font-family="Arial" font-size="13" font-style="italic" fill="#334155">y</text>
+    <text x="78.5" y="187.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-2</text>
+    <text x="152.8" y="187.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-1</text>
+    <text x="301.2" y="187.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">1</text>
+    <text x="375.5" y="187.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">2</text>
+    <text x="223.0" y="281.5" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">-4</text>
+    <text x="223.0" y="229.1" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">-2</text>
+    <text x="223.0" y="124.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">2</text>
+    <text x="223.0" y="71.9" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">4</text>
+    <text x="223.0" y="19.5" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">6</text>
+    <text x="223.0" y="186.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">O</text>
+    <path d="M 34.0 429.3 L 35.0 423.5 L 35.9 417.7 L 36.9 412.0 L 37.9 406.3 L 38.8 400.8 L 39.8 395.2 L 40.8 389.8 L 41.7 384.4 L 42.7 379.1 L 43.6 373.9 L 44.6 368.7 L 45.6 363.6 L 46.5 358.5 L 47.5 353.5 L 48.5 348.6 L 49.4 343.8 L 50.4 339.0 L 51.4 334.2 L 52.3 329.6 L 53.3 325.0 L 54.3 320.4 L 55.2 316.0 L 56.2 311.5 L 57.2 307.2 L 58.1 302.9 L 59.1 298.6 L 60.1 294.5 L 61.0 290.3 L 62.0 286.3 L 63.0 282.3 L 63.9 278.4 L 64.9 274.5 L 65.8 270.6 L 66.8 266.9 L 67.8 263.2 L 68.7 259.5 L 69.7 255.9 L 70.7 252.4 L 71.6 248.9 L 72.6 245.5 L 73.6 242.1 L 74.5 238.8 L 75.5 235.5 L 76.5 232.3 L 77.4 229.2 L 78.4 226.1 L 79.4 223.0 L 80.3 220.0 L 81.3 217.1 L 82.2 214.2 L 83.2 211.4 L 84.2 208.6 L 85.1 205.8 L 86.1 203.2 L 87.1 200.5 L 88.0 197.9 L 89.0 195.4 L 90.0 192.9 L 90.9 190.5 L 91.9 188.1 L 92.9 185.8 L 93.8 183.5 L 94.8 181.2 L 95.8 179.0 L 96.7 176.9 L 97.7 174.8 L 98.7 172.7 L 99.6 170.7 L 100.6 168.7 L 101.6 166.8 L 102.5 165.0 L 103.5 163.1 L 104.4 161.3 L 105.4 159.6 L 106.4 157.9 L 107.3 156.2 L 108.3 154.6 L 109.3 153.1 L 110.2 151.5 L 111.2 150.1 L 112.2 148.6 L 113.1 147.2 L 114.1 145.8 L 115.1 144.5 L 116.0 143.2 L 117.0 142.0 L 118.0 140.8 L 118.9 139.6 L 119.9 138.5 L 120.8 137.4 L 121.8 136.4 L 122.8 135.4 L 123.7 134.4 L 124.7 133.4 L 125.7 132.5 L 126.6 131.7 L 127.6 130.9 L 128.6 130.1 L 129.5 129.3 L 130.5 128.6 L 131.5 127.9 L 132.4 127.2 L 133.4 126.6 L 134.4 126.0 L 135.3 125.5 L 136.3 125.0 L 137.3 124.5 L 138.2 124.0 L 139.2 123.6 L 140.1 123.2 L 141.1 122.8 L 142.1 122.5 L 143.0 122.2 L 144.0 121.9 L 145.0 121.7 L 145.9 121.5 L 146.9 121.3 L 147.9 121.1 L 148.8 121.0 L 149.8 120.9 L 150.8 120.9 L 151.7 120.8 L 152.7 120.8 L 153.7 120.8 L 154.6 120.8 L 155.6 120.9 L 156.6 121.0 L 157.5 121.1 L 158.5 121.3 L 159.4 121.4 L 160.4 121.6 L 161.4 121.8 L 162.3 122.1 L 163.3 122.3 L 164.3 122.6 L 165.2 122.9 L 166.2 123.2 L 167.2 123.6 L 168.1 123.9 L 169.1 124.3 L 170.1 124.7 L 171.0 125.2 L 172.0 125.6 L 173.0 126.1 L 173.9 126.6 L 174.9 127.1 L 175.9 127.6 L 176.8 128.2 L 177.8 128.7 L 178.8 129.3 L 179.7 129.9 L 180.7 130.5 L 181.6 131.2 L 182.6 131.8 L 183.6 132.5 L 184.5 133.1 L 185.5 133.8 L 186.5 134.5 L 187.4 135.3 L 188.4 136.0 L 189.4 136.8 L 190.3 137.5 L 191.3 138.3 L 192.3 139.1 L 193.2 139.9 L 194.2 140.7 L 195.2 141.5 L 196.1 142.4 L 197.1 143.2 L 198.0 144.1 L 199.0 145.0 L 200.0 145.9 L 200.9 146.7 L 201.9 147.6 L 202.9 148.6 L 203.8 149.5 L 204.8 150.4 L 205.8 151.3 L 206.7 152.3 L 207.7 153.2 L 208.7 154.2 L 209.6 155.1 L 210.6 156.1 L 211.6 157.1 L 212.5 158.1 L 213.5 159.1 L 214.5 160.0 L 215.4 161.0 L 216.4 162.0 L 217.4 163.0 L 218.3 164.0 L 219.3 165.1 L 220.2 166.1 L 221.2 167.1 L 222.2 168.1 L 223.1 169.1 L 224.1 170.1 L 225.1 171.2 L 226.0 172.2 L 227.0 173.2 L 228.0 174.2 L 228.9 175.2 L 229.9 176.3 L 230.9 177.3 L 231.8 178.3 L 232.8 179.3 L 233.8 180.3 L 234.7 181.3 L 235.7 182.4 L 236.7 183.4 L 237.6 184.4 L 238.6 185.4 L 239.5 186.4 L 240.5 187.3 L 241.5 188.3 L 242.4 189.3 L 243.4 190.3 L 244.4 191.3 L 245.3 192.2 L 246.3 193.2 L 247.3 194.1 L 248.2 195.1 L 249.2 196.0 L 250.2 196.9 L 251.1 197.8 L 252.1 198.8 L 253.1 199.7 L 254.0 200.5 L 255.0 201.4 L 256.0 202.3 L 256.9 203.2 L 257.9 204.0 L 258.8 204.9 L 259.8 205.7 L 260.8 206.5 L 261.7 207.3 L 262.7 208.1 L 263.7 208.9 L 264.6 209.6 L 265.6 210.4 L 266.6 211.1 L 267.5 211.9 L 268.5 212.6 L 269.5 213.3 L 270.4 213.9 L 271.4 214.6 L 272.4 215.2 L 273.3 215.9 L 274.3 216.5 L 275.2 217.1 L 276.2 217.7 L 277.2 218.2 L 278.1 218.8 L 279.1 219.3 L 280.1 219.8 L 281.0 220.3 L 282.0 220.8 L 283.0 221.2 L 283.9 221.7 L 284.9 222.1 L 285.9 222.5 L 286.8 222.8 L 287.8 223.2 L 288.8 223.5 L 289.7 223.8 L 290.7 224.1 L 291.7 224.3 L 292.6 224.6 L 293.6 224.8 L 294.5 225.0 L 295.5 225.1 L 296.5 225.3 L 297.4 225.4 L 298.4 225.5 L 299.4 225.6 L 300.3 225.6 L 301.3 225.6 L 302.3 225.6 L 303.2 225.5 L 304.2 225.5 L 305.2 225.4 L 306.1 225.3 L 307.1 225.1 L 308.1 224.9 L 309.0 224.7 L 310.0 224.5 L 311.0 224.2 L 311.9 223.9 L 312.9 223.6 L 313.8 223.2 L 314.8 222.8 L 315.8 222.4 L 316.7 221.9 L 317.7 221.4 L 318.7 220.9 L 319.6 220.4 L 320.6 219.8 L 321.6 219.2 L 322.5 218.5 L 323.5 217.8 L 324.5 217.1 L 325.4 216.3 L 326.4 215.5 L 327.4 214.7 L 328.3 213.9 L 329.3 213.0 L 330.3 212.0 L 331.2 211.0 L 332.2 210.0 L 333.2 209.0 L 334.1 207.9 L 335.1 206.8 L 336.0 205.6 L 337.0 204.4 L 338.0 203.2 L 338.9 201.9 L 339.9 200.6 L 340.9 199.2 L 341.8 197.8 L 342.8 196.3 L 343.8 194.9 L 344.7 193.3 L 345.7 191.8 L 346.7 190.2 L 347.6 188.5 L 348.6 186.8 L 349.6 185.1 L 350.5 183.3 L 351.5 181.4 L 352.4 179.6 L 353.4 177.7 L 354.4 175.7 L 355.3 173.7 L 356.3 171.6 L 357.3 169.5 L 358.2 167.4 L 359.2 165.2 L 360.2 162.9 L 361.1 160.6 L 362.1 158.3 L 363.1 155.9 L 364.0 153.5 L 365.0 151.0 L 366.0 148.5 L 366.9 145.9 L 367.9 143.2 L 368.9 140.6 L 369.8 137.8 L 370.8 135.0 L 371.7 132.2 L 372.7 129.3 L 373.7 126.4 L 374.6 123.4 L 375.6 120.3 L 376.6 117.2 L 377.5 114.1 L 378.5 110.9 L 379.5 107.6 L 380.4 104.3 L 381.4 100.9 L 382.4 97.5 L 383.3 94.0 L 384.3 90.5 L 385.3 86.9 L 386.2 83.2 L 387.2 79.5 L 388.2 75.8 L 389.1 71.9 L 390.1 68.0 L 391.0 64.1 L 392.0 60.1 L 393.0 56.1 L 393.9 51.9 L 394.9 47.8 L 395.9 43.5 L 396.8 39.2 L 397.8 34.9 L 398.8 30.4 L 399.7 26.0 L 400.7 21.4 L 401.7 16.8 L 402.6 12.2 L 403.6 7.4 L 404.6 2.6 L 405.5 -2.2 L 406.5 -7.1 L 407.5 -12.1 L 408.4 -17.2 L 409.4 -22.3 L 410.3 -27.5 L 411.3 -32.7 L 412.3 -38.0 L 413.2 -43.4 L 414.2 -48.8 L 415.2 -54.4 L 416.1 -59.9 L 417.1 -65.6 L 418.1 -71.3 L 419.0 -77.1 L 420.0 -82.9" fill="none" stroke="#4f46e5" stroke-width="2.5" clip-path="url(#clip-grad_fn)"/>
+    <path d="M 40.8 -243.0 L 41.7 -237.9 L 42.7 -232.8 L 43.6 -227.7 L 44.6 -222.7 L 45.6 -217.7 L 46.5 -212.7 L 47.5 -207.8 L 48.5 -202.8 L 49.4 -197.9 L 50.4 -193.0 L 51.4 -188.2 L 52.3 -183.4 L 53.3 -178.6 L 54.3 -173.8 L 55.2 -169.1 L 56.2 -164.4 L 57.2 -159.7 L 58.1 -155.0 L 59.1 -150.4 L 60.1 -145.8 L 61.0 -141.2 L 62.0 -136.6 L 63.0 -132.1 L 63.9 -127.6 L 64.9 -123.1 L 65.8 -118.7 L 66.8 -114.2 L 67.8 -109.8 L 68.7 -105.5 L 69.7 -101.1 L 70.7 -96.8 L 71.6 -92.5 L 72.6 -88.3 L 73.6 -84.0 L 74.5 -79.8 L 75.5 -75.6 L 76.5 -71.5 L 77.4 -67.3 L 78.4 -63.2 L 79.4 -59.2 L 80.3 -55.1 L 81.3 -51.1 L 82.2 -47.1 L 83.2 -43.1 L 84.2 -39.2 L 85.1 -35.2 L 86.1 -31.3 L 87.1 -27.5 L 88.0 -23.6 L 89.0 -19.8 L 90.0 -16.0 L 90.9 -12.3 L 91.9 -8.6 L 92.9 -4.8 L 93.8 -1.2 L 94.8 2.5 L 95.8 6.1 L 96.7 9.7 L 97.7 13.3 L 98.7 16.8 L 99.6 20.4 L 100.6 23.8 L 101.6 27.3 L 102.5 30.8 L 103.5 34.2 L 104.4 37.6 L 105.4 40.9 L 106.4 44.2 L 107.3 47.6 L 108.3 50.8 L 109.3 54.1 L 110.2 57.3 L 111.2 60.5 L 112.2 63.7 L 113.1 66.8 L 114.1 70.0 L 115.1 73.1 L 116.0 76.1 L 117.0 79.2 L 118.0 82.2 L 118.9 85.2 L 119.9 88.1 L 120.8 91.1 L 121.8 94.0 L 122.8 96.9 L 123.7 99.7 L 124.7 102.5 L 125.7 105.4 L 126.6 108.1 L 127.6 110.9 L 128.6 113.6 L 129.5 116.3 L 130.5 119.0 L 131.5 121.6 L 132.4 124.2 L 133.4 126.8 L 134.4 129.4 L 135.3 131.9 L 136.3 134.4 L 137.3 136.9 L 138.2 139.4 L 139.2 141.8 L 140.1 144.2 L 141.1 146.6 L 142.1 148.9 L 143.0 151.3 L 144.0 153.6 L 145.0 155.8 L 145.9 158.1 L 146.9 160.3 L 147.9 162.5 L 148.8 164.6 L 149.8 166.8 L 150.8 168.9 L 151.7 171.0 L 152.7 173.0 L 153.7 175.1 L 154.6 177.1 L 155.6 179.1 L 156.6 181.0 L 157.5 182.9 L 158.5 184.8 L 159.4 186.7 L 160.4 188.6 L 161.4 190.4 L 162.3 192.2 L 163.3 193.9 L 164.3 195.7 L 165.2 197.4 L 166.2 199.1 L 167.2 200.7 L 168.1 202.4 L 169.1 204.0 L 170.1 205.6 L 171.0 207.1 L 172.0 208.6 L 173.0 210.1 L 173.9 211.6 L 174.9 213.1 L 175.9 214.5 L 176.8 215.9 L 177.8 217.2 L 178.8 218.6 L 179.7 219.9 L 180.7 221.2 L 181.6 222.5 L 182.6 223.7 L 183.6 224.9 L 184.5 226.1 L 185.5 227.2 L 186.5 228.4 L 187.4 229.5 L 188.4 230.5 L 189.4 231.6 L 190.3 232.6 L 191.3 233.6 L 192.3 234.6 L 193.2 235.5 L 194.2 236.4 L 195.2 237.3 L 196.1 238.2 L 197.1 239.0 L 198.0 239.8 L 199.0 240.6 L 200.0 241.4 L 200.9 242.1 L 201.9 242.8 L 202.9 243.5 L 203.8 244.1 L 204.8 244.8 L 205.8 245.4 L 206.7 245.9 L 207.7 246.5 L 208.7 247.0 L 209.6 247.5 L 210.6 248.0 L 211.6 248.4 L 212.5 248.8 L 213.5 249.2 L 214.5 249.6 L 215.4 249.9 L 216.4 250.2 L 217.4 250.5 L 218.3 250.7 L 219.3 250.9 L 220.2 251.1 L 221.2 251.3 L 222.2 251.5 L 223.1 251.6 L 224.1 251.7 L 225.1 251.7 L 226.0 251.8 L 227.0 251.8 L 228.0 251.8 L 228.9 251.7 L 229.9 251.7 L 230.9 251.6 L 231.8 251.5 L 232.8 251.3 L 233.8 251.1 L 234.7 250.9 L 235.7 250.7 L 236.7 250.5 L 237.6 250.2 L 238.6 249.9 L 239.5 249.6 L 240.5 249.2 L 241.5 248.8 L 242.4 248.4 L 243.4 248.0 L 244.4 247.5 L 245.3 247.0 L 246.3 246.5 L 247.3 245.9 L 248.2 245.4 L 249.2 244.8 L 250.2 244.1 L 251.1 243.5 L 252.1 242.8 L 253.1 242.1 L 254.0 241.4 L 255.0 240.6 L 256.0 239.8 L 256.9 239.0 L 257.9 238.2 L 258.8 237.3 L 259.8 236.4 L 260.8 235.5 L 261.7 234.6 L 262.7 233.6 L 263.7 232.6 L 264.6 231.6 L 265.6 230.5 L 266.6 229.5 L 267.5 228.4 L 268.5 227.2 L 269.5 226.1 L 270.4 224.9 L 271.4 223.7 L 272.4 222.5 L 273.3 221.2 L 274.3 219.9 L 275.2 218.6 L 276.2 217.2 L 277.2 215.9 L 278.1 214.5 L 279.1 213.1 L 280.1 211.6 L 281.0 210.1 L 282.0 208.6 L 283.0 207.1 L 283.9 205.6 L 284.9 204.0 L 285.9 202.4 L 286.8 200.7 L 287.8 199.1 L 288.8 197.4 L 289.7 195.7 L 290.7 193.9 L 291.7 192.2 L 292.6 190.4 L 293.6 188.6 L 294.5 186.7 L 295.5 184.8 L 296.5 182.9 L 297.4 181.0 L 298.4 179.1 L 299.4 177.1 L 300.3 175.1 L 301.3 173.0 L 302.3 171.0 L 303.2 168.9 L 304.2 166.8 L 305.2 164.6 L 306.1 162.5 L 307.1 160.3 L 308.1 158.1 L 309.0 155.8 L 310.0 153.6 L 311.0 151.3 L 311.9 148.9 L 312.9 146.6 L 313.8 144.2 L 314.8 141.8 L 315.8 139.4 L 316.7 136.9 L 317.7 134.4 L 318.7 131.9 L 319.6 129.4 L 320.6 126.8 L 321.6 124.2 L 322.5 121.6 L 323.5 119.0 L 324.5 116.3 L 325.4 113.6 L 326.4 110.9 L 327.4 108.1 L 328.3 105.4 L 329.3 102.5 L 330.3 99.7 L 331.2 96.9 L 332.2 94.0 L 333.2 91.1 L 334.1 88.1 L 335.1 85.2 L 336.0 82.2 L 337.0 79.2 L 338.0 76.1 L 338.9 73.1 L 339.9 70.0 L 340.9 66.8 L 341.8 63.7 L 342.8 60.5 L 343.8 57.3 L 344.7 54.1 L 345.7 50.8 L 346.7 47.6 L 347.6 44.2 L 348.6 40.9 L 349.6 37.6 L 350.5 34.2 L 351.5 30.8 L 352.4 27.3 L 353.4 23.8 L 354.4 20.4 L 355.3 16.8 L 356.3 13.3 L 357.3 9.7 L 358.2 6.1 L 359.2 2.5 L 360.2 -1.2 L 361.1 -4.8 L 362.1 -8.6 L 363.1 -12.3 L 364.0 -16.0 L 365.0 -19.8 L 366.0 -23.6 L 366.9 -27.5 L 367.9 -31.3 L 368.9 -35.2 L 369.8 -39.2 L 370.8 -43.1 L 371.7 -47.1 L 372.7 -51.1 L 373.7 -55.1 L 374.6 -59.2 L 375.6 -63.2 L 376.6 -67.3 L 377.5 -71.5 L 378.5 -75.6 L 379.5 -79.8 L 380.4 -84.0 L 381.4 -88.3 L 382.4 -92.5 L 383.3 -96.8 L 384.3 -101.1 L 385.3 -105.5 L 386.2 -109.8 L 387.2 -114.2 L 388.2 -118.7 L 389.1 -123.1 L 390.1 -127.6 L 391.0 -132.1 L 392.0 -136.6 L 393.0 -141.2 L 393.9 -145.8 L 394.9 -150.4 L 395.9 -155.0 L 396.8 -159.7 L 397.8 -164.4 L 398.8 -169.1 L 399.7 -173.8 L 400.7 -178.6 L 401.7 -183.4 L 402.6 -188.2 L 403.6 -193.0 L 404.6 -197.9 L 405.5 -202.8 L 406.5 -207.8 L 407.5 -212.7 L 408.4 -217.7 L 409.4 -222.7 L 410.3 -227.7 L 411.3 -232.8 L 412.3 -237.9 L 413.2 -243.0" fill="none" stroke="#ef4444" stroke-width="2.5" clip-path="url(#clip-grad_fn)" stroke-dasharray="6 4"/>
+    <line x1="152.8" y1="120.8" x2="152.8" y2="173.2" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 3" clip-path="url(#clip-grad_fn)"/>
+    <line x1="301.2" y1="225.6" x2="301.2" y2="173.2" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 3" clip-path="url(#clip-grad_fn)"/>
+    <circle cx="152.8" cy="120.8" r="4.5" fill="#4f46e5"/>
+    <circle cx="301.2" cy="225.6" r="4.5" fill="#4f46e5"/>
+    <circle cx="152.8" cy="173.2" r="4.5" fill="#ef4444"/>
+    <circle cx="301.2" cy="173.2" r="4.5" fill="#ef4444"/>
+    <text x="97.1" y="259.7" font-family="Arial" font-size="11" fill="#4f46e5">y = f(x) = x³ − 3x</text>
+    <text x="235.9" y="267.5" font-family="Arial" font-size="11" fill="#ef4444">y = f′(x) = 3x² − 3</text>
+    <text x="220.0" y="314" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Stationary points of f line up with the roots of f′</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Reading a gradient function</div>
+    <div class="example-body">
+      <p>For $\mathrm{f}(x) = x^3 - 3x$, describe the graph of $y = \mathrm{f}'(x)$ using only the graph of $\mathrm{f}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}$ has stationary points at $x = -1$ and $x = 1$, so $\mathrm{f}'$ crosses the $x$-axis there.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}$ is increasing for $x < -1$ and $x > 1$, so $\mathrm{f}'$ is positive there; between them $\mathrm{f}'$ is negative.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}$ is falling most steeply at $x = 0$, so $\mathrm{f}'$ has its minimum at $x = 0$ — a U-shaped curve. Indeed $\mathrm{f}'(x) = 3x^2 - 3$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – OPTIMISATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Optimisation Problems</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Write the quantity to be maximised or minimised as a formula.</li>
+    <li>If it has two variables, use the given constraint to eliminate one ("show that …" usually does this for you).</li>
+    <li>Differentiate, set equal to zero, and solve.</li>
+    <li>Check that it is a maximum or minimum as required (second derivative).</li>
+    <li>Answer the question asked — the <em>value</em>, the <em>dimensions</em>, or both — with units, and check it makes sense.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — The open box</div>
+    <div class="example-body">
+      <p>A rectangular sheet of card measures $24$ cm by $15$ cm. Squares of side $x$ cm are cut from each corner and the sides folded up to make an open box. Find the maximum volume.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$V = x(24 - 2x)(15 - 2x) = 4x^3 - 78x^2 + 360x$, with $0 < x < 7.5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}V}{\mathrm{d}x} = 12x^2 - 156x + 360 = 12(x^2 - 13x + 30) = 12(x - 3)(x - 10)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 3$ or $x = 10$. But $x = 10$ is impossible ($2x$ would exceed $15$), so $x = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}^2V}{\mathrm{d}x^2} = 24x - 156 = -84 < 0$ at $x = 3$: a maximum.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$V = 3 \times 18 \times 9 = 486$ cm³.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Minimising surface area of a can</div>
+    <div class="example-body">
+      <p>A closed cylindrical can has volume $250\pi$ cm³. Show that its surface area is $A = 2\pi r^2 + \dfrac{500\pi}{r}$, and find the minimum surface area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Volume: $\pi r^2h = 250\pi \Rightarrow h = \dfrac{250}{r^2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$A = 2\pi r^2 + 2\pi rh = 2\pi r^2 + 2\pi r \times \dfrac{250}{r^2} = 2\pi r^2 + \dfrac{500\pi}{r}$ ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}A}{\mathrm{d}r} = 4\pi r - 500\pi r^{-2} = 0 \Rightarrow r^3 = 125 \Rightarrow r = 5$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{\mathrm{d}^2A}{\mathrm{d}r^2} = 4\pi + 1000\pi r^{-3} > 0$ for $r > 0$: a minimum.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$h = \dfrac{250}{25} = 10$ cm, and $A = 50\pi + 100\pi = 150\pi \approx 471$ cm².</span></div>
+      <div class="tip">The optimal can has height equal to its diameter. Real cans are usually taller — a good "evaluate the model" talking point.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Increasing</h4><p>$\mathrm{f}'(x) > 0$</p></div>
+    <div class="ref-card"><h4>Decreasing</h4><p>$\mathrm{f}'(x) < 0$</p></div>
+    <div class="ref-card"><h4>Stationary</h4><p>$\mathrm{f}'(x) = 0$; find $y$ from $\mathrm{f}(x)$.</p></div>
+    <div class="ref-card"><h4>Maximum</h4><p>$\mathrm{f}''(x) < 0$, or gradient $+ \; 0 \; -$</p></div>
+    <div class="ref-card"><h4>Minimum</h4><p>$\mathrm{f}''(x) > 0$, or gradient $- \; 0 \; +$</p></div>
+    <div class="ref-card"><h4>$\mathrm{f}''(x) = 0$</h4><p>Inconclusive: test the gradient either side.</p></div>
+    <div class="ref-card"><h4>Inflection</h4><p>Same sign of gradient on both sides.</p></div>
+    <div class="ref-card"><h4>Gradient graph</h4><p>Stationary points of $\mathrm{f}$ are roots of $\mathrm{f}'$.</p></div>
+    <div class="ref-card"><h4>Optimising</h4><p>Formula, eliminate, differentiate, $= 0$, check, interpret.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the set of values of $x$ for which $\mathrm{f}(x) = x^2 - 6x + 2$ is increasing.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 2x - 6 > 0 \Rightarrow x > 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the set of values of $x$ for which $\mathrm{f}(x) = x^3 - 12x$ is decreasing.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 3x^2 - 12 = 3(x - 2)(x + 2) < 0$.</p>
+          <p>A positive quadratic is negative between its roots: $-2 < x < 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the coordinates of the stationary point of $y = x^2 - 8x + 3$ and state its nature.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 8 = 0 \Rightarrow x = 4$; $\;y = 16 - 32 + 3 = -13$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 2 > 0$: minimum at $(4, -13)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find and classify the stationary points of $y = 2x^3 - 3x^2 - 12x + 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6x^2 - 6x - 12 = 6(x - 2)(x + 1) = 0 \Rightarrow x = 2$ or $x = -1$.</p>
+          <p>$x = 2$: $y = 16 - 12 - 24 + 4 = -16$. &nbsp; $x = -1$: $y = -2 - 3 + 12 + 4 = 11$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x - 6$. At $x = 2$: $18 > 0$, minimum $(2, -16)$. At $x = -1$: $-18 < 0$, maximum $(-1, 11)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find and classify the stationary points of $y = x^4 - 8x^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3 - 16x = 4x(x - 2)(x + 2) = 0 \Rightarrow x = 0, \pm 2$.</p>
+          <p>Points: $(0, 0)$, $(2, -16)$, $(-2, -16)$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 - 16$. At $x = 0$: $-16$, maximum. At $x = \pm 2$: $32$, minima.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the stationary point of $y = 4\sqrt x - x$ for $x > 0$ and show that it is a maximum.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x^{-1/2} - 1 = 0 \Rightarrow \sqrt x = 2 \Rightarrow x = 4$; $\;y = 8 - 4 = 4$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = -x^{-3/2} = -\dfrac18 < 0$ at $x = 4$: maximum at $(4, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Show that $y = x^3$ has a stationary point at the origin, explain why the second derivative test fails, and determine its nature.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 = 0 \Rightarrow x = 0$, $y = 0$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x = 0$ at $x = 0$, which is inconclusive.</p>
+          <p>Gradient at $x = -0.1$: $0.03 > 0$; at $x = 0.1$: $0.03 > 0$. Positive on both sides, so it is a stationary point of inflection.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The graph of $y = \mathrm{f}(x)$ is a cubic with a local maximum at $(-2, 5)$ and a local minimum at $(1, -3)$, and positive coefficient of $x^3$. Describe the graph of $y = \mathrm{f}'(x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'$ is a quadratic that crosses the $x$-axis at $x = -2$ and $x = 1$.</p>
+          <p>$\mathrm{f}$ is increasing for $x < -2$ and $x > 1$, so $\mathrm{f}'$ is positive there and negative between: a U-shaped parabola.</p>
+          <p>Its minimum is midway between the roots, at $x = -\tfrac12$ — where $\mathrm{f}$ is decreasing most steeply.</p>
+          <p>(The $y$-values $5$ and $-3$ do not appear on the graph of $\mathrm{f}'$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>An open-topped box has a square base of side $x$ cm and volume $32$ cm³. Show that its external surface area is $A = x^2 + \dfrac{128}{x}$, and find the dimensions that minimise $A$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Height $h$: $x^2h = 32 \Rightarrow h = \dfrac{32}{x^2}$.</p>
+          <p>Area = base + four sides $= x^2 + 4xh = x^2 + \dfrac{128}{x}$ ✓</p>
+          <p>$\dfrac{\mathrm{d}A}{\mathrm{d}x} = 2x - 128x^{-2} = 0 \Rightarrow x^3 = 64 \Rightarrow x = 4$.</p>
+          <p>$\dfrac{\mathrm{d}^2A}{\mathrm{d}x^2} = 2 + 256x^{-3} = 6 > 0$: minimum.</p>
+          <p>Base $4$ cm by $4$ cm, height $2$ cm; minimum area $16 + 32 = 48$ cm².</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A farmer has $600$ m of fencing to make a rectangular enclosure, divided into two pens by an extra fence parallel to one pair of sides. Let $x$ m be the length of each of the three parallel fences and $y$ m the length of each of the other two sides.</p>
+      <p>(a) Show that the total area is $A = 300x - 1.5x^2$. &nbsp; (b) Find the value of $x$ that maximises $A$, and the maximum area. &nbsp; (c) Prove that this is a maximum. &nbsp; (d) State the range of values of $x$ for which the model makes sense.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Fencing: $3x + 2y = 600 \Rightarrow y = 300 - 1.5x$.</p>
+          <p>$A = xy = x(300 - 1.5x) = 300x - 1.5x^2$ ✓</p>
+          <p><strong>(b)</strong> $\dfrac{\mathrm{d}A}{\mathrm{d}x} = 300 - 3x = 0 \Rightarrow x = 100$.</p>
+          <p>$y = 300 - 150 = 150$, and $A = 100 \times 150 = 15\,000$ m².</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}^2A}{\mathrm{d}x^2} = -3 < 0$, so this is a maximum.</p>
+          <p><strong>(d)</strong> Need $x > 0$ and $y > 0$, i.e. $300 - 1.5x > 0 \Rightarrow x < 200$. So $0 < x < 200$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Stationary Points and Optimisation &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

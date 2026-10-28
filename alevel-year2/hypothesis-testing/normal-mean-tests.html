@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing a Normal Mean &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Testing a Normal Mean</h1>
+  <p>A Level Maths Year 2 · Hypothesis Testing</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE SAMPLE MEAN
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Distribution of the Sample Mean</div>
+<div class="section-body">
+
+  <p>Suppose a population is modelled by $X \sim \mathrm{N}(\mu,\ \sigma^2)$ and we take a random sample $X_1, X_2, \ldots, X_n$. The <strong>sample mean</strong> $\bar{X} = \dfrac{X_1 + X_2 + \cdots + X_n}{n}$ is itself a random variable — a different sample gives a different mean.</p>
+
+  <div class="formula-box">
+    <div class="label">Sampling distribution of the mean</div>
+    If $X \sim \mathrm{N}(\mu,\ \sigma^2)$ then $\bar{X} \sim \mathrm{N}\!\left(\mu,\ \dfrac{\sigma^2}{n}\right)$<br>
+    standard deviation of $\bar{X}$: &nbsp; $\dfrac{\sigma}{\sqrt{n}}$
+  </div>
+
+  <div class="concept">
+    The sample mean has the <strong>same centre</strong> as the population but is <strong>less spread out</strong>: averaging cancels out some of the variation. Quadrupling the sample size halves the standard deviation of $\bar{X}$. That is why a larger sample gives a more sensitive test.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Probabilities for $\bar{X}$</div>
+    <div class="example-body">
+      <p>The lengths of bolts are $X \sim \mathrm{N}(25,\ 0.8^2)$ mm. A random sample of $16$ bolts is taken. Find $\mathrm{P}(\bar{X} > 25.4)$, and compare with $\mathrm{P}(X > 25.4)$ for a single bolt.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\bar{X} \sim \mathrm{N}\!\left(25,\ \dfrac{0.8^2}{16}\right) = \mathrm{N}(25,\ 0.2^2)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(\bar{X} > 25.4) = 1 - \Phi\!\left(\dfrac{0.4}{0.2}\right) = 1 - \Phi(2) = 0.0228$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>For one bolt: $1 - \Phi\!\left(\dfrac{0.4}{0.8}\right) = 1 - \Phi(0.5) = 0.309$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>One long bolt is common; a sample of $16$ averaging this long is rare.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE TEST
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Setting Up the Test</div>
+<div class="section-body">
+
+  <p>The structure is exactly the one you used for binomial tests in Year 1 (<a href="../../alevel-year1/hypothesis-testing/binomial-tests.html">Binomial Hypothesis Tests</a>); only the distribution changes. The standard deviation $\sigma$ is assumed <strong>known</strong> and unchanged; the test is about the mean.</p>
+
+  <div class="formula-box">
+    <div class="label">Test for a normal mean, $\sigma$ known</div>
+    $\mathrm{H}_0: \mu = \mu_0$ &nbsp;&middot;&nbsp; $\mathrm{H}_1: \mu > \mu_0$, &nbsp;$\mu < \mu_0$ &nbsp;or&nbsp; $\mu \neq \mu_0$<br>
+    Under $\mathrm{H}_0$: $\bar{X} \sim \mathrm{N}\!\left(\mu_0,\ \dfrac{\sigma^2}{n}\right)$ &nbsp;&nbsp; test statistic $z = \dfrac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}$
+  </div>
+
+  <table>
+    <tr><th>Significance level</th><th>One tail: critical $z$</th><th>Two tails: critical $z$</th></tr>
+    <tr><td>$10\%$</td><td>$1.2816$</td><td>$\pm 1.6449$</td></tr>
+    <tr><td>$5\%$</td><td>$1.6449$</td><td>$\pm 1.9600$</td></tr>
+    <tr><td>$2.5\%$</td><td>$1.9600$</td><td>$\pm 2.2414$</td></tr>
+    <tr><td>$1\%$</td><td>$2.3263$</td><td>$\pm 2.5758$</td></tr>
+  </table>
+
+  <p>There are three equivalent ways to reach a decision — use whichever the question asks for:</p>
+
+  <ul class="steps">
+    <li><span><strong>$p$-value:</strong> find $\mathrm{P}(\bar{X} \geqslant \bar{x})$ (or $\leqslant$) under $\mathrm{H}_0$ and compare with the significance level (for a two-tailed test, compare with half the level).</span></li>
+    <li><span><strong>Test statistic:</strong> compare $z$ with the critical $z$-value.</span></li>
+    <li><span><strong>Critical region:</strong> find the values of $\bar{x}$ that would lead to rejection, then see whether the observed $\bar{x}$ lies in it.</span></li>
+  </ul>
+
+  <div class="warn">
+    <strong>Divide by $\sigma/\sqrt{n}$, not $\sigma$.</strong> Using the population standard deviation instead of the standard deviation of the mean is the most common error, and it makes almost every result look non-significant.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ONE-TAILED TESTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> One-Tailed Tests</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Testing for an increase</div>
+    <div class="example-body">
+      <p>Bolt lengths are normally distributed with standard deviation $0.8$ mm, and should have mean $25$ mm. An engineer suspects the machine now makes bolts that are too long. A random sample of $16$ bolts has mean $25.4$ mm. Test at the $5\%$ level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \mu = 25$, $\mathrm{H}_1: \mu > 25$, where $\mu$ is the mean length of all bolts now produced.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Under $\mathrm{H}_0$: $\bar{X} \sim \mathrm{N}(25,\ 0.2^2)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$p$-value: $\mathrm{P}(\bar{X} \geqslant 25.4) = 1 - \Phi(2) = 0.0228$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$0.0228 < 0.05$: reject $\mathrm{H}_0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>There is sufficient evidence at the $5\%$ level to suggest the mean bolt length has increased.</span></div>
+      <div class="tip"><strong>Critical region version:</strong> reject if $\bar{x} \geqslant 25 + 1.6449 \times 0.2 = 25.33$ (2 d.p.). Since $25.4 \geqslant 25.33$, the same conclusion follows.</div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="250" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+      <polygon points="318.7,200 318.7,158.7 322.0,162.4 328.0,168.4 334.0,173.8 340.0,178.4 346.0,182.4 352.0,185.8 358.0,188.7 364.0,191.0 370.0,193.0 376.0,194.6 382.0,195.8 388.0,196.8 394.0,197.6 400.0,198.2 406.0,198.7 412.0,199.0 418.0,199.3 424.0,199.5 430.0,199.7 430,200" fill="#fca5a5"/>
+      <polyline points="10.0,199.7 16.0,199.5 22.0,199.3 28.0,199.0 34.0,198.7 40.0,198.2 46.0,197.6 52.0,196.8 58.0,195.8 64.0,194.6 70.0,193.0 76.0,191.0 82.0,188.7 88.0,185.8 94.0,182.4 100.0,178.4 106.0,173.8 112.0,168.4 118.0,162.4 124.0,155.6 130.0,148.2 136.0,140.1 142.0,131.5 148.0,122.3 154.0,112.9 160.0,103.2 166.0,93.6 172.0,84.1 178.0,75.1 184.0,66.7 190.0,59.2 196.0,52.7 202.0,47.4 208.0,43.6 214.0,41.2 220.0,40.4 226.0,41.2 232.0,43.6 238.0,47.4 244.0,52.7 250.0,59.2 256.0,66.7 262.0,75.1 268.0,84.1 274.0,93.6 280.0,103.2 286.0,112.9 292.0,122.3 298.0,131.5 304.0,140.1 310.0,148.2 316.0,155.6 322.0,162.4 328.0,168.4 334.0,173.8 340.0,178.4 346.0,182.4 352.0,185.8 358.0,188.7 364.0,191.0 370.0,193.0 376.0,194.6 382.0,195.8 388.0,196.8 394.0,197.6 400.0,198.2 406.0,198.7 412.0,199.0 418.0,199.3 424.0,199.5 430.0,199.7" fill="none" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="5" y1="200" x2="435" y2="200" stroke="#334" stroke-width="1.5"/>
+      <line x1="318.7" y1="120" x2="318.7" y2="200" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="340" y1="200" x2="340" y2="150" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="160" y1="200" x2="160" y2="205" stroke="#334"/>
+      <line x1="220" y1="200" x2="220" y2="205" stroke="#334"/>
+      <line x1="280" y1="200" x2="280" y2="205" stroke="#334"/>
+      <text x="160" y="220" font-size="13" text-anchor="middle">24.8</text>
+      <text x="220" y="220" font-size="13" text-anchor="middle">25.0</text>
+      <text x="280" y="220" font-size="13" text-anchor="middle">25.2</text>
+      <text x="318.7" y="114" font-size="12" text-anchor="middle" fill="#b91c1c">25.33</text>
+      <text x="350" y="145" font-size="12" fill="#7c3aed">x̄ = 25.4</text>
+      <text x="380" y="180" font-size="12" fill="#b91c1c">5%</text>
+      <text x="220" y="243" font-size="12" text-anchor="middle" fill="#555">Distribution of X̄ under H₀: N(25, 0.2²); critical region shaded</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Testing for a decrease</div>
+    <div class="example-body">
+      <p>Battery lifetimes are normally distributed with mean $220$ hours and standard deviation $15$ hours. A new production method is thought to reduce the mean lifetime. A sample of $25$ new batteries has mean $214.5$ hours. Test at the $2.5\%$ level, assuming the standard deviation is unchanged.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \mu = 220$, $\mathrm{H}_1: \mu < 220$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Under $\mathrm{H}_0$: $\bar{X} \sim \mathrm{N}\!\left(220,\ \dfrac{15^2}{25}\right) = \mathrm{N}(220,\ 3^2)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$z = \dfrac{214.5 - 220}{3} = -1.833$; critical value $-1.9600$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$-1.833 > -1.960$: not in the critical region. Do not reject $\mathrm{H}_0$. ($p$-value $= \Phi(-1.833) = 0.0334 > 0.025$.)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>There is insufficient evidence at the $2.5\%$ level to suggest the mean lifetime has decreased.</span></div>
+      <div class="tip">At the $5\%$ level the conclusion would change ($0.0334 < 0.05$). Always state the level in your conclusion.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TWO-TAILED TESTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Two-Tailed Tests and Critical Regions</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A two-tailed test with a critical region</div>
+    <div class="example-body">
+      <p>A machine fills cans with a volume that is normally distributed with standard deviation $4$ ml. The mean is meant to be $330$ ml. A sample of $20$ cans has mean $331.9$ ml. (a) Find the critical region for a two-tailed test at the $5\%$ level. (b) Carry out the test.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \mu = 330$, $\mathrm{H}_1: \mu \neq 330$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Under $\mathrm{H}_0$: $\bar{X} \sim \mathrm{N}\!\left(330,\ \dfrac{16}{20}\right)$, standard deviation $\dfrac{4}{\sqrt{20}} = 0.8944$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2.5\%$ in each tail: $z = \pm 1.96$. Boundaries $330 \pm 1.96 \times 0.8944 = 330 \pm 1.753$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(a) Critical region: $\bar{X} \leqslant 328.25$ or $\bar{X} \geqslant 331.75$ (2 d.p.).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>(b) $331.9 \geqslant 331.75$: in the critical region. Reject $\mathrm{H}_0$. There is sufficient evidence at the $5\%$ level that the mean volume is not $330$ ml.</span></div>
+      <div class="tip"><strong>$p$-value check:</strong> $\mathrm{P}(\bar{X} \geqslant 331.9) = 0.0168 < 0.025$ ✓ — for a two-tailed test, compare one tail with half the level.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — How big a sample?</div>
+    <div class="example-body">
+      <p>For the bolts ($\sigma = 0.8$, $\mathrm{H}_0: \mu = 25$, $\mathrm{H}_1: \mu > 25$, $5\%$ level), find the smallest sample size for which a sample mean of $25.3$ would be significant.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Need $\dfrac{25.3 - 25}{0.8/\sqrt{n}} \geqslant 1.6449$, i.e. $\sqrt{n} \geqslant \dfrac{1.6449 \times 0.8}{0.3} = 4.386$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n \geqslant 19.24$, so the smallest sample size is $n = 20$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – ASSUMPTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Assumptions and Interpretation</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Assumption</th><th>Why it matters</th></tr>
+    <tr><td>The population is normally distributed</td><td>Makes $\bar{X}$ exactly normal. (For large $n$, $\bar{X}$ is approximately normal anyway.)</td></tr>
+    <tr><td>$\sigma$ is known and unchanged</td><td>The test uses $\sigma/\sqrt{n}$; if a change of process alters the spread as well as the mean, the test is unreliable.</td></tr>
+    <tr><td>The sample is random</td><td>Observations must be independent and representative, e.g. not all from one batch.</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Conclusions are about $\mu$, in context, and never certain.</strong> Write "there is sufficient evidence to suggest the mean … has increased", not "the mean has increased" or "$\mathrm{H}_0$ is false". Not rejecting $\mathrm{H}_0$ does not prove it true.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Sample mean</h4><p>$\bar{X} \sim \mathrm{N}\!\left(\mu,\ \dfrac{\sigma^2}{n}\right)$</p></div>
+    <div class="ref-card"><h4>Test statistic</h4><p>$z = \dfrac{\bar{x} - \mu_0}{\sigma/\sqrt{n}}$</p></div>
+    <div class="ref-card"><h4>Hypotheses</h4><p>About the population mean $\mu$; $\mathrm{H}_0: \mu = \mu_0$.</p></div>
+    <div class="ref-card"><h4>$5\%$ critical $z$</h4><p>One tail $1.6449$; two tails $\pm 1.96$.</p></div>
+    <div class="ref-card"><h4>$1\%$ critical $z$</h4><p>One tail $2.3263$; two tails $\pm 2.5758$.</p></div>
+    <div class="ref-card"><h4>Critical region</h4><p>$\bar{x} \geqslant \mu_0 + z\dfrac{\sigma}{\sqrt{n}}$ (upper tail)</p></div>
+    <div class="ref-card"><h4>$p$-value</h4><p>Reject if less than the level (half the level per tail for two-tailed).</p></div>
+    <div class="ref-card"><h4>Sample size</h4><p>Solve $\dfrac{\bar{x} - \mu_0}{\sigma/\sqrt{n}} \geqslant z$ for $n$; round up.</p></div>
+    <div class="ref-card"><h4>Assumptions</h4><p>Normal population, $\sigma$ known and unchanged, random sample.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions, from routine to exam-style. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(40,\ 9)$. A random sample of size $16$ is taken. State the distribution of $\bar{X}$ and find $\mathrm{P}(\bar{X} < 39)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\bar{X} \sim \mathrm{N}\!\left(40,\ \dfrac{9}{16}\right)$, standard deviation $\dfrac{3}{4} = 0.75$.</p>
+          <p>$\mathrm{P}(\bar{X} < 39) = \Phi\!\left(\dfrac{-1}{0.75}\right) = \Phi(-1.333) = 0.0912$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 6^2)$. Test $\mathrm{H}_0: \mu = 50$ against $\mathrm{H}_1: \mu > 50$ at the $5\%$ level, given that a sample of $36$ has mean $51.8$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $\mathrm{H}_0$: $\bar{X} \sim \mathrm{N}(50,\ 1^2)$, since $6/\sqrt{36} = 1$.</p>
+          <p>$\mathrm{P}(\bar{X} \geqslant 51.8) = 1 - \Phi(1.8) = 0.0359 < 0.05$</p>
+          <p>Reject $\mathrm{H}_0$: sufficient evidence at the $5\%$ level that $\mu > 50$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 10^2)$. For a test of $\mathrm{H}_0: \mu = 120$ against $\mathrm{H}_1: \mu < 120$ at the $1\%$ level using a sample of $25$, find the critical region for $\bar{X}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sigma/\sqrt{n} = 10/5 = 2$; critical $z = -2.3263$.</p>
+          <p>Boundary: $120 - 2.3263 \times 2 = 115.35$.</p>
+          <p>Critical region: $\bar{X} \leqslant 115.35$ (2 d.p.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 5^2)$. A sample of $40$ gives $\bar{x} = 76.4$. Test $\mathrm{H}_0: \mu = 75$ against $\mathrm{H}_1: \mu \neq 75$ at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sigma/\sqrt{n} = 5/\sqrt{40} = 0.7906$; $z = \dfrac{1.4}{0.7906} = 1.771$.</p>
+          <p>Two-tailed critical values $\pm 1.96$; $1.771 < 1.96$.</p>
+          <p>Do not reject $\mathrm{H}_0$: insufficient evidence at the $5\%$ level that $\mu \neq 75$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The masses of bags of sugar are normally distributed with standard deviation $0.5$ kg; the stated mean is $8$ kg. A trading standards officer weighs $12$ bags and finds a mean of $7.74$ kg. Find the $p$-value for a test of whether the mean is less than $8$ kg, and state the conclusion at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{H}_0: \mu = 8$, $\mathrm{H}_1: \mu < 8$. Under $\mathrm{H}_0$, $\bar{X} \sim \mathrm{N}\!\left(8,\ \dfrac{0.25}{12}\right)$, standard deviation $0.1443$.</p>
+          <p>$p = \mathrm{P}(\bar{X} \leqslant 7.74) = \Phi(-1.801) = 0.0358$</p>
+          <p>$0.0358 < 0.05$: reject $\mathrm{H}_0$. There is sufficient evidence that the mean mass is less than $8$ kg.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 12^2)$. Find the critical region for a two-tailed test of $\mathrm{H}_0: \mu = 200$ at the $10\%$ level using a sample of $9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sigma/\sqrt{n} = 12/3 = 4$; $5\%$ in each tail, $z = \pm 1.6449$.</p>
+          <p>$200 \pm 1.6449 \times 4 = 200 \pm 6.58$</p>
+          <p>Critical region: $\bar{X} \leqslant 193.42$ or $\bar{X} \geqslant 206.58$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 8^2)$. Find the smallest sample size for which a sample mean of $62$ would lead to rejecting $\mathrm{H}_0: \mu = 60$ in favour of $\mathrm{H}_1: \mu > 60$ at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Need $\dfrac{2}{8/\sqrt{n}} \geqslant 1.6449$, i.e. $\sqrt{n} \geqslant 4 \times 1.6449 = 6.580$.</p>
+          <p>$n \geqslant 43.29$, so $n = 44$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A process produces rods whose lengths are normally distributed with standard deviation $2.1$ cm and target mean $30$ cm. Ten rods measure (cm):</p>
+      <p>$29.1,\ 31.4,\ 30.8,\ 32.2,\ 28.9,\ 31.7,\ 30.5,\ 32.6,\ 31.1,\ 30.9$</p>
+      <p>Test at the $5\%$ level whether the mean differs from $30$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\bar{x} = \dfrac{309.2}{10} = 30.92$.</p>
+          <p>$\mathrm{H}_0: \mu = 30$, $\mathrm{H}_1: \mu \neq 30$. $\sigma/\sqrt{n} = 2.1/\sqrt{10} = 0.6641$.</p>
+          <p>$z = \dfrac{0.92}{0.6641} = 1.385$; $1.385 < 1.96$.</p>
+          <p>Do not reject $\mathrm{H}_0$: insufficient evidence at the $5\%$ level that the mean length differs from $30$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>For a one-tailed test of $\mathrm{H}_0: \mu = 50$ against $\mathrm{H}_1: \mu > 50$ at the $5\%$ level, with a sample of $25$ from $\mathrm{N}(\mu,\ \sigma^2)$, the critical region is $\bar{X} \geqslant 52.47$. Find $\sigma$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$52.47 = 50 + 1.6449 \times \dfrac{\sigma}{5}$</p>
+          <p>$\sigma = \dfrac{2.47 \times 5}{1.6449} = 7.51$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The time taken to complete a puzzle is normally distributed with mean $18.0$ minutes and standard deviation $4.2$ minutes. After a training course, a random sample of $30$ people has mean time $16.7$ minutes.</p>
+      <p>(a) State hypotheses to test whether the training reduces the mean time. (b) Find the critical region at the $1\%$ level. (c) Carry out the test. (d) Find the $p$-value and state the conclusion at the $5\%$ level instead. (e) State an assumption you have made about the standard deviation, and explain why the test is still reasonable if the times are not exactly normal.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{H}_0: \mu = 18$, $\mathrm{H}_1: \mu < 18$, where $\mu$ is the mean time after training.</p>
+          <p><strong>(b)</strong> $\sigma/\sqrt{n} = 4.2/\sqrt{30} = 0.7668$. Boundary $18 - 2.3263 \times 0.7668 = 16.22$. Critical region $\bar{X} \leqslant 16.22$ (2 d.p.).</p>
+          <p><strong>(c)</strong> $16.7 > 16.22$: not in the critical region. Do not reject $\mathrm{H}_0$; insufficient evidence at the $1\%$ level that training reduces the mean time.</p>
+          <p><strong>(d)</strong> $z = \dfrac{16.7 - 18}{0.7668} = -1.695$; $p = \Phi(-1.695) = 0.0450$. Since $0.0450 < 0.05$, reject $\mathrm{H}_0$ at the $5\%$ level — there is evidence that training reduces the mean time.</p>
+          <p><strong>(e)</strong> The standard deviation is assumed to remain $4.2$ minutes after training. With a sample of $30$, the sample mean is approximately normally distributed even if individual times are not exactly normal, so the test is still reasonable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Testing a Normal Mean &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

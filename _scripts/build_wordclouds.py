@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate the word-cloud blocks for index.md, gcse/index.md and fsmq/index.md.
+"""Generate the word-cloud blocks for index.md and each section's index.md.
 
-Single source of truth for every topic/subtopic link across both qualifications.
+Single source of truth for every topic/subtopic link across every qualification.
 Validates that each target file actually exists before writing anything.
 """
 import os
@@ -207,10 +207,175 @@ FSMQ_TOPICS = [
     ]),
 ]
 
+ALEVEL1_TOPICS = [
+    ("proof", "Proof", "lg", [
+        ("Proof Overview", "overview.html", "md"),
+        ("Proof by Deduction and Exhaustion", "deduction-exhaustion.html", "md"),
+        ("Disproof by Counter-example", "counter-examples.html", "sm"),
+    ]),
+    ("algebra", "Algebra and Functions", "xl", [
+        ("Algebra Overview", "overview.html", "md"),
+        ("Indices and Surds", "indices-surds.html", "md"),
+        ("Quadratic Functions", "quadratics.html", "md"),
+        ("Simultaneous Equations", "simultaneous-equations.html", "sm"),
+        ("Linear and Quadratic Inequalities", "inequalities.html", "sm"),
+        ("Polynomials and the Factor Theorem", "polynomials.html", "md"),
+        ("Curve Sketching and Proportion", "curve-sketching.html", "sm"),
+        ("Transformations of Graphs", "transformations.html", "sm"),
+        ("The Binomial Expansion", "binomial-expansion.html", "md"),
+    ]),
+    ("coordinate-geometry", "Coordinate Geometry", "lg", [
+        ("Coordinate Geometry Overview", "overview.html", "md"),
+        ("Straight Lines", "straight-lines.html", "md"),
+        ("Circles", "circles.html", "md"),
+    ]),
+    ("trigonometry", "Trigonometry", "lg", [
+        ("Trigonometry Overview", "overview.html", "md"),
+        ("Sine and Cosine Rules", "sine-cosine-rules.html", "md"),
+        ("Trigonometric Graphs", "trig-graphs.html", "sm"),
+        ("Trigonometric Identities", "identities.html", "sm"),
+        ("Trigonometric Equations", "equations.html", "md"),
+    ]),
+    ("exponentials-logarithms", "Exponentials and Logarithms", "lg", [
+        ("Exponentials and Logarithms Overview", "overview.html", "md"),
+        ("Exponential Functions and e", "exponential-functions.html", "md"),
+        ("Logarithms and Their Laws", "logarithms.html", "md"),
+        ("Exponential and Log Equations", "equations.html", "sm"),
+        ("Exponential Modelling", "modelling.html", "sm"),
+    ]),
+    ("differentiation", "Differentiation", "xl", [
+        ("Differentiation Overview", "overview.html", "md"),
+        ("Differentiation from First Principles", "first-principles.html", "sm"),
+        ("Differentiating Powers of x", "rules.html", "md"),
+        ("Tangents and Normals", "tangents-normals.html", "sm"),
+        ("Stationary Points and Optimisation", "stationary-points.html", "md"),
+    ]),
+    ("integration", "Integration", "lg", [
+        ("Integration Overview", "overview.html", "md"),
+        ("Indefinite Integration", "indefinite-integration.html", "md"),
+        ("Definite Integrals and Areas", "definite-integrals.html", "md"),
+    ]),
+    ("vectors", "Vectors", "lg", [
+        ("Vectors Overview", "overview.html", "md"),
+        ("Vectors in Two Dimensions", "vectors-2d.html", "md"),
+        ("Vector Geometry", "vector-geometry.html", "sm"),
+    ]),
+    ("statistics", "Statistics", "xl", [
+        ("Statistics Overview", "overview.html", "md"),
+        ("Statistical Sampling", "sampling.html", "md"),
+        ("Presenting Data", "data-presentation.html", "sm"),
+        ("Measures of Location and Spread", "measures.html", "md"),
+        ("Correlation and Outliers", "bivariate-data.html", "sm"),
+    ]),
+    ("probability", "Probability and Distributions", "lg", [
+        ("Probability Overview", "overview.html", "md"),
+        ("Probability and Venn Diagrams", "probability.html", "md"),
+        ("The Binomial Distribution", "binomial-distribution.html", "md"),
+    ]),
+    ("hypothesis-testing", "Hypothesis Testing", "lg", [
+        ("Hypothesis Testing Overview", "overview.html", "md"),
+        ("The Language of Hypothesis Testing", "language.html", "sm"),
+        ("Binomial Hypothesis Tests", "binomial-tests.html", "md"),
+    ]),
+    ("mechanics", "Mechanics", "xl", [
+        ("Mechanics Overview", "overview.html", "md"),
+        ("Quantities, Units and Modelling", "units-modelling.html", "xs"),
+        ("Motion Graphs", "kinematics-graphs.html", "sm"),
+        ("Constant Acceleration (suvat)", "suvat.html", "md"),
+        ("Variable Acceleration", "variable-acceleration.html", "sm"),
+        ("Forces and Newton's Laws", "forces-newtons-laws.html", "md"),
+    ]),
+]
+
+ALEVEL2_TOPICS = [
+    ("proof", "Proof", "lg", [
+        ("Proof Overview", "overview.html", "md"),
+        ("Proof by Contradiction", "contradiction.html", "md"),
+    ]),
+    ("algebra", "Algebra and Functions", "xl", [
+        ("Algebra Overview", "overview.html", "md"),
+        ("Algebraic and Partial Fractions", "partial-fractions.html", "md"),
+        ("The Modulus Function", "modulus.html", "sm"),
+        ("Composite and Inverse Functions", "functions.html", "md"),
+        ("Combined Transformations", "transformations.html", "sm"),
+    ]),
+    ("parametric-equations", "Parametric Equations", "lg", [
+        ("Parametric Equations Overview", "overview.html", "md"),
+        ("Parametric and Cartesian Forms", "parametric-equations.html", "md"),
+        ("Parametric Modelling", "modelling.html", "sm"),
+    ]),
+    ("sequences-series", "Sequences and Series", "xl", [
+        ("Sequences and Series Overview", "overview.html", "md"),
+        ("Sequences and Sigma Notation", "sequences.html", "sm"),
+        ("Arithmetic Sequences and Series", "arithmetic.html", "md"),
+        ("Geometric Sequences and Series", "geometric.html", "md"),
+        ("The General Binomial Expansion", "binomial-expansion.html", "sm"),
+    ]),
+    ("trigonometry", "Trigonometry", "xl", [
+        ("Trigonometry Overview", "overview.html", "md"),
+        ("Radians, Arcs and Sectors", "radians.html", "md"),
+        ("Small Angle Approximations", "small-angles.html", "xs"),
+        ("Reciprocal and Inverse Functions", "reciprocal-inverse.html", "sm"),
+        ("Compound and Double Angles", "compound-angles.html", "md"),
+        ("The R cos(x + a) Form", "harmonic-form.html", "sm"),
+        ("Trigonometric Proof and Modelling", "proof-modelling.html", "xs"),
+    ]),
+    ("differentiation", "Differentiation", "xl", [
+        ("Differentiation Overview", "overview.html", "md"),
+        ("Exponentials, Logs and Trig", "standard-derivatives.html", "md"),
+        ("Chain, Product and Quotient Rules", "chain-product-quotient.html", "md"),
+        ("Implicit and Parametric Differentiation", "implicit-parametric.html", "sm"),
+        ("Concavity and Points of Inflection", "concavity.html", "sm"),
+        ("Connected Rates of Change", "connected-rates.html", "sm"),
+    ]),
+    ("integration", "Integration", "xl", [
+        ("Integration Overview", "overview.html", "md"),
+        ("Standard Integrals", "standard-integrals.html", "md"),
+        ("Integration by Substitution", "substitution.html", "md"),
+        ("Integration by Parts", "by-parts.html", "md"),
+        ("Integrating with Partial Fractions", "partial-fractions.html", "sm"),
+        ("Areas and Integration as a Limit", "areas.html", "sm"),
+        ("Differential Equations", "differential-equations.html", "md"),
+    ]),
+    ("numerical-methods", "Numerical Methods", "lg", [
+        ("Numerical Methods Overview", "overview.html", "md"),
+        ("Locating Roots", "locating-roots.html", "sm"),
+        ("Iteration", "iteration.html", "md"),
+        ("The Newton-Raphson Method", "newton-raphson.html", "md"),
+        ("The Trapezium Rule", "trapezium-rule.html", "sm"),
+    ]),
+    ("vectors", "Vectors", "lg", [
+        ("Vectors Overview", "overview.html", "md"),
+        ("Vectors in Three Dimensions", "vectors-3d.html", "md"),
+    ]),
+    ("statistics", "Statistics", "xl", [
+        ("Statistics Overview", "overview.html", "md"),
+        ("Regression and Exponential Models", "regression.html", "sm"),
+        ("Conditional Probability", "conditional-probability.html", "md"),
+        ("The Normal Distribution", "normal-distribution.html", "md"),
+        ("Choosing a Distribution", "choosing-distributions.html", "sm"),
+    ]),
+    ("hypothesis-testing", "Hypothesis Testing", "lg", [
+        ("Hypothesis Testing Overview", "overview.html", "md"),
+        ("Testing for Correlation", "correlation-tests.html", "sm"),
+        ("Testing a Normal Mean", "normal-mean-tests.html", "md"),
+    ]),
+    ("mechanics", "Mechanics", "xl", [
+        ("Mechanics Overview", "overview.html", "md"),
+        ("Moments", "moments.html", "md"),
+        ("Resolving Forces and Inclined Planes", "resolving-forces.html", "md"),
+        ("Friction", "friction.html", "sm"),
+        ("Projectiles", "projectiles.html", "md"),
+        ("Kinematics with Calculus and Vectors", "kinematics-vectors.html", "sm"),
+    ]),
+]
+
 # section key -> (url/folder prefix, topic list)
 SECTIONS = {
     "gcse": ("gcse", GCSE_TOPICS),
     "fsmq": ("fsmq", FSMQ_TOPICS),
+    "alevel1": ("alevel-year1", ALEVEL1_TOPICS),
+    "alevel2": ("alevel-year2", ALEVEL2_TOPICS),
 }
 
 START = "<!-- WORDCLOUD:START -->"
@@ -300,7 +465,9 @@ if __name__ == "__main__":
         sys.exit(1)
 
     n_gcse, n_fsmq = count("gcse"), count("fsmq")
-    for key, label in (("gcse", "GCSE"), ("fsmq", "FSMQ")):
+    n_al1, n_al2 = count("alevel1"), count("alevel2")
+    for key, label in (("gcse", "GCSE"), ("fsmq", "FSMQ"),
+                       ("alevel1", "A Level Year 1"), ("alevel2", "A Level Year 2")):
         topics = SECTIONS[key][1]
         print(f"{label}: {len(topics)} topics, {count(key)} subtopics "
               "\u2014 all targets verified")
@@ -320,7 +487,21 @@ if __name__ == "__main__":
         + topics_cloud("fsmq") + "\n"
         '<p class="wc-label">&hellip;or jump straight to any of the '
         f'{n_fsmq} FSMQ pages</p>\n'
-        + mixed_cloud("fsmq")
+        + mixed_cloud("fsmq") + "\n"
+        '<h2 id="explore-a-level-maths-year-1">Explore A Level Maths Year 1</h2>\n'
+        '<p>The first year of A Level Mathematics &mdash; pure, statistics and '
+        'mechanics &mdash; with notes, worked examples and practice questions '
+        'with answers:</p>\n'
+        + topics_cloud("alevel1") + "\n"
+        '<p class="wc-label">&hellip;or jump straight to any of the '
+        f'{n_al1} Year 1 pages</p>\n'
+        + mixed_cloud("alevel1") + "\n"
+        '<h2 id="explore-a-level-maths-year-2">Explore A Level Maths Year 2</h2>\n'
+        '<p>The second year of A Level Mathematics, completing the full course:</p>\n'
+        + topics_cloud("alevel2") + "\n"
+        '<p class="wc-label">&hellip;or jump straight to any of the '
+        f'{n_al2} Year 2 pages</p>\n'
+        + mixed_cloud("alevel2")
     )
 
     gcse = (
@@ -339,9 +520,17 @@ if __name__ == "__main__":
         + grouped_clouds("fsmq")
     )
 
-    n1 = splice("index.md", home)
-    n2 = splice("gcse/index.md", gcse)
-    n3 = splice("fsmq/index.md", fsmq)
-    print(f"index.md      \u2192 {n1} links")
-    print(f"gcse/index.md \u2192 {n2} links")
-    print(f"fsmq/index.md \u2192 {n3} links")
+    alevel1, alevel2 = (
+        '{% include wordcloud-style.html %}\n'
+        '<h2 id="all-topics">All topics</h2>\n'
+        + topics_cloud(key) + "\n"
+        '<h2 id="all-pages">Every page</h2>\n'
+        + grouped_clouds(key)
+        for key in ("alevel1", "alevel2")
+    )
+
+    for path, block in (("index.md", home), ("gcse/index.md", gcse),
+                        ("fsmq/index.md", fsmq),
+                        ("alevel-year1/index.md", alevel1),
+                        ("alevel-year2/index.md", alevel2)):
+        print(f"{path:21} \u2192 {splice(path, block)} links")

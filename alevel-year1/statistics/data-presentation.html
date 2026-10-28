@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presenting Data &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Presenting Data</h1>
+  <p>A Level Maths Year 1 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – TYPES OF DATA AND CHOOSING A DIAGRAM
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Types of Data and Choosing a Diagram</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Qualitative</strong> (categorical)</td><td>Non-numerical descriptions.</td><td>Eye colour, type of car</td></tr>
+    <tr><td><strong>Quantitative, discrete</strong></td><td>Numerical, can only take particular values.</td><td>Number of siblings, shoe size</td></tr>
+    <tr><td><strong>Quantitative, continuous</strong></td><td>Numerical, can take any value in a range.</td><td>Time, mass, height</td></tr>
+  </table>
+
+  <table>
+    <tr><th>Diagram</th><th>Best for</th><th>Shows well</th></tr>
+    <tr><td><strong>Histogram</strong></td><td>Grouped continuous data, especially with unequal classes</td><td>Shape of the distribution</td></tr>
+    <tr><td><strong>Cumulative frequency graph</strong></td><td>Grouped continuous data</td><td>Median, quartiles, percentiles</td></tr>
+    <tr><td><strong>Box plot</strong></td><td>Summarising a single variable; comparing two or more data sets</td><td>Median, spread, skew, outliers</td></tr>
+    <tr><td><strong>Scatter diagram</strong></td><td>Two quantitative variables measured on the same items</td><td>Correlation and relationships</td></tr>
+  </table>
+
+  <div class="tip">
+    You should already know bar charts, pie charts and stem-and-leaf diagrams from GCSE; they may still appear. At A Level the emphasis is on <strong>interpreting</strong> diagrams and <strong>critiquing</strong> the choice of diagram, not just drawing them.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – HISTOGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Histograms</div>
+<div class="section-body">
+
+  <div class="concept">
+    In a histogram the <strong>area</strong> of each bar is proportional to the frequency — not the height. When classes have different widths, the vertical axis shows <strong>frequency density</strong>.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Frequency density</div>
+    $\text{frequency density} = \dfrac{\text{frequency}}{\text{class width}}$ &nbsp;&nbsp;so&nbsp;&nbsp; $\text{frequency} = \text{frequency density} \times \text{class width}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Drawing a histogram</div>
+    <div class="example-body">
+      <p>The commuting times of $80$ workers are shown. Calculate the frequency densities and draw a histogram.</p>
+      <table>
+        <tr><th>Time $t$ (min)</th><th>Frequency</th><th>Class width</th><th>Frequency density</th></tr>
+        <tr><td>$0 \leqslant t &lt; 10$</td><td>$8$</td><td>$10$</td><td>$0.8$</td></tr>
+        <tr><td>$10 \leqslant t &lt; 20$</td><td>$22$</td><td>$10$</td><td>$2.2$</td></tr>
+        <tr><td>$20 \leqslant t &lt; 30$</td><td>$26$</td><td>$10$</td><td>$2.6$</td></tr>
+        <tr><td>$30 \leqslant t &lt; 50$</td><td>$18$</td><td>$20$</td><td>$0.9$</td></tr>
+        <tr><td>$50 \leqslant t &lt; 80$</td><td>$6$</td><td>$30$</td><td>$0.2$</td></tr>
+      </table>
+      <div class="svg-block">
+        <svg width="400" height="270" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+          <g stroke="#e0e7ff" stroke-width="1">
+            <line x1="50" y1="200" x2="380" y2="200"/><line x1="50" y1="170" x2="380" y2="170"/><line x1="50" y1="140" x2="380" y2="140"/>
+            <line x1="50" y1="110" x2="380" y2="110"/><line x1="50" y1="80" x2="380" y2="80"/><line x1="50" y1="50" x2="380" y2="50"/>
+          </g>
+          <g fill="#c4b5fd" stroke="#4f46e5" stroke-width="1.5">
+            <rect x="50" y="182" width="40" height="48"/>
+            <rect x="90" y="98" width="40" height="132"/>
+            <rect x="130" y="74" width="40" height="156"/>
+            <rect x="170" y="176" width="80" height="54"/>
+            <rect x="250" y="218" width="120" height="12"/>
+          </g>
+          <line x1="50" y1="230" x2="385" y2="230" stroke="#555" stroke-width="1.2"/>
+          <line x1="50" y1="230" x2="50" y2="35" stroke="#555" stroke-width="1.2"/>
+          <g fill="#555" text-anchor="middle">
+            <text x="50" y="245">0</text><text x="90" y="245">10</text><text x="130" y="245">20</text><text x="170" y="245">30</text>
+            <text x="250" y="245">50</text><text x="370" y="245">80</text>
+            <text x="215" y="263">Time t (minutes)</text>
+          </g>
+          <g fill="#555" text-anchor="end">
+            <text x="45" y="204">0.5</text><text x="45" y="174">1.0</text><text x="45" y="144">1.5</text>
+            <text x="45" y="114">2.0</text><text x="45" y="84">2.5</text><text x="45" y="54">3.0</text>
+          </g>
+          <text x="14" y="140" fill="#555" transform="rotate(-90 14 140)" text-anchor="middle">Frequency density</text>
+        </svg>
+      </div>
+      <div class="tip">Plotting <em>frequency</em> instead would make the $30 \leqslant t &lt; 50$ bar look almost as important as the $20$–$30$ bar, even though its data are spread over twice the width. Frequency density corrects for that.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Estimating from a histogram</div>
+    <div class="example-body">
+      <p>Using the histogram above, estimate how many workers took between $25$ and $40$ minutes.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$25$ to $30$: width $5$, density $2.6$, so $5 \times 2.6 = 13$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$30$ to $40$: width $10$, density $0.9$, so $10 \times 0.9 = 9$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Estimate: $13 + 9 = 22$ workers.</span></div>
+      <div class="tip">This assumes the values are spread evenly within each class — that is why it is only an estimate.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Histograms drawn to an unknown scale</div>
+    <div class="example-body">
+      <p>On a histogram, a bar $1.5$ cm wide and $8$ cm tall represents a frequency of $36$. Another bar is $3$ cm wide and $2$ cm tall. What frequency does it represent?</p>
+      <div class="step-row"><span class="arrow">①</span><span>First bar: area $1.5 \times 8 = 12$ cm$^2$ represents $36$, so $1$ cm$^2$ represents $3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Second bar: area $3 \times 2 = 6$ cm$^2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Frequency $= 6 \times 3 = 18$.</span></div>
+      <div class="warn">Exam histograms are often drawn without a labelled frequency density scale. Always work from <strong>area</strong> $\propto$ frequency.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CUMULATIVE FREQUENCY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Cumulative Frequency</div>
+<div class="section-body">
+
+  <p>Cumulative frequency is a running total. Plot each cumulative frequency at the <strong>upper class boundary</strong>, then join the points with a smooth curve or with straight lines.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Median, quartiles and a percentile</div>
+    <div class="example-body">
+      <p>Use the commuting data to estimate the median, the interquartile range and the $90$th percentile.</p>
+      <table>
+        <tr><th>Time less than</th><th>$10$</th><th>$20$</th><th>$30$</th><th>$50$</th><th>$80$</th></tr>
+        <tr><td><strong>Cumulative frequency</strong></td><td>$8$</td><td>$30$</td><td>$56$</td><td>$74$</td><td>$80$</td></tr>
+      </table>
+      <div class="svg-block">
+        <svg width="400" height="290" viewBox="0 0 400 290" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+          <g stroke="#e0e7ff" stroke-width="1">
+            <line x1="50" y1="200" x2="380" y2="200"/><line x1="50" y1="150" x2="380" y2="150"/><line x1="50" y1="100" x2="380" y2="100"/><line x1="50" y1="50" x2="380" y2="50"/>
+          </g>
+          <line x1="50" y1="250" x2="385" y2="250" stroke="#555" stroke-width="1.2"/>
+          <line x1="50" y1="250" x2="50" y2="35" stroke="#555" stroke-width="1.2"/>
+          <polyline points="50,250 90,230 130,175 170,110 250,65 370,50" fill="none" stroke="#4f46e5" stroke-width="2"/>
+          <g fill="#4f46e5"><circle cx="50" cy="250" r="3"/><circle cx="90" cy="230" r="3"/><circle cx="130" cy="175" r="3"/><circle cx="170" cy="110" r="3"/><circle cx="250" cy="65" r="3"/><circle cx="370" cy="50" r="3"/></g>
+          <g stroke="#dc2626" stroke-dasharray="4,3" stroke-width="1.2">
+            <line x1="50" y1="150" x2="145.4" y2="150"/><line x1="145.4" y1="150" x2="145.4" y2="250"/>
+            <line x1="50" y1="200" x2="111.8" y2="200"/><line x1="111.8" y1="200" x2="111.8" y2="250"/>
+            <line x1="50" y1="100" x2="187.8" y2="100"/><line x1="187.8" y1="100" x2="187.8" y2="250"/>
+          </g>
+          <g fill="#dc2626" font-size="10"><text x="105" y="214" text-anchor="end">Q₁</text><text x="150" y="164">median</text><text x="192" y="114">Q₃</text></g>
+          <g fill="#555" text-anchor="middle">
+            <text x="50" y="265">0</text><text x="90" y="265">10</text><text x="130" y="265">20</text><text x="170" y="265">30</text>
+            <text x="250" y="265">50</text><text x="370" y="265">80</text>
+            <text x="215" y="283">Time t (minutes)</text>
+          </g>
+          <g fill="#555" text-anchor="end">
+            <text x="45" y="204">20</text><text x="45" y="154">40</text><text x="45" y="104">60</text><text x="45" y="54">80</text>
+          </g>
+          <text x="14" y="150" fill="#555" transform="rotate(-90 14 150)" text-anchor="middle">Cumulative frequency</text>
+        </svg>
+      </div>
+      <div class="step-row"><span class="arrow">①</span><span>$n = 80$. Median at the $\tfrac{80}{2} = 40$th position; $Q_1$ at the $20$th; $Q_3$ at the $60$th; $90$th percentile at the $72$nd.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Median: $40$ lies in $20 \leqslant t &lt; 30$ ($30$ before it, $26$ in it): $20 + \dfrac{40 - 30}{26} \times 10 = 23.8$ min.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$Q_1$: $10 + \dfrac{20 - 8}{22} \times 10 = 15.5$ min. &nbsp; $Q_3$: $30 + \dfrac{60 - 56}{18} \times 20 = 34.4$ min.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>IQR $\approx 34.4 - 15.5 = 19.0$ min.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$90$th percentile: $30 + \dfrac{72 - 56}{18} \times 20 = 47.8$ min.</span></div>
+      <div class="tip">Joining the points with straight lines and reading off is exactly the same as <strong>linear interpolation</strong> in the table — see <a href="measures.html">Measures of Location and Spread</a>. For grouped data use $\tfrac{n}{2}$, not $\tfrac{n+1}{2}$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – BOX PLOTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Box Plots and Comparing Distributions</div>
+<div class="section-body">
+
+  <div class="concept">
+    A box plot shows the <strong>five-number summary</strong>: lowest value, $Q_1$, median, $Q_3$, highest value. Outliers are usually plotted as separate crosses, and the whiskers then stop at the most extreme values that are <em>not</em> outliers.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">A common outlier rule</div>
+    An outlier is a value below $Q_1 - 1.5 \times \text{IQR}$ or above $Q_3 + 1.5 \times \text{IQR}$<br>
+    <span style="font-size:.9rem">(the question will always tell you which rule to use — see <a href="bivariate-data.html">Correlation and Outliers</a>)</span>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Drawing and comparing box plots</div>
+    <div class="example-body">
+      <p>Test marks for two groups are summarised below. In group B the highest mark, $95$, is followed by $64$. Identify any outliers, draw box plots and compare the groups.</p>
+      <table>
+        <tr><th></th><th>Lowest</th><th>$Q_1$</th><th>Median</th><th>$Q_3$</th><th>Highest</th></tr>
+        <tr><td><strong>Group A</strong></td><td>$12$</td><td>$31$</td><td>$42$</td><td>$50$</td><td>$71$</td></tr>
+        <tr><td><strong>Group B</strong></td><td>$20$</td><td>$38$</td><td>$47$</td><td>$54$</td><td>$95$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>A: IQR $= 19$, fences $31 - 28.5 = 2.5$ and $50 + 28.5 = 78.5$. No outliers.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>B: IQR $= 16$, fences $38 - 24 = 14$ and $54 + 24 = 78$. $95 &gt; 78$, so $95$ is an outlier; the upper whisker ends at $64$.</span></div>
+      <div class="svg-block">
+        <svg width="400" height="190" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+          <line x1="40" y1="150" x2="360" y2="150" stroke="#555" stroke-width="1.2"/>
+          <g fill="#555" text-anchor="middle">
+            <line x1="40" y1="150" x2="40" y2="155" stroke="#555"/><text x="40" y="167">0</text>
+            <line x1="104" y1="150" x2="104" y2="155" stroke="#555"/><text x="104" y="167">20</text>
+            <line x1="168" y1="150" x2="168" y2="155" stroke="#555"/><text x="168" y="167">40</text>
+            <line x1="232" y1="150" x2="232" y2="155" stroke="#555"/><text x="232" y="167">60</text>
+            <line x1="296" y1="150" x2="296" y2="155" stroke="#555"/><text x="296" y="167">80</text>
+            <line x1="360" y1="150" x2="360" y2="155" stroke="#555"/><text x="360" y="167">100</text>
+            <text x="200" y="184">Mark</text>
+          </g>
+          <!-- Group A -->
+          <text x="5" y="54" fill="#4f46e5" font-weight="700">A</text>
+          <line x1="78.4" y1="50" x2="139.2" y2="50" stroke="#4f46e5" stroke-width="1.5"/>
+          <line x1="200" y1="50" x2="267.2" y2="50" stroke="#4f46e5" stroke-width="1.5"/>
+          <line x1="78.4" y1="42" x2="78.4" y2="58" stroke="#4f46e5" stroke-width="1.5"/>
+          <line x1="267.2" y1="42" x2="267.2" y2="58" stroke="#4f46e5" stroke-width="1.5"/>
+          <rect x="139.2" y="35" width="60.8" height="30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.5"/>
+          <line x1="174.4" y1="35" x2="174.4" y2="65" stroke="#4f46e5" stroke-width="2"/>
+          <!-- Group B -->
+          <text x="5" y="114" fill="#7c3aed" font-weight="700">B</text>
+          <line x1="104" y1="110" x2="161.6" y2="110" stroke="#7c3aed" stroke-width="1.5"/>
+          <line x1="212.8" y1="110" x2="244.8" y2="110" stroke="#7c3aed" stroke-width="1.5"/>
+          <line x1="104" y1="102" x2="104" y2="118" stroke="#7c3aed" stroke-width="1.5"/>
+          <line x1="244.8" y1="102" x2="244.8" y2="118" stroke="#7c3aed" stroke-width="1.5"/>
+          <rect x="161.6" y="95" width="51.2" height="30" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+          <line x1="190.4" y1="95" x2="190.4" y2="125" stroke="#7c3aed" stroke-width="2"/>
+          <text x="344" y="114" fill="#7c3aed" text-anchor="middle" font-size="14">×</text>
+        </svg>
+      </div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Location:</strong> B's median ($47$) is higher than A's ($42$), so on average group B scored higher.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span><strong>Spread:</strong> B's IQR ($16$) is smaller than A's ($19$), so B's marks were more consistent.</span></div>
+      <div class="tip"><strong>Compare in context.</strong> Full marks need one comparison of location <em>and</em> one of spread, each with numbers, each interpreted in the context ("group B scored higher on average"). Use median and IQR together, or mean and standard deviation together.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>Skew.</strong> If $Q_3 - Q_2 &gt; Q_2 - Q_1$ (a longer upper section) the data are <strong>positively skewed</strong>: a tail of high values. If $Q_3 - Q_2 &lt; Q_2 - Q_1$, the data are <strong>negatively skewed</strong>. For group A, $Q_2 - Q_1 = 11$ and $Q_3 - Q_2 = 8$, so A is slightly negatively skewed. The commuting times in Section 2 are positively skewed — the histogram has a long tail to the right.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SCATTER DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Scatter Diagrams</div>
+<div class="section-body">
+
+  <p>When two variables are measured on each item (<strong>bivariate data</strong>), plot one against the other. The <strong>explanatory</strong> (independent) variable goes on the horizontal axis and the <strong>response</strong> (dependent) variable on the vertical axis.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Choosing a diagram</div>
+    <div class="example-body">
+      <p>Suggest a suitable diagram for each: (a) the ages of $200$ people at a concert, grouped into unequal classes; (b) the reaction times of two groups, to compare them; (c) the arm span and height of $30$ students.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) A histogram with frequency density — classes are unequal.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Two box plots on the same scale — designed for comparison.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) A scatter diagram — two variables measured on each student.</span></div>
+    </div>
+  </div>
+
+  <p>Interpreting scatter diagrams, correlation and regression lines is covered in <a href="bivariate-data.html">Correlation and Outliers</a>.</p>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Frequency density</h4><p>Frequency $\div$ class width.</p></div>
+    <div class="ref-card"><h4>Histogram</h4><p>Area $\propto$ frequency; no gaps between bars.</p></div>
+    <div class="ref-card"><h4>Unknown scale</h4><p>Find frequency per unit area from a known bar.</p></div>
+    <div class="ref-card"><h4>Cumulative frequency</h4><p>Plot at upper class boundaries.</p></div>
+    <div class="ref-card"><h4>Grouped median</h4><p>Read at $\tfrac{n}{2}$; quartiles at $\tfrac{n}{4}$, $\tfrac{3n}{4}$.</p></div>
+    <div class="ref-card"><h4>Box plot</h4><p>Min, $Q_1$, median, $Q_3$, max; outliers as crosses.</p></div>
+    <div class="ref-card"><h4>Skew</h4><p>Longer upper part $\Rightarrow$ positive skew.</p></div>
+    <div class="ref-card"><h4>Comparing</h4><p>One location + one spread, with numbers, in context.</p></div>
+    <div class="ref-card"><h4>Scatter</h4><p>Explanatory on $x$-axis, response on $y$-axis.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Calculate the frequency densities for this table of leaf lengths $l$ cm: $0 \leqslant l &lt; 5$: $10$; &nbsp;$5 \leqslant l &lt; 10$: $18$; &nbsp;$10 \leqslant l &lt; 20$: $24$; &nbsp;$20 \leqslant l &lt; 40$: $16$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$10 \div 5 = 2$, &nbsp;$18 \div 5 = 3.6$, &nbsp;$24 \div 10 = 2.4$, &nbsp;$16 \div 20 = 0.8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>On a histogram, the bar for $15 \leqslant x &lt; 25$ has frequency density $3.4$. How many values lie in this class?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Frequency $= 3.4 \times 10 = 34$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The heights $h$ cm of $50$ seedlings are: $0 \leqslant h &lt; 4$: $7$; &nbsp;$4 \leqslant h &lt; 8$: $13$; &nbsp;$8 \leqslant h &lt; 12$: $18$; &nbsp;$12 \leqslant h &lt; 20$: $12$. Use interpolation to estimate the median and interquartile range.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Cumulative frequencies: $7, 20, 38, 50$.</p>
+          <p>Median ($25$th): $8 + \dfrac{25 - 20}{18} \times 4 = 9.11$ cm.</p>
+          <p>$Q_1$ ($12.5$th): $4 + \dfrac{12.5 - 7}{13} \times 4 = 5.69$ cm.</p>
+          <p>$Q_3$ ($37.5$th): $8 + \dfrac{37.5 - 20}{18} \times 4 = 11.89$ cm.</p>
+          <p>IQR $\approx 11.89 - 5.69 = 6.20$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A data set has $Q_1 = 22$, median $27$ and $Q_3 = 31$. Its two smallest values are $8$ and $12$, and its two largest are $40$ and $52$. Using the $1.5 \times \text{IQR}$ rule, identify any outliers and state where the whiskers of the box plot should end.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>IQR $= 9$, so $1.5 \times 9 = 13.5$.</p>
+          <p>Lower fence $22 - 13.5 = 8.5$; upper fence $31 + 13.5 = 44.5$.</p>
+          <p>$8 &lt; 8.5$ and $52 &gt; 44.5$, so <strong>both</strong> $8$ and $52$ are outliers.</p>
+          <p>The whiskers end at $12$ and $40$, with $8$ and $52$ marked as crosses.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Box plots of the times (in seconds) taken to complete a puzzle show: Class X median $58$, IQR $20$; Class Y median $64$, IQR $12$. Compare the two classes.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Class X has the lower median ($58 &lt; 64$), so on average Class X completed the puzzle more quickly.</p>
+          <p>Class Y has the smaller IQR ($12 &lt; 20$), so Class Y's times were more consistent.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>On a histogram, the class $20 \leqslant x &lt; 30$ has frequency $15$ and is drawn with height $3$ cm. The class $30 \leqslant x &lt; 50$ is drawn with height $1.2$ cm, on the same horizontal scale. Find its frequency.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Heights are proportional to frequency density. First class: density $15 \div 10 = 1.5$ is drawn as $3$ cm, so $1$ cm represents a density of $0.5$.</p>
+          <p>Second class: density $1.2 \times 0.5 = 0.6$, so frequency $= 0.6 \times 20 = 12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain why a histogram with unequal class widths should use frequency density rather than frequency on the vertical axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Wider classes naturally contain more values. Using frequency would make wide classes look more important than they are. With frequency density, the <em>area</em> of each bar is proportional to its frequency, so the diagram gives a true picture of how the data are distributed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A student draws a pie chart to show the heights of $40$ trees, using classes $0$–$5$ m, $5$–$10$ m, $10$–$20$ m and $20$–$40$ m. Give a criticism and suggest a better diagram.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Height is continuous numerical data with unequal classes; a pie chart hides the order of the classes and their different widths, so the shape of the distribution cannot be seen.</p>
+          <p>A histogram using frequency density (or a cumulative frequency graph) would be better.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>On a histogram, a bar $2$ cm wide and $6$ cm tall represents $24$ people. How many people are represented by a bar $4$ cm wide and $1.5$ cm tall?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$12$ cm$^2$ represents $24$, so $1$ cm$^2$ represents $2$ people.</p>
+          <p>Second bar: $4 \times 1.5 = 6$ cm$^2$, so $12$ people.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The weekly time $h$ hours spent on homework by $60$ students is shown.</p>
+      <table>
+        <tr><th>$h$</th><th>$0 \leqslant h &lt; 2$</th><th>$2 \leqslant h &lt; 4$</th><th>$4 \leqslant h &lt; 6$</th><th>$6 \leqslant h &lt; 10$</th><th>$10 \leqslant h &lt; 15$</th></tr>
+        <tr><td>Frequency</td><td>$6$</td><td>$15$</td><td>$20$</td><td>$14$</td><td>$5$</td></tr>
+      </table>
+      <p>(a) Find the frequency density for each class. &nbsp; (b) Estimate the number of students who spent more than $8$ hours. &nbsp; (c) Estimate the median and interquartile range. &nbsp; (d) A second group of students has median $6.2$ hours and IQR $2.5$ hours. Compare the two groups. &nbsp; (e) Describe the skew of the first group, giving a reason.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $6 \div 2 = 3$, &nbsp;$15 \div 2 = 7.5$, &nbsp;$20 \div 2 = 10$, &nbsp;$14 \div 4 = 3.5$, &nbsp;$5 \div 5 = 1$.</p>
+          <p><strong>(b)</strong> From $8$ to $10$: $2 \times 3.5 = 7$; plus all $5$ in the last class. Estimate $12$ students.</p>
+          <p><strong>(c)</strong> Cumulative frequencies: $6, 21, 41, 55, 60$.</p>
+          <p>Median ($30$th): $4 + \dfrac{30 - 21}{20} \times 2 = 4.9$ hours.</p>
+          <p>$Q_1$ ($15$th): $2 + \dfrac{15 - 6}{15} \times 2 = 3.2$ hours. &nbsp; $Q_3$ ($45$th): $6 + \dfrac{45 - 41}{14} \times 4 = 7.14$ hours.</p>
+          <p>IQR $\approx 7.14 - 3.2 = 3.94$ hours.</p>
+          <p><strong>(d)</strong> The second group has a higher median ($6.2 &gt; 4.9$), so on average they spent longer on homework. They also have a smaller IQR ($2.5 &lt; 3.94$), so their times were more consistent.</p>
+          <p><strong>(e)</strong> $Q_2 - Q_1 = 1.7$ and $Q_3 - Q_2 = 2.24$, so the upper half is more spread out: <strong>positive skew</strong>, consistent with the long tail of the histogram to the right.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Presenting Data &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

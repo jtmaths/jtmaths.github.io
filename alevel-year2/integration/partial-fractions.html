@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrating with Partial Fractions &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➗ Integrating with Partial Fractions</h1>
+  <p>A Level Maths Year 2 · Integration</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY PARTIAL FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Why Split the Fraction?</div>
+<div class="section-body">
+
+  <p>There is no direct rule for $\displaystyle\int\frac{5x+1}{(x+1)(x-1)}\,dx$. But each <strong>partial fraction</strong> such as $\dfrac{3}{x-1}$ integrates straight to a logarithm. So the plan is: split first (see <a href="../algebra/partial-fractions.html">Algebraic and Partial Fractions</a>), then integrate each piece.</p>
+
+  <table>
+    <tr><th>Piece</th><th>Integral</th></tr>
+    <tr><td>$\dfrac{A}{x - a}$</td><td>$A\ln|x - a| + c$</td></tr>
+    <tr><td>$\dfrac{A}{bx + c}$</td><td>$\dfrac{A}{b}\ln|bx + c| + c$</td></tr>
+    <tr><td>$\dfrac{A}{(x - a)^2}$</td><td>$-\dfrac{A}{x - a} + c$ &nbsp;(a power, <em>not</em> a log)</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The forms you need</div>
+    $\dfrac{px + q}{(x-a)(x-b)} \equiv \dfrac{A}{x-a} + \dfrac{B}{x-b}$ &nbsp;&middot;&nbsp;
+    $\dfrac{\ldots}{(x-a)(x-b)^2} \equiv \dfrac{A}{x-a} + \dfrac{B}{x-b} + \dfrac{C}{(x-b)^2}$
+  </div>
+
+  <div class="warn">
+    <strong>Check the fraction is proper first.</strong> If the degree of the numerator is the same as (or bigger than) the denominator, divide first to get a polynomial plus a proper fraction (Section 4).
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DISTINCT LINEAR FACTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Distinct Linear Factors</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Split and integrate</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int\frac{5x+1}{(x+1)(x-1)}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5x + 1 \equiv A(x+1) + B(x-1)$ where $\dfrac{5x+1}{(x+1)(x-1)} \equiv \dfrac{A}{x-1} + \dfrac{B}{x+1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 1$: $6 = 2A$, so $A = 3$. &nbsp;$x = -1$: $-4 = -2B$, so $B = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int\left(\frac{3}{x-1} + \frac{2}{x+1}\right)dx = 3\ln|x-1| + 2\ln|x+1| + c$</span></div>
+      <div class="tip">You can combine with log laws — $\ln\left|(x-1)^3(x+1)^2\right| + c$ — but it is not required unless the question asks for a particular form.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A definite integral, answer as a single log</div>
+    <div class="example-body">
+      <p>Show that $\displaystyle\int_2^4\frac{1}{x^2 - 1}\,dx = \tfrac{1}{2}\ln\tfrac{9}{5}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{1}{(x-1)(x+1)} \equiv \dfrac{1/2}{x-1} - \dfrac{1/2}{x+1}$ (cover-up: $x = 1$ gives $\tfrac{1}{2}$, $x = -1$ gives $-\tfrac{1}{2}$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int = \tfrac{1}{2}\ln|x-1| - \tfrac{1}{2}\ln|x+1| = \tfrac{1}{2}\ln\left|\frac{x-1}{x+1}\right|$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tfrac{1}{2}\left[\ln\tfrac{3}{5} - \ln\tfrac{1}{3}\right] = \tfrac{1}{2}\ln\left(\tfrac{3}{5} \times 3\right) = \tfrac{1}{2}\ln\tfrac{9}{5}$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A factor of the form $(bx + c)$</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int\frac{x}{(x+1)(2x+1)}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x \equiv A(2x+1) + B(x+1)$. &nbsp;$x = -1$: $-1 = -A$, $A = 1$. &nbsp;$x = -\tfrac{1}{2}$: $-\tfrac{1}{2} = \tfrac{1}{2}B$, $B = -1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int\left(\frac{1}{x+1} - \frac{1}{2x+1}\right)dx$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \ln|x+1| - \tfrac{1}{2}\ln|2x+1| + c$</span></div>
+      <div class="warn">The $\tfrac{1}{2}$ comes from the reverse chain rule on $(2x+1)$. Missing it is the commonest error on this page.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – REPEATED FACTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Repeated Linear Factors</div>
+<div class="section-body">
+
+  <div class="concept">
+    A squared factor $(x - b)^2$ produces two fractions: $\dfrac{B}{x-b}$, which gives a log, and $\dfrac{C}{(x-b)^2} = C(x-b)^{-2}$, which integrates as a <strong>power</strong> to $-\dfrac{C}{x-b}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A repeated factor</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int\frac{x+5}{(x-1)(x+1)^2}\,dx$, and hence evaluate it between $x = 2$ and $x = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x + 5 \equiv A(x+1)^2 + B(x-1)(x+1) + C(x-1)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 1$: $6 = 4A$, $A = \tfrac{3}{2}$. &nbsp;$x = -1$: $4 = -2C$, $C = -2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Compare $x^2$: $0 = A + B$, so $B = -\tfrac{3}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int\left(\frac{3/2}{x-1} - \frac{3/2}{x+1} - \frac{2}{(x+1)^2}\right)dx = \tfrac{3}{2}\ln|x-1| - \tfrac{3}{2}\ln|x+1| + \frac{2}{x+1} + c$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>From $2$ to $3$: $\tfrac{3}{2}\left(\ln 2 - \ln 4 - \ln 1 + \ln 3\right) + \left(\tfrac{2}{4} - \tfrac{2}{3}\right)$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$= \tfrac{3}{2}\ln\tfrac{3}{2} - \tfrac{1}{6}$ &nbsp;($\approx 0.441$)</span></div>
+      <div class="tip">Substituting the two "easy" values finds $A$ and $C$; comparing the $x^2$ coefficients is then the quickest way to get $B$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – IMPROPER FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Improper Fractions</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Divide first</div>
+    <div class="example-body">
+      <p>Show that $\displaystyle\int_2^3\frac{x^2+1}{x^2-1}\,dx = 1 + \ln\tfrac{3}{2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Same degree top and bottom: $\dfrac{x^2+1}{x^2-1} = \dfrac{(x^2-1) + 2}{x^2-1} = 1 + \dfrac{2}{x^2-1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{2}{(x-1)(x+1)} \equiv \dfrac{1}{x-1} - \dfrac{1}{x+1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int_2^3\left(1 + \frac{1}{x-1} - \frac{1}{x+1}\right)dx = \Big[x + \ln(x-1) - \ln(x+1)\Big]_2^3$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= (3 + \ln 2 - \ln 4) - (2 + 0 - \ln 3) = 1 + \ln\dfrac{2 \times 3}{4} = 1 + \ln\tfrac{3}{2}$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Always look for cancelling</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\int_2^3\frac{x^2 + x}{x^2 - 1}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Factorise: $\dfrac{x(x+1)}{(x-1)(x+1)} = \dfrac{x}{x-1}$ — a common factor cancels.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{x}{x-1} = \dfrac{(x-1)+1}{x-1} = 1 + \dfrac{1}{x-1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\Big[x + \ln(x-1)\Big]_2^3 = (3 + \ln 2) - (2 + 0) = 1 + \ln 2$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not let a definite integral cross an asymptote.</strong> $\displaystyle\int_0^2\frac{1}{x^2-1}\,dx$ is meaningless with these methods — the integrand is undefined at $x = 1$. Always check the denominator is non-zero on the whole interval.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Step 1</h4><p>Proper? If not, divide first.</p></div>
+    <div class="ref-card"><h4>Step 2</h4><p>Factorise the denominator; cancel if possible.</p></div>
+    <div class="ref-card"><h4>Step 3</h4><p>Split into partial fractions; check by recombining.</p></div>
+    <div class="ref-card"><h4>A/(x − a)</h4><p>$A\ln|x-a|$</p></div>
+    <div class="ref-card"><h4>A/(bx + c)</h4><p>$\tfrac{A}{b}\ln|bx+c|$ — divide by $b$.</p></div>
+    <div class="ref-card"><h4>A/(x − a)²</h4><p>$-\dfrac{A}{x-a}$ — no log.</p></div>
+    <div class="ref-card"><h4>Single log</h4><p>Combine with $\ln a - \ln b = \ln\tfrac{a}{b}$.</p></div>
+    <div class="ref-card"><h4>Limits</h4><p>Never across a value that makes a denominator zero.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\frac{3}{(x+1)(x-2)}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3 \equiv A(x+1) + B(x-2)$ for $\dfrac{A}{x-2} + \dfrac{B}{x+1}$: &nbsp;$x = 2$: $A = 1$; &nbsp;$x = -1$: $B = -1$.</p>
+          <p>$\displaystyle\int\left(\frac{1}{x-2} - \frac{1}{x+1}\right)dx = \ln|x-2| - \ln|x+1| + c = \ln\left|\frac{x-2}{x+1}\right| + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\frac{7x-1}{(x-1)(x+2)}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$7x - 1 \equiv A(x+2) + B(x-1)$. &nbsp;$x = 1$: $6 = 3A$, $A = 2$. &nbsp;$x = -2$: $-15 = -3B$, $B = 5$.</p>
+          <p>$= 2\ln|x-1| + 5\ln|x+2| + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that $\displaystyle\int_3^5\frac{2}{x^2-4}\,dx = \tfrac{1}{2}\ln\tfrac{15}{7}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{2}{(x-2)(x+2)} \equiv \dfrac{1/2}{x-2} - \dfrac{1/2}{x+2}$</p>
+          <p>$\tfrac{1}{2}\Big[\ln(x-2) - \ln(x+2)\Big]_3^5 = \tfrac{1}{2}\left[\ln\tfrac{3}{7} - \ln\tfrac{1}{5}\right] = \tfrac{1}{2}\ln\tfrac{15}{7}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the exact value of $\displaystyle\int_0^1\frac{x+3}{(x+1)(x+2)}\,dx$, giving your answer as a single logarithm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x + 3 \equiv A(x+2) + B(x+1)$. &nbsp;$x = -1$: $A = 2$. &nbsp;$x = -2$: $1 = -B$, $B = -1$.</p>
+          <p>$\Big[2\ln(x+1) - \ln(x+2)\Big]_0^1 = (2\ln 2 - \ln 3) - (0 - \ln 2) = 3\ln 2 - \ln 3 = \ln\tfrac{8}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Show that $\displaystyle\int_1^2\frac{x+4}{(2x-1)(x+1)}\,dx = \ln\left(2\sqrt{3}\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x + 4 \equiv A(x+1) + B(2x-1)$. &nbsp;$x = \tfrac{1}{2}$: $\tfrac{9}{2} = \tfrac{3}{2}A$, $A = 3$. &nbsp;$x = -1$: $3 = -3B$, $B = -1$.</p>
+          <p>$\displaystyle\int\left(\frac{3}{2x-1} - \frac{1}{x+1}\right)dx = \tfrac{3}{2}\ln|2x-1| - \ln|x+1|$</p>
+          <p>$\left(\tfrac{3}{2}\ln 3 - \ln 3\right) - \left(0 - \ln 2\right) = \tfrac{1}{2}\ln 3 + \ln 2 = \ln\left(2\sqrt{3}\right)$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the exact value of $\displaystyle\int_0^1\frac{2x+3}{(x+1)^2}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x + 3 \equiv A(x+1) + B$, so $A = 2$ and (at $x = -1$) $B = 1$: $\dfrac{2}{x+1} + \dfrac{1}{(x+1)^2}$.</p>
+          <p>$\left[2\ln(x+1) - \dfrac{1}{x+1}\right]_0^1 = \left(2\ln 2 - \tfrac{1}{2}\right) - (0 - 1) = 2\ln 2 + \tfrac{1}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Express $\dfrac{1}{x(x+1)^2}$ in partial fractions, and hence show that $\displaystyle\int_1^2\frac{1}{x(x+1)^2}\,dx = \ln\tfrac{4}{3} - \tfrac{1}{6}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 \equiv A(x+1)^2 + Bx(x+1) + Cx$. &nbsp;$x = 0$: $A = 1$. &nbsp;$x = -1$: $1 = -C$, $C = -1$. &nbsp;$x^2$: $0 = A + B$, $B = -1$.</p>
+          <p>$\dfrac{1}{x} - \dfrac{1}{x+1} - \dfrac{1}{(x+1)^2}$</p>
+          <p>Integral: $\ln x - \ln(x+1) + \dfrac{1}{x+1}$.</p>
+          <p>$\left(\ln 2 - \ln 3 + \tfrac{1}{3}\right) - \left(0 - \ln 2 + \tfrac{1}{2}\right) = \ln\tfrac{4}{3} - \tfrac{1}{6}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the exact value of $\displaystyle\int_3^4\frac{5}{x^2 + x - 6}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + x - 6 = (x+3)(x-2)$. &nbsp;$5 \equiv A(x-2) + B(x+3)$: &nbsp;$x = 2$: $B = 1$; &nbsp;$x = -3$: $A = -1$.</p>
+          <p>$\Big[\ln(x-2) - \ln(x+3)\Big]_3^4 = \ln\tfrac{2}{7} - \ln\tfrac{1}{6} = \ln\tfrac{12}{7}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int\frac{x^2+1}{x^2-1}\,dx$ and explain why $\displaystyle\int_0^2\frac{x^2+1}{x^2-1}\,dx$ cannot be found this way.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>As in Worked Example 5, the integrand is $1 + \dfrac{1}{x-1} - \dfrac{1}{x+1}$.</p>
+          <p>$\displaystyle\int = x + \ln|x-1| - \ln|x+1| + c = x + \ln\left|\frac{x-1}{x+1}\right| + c$</p>
+          <p>The range $0 \leqslant x \leqslant 2$ contains $x = 1$, where the denominator is zero and the integrand has a vertical asymptote. The area is not finite there, so the integral is not defined.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{2x^2 + 3x - 1}{(x+1)(x-1)}$, $x &gt; 1$.</p>
+      <p>(a) Show that $\mathrm{f}(x)$ can be written as $A + \dfrac{B}{x-1} + \dfrac{C}{x+1}$ and find $A$, $B$ and $C$. &nbsp; (b) The region $R$ is bounded by the curve $y = \mathrm{f}(x)$, the $x$-axis and the lines $x = 2$ and $x = 4$. Show that the area of $R$ is $4 + \ln 15$. &nbsp; (c) Explain why the condition $x &gt; 1$ is needed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(x+1)(x-1) = x^2 - 1$. Then $2x^2 + 3x - 1 = 2(x^2 - 1) + 3x + 1$, so $\mathrm{f}(x) = 2 + \dfrac{3x+1}{x^2-1}$.</p>
+          <p>$3x + 1 \equiv B(x+1) + C(x-1)$. &nbsp;$x = 1$: $4 = 2B$, $B = 2$. &nbsp;$x = -1$: $-2 = -2C$, $C = 1$.</p>
+          <p>$\mathrm{f}(x) = 2 + \dfrac{2}{x-1} + \dfrac{1}{x+1}$, so $A = 2$, $B = 2$, $C = 1$.</p>
+          <p><strong>(b)</strong> For $x &gt; 1$ every term is positive, so the curve is above the axis.</p>
+          <p>$\Big[2x + 2\ln(x-1) + \ln(x+1)\Big]_2^4 = (8 + 2\ln 3 + \ln 5) - (4 + 0 + \ln 3)$</p>
+          <p>$= 4 + \ln 3 + \ln 5 = 4 + \ln 15$ ✓</p>
+          <p><strong>(c)</strong> $\mathrm{f}$ is undefined at $x = \pm 1$. Restricting to $x &gt; 1$ keeps the curve on one continuous branch, so the region between $x = 2$ and $x = 4$ is well defined and the modulus signs in the logs can be dropped.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Integrating with Partial Fractions &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

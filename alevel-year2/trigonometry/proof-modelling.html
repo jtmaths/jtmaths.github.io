@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigonometric Proof and Modelling &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎡 Trigonometric Proof and Modelling</h1>
+  <p>A Level Maths Year 2 · Trigonometry</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – PROVING IDENTITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Proving Identities with the Full Toolkit</div>
+<div class="section-body">
+
+  <div class="concept">
+    To prove $\text{LHS} \equiv \text{RHS}$, start with <strong>one side</strong> — usually the more complicated one — and transform it step by step until it becomes the other side. Do not work on both sides at once, and never start by assuming what you are trying to prove.
+  </div>
+
+  <table>
+    <tr><th>Tool</th><th>Identities</th></tr>
+    <tr><td>Definitions</td><td>$\tan x = \dfrac{\sin x}{\cos x}$, &nbsp;$\sec x = \dfrac{1}{\cos x}$, &nbsp;$\operatorname{cosec} x = \dfrac{1}{\sin x}$, &nbsp;$\cot x = \dfrac{\cos x}{\sin x}$</td></tr>
+    <tr><td>Pythagorean</td><td>$\sin^2 x + \cos^2 x \equiv 1$, &nbsp;$1 + \tan^2 x \equiv \sec^2 x$, &nbsp;$1 + \cot^2 x \equiv \operatorname{cosec}^2 x$</td></tr>
+    <tr><td>Compound angle</td><td>$\sin(A \pm B)$, &nbsp;$\cos(A \pm B)$, &nbsp;$\tan(A \pm B)$</td></tr>
+    <tr><td>Double angle</td><td>$\sin 2x = 2\sin x\cos x$, &nbsp;$\cos 2x = 1 - 2\sin^2 x = 2\cos^2 x - 1$</td></tr>
+  </table>
+
+  <ul class="steps">
+    <li>If you cannot see a route, rewrite everything in terms of $\sin$ and $\cos$.</li>
+    <li>Combine fractions over a common denominator.</li>
+    <li>Look for $1 - \sin^2 x$, $1 - \cos^2 x$, $1 \pm \cos 2x$ — they simplify.</li>
+    <li>Factorise and cancel. Keep the target in view: if the answer has $\cot x$, you want $\cos x$ over $\sin x$.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Combining fractions</div>
+    <div class="example-body">
+      <p>Prove that $\dfrac{\cos x}{1 - \sin x} + \dfrac{\cos x}{1 + \sin x} \equiv 2\sec x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $= \dfrac{\cos x(1 + \sin x) + \cos x(1 - \sin x)}{(1 - \sin x)(1 + \sin x)}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= \dfrac{2\cos x}{1 - \sin^2 x} = \dfrac{2\cos x}{\cos^2 x}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{2}{\cos x} = 2\sec x = $ RHS $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Double angles and reciprocals</div>
+    <div class="example-body">
+      <p>Prove that $\operatorname{cosec} 2x + \cot 2x \equiv \cot x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $= \dfrac{1}{\sin 2x} + \dfrac{\cos 2x}{\sin 2x} = \dfrac{1 + \cos 2x}{\sin 2x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= \dfrac{2\cos^2 x}{2\sin x\cos x}$ &nbsp;(choosing $\cos 2x = 2\cos^2 x - 1$ to cancel the $1$)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{\cos x}{\sin x} = \cot x = $ RHS $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Spotting a compound angle</div>
+    <div class="example-body">
+      <p>Prove that $\dfrac{\sin 3x}{\sin x} - \dfrac{\cos 3x}{\cos x} \equiv 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $= \dfrac{\sin 3x\cos x - \cos 3x\sin x}{\sin x\cos x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The numerator is $\sin(3x - x) = \sin 2x$, and the denominator is $\tfrac12\sin 2x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>LHS $= \dfrac{\sin 2x}{\frac12\sin 2x} = 2 = $ RHS $\blacksquare$</span></div>
+      <div class="tip">Expanding $\sin 3x$ and $\cos 3x$ as cubics also works, but takes four times as long. Look for a pattern before you expand.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EQUATIONS IN RADIANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Solving Equations in Radians</div>
+<div class="section-body">
+
+  <p>The method is the same as in Year 1; what changes is the toolkit for getting to a single function, and the interval is usually in radians.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Many solutions</div>
+    <div class="example-body">
+      <p>Solve $2\sin 2\theta = 3\tan\theta$ for $0 \leqslant \theta \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4\sin\theta\cos\theta = \dfrac{3\sin\theta}{\cos\theta}$. Multiply by $\cos\theta$ (non-zero wherever $\tan\theta$ is defined): $4\sin\theta\cos^2\theta = 3\sin\theta$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sin\theta(4\cos^2\theta - 3) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin\theta = 0$: $\theta = 0, \pi, 2\pi$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\cos\theta = \pm\tfrac{\sqrt3}{2}$: $\theta = \tfrac{\pi}{6}, \tfrac{5\pi}{6}, \tfrac{7\pi}{6}, \tfrac{11\pi}{6}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Seven solutions: $0, \tfrac{\pi}{6}, \tfrac{5\pi}{6}, \pi, \tfrac{7\pi}{6}, \tfrac{11\pi}{6}, 2\pi$.</span></div>
+      <div class="warn">The $\pm$ in step ④ doubles the number of answers. Dropping the negative root is a very common way to lose marks.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A quadratic via an identity</div>
+    <div class="example-body">
+      <p>Solve $2\cos^2 x + 3\sin x = 3$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2(1 - \sin^2 x) + 3\sin x - 3 = 0 \Rightarrow 2\sin^2 x - 3\sin x + 1 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(2\sin x - 1)(\sin x - 1) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sin x = \tfrac12$: $x = \tfrac{\pi}{6}, \tfrac{5\pi}{6}$. &nbsp;$\sin x = 1$: $x = \tfrac{\pi}{2}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MODELLING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Trigonometric Models</div>
+<div class="section-body">
+
+  <p>Anything that repeats regularly — tides, a Ferris wheel, hours of daylight, a vibrating spring — can be modelled by a sine or cosine function.</p>
+
+  <div class="formula-box">
+    <div class="label">The general model</div>
+    $y = A + B\sin(\omega t + c)$ &nbsp;or&nbsp; $y = A + B\cos(\omega t + c)$<br>
+    <span style="font-size:.9rem">centre line $A$ &middot; amplitude $|B|$ &middot; maximum $A + |B|$, minimum $A - |B|$ &middot; period $\dfrac{2\pi}{\omega}$</span>
+  </div>
+
+  <div class="tip">
+    <strong>Finding $\omega$.</strong> If one full cycle takes $T$ units of time, then $\omega = \dfrac{2\pi}{T}$. A 12-hour tide gives $\omega = \tfrac{\pi}{6}$; a 365-day year gives $\omega = \tfrac{2\pi}{365}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Tides</div>
+    <div class="example-body">
+      <p>The depth of water in a harbour is $D = 5 + 3\cos\left(\dfrac{\pi t}{6}\right)$ metres, $t$ hours after midnight. A ship needs at least $6.5$ m of water. For how long in each tidal cycle can it use the harbour?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Period $= \dfrac{2\pi}{\pi/6} = 12$ hours. Maximum depth $8$ m (at $t = 0$), minimum $2$ m (at $t = 6$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$5 + 3\cos\left(\tfrac{\pi t}{6}\right) \geqslant 6.5 \Rightarrow \cos\left(\tfrac{\pi t}{6}\right) \geqslant \tfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>For one cycle $0 \leqslant \tfrac{\pi t}{6} \leqslant 2\pi$: true when $\tfrac{\pi t}{6} \leqslant \tfrac{\pi}{3}$ or $\tfrac{\pi t}{6} \geqslant \tfrac{5\pi}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So $0 \leqslant t \leqslant 2$ or $10 \leqslant t \leqslant 12$: a total of $4$ hours in every $12$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A Ferris wheel</div>
+    <div class="example-body">
+      <p>A Ferris wheel has radius $20$ m and its centre is $22$ m above the ground. It turns once every $10$ minutes. A passenger boards at the lowest point at $t = 0$. (a) Find a model for the height $h$ m after $t$ minutes. (b) Find the height after $2$ minutes. (c) For how long in each revolution is the passenger more than $30$ m above the ground?</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Starts at the minimum, so use $-\cos$: $\omega = \tfrac{2\pi}{10} = \tfrac{\pi}{5}$, and $h = 22 - 20\cos\left(\tfrac{\pi t}{5}\right)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Check: $t = 0$ gives $h = 2$ m (bottom); $t = 5$ gives $h = 42$ m (top) ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $h = 22 - 20\cos(0.4\pi) = 22 - 6.18 = 15.8$ m (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(c) $22 - 20\cos\left(\tfrac{\pi t}{5}\right) > 30 \Rightarrow \cos\left(\tfrac{\pi t}{5}\right) < -0.4$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\arccos(-0.4) = 1.9823$, so $1.9823 < \tfrac{\pi t}{5} < 2\pi - 1.9823 = 4.3009$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$3.155 < t < 6.845$: the passenger is above $30$ m for $3.69$ minutes per revolution.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Hours of daylight</div>
+    <div class="example-body">
+      <p>The number of hours of daylight in a UK city on day $t$ of the year is modelled by $H = 12 + 4.5\sin\left(\dfrac{2\pi(t - 80)}{365}\right)$. (a) Find the greatest number of hours of daylight and the day it occurs. (b) For how many days is there more than $15$ hours of daylight? (c) Give one limitation of the model.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Greatest $H = 16.5$ hours, when $\dfrac{2\pi(t - 80)}{365} = \dfrac{\pi}{2}$, i.e. $t = 80 + 91.25 = 171.25$ — about day $171$ (20 June).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $4.5\sin(\ldots) > 3 \Rightarrow \sin(\ldots) > \tfrac23$. $\arcsin\tfrac23 = 0.7297$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.7297 < \dfrac{2\pi(t - 80)}{365} < \pi - 0.7297 = 2.4119$, so $42.39 < t - 80 < 140.11$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$122.4 < t < 220.1$: days $123$ to $220$, which is $98$ days.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>(c) Real daylight hours are not a perfect sine curve, and the model ignores leap years and the effect of the clocks changing on daily routines.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Proof layout</h4><p>Start from one side; end on the other. Finish with $\blacksquare$.</p></div>
+    <div class="ref-card"><h4>Stuck?</h4><p>Convert to $\sin$ and $\cos$; combine fractions.</p></div>
+    <div class="ref-card"><h4>$1 \pm \cos 2x$</h4><p>$1 + \cos 2x = 2\cos^2 x$; &nbsp;$1 - \cos 2x = 2\sin^2 x$</p></div>
+    <div class="ref-card"><h4>Equations</h4><p>Factorise; keep both $\pm$ roots.</p></div>
+    <div class="ref-card"><h4>Period</h4><p>$\dfrac{2\pi}{\omega}$ for $\sin(\omega t + c)$.</p></div>
+    <div class="ref-card"><h4>Max / min</h4><p>$A \pm |B|$ for $A + B\sin(\ldots)$.</p></div>
+    <div class="ref-card"><h4>Start at the bottom</h4><p>Use $A - B\cos(\omega t)$.</p></div>
+    <div class="ref-card"><h4>Duration</h4><p>Solve the inequality for one full cycle.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Prove that $(\sin x + \cos x)^2 \equiv 1 + \sin 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $= \sin^2 x + 2\sin x\cos x + \cos^2 x = 1 + \sin 2x = $ RHS $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Prove that $\dfrac{1 - \cos 2x}{1 + \cos 2x} \equiv \tan^2 x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $= \dfrac{2\sin^2 x}{2\cos^2 x} = \tan^2 x = $ RHS $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Prove that $\cot x - \tan x \equiv 2\cot 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $= \dfrac{\cos x}{\sin x} - \dfrac{\sin x}{\cos x} = \dfrac{\cos^2 x - \sin^2 x}{\sin x\cos x} = \dfrac{\cos 2x}{\frac12\sin 2x} = 2\cot 2x = $ RHS $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Prove that $\tan x + \cot x \equiv 2\operatorname{cosec} 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $= \dfrac{\sin^2 x + \cos^2 x}{\sin x\cos x} = \dfrac{1}{\sin x\cos x} = \dfrac{2}{\sin 2x} = 2\operatorname{cosec} 2x$ $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $\sin 2x = \cos x$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\sin x\cos x - \cos x = 0 \Rightarrow \cos x(2\sin x - 1) = 0$.</p>
+          <p>$\cos x = 0$: $x = \tfrac{\pi}{2}, \tfrac{3\pi}{2}$. &nbsp;$\sin x = \tfrac12$: $x = \tfrac{\pi}{6}, \tfrac{5\pi}{6}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $\tan 2x = 3\tan x$ for $0 \leqslant x \leqslant \pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $t = \tan x$: $\dfrac{2t}{1 - t^2} = 3t \Rightarrow 2t = 3t - 3t^3 \Rightarrow t(3t^2 - 1) = 0$.</p>
+          <p>$t = 0$: $x = 0, \pi$. &nbsp;$t = \pm\tfrac{1}{\sqrt3}$: $x = \tfrac{\pi}{6}, \tfrac{5\pi}{6}$.</p>
+          <p>(None of these makes $1 - t^2 = 0$, so all are valid.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>For $y = 3 + 2\sin\left(4t - \tfrac{\pi}{3}\right)$, state the amplitude, period, maximum value, and the smallest positive $t$ at which the maximum occurs.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Amplitude $2$; period $\dfrac{2\pi}{4} = \dfrac{\pi}{2}$; maximum $3 + 2 = 5$.</p>
+          <p>$4t - \tfrac{\pi}{3} = \tfrac{\pi}{2} \Rightarrow 4t = \tfrac{5\pi}{6} \Rightarrow t = \tfrac{5\pi}{24}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The displacement of a mass on a spring is $x = 4\cos 2t + 3\sin 2t$ cm, $t$ seconds after release. Find the amplitude of the motion and the first time at which $x = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = R\cos(2t - \alpha)$ with $R\cos\alpha = 4$, $R\sin\alpha = 3$: $R = 5$ cm, $\alpha = \arctan\tfrac34 = 0.6435$.</p>
+          <p>$x = 0$ first when $2t - 0.6435 = \tfrac{\pi}{2}$, so $t = \dfrac{1.5708 + 0.6435}{2} = 1.11$ s (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A Ferris wheel of radius $15$ m has its centre $17$ m above the ground and turns once every $8$ minutes. A passenger boards at the bottom at $t = 0$. Write down a model for the height $h$ m after $t$ minutes, and find the first time the passenger is $25$ m above the ground.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\omega = \tfrac{2\pi}{8} = \tfrac{\pi}{4}$, and starting at the bottom: $h = 17 - 15\cos\left(\tfrac{\pi t}{4}\right)$.</p>
+          <p>$17 - 15\cos\left(\tfrac{\pi t}{4}\right) = 25 \Rightarrow \cos\left(\tfrac{\pi t}{4}\right) = -\tfrac{8}{15}$.</p>
+          <p>$\tfrac{\pi t}{4} = \arccos\left(-\tfrac{8}{15}\right) = 2.1333$, so $t = \dfrac{4 \times 2.1333}{\pi} = 2.72$ minutes (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The depth of water at a harbour entrance is modelled by $D = 7 + 2.5\sin\left(\dfrac{\pi t}{6.2}\right)$ metres, where $t$ is the time in hours after midnight.</p>
+      <p>(a) State the period of the model and explain why it is realistic for tides. &nbsp; (b) Find the maximum and minimum depths and the first times at which they occur. &nbsp; (c) A boat needs a depth of more than $8$ m. Find the time window during the first tidal cycle when it can enter, to the nearest minute. &nbsp; (d) Suggest one way in which the model could be refined.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Period $= \dfrac{2\pi}{\pi/6.2} = 12.4$ hours. Real tides have two highs and two lows a day, about $12$ hours $25$ minutes apart, so this matches well.</p>
+          <p><strong>(b)</strong> Maximum $9.5$ m when $\tfrac{\pi t}{6.2} = \tfrac{\pi}{2}$, i.e. $t = 3.1$ h (03:06). Minimum $4.5$ m when $\tfrac{\pi t}{6.2} = \tfrac{3\pi}{2}$, i.e. $t = 9.3$ h (09:18).</p>
+          <p><strong>(c)</strong> $2.5\sin\left(\tfrac{\pi t}{6.2}\right) > 1 \Rightarrow \sin\left(\tfrac{\pi t}{6.2}\right) > 0.4$. $\arcsin 0.4 = 0.4115$.</p>
+          <p>$0.4115 < \tfrac{\pi t}{6.2} < \pi - 0.4115 = 2.7301$, so $0.812 < t < 5.388$.</p>
+          <p>The boat can enter between 00:49 and 05:23 — a window of about $4$ hours $35$ minutes.</p>
+          <p><strong>(d)</strong> The heights of high and low tide vary over a lunar month (spring and neap tides), so the amplitude $2.5$ could itself be made to vary with time; or the model could be fitted to real tide-table data.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Trigonometric Proof and Modelling &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

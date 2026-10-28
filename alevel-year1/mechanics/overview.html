@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanics Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚙️ Mechanics Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Mechanics</strong> is the mathematics of how things move and why. In the first year of A Level it covers three DfE content areas: <strong>P</strong> · Quantities and units in mechanics, <strong>Q</strong> · Kinematics, and <strong>R</strong> · Forces and Newton's laws. Everything happens in a straight line, or with forces given as $\mathbf{i}$, $\mathbf{j}$ vectors.</p>
+
+  <div class="concept">
+    Mechanics has two halves that meet in the middle. <strong>Kinematics</strong> describes motion — position, velocity, acceleration, time. <strong>Dynamics</strong> explains it — forces cause acceleration. The bridge between them is <strong>acceleration</strong>: Newton's second law gives you $a$ from the forces, and kinematics turns $a$ into speeds, distances and times.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The chain that solves most problems</div>
+    forces $\xrightarrow{\;F = ma\;}$ acceleration $\xrightarrow{\;\text{suvat or calculus}\;}$ velocity, displacement, time
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Forces then motion</div>
+    <div class="example-body">
+      <p>A sledge of mass $20$ kg, initially at rest, is pulled across horizontal snow by a horizontal rope with tension $50$ N against a resistance of $14$ N. Find its speed and the distance travelled after $5$ s.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Model the sledge as a particle; the resistance is constant.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Newton's second law: $50 - 14 = 20a \Rightarrow a = 1.8$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Constant acceleration, so use suvat: $u = 0$, $a = 1.8$, $t = 5$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$v = 0 + 1.8(5) = 9$ m s$^{-1}$; &nbsp;$s = \tfrac12(1.8)(25) = 22.5$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed.</strong> Use $g = 9.8$ m s$^{-2}$ unless told otherwise, and give final answers to 2 or 3 significant figures, since $g$ is only given to 2 s.f. Always draw a diagram first — most lost marks in mechanics come from a missing or wrong force, not from the algebra.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td><strong>Displacement</strong> $s$</td><td>Position relative to a fixed origin, with direction (vector).</td></tr>
+    <tr><td><strong>Velocity</strong> $v$</td><td>Rate of change of displacement (vector). Speed is its magnitude.</td></tr>
+    <tr><td><strong>Acceleration</strong> $a$</td><td>Rate of change of velocity (vector).</td></tr>
+    <tr><td><strong>Particle</strong></td><td>An object whose size can be ignored.</td></tr>
+    <tr><td><strong>Light</strong></td><td>Of negligible mass (strings, rods, pulleys).</td></tr>
+    <tr><td><strong>Inextensible</strong></td><td>Does not stretch: connected particles share the same acceleration.</td></tr>
+    <tr><td><strong>Smooth</strong></td><td>No friction.</td></tr>
+    <tr><td><strong>Equilibrium</strong></td><td>Resultant force zero: at rest or moving at constant velocity.</td></tr>
+    <tr><td><strong>Newton (N)</strong></td><td>Unit of force; $1$ N $= 1$ kg m s$^{-2}$.</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Mass is not weight.</strong> Mass is measured in kg and is the same everywhere. Weight is a force, $W = mg$, measured in newtons.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TOOLS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Tools</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Units and weight</div>
+    SI units m, s, kg; &nbsp;km h$^{-1}$ $\div 3.6$ $=$ m s$^{-1}$; &nbsp;$W = mg$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Motion graphs</div>
+    gradient of $s$–$t$ $=$ velocity; &nbsp;gradient of $v$–$t$ $=$ acceleration; &nbsp;area under $v$–$t$ $=$ displacement
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Constant acceleration</div>
+    $v = u + at$, &nbsp;$s = \tfrac12(u+v)t$, &nbsp;$s = ut + \tfrac12at^2$, &nbsp;$s = vt - \tfrac12at^2$, &nbsp;$v^2 = u^2 + 2as$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Variable acceleration</div>
+    $v = \dfrac{\mathrm{d}s}{\mathrm{d}t}$, &nbsp;$a = \dfrac{\mathrm{d}v}{\mathrm{d}t}$, &nbsp;$v = \displaystyle\int a\,\mathrm{d}t$, &nbsp;$s = \displaystyle\int v\,\mathrm{d}t$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Newton's second law</div>
+    resultant force $= ma$ &nbsp;(in vector form, $\mathbf{F} = m\mathbf{a}$)
+  </div>
+
+  <div class="tip">
+    <strong>Which kinematics tool?</strong> If the acceleration is <em>constant</em> (and especially if it comes from constant forces), use suvat. If $s$, $v$ or $a$ is given as a <em>function of $t$</em>, use calculus.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Mechanics Subtopics</div>
+<div class="section-body">
+
+  <p>The DfE content areas for Year 1 mechanics, and the page that covers each part.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">P</span><span><a href="units-modelling.html">Quantities, Units and Modelling</a><span class="desc">SI and derived units, scalars and vectors, $g = 9.8$ m s$^{-2}$, and the modelling words: particle, light, inextensible, smooth, rigid.</span></span></li>
+    <li><span class="code">Q</span><span><a href="kinematics-graphs.html">Motion Graphs</a><span class="desc">Displacement–time and velocity–time graphs; what gradients and areas mean.</span></span></li>
+    <li><span class="code">Q</span><span><a href="suvat.html">Constant Acceleration (suvat)</a><span class="desc">The five equations, their derivation, vertical motion under gravity and multi-stage problems.</span></span></li>
+    <li><span class="code">Q</span><span><a href="variable-acceleration.html">Variable Acceleration</a><span class="desc">Using differentiation and integration in one-dimensional kinematics.</span></span></li>
+    <li><span class="code">R</span><span><a href="forces-newtons-laws.html">Forces and Newton's Laws</a><span class="desc">Force diagrams, Newton's three laws, $F = ma$ with vectors, equilibrium, lifts, towbars and pulleys.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Mixing units.</strong> Convert grams to kg, km to m and km h$^{-1}$ to m s$^{-1}$ <em>before</em> substituting.
+  </div>
+
+  <div class="warn">
+    <strong>Changing the positive direction part-way.</strong> In vertical motion, if up is positive then $a = -9.8$ for the whole flight — on the way up, at the top and on the way down.
+  </div>
+
+  <div class="warn">
+    <strong>Using suvat with variable acceleration.</strong> If $a$ depends on $t$, the suvat equations do not apply.
+  </div>
+
+  <div class="warn">
+    <strong>Leaving out the weight, or putting $ma$ on the force diagram.</strong> $ma$ is not a force: it is what the resultant force equals.
+  </div>
+
+  <div class="warn">
+    <strong>Confusing displacement with distance.</strong> When a particle turns round, the distance travelled is more than the change in displacement.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Units</h4><p>m, s, kg; N $=$ kg m s$^{-2}$.</p></div>
+    <div class="ref-card"><h4>Weight</h4><p>$W = mg$, $g = 9.8$ m s$^{-2}$.</p></div>
+    <div class="ref-card"><h4>$v$–$t$ graph</h4><p>Gradient $= a$; area $=$ displacement.</p></div>
+    <div class="ref-card"><h4>suvat</h4><p>Constant $a$ only. Pick the equation without the unwanted letter.</p></div>
+    <div class="ref-card"><h4>Greatest height</h4><p>$v = 0$.</p></div>
+    <div class="ref-card"><h4>Calculus</h4><p>Differentiate $s \to v \to a$; integrate back, using initial conditions.</p></div>
+    <div class="ref-card"><h4>Newton 2</h4><p>Resultant force $= ma$.</p></div>
+    <div class="ref-card"><h4>Equilibrium</h4><p>$\sum\mathbf{F} = \mathbf{0}$.</p></div>
+    <div class="ref-card"><h4>Connected particles</h4><p>Whole system for $a$; one part for the internal force.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of Year 1 mechanics. Take $g = 9.8$ m s$^{-2}$.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Convert $54$ km h$^{-1}$ to m s$^{-1}$, and find the weight of a $750$ g parcel.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$54 \div 3.6 = 15$ m s$^{-1}$.</p>
+          <p>$750$ g $= 0.75$ kg, so $W = 0.75 \times 9.8 = 7.35$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>State what is meant by modelling an object as a particle, and give one consequence.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The object's dimensions are negligible, so its mass is treated as concentrated at a single point.</p>
+          <p>Consequence: it cannot rotate, and all the forces act at that one point (air resistance is often also ignored).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A car travelling at $15$ m s$^{-1}$ brakes uniformly and stops in $3$ s. Find the deceleration and the stopping distance.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0 = 15 + 3a \Rightarrow a = -5$: deceleration $5$ m s$^{-2}$.</p>
+          <p>$s = \tfrac12(15 + 0)(3) = 22.5$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A cyclist accelerates uniformly from rest to $8$ m s$^{-1}$ in $4$ s, then rides at $8$ m s$^{-1}$ for $20$ s. Find the total distance using a velocity–time graph.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Area $= \tfrac12(4)(8) + 20(8) = 16 + 160 = 176$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A ball is thrown vertically upwards at $19.6$ m s$^{-1}$. Find the greatest height and the time taken to reach it.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = 0$ at the top: $0 = 19.6 - 9.8t \Rightarrow t = 2$ s.</p>
+          <p>$0 = 19.6^2 - 2(9.8)s \Rightarrow s = \dfrac{384.16}{19.6} = 19.6$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A particle's displacement is $s = t^3 - 3t^2$ m at time $t$ s. Find its velocity and acceleration when $t = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = 3t^2 - 6t$, so $v(4) = 48 - 24 = 24$ m s$^{-1}$.</p>
+          <p>$a = 6t - 6$, so $a(4) = 18$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A car of mass $1500$ kg accelerates uniformly from rest to $20$ m s$^{-1}$ in $8$ s against a constant resistance of $600$ N. Find the driving force.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = \dfrac{20}{8} = 2.5$ m s$^{-2}$.</p>
+          <p>$D - 600 = 1500(2.5) \Rightarrow D = 3750 + 600 = 4350$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Forces $(4\mathbf{i} - \mathbf{j})$ N and $(2\mathbf{i} + 9\mathbf{j})$ N act on a particle of mass $2$ kg. Find the magnitude of its acceleration.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Resultant $= (6\mathbf{i} + 8\mathbf{j})$ N; $\mathbf{a} = (3\mathbf{i} + 4\mathbf{j})$ m s$^{-2}$.</p>
+          <p>$|\mathbf{a}| = \sqrt{9 + 16} = 5$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Particles of mass $5$ kg and $3$ kg are connected by a light inextensible string passing over a smooth pulley, and released from rest. Find the acceleration and the tension.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5g - T = 5a$ and $T - 3g = 3a$. Adding: $2g = 8a \Rightarrow a = 2.45$ m s$^{-2}$.</p>
+          <p>$T = 3(9.8 + 2.45) = 36.75 \approx 36.8$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A lift starts from rest and rises with acceleration $0.8$ m s$^{-2}$ for $3$ s, then moves at constant speed for $10$ s, then decelerates uniformly to rest in $2$ s. A crate of mass $50$ kg stands on the lift floor.</p>
+      <p>(a) Sketch the velocity–time graph and find the total height risen. &nbsp; (b) Find the normal reaction on the crate during each of the three stages.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Maximum speed $= 0.8 \times 3 = 2.4$ m s$^{-1}$. Trapezium with parallel sides $10$ and $15$, height $2.4$:</p>
+          <p>Height $= \tfrac12(10 + 15)(2.4) = 30$ m. &nbsp;(Check: $3.6 + 24 + 2.4 = 30$ ✓)</p>
+          <p><strong>(b)</strong> Up positive, $R - 50g = 50a$.</p>
+          <p>Stage 1, $a = 0.8$: $R = 50(9.8 + 0.8) = 530$ N.</p>
+          <p>Stage 2, $a = 0$: $R = 490$ N.</p>
+          <p>Stage 3, $a = -\dfrac{2.4}{2} = -1.2$: $R = 50(9.8 - 1.2) = 430$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Mechanics Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

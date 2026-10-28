@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parametric Equations Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌀 Parametric Equations Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>Up to now every curve has been described by a single equation linking $x$ and $y$. <strong>Parametric equations</strong> describe a curve differently: both $x$ and $y$ are given in terms of a third variable, the <strong>parameter</strong>.</p>
+
+  <div class="concept">
+    Imagine a dot moving across the page. At each moment $t$ it has an $x$-coordinate and a $y$-coordinate. Writing $x = \mathrm{f}(t)$ and $y = \mathrm{g}(t)$ describes not just the path, but the <strong>journey</strong> along it.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">DfE content area C · Coordinate geometry (Year 2)</div>
+    Understand and use the parametric equations of curves and conversion between Cartesian and parametric forms<br>
+    Use parametric equations in modelling in a variety of contexts
+  </div>
+
+  <div class="tip">
+    <strong>Where it leads.</strong> Later this year you will find gradients of parametric curves on <a href="../differentiation/implicit-parametric.html">Implicit and Parametric Differentiation</a>, and model moving objects in <a href="../mechanics/projectiles.html">Projectiles</a>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Parameter</strong></td><td>The third variable that $x$ and $y$ both depend on.</td><td>$t$ in $x = t^2$, $y = 2t$</td></tr>
+    <tr><td><strong>Parametric equations</strong></td><td>The pair of equations $x = \mathrm{f}(t)$, $y = \mathrm{g}(t)$.</td><td>$x = 3\cos\theta$, $y = 3\sin\theta$</td></tr>
+    <tr><td><strong>Cartesian equation</strong></td><td>An equation linking $x$ and $y$ only.</td><td>$x^2 + y^2 = 9$</td></tr>
+    <tr><td><strong>Eliminate</strong></td><td>Remove the parameter to get the Cartesian equation.</td><td>$t = \tfrac{y}{2} \Rightarrow x = \tfrac{y^2}{4}$</td></tr>
+    <tr><td><strong>Domain</strong> (of the curve)</td><td>The set of $x$ values the curve covers.</td><td>$x = \sin\theta$ gives $-1 \leqslant x \leqslant 1$</td></tr>
+    <tr><td><strong>Range</strong> (of the curve)</td><td>The set of $y$ values the curve covers.</td><td>$y = t^2$ gives $y \geqslant 0$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The Cartesian equation can describe more than the curve.</strong> $x = \sin\theta$, $y = \cos 2\theta$ gives $y = 1 - 2x^2$, but only for $-1 \leqslant x \leqslant 1$. Always carry the restriction across.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Four Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Plotting</div>
+    Choose values of $t$, tabulate $x$ and $y$, plot and join in order of $t$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Eliminating the parameter</div>
+    Algebraic: make $t$ the subject of one equation and substitute<br>
+    Trigonometric: isolate $\sin\theta$, $\cos\theta$ (or $\tan\theta$, $\sec\theta$) and use an identity
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Domain and range</div>
+    Find the possible $x$ and $y$ values from the allowed values of the parameter
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Intersections</div>
+    Axes: solve $x(t) = 0$ or $y(t) = 0$ &nbsp;·&nbsp; a line: substitute $x(t)$, $y(t)$ into its equation
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>A curve has equations $x = t^2 - 1$, $y = 2t$. (a) Find a Cartesian equation. (b) Find where it crosses the $y$-axis. (c) Find where it meets the line $y = x - 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $t = \dfrac{y}{2}$, so $x = \dfrac{y^2}{4} - 1$, i.e. $y^2 = 4(x + 1)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $x = 0$: $t^2 = 1$, $t = \pm 1$, giving $(0, 2)$ and $(0, -2)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $2t = (t^2 - 1) - 2 \Rightarrow t^2 - 2t - 3 = 0 \Rightarrow (t - 3)(t + 1) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$t = 3$: $(8, 6)$. &nbsp; $t = -1$: $(0, -2)$. Check: $6 = 8 - 2$ ✓, $-2 = 0 - 2$ ✓.</span></div>
+      <div class="tip">For (c) you could use the Cartesian equation instead, but substituting the parametric forms gives a simpler equation in $t$ — and the points follow at once.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Parametric Equations Subtopics</div>
+<div class="section-body">
+
+  <ul class="topic-list">
+    <li><span class="code">C</span><span><a href="parametric-equations.html">Parametric and Cartesian Forms</a><span class="desc">Converting to Cartesian form (including with trigonometric identities), sketching, intersections, domain and range.</span></span></li>
+    <li><span class="code">C</span><span><a href="modelling.html">Parametric Modelling</a><span class="desc">Thrown balls, big wheels, rolling wheels and boats: interpreting the parameter and restricting its values.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Leaving the parameter in.</strong> A Cartesian equation must contain only $x$ and $y$.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting to square the coefficient.</strong> From $x = 3\cos\theta$, $\cos^2\theta = \dfrac{x^2}{9}$, not $\dfrac{x^2}{3}$.
+  </div>
+
+  <div class="warn">
+    <strong>Range from end-points only.</strong> For $y = t^2$ with $-1 \leqslant t \leqslant 2$ the least value is $0$, at $t = 0$, not $1$.
+  </div>
+
+  <div class="warn">
+    <strong>Confusing paths crossing with objects meeting.</strong> Two moving objects collide only if they are at the same point for the <em>same</em> value of $t$.
+  </div>
+
+  <div class="warn">
+    <strong>Degrees and radians.</strong> In modelling with $\sin(\omega t)$, $\omega t$ is in radians unless you are told otherwise. Set your calculator accordingly.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Parametric</h4><p>$x = \mathrm{f}(t)$, $y = \mathrm{g}(t)$.</p></div>
+    <div class="ref-card"><h4>Eliminate</h4><p>$t$ = …, then substitute.</p></div>
+    <div class="ref-card"><h4>Pythagorean</h4><p>$\sin^2\theta + \cos^2\theta = 1$.</p></div>
+    <div class="ref-card"><h4>Also useful</h4><p>$1 + \tan^2\theta = \sec^2\theta$; $\cos 2\theta = 1 - 2\sin^2\theta$.</p></div>
+    <div class="ref-card"><h4>Circle</h4><p>$x = a + r\cos\theta$, $y = b + r\sin\theta$.</p></div>
+    <div class="ref-card"><h4>Ellipse</h4><p>$x = p\cos\theta$, $y = q\sin\theta$.</p></div>
+    <div class="ref-card"><h4>Restrictions</h4><p>Domain and range come from the parameter.</p></div>
+    <div class="ref-card"><h4>Models</h4><p>Interpret $t$; restrict it to sensible values.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions covering the whole topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find a Cartesian equation for $x = 3t - 1$, $y = t + 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$t = y - 2$, so $x = 3(y - 2) - 1 = 3y - 7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>For $x = t^2$, $y = t^3$, find the points where $t = 0, 1, 2$ and a Cartesian equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(0, 0)$, $(1, 1)$, $(4, 8)$.</p>
+          <p>$x^3 = t^6 = y^2$, so $y^2 = x^3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Describe the curve $x = 2\cos\theta$, $y = 2\sin\theta$, $0 \leqslant \theta < 2\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + y^2 = 4$: a circle, centre the origin, radius $2$, traced once anticlockwise starting from $(2, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find $y$ in terms of $x$ for $x = t - 1$, $y = \dfrac{1}{t}$, $t > 0$, and state the domain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$t = x + 1$, so $y = \dfrac{1}{x + 1}$.</p>
+          <p>$t > 0$ means $x > -1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find a Cartesian equation for $x = 4\cos\theta$, $y = 3\sin\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos\theta = \tfrac{x}{4}$, $\sin\theta = \tfrac{y}{3}$, so $\dfrac{x^2}{16} + \dfrac{y^2}{9} = 1$ (an ellipse).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find where the curve $x = t^2$, $y = 4t$ meets the line $y = x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$4t = t^2 \Rightarrow t(t - 4) = 0 \Rightarrow t = 0$ or $t = 4$.</p>
+          <p>Points $(0, 0)$ and $(16, 16)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A curve has $x = 3 + 2t$, $y = t^2$, $-1 \leqslant t \leqslant 2$. Find the domain and range.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x$ increases with $t$: domain $1 \leqslant x \leqslant 7$.</p>
+          <p>$y = t^2$: least $0$ at $t = 0$, greatest $4$ at $t = 2$. Range $0 \leqslant y \leqslant 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find a Cartesian equation for $x = 2\sin\theta$, $y = \cos 2\theta$, stating the domain.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos 2\theta = 1 - 2\sin^2\theta$ and $\sin\theta = \tfrac{x}{2}$.</p>
+          <p>$y = 1 - 2\left(\tfrac{x}{2}\right)^2 = 1 - \dfrac{x^2}{2}$, for $-2 \leqslant x \leqslant 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find a Cartesian equation for $x = \sec\theta$, $y = 2\tan\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sec^2\theta - \tan^2\theta = 1$, with $\sec\theta = x$ and $\tan\theta = \tfrac{y}{2}$.</p>
+          <p>$x^2 - \dfrac{y^2}{4} = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A ball is kicked from ground level. After $t$ seconds it is at $x = 8t$, $y = 10t - 5t^2$ (metres).</p>
+      <p>(a) Find when and where it lands. &nbsp;(b) Find its greatest height. &nbsp;(c) Find the Cartesian equation of its path, with its domain. &nbsp;(d) Give one limitation of the model.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $5t(2 - t) = 0 \Rightarrow t = 2$ s; then $x = 16$ m.</p>
+          <p><strong>(b)</strong> $y = -5(t - 1)^2 + 5$: greatest height $5$ m at $t = 1$ s.</p>
+          <p><strong>(c)</strong> $t = \tfrac{x}{8}$: $y = \dfrac{10x}{8} - \dfrac{5x^2}{64} = \dfrac{5x}{4} - \dfrac{5x^2}{64}$, for $0 \leqslant x \leqslant 16$.</p>
+          <p>(Check: $x = 16$ gives $20 - 20 = 0$ ✓; $x = 8$ gives $10 - 5 = 5$ ✓.)</p>
+          <p><strong>(d)</strong> It ignores air resistance (or treats the ball as a particle, or ignores spin).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Parametric Equations Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

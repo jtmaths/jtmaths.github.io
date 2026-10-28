@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variable Acceleration &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 Variable Acceleration</h1>
+  <p>A Level Maths Year 1 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> When suvat Fails</div>
+<div class="section-body">
+
+  <p>The <a href="suvat.html">suvat equations</a> only work when the acceleration is constant. When displacement, velocity or acceleration is given as a <strong>function of time</strong>, you need calculus (DfE content area Q · Kinematics, using the differentiation and integration of content areas G and H).</p>
+
+  <div class="concept">
+    Velocity is the <strong>rate of change of displacement</strong>; acceleration is the <strong>rate of change of velocity</strong>. "Rate of change" means "derivative". So you <strong>differentiate</strong> to go from $s$ to $v$ to $a$, and <strong>integrate</strong> to go back.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The calculus ladder</div>
+    $s \;\xrightarrow{\;\frac{\mathrm{d}}{\mathrm{d}t}\;}\; v = \dfrac{\mathrm{d}s}{\mathrm{d}t} \;\xrightarrow{\;\frac{\mathrm{d}}{\mathrm{d}t}\;}\; a = \dfrac{\mathrm{d}v}{\mathrm{d}t} = \dfrac{\mathrm{d}^2 s}{\mathrm{d}t^2}$<br><br>
+    $a \;\xrightarrow{\;\int \mathrm{d}t\;}\; v = \displaystyle\int a\,\mathrm{d}t \;\xrightarrow{\;\int \mathrm{d}t\;}\; s = \displaystyle\int v\,\mathrm{d}t$
+  </div>
+
+  <div class="tip">
+    These link directly to the graphs in <a href="kinematics-graphs.html">Motion Graphs</a>: differentiating finds a <strong>gradient</strong>, integrating finds an <strong>area</strong>. At Year 1 the functions are polynomials in $t$, so you only need the power rules from <a href="../differentiation/rules.html">Differentiating Powers of x</a> and <a href="../integration/indefinite-integration.html">Indefinite Integration</a>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DIFFERENTIATING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> From Displacement to Velocity and Acceleration</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Differentiating twice</div>
+    <div class="example-body">
+      <p>A particle moves along a straight line so that its displacement from $O$ at time $t$ s is $s = t^3 - 6t^2 + 9t$ m, for $t \geqslant 0$. Find expressions for $v$ and $a$, and find when the particle is at rest.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$v = \dfrac{\mathrm{d}s}{\mathrm{d}t} = 3t^2 - 12t + 9$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a = \dfrac{\mathrm{d}v}{\mathrm{d}t} = 6t - 12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At rest when $v = 0$: $3(t^2 - 4t + 3) = 3(t - 1)(t - 3) = 0$, so $t = 1$ s and $t = 3$ s.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Positions: $s(1) = 1 - 6 + 9 = 4$ m; &nbsp;$s(3) = 27 - 54 + 27 = 0$ m (back at $O$).</span></div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="260" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="220" x2="450" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="225" x2="60" y2="40" stroke="#475569" stroke-width="2"/>
+      <text x="454" y="225" font-family="Arial" font-size="13" fill="#475569">t</text>
+      <text x="40" y="36" font-family="Arial" font-size="13" fill="#475569">s (m)</text>
+      <line x1="56" y1="60" x2="60" y2="60" stroke="#475569"/>
+      <text x="52" y="64" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">4</text>
+      <text x="52" y="224" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">0</text>
+      <text x="150" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">1</text>
+      <text x="240" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">2</text>
+      <text x="330" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">3</text>
+      <text x="420" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">4</text>
+      <line x1="60" y1="60" x2="420" y2="60" stroke="#c7d2fe" stroke-dasharray="4,3"/>
+      <polyline points="60.0,220.0 64.5,202.6 69.0,186.4 73.5,171.3 78.0,157.3 82.5,144.4 87.0,132.5 91.5,121.7 96.0,111.8 100.5,103.0 105.0,95.0 109.5,87.9 114.0,81.8 118.5,76.4 123.0,71.9 127.5,68.1 132.0,65.1 136.5,62.8 141.0,61.2 145.5,60.3 150.0,60.0 154.5,60.3 159.0,61.2 163.5,62.6 168.0,64.5 172.5,66.9 177.0,69.7 181.5,73.0 186.0,76.6 190.5,80.7 195.0,85.0 199.5,89.6 204.0,94.6 208.5,99.7 213.0,105.1 217.5,110.6 222.0,116.3 226.5,122.1 231.0,128.0 235.5,134.0 240.0,140.0 244.5,146.0 249.0,152.0 253.5,157.9 258.0,163.7 262.5,169.4 267.0,174.9 271.5,180.3 276.0,185.4 280.5,190.4 285.0,195.0 289.5,199.3 294.0,203.4 298.5,207.0 303.0,210.3 307.5,213.1 312.0,215.5 316.5,217.4 321.0,218.8 325.5,219.7 330.0,220.0 334.5,219.7 339.0,218.8 343.5,217.2 348.0,214.9 352.5,211.9 357.0,208.1 361.5,203.6 366.0,198.2 370.5,192.1 375.0,185.0 379.5,177.0 384.0,168.2 388.5,158.3 393.0,147.5 397.5,135.6 402.0,122.7 406.5,108.7 411.0,93.6 415.5,77.4 420.0,60.0" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <circle cx="150" cy="60" r="4" fill="#b91c1c"/>
+      <circle cx="330" cy="220" r="4" fill="#b91c1c"/>
+      <text x="158" y="52" font-family="Arial" font-size="11" fill="#b91c1c">v = 0 at t = 1, s = 4</text>
+      <text x="338" y="212" font-family="Arial" font-size="11" fill="#b91c1c">v = 0 at t = 3</text>
+      <text x="240" y="256" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">s = t³ − 6t² + 9t: the particle turns round where the gradient is zero</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Distance travelled when the particle turns round</div>
+    <div class="example-body">
+      <p>For the particle in Example 1, find the total distance travelled in the first $4$ seconds.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The particle changes direction at $t = 1$ and $t = 3$, so find $s$ at $t = 0, 1, 3, 4$: &nbsp;$0,\; 4,\; 0,\; 4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0 \to 4$: $4$ m. &nbsp;$4 \to 0$: $4$ m. &nbsp;$0 \to 4$: $4$ m.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total distance $= 12$ m, although the displacement at $t = 4$ is only $4$ m.</span></div>
+      <div class="warn">Simply working out $s(4) - s(0)$ gives the <strong>displacement</strong>, not the distance. Always check whether $v = 0$ inside the interval.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MAXIMA AND MINIMA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Maximum and Minimum Values</div>
+<div class="section-body">
+
+  <div class="concept">
+    Use the same idea as for <a href="../differentiation/stationary-points.html">stationary points</a>:
+    <strong>maximum or minimum displacement</strong> when $\dfrac{\mathrm{d}s}{\mathrm{d}t} = v = 0$; &nbsp;
+    <strong>maximum or minimum velocity</strong> when $\dfrac{\mathrm{d}v}{\mathrm{d}t} = a = 0$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Greatest displacement</div>
+    <div class="example-body">
+      <p>A particle's displacement is $s = 2 + 12t - t^3$ m for $t \geqslant 0$. Find its greatest displacement from $O$ in the positive direction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$v = 12 - 3t^2 = 0 \Rightarrow t^2 = 4 \Rightarrow t = 2$ (as $t \geqslant 0$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}^2 s}{\mathrm{d}t^2} = -6t = -12 &lt; 0$ at $t = 2$, so this is a maximum.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$s(2) = 2 + 24 - 8 = 18$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Greatest velocity</div>
+    <div class="example-body">
+      <p>A particle has velocity $v = 8t - 2t^2$ m s$^{-1}$ for $0 \leqslant t \leqslant 4$. Find its maximum velocity.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 8 - 4t = 0 \Rightarrow t = 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}a}{\mathrm{d}t} = -4 &lt; 0$, so a maximum. $v(2) = 16 - 8 = 8$ m s$^{-1}$.</span></div>
+      <div class="tip">Also check the end-points of the interval: $v(0) = 0$ and $v(4) = 0$, so $8$ m s$^{-1}$ is indeed the greatest.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – INTEGRATING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> From Acceleration to Velocity and Displacement</div>
+<div class="section-body">
+
+  <p>Integrating introduces a <strong>constant of integration</strong>. You find it from an <strong>initial condition</strong> — usually the velocity or position at $t = 0$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Integrating twice</div>
+    <div class="example-body">
+      <p>A particle has acceleration $a = (6t - 4)$ m s$^{-2}$. At $t = 0$ it is at $O$ with velocity $3$ m s$^{-1}$. Find $v$ and $s$ in terms of $t$, and its displacement when $t = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$v = \displaystyle\int (6t - 4)\,\mathrm{d}t = 3t^2 - 4t + c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$v = 3$ when $t = 0$, so $c = 3$: &nbsp;$v = 3t^2 - 4t + 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$s = \displaystyle\int (3t^2 - 4t + 3)\,\mathrm{d}t = t^3 - 2t^2 + 3t + k$; $s = 0$ at $t = 0$, so $k = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$s(2) = 8 - 8 + 6 = 6$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Displacement between two times</div>
+    displacement from $t_1$ to $t_2 = \displaystyle\int_{t_1}^{t_2} v\,\mathrm{d}t$ &nbsp; (the area under the $v$–$t$ graph)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Definite integral, with a change of direction</div>
+    <div class="example-body">
+      <p>A particle has velocity $v = 12 - 3t^2$ m s$^{-1}$. Find (a) its displacement and (b) the distance it travels between $t = 0$ and $t = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\displaystyle\int_0^3 (12 - 3t^2)\,\mathrm{d}t = \Big[12t - t^3\Big]_0^3 = 36 - 27 = 9$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $v = 0$ at $t = 2$, so split there.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int_0^2 = \Big[12t - t^3\Big]_0^2 = 24 - 8 = 16$; &nbsp; $\displaystyle\int_2^3 = 9 - 16 = -7$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Distance $= 16 + 7 = 23$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Recovering the suvat equations</div>
+    <div class="example-body">
+      <p>Show that if $a$ is constant, with $v = u$ and $s = 0$ at $t = 0$, then $v = u + at$ and $s = ut + \tfrac12 at^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$v = \displaystyle\int a\,\mathrm{d}t = at + c$; at $t = 0$, $v = u$, so $c = u$: &nbsp;$v = u + at$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$s = \displaystyle\int (u + at)\,\mathrm{d}t = ut + \tfrac12 at^2 + k$; at $t = 0$, $s = 0$, so $k = 0$: &nbsp;$s = ut + \tfrac12 at^2$. &nbsp;$\blacksquare$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Using suvat when $a$ is not constant.</strong> If $a$ contains $t$, suvat gives the wrong answer — even if it "works" numerically.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting the constant of integration</strong>, or assuming it is zero. "Starts from rest at $O$" gives $v = 0$ <em>and</em> $s = 0$ at $t = 0$; "starts at $O$ with speed $3$" gives $v = 3$, not $0$.
+  </div>
+
+  <div class="warn">
+    <strong>Mixing up "at rest" and "at $O$".</strong> At rest means $v = 0$; at the origin means $s = 0$. They are different conditions.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Velocity</h4><p>$v = \dfrac{\mathrm{d}s}{\mathrm{d}t}$</p></div>
+    <div class="ref-card"><h4>Acceleration</h4><p>$a = \dfrac{\mathrm{d}v}{\mathrm{d}t} = \dfrac{\mathrm{d}^2 s}{\mathrm{d}t^2}$</p></div>
+    <div class="ref-card"><h4>Velocity from $a$</h4><p>$v = \int a\,\mathrm{d}t$ + use initial velocity.</p></div>
+    <div class="ref-card"><h4>Displacement from $v$</h4><p>$s = \int v\,\mathrm{d}t$ + use initial position.</p></div>
+    <div class="ref-card"><h4>At rest</h4><p>$v = 0$.</p></div>
+    <div class="ref-card"><h4>At the origin</h4><p>$s = 0$.</p></div>
+    <div class="ref-card"><h4>Max/min displacement</h4><p>$v = 0$; check with $\dfrac{\mathrm{d}^2s}{\mathrm{d}t^2}$.</p></div>
+    <div class="ref-card"><h4>Max/min velocity</h4><p>$a = 0$; check with $\dfrac{\mathrm{d}a}{\mathrm{d}t}$.</p></div>
+    <div class="ref-card"><h4>Distance</h4><p>Split the integral where $v = 0$; add the sizes.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>In every question the particle moves in a straight line, $t$ is in seconds, $s$ in metres and $v$ in m s$^{-1}$.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$s = 2t^3 - 5t^2 + 4$. Find the velocity and acceleration when $t = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = 6t^2 - 10t$, so $v(2) = 24 - 20 = 4$ m s$^{-1}$.</p>
+          <p>$a = 12t - 10$, so $a(2) = 14$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$v = t^2 - 6t + 8$. Find the times when the particle is at rest and its acceleration at each of these times.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(t - 2)(t - 4) = 0$, so $t = 2$ s and $t = 4$ s.</p>
+          <p>$a = 2t - 6$: $a(2) = -2$ m s$^{-2}$, $a(4) = 2$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$a = 4 - 2t$, and $v = 5$ when $t = 0$. Find $v$ in terms of $t$ and the maximum velocity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = 4t - t^2 + c$, with $c = 5$: &nbsp;$v = 5 + 4t - t^2$.</p>
+          <p>Maximum when $a = 0$: $t = 2$, &nbsp;$v = 5 + 8 - 4 = 9$ m s$^{-1}$ (a maximum since $\tfrac{\mathrm{d}a}{\mathrm{d}t} = -2 &lt; 0$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$v = 6t - 3t^2$, and the particle starts at $O$. Find $s$ in terms of $t$, and the time when it returns to $O$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$s = 3t^2 - t^3 + k$, with $k = 0$: &nbsp;$s = 3t^2 - t^3 = t^2(3 - t)$.</p>
+          <p>$s = 0$ when $t = 0$ or $t = 3$. It returns to $O$ at $t = 3$ s.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$v = 3t^2 + 2t$. Find the displacement between $t = 1$ and $t = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\int_1^3 (3t^2 + 2t)\,\mathrm{d}t = \Big[t^3 + t^2\Big]_1^3 = 36 - 2 = 34$ m.</p>
+          <p>($v &gt; 0$ throughout, so this is also the distance.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$v = 4t - t^2$. Find the displacement and the distance travelled in the interval $0 \leqslant t \leqslant 6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\int v\,\mathrm{d}t = 2t^2 - \tfrac13 t^3$. $v = 0$ at $t = 4$.</p>
+          <p>$\displaystyle\int_0^4 = 32 - \tfrac{64}{3} = \tfrac{32}{3}$. &nbsp; $\displaystyle\int_4^6 = (72 - 72) - \tfrac{32}{3} = -\tfrac{32}{3}$.</p>
+          <p>Displacement $= 0$ m (back at the start). Distance $= \tfrac{64}{3} = 21.3$ m (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$s = t^3 - 9t^2 + 24t$. Find the distance travelled in the first $5$ seconds.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = 3t^2 - 18t + 24 = 3(t - 2)(t - 4)$, zero at $t = 2$ and $t = 4$.</p>
+          <p>$s(0) = 0$, $s(2) = 8 - 36 + 48 = 20$, $s(4) = 64 - 144 + 96 = 16$, $s(5) = 125 - 225 + 120 = 20$.</p>
+          <p>Distance $= 20 + 4 + 4 = 28$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$v = t^3 - 6t^2 + 9t + 2$ for $t \geqslant 0$. Find the minimum velocity for $t &gt; 0$, and explain why the particle is never at rest.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)$, zero at $t = 1$ and $t = 3$.</p>
+          <p>$\tfrac{\mathrm{d}a}{\mathrm{d}t} = 6t - 12$: negative at $t = 1$ (maximum), positive at $t = 3$ (minimum).</p>
+          <p>$v(3) = 27 - 54 + 27 + 2 = 2$ m s$^{-1}$.</p>
+          <p>Also $v(0) = 2$, and $v$ increases for $t &gt; 3$. So $v \geqslant 2 &gt; 0$ for all $t \geqslant 0$: the particle is never at rest.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A particle starts from rest at $O$. For $0 \leqslant t \leqslant 2$ its velocity is $v = 3t^2$; after $t = 2$ it moves with constant velocity. Find its distance from $O$ when $t = 5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First stage: $\displaystyle\int_0^2 3t^2\,\mathrm{d}t = \Big[t^3\Big]_0^2 = 8$ m. At $t = 2$, $v = 12$ m s$^{-1}$.</p>
+          <p>Second stage: $12 \times 3 = 36$ m.</p>
+          <p>Distance from $O$ $= 8 + 36 = 44$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A particle $P$ starts from rest at $O$ and moves in a straight line with acceleration $a = (12 - 6t)$ m s$^{-2}$.</p>
+      <p>(a) Find $v$ in terms of $t$. &nbsp; (b) Find the maximum velocity. &nbsp; (c) Find when $P$ next comes to rest, and its distance from $O$ then. &nbsp; (d) Find when $P$ returns to $O$, and its speed at that moment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $v = 12t - 3t^2 + c$; $v = 0$ at $t = 0$, so $v = 12t - 3t^2$.</p>
+          <p><strong>(b)</strong> $a = 0$ at $t = 2$; $v(2) = 24 - 12 = 12$ m s$^{-1}$ (maximum, since $\tfrac{\mathrm{d}a}{\mathrm{d}t} = -6 &lt; 0$).</p>
+          <p><strong>(c)</strong> $3t(4 - t) = 0 \Rightarrow t = 4$ s.</p>
+          <p>$s = 6t^2 - t^3$ (constant zero since $s = 0$ at $t = 0$), so $s(4) = 96 - 64 = 32$ m.</p>
+          <p><strong>(d)</strong> $s = t^2(6 - t) = 0 \Rightarrow t = 6$ s.</p>
+          <p>$v(6) = 72 - 108 = -36$, so the speed is $36$ m s$^{-1}$ (moving back towards and through $O$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Variable Acceleration &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

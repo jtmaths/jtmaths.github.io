@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Newton-Raphson Method &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 The Newton-Raphson Method</h1>
+  <p>A Level Maths Year 2 · Numerical Methods</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Follow the Tangent Down to the Axis</div>
+<div class="section-body">
+
+  <p>The Newton-Raphson method is the most powerful root-finder in the course. It uses calculus: near a root, a curve looks almost like its tangent, and a tangent is a straight line whose $x$-intercept is easy to find. So we replace the curve by its tangent, see where the tangent crosses the axis, and repeat.</p>
+
+  <div class="svg-block">
+<svg width="440" height="320" viewBox="0 0 440 320" role="img" aria-label="Newton-Raphson on y = x cubed minus 2x minus 5: the tangent at x0 = 3 meets the x-axis at x1 = 2.36, and the tangent there meets the axis at x2 = 2.13, close to the root" font-family="Segoe UI, Arial, sans-serif">
+<line x1="34.0" y1="245.7" x2="412.0" y2="245.7" stroke="#333" stroke-width="1.2"/>
+<line x1="40.0" y1="286.0" x2="40.0" y2="28.0" stroke="#333" stroke-width="1.2"/>
+<text x="416.0" y="249.7" font-size="13" font-style="italic">x</text>
+<text x="36.0" y="24.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="91.4" y1="242.7" x2="91.4" y2="248.7" stroke="#333"/>
+<text x="91.4" y="261.7" font-size="11" text-anchor="middle">2</text>
+<line x1="220.0" y1="242.7" x2="220.0" y2="248.7" stroke="#333"/>
+<text x="220.0" y="261.7" font-size="11" text-anchor="middle">2.5</text>
+<line x1="348.6" y1="242.7" x2="348.6" y2="248.7" stroke="#333"/>
+<text x="348.6" y="261.7" font-size="11" text-anchor="middle">3</text>
+<line x1="37.0" y1="188.6" x2="43.0" y2="188.6" stroke="#333"/>
+<text x="34.0" y="192.6" font-size="11" text-anchor="end">5</text>
+<line x1="37.0" y1="131.4" x2="43.0" y2="131.4" stroke="#333"/>
+<text x="34.0" y="135.4" font-size="11" text-anchor="end">10</text>
+<line x1="37.0" y1="74.3" x2="43.0" y2="74.3" stroke="#333"/>
+<text x="34.0" y="78.3" font-size="11" text-anchor="end">15</text>
+<polyline points="40.0,277.3 41.8,276.7 43.6,276.1 45.4,275.5 47.2,274.8 49.0,274.2 50.8,273.5 52.6,272.9 54.4,272.2 56.2,271.5 58.0,270.9 59.8,270.2 61.6,269.5 63.4,268.8 65.2,268.1 67.0,267.4 68.8,266.7 70.6,266.0 72.4,265.2 74.2,264.5 76.0,263.8 77.8,263.0 79.6,262.3 81.4,261.5 83.2,260.7 85.0,260.0 86.8,259.2 88.6,258.4 90.4,257.6 92.2,256.8 94.0,256.0 95.8,255.2 97.6,254.4 99.4,253.5 101.2,252.7 103.0,251.9 104.8,251.0 106.6,250.2 108.4,249.3 110.2,248.4 112.0,247.6 113.8,246.7 115.6,245.8 117.4,244.9 119.2,244.0 121.0,243.1 122.8,242.2 124.6,241.2 126.4,240.3 128.2,239.4 130.0,238.4 131.8,237.5 133.6,236.5 135.4,235.5 137.2,234.6 139.0,233.6 140.8,232.6 142.6,231.6 144.4,230.6 146.2,229.6 148.0,228.6 149.8,227.5 151.6,226.5 153.4,225.5 155.2,224.4 157.0,223.4 158.8,222.3 160.6,221.2 162.4,220.1 164.2,219.0 166.0,218.0 167.8,216.9 169.6,215.7 171.4,214.6 173.2,213.5 175.0,212.4 176.8,211.2 178.6,210.1 180.4,208.9 182.2,207.8 184.0,206.6 185.8,205.4 187.6,204.2 189.4,203.0 191.2,201.8 193.0,200.6 194.8,199.4 196.6,198.1 198.4,196.9 200.2,195.7 202.0,194.4 203.8,193.2 205.6,191.9 207.4,190.6 209.2,189.3 211.0,188.0 212.8,186.7 214.6,185.4 216.4,184.1 218.2,182.8 220.0,181.4 221.8,180.1 223.6,178.7 225.4,177.4 227.2,176.0 229.0,174.6 230.8,173.2 232.6,171.8 234.4,170.4 236.2,169.0 238.0,167.6 239.8,166.2 241.6,164.7 243.4,163.3 245.2,161.8 247.0,160.4 248.8,158.9 250.6,157.4 252.4,155.9 254.2,154.4 256.0,152.9 257.8,151.4 259.6,149.9 261.4,148.3 263.2,146.8 265.0,145.2 266.8,143.7 268.6,142.1 270.4,140.5 272.2,138.9 274.0,137.3 275.8,135.7 277.6,134.1 279.4,132.5 281.2,130.9 283.0,129.2 284.8,127.6 286.6,125.9 288.4,124.2 290.2,122.5 292.0,120.9 293.8,119.2 295.6,117.4 297.4,115.7 299.2,114.0 301.0,112.3 302.8,110.5 304.6,108.8 306.4,107.0 308.2,105.2 310.0,103.4 311.8,101.6 313.6,99.8 315.4,98.0 317.2,96.2 319.0,94.4 320.8,92.5 322.6,90.7 324.4,88.8 326.2,86.9 328.0,85.1 329.8,83.2 331.6,81.3 333.4,79.4 335.2,77.4 337.0,75.5 338.8,73.6 340.6,71.6 342.4,69.7 344.2,67.7 346.0,65.7 347.8,63.7 349.6,61.7 351.4,59.7 353.2,57.7 355.0,55.6 356.8,53.6 358.6,51.6 360.4,49.5 362.2,47.4 364.0,45.3 365.8,43.2 367.6,41.1" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<line x1="348.6" y1="62.9" x2="184.0" y2="245.7" stroke="#dc2626" stroke-width="1.6"/>
+<line x1="184.0" y1="206.6" x2="124.1" y2="245.7" stroke="#ea580c" stroke-width="1.6"/>
+<line x1="348.6" y1="245.7" x2="348.6" y2="62.9" stroke="#888" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="184.0" y1="245.7" x2="184.0" y2="206.6" stroke="#888" stroke-width="1" stroke-dasharray="4 3"/>
+<circle cx="348.6" cy="62.9" r="4" fill="#dc2626"/>
+<circle cx="184.0" cy="206.6" r="4" fill="#ea580c"/>
+<circle cx="348.6" cy="245.7" r="2.5" fill="#333"/>
+<text x="346.6" y="237.7" font-size="12" fill="#333" text-anchor="end" font-style="italic">x₀</text>
+<circle cx="184.0" cy="245.7" r="2.5" fill="#333"/>
+<text x="182.0" y="237.7" font-size="12" fill="#333" text-anchor="end" font-style="italic">x₁</text>
+<circle cx="124.1" cy="245.7" r="2.5" fill="#333"/>
+<text x="122.1" y="237.7" font-size="12" fill="#333" text-anchor="end" font-style="italic">x₂</text>
+<text x="52.9" y="57.1" font-size="12" fill="#4f46e5" text-anchor="start" font-style="italic">y = x³ − 2x − 5</text>
+<text x="338.6" y="58.9" font-size="11" fill="#dc2626" text-anchor="end">tangent at x₀</text>
+</svg>
+</div>
+
+  <div class="concept">
+    Start at a first approximation $x_0$. Draw the tangent to $y = \mathrm{f}(x)$ at $\big(x_0, \mathrm{f}(x_0)\big)$. Where it meets the $x$-axis is the next approximation $x_1$ — usually much closer to the root. In the diagram, $x_0 = 3$ gives $x_1 = 2.36$ and then $x_2 = 2.127$, closing in fast on the root $2.0946$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE FORMULA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Deriving the Formula</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Derivation from the tangent</div>
+    <div class="example-body">
+      <p>Show that the tangent to $y = \mathrm{f}(x)$ at $x = x_n$ meets the $x$-axis at $x_n - \dfrac{\mathrm{f}(x_n)}{\mathrm{f}'(x_n)}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The tangent passes through $\big(x_n, \mathrm{f}(x_n)\big)$ with gradient $\mathrm{f}'(x_n)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Its equation is $y - \mathrm{f}(x_n) = \mathrm{f}'(x_n)(x - x_n)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>On the $x$-axis $y = 0$: $\;-\mathrm{f}(x_n) = \mathrm{f}'(x_n)(x - x_n)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Divide by $\mathrm{f}'(x_n)$ (which must not be zero): $x - x_n = -\dfrac{\mathrm{f}(x_n)}{\mathrm{f}'(x_n)}$, so $x = x_n - \dfrac{\mathrm{f}(x_n)}{\mathrm{f}'(x_n)}$.</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The Newton-Raphson formula</div>
+    $x_{n+1} = x_n - \dfrac{\mathrm{f}(x_n)}{\mathrm{f}'(x_n)}$
+  </div>
+
+  <div class="tip">
+    <strong>Calculator technique.</strong> Store $x_0$, then type the whole formula with <code>Ans</code>, e.g. for $\mathrm{f}(x) = x^3 - 2x - 5$:<br>
+    <code>Ans − (Ans³ − 2Ans − 5) ÷ (3Ans² − 2)</code> and press <code>=</code> repeatedly.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – USING THE METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Using the Method</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A cubic</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 - 2x - 5$. Taking $x_0 = 2$, use the Newton-Raphson method to find the root to $5$ decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 3x^2 - 2$, so $x_{n+1} = x_n - \dfrac{x_n^3 - 2x_n - 5}{3x_n^2 - 2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_1 = 2 - \dfrac{8 - 4 - 5}{12 - 2} = 2 - \dfrac{-1}{10} = 2.1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x_2 = 2.1 - \dfrac{0.061}{11.23} = 2.094568\ldots$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x_3 = 2.0945515\ldots$, &nbsp;$x_4 = 2.0945515\ldots$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The root is $2.09455$ to $5$ d.p.</span></div>
+      <div class="tip">Look at the number of correct digits: $x_1$ has $1$, $x_2$ has $4$, $x_3$ has $9$. Close to a root the number of correct decimal places roughly <strong>doubles</strong> each step — far faster than fixed point iteration.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Square roots by hand</div>
+    <div class="example-body">
+      <p>Use the Newton-Raphson method on $\mathrm{f}(x) = x^2 - 2$ with $x_0 = 1$ to approximate $\sqrt2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 2x$, so $x_{n+1} = x_n - \dfrac{x_n^2 - 2}{2x_n} = \dfrac{x_n^2 + 2}{2x_n}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_1 = \dfrac{3}{2} = 1.5$, &nbsp;$x_2 = \dfrac{17}{12} = 1.41666\ldots$, &nbsp;$x_3 = \dfrac{577}{408} = 1.4142156\ldots$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sqrt2 = 1.4142135\ldots$, so $x_3$ is already correct to $5$ decimal places.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Choosing the starting value</div>
+    <div class="example-body">
+      <p>The equation $\mathrm{e}^x = 3x$ has two roots. Use the Newton-Raphson method to find each to $4$ d.p., using $x_0 = 0$ and $x_0 = 1.5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(x) = \mathrm{e}^x - 3x$, $\mathrm{f}'(x) = \mathrm{e}^x - 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>From $x_0 = 0$: $x_1 = 0 - \dfrac{1}{-2} = 0.5$, $x_2 = 0.61006$, $x_3 = 0.61900$, $x_4 = 0.61906$. Root $\approx 0.6191$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>From $x_0 = 1.5$: $x_1 = 1.51236$, $x_2 = 1.51213$, $x_3 = 1.51213$. Root $\approx 1.5121$.</span></div>
+      <div class="tip">The method finds the root nearest the start <em>only if</em> the start is good. Use a sketch or a change of sign to choose $x_0$ sensibly.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — With logarithms</div>
+    <div class="example-body">
+      <p>Use the Newton-Raphson method with $x_0 = 1.5$ to solve $\ln x + x = 2$, giving the root to $4$ d.p., and verify your answer.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(x) = \ln x + x - 2$, $\mathrm{f}'(x) = \dfrac1x + 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_1 = 1.5 - \dfrac{\ln 1.5 - 0.5}{1.6667} = 1.55672$, &nbsp;$x_2 = 1.55715$, &nbsp;$x_3 = 1.55715$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Verify with the bounds for $1.5571$: $\mathrm{f}(1.55705) = -0.000157\ldots &lt; 0$ and $\mathrm{f}(1.55715) = 0.0000072\ldots &gt; 0$. Change of sign, so the root is $1.5571$ to $4$ d.p.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FAILURE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When Newton-Raphson Fails</div>
+<div class="section-body">
+
+  <p>The formula divides by $\mathrm{f}'(x_n)$. Trouble comes whenever that gradient is zero or small — that is, when $x_n$ is at or near a <strong>stationary point</strong>.</p>
+
+  <table>
+    <tr><th>Problem</th><th>What happens</th></tr>
+    <tr><td>$\mathrm{f}'(x_0) = 0$</td><td>The tangent is horizontal and never meets the $x$-axis. The formula needs division by zero.</td></tr>
+    <tr><td>$\mathrm{f}'(x_0)$ close to $0$</td><td>The tangent is nearly flat, so $x_1$ is thrown a long way off — perhaps to a different root, or outside the domain.</td></tr>
+    <tr><td>Bad starting value</td><td>The iterates can oscillate in a cycle or diverge.</td></tr>
+    <tr><td>Domain issues</td><td>An iterate may land where $\mathrm{f}$ is undefined, e.g. a negative number in $\ln x$.</td></tr>
+  </table>
+
+  <div class="svg-block">
+<svg width="460" height="300" viewBox="0 0 460 300" role="img" aria-label="Newton-Raphson failing on y = x cubed minus 3x plus 1: starting at x0 = 0.95 near the minimum, the almost-horizontal tangent sends x1 out to about minus 2.44, far from the nearby root" font-family="Segoe UI, Arial, sans-serif">
+<line x1="30.0" y1="188.0" x2="436.0" y2="188.0" stroke="#333" stroke-width="1.2"/>
+<line x1="249.8" y1="270.0" x2="249.8" y2="24.0" stroke="#333" stroke-width="1.2"/>
+<text x="440.0" y="192.0" font-size="13" font-style="italic">x</text>
+<text x="245.8" y="20.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="91.4" y1="185.0" x2="91.4" y2="191.0" stroke="#333"/>
+<text x="91.4" y="204.0" font-size="11" text-anchor="middle">−2</text>
+<line x1="170.6" y1="185.0" x2="170.6" y2="191.0" stroke="#333"/>
+<text x="170.6" y="204.0" font-size="11" text-anchor="middle">−1</text>
+<line x1="329.0" y1="185.0" x2="329.0" y2="191.0" stroke="#333"/>
+<text x="329.0" y="204.0" font-size="11" text-anchor="middle">1</text>
+<line x1="408.2" y1="185.0" x2="408.2" y2="191.0" stroke="#333"/>
+<text x="408.2" y="204.0" font-size="11" text-anchor="middle">2</text>
+<line x1="246.8" y1="226.0" x2="252.8" y2="226.0" stroke="#333"/>
+<text x="243.8" y="230.0" font-size="11" text-anchor="end">−1</text>
+<line x1="246.8" y1="150.0" x2="252.8" y2="150.0" stroke="#333"/>
+<text x="243.8" y="154.0" font-size="11" text-anchor="end">1</text>
+<line x1="246.8" y1="74.0" x2="252.8" y2="74.0" stroke="#333"/>
+<text x="243.8" y="78.0" font-size="11" text-anchor="end">3</text>
+<polyline points="84.5,257.7 86.4,248.5 88.4,239.5 90.3,230.8 92.3,222.4 94.2,214.3 96.1,206.5 98.1,198.9 100.0,191.5 102.0,184.5 103.9,177.6 105.8,171.1 107.8,164.8 109.7,158.7 111.7,152.9 113.6,147.3 115.5,141.9 117.5,136.8 119.4,131.9 121.4,127.2 123.3,122.8 125.2,118.6 127.2,114.6 129.1,110.8 131.1,107.2 133.0,103.8 134.9,100.6 136.9,97.6 138.8,94.8 140.8,92.2 142.7,89.8 144.6,87.6 146.6,85.6 148.5,83.7 150.5,82.0 152.4,80.5 154.3,79.1 156.3,78.0 158.2,76.9 160.2,76.1 162.1,75.4 164.0,74.8 166.0,74.4 167.9,74.1 169.9,74.0 171.8,74.0 173.7,74.2 175.7,74.5 177.6,74.9 179.6,75.4 181.5,76.1 183.4,76.8 185.4,77.7 187.3,78.7 189.3,79.8 191.2,81.0 193.1,82.4 195.1,83.8 197.0,85.3 199.0,86.9 200.9,88.6 202.8,90.3 204.8,92.2 206.7,94.1 208.7,96.1 210.6,98.2 212.5,100.3 214.5,102.5 216.4,104.8 218.4,107.1 220.3,109.5 222.2,111.9 224.2,114.4 226.1,116.9 228.1,119.5 230.0,122.1 231.9,124.7 233.9,127.4 235.8,130.1 237.8,132.8 239.7,135.5 241.6,138.3 243.6,141.1 245.5,143.8 247.5,146.6 249.4,149.4 251.3,152.2 253.3,155.0 255.2,157.8 257.2,160.6 259.1,163.3 261.0,166.1 263.0,168.8 264.9,171.5 266.9,174.2 268.8,176.8 270.7,179.4 272.7,182.0 274.6,184.6 276.6,187.1 278.5,189.5 280.4,191.9 282.4,194.3 284.3,196.6 286.3,198.8 288.2,201.0 290.1,203.1 292.1,205.1 294.0,207.0 296.0,208.9 297.9,210.7 299.8,212.5 301.8,214.1 303.7,215.6 305.7,217.1 307.6,218.4 309.5,219.7 311.5,220.8 313.4,221.9 315.4,222.8 317.3,223.6 319.2,224.3 321.2,224.9 323.1,225.4 325.1,225.7 327.0,225.9 328.9,226.0 330.9,225.9 332.8,225.7 334.8,225.4 336.7,224.9 338.6,224.2 340.6,223.4 342.5,222.5 344.5,221.4 346.4,220.1 348.3,218.6 350.3,217.0 352.2,215.2 354.2,213.2 356.1,211.1 358.0,208.8 360.0,206.2 361.9,203.5 363.9,200.6 365.8,197.5 367.7,194.2 369.7,190.7 371.6,187.0 373.6,183.1 375.5,178.9 377.4,174.6 379.4,170.0 381.3,165.2 383.3,160.2 385.2,154.9 387.1,149.4 389.1,143.7 391.0,137.7 393.0,131.5 394.9,125.1 396.8,118.4 398.8,111.4 400.7,104.2 402.7,96.7 404.6,88.9 406.5,80.9 408.5,72.6 410.4,64.1 412.4,55.2 414.3,46.1 416.2,36.7" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<line x1="325.0" y1="225.7" x2="56.3" y2="188.0" stroke="#dc2626" stroke-width="1.6"/>
+<line x1="372.5" y1="232.4" x2="325.0" y2="225.7" stroke="#dc2626" stroke-width="1.6"/>
+<circle cx="325.0" cy="225.7" r="4" fill="#dc2626"/>
+<circle cx="325.0" cy="188.0" r="2.5" fill="#333"/>
+<circle cx="56.3" cy="188.0" r="2.5" fill="#333"/>
+<text x="325.0" y="180.0" font-size="11" fill="#333" text-anchor="middle" font-style="italic">x₀ = 0.95</text>
+<text x="56.3" y="204.0" font-size="11" fill="#333" text-anchor="middle" font-style="italic">x₁ ≈ −2.44</text>
+<circle cx="277.3" cy="188.0" r="3.5" fill="#7c3aed"/>
+<text x="275.3" y="180.0" font-size="12" fill="#7c3aed" text-anchor="end" font-style="italic">α</text>
+<text x="273.6" y="51.2" font-size="12" fill="#4f46e5" text-anchor="start" font-style="italic">y = x³ − 3x + 1</text>
+<text x="335.0" y="218.0" font-size="11" fill="#666" text-anchor="start">stationary point</text>
+</svg>
+</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Starting near a stationary point</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 - 3x + 1$ has roots near $-1.88$, $0.35$ and $1.53$. Explain what happens when the Newton-Raphson method is used with (a) $x_0 = 1$ &nbsp;(b) $x_0 = 0.95$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 3x^2 - 3$, which is zero at $x = \pm1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(a) $\mathrm{f}'(1) = 0$: the tangent at $x = 1$ is horizontal, so $x_1$ cannot be calculated — the method fails immediately.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $\mathrm{f}(0.95) = -0.9926$, $\mathrm{f}'(0.95) = -0.2925$, so $x_1 = 0.95 - \dfrac{-0.9926}{-0.2925} = -2.4436$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>From there: $-2.0238,\ -1.8927,\ -1.8795,\ \ldots \to -1.8794$. The method converges — but to the root at $-1.88$, not the nearest root $0.35$.</span></div>
+      <div class="warn">Because $x_0 = 0.95$ is close to the minimum at $x = 1$, the nearly horizontal tangent hurls $x_1$ to the far side of the graph. Always check that $\mathrm{f}'(x_0)$ is not close to zero.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A cycle</div>
+    <div class="example-body">
+      <p>Apply the Newton-Raphson method to $\mathrm{f}(x) = x^3 - 2x + 2$ with $x_0 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 3x^2 - 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x_1 = 0 - \dfrac{2}{-2} = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x_2 = 1 - \dfrac{1 - 2 + 2}{3 - 2} = 1 - 1 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>We are back at $x_0$: the sequence goes $0, 1, 0, 1, \ldots$ for ever and never approaches the real root (which is near $-1.77$).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Formula</h4><p>$x_{n+1} = x_n - \dfrac{\mathrm{f}(x_n)}{\mathrm{f}'(x_n)}$</p></div>
+    <div class="ref-card"><h4>Geometry</h4><p>$x_{n+1}$ is where the tangent at $x_n$ meets the $x$-axis.</p></div>
+    <div class="ref-card"><h4>Set up</h4><p>Write $\mathrm{f}(x) = 0$, differentiate, then substitute.</p></div>
+    <div class="ref-card"><h4>Speed</h4><p>Correct digits roughly double each step near the root.</p></div>
+    <div class="ref-card"><h4>$\mathrm{f}'(x_0) = 0$</h4><p>Horizontal tangent — the method fails.</p></div>
+    <div class="ref-card"><h4>$\mathrm{f}'(x_0) \approx 0$</h4><p>$x_1$ is thrown far away, maybe to another root.</p></div>
+    <div class="ref-card"><h4>Radians</h4><p>Essential when $\mathrm{f}$ involves trigonometry.</p></div>
+    <div class="ref-card"><h4>Confirm</h4><p>Check the final answer with a change of sign.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Use the Newton-Raphson method on $\mathrm{f}(x) = x^2 - 7$ with $x_0 = 3$ to find $x_1$ and $x_2$, and compare with $\sqrt7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 2x$. $x_1 = 3 - \dfrac{2}{6} = 2.6667$ (4 d.p.).</p>
+          <p>$x_2 = 2.6667 - \dfrac{2.6667^2 - 7}{2 \times 2.6667} = 2.6458$ (4 d.p.; exactly $\tfrac{127}{48}$).</p>
+          <p>$\sqrt7 = 2.64575\ldots$, so $x_2$ is correct to $3$ d.p. already.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 - 5x + 1$. Use the Newton-Raphson method with $x_0 = 2$ to find the root near $2$ correct to $4$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 3x^2 - 5$.</p>
+          <p>$x_1 = 2 - \dfrac{-1}{7} = 2.142857\ldots$</p>
+          <p>$x_2 = 2.128571\ldots$, &nbsp;$x_3 = 2.128419\ldots$, &nbsp;$x_4 = 2.128419\ldots$</p>
+          <p>Root $= 2.1284$ to $4$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $x = \cos x$ using the Newton-Raphson method with $x_0 = 1$, giving the root to $3$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(x) = x - \cos x$, $\mathrm{f}'(x) = 1 + \sin x$ (radians).</p>
+          <p>$x_1 = 1 - \dfrac{1 - \cos 1}{1 + \sin 1} = 0.75036\ldots$</p>
+          <p>$x_2 = 0.73911\ldots$, &nbsp;$x_3 = 0.73909\ldots$</p>
+          <p>Root $= 0.739$ to $3$ d.p. (Check: $\mathrm{f}(0.7385) = -0.00098 &lt; 0$, $\mathrm{f}(0.7395) = 0.00069 &gt; 0$.)</p>
+          <p>Compare Question 5 on the <a href="iteration.html">Iteration</a> page: $x_{n+1} = \cos x_n$ needs more than ten steps for the same accuracy.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Show that applying the Newton-Raphson method to $\mathrm{f}(x) = x^2 - a$ (with $a &gt; 0$) gives $x_{n+1} = \dfrac12\left(x_n + \dfrac{a}{x_n}\right)$. Use it with $a = 10$ and $x_0 = 3$ to find $x_2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_{n+1} = x_n - \dfrac{x_n^2 - a}{2x_n} = \dfrac{2x_n^2 - x_n^2 + a}{2x_n} = \dfrac{x_n^2 + a}{2x_n} = \dfrac12\left(x_n + \dfrac{a}{x_n}\right)$.</p>
+          <p>$x_1 = \tfrac12(3 + \tfrac{10}{3}) = 3.16667$, &nbsp;$x_2 = \tfrac12(3.16667 + \tfrac{10}{3.16667}) = 3.16228$.</p>
+          <p>($\sqrt{10} = 3.162277\ldots$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Use the Newton-Raphson method with $x_0 = 0$ to find the smaller root of $\mathrm{e}^x = 3x$ to $3$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(x) = \mathrm{e}^x - 3x$, $\mathrm{f}'(x) = \mathrm{e}^x - 3$.</p>
+          <p>$x_1 = 0.5$, $x_2 = 0.6101$, $x_3 = 0.6190$, $x_4 = 0.6191$.</p>
+          <p>Root $= 0.619$ to $3$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \ln x + x - 3$. (a) Use the Newton-Raphson method with $x_0 = 2$ to find $x_1$ and $x_2$. (b) Show that the root is $2.208$ to $3$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}'(x) = \dfrac1x + 1$. $x_1 = 2 - \dfrac{\ln 2 - 1}{1.5} = 2.20457\ldots$, &nbsp;$x_2 = 2.20794\ldots$</p>
+          <p><strong>(b)</strong> $\mathrm{f}(2.2075) = -0.000639\ldots &lt; 0$ and $\mathrm{f}(2.2085) = 0.000814\ldots &gt; 0$. Change of sign, $\mathrm{f}$ continuous for $x &gt; 0$, so the root is $2.208$ to $3$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain why the Newton-Raphson method cannot be used to solve $x^3 - 3x + 1 = 0$ with starting value $x_0 = -1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 3x^2 - 3$, so $\mathrm{f}'(-1) = 0$. There is a stationary point (a maximum) at $x = -1$, the tangent there is horizontal and never meets the $x$-axis, and the formula would require division by zero.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Show that the Newton-Raphson method applied to $\mathrm{f}(x) = x^3 - 2x + 2$ with $x_0 = 1$ produces a repeating sequence, and suggest a better starting value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 3x^2 - 2$. $x_1 = 1 - \dfrac{1}{1} = 0$, then $x_2 = 0 - \dfrac{2}{-2} = 1$, and so on: $1, 0, 1, 0, \ldots$</p>
+          <p>$\mathrm{f}(-2) = -2$ and $\mathrm{f}(-1) = 3$, so there is a root with $-2 &lt; x &lt; -1$; starting at $x_0 = -2$ gives $-1.8,\ -1.7699,\ -1.7693, \ldots$ which converges.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>By drawing a sketch, explain why the Newton-Raphson method applied to $\mathrm{f}(x) = x^3 - 3x + 1$ with $x_0 = 0.95$ does not converge to the root near $0.35$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The curve has a minimum at $x = 1$, so at $x = 0.95$ the gradient is small: $\mathrm{f}'(0.95) = -0.2925$.</p>
+          <p>The tangent there is almost horizontal and meets the $x$-axis far away, at $x_1 = -2.44$. From there the iterations converge to the root near $-1.88$ (see the diagram in Section 4). Starting at $x_0 = 0.5$ instead gives $0.3333,\ 0.3472,\ 0.3473$, the root required.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>An open box is made from a $20$ cm by $20$ cm square of card by cutting a square of side $x$ cm from each corner and folding up the sides. The volume must be $500$ cm$^3$.</p>
+      <p>(a) Show that $x^3 - 20x^2 + 100x - 125 = 0$.<br>(b) Verify that $x = 5$ is a root.<br>(c) Use the Newton-Raphson method with $x_0 = 1.5$ to find the other possible value of $x$ to $3$ d.p.<br>(d) Explain why $x_0 = \tfrac{10}{3}$ would be a bad starting value, and interpret $x = \tfrac{10}{3}$ in context.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The base is $(20 - 2x)$ by $(20 - 2x)$ and the height $x$: $V = x(20 - 2x)^2 = 4x^3 - 80x^2 + 400x$. Setting $V = 500$ and dividing by $4$: $x^3 - 20x^2 + 100x - 125 = 0$.</p>
+          <p><strong>(b)</strong> $125 - 500 + 500 - 125 = 0$ ✓</p>
+          <p><strong>(c)</strong> $\mathrm{f}'(x) = 3x^2 - 40x + 100$.</p>
+          <p>$x_1 = 1.5 - \dfrac{\mathrm{f}(1.5)}{\mathrm{f}'(1.5)} = 1.5 - \dfrac{-16.625}{46.75} = 1.85561\ldots$</p>
+          <p>$x_2 = 1.90866\ldots$, &nbsp;$x_3 = 1.90983\ldots$, &nbsp;$x_4 = 1.90983\ldots$</p>
+          <p>$x = 1.910$ cm to $3$ d.p. (In fact $x = \tfrac{15 - 5\sqrt5}{2}$ exactly, from the quadratic factor $x^2 - 15x + 25$.)</p>
+          <p><strong>(d)</strong> $\mathrm{f}'\!\left(\tfrac{10}{3}\right) = \tfrac{100}{3} - \tfrac{400}{3} + 100 = 0$, so the formula would divide by zero. Starting close to it fails too: $x_0 = 3.3$ gives $x_1 \approx -31.2$, a meaningless negative length.</p>
+          <p>In context, $x = \tfrac{10}{3}$ is the stationary point of the volume: it gives the <strong>maximum</strong> possible volume, $\tfrac{16000}{27} \approx 593$ cm$^3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The Newton-Raphson Method &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

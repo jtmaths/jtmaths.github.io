@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binomial Hypothesis Tests &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Binomial Hypothesis Tests</h1>
+  <p>A Level Maths Year 1 · Hypothesis Testing</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE PROCEDURE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Procedure</div>
+<div class="section-body">
+
+  <p>This page puts the vocabulary from <a href="language.html">The Language of Hypothesis Testing</a> to work (DfE content area O · Statistical hypothesis testing). Every test here is a test for a proportion $p$, using a binomial model from <a href="../probability/binomial-distribution.html">The Binomial Distribution</a>.</p>
+
+  <div class="concept">
+    A binomial test is appropriate when the data are a count of <strong>successes</strong> in a <strong>fixed number</strong> $n$ of <strong>independent</strong> trials, each with the <strong>same probability</strong> $p$ of success. Under $H_0$ the number of successes is $X \sim \mathrm{B}(n,\,p_0)$.
+  </div>
+
+  <ul class="steps">
+    <li><span>Define $p$ in words, and write $H_0: p = p_0$ and $H_1$.</span></li>
+    <li><span>State the null distribution: "Under $H_0$, $X \sim \mathrm{B}(n,\,p_0)$".</span></li>
+    <li><span>Either find the <strong>p-value</strong> of the observed result, or find the <strong>critical region</strong>.</span></li>
+    <li><span>Compare: p-value with $\alpha$ (or $\tfrac{\alpha}{2}$ for two tails); or check whether the observed value is in the critical region.</span></li>
+    <li><span>Write the decision ("reject $H_0$" / "do not reject $H_0$") <strong>and</strong> a conclusion in context.</span></li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">Calculator facts</div>
+    $\mathrm{P}(X \leqslant k)$ is the cumulative function directly<br>
+    $\mathrm{P}(X \geqslant k) = 1 - \mathrm{P}(X \leqslant k - 1)$
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong> and expected. Most have a "binomial CD" function giving $\mathrm{P}(X \leqslant k)$. Some also allow a lower and upper bound, which gives $\mathrm{P}(X \geqslant k)$ directly by setting the upper bound to $n$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ONE-TAILED VIA P-VALUE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> One-Tailed Tests Using a p-value</div>
+<div class="section-body">
+
+  <p>The quickest way to carry out a test when you have the observed value: calculate the probability of that value <strong>or anything more extreme in the direction of $H_1$</strong>.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Upper tail</div>
+    <div class="example-body">
+      <p>A coin is suspected of being biased towards heads. In $20$ throws it lands heads $15$ times. Test at the $5\%$ level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $p$ = P(heads). $H_0: p = 0.5$, &nbsp;$H_1: p &gt; 0.5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Under $H_0$, $X \sim \mathrm{B}(20,\,0.5)$, where $X$ is the number of heads.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>p-value $= \mathrm{P}(X \geqslant 15) = 1 - \mathrm{P}(X \leqslant 14) = 1 - 0.9793 = 0.0207$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$0.0207 &lt; 0.05$: reject $H_0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>There is sufficient evidence at the $5\%$ level to suggest that the coin is biased towards heads.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Lower tail</div>
+    <div class="example-body">
+      <p>A manufacturer claims that $60\%$ of patients recover within a week using its treatment. A doctor suspects the figure is lower. Of $25$ patients treated, $10$ recover within a week. Test at the $5\%$ level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $p$ = P(a patient recovers within a week). $H_0: p = 0.6$, &nbsp;$H_1: p &lt; 0.6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Under $H_0$, $X \sim \mathrm{B}(25,\,0.6)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>p-value $= \mathrm{P}(X \leqslant 10) = 0.0344$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$0.0344 &lt; 0.05$: reject $H_0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>There is sufficient evidence at the $5\%$ level to suggest that the recovery rate is less than $60\%$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A result that is not significant</div>
+    <div class="example-body">
+      <p>Historically $10\%$ of a firm's job applicants are invited to interview. After a change to the advert, $1$ of the next $50$ applicants is invited. Test at the $1\%$ level whether the proportion has fallen.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $p$ = P(an applicant is invited). $H_0: p = 0.1$, &nbsp;$H_1: p &lt; 0.1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Under $H_0$, $X \sim \mathrm{B}(50,\,0.1)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>p-value $= \mathrm{P}(X \leqslant 1) = 0.0338$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$0.0338 &gt; 0.01$: do not reject $H_0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>There is insufficient evidence at the $1\%$ level to suggest that the proportion invited to interview has fallen.</span></div>
+      <div class="tip">At the $5\%$ level the same data <em>would</em> be significant. The significance level must be fixed before the data are collected — you may not shop around for one that gives the answer you want.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ONE-TAILED CRITICAL REGIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding a One-Tailed Critical Region</div>
+<div class="section-body">
+
+  <p>Questions often ask for the critical region <em>before</em> the data are known. You then compare the observed value with it.</p>
+
+  <ul class="steps">
+    <li><span>Decide which tail: $H_1: p &lt; p_0$ uses small values of $X$; $H_1: p &gt; p_0$ uses large values.</span></li>
+    <li><span>Work out the cumulative probabilities near the edge of that tail.</span></li>
+    <li><span>Choose the <strong>largest</strong> region whose probability is <strong>still $\leqslant \alpha$</strong>.</span></li>
+    <li><span>Quote the probability just inside and just outside the boundary as evidence.</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Lower-tail critical region</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{B}(30,\,p)$. Find the critical region for a test of $H_0: p = 0.4$ against $H_1: p &lt; 0.4$ at the $5\%$ level, and the actual significance level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Under $H_0$, $X \sim \mathrm{B}(30,\,0.4)$; mean $12$. Look at small values.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(X \leqslant 7) = 0.0435$ &nbsp;($\leqslant 0.05$ ✓)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(X \leqslant 8) = 0.0940$ &nbsp;($&gt; 0.05$ ✗)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Critical region $X \leqslant 7$; actual significance level $4.35\%$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Upper-tail critical region</div>
+    <div class="example-body">
+      <p>$35\%$ of households in a region own a dog. A vet thinks the proportion is higher in her town and plans to survey $25$ households. Find the critical region at the $5\%$ level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$H_0: p = 0.35$, $H_1: p &gt; 0.35$. Under $H_0$, $X \sim \mathrm{B}(25,\,0.35)$; mean $8.75$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(X \geqslant 13) = 1 - \mathrm{P}(X \leqslant 12) = 0.0604$ &nbsp;($&gt; 0.05$ ✗)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(X \geqslant 14) = 1 - \mathrm{P}(X \leqslant 13) = 0.0255$ &nbsp;($\leqslant 0.05$ ✓)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Critical region $X \geqslant 14$; actual significance level $2.55\%$.</span></div>
+      <div class="warn">The actual significance level ($2.55\%$) is well below $5\%$ here. Because $X$ jumps in whole numbers, you cannot get closer to $5\%$ without going over it.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TWO-TAILED TESTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Two-Tailed Tests</div>
+<div class="section-body">
+
+  <div class="concept">
+    For $H_1: p \neq p_0$, evidence can be in either tail. The significance level is <strong>split equally</strong>: at the $5\%$ level each tail may have probability at most $2.5\%$. The critical region has two parts.
+  </div>
+
+  <div class="svg-block">
+[0.0, 0.0005, 0.0031, 0.0123, 0.035, 0.0746, 0.1244, 0.1659, 0.1797, 0.1597, 0.1171, 0.071, 0.0355, 0.0146, 0.0049, 0.0013, 0.0003, 0.0, 0.0, 0.0, 0.0]
+    <svg width="540" height="280" viewBox="0 0 540 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="220" x2="520" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="50" y1="220" x2="50" y2="30" stroke="#475569" stroke-width="2"/>
+      <rect x="53.0" y="220.0" width="21.1" height="0.0" fill="#ef4444"/>
+      <text x="63.5" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">0</text>
+      <rect x="80.1" y="219.5" width="21.1" height="0.5" fill="#ef4444"/>
+      <text x="90.6" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">1</text>
+      <rect x="107.1" y="217.1" width="21.1" height="2.9" fill="#ef4444"/>
+      <text x="117.6" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">2</text>
+      <rect x="134.2" y="208.3" width="21.1" height="11.7" fill="#ef4444"/>
+      <text x="144.7" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">3</text>
+      <rect x="161.2" y="186.9" width="21.1" height="33.1" fill="#a5b4fc"/>
+      <text x="171.8" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">4</text>
+      <rect x="188.3" y="149.4" width="21.1" height="70.6" fill="#a5b4fc"/>
+      <text x="198.8" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">5</text>
+      <rect x="215.4" y="102.3" width="21.1" height="117.7" fill="#a5b4fc"/>
+      <text x="225.9" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">6</text>
+      <rect x="242.4" y="63.1" width="21.1" height="156.9" fill="#a5b4fc"/>
+      <text x="252.9" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">7</text>
+      <rect x="269.5" y="50.0" width="21.1" height="170.0" fill="#a5b4fc"/>
+      <text x="280.0" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">8</text>
+      <rect x="296.5" y="68.9" width="21.1" height="151.1" fill="#a5b4fc"/>
+      <text x="307.1" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">9</text>
+      <rect x="323.6" y="109.2" width="21.1" height="110.8" fill="#a5b4fc"/>
+      <text x="334.1" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">10</text>
+      <rect x="350.6" y="152.8" width="21.1" height="67.2" fill="#a5b4fc"/>
+      <text x="361.2" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">11</text>
+      <rect x="377.7" y="186.4" width="21.1" height="33.6" fill="#a5b4fc"/>
+      <text x="388.2" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">12</text>
+      <rect x="404.8" y="206.2" width="21.1" height="13.8" fill="#ef4444"/>
+      <text x="415.3" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">13</text>
+      <rect x="431.8" y="215.4" width="21.1" height="4.6" fill="#ef4444"/>
+      <text x="442.4" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">14</text>
+      <rect x="458.9" y="218.8" width="21.1" height="1.2" fill="#ef4444"/>
+      <text x="469.4" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">15</text>
+      <rect x="485.9" y="219.7" width="21.1" height="0.3" fill="#ef4444"/>
+      <text x="496.5" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">16</text>
+      <line x1="46" y1="172.7" x2="50" y2="172.7" stroke="#475569"/>
+      <text x="43" y="176.7" font-family="Arial" font-size="10" fill="#475569" text-anchor="end">0.05</text>
+      <line x1="46" y1="125.4" x2="50" y2="125.4" stroke="#475569"/>
+      <text x="43" y="129.4" font-family="Arial" font-size="10" fill="#475569" text-anchor="end">0.10</text>
+      <line x1="46" y1="78.1" x2="50" y2="78.1" stroke="#475569"/>
+      <text x="43" y="82.1" font-family="Arial" font-size="10" fill="#475569" text-anchor="end">0.15</text>
+      <text x="520" y="252" font-family="Arial" font-size="12" fill="#475569" text-anchor="end">x</text>
+      <text x="56" y="26" font-family="Arial" font-size="12" fill="#475569">P(X = x)</text>
+      <text x="52" y="180" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">lower tail</text>
+      <text x="400" y="180" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">upper tail</text>
+      <text x="270.0" y="272" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">X ~ B(20, 0.4), two-tailed at 5%: critical region X &#8804; 3 or X &#8805; 13 (red)</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Two-tailed critical region</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{B}(20,\,p)$. Find the critical region for a test of $H_0: p = 0.4$ against $H_1: p \neq 0.4$ at the $5\%$ level, and the actual significance level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Each tail: probability $\leqslant 0.025$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Lower: $\mathrm{P}(X \leqslant 3) = 0.0160$ ✓, &nbsp;$\mathrm{P}(X \leqslant 4) = 0.0510$ ✗ &nbsp;$\Rightarrow X \leqslant 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Upper: $\mathrm{P}(X \geqslant 13) = 1 - \mathrm{P}(X \leqslant 12) = 0.0210$ ✓, &nbsp;$\mathrm{P}(X \geqslant 12) = 0.0565$ ✗ &nbsp;$\Rightarrow X \geqslant 13$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Critical region: $X \leqslant 3$ or $X \geqslant 13$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Actual significance level $= 0.0160 + 0.0210 = 0.0370 = 3.70\%$.</span></div>
+    </div>
+  </div>
+
+  <p>To carry out a two-tailed test with a p-value, first decide <strong>which tail the observation is in</strong> by comparing it with the mean $np_0$, then compare the one-tail probability with $\tfrac{\alpha}{2}$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two-tailed test using a p-value</div>
+    <div class="example-body">
+      <p>A spinner is designed to land on blue with probability $0.25$. In $40$ spins it lands on blue $16$ times. Test, at (a) the $10\%$ level and (b) the $5\%$ level, whether the probability of blue is different from $0.25$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$H_0: p = 0.25$, &nbsp;$H_1: p \neq 0.25$. Under $H_0$, $X \sim \mathrm{B}(40,\,0.25)$; mean $10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$16 &gt; 10$, so use the upper tail: $\mathrm{P}(X \geqslant 16) = 1 - \mathrm{P}(X \leqslant 15) = 0.0262$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(a) $10\%$ two-tailed $\Rightarrow$ compare with $0.05$: &nbsp;$0.0262 &lt; 0.05$, reject $H_0$. There is sufficient evidence at the $10\%$ level to suggest that the probability of blue is not $0.25$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) $5\%$ two-tailed $\Rightarrow$ compare with $0.025$: &nbsp;$0.0262 &gt; 0.025$, do not reject $H_0$. There is insufficient evidence at the $5\%$ level to suggest that the probability of blue is not $0.25$.</span></div>
+      <div class="tip">An alternative, equally valid, approach is to double the one-tail probability ($2 \times 0.0262 = 0.0525$) and compare with the full $\alpha$. Either way, say clearly what you are comparing.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON ERRORS AND MODEL CHECKS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Pitfalls and Model Assumptions</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Off-by-one in the upper tail.</strong> $\mathrm{P}(X \geqslant 14) = 1 - \mathrm{P}(X \leqslant 13)$. Using $1 - \mathrm{P}(X \leqslant 14)$ gives $\mathrm{P}(X \geqslant 15)$ — the wrong answer.
+  </div>
+
+  <div class="warn">
+    <strong>Using the closest probability rather than the largest that does not exceed $\alpha$.</strong> If $\mathrm{P}(X \geqslant 9) = 0.0468$ and $\mathrm{P}(X \geqslant 8) = 0.0510$ were the two candidates, $0.0510$ is closer to $5\%$ but is <em>over</em> it, so the critical region is $X \geqslant 9$.
+  </div>
+
+  <div class="warn">
+    <strong>Stating the critical region as a probability.</strong> The critical region is a set of values of $X$, such as $X \leqslant 7$. Its probability is the actual significance level.
+  </div>
+
+  <div class="tip">
+    <strong>Is the binomial model reasonable?</strong> Questions sometimes ask you to criticise the model. Look for: a fixed number of trials; two outcomes; trials independent (e.g. patients not related, seeds not in the same tray affected together); probability the same each trial (e.g. a coin not getting worn). The sample should also be <strong>random</strong> if the conclusion is to apply to the whole population.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Null distribution</h4><p>$X \sim \mathrm{B}(n,\,p_0)$ under $H_0$.</p></div>
+    <div class="ref-card"><h4>Upper-tail p-value</h4><p>$\mathrm{P}(X \geqslant x) = 1 - \mathrm{P}(X \leqslant x-1)$.</p></div>
+    <div class="ref-card"><h4>Lower-tail p-value</h4><p>$\mathrm{P}(X \leqslant x)$ directly.</p></div>
+    <div class="ref-card"><h4>Decision</h4><p>p-value $\leqslant \alpha$ (one tail) or $\leqslant \tfrac{\alpha}{2}$ (two tails) $\Rightarrow$ reject $H_0$.</p></div>
+    <div class="ref-card"><h4>Critical region</h4><p>Largest tail with probability $\leqslant \alpha$; show values either side of the boundary.</p></div>
+    <div class="ref-card"><h4>Two-tailed region</h4><p>$\tfrac{\alpha}{2}$ in each tail; actual level = sum of both tails.</p></div>
+    <div class="ref-card"><h4>Which tail?</h4><p>Observed $&gt; np_0$: upper; observed $&lt; np_0$: lower.</p></div>
+    <div class="ref-card"><h4>Conclusion</h4><p>Decision + "sufficient / insufficient evidence to suggest…" in context.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Give probabilities to 4 decimal places. In every test, define $p$, state the hypotheses and the distribution, and conclude in context.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(12,\,p)$. Test $H_0: p = 0.5$ against $H_1: p &gt; 0.5$ at the $5\%$ level, given that $X = 10$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(12,\,0.5)$.</p>
+          <p>$\mathrm{P}(X \geqslant 10) = 1 - \mathrm{P}(X \leqslant 9) = 1 - 0.9807 = 0.0193$.</p>
+          <p>$0.0193 &lt; 0.05$: reject $H_0$. There is sufficient evidence at the $5\%$ level to suggest that $p &gt; 0.5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A garage says $20\%$ of cars fail their safety check. A mechanic believes more fail. Of $15$ randomly chosen cars, $6$ fail. Test at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ = P(a car fails). $H_0: p = 0.2$, &nbsp;$H_1: p &gt; 0.2$. Under $H_0$, $X \sim \mathrm{B}(15,\,0.2)$.</p>
+          <p>$\mathrm{P}(X \geqslant 6) = 1 - \mathrm{P}(X \leqslant 5) = 1 - 0.9389 = 0.0611$.</p>
+          <p>$0.0611 &gt; 0.05$: do not reject $H_0$. There is insufficient evidence at the $5\%$ level to suggest that more than $20\%$ of cars fail.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Historically $15\%$ of a company's parcels arrive late. After a change of courier, $1$ of $30$ parcels arrives late. Test at the $5\%$ level whether the proportion has decreased.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ = P(a parcel is late). $H_0: p = 0.15$, &nbsp;$H_1: p &lt; 0.15$. Under $H_0$, $X \sim \mathrm{B}(30,\,0.15)$.</p>
+          <p>$\mathrm{P}(X \leqslant 1) = 0.0480$.</p>
+          <p>$0.0480 &lt; 0.05$: reject $H_0$. There is sufficient evidence at the $5\%$ level to suggest that the proportion of late parcels has decreased.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the critical region for a test of $H_0: p = 0.2$ against $H_1: p &gt; 0.2$ using a sample of $25$, at the $5\%$ level. State the actual significance level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(25,\,0.2)$.</p>
+          <p>$\mathrm{P}(X \geqslant 8) = 1 - \mathrm{P}(X \leqslant 7) = 0.1091$ ✗</p>
+          <p>$\mathrm{P}(X \geqslant 9) = 1 - \mathrm{P}(X \leqslant 8) = 0.0468$ ✓</p>
+          <p>Critical region $X \geqslant 9$; actual significance level $4.68\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the critical region for a test of $H_0: p = 0.6$ against $H_1: p &lt; 0.6$ using a sample of $20$, at the $5\%$ level. State the actual significance level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(20,\,0.6)$.</p>
+          <p>$\mathrm{P}(X \leqslant 7) = 0.0210$ ✓, &nbsp;$\mathrm{P}(X \leqslant 8) = 0.0565$ ✗</p>
+          <p>Critical region $X \leqslant 7$; actual significance level $2.10\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the critical region for a test of $H_0: p = 0.2$ against $H_1: p \neq 0.2$ using a sample of $30$, at the $5\%$ level. State the actual significance level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(30,\,0.2)$. Each tail $\leqslant 0.025$.</p>
+          <p>Lower: $\mathrm{P}(X \leqslant 1) = 0.0105$ ✓, &nbsp;$\mathrm{P}(X \leqslant 2) = 0.0442$ ✗ &nbsp;$\Rightarrow X \leqslant 1$.</p>
+          <p>Upper: $\mathrm{P}(X \geqslant 12) = 1 - \mathrm{P}(X \leqslant 11) = 0.0095$ ✓, &nbsp;$\mathrm{P}(X \geqslant 11) = 0.0256$ ✗ &nbsp;$\Rightarrow X \geqslant 12$.</p>
+          <p>Critical region: $X \leqslant 1$ or $X \geqslant 12$.</p>
+          <p>Actual significance level $= 0.0105 + 0.0095 = 0.0200 = 2.00\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A coin is thrown $20$ times and shows $5$ heads. Test at the $5\%$ level whether the coin is biased.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ = P(heads). $H_0: p = 0.5$, &nbsp;$H_1: p \neq 0.5$. Under $H_0$, $X \sim \mathrm{B}(20,\,0.5)$; mean $10$.</p>
+          <p>$5 &lt; 10$, so use the lower tail: $\mathrm{P}(X \leqslant 5) = 0.0207$.</p>
+          <p>$0.0207 &lt; 0.025$: reject $H_0$. There is sufficient evidence at the $5\%$ level to suggest that the coin is biased.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the critical region for a test of $H_0: p = 0.3$ against $H_1: p \neq 0.3$ with $n = 50$, at the $5\%$ level, and the actual significance level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(50,\,0.3)$; mean $15$. Each tail $\leqslant 0.025$.</p>
+          <p>Lower: $\mathrm{P}(X \leqslant 8) = 0.0183$ ✓, &nbsp;$\mathrm{P}(X \leqslant 9) = 0.0402$ ✗ &nbsp;$\Rightarrow X \leqslant 8$.</p>
+          <p>Upper: $\mathrm{P}(X \geqslant 23) = 1 - \mathrm{P}(X \leqslant 22) = 0.0123$ ✓, &nbsp;$\mathrm{P}(X \geqslant 22) = 1 - \mathrm{P}(X \leqslant 21) = 0.0251$ ✗ &nbsp;$\Rightarrow X \geqslant 23$.</p>
+          <p>Note that $0.0251$ is only just over $0.025$ — but it <em>is</em> over, so $22$ is not in the critical region.</p>
+          <p>Critical region: $X \leqslant 8$ or $X \geqslant 23$. Actual significance level $= 0.01825 + 0.01228 = 0.0305 = 3.05\%$ (adding the unrounded tail probabilities).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A politician claims that $40\%$ of voters support a policy. A journalist thinks support is lower and asks $25$ randomly chosen voters. (a) Find the critical region for a test at the $1\%$ level. (b) $5$ voters support the policy. Complete the test.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $p$ = P(a voter supports the policy). $H_0: p = 0.4$, &nbsp;$H_1: p &lt; 0.4$. Under $H_0$, $X \sim \mathrm{B}(25,\,0.4)$.</p>
+          <p>$\mathrm{P}(X \leqslant 4) = 0.0095$ ✓, &nbsp;$\mathrm{P}(X \leqslant 5) = 0.0294$ ✗</p>
+          <p>Critical region $X \leqslant 4$.</p>
+          <p><strong>(b)</strong> $5$ is not in the critical region, so do not reject $H_0$. There is insufficient evidence at the $1\%$ level to suggest that support for the policy is lower than $40\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A seed packet states that $85\%$ of the seeds will germinate. Asha thinks that the germination rate of seeds stored in her shed is different. She plants $20$ of these seeds.</p>
+      <p>(a) State two assumptions needed for a binomial model of the number that germinate. &nbsp; (b) Write down hypotheses and find the critical region at the $10\%$ level. &nbsp; (c) State the actual significance level. &nbsp; (d) $14$ seeds germinate. Complete the test.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Seeds germinate independently of one another; each seed has the same probability of germinating. (A fixed number, $20$, is planted.)</p>
+          <p><strong>(b)</strong> Let $p$ = P(a seed germinates). $H_0: p = 0.85$, &nbsp;$H_1: p \neq 0.85$. Under $H_0$, $X \sim \mathrm{B}(20,\,0.85)$; mean $17$. Each tail $\leqslant 0.05$.</p>
+          <p>Lower: $\mathrm{P}(X \leqslant 13) = 0.0219$ ✓, &nbsp;$\mathrm{P}(X \leqslant 14) = 0.0673$ ✗ &nbsp;$\Rightarrow X \leqslant 13$.</p>
+          <p>Upper: $\mathrm{P}(X \geqslant 20) = 0.85^{20} = 0.0388$ ✓, &nbsp;$\mathrm{P}(X \geqslant 19) = 0.1756$ ✗ &nbsp;$\Rightarrow X = 20$.</p>
+          <p>Critical region: $X \leqslant 13$ or $X = 20$.</p>
+          <p><strong>(c)</strong> Actual significance level $= 0.0219 + 0.0388 = 0.0607 = 6.07\%$.</p>
+          <p><strong>(d)</strong> $14$ is not in the critical region, so do not reject $H_0$. There is insufficient evidence at the $10\%$ level to suggest that the germination rate of Asha's seeds is different from $85\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Binomial Hypothesis Tests &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

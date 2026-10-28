@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logarithms and Their Laws &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔢 Logarithms and Their Laws</h1>
+  <p>A Level Maths Year 1 · Exponentials and Logarithms</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A LOGARITHM IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Logarithm Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>logarithm</strong> answers the question <em>"what power?"</em>. $\log_a b$ is the power you must raise $a$ to in order to get $b$. So $\log_2 8 = 3$ because $2^3 = 8$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The definition (DfE content area F)</div>
+    $\log_a b = c \quad\iff\quad a^c = b$ &nbsp;&nbsp;&nbsp; (with $a > 0$, $a \neq 1$, $b > 0$)
+  </div>
+
+  <p>The base stays the base. In both forms $a$ is the base; the logarithm $c$ <em>is</em> the index. Moving between the two forms is the single most useful skill on this page.</p>
+
+  <table>
+    <tr><th>Index form</th><th>Log form</th><th>Reading it</th></tr>
+    <tr><td>$2^5 = 32$</td><td>$\log_2 32 = 5$</td><td>$2$ to the power $5$ is $32$</td></tr>
+    <tr><td>$10^{-2} = 0.01$</td><td>$\log_{10} 0.01 = -2$</td><td>Logs can be negative</td></tr>
+    <tr><td>$9^{1/2} = 3$</td><td>$\log_9 3 = \tfrac12$</td><td>Logs can be fractions</td></tr>
+    <tr><td>$a^0 = 1$</td><td>$\log_a 1 = 0$</td><td>True for every base</td></tr>
+    <tr><td>$a^1 = a$</td><td>$\log_a a = 1$</td><td>True for every base</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>You cannot take the log of zero or a negative number.</strong> $a^c$ is always positive, so $\log_a b$ only exists for $b > 0$. This is why log equations sometimes produce answers you must reject.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Evaluating logs without a calculator</div>
+    <div class="example-body">
+      <p>Find (a) $\log_4 64$ &nbsp; (b) $\log_8 2$ &nbsp; (c) $\log_3 \tfrac{1}{27}$ &nbsp; (d) $\log_{1/2} 4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $4^{?} = 64$: $4^3 = 64$, so $\log_4 64 = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $8^{?} = 2$: $8^{1/3} = \sqrt[3]{8} = 2$, so $\log_8 2 = \tfrac13$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $\tfrac{1}{27} = 3^{-3}$, so $\log_3 \tfrac{1}{27} = -3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(d) $\left(\tfrac12\right)^{?} = 4$: $\left(\tfrac12\right)^{-2} = 2^2 = 4$, so $\log_{1/2} 4 = -2$.</span></div>
+      <div class="tip">Write the number as a power of the base. Everything you know about <a href="../algebra/indices-surds.html">indices</a> — negative and fractional powers — comes straight back.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LAWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Laws of Logarithms</div>
+<div class="section-body">
+
+  <p>Because logs <em>are</em> indices, each law of indices has a matching law of logs. All the logs in one law must have the <strong>same base</strong>.</p>
+
+  <table>
+    <tr><th>Law of indices</th><th>Law of logarithms</th></tr>
+    <tr><td>$a^m \times a^n = a^{m+n}$</td><td>$\log_a x + \log_a y = \log_a(xy)$</td></tr>
+    <tr><td>$a^m \div a^n = a^{m-n}$</td><td>$\log_a x - \log_a y = \log_a\left(\dfrac{x}{y}\right)$</td></tr>
+    <tr><td>$\left(a^m\right)^k = a^{mk}$</td><td>$k\log_a x = \log_a\left(x^k\right)$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Useful consequences</div>
+    $\log_a\left(\dfrac1x\right) = -\log_a x$ &nbsp;&nbsp;&nbsp; $\log_a \sqrt{x} = \tfrac12\log_a x$ &nbsp;&nbsp;&nbsp; $\log_a\left(a^k\right) = k$ &nbsp;&nbsp;&nbsp; $a^{\log_a x} = x$
+  </div>
+
+  <div class="concept">
+    <strong>Proof of the multiplication law.</strong> Let $\log_a x = m$ and $\log_a y = n$, so $x = a^m$ and $y = a^n$. Then $xy = a^m a^n = a^{m+n}$, and converting back to log form, $\log_a(xy) = m + n = \log_a x + \log_a y$. &nbsp;$\blacksquare$
+  </div>
+
+  <div class="warn">
+    <strong>There is no law for $\log(x + y)$.</strong> $\log 2 + \log 3 = \log 6$, but $\log(2 + 3) = \log 5$, which does not simplify. Likewise $\dfrac{\log x}{\log y} \neq \log\left(\dfrac{x}{y}\right)$ and $(\log x)^2 \neq 2\log x$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Writing as a single logarithm</div>
+    <div class="example-body">
+      <p>Write $2\log 3 + \log 4 - \log 6$ as a single logarithm, and simplify.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Deal with the multiplier first: $2\log 3 = \log 3^2 = \log 9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Add: $\log 9 + \log 4 = \log 36$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Subtract: $\log 36 - \log 6 = \log\dfrac{36}{6} = \log 6$.</span></div>
+      <div class="tip"><strong>Order matters:</strong> always use the power law to move coefficients inside <em>before</em> adding or subtracting.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Expanding a logarithm</div>
+    <div class="example-body">
+      <p>Write $\log_a\left(\dfrac{x^3 y}{z^2}\right)$ in terms of $\log_a x$, $\log_a y$ and $\log_a z$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Division law: $\log_a\left(x^3 y\right) - \log_a\left(z^2\right)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiplication law: $\log_a x^3 + \log_a y - \log_a z^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Power law: $3\log_a x + \log_a y - 2\log_a z$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Writing logs in terms of given letters</div>
+    <div class="example-body">
+      <p>Given $\log_a 2 = p$ and $\log_a 3 = q$, express (a) $\log_a 12$ &nbsp; (b) $\log_a 1.5$ &nbsp; (c) $\log_a 0.75$ in terms of $p$ and $q$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $12 = 2^2 \times 3$, so $\log_a 12 = 2\log_a 2 + \log_a 3 = 2p + q$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $1.5 = \dfrac32$, so $\log_a 1.5 = q - p$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $0.75 = \dfrac34 = \dfrac{3}{2^2}$, so $\log_a 0.75 = q - 2p$.</span></div>
+      <div class="tip">Break every number into its prime factors first — the laws then do the rest.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – NATURAL AND COMMON LOGS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Natural Logs and Base 10</div>
+<div class="section-body">
+
+  <p>Two bases have their own calculator buttons.</p>
+
+  <table>
+    <tr><th>Name</th><th>Written</th><th>Base</th><th>Inverse of</th></tr>
+    <tr><td>Common logarithm</td><td>$\log_{10} x$ or $\lg x$</td><td>$10$</td><td>$10^x$</td></tr>
+    <tr><td>Natural logarithm</td><td>$\ln x$</td><td>$e \approx 2.718$</td><td>$e^x$</td></tr>
+  </table>
+
+  <p>The laws are identical for $\ln$. Two facts are used constantly: $\ln\left(e^k\right) = k$ and $e^{\ln x} = x$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Simplifying with $\ln$ and $e$</div>
+    <div class="example-body">
+      <p>Simplify (a) $\ln\left(\dfrac{e^3}{\sqrt e}\right)$ &nbsp; (b) $e^{2\ln 3}$ &nbsp; (c) $e^{\ln 4 + 1}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\dfrac{e^3}{e^{1/2}} = e^{5/2}$, so $\ln\left(e^{5/2}\right) = \tfrac52$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $2\ln 3 = \ln 9$, so $e^{\ln 9} = 9$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $e^{\ln 4} \times e^{1} = 4e$.</span></div>
+      <div class="warn">In (b), do <em>not</em> write $e^{2\ln 3} = 2 \times 3$. The $2$ must go inside the log as a power first.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Logs to other bases on a calculator.</strong> If your calculator has no $\log_{\square}$ key, use $\log_a b = \dfrac{\ln b}{\ln a}$ (this works with $\log_{10}$ too). For example $\log_2 10 = \dfrac{\ln 10}{\ln 2} \approx 3.322$. It follows from taking $\ln$ of $a^c = b$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SWITCHING FORMS TO SOLVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Switching Between Forms to Solve Equations</div>
+<div class="section-body">
+
+  <p>A single log equal to a number is solved by rewriting it in index form. More involved equations — with several logs, or with the unknown in an index — are on the <a href="equations.html">Exponential and Log Equations</a> page.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Simple log equations</div>
+    <div class="example-body">
+      <p>Solve (a) $\log_3 x = 4$ &nbsp; (b) $\log_x 49 = 2$ &nbsp; (c) $\log_2(x + 1) = 5$ &nbsp; (d) $\ln(2x) = 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $x = 3^4 = 81$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $x^2 = 49$, so $x = \pm 7$. A base must be positive, so $x = 7$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $x + 1 = 2^5 = 32$, so $x = 31$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(d) $2x = e^3$, so $x = \tfrac12 e^3 \approx 10.04$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Combine first, then switch</div>
+    <div class="example-body">
+      <p>Solve $\log_2 x + \log_2 8 = 7$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\log_2 8 = 3$, so $\log_2 x = 4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 2^4 = 16$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check: $\log_2 16 + \log_2 8 = 4 + 3 = 7$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$\log_a b = c \iff a^c = b$</p></div>
+    <div class="ref-card"><h4>Special values</h4><p>$\log_a 1 = 0$, &nbsp;$\log_a a = 1$</p></div>
+    <div class="ref-card"><h4>Multiply</h4><p>$\log x + \log y = \log xy$</p></div>
+    <div class="ref-card"><h4>Divide</h4><p>$\log x - \log y = \log \dfrac{x}{y}$</p></div>
+    <div class="ref-card"><h4>Power</h4><p>$k\log x = \log x^k$ — do this first.</p></div>
+    <div class="ref-card"><h4>Reciprocal</h4><p>$\log\dfrac1x = -\log x$</p></div>
+    <div class="ref-card"><h4>No law</h4><p>for $\log(x+y)$ or $\dfrac{\log x}{\log y}$.</p></div>
+    <div class="ref-card"><h4>Domain</h4><p>Only positive numbers have logs.</p></div>
+    <div class="ref-card"><h4>Natural log</h4><p>$\ln e^k = k$, &nbsp;$e^{\ln x} = x$</p></div>
+    <div class="ref-card"><h4>Other bases</h4><p>$\log_a b = \dfrac{\ln b}{\ln a}$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write in logarithm form: (a) $2^5 = 32$ &nbsp; (b) $10^{-3} = 0.001$ &nbsp; (c) $7^0 = 1$. &nbsp; Write in index form: (d) $\log_5 125 = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\log_2 32 = 5$ &nbsp; (b) $\log_{10} 0.001 = -3$ &nbsp; (c) $\log_7 1 = 0$</p>
+          <p>(d) $5^3 = 125$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Without a calculator, find (a) $\log_3 81$ &nbsp; (b) $\log_2 \tfrac18$ &nbsp; (c) $\log_{25} 5$ &nbsp; (d) $\log_4 8$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $3^4 = 81$, so $4$.</p>
+          <p>(b) $\tfrac18 = 2^{-3}$, so $-3$.</p>
+          <p>(c) $25^{1/2} = 5$, so $\tfrac12$.</p>
+          <p>(d) $4^{3/2} = \left(\sqrt4\right)^3 = 8$, so $\tfrac32$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that $\log_{10} 5 + \log_{10} 4 - \log_{10} 2 = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log_{10}\left(\dfrac{5 \times 4}{2}\right) = \log_{10} 10 = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Write $3\ln x - 2\ln y + \ln 5$ as a single logarithm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Power law first: $\ln x^3 - \ln y^2 + \ln 5$.</p>
+          <p>Combine: $\ln\left(\dfrac{5x^3}{y^2}\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Given $\log_a 2 = p$ and $\log_a 3 = q$, express in terms of $p$ and $q$: (a) $\log_a 18$ &nbsp; (b) $\log_a \tfrac89$ &nbsp; (c) $\log_a \sqrt6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $18 = 2 \times 3^2$: $\;p + 2q$.</p>
+          <p>(b) $\tfrac89 = \dfrac{2^3}{3^2}$: $\;3p - 2q$.</p>
+          <p>(c) $\sqrt6 = (2 \times 3)^{1/2}$: $\;\tfrac12(p + q)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the exact value of $2\log_6 3 + \log_6 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\log_6 3 = \log_6 9$, so the sum is $\log_6 36$.</p>
+          <p>$6^2 = 36$, so the value is $2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve (a) $\log_x 64 = 3$ &nbsp; (b) $\log_5(2x - 1) = 2$ &nbsp; (c) $\ln(x - 3) = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $x^3 = 64$, so $x = 4$.</p>
+          <p>(b) $2x - 1 = 5^2 = 25$, so $x = 13$.</p>
+          <p>(c) $x - 3 = e$, so $x = 3 + e \approx 5.718$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Write in the form $A + B\ln x$: (a) $\ln\left(e^2x^3\right)$ &nbsp; (b) $\ln\sqrt{ex}$ &nbsp; (c) $\ln\left(\dfrac{x}{e^4}\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\ln e^2 + \ln x^3 = 2 + 3\ln x$</p>
+          <p>(b) $\tfrac12\ln(ex) = \tfrac12(\ln e + \ln x) = \tfrac12 + \tfrac12\ln x$</p>
+          <p>(c) $\ln x - \ln e^4 = -4 + \ln x$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Prove that $\log_a\left(\dfrac{x}{y}\right) = \log_a x - \log_a y$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $m = \log_a x$ and $n = \log_a y$, so $x = a^m$ and $y = a^n$.</p>
+          <p>Then $\dfrac{x}{y} = \dfrac{a^m}{a^n} = a^{m-n}$.</p>
+          <p>Converting to log form: $\log_a\left(\dfrac{x}{y}\right) = m - n = \log_a x - \log_a y$. &nbsp;$\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The pH of a solution is defined by $\text{pH} = -\log_{10} H$, where $H$ is the concentration of hydrogen ions in moles per litre.</p>
+      <p>(a) Find the pH of a solution with $H = 3.2 \times 10^{-4}$, to 2 decimal places. &nbsp; (b) Blood has a pH of $7.4$. Find $H$. &nbsp; (c) Show that multiplying $H$ by $10$ lowers the pH by exactly $1$. &nbsp; (d) Solution A has pH $3$ and solution B has pH $5$. How many times more concentrated in hydrogen ions is A than B?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\text{pH} = -\log_{10}\left(3.2 \times 10^{-4}\right) \approx 3.49$.</p>
+          <p><strong>(b)</strong> $-\log_{10} H = 7.4 \Rightarrow \log_{10} H = -7.4 \Rightarrow H = 10^{-7.4} \approx 3.98 \times 10^{-8}$ moles per litre.</p>
+          <p><strong>(c)</strong> New pH $= -\log_{10}(10H) = -\left(\log_{10}10 + \log_{10}H\right) = -1 - \log_{10}H = (\text{old pH}) - 1$.</p>
+          <p><strong>(d)</strong> $H_A = 10^{-3}$ and $H_B = 10^{-5}$, so $\dfrac{H_A}{H_B} = 10^{2} = 100$. A is $100$ times as concentrated.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Logarithms and Their Laws &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

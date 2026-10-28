@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing for Correlation &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔗 Testing for Correlation</h1>
+  <p>A Level Maths Year 2 · Hypothesis Testing</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Is the Correlation Real?</div>
+<div class="section-body">
+
+  <p>A sample correlation coefficient $r$ is never exactly $0$, even when two variables are completely unrelated — random variation always produces some apparent pattern. A hypothesis test decides whether the sample value of $r$ is far enough from $0$ to be convincing evidence of correlation in the whole <strong>population</strong>.</p>
+
+  <div class="concept">
+    $r$ is the correlation coefficient of the <strong>sample</strong>. The Greek letter $\rho$ (rho) is the correlation coefficient of the <strong>population</strong>. The hypotheses are always about $\rho$, never about $r$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Hypotheses</div>
+    $\mathrm{H}_0: \rho = 0$ &nbsp;(no correlation in the population)<br>
+    $\mathrm{H}_1: \rho > 0$ &nbsp;or&nbsp; $\mathrm{H}_1: \rho < 0$ &nbsp;(one-tailed) &nbsp;&middot;&nbsp; $\mathrm{H}_1: \rho \neq 0$ &nbsp;(two-tailed)
+  </div>
+
+  <table>
+    <tr><th>The claim in the question</th><th>Alternative hypothesis</th></tr>
+    <tr><td>"There is <strong>positive</strong> correlation" / "$y$ tends to increase with $x$"</td><td>$\mathrm{H}_1: \rho > 0$</td></tr>
+    <tr><td>"There is <strong>negative</strong> correlation" / "$y$ tends to decrease as $x$ increases"</td><td>$\mathrm{H}_1: \rho < 0$</td></tr>
+    <tr><td>"There is <strong>some</strong> correlation" / "the variables are related" (no direction)</td><td>$\mathrm{H}_1: \rho \neq 0$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Choose the alternative hypothesis before looking at the data.</strong> The direction comes from the claim being tested, not from the sign of $r$ you happen to get.
+  </div>
+
+  <p>The general language of hypothesis testing — significance level, critical value, "sufficient evidence" — is the same as in Year 1: see <a href="../../alevel-year1/hypothesis-testing/language.html">The Language of Hypothesis Testing</a>.</p>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CRITICAL VALUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Critical Values of $r$</div>
+<div class="section-body">
+
+  <p>If $\mathrm{H}_0$ is true, the sampling distribution of $r$ depends only on the sample size $n$. From it we get a <strong>critical value</strong>: the smallest value of $|r|$ that is significant at a given level. Exams provide these in a table — the values below were calculated from the $t$ distribution using $r_{\text{crit}} = \dfrac{t}{\sqrt{t^2 + n - 2}}$ with $n - 2$ degrees of freedom (you do not need this formula).</p>
+
+  <table>
+    <tr><th rowspan="2">$n$</th><th>One tail $5\%$</th><th>One tail $2.5\%$</th><th>One tail $1\%$</th><th>One tail $0.5\%$</th></tr>
+    <tr><th>Two tails $10\%$</th><th>Two tails $5\%$</th><th>Two tails $2\%$</th><th>Two tails $1\%$</th></tr>
+    <tr><td>4</td><td>0.9000</td><td>0.9500</td><td>0.9800</td><td>0.9900</td></tr>
+    <tr><td>5</td><td>0.8054</td><td>0.8783</td><td>0.9343</td><td>0.9587</td></tr>
+    <tr><td>6</td><td>0.7293</td><td>0.8114</td><td>0.8822</td><td>0.9172</td></tr>
+    <tr><td>7</td><td>0.6694</td><td>0.7545</td><td>0.8329</td><td>0.8745</td></tr>
+    <tr><td>8</td><td>0.6215</td><td>0.7067</td><td>0.7887</td><td>0.8343</td></tr>
+    <tr><td>9</td><td>0.5822</td><td>0.6664</td><td>0.7498</td><td>0.7977</td></tr>
+    <tr><td>10</td><td>0.5494</td><td>0.6319</td><td>0.7155</td><td>0.7646</td></tr>
+    <tr><td>11</td><td>0.5214</td><td>0.6021</td><td>0.6851</td><td>0.7348</td></tr>
+    <tr><td>12</td><td>0.4973</td><td>0.5760</td><td>0.6581</td><td>0.7079</td></tr>
+    <tr><td>13</td><td>0.4762</td><td>0.5529</td><td>0.6339</td><td>0.6835</td></tr>
+    <tr><td>14</td><td>0.4575</td><td>0.5324</td><td>0.6120</td><td>0.6614</td></tr>
+    <tr><td>15</td><td>0.4409</td><td>0.5140</td><td>0.5923</td><td>0.6411</td></tr>
+    <tr><td>16</td><td>0.4259</td><td>0.4973</td><td>0.5742</td><td>0.6226</td></tr>
+    <tr><td>17</td><td>0.4124</td><td>0.4821</td><td>0.5577</td><td>0.6055</td></tr>
+    <tr><td>18</td><td>0.4000</td><td>0.4683</td><td>0.5425</td><td>0.5897</td></tr>
+    <tr><td>19</td><td>0.3887</td><td>0.4555</td><td>0.5285</td><td>0.5751</td></tr>
+    <tr><td>20</td><td>0.3783</td><td>0.4438</td><td>0.5155</td><td>0.5614</td></tr>
+    <tr><td>25</td><td>0.3365</td><td>0.3961</td><td>0.4622</td><td>0.5052</td></tr>
+    <tr><td>30</td><td>0.3061</td><td>0.3610</td><td>0.4226</td><td>0.4629</td></tr>
+    <tr><td>40</td><td>0.2638</td><td>0.3120</td><td>0.3665</td><td>0.4026</td></tr>
+    <tr><td>50</td><td>0.2353</td><td>0.2787</td><td>0.3281</td><td>0.3610</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Decision rule</div>
+    $\mathrm{H}_1: \rho > 0$ &nbsp;— reject $\mathrm{H}_0$ if $r \geqslant r_{\text{crit}}$<br>
+    $\mathrm{H}_1: \rho < 0$ &nbsp;— reject $\mathrm{H}_0$ if $r \leqslant -r_{\text{crit}}$<br>
+    $\mathrm{H}_1: \rho \neq 0$ &nbsp;— halve the significance level for each tail; reject if $|r| \geqslant r_{\text{crit}}$
+  </div>
+
+  <div class="tip">
+    <strong>Notice how fast the critical values fall.</strong> With $n = 5$ you need $r \geqslant 0.8054$ for significance at $5\%$ (one tail); with $n = 50$, only $r \geqslant 0.2353$. A large sample can show that even a weak correlation is real.
+  </div>
+
+  <div class="concept">
+    <strong>Assumption.</strong> The test assumes the data are a random sample from a <strong>bivariate normal</strong> distribution. A scatter diagram that looks roughly elliptical supports this. Some specifications only ask you to know the test is based on this; you will not be asked to verify it formally.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Method, Step by Step</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li><span>State $\mathrm{H}_0: \rho = 0$ and $\mathrm{H}_1$, defining $\rho$ as the population correlation coefficient between the two named variables.</span></li>
+    <li><span>State the significance level and whether the test is one- or two-tailed.</span></li>
+    <li><span>Find the critical value for the sample size $n$ (halving the level for a two-tailed test), or use a given $p$-value.</span></li>
+    <li><span>Compare $r$ with the critical value (or the $p$-value with the significance level).</span></li>
+    <li><span>Conclude in context, using non-assertive language: "there is sufficient evidence to suggest…".</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — One-tailed test for positive correlation</div>
+    <div class="example-body">
+      <p>For a random sample of $10$ students, the correlation coefficient between time spent on homework and exam mark is $r = 0.62$. Test at the $5\%$ level whether there is positive correlation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho > 0$, where $\rho$ is the population correlation coefficient between homework time and exam mark.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>One-tailed, $5\%$, $n = 10$: critical value $0.5494$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.62 > 0.5494$, so $r$ lies in the critical region $r \geqslant 0.5494$. Reject $\mathrm{H}_0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>There is sufficient evidence at the $5\%$ level to suggest positive correlation between homework time and exam mark.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — One-tailed test for negative correlation</div>
+    <div class="example-body">
+      <p>For $15$ towns, the correlation coefficient between altitude and mean January temperature is $r = -0.41$. Test at the $5\%$ level whether temperature tends to fall as altitude increases.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho < 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>One-tailed, $5\%$, $n = 15$: critical region $r \leqslant -0.4409$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$-0.41 > -0.4409$, so $r$ is <em>not</em> in the critical region. Do not reject $\mathrm{H}_0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>There is insufficient evidence at the $5\%$ level to suggest negative correlation between altitude and January temperature.</span></div>
+      <div class="warn">"Not significant" does not prove there is no correlation — only that this sample is not convincing. A bigger sample might well show it.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Two-tailed test</div>
+    <div class="example-body">
+      <p>A researcher believes reaction time and age are related but does not predict a direction. For $20$ adults, $r = 0.47$. Test at the $5\%$ level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho \neq 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Two-tailed $5\%$ means $2.5\%$ in each tail. $n = 20$: critical value $0.4438$, so the critical region is $r \leqslant -0.4438$ or $r \geqslant 0.4438$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.47 \geqslant 0.4438$: reject $\mathrm{H}_0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>There is sufficient evidence at the $5\%$ level to suggest a correlation between age and reaction time.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – P-VALUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The $p$-Value Approach</div>
+<div class="section-body">
+
+  <p>Statistical software usually reports a <strong>$p$-value</strong> instead of comparing with a table. The $p$-value is the probability, if $\mathrm{H}_0$ is true, of a sample correlation at least as extreme as the one observed.</p>
+
+  <div class="formula-box">
+    <div class="label">Decision rule</div>
+    $p$-value $<$ significance level &nbsp;$\Rightarrow$&nbsp; reject $\mathrm{H}_0$
+  </div>
+
+  <div class="warn">
+    <strong>One tail or two?</strong> Software often gives a two-tailed $p$-value by default. For a one-tailed test (with $r$ in the predicted direction) halve it; for a two-tailed test use it as it stands. Read the question carefully to see which you have been given.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using a $p$-value</div>
+    <div class="example-body">
+      <p>For a sample of $12$ cities, the correlation between population density and the percentage of journeys made by public transport is $r = 0.55$. Software gives a one-tailed $p$-value of $0.0320$. Test at the $5\%$ level and at the $1\%$ level whether there is positive correlation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho > 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $5\%$: $0.0320 < 0.05$, so reject $\mathrm{H}_0$. There is evidence of positive correlation.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $1\%$: $0.0320 > 0.01$, so do not reject $\mathrm{H}_0$. There is insufficient evidence at this stricter level.</span></div>
+      <div class="tip"><strong>Consistency check:</strong> for $n = 12$ the table gives $0.4973$ at $5\%$ and $0.6581$ at $1\%$; $r = 0.55$ lies between them, matching the two conclusions.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Testing a regression context</div>
+    <div class="example-body">
+      <p>In <a href="../statistics/regression.html">Regression and Exponential Models</a>, $8$ students' revision hours and scores gave $r = 0.991$. Test at the $1\%$ level whether there is positive correlation, and comment on using the regression line.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho > 0$; one-tailed $1\%$, $n = 8$: critical value $0.7887$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.991 > 0.7887$: reject $\mathrm{H}_0$. Strong evidence of positive correlation.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>This supports using the regression line for predictions within the range of the data.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Null hypothesis</h4><p>$\mathrm{H}_0: \rho = 0$ — always.</p></div>
+    <div class="ref-card"><h4>Alternatives</h4><p>$\rho > 0$, $\rho < 0$ (one tail) or $\rho \neq 0$ (two tails).</p></div>
+    <div class="ref-card"><h4>$\rho$ vs $r$</h4><p>$\rho$ population (hypotheses); $r$ sample (test statistic).</p></div>
+    <div class="ref-card"><h4>Critical value</h4><p>Depends on $n$ and the level; from the table.</p></div>
+    <div class="ref-card"><h4>Two-tailed</h4><p>Halve the significance level for each tail.</p></div>
+    <div class="ref-card"><h4>$p$-value</h4><p>Reject $\mathrm{H}_0$ if $p <$ significance level.</p></div>
+    <div class="ref-card"><h4>Assumption</h4><p>Random sample from a bivariate normal population.</p></div>
+    <div class="ref-card"><h4>Conclusion</h4><p>In context; "evidence to suggest", never "proves".</p></div>
+    <div class="ref-card"><h4>Causation</h4><p>Significant correlation still does not show cause.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions, from routine to exam-style. Use the table of critical values in Section 2.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A biologist wants to test the claim that the longer a plant's leaves, the taller it grows. Write suitable hypotheses, defining any symbols.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho > 0$,</p>
+          <p>where $\rho$ is the population product moment correlation coefficient between leaf length and plant height.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A sample of size $8$ gives $r = 0.65$. Test at the $5\%$ level for positive correlation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho > 0$. Critical value ($n = 8$, $5\%$ one tail) $= 0.6215$.</p>
+          <p>$0.65 > 0.6215$: reject $\mathrm{H}_0$. There is sufficient evidence to suggest positive correlation.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For $25$ cars, the correlation between engine size and fuel economy (miles per gallon) is $r = -0.30$. Test at the $5\%$ level whether there is negative correlation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho < 0$. Critical region $r \leqslant -0.3365$.</p>
+          <p>$-0.30 > -0.3365$: not in the critical region, do not reject $\mathrm{H}_0$.</p>
+          <p>There is insufficient evidence at the $5\%$ level to suggest negative correlation between engine size and fuel economy.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>For $30$ pairs of observations, $r = 0.39$. Test at the $5\%$ level whether there is correlation (in either direction).</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho \neq 0$. Two-tailed $5\%$, so $2.5\%$ in each tail: critical value $0.3610$.</p>
+          <p>$|0.39| \geqslant 0.3610$: reject $\mathrm{H}_0$. There is sufficient evidence of correlation.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A test of $\mathrm{H}_0: \rho = 0$ against $\mathrm{H}_1: \rho > 0$ gives a $p$-value of $0.032$. State the conclusion at (a) the $5\%$ level, (b) the $2.5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $0.032 < 0.05$: reject $\mathrm{H}_0$ — evidence of positive correlation.</p>
+          <p><strong>(b)</strong> $0.032 > 0.025$: do not reject $\mathrm{H}_0$ — insufficient evidence.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>For a sample of $40$, $r = 0.25$. Test for positive correlation at (a) the $1\%$ level, (b) the $5\%$ level. Comment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Critical value $0.3665$; $0.25 < 0.3665$: do not reject $\mathrm{H}_0$.</p>
+          <p><strong>(b)</strong> Critical value $0.2638$; $0.25 < 0.2638$: do not reject $\mathrm{H}_0$.</p>
+          <p>Even at $5\%$ the result is not significant, though it is close. (At $10\%$ one tail it would be: the critical value there is $0.2070$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain why $r = 0.7$ is significant at the $5\%$ level (one tail) for a sample of $10$ but not for a sample of $6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Critical values: $n = 10$ gives $0.5494$; $n = 6$ gives $0.7293$.</p>
+          <p>With only a few points, a high $r$ can easily happen by chance when there is no real correlation, so a larger $r$ is needed before it counts as evidence. $0.7 > 0.5494$ but $0.7 < 0.7293$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>For six days, hours of sunshine $x$ and cold drinks sold $y$ (in tens) were: $(3, 14)$, $(5, 19)$, $(6, 21)$, $(8, 26)$, $(9, 27)$, $(11, 33)$. Calculate $r$ and test at the $1\%$ level for positive correlation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Calculator: $r = 0.997$ (3 s.f.).</p>
+          <p>$\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho > 0$; $n = 6$, $1\%$ one tail: critical value $0.8822$.</p>
+          <p>$0.997 > 0.8822$: reject $\mathrm{H}_0$. Strong evidence of positive correlation between sunshine and drinks sold.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A researcher expects a sample correlation of about $0.45$. Using the table, find the smallest sample size for which $r = 0.45$ would be significant evidence of positive correlation at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Need the critical value to be at most $0.45$.</p>
+          <p>$n = 14$: $0.4575 > 0.45$ (not significant). $n = 15$: $0.4409 \leqslant 0.45$ (significant).</p>
+          <p>Smallest sample size: $n = 15$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A teacher thinks that students' marks in a mock exam and in the final exam are related. For a random sample of $18$ students, $r = 0.48$, and software gives a <em>two-tailed</em> $p$-value of $0.0438$.</p>
+      <p>(a) State suitable hypotheses. (b) Carry out the test at the $5\%$ level using the $p$-value. (c) Confirm your conclusion using a critical value. (d) The teacher claims this shows that doing well in the mock causes students to do well in the final exam. Comment. (e) State an assumption needed for the test to be valid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> No direction is predicted: $\mathrm{H}_0: \rho = 0$, $\mathrm{H}_1: \rho \neq 0$, where $\rho$ is the population correlation coefficient between mock and final marks.</p>
+          <p><strong>(b)</strong> Two-tailed $p$-value $0.0438 < 0.05$: reject $\mathrm{H}_0$. There is sufficient evidence at the $5\%$ level to suggest a correlation between mock and final marks.</p>
+          <p><strong>(c)</strong> Two-tailed $5\%$, $n = 18$: critical value $0.4683$. $|0.48| \geqslant 0.4683$, so reject $\mathrm{H}_0$ ✓</p>
+          <p><strong>(d)</strong> Correlation does not imply causation. Both marks are likely to depend on the student's underlying ability and effort, so the mock need not <em>cause</em> the final result.</p>
+          <p><strong>(e)</strong> The students are a random sample from a population in which the marks have a bivariate normal distribution.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Testing for Correlation &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

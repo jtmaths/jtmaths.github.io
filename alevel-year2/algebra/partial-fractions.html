@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebraic and Partial Fractions &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➗ Algebraic and Partial Fractions</h1>
+  <p>A Level Maths Year 2 · Algebra and Functions</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – SIMPLIFYING RATIONAL EXPRESSIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Simplifying Rational Expressions</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>rational expression</strong> is one polynomial divided by another, such as $\dfrac{x^2 - 9}{x^2 + x - 6}$. It behaves exactly like a numerical fraction: you simplify by cancelling <strong>common factors</strong>, and you add by finding a <strong>common denominator</strong>.
+  </div>
+
+  <ol class="steps">
+    <li><span>Factorise every numerator and denominator fully.</span></li>
+    <li><span>For $\times$ and $\div$: flip the second fraction if dividing, then cancel factors that appear top and bottom.</span></li>
+    <li><span>For $+$ and $-$: use the lowest common denominator, then simplify the numerator.</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Cancelling</div>
+    <div class="example-body">
+      <p>Simplify $\dfrac{x^2 - 9}{x^2 + x - 6}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Factorise: $\dfrac{(x - 3)(x + 3)}{(x + 3)(x - 2)}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cancel the common factor $(x + 3)$: $\dfrac{x - 3}{x - 2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Dividing</div>
+    <div class="example-body">
+      <p>Simplify $\dfrac{2x^2 + 7x + 3}{x^2 - 9} \div \dfrac{4x + 2}{x^2 - 3x}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Factorise: $\dfrac{(2x+1)(x+3)}{(x-3)(x+3)} \div \dfrac{2(2x+1)}{x(x-3)}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Flip and multiply: $\dfrac{(2x+1)(x+3)}{(x-3)(x+3)} \times \dfrac{x(x-3)}{2(2x+1)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Cancel $(2x+1)$, $(x+3)$ and $(x-3)$: $\dfrac{x}{2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Subtracting</div>
+    <div class="example-body">
+      <p>Write $\dfrac{2}{x+1} - \dfrac{3}{x^2 - 1}$ as a single fraction in its simplest form.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 - 1 = (x-1)(x+1)$, so the common denominator is $(x-1)(x+1)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{2(x-1)}{(x-1)(x+1)} - \dfrac{3}{(x-1)(x+1)} = \dfrac{2x - 2 - 3}{(x-1)(x+1)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{2x - 5}{(x-1)(x+1)}$</span></div>
+      <div class="tip">Using $(x+1)(x^2-1)$ as the denominator also works, but you then have to cancel at the end. The <strong>lowest</strong> common denominator saves work.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Only cancel factors.</strong> In $\dfrac{x + 3}{x + 5}$ nothing cancels — the $x$s are terms, not factors.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ALGEBRAIC DIVISION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Algebraic Division and Improper Fractions</div>
+<div class="section-body">
+
+  <div class="concept">
+    A rational expression is <strong>improper</strong> if the degree of the numerator is greater than or equal to the degree of the denominator (like $\tfrac{7}{3}$), and <strong>proper</strong> if it is less (like $\tfrac{2}{3}$). Division turns an improper fraction into a polynomial plus a proper fraction.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The division identity</div>
+    $\mathrm{F}(x) \equiv \mathrm{Q}(x) \times \mathrm{divisor} + \mathrm{R}(x)$ &nbsp;so&nbsp; $\dfrac{\mathrm{F}(x)}{\mathrm{divisor}} \equiv \mathrm{Q}(x) + \dfrac{\mathrm{R}(x)}{\mathrm{divisor}}$<br>
+    where the degree of $\mathrm{R}$ is less than the degree of the divisor
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Dividing by a linear expression</div>
+    <div class="example-body">
+      <p>Express $\dfrac{x^3 + 2x^2 - 5x + 1}{x - 2}$ in the form $ax^2 + bx + c + \dfrac{d}{x - 2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^3 \div x = x^2$. Subtract $x^2(x-2) = x^3 - 2x^2$ to leave $4x^2 - 5x + 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$4x^2 \div x = 4x$. Subtract $4x^2 - 8x$ to leave $3x + 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3x \div x = 3$. Subtract $3x - 6$ to leave $7$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{x^3 + 2x^2 - 5x + 1}{x - 2} \equiv x^2 + 4x + 3 + \dfrac{7}{x - 2}$</span></div>
+      <div class="tip"><strong>Check with the remainder theorem:</strong> substituting $x = 2$ into the numerator gives $8 + 8 - 10 + 1 = 7$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Dividing by a quadratic</div>
+    <div class="example-body">
+      <p>Divide $2x^3 + 3x^2 - x + 4$ by $x^2 + 1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2x^3 \div x^2 = 2x$. Subtract $2x(x^2 + 1) = 2x^3 + 2x$ to leave $3x^2 - 3x + 4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3x^2 \div x^2 = 3$. Subtract $3x^2 + 3$ to leave $-3x + 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The remainder $-3x + 1$ has degree $1 < 2$, so stop.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{2x^3 + 3x^2 - x + 4}{x^2 + 1} \equiv 2x + 3 + \dfrac{1 - 3x}{x^2 + 1}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PARTIAL FRACTIONS: DISTINCT LINEAR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Partial Fractions with Linear Factors</div>
+<div class="section-body">
+
+  <p>Adding fractions combines them; <strong>partial fractions</strong> runs the process backwards, splitting one proper fraction into a sum of simpler ones. This is exactly what you need to <a href="../integration/partial-fractions.html">integrate</a> a rational function or to <a href="../sequences-series/binomial-expansion.html">expand</a> one as a series.</p>
+
+  <div class="formula-box">
+    <div class="label">Distinct linear factors</div>
+    $\dfrac{px + q}{(ax + b)(cx + d)} \equiv \dfrac{A}{ax + b} + \dfrac{B}{cx + d}$<br>
+    $\dfrac{\ldots}{(ax + b)(cx + d)(ex + f)} \equiv \dfrac{A}{ax + b} + \dfrac{B}{cx + d} + \dfrac{C}{ex + f}$
+  </div>
+
+  <ol class="steps">
+    <li><span>Factorise the denominator and write down the form with unknown constants.</span></li>
+    <li><span>Multiply through by the whole denominator to get an <strong>identity</strong> with no fractions.</span></li>
+    <li><span>Substitute the value of $x$ that makes each linear factor zero; each substitution kills all but one constant.</span></li>
+    <li><span>If needed, compare coefficients to find any constant that remains.</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Two linear factors</div>
+    <div class="example-body">
+      <p>Express $\dfrac{5x + 1}{(x - 1)(x + 2)}$ in partial fractions.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{5x + 1}{(x - 1)(x + 2)} \equiv \dfrac{A}{x - 1} + \dfrac{B}{x + 2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply by $(x-1)(x+2)$: &nbsp;$5x + 1 \equiv A(x + 2) + B(x - 1)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 1$: $6 = 3A$, so $A = 2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = -2$: $-9 = -3B$, so $B = 3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{5x + 1}{(x - 1)(x + 2)} \equiv \dfrac{2}{x - 1} + \dfrac{3}{x + 2}$</span></div>
+      <div class="tip"><strong>Check:</strong> at $x = 0$ the left side is $\dfrac{1}{-2} = -\tfrac12$ and the right side is $-2 + \tfrac32 = -\tfrac12$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Three linear factors</div>
+    <div class="example-body">
+      <p>Express $\dfrac{4x^2 - 2x - 6}{x(x - 1)(x + 3)}$ in partial fractions.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4x^2 - 2x - 6 \equiv A(x-1)(x+3) + Bx(x+3) + Cx(x-1)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 0$: $-6 = A(-1)(3) = -3A$, so $A = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 1$: $4 - 2 - 6 = -4 = B(1)(4)$, so $B = -1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = -3$: $36 + 6 - 6 = 36 = C(-3)(-4) = 12C$, so $C = 3$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{2}{x} - \dfrac{1}{x - 1} + \dfrac{3}{x + 3}$</span></div>
+      <div class="tip"><strong>Check the $x^2$ coefficients:</strong> $A + B + C = 2 - 1 + 3 = 4$ ✓</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>The cover-up rule.</strong> To find the constant over $(x - a)$, cover that factor in the original fraction and substitute $x = a$ into what is left. For Worked Example 6: cover $(x-1)$, put $x = 1$ into $\dfrac{5x+1}{x+2}$ to get $\dfrac{6}{3} = 2$. It is a shortcut for step ③, and only works for <em>non-repeated</em> linear factors.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – REPEATED LINEAR FACTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Repeated Linear Factors</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">A squared factor needs two fractions</div>
+    $\dfrac{\ldots}{(ax + b)(cx + d)^2} \equiv \dfrac{A}{ax + b} + \dfrac{B}{cx + d} + \dfrac{C}{(cx + d)^2}$
+  </div>
+
+  <div class="warn">
+    <strong>Do not leave out the $\dfrac{B}{cx+d}$ term.</strong> Writing only $\dfrac{A}{ax+b} + \dfrac{C}{(cx+d)^2}$ gives too few constants, and the identity cannot be satisfied in general.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A single repeated factor</div>
+    <div class="example-body">
+      <p>Express $\dfrac{2x + 1}{(x - 1)^2}$ in partial fractions.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{2x + 1}{(x - 1)^2} \equiv \dfrac{A}{x - 1} + \dfrac{B}{(x - 1)^2}$, so $2x + 1 \equiv A(x - 1) + B$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 1$: $B = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Compare $x$ coefficients: $A = 2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{2}{x - 1} + \dfrac{3}{(x - 1)^2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Repeated and distinct together</div>
+    <div class="example-body">
+      <p>Express $\dfrac{3x^2 - 9x - 3}{(x + 1)(x - 2)^2}$ in partial fractions.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3x^2 - 9x - 3 \equiv A(x - 2)^2 + B(x + 1)(x - 2) + C(x + 1)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = -1$: $3 + 9 - 3 = 9 = 9A$, so $A = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 2$: $12 - 18 - 3 = -9 = 3C$, so $C = -3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>No value of $x$ isolates $B$, so compare $x^2$ coefficients: $3 = A + B$, so $B = 2$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\dfrac{1}{x + 1} + \dfrac{2}{x - 2} - \dfrac{3}{(x - 2)^2}$</span></div>
+      <div class="tip">Comparing the $x^2$ terms is usually quickest for the last constant. Alternatively substitute an easy value such as $x = 0$: $-3 = 4A - 2B + C = 4 - 2B - 3$, giving $B = 2$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – IMPROPER FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Partial Fractions of an Improper Fraction</div>
+<div class="section-body">
+
+  <div class="concept">
+    If the numerator's degree is <strong>at least</strong> the denominator's, there is a polynomial part as well. Either divide first and then split the proper remainder, or include the polynomial part in the identity from the start.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Divide, then split</div>
+    <div class="example-body">
+      <p>Express $\dfrac{2x^2 - x - 4}{(x - 1)(x + 2)}$ in the form $P + \dfrac{A}{x - 1} + \dfrac{B}{x + 2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The denominator is $x^2 + x - 2$, degree $2$ — the same as the numerator, so the fraction is improper.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2x^2 - x - 4 = 2(x^2 + x - 2) + (-3x)$, so the fraction is $2 + \dfrac{-3x}{(x-1)(x+2)}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$-3x \equiv A(x + 2) + B(x - 1)$. &nbsp;$x = 1$: $-3 = 3A$, $A = -1$. &nbsp;$x = -2$: $6 = -3B$, $B = -2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{2x^2 - x - 4}{(x - 1)(x + 2)} \equiv 2 - \dfrac{1}{x - 1} - \dfrac{2}{x + 2}$</span></div>
+      <div class="tip"><strong>Quick way to find $P$:</strong> the polynomial part of a (quadratic)/(quadratic) is the ratio of the $x^2$ coefficients, here $\tfrac{2}{1} = 2$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Simplify</h4><p>Factorise fully, then cancel <em>factors</em>.</p></div>
+    <div class="ref-card"><h4>Divide fractions</h4><p>Flip the second, then multiply.</p></div>
+    <div class="ref-card"><h4>Improper</h4><p>Degree of top $\geqslant$ degree of bottom: divide first.</p></div>
+    <div class="ref-card"><h4>Division identity</h4><p>$\mathrm{F} \equiv \mathrm{Q} \times \mathrm{divisor} + \mathrm{R}$.</p></div>
+    <div class="ref-card"><h4>Linear factors</h4><p>One constant over each factor.</p></div>
+    <div class="ref-card"><h4>Squared factor</h4><p>$\dfrac{B}{cx+d} + \dfrac{C}{(cx+d)^2}$.</p></div>
+    <div class="ref-card"><h4>Finding constants</h4><p>Substitute roots; compare coefficients for the rest.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Substitute $x = 0$ into both sides.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{x^2 + 5x + 6}{x^2 - 4}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{(x + 2)(x + 3)}{(x - 2)(x + 2)} = \dfrac{x + 3}{x - 2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Write $\dfrac{1}{x - 3} - \dfrac{2}{x + 1}$ as a single fraction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{(x + 1) - 2(x - 3)}{(x - 3)(x + 1)} = \dfrac{x + 1 - 2x + 6}{(x - 3)(x + 1)} = \dfrac{7 - x}{(x - 3)(x + 1)}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the quotient and remainder when $x^3 - 3x^2 + 4x - 5$ is divided by $(x - 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^3 \div x = x^2$; subtract $x^3 - x^2$ to leave $-2x^2 + 4x - 5$.</p>
+          <p>$-2x^2 \div x = -2x$; subtract $-2x^2 + 2x$ to leave $2x - 5$.</p>
+          <p>$2x \div x = 2$; subtract $2x - 2$ to leave $-3$.</p>
+          <p>Quotient $x^2 - 2x + 2$, remainder $-3$. (Check: $1 - 3 + 4 - 5 = -3$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Express $\dfrac{x + 7}{x^2 - x - 6}$ in partial fractions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 - x - 6 = (x - 3)(x + 2)$, and $x + 7 \equiv A(x + 2) + B(x - 3)$.</p>
+          <p>$x = 3$: $10 = 5A$, $A = 2$. &nbsp; $x = -2$: $5 = -5B$, $B = -1$.</p>
+          <p>$\dfrac{2}{x - 3} - \dfrac{1}{x + 2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Express $\dfrac{5}{(2x - 1)(x + 2)}$ in partial fractions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5 \equiv A(x + 2) + B(2x - 1)$.</p>
+          <p>$x = \tfrac12$: $5 = \tfrac52 A$, so $A = 2$. &nbsp; $x = -2$: $5 = -5B$, so $B = -1$.</p>
+          <p>$\dfrac{2}{2x - 1} - \dfrac{1}{x + 2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Express $\dfrac{2x^2 + 6x - 2}{x(x + 1)(x - 2)}$ in partial fractions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2x^2 + 6x - 2 \equiv A(x + 1)(x - 2) + Bx(x - 2) + Cx(x + 1)$</p>
+          <p>$x = 0$: $-2 = -2A$, $A = 1$.</p>
+          <p>$x = -1$: $2 - 6 - 2 = -6 = B(-1)(-3) = 3B$, $B = -2$.</p>
+          <p>$x = 2$: $8 + 12 - 2 = 18 = C(2)(3) = 6C$, $C = 3$.</p>
+          <p>$\dfrac{1}{x} - \dfrac{2}{x + 1} + \dfrac{3}{x - 2}$ &nbsp; (Check: $1 - 2 + 3 = 2$ ✓ matches the $x^2$ coefficient.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Express $\dfrac{x^2 - 2x + 17}{(x + 3)(x - 1)^2}$ in partial fractions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 - 2x + 17 \equiv A(x - 1)^2 + B(x + 3)(x - 1) + C(x + 3)$</p>
+          <p>$x = -3$: $9 + 6 + 17 = 32 = 16A$, $A = 2$.</p>
+          <p>$x = 1$: $1 - 2 + 17 = 16 = 4C$, $C = 4$.</p>
+          <p>$x^2$ coefficients: $1 = A + B$, so $B = -1$.</p>
+          <p>$\dfrac{2}{x + 3} - \dfrac{1}{x - 1} + \dfrac{4}{(x - 1)^2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Express $\dfrac{3x^2 + 3}{(x - 1)(x + 2)}$ in the form $P + \dfrac{A}{x - 1} + \dfrac{B}{x + 2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Both have degree $2$, so $P = \tfrac{3}{1} = 3$.</p>
+          <p>$3x^2 + 3 \equiv 3(x - 1)(x + 2) + A(x + 2) + B(x - 1)$</p>
+          <p>$x = 1$: $6 = 3A$, $A = 2$. &nbsp; $x = -2$: $15 = -3B$, $B = -5$.</p>
+          <p>$3 + \dfrac{2}{x - 1} - \dfrac{5}{x + 2}$ &nbsp; (Check at $x = 0$: $\tfrac{3}{-2} = -1.5$ and $3 - 2 - 2.5 = -1.5$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>(a) Express $\dfrac{2}{r(r + 2)}$ in partial fractions. &nbsp; (b) Hence find the exact value of $\dfrac{2}{1 \times 3} + \dfrac{2}{2 \times 4} + \dfrac{2}{3 \times 5} + \dfrac{2}{4 \times 6}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $2 \equiv A(r + 2) + Br$. $r = 0$: $A = 1$. $r = -2$: $B = -1$. So $\dfrac{1}{r} - \dfrac{1}{r + 2}$.</p>
+          <p><strong>(b)</strong> The sum is $\left(1 - \tfrac13\right) + \left(\tfrac12 - \tfrac14\right) + \left(\tfrac13 - \tfrac15\right) + \left(\tfrac14 - \tfrac16\right)$.</p>
+          <p>The $\tfrac13$ and $\tfrac14$ terms cancel, leaving $1 + \tfrac12 - \tfrac15 - \tfrac16 = \dfrac{30 + 15 - 6 - 5}{30} = \dfrac{34}{30} = \dfrac{17}{15}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{x^2 + 4x + 6}{(x + 2)(x + 1)^2}$, &nbsp;$x > -1$.</p>
+      <p>(a) Express $\mathrm{f}(x)$ in partial fractions. &nbsp; (b) Prove that $\mathrm{f}(x) > 0$ for all $x > -1$. &nbsp; (c) Using the result $\dfrac{\mathrm{d}}{\mathrm{d}x}(x + a)^{n} = n(x + a)^{n-1}$, find $\mathrm{f}'(x)$ and hence the gradient of $y = \mathrm{f}(x)$ where it crosses the $y$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $x^2 + 4x + 6 \equiv A(x + 1)^2 + B(x + 2)(x + 1) + C(x + 2)$</p>
+          <p>$x = -2$: $4 - 8 + 6 = 2 = A$. &nbsp; $x = -1$: $1 - 4 + 6 = 3 = C$. &nbsp; $x^2$: $1 = A + B$, so $B = -1$.</p>
+          <p>$\mathrm{f}(x) = \dfrac{2}{x + 2} - \dfrac{1}{x + 1} + \dfrac{3}{(x + 1)^2}$</p>
+          <p><strong>(b)</strong> Numerator: $x^2 + 4x + 6 = (x + 2)^2 + 2 > 0$ for all $x$.</p>
+          <p>Denominator: for $x > -1$, $x + 2 > 0$ and $(x + 1)^2 > 0$, so it is positive.</p>
+          <p>Positive $\div$ positive is positive, so $\mathrm{f}(x) > 0$. $\blacksquare$</p>
+          <p><strong>(c)</strong> $\mathrm{f}(x) = 2(x + 2)^{-1} - (x + 1)^{-1} + 3(x + 1)^{-2}$, so</p>
+          <p>$\mathrm{f}'(x) = -\dfrac{2}{(x + 2)^2} + \dfrac{1}{(x + 1)^2} - \dfrac{6}{(x + 1)^3}$</p>
+          <p>At $x = 0$: $\mathrm{f}'(0) = -\tfrac{2}{4} + 1 - 6 = -\dfrac{11}{2}$.</p>
+          <p>The partial-fraction form makes this easy — differentiating the original quotient directly would be much harder.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Algebraic and Partial Fractions &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

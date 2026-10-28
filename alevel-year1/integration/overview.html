@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌊 Integration Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Integration</strong> is differentiation run backwards. If you know the gradient function of a curve, integration gets you back to the curve. And — remarkably — the same process measures the <strong>area under a curve</strong>. Those two facts, joined by the fundamental theorem of calculus, are the whole of this topic in Year 1.</p>
+
+  <div class="concept">
+    Differentiation asks: <em>"given $y$, what is $\dfrac{dy}{dx}$?"</em> Integration asks the reverse question: <em>"given $\dfrac{dy}{dx}$, what was $y$?"</em> Because adding a constant does not change a gradient, the answer is only ever known <strong>up to a constant</strong> — the famous $+\,c$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    Reversing differentiation &middot; the constant of integration<br>
+    Definite integrals with limits &middot; exact areas under curves<br>
+    Areas below the axis &middot; areas between a curve and a line
+  </div>
+
+  <div class="tip">
+    <strong>DfE content area H · Integration.</strong> At AS you integrate $x^n$ (for any rational $n \neq -1$) and sums of such terms, evaluate definite integrals, and use them to find areas. Year 2 extends this to $e^x$, $\dfrac1x$, trigonometric functions, substitution and integration by parts. Calculators can evaluate definite integrals — but when a question says <em>"show detailed reasoning"</em> or asks for an <em>exact</em> answer, you must write the integration and the substitution of limits in full.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Integrand</strong></td><td>The function being integrated.</td><td>$3x^2$ in $\displaystyle\int 3x^2\,dx$</td></tr>
+    <tr><td><strong>Indefinite integral</strong></td><td>A family of functions whose derivative is the integrand.</td><td>$\displaystyle\int 3x^2\,dx = x^3 + c$</td></tr>
+    <tr><td><strong>Constant of integration</strong></td><td>The unknown constant $c$, lost when differentiating.</td><td>$x^3 + 5$ and $x^3 - 2$ both differentiate to $3x^2$</td></tr>
+    <tr><td><strong>Definite integral</strong></td><td>An integral with limits; its value is a number.</td><td>$\displaystyle\int_1^2 3x^2\,dx = 7$</td></tr>
+    <tr><td><strong>Limits</strong></td><td>The lower and upper values of $x$.</td><td>$1$ and $2$ above</td></tr>
+    <tr><td><strong>$dx$</strong></td><td>Tells you the variable you are integrating with respect to.</td><td>$\displaystyle\int t^2\,dt = \tfrac13 t^3 + c$</td></tr>
+    <tr><td><strong>Square brackets</strong></td><td>Hold the integrated expression before limits are substituted.</td><td>$\left[x^3\right]_1^2 = 8 - 1$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Indefinite means $+\,c$.</strong> An indefinite integral without a constant is marked wrong. A definite integral never needs one — the constant cancels when you subtract.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Integrating a power of $x$</div>
+    $\displaystyle\int x^n\,dx = \frac{x^{n+1}}{n+1} + c, \qquad n \neq -1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Rewrite first</div>
+    Expand brackets, split fractions and turn roots into indices <em>before</em> integrating
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Finding a curve from its gradient</div>
+    Integrate $\mathrm{f}'(x)$, then substitute a known point to find $c$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Evaluating a definite integral</div>
+    $\displaystyle\int_a^b \mathrm{f}(x)\,dx = \Big[\mathrm{F}(x)\Big]_a^b = \mathrm{F}(b) - \mathrm{F}(a)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Areas</div>
+    Area under a curve above the axis $= \displaystyle\int_a^b y\,dx$; below the axis the integral is negative<br>
+    Area between curves $= \displaystyle\int_a^b (\text{top} - \text{bottom})\,dx$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>A curve has gradient $\dfrac{dy}{dx} = 3x^2 - 6x$ and passes through $(0, 4)$. Find its equation, and find the area of the region between the curve and the $x$-axis for $0 \leqslant x \leqslant 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Integrate: $y = x^3 - 3x^2 + c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $(0, 4)$: $4 = 0 - 0 + c$, so $c = 4$ and $y = x^3 - 3x^2 + 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check the sign for $0 \leqslant x \leqslant 2$: $y = (x+1)(x-2)^2 \geqslant 0$ there, so the curve stays above the axis.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int_0^2 \left(x^3 - 3x^2 + 4\right)dx = \left[\tfrac14x^4 - x^3 + 4x\right]_0^2 = (4 - 8 + 8) - 0 = 4$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The area is $4$ square units.</span></div>
+      <div class="tip">Step ③ is the one people skip. Before using an integral as an area, always ask whether the curve dips below the axis anywhere in the interval.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Integration Subtopics</div>
+<div class="section-body">
+
+  <p>Everything in DfE content area H that is examined at AS, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">H</span><span><a href="indefinite-integration.html">Indefinite Integration</a><span class="desc">Integration as the reverse of differentiation, integrating $x^n$ and sums, the constant of integration, and finding a curve through a point.</span></span></li>
+    <li><span class="code">H</span><span><a href="definite-integrals.html">Definite Integrals and Areas</a><span class="desc">The fundamental theorem of calculus, evaluating definite integrals, areas under curves, regions below the axis and areas between a curve and a line.</span></span></li>
+  </ul>
+
+  <div class="tip">
+    Integration leans on <a href="../differentiation/rules.html">differentiating powers of $x$</a> and on <a href="../algebra/indices-surds.html">indices and surds</a>. If rewriting $\dfrac{3}{\sqrt{x}}$ as $3x^{-1/2}$ is not automatic yet, revise those first.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Forgetting $+\,c$.</strong> Every indefinite integral needs it, and "find the equation of the curve" questions depend on it.
+  </div>
+
+  <div class="warn">
+    <strong>Integrating a product or quotient term by term.</strong> $\displaystyle\int (x+1)(x+2)\,dx$ is <em>not</em> $\left(\tfrac12x^2 + x\right)\left(\tfrac12x^2 + 2x\right)$. Expand first, then integrate.
+  </div>
+
+  <div class="warn">
+    <strong>Dividing by the old power.</strong> $\displaystyle\int x^4\,dx = \tfrac15x^5$, not $\tfrac14x^5$. Raise the power first, then divide by the <em>new</em> power.
+  </div>
+
+  <div class="warn">
+    <strong>Negative powers.</strong> $\displaystyle\int x^{-3}\,dx = \dfrac{x^{-2}}{-2} = -\dfrac{1}{2x^2}$. The power goes from $-3$ to $-2$ (up, not down), and the divisor is negative.
+  </div>
+
+  <div class="warn">
+    <strong>Treating a negative integral as an area.</strong> If part of the region is below the $x$-axis, integrate each part separately and add the <em>sizes</em>. A single integral across a root can even give zero.
+  </div>
+
+  <div class="warn">
+    <strong>Bracket errors with limits.</strong> $\mathrm{F}(b) - \mathrm{F}(a)$ subtracts the <em>whole</em> of $\mathrm{F}(a)$. Put it in brackets and take care with negative lower limits.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Power rule</h4><p>$\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + c$, $n \neq -1$.</p></div>
+    <div class="ref-card"><h4>Constant multiple</h4><p>$\int kx^n\,dx = \dfrac{k\,x^{n+1}}{n+1} + c$.</p></div>
+    <div class="ref-card"><h4>Constant term</h4><p>$\int k\,dx = kx + c$.</p></div>
+    <div class="ref-card"><h4>Sums</h4><p>Integrate term by term.</p></div>
+    <div class="ref-card"><h4>Finding $c$</h4><p>Substitute a known point after integrating.</p></div>
+    <div class="ref-card"><h4>Definite integral</h4><p>$[\mathrm{F}(x)]_a^b = \mathrm{F}(b) - \mathrm{F}(a)$; no $c$.</p></div>
+    <div class="ref-card"><h4>Below the axis</h4><p>Integral is negative; area is its modulus.</p></div>
+    <div class="ref-card"><h4>Between curves</h4><p>$\int (\text{top} - \text{bottom})\,dx$ between intersections.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Differentiate your answer: you should get the integrand back.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Integration topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(8x^3 + 2\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{8x^4}{4} + 2x + c = 2x^4 + 2x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int 5x^{3/2}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Add one to the power: $\tfrac32 + 1 = \tfrac52$.</p>
+          <p>$\dfrac{5x^{5/2}}{5/2} + c = 2x^{5/2} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int (x+1)(x+3)\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand first: $(x+1)(x+3) = x^2 + 4x + 3$.</p>
+          <p>$\displaystyle\int \left(x^2 + 4x + 3\right)dx = \tfrac13x^3 + 2x^2 + 3x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A curve has $\dfrac{dy}{dx} = 6x^2 - 2$ and passes through $(1, 3)$. Find its equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 2x^3 - 2x + c$</p>
+          <p>At $(1, 3)$: $3 = 2 - 2 + c$, so $c = 3$.</p>
+          <p>$y = 2x^3 - 2x + 3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\int_{-1}^{2} \left(3x^2 - 2x + 1\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\left[x^3 - x^2 + x\right]_{-1}^{2}$</p>
+          <p>$= (8 - 4 + 2) - (-1 - 1 - 1) = 6 - (-3) = 9$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\int_1^4 3\sqrt{x}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3\sqrt{x} = 3x^{1/2}$, which integrates to $\dfrac{3x^{3/2}}{3/2} = 2x^{3/2}$.</p>
+          <p>$\left[2x^{3/2}\right]_1^4 = 2(8) - 2(1) = 14$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the area of the region enclosed by the curve $y = 4 - x^2$ and the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The curve meets the axis where $4 - x^2 = 0$, i.e. $x = \pm 2$, and lies above it in between.</p>
+          <p>$\displaystyle\int_{-2}^{2}\left(4 - x^2\right)dx = \left[4x - \tfrac13x^3\right]_{-2}^{2}$</p>
+          <p>$= \left(8 - \tfrac83\right) - \left(-8 + \tfrac83\right) = 16 - \tfrac{16}{3} = \dfrac{32}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the area of the region between the curve $y = x^2 - 3x$ and the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 - 3x = x(x - 3)$, which is zero at $x = 0$ and $x = 3$ and negative between them.</p>
+          <p>$\displaystyle\int_0^3 \left(x^2 - 3x\right)dx = \left[\tfrac13x^3 - \tfrac32x^2\right]_0^3 = 9 - \tfrac{27}{2} = -\tfrac92$</p>
+          <p>The negative sign shows the region is below the axis. Area $= \dfrac92$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Given that $\displaystyle\int_1^k 6x^2\,dx = 52$, find the value of $k$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\left[2x^3\right]_1^k = 2k^3 - 2 = 52$</p>
+          <p>$2k^3 = 54$, so $k^3 = 27$ and $k = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A curve $y = \mathrm{f}(x)$ has $\mathrm{f}'(x) = 3x^2 - 6x$ and passes through the point $(0, 4)$.</p>
+      <p>(a) Find $\mathrm{f}(x)$. &nbsp; (b) Show that $\mathrm{f}(x) = (x+1)(x-2)^2$. &nbsp; (c) Sketch the curve, and find the exact area of the region bounded by the curve and the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}(x) = x^3 - 3x^2 + c$, and $\mathrm{f}(0) = 4$ gives $c = 4$. So $\mathrm{f}(x) = x^3 - 3x^2 + 4$.</p>
+          <p><strong>(b)</strong> $(x-2)^2 = x^2 - 4x + 4$, and $(x+1)\left(x^2 - 4x + 4\right) = x^3 - 4x^2 + 4x + x^2 - 4x + 4 = x^3 - 3x^2 + 4$ ✓</p>
+          <p><strong>(c)</strong> A positive cubic crossing the axis at $x = -1$ and touching it at $x = 2$ (the squared factor). Between these it lies above the axis, with a maximum at $(0, 4)$.</p>
+          <p>The bounded region is $-1 \leqslant x \leqslant 2$:</p>
+          <p>$\displaystyle\int_{-1}^{2}\left(x^3 - 3x^2 + 4\right)dx = \left[\tfrac14x^4 - x^3 + 4x\right]_{-1}^{2}$</p>
+          <p>$= (4 - 8 + 8) - \left(\tfrac14 + 1 - 4\right) = 4 - \left(-\tfrac{11}{4}\right) = \dfrac{27}{4}$</p>
+          <p>The area is $\dfrac{27}{4}$ square units.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Integration Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

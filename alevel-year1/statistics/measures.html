@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Measures of Location and Spread &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 Measures of Location and Spread</h1>
+  <p>A Level Maths Year 1 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – MEASURES OF LOCATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Measures of Location</div>
+<div class="section-body">
+
+  <p>A <strong>measure of location</strong> (or average, or measure of central tendency) is a single value that represents a typical member of the data set.</p>
+
+  <div class="formula-box">
+    <div class="label">The mean</div>
+    $\bar{x} = \dfrac{\sum x}{n}$ &nbsp;&nbsp;or, from a frequency table,&nbsp;&nbsp; $\bar{x} = \dfrac{\sum fx}{\sum f}$
+  </div>
+
+  <table>
+    <tr><th>Measure</th><th>How to find it</th><th>Notes</th></tr>
+    <tr><td><strong>Mean</strong> $\bar{x}$</td><td>Total $\div$ number of values</td><td>Uses every value; affected by extreme values.</td></tr>
+    <tr><td><strong>Median</strong> $Q_2$</td><td>Middle value when ordered: the $\tfrac{n+1}{2}$th value</td><td>Not affected by extreme values.</td></tr>
+    <tr><td><strong>Mode</strong></td><td>Most common value (or modal class)</td><td>The only average for qualitative data; may not be unique.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Raw data</div>
+    <div class="example-body">
+      <p>Find the mean, median and mode of $12,\; 15,\; 9,\; 18,\; 15,\; 11,\; 20,\; 14$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sum x = 114$, $n = 8$, so $\bar{x} = \dfrac{114}{8} = 14.25$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Ordered: $9, 11, 12, 14, 15, 15, 18, 20$. The median is halfway between the $4$th and $5$th values: $\dfrac{14 + 15}{2} = 14.5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The mode is $15$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A frequency table</div>
+    <div class="example-body">
+      <p>The number of goals $x$ scored by a team in $25$ matches is shown. Find the mean, median and mode.</p>
+      <table>
+        <tr><th>$x$</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
+        <tr><th>$f$</th><td>$5$</td><td>$9$</td><td>$7$</td><td>$3$</td><td>$1$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>$\sum fx = 0 + 9 + 14 + 9 + 4 = 36$, so $\bar{x} = \dfrac{36}{25} = 1.44$ goals.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Median is the $13$th value. Cumulative frequencies $5, 14, \ldots$: the $6$th to $14$th values are all $1$, so the median is $1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Mode: $1$ (frequency $9$).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – GROUPED DATA AND INTERPOLATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Grouped Data and Interpolation</div>
+<div class="section-body">
+
+  <div class="concept">
+    When data are grouped, the original values are lost, so every measure is an <strong>estimate</strong>. For the mean, use each class <strong>midpoint</strong> as $x$. For the median and quartiles, use <strong>linear interpolation</strong>: assume the values in a class are spread evenly across it.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Linear interpolation for grouped data</div>
+    value $\approx$ lower boundary $+ \dfrac{\text{position} - \text{cumulative frequency before class}}{\text{frequency of class}} \times \text{class width}$<br>
+    with position $\tfrac{n}{4}$, $\tfrac{n}{2}$, $\tfrac{3n}{4}$ for $Q_1$, median, $Q_3$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Estimating the mean</div>
+    <div class="example-body">
+      <p>Estimate the mean commuting time from this table.</p>
+      <table>
+        <tr><th>Time $t$ (min)</th><th>$f$</th><th>Midpoint $x$</th><th>$fx$</th></tr>
+        <tr><td>$0 \leqslant t &lt; 10$</td><td>$8$</td><td>$5$</td><td>$40$</td></tr>
+        <tr><td>$10 \leqslant t &lt; 20$</td><td>$22$</td><td>$15$</td><td>$330$</td></tr>
+        <tr><td>$20 \leqslant t &lt; 30$</td><td>$26$</td><td>$25$</td><td>$650$</td></tr>
+        <tr><td>$30 \leqslant t &lt; 50$</td><td>$18$</td><td>$40$</td><td>$720$</td></tr>
+        <tr><td>$50 \leqslant t &lt; 80$</td><td>$6$</td><td>$65$</td><td>$390$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>$\sum f = 80$, $\sum fx = 2130$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\bar{x} \approx \dfrac{2130}{80} = 26.6$ minutes (to 3 s.f.).</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Median and percentiles by interpolation</div>
+    <div class="example-body">
+      <p>For the same data, estimate the median and the $10$th percentile.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Cumulative frequencies: $8, 30, 56, 74, 80$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Median: position $40$, in the $20$–$30$ class: $20 + \dfrac{40 - 30}{26} \times 10 = 23.8$ minutes.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$10$th percentile: position $0.1 \times 80 = 8$, which is exactly the end of the first class: $P_{10} = 10$ minutes.</span></div>
+      <div class="tip">The mean ($26.6$) is greater than the median ($23.8$): a few long journeys pull the mean up. This is a sign of <strong>positive skew</strong>.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Quartiles of raw (ungrouped) data.</strong> Conventions vary slightly. A common one: find the median, then $Q_1$ is the median of the lower half and $Q_3$ the median of the upper half (excluding the median itself when $n$ is odd). Calculators and software may give slightly different values. Any sensible method is normally accepted, and questions are usually set so the methods agree.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MEASURES OF SPREAD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Measures of Spread</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Measure</th><th>Definition</th><th>Notes</th></tr>
+    <tr><td><strong>Range</strong></td><td>Largest $-$ smallest</td><td>Very sensitive to extreme values.</td></tr>
+    <tr><td><strong>Interquartile range</strong></td><td>$Q_3 - Q_1$</td><td>Spread of the middle $50\%$; not affected by extremes.</td></tr>
+    <tr><td><strong>Interpercentile range</strong></td><td>e.g. $P_{90} - P_{10}$</td><td>Spread of the middle $80\%$.</td></tr>
+    <tr><td><strong>Variance</strong> $\sigma^2$</td><td>Mean of the squared deviations from the mean</td><td>Uses every value; units are squared.</td></tr>
+    <tr><td><strong>Standard deviation</strong> $\sigma$</td><td>$\sqrt{\text{variance}}$</td><td>Same units as the data; pairs with the mean.</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Variance and standard deviation</div>
+    $\sigma^2 = \dfrac{\sum (x - \bar{x})^2}{n} = \dfrac{\sum x^2}{n} - \bar{x}^2$ &nbsp;&nbsp; ("mean of the squares minus square of the mean")<br>
+    From a frequency table: $\sigma^2 = \dfrac{\sum fx^2}{\sum f} - \bar{x}^2$ &nbsp;&nbsp;&nbsp; $\sigma = \sqrt{\sigma^2}$
+  </div>
+
+  <div class="concept">
+    You may also see $S_{xx} = \sum (x - \bar{x})^2 = \sum x^2 - \dfrac{\left(\sum x\right)^2}{n}$, so that $\sigma^2 = \dfrac{S_{xx}}{n}$. Some courses also use the <strong>sample</strong> variance $s^2 = \dfrac{S_{xx}}{n - 1}$, which gives a slightly larger value. Your calculator shows both ($\sigma_x$ or $\sigma_n$, and $s_x$ or $\sigma_{n-1}$); check which your exam board expects. In this page we divide by $n$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — From summary statistics</div>
+    <div class="example-body">
+      <p>For $20$ values, $\sum x = 360$ and $\sum x^2 = 7100$. Find the mean and standard deviation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\bar{x} = \dfrac{360}{20} = 18$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sigma^2 = \dfrac{7100}{20} - 18^2 = 355 - 324 = 31$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sigma = \sqrt{31} = 5.57$ (to 3 s.f.).</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Standard deviation from a frequency table</div>
+    <div class="example-body">
+      <p>Find the standard deviation of the goals data in Worked Example 2.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sum fx^2 = 5(0) + 9(1) + 7(4) + 3(9) + 1(16) = 0 + 9 + 28 + 27 + 16 = 80$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sigma^2 = \dfrac{80}{25} - 1.44^2 = 3.2 - 2.0736 = 1.1264$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sigma = \sqrt{1.1264} = 1.06$ goals (to 3 s.f.).</span></div>
+      <div class="warn">Square <em>then</em> multiply by $f$: $fx^2$ means $f \times x^2$, not $(fx)^2$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Grouped data</div>
+    <div class="example-body">
+      <p>Estimate the standard deviation of the commuting times in Worked Example 3.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sum fx^2 = 8(25) + 22(225) + 26(625) + 18(1600) + 6(4225)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 200 + 4950 + 16\,250 + 28\,800 + 25\,350 = 75\,550$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sigma^2 \approx \dfrac{75\,550}{80} - 26.625^2 = 944.375 - 708.890625 = 235.48\ldots$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\sigma \approx 15.3$ minutes.</span></div>
+      <div class="tip">Keep the unrounded mean ($26.625$) when squaring it — rounding first can noticeably change the answer.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Adding a value to a data set</div>
+    <div class="example-body">
+      <p>Using the data in Worked Example 5, a $21$st value $x = 18$ is added. Find the new mean and standard deviation, and explain the change.</p>
+      <div class="step-row"><span class="arrow">①</span><span>New totals: $\sum x = 378$, $\sum x^2 = 7100 + 324 = 7424$, $n = 21$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\bar{x} = \dfrac{378}{21} = 18$ — unchanged.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sigma^2 = \dfrac{7424}{21} - 324 = 29.52\ldots$, so $\sigma = 5.43$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The new value equals the mean, so it adds nothing to $\sum (x - \bar{x})^2$ but increases $n$: the standard deviation falls.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CODING AND CHOOSING MEASURES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Changing the Data, and Choosing Measures</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Effect of a linear change $y = ax + b$</div>
+    $\bar{y} = a\bar{x} + b$ &nbsp;&nbsp;&nbsp; $\sigma_y = |a|\,\sigma_x$<br>
+    Adding $b$ shifts every value, so the average moves but the spread does not.
+  </div>
+
+  <table>
+    <tr><th>Situation</th><th>Best average</th><th>Best spread</th></tr>
+    <tr><td>Roughly symmetrical, no outliers</td><td>Mean</td><td>Standard deviation</td></tr>
+    <tr><td>Skewed, or with outliers</td><td>Median</td><td>Interquartile range</td></tr>
+    <tr><td>Qualitative data, or "most popular"</td><td>Mode</td><td>—</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Justify your choice.</strong> "The median, because the data contain an outlier ($95$) which would distort the mean" earns the mark; "the median, because it is more accurate" does not.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Mean</h4><p>$\bar{x} = \dfrac{\sum fx}{\sum f}$; midpoints for grouped data.</p></div>
+    <div class="ref-card"><h4>Median (raw)</h4><p>$\tfrac{n+1}{2}$th ordered value.</p></div>
+    <div class="ref-card"><h4>Median (grouped)</h4><p>Interpolate at $\tfrac{n}{2}$.</p></div>
+    <div class="ref-card"><h4>Percentile</h4><p>$P_k$ at position $\tfrac{k}{100}n$.</p></div>
+    <div class="ref-card"><h4>Variance</h4><p>$\dfrac{\sum x^2}{n} - \bar{x}^2$</p></div>
+    <div class="ref-card"><h4>$S_{xx}$</h4><p>$\sum x^2 - \dfrac{(\sum x)^2}{n}$; $\sigma^2 = \dfrac{S_{xx}}{n}$</p></div>
+    <div class="ref-card"><h4>Linear change</h4><p>$y = ax + b$: mean $a\bar{x} + b$, sd $|a|\sigma$.</p></div>
+    <div class="ref-card"><h4>Outliers present</h4><p>Use median and IQR.</p></div>
+    <div class="ref-card"><h4>Grouped data</h4><p>All measures are estimates.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the mean, median and mode of $4,\; 9,\; 6,\; 4,\; 11,\; 8,\; 7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sum x = 49$, so $\bar{x} = 7$.</p>
+          <p>Ordered: $4, 4, 6, 7, 8, 9, 11$; median (4th value) $= 7$.</p>
+          <p>Mode $= 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the mean and median of the data: $x$: $1, 2, 3, 4, 5$ with frequencies $3, 7, 10, 6, 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sum f = 30$, $\sum fx = 3 + 14 + 30 + 24 + 20 = 91$, so $\bar{x} = \dfrac{91}{30} = 3.03$ (3 s.f.).</p>
+          <p>Median: between the $15$th and $16$th values. Cumulative frequencies $3, 10, 20$, so both are $3$. Median $= 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For $8$ values, $\sum x = 84$ and $\sum x^2 = 1020$. Find the mean and standard deviation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\bar{x} = \dfrac{84}{8} = 10.5$</p>
+          <p>$\sigma^2 = \dfrac{1020}{8} - 10.5^2 = 127.5 - 110.25 = 17.25$</p>
+          <p>$\sigma = \sqrt{17.25} = 4.15$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>The masses $m$ g of $40$ apples: $0 \leqslant m &lt; 20$: $5$; &nbsp;$20 \leqslant m &lt; 40$: $12$; &nbsp;$40 \leqslant m &lt; 60$: $15$; &nbsp;$60 \leqslant m &lt; 100$: $8$. Estimate the mean.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Midpoints $10, 30, 50, 80$.</p>
+          <p>$\sum fx = 50 + 360 + 750 + 640 = 1800$</p>
+          <p>$\bar{x} \approx \dfrac{1800}{40} = 45$ g</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>For the data in Question 4, use interpolation to estimate the median and the interquartile range.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Cumulative frequencies: $5, 17, 32, 40$.</p>
+          <p>Median ($20$th): $40 + \dfrac{20 - 17}{15} \times 20 = 44$ g.</p>
+          <p>$Q_1$ ($10$th): $20 + \dfrac{10 - 5}{12} \times 20 = 28.3$ g. &nbsp; $Q_3$ ($30$th): $40 + \dfrac{30 - 17}{15} \times 20 = 57.3$ g.</p>
+          <p>IQR $\approx 57.3 - 28.3 = 29$ g.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the standard deviation of the data in Question 2.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sum fx^2 = 3(1) + 7(4) + 10(9) + 6(16) + 4(25) = 3 + 28 + 90 + 96 + 100 = 317$</p>
+          <p>$\sigma^2 = \dfrac{317}{30} - \left(\dfrac{91}{30}\right)^2 = 10.5667 - 9.2011 = 1.3656$</p>
+          <p>$\sigma = 1.17$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Twelve values are $2, 4, 5, 7, 8, 9, 11, 12, 14, 15, 17, 40$. Find the median and interquartile range, and explain why these are better summaries than the mean and standard deviation here.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Median: mean of the $6$th and $7$th values $= \dfrac{9 + 11}{2} = 10$.</p>
+          <p>Lower half $2, 4, 5, 7, 8, 9$: $Q_1 = \dfrac{5 + 7}{2} = 6$. Upper half $11, 12, 14, 15, 17, 40$: $Q_3 = \dfrac{14 + 15}{2} = 14.5$.</p>
+          <p>IQR $= 8.5$.</p>
+          <p>The value $40$ is far from the rest; it would pull the mean up and greatly inflate the standard deviation. The median and IQR are not affected by it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Daily temperatures have mean $12\,^\circ$C and standard deviation $4\,^\circ$C. Using $F = 1.8C + 32$, find the mean and standard deviation in $^\circ$F.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Mean: $1.8 \times 12 + 32 = 53.6\,^\circ$F.</p>
+          <p>Standard deviation: $1.8 \times 4 = 7.2\,^\circ$F (adding $32$ does not change the spread).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Group A: $n = 10$, $\sum x = 150$, $\sum x^2 = 2350$. Group B: $n = 15$, $\sum x = 300$, $\sum x^2 = 6150$. Find the mean and standard deviation of the two groups combined.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Combine the totals: $n = 25$, $\sum x = 450$, $\sum x^2 = 8500$.</p>
+          <p>$\bar{x} = \dfrac{450}{25} = 18$</p>
+          <p>$\sigma^2 = \dfrac{8500}{25} - 18^2 = 340 - 324 = 16$, so $\sigma = 4$.</p>
+          <p>(Each group on its own has $\sigma^2 = 10$; the combined spread is larger because the group means, $15$ and $20$, differ.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The lengths $t$ minutes of $40$ phone calls are recorded.</p>
+      <table>
+        <tr><th>$t$</th><th>$0 \leqslant t &lt; 5$</th><th>$5 \leqslant t &lt; 10$</th><th>$10 \leqslant t &lt; 15$</th><th>$15 \leqslant t &lt; 30$</th><th>$30 \leqslant t &lt; 60$</th></tr>
+        <tr><td>Frequency</td><td>$14$</td><td>$11$</td><td>$7$</td><td>$6$</td><td>$2$</td></tr>
+      </table>
+      <p>(a) Estimate the mean and standard deviation. &nbsp; (b) Estimate the median and quartiles. &nbsp; (c) Explain why your answers are estimates. &nbsp; (d) Which average better represents a typical call? Give a reason. &nbsp; (e) The phone company charges $5$p per call plus $2$p per minute. Estimate the mean and standard deviation of the cost of a call.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Midpoints $2.5, 7.5, 12.5, 22.5, 45$.</p>
+          <p>$\sum fx = 35 + 82.5 + 87.5 + 135 + 90 = 430$, so $\bar{x} \approx \dfrac{430}{40} = 10.75$ min.</p>
+          <p>$\sum fx^2 = 87.5 + 618.75 + 1093.75 + 3037.5 + 4050 = 8887.5$</p>
+          <p>$\sigma^2 \approx \dfrac{8887.5}{40} - 10.75^2 = 222.1875 - 115.5625 = 106.625$, so $\sigma \approx 10.3$ min.</p>
+          <p><strong>(b)</strong> Cumulative frequencies $14, 25, 32, 38, 40$.</p>
+          <p>Median ($20$th): $5 + \dfrac{20 - 14}{11} \times 5 = 7.73$ min.</p>
+          <p>$Q_1$ ($10$th): $0 + \dfrac{10}{14} \times 5 = 3.57$ min. &nbsp; $Q_3$ ($30$th): $10 + \dfrac{30 - 25}{7} \times 5 = 13.6$ min.</p>
+          <p><strong>(c)</strong> The exact lengths are unknown: the mean assumes every value is at its class midpoint, and interpolation assumes values are spread evenly within each class.</p>
+          <p><strong>(d)</strong> The median. The data are positively skewed (mean $10.75 &gt;$ median $7.73$, and $Q_3 - Q_2 &gt; Q_2 - Q_1$): a few long calls pull the mean up.</p>
+          <p><strong>(e)</strong> Cost $= 2t + 5$ pence. Mean $\approx 2(10.75) + 5 = 26.5$p; standard deviation $\approx 2 \times 10.3 = 20.7$p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Measures of Location and Spread &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

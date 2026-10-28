@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locating Roots &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Locating Roots</h1>
+  <p>A Level Maths Year 2 · Numerical Methods</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY WE NEED IT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Equations You Cannot Solve Exactly</div>
+<div class="section-body">
+
+  <p>Most equations that come out of real problems — $x^3 - 3x - 1 = 0$, $\mathrm{e}^{-x} = x$, $x\sin x = 1$ — have no neat algebraic solution. We can still pin the answer down as accurately as we like. The first step is always to <strong>trap the root inside a small interval</strong>.</p>
+
+  <div class="concept">
+    A <strong>root</strong> of the equation $\mathrm{f}(x) = 0$ is a value of $x$ where the graph of $y = \mathrm{f}(x)$ meets the $x$-axis. We usually call an unknown root $\alpha$ (alpha).
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The change of sign principle</div>
+    If $\mathrm{f}$ is <strong>continuous</strong> for $a \leqslant x \leqslant b$ and $\mathrm{f}(a)$ and $\mathrm{f}(b)$ have <strong>opposite signs</strong>,<br>
+    then $\mathrm{f}(x) = 0$ has at least one root $\alpha$ with $a &lt; \alpha &lt; b$
+  </div>
+
+  <p>The reason is visual: a continuous graph has no gaps or jumps, so to get from below the axis to above it the curve must cross the axis somewhere in between.</p>
+
+  <div class="svg-block">
+<svg width="440" height="300" viewBox="0 0 440 300" role="img" aria-label="Graph of y = x cubed minus 3x minus 1, negative at x = 1 and positive at x = 2, crossing the axis between them" font-family="Segoe UI, Arial, sans-serif">
+<line x1="30.0" y1="142.4" x2="416.0" y2="142.4" stroke="#333" stroke-width="1.2"/>
+<line x1="216.1" y1="270.0" x2="216.1" y2="24.0" stroke="#333" stroke-width="1.2"/>
+<text x="420.0" y="146.4" font-size="13" font-style="italic">x</text>
+<text x="212.1" y="20.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="59.5" y1="139.4" x2="59.5" y2="145.4" stroke="#333"/>
+<text x="59.5" y="158.4" font-size="11" text-anchor="middle">−2</text>
+<line x1="137.8" y1="139.4" x2="137.8" y2="145.4" stroke="#333"/>
+<text x="137.8" y="158.4" font-size="11" text-anchor="middle">−1</text>
+<line x1="294.4" y1="139.4" x2="294.4" y2="145.4" stroke="#333"/>
+<text x="294.4" y="158.4" font-size="11" text-anchor="middle">1</text>
+<line x1="372.7" y1="139.4" x2="372.7" y2="145.4" stroke="#333"/>
+<text x="372.7" y="158.4" font-size="11" text-anchor="middle">2</text>
+<line x1="213.1" y1="233.6" x2="219.1" y2="233.6" stroke="#333"/>
+<text x="210.1" y="237.6" font-size="11" text-anchor="end">−3</text>
+<line x1="213.1" y1="172.8" x2="219.1" y2="172.8" stroke="#333"/>
+<text x="210.1" y="176.8" font-size="11" text-anchor="end">−1</text>
+<line x1="213.1" y1="112.0" x2="219.1" y2="112.0" stroke="#333"/>
+<text x="210.1" y="116.0" font-size="11" text-anchor="end">1</text>
+<line x1="213.1" y1="51.2" x2="219.1" y2="51.2" stroke="#333"/>
+<text x="210.1" y="55.2" font-size="11" text-anchor="end">3</text>
+<polyline points="52.6,259.3 54.4,252.2 56.2,245.3 58.1,238.6 59.9,232.1 61.8,225.8 63.6,219.7 65.4,213.8 67.3,208.2 69.1,202.7 71.0,197.3 72.8,192.2 74.6,187.3 76.5,182.5 78.3,177.9 80.2,173.5 82.0,169.3 83.8,165.2 85.7,161.4 87.5,157.6 89.4,154.1 91.2,150.7 93.0,147.5 94.9,144.4 96.7,141.5 98.6,138.7 100.4,136.1 102.2,133.6 104.1,131.3 105.9,129.2 107.8,127.1 109.6,125.2 111.4,123.5 113.3,121.9 115.1,120.4 117.0,119.0 118.8,117.8 120.6,116.7 122.5,115.7 124.3,114.9 126.2,114.1 128.0,113.5 129.8,113.0 131.7,112.6 133.5,112.3 135.4,112.1 137.2,112.0 139.0,112.0 140.9,112.1 142.7,112.4 144.6,112.7 146.4,113.1 148.2,113.6 150.1,114.1 151.9,114.8 153.8,115.5 155.6,116.4 157.4,117.3 159.3,118.2 161.1,119.3 163.0,120.4 164.8,121.6 166.6,122.9 168.5,124.2 170.3,125.6 172.2,127.0 174.0,128.5 175.8,130.1 177.7,131.7 179.5,133.3 181.4,135.0 183.2,136.7 185.0,138.5 186.9,140.4 188.7,142.2 190.6,144.1 192.4,146.1 194.2,148.0 196.1,150.0 197.9,152.0 199.8,154.1 201.6,156.1 203.4,158.2 205.3,160.3 207.1,162.4 209.0,164.5 210.8,166.7 212.6,168.8 214.5,170.9 216.3,173.1 218.2,175.2 220.0,177.4 221.8,179.5 223.7,181.6 225.5,183.7 227.4,185.8 229.2,187.9 231.0,190.0 232.9,192.1 234.7,194.1 236.6,196.1 238.4,198.1 240.2,200.0 242.1,202.0 243.9,203.9 245.8,205.7 247.6,207.5 249.4,209.3 251.3,211.0 253.1,212.7 255.0,214.4 256.8,215.9 258.6,217.5 260.5,219.0 262.3,220.4 264.2,221.8 266.0,223.1 267.8,224.3 269.7,225.5 271.5,226.6 273.4,227.6 275.2,228.6 277.0,229.5 278.9,230.3 280.7,231.0 282.6,231.6 284.4,232.2 286.2,232.6 288.1,233.0 289.9,233.3 291.8,233.5 293.6,233.6 295.4,233.6 297.3,233.5 299.1,233.3 301.0,232.9 302.8,232.5 304.6,232.0 306.5,231.3 308.3,230.5 310.2,229.6 312.0,228.6 313.8,227.5 315.7,226.2 317.5,224.9 319.4,223.3 321.2,221.7 323.0,219.9 324.9,218.0 326.7,215.9 328.6,213.7 330.4,211.3 332.2,208.8 334.1,206.2 335.9,203.4 337.8,200.4 339.6,197.3 341.4,194.1 343.3,190.6 345.1,187.0 347.0,183.3 348.8,179.3 350.6,175.2 352.5,171.0 354.3,166.5 356.2,161.9 358.0,157.1 359.8,152.1 361.7,146.9 363.5,141.6 365.4,136.0 367.2,130.3 369.0,124.3 370.9,118.2 372.7,111.9 374.6,105.3 376.4,98.6 378.2,91.6 380.1,84.5 381.9,77.1 383.8,69.5 385.6,61.8 387.4,53.7 389.3,45.5 391.1,37.1" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<circle cx="294.4" cy="233.6" r="4" fill="#dc2626"/>
+<circle cx="372.7" cy="112.0" r="4" fill="#16a34a"/>
+<line x1="294.4" y1="142.4" x2="294.4" y2="233.6" stroke="#dc2626" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="372.7" y1="142.4" x2="372.7" y2="112.0" stroke="#16a34a" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="302.4" y="237.6" font-size="12" fill="#dc2626" text-anchor="start">f(1) = −3 &lt; 0</text>
+<text x="366.7" y="102.0" font-size="12" fill="#16a34a" text-anchor="end">f(2) = 1 &gt; 0</text>
+<circle cx="363.2" cy="142.4" r="3.5" fill="#7c3aed"/>
+<text x="355.2" y="158.4" font-size="12" fill="#7c3aed" text-anchor="end">root α</text>
+<text x="43.8" y="48.2" font-size="12" fill="#4f46e5" text-anchor="start" font-style="italic">y = x³ − 3x − 1</text>
+</svg>
+</div>
+
+  <div class="tip">
+    <strong>Always use radians</strong> when the function involves $\sin$, $\cos$ or $\tan$. Set your calculator to radian mode before you start; a sign check in degrees is worthless.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – SHOWING A ROOT IS IN AN INTERVAL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Showing That a Root Lies in an Interval</div>
+<div class="section-body">
+
+  <p>Exam questions say "Show that the equation … has a root between $a$ and $b$". A full answer has three parts, and the third is the one people forget.</p>
+
+  <ol class="steps">
+    <li><span>Rearrange the equation into the form $\mathrm{f}(x) = 0$ and define $\mathrm{f}(x)$.</span></li>
+    <li><span>Calculate $\mathrm{f}(a)$ and $\mathrm{f}(b)$ and write down their values (a sign alone is not enough).</span></li>
+    <li><span>Conclude: "There is a change of sign and $\mathrm{f}$ is continuous for $a \leqslant x \leqslant b$, so there is a root between $a$ and $b$."</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A cubic</div>
+    <div class="example-body">
+      <p>Show that $x^3 - 3x - 1 = 0$ has a root $\alpha$ with $1 &lt; \alpha &lt; 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $\mathrm{f}(x) = x^3 - 3x - 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(1) = 1 - 3 - 1 = -3 &lt; 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(2) = 8 - 6 - 1 = 1 &gt; 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>There is a change of sign, and $\mathrm{f}$ is a polynomial so it is continuous. Therefore there is a root between $1$ and $2$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Rearranging first</div>
+    <div class="example-body">
+      <p>Show that the equation $x \sin x = 1$ has a root between $x = 1$ and $x = 1.2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rearrange: $\mathrm{f}(x) = x\sin x - 1$, so roots of $\mathrm{f}(x) = 0$ are solutions of the equation.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>In radians: $\mathrm{f}(1) = \sin 1 - 1 = -0.1585\ldots &lt; 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(1.2) = 1.2\sin 1.2 - 1 = 0.1184\ldots &gt; 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Change of sign, and $\mathrm{f}$ is continuous, so there is a root with $1 &lt; x &lt; 1.2$.</span></div>
+      <div class="warn">You cannot test "$x\sin x = 1$" for a sign change directly — the equation has no sign. Always make one side zero first.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Counting roots with a sketch</div>
+    <div class="example-body">
+      <p>By sketching $y = 2^x$ and $y = 3x$, explain why $2^x = 3x$ has exactly two roots, and locate each between consecutive integers.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 3x$ is a straight line through the origin; $y = 2^x$ starts above it at $(0, 1)$ but eventually grows faster than any line. The exponential is below the line in the middle and above it at both ends, so the graphs cross twice.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $\mathrm{f}(x) = 2^x - 3x$. Then $\mathrm{f}(0) = 1$, $\mathrm{f}(1) = -1$: a root with $0 &lt; x &lt; 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(3) = 8 - 9 = -1$, $\mathrm{f}(4) = 16 - 12 = 4$: a root with $3 &lt; x &lt; 4$.</span></div>
+      <div class="tip">Sketching the two sides of an equation is the quickest way to know <em>how many</em> roots to look for, before you start hunting with signs.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – NARROWING THE INTERVAL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Narrowing Down: Roots to a Given Accuracy</div>
+<div class="section-body">
+
+  <p>Once a root is trapped, you can shrink the interval by testing values in between — a <strong>decimal search</strong>. Each new sign check tells you which half of the interval the root is in.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A decimal search</div>
+    <div class="example-body">
+      <p>Find the root of $x^3 - 3x - 1 = 0$ between $1$ and $2$ correct to $2$ decimal places.</p>
+      <table>
+        <tr><th>$x$</th><th>$1.8$</th><th>$1.9$</th><th>$1.87$</th><th>$1.88$</th><th>$1.875$</th></tr>
+        <tr><td>$\mathrm{f}(x)$</td><td>$-0.568$</td><td>$0.159$</td><td>$-0.0708$</td><td>$0.00467$</td><td>$-0.0332$</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Sign change between $1.8$ and $1.9$, so $1.8 &lt; \alpha &lt; 1.9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Sign change between $1.87$ and $1.88$, so $1.87 &lt; \alpha &lt; 1.88$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check the midpoint: $\mathrm{f}(1.875) &lt; 0$, so $1.875 &lt; \alpha &lt; 1.88$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Every number in that interval rounds to $1.88$, so $\alpha = 1.88$ to $2$ d.p.</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Proving a root is correct to a given accuracy</div>
+    To show $\alpha = 1.796$ to $3$ d.p., test the <strong>bounds</strong> $1.7955$ and $1.7965$ and find a change of sign
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Using the bounds</div>
+    <div class="example-body">
+      <p>Show that $1.796$ is a root of $x^3 - x - 4 = 0$ correct to $3$ decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $\mathrm{f}(x) = x^3 - x - 4$. The bounds for $1.796$ to $3$ d.p. are $1.7955$ and $1.7965$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(1.7955) = -0.00713\ldots &lt; 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(1.7965) = 0.00155\ldots &gt; 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Change of sign and $\mathrm{f}$ continuous, so $1.7955 &lt; \alpha &lt; 1.7965$, and hence $\alpha = 1.796$ to $3$ d.p.</span></div>
+      <div class="warn">Testing $1.795$ and $1.797$ is <strong>not</strong> enough: a root at $1.7952$ would lie between them but round to $1.795$. Only the half-way bounds prove the rounding.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A transcendental equation</div>
+    <div class="example-body">
+      <p>Show that the equation $\mathrm{e}^{-x} = x$ has a root $\alpha = 0.567$ correct to $3$ decimal places.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $\mathrm{f}(x) = \mathrm{e}^{-x} - x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{f}(0.5665) = 0.00101\ldots &gt; 0$ and $\mathrm{f}(0.5675) = -0.00056\ldots &lt; 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Change of sign and $\mathrm{f}$ is continuous, so $0.5665 &lt; \alpha &lt; 0.5675$ and $\alpha = 0.567$ to $3$ d.p.</span></div>
+      <div class="tip">The sign may go from positive to negative — that is still a change of sign.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHEN IT FAILS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When the Change of Sign Method Fails</div>
+<div class="section-body">
+
+  <p>The principle has two halves: a sign change <em>with continuity</em> guarantees a root, and no sign change guarantees nothing. Both halves can trip you up.</p>
+
+  <table>
+    <tr><th>Situation</th><th>What goes wrong</th><th>Example</th></tr>
+    <tr><td><strong>Vertical asymptote</strong></td><td>Sign changes but there is no root — the function is not continuous.</td><td>$\dfrac{1}{x-2}$ for $1 \leqslant x \leqslant 3$</td></tr>
+    <tr><td><strong>Repeated root</strong></td><td>The curve touches the axis without crossing, so there is no sign change.</td><td>$(x-1)^2(x+2)$ for $0.5 \leqslant x \leqslant 1.5$</td></tr>
+    <tr><td><strong>Two (or an even number of) roots close together</strong></td><td>The sign changes twice, so the end values have the same sign.</td><td>$(x-0.3)(x-0.7)$ for $0 \leqslant x \leqslant 1$</td></tr>
+    <tr><td><strong>Interval too wide</strong></td><td>A sign change may hide three roots, not one.</td><td>$x^3 - 3x - 1$ for $-2 \leqslant x \leqslant 2$</td></tr>
+  </table>
+
+  <div class="svg-block">
+<svg width="300" height="240" viewBox="0 0 300 240" role="img" aria-label="Graph of y = 1 over (x minus 2): f(1) is negative and f(3) is positive but there is a vertical asymptote at x = 2, not a root" font-family="Segoe UI, Arial, sans-serif">
+<line x1="24.0" y1="120.0" x2="282.0" y2="120.0" stroke="#333" stroke-width="1.2"/>
+<line x1="30.0" y1="216.0" x2="30.0" y2="18.0" stroke="#333" stroke-width="1.2"/>
+<text x="286.0" y="124.0" font-size="13" font-style="italic">x</text>
+<text x="26.0" y="14.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="90.0" y1="117.0" x2="90.0" y2="123.0" stroke="#333"/>
+<text x="90.0" y="136.0" font-size="11" text-anchor="middle">1</text>
+<line x1="150.0" y1="117.0" x2="150.0" y2="123.0" stroke="#333"/>
+<text x="150.0" y="136.0" font-size="11" text-anchor="middle">2</text>
+<line x1="210.0" y1="117.0" x2="210.0" y2="123.0" stroke="#333"/>
+<text x="210.0" y="136.0" font-size="11" text-anchor="middle">3</text>
+<line x1="27.0" y1="165.0" x2="33.0" y2="165.0" stroke="#333"/>
+<text x="24.0" y="169.0" font-size="11" text-anchor="end">−2</text>
+<line x1="27.0" y1="75.0" x2="33.0" y2="75.0" stroke="#333"/>
+<text x="24.0" y="79.0" font-size="11" text-anchor="end">2</text>
+<polyline points="30.0,131.2 30.4,131.3 30.8,131.3 31.2,131.4 31.6,131.4 32.0,131.4 32.4,131.5 32.8,131.5 33.2,131.6 33.6,131.6 34.0,131.6 34.4,131.7 34.8,131.7 35.1,131.8 35.5,131.8 35.9,131.8 36.3,131.9 36.7,131.9 37.1,132.0 37.5,132.0 37.9,132.0 38.3,132.1 38.7,132.1 39.1,132.2 39.5,132.2 39.9,132.3 40.3,132.3 40.7,132.4 41.1,132.4 41.5,132.4 41.9,132.5 42.3,132.5 42.7,132.6 43.1,132.6 43.5,132.7 43.9,132.7 44.3,132.8 44.7,132.8 45.0,132.9 45.4,132.9 45.8,133.0 46.2,133.0 46.6,133.1 47.0,133.1 47.4,133.2 47.8,133.2 48.2,133.3 48.6,133.3 49.0,133.4 49.4,133.4 49.8,133.5 50.2,133.5 50.6,133.6 51.0,133.6 51.4,133.7 51.8,133.7 52.2,133.8 52.6,133.9 53.0,133.9 53.4,134.0 53.8,134.0 54.2,134.1 54.6,134.1 54.9,134.2 55.3,134.3 55.7,134.3 56.1,134.4 56.5,134.4 56.9,134.5 57.3,134.6 57.7,134.6 58.1,134.7 58.5,134.8 58.9,134.8 59.3,134.9 59.7,135.0 60.1,135.0 60.5,135.1 60.9,135.1 61.3,135.2 61.7,135.3 62.1,135.4 62.5,135.4 62.9,135.5 63.3,135.6 63.7,135.6 64.1,135.7 64.5,135.8 64.8,135.9 65.2,135.9 65.6,136.0 66.0,136.1 66.4,136.2 66.8,136.2 67.2,136.3 67.6,136.4 68.0,136.5 68.4,136.5 68.8,136.6 69.2,136.7 69.6,136.8 70.0,136.9 70.4,137.0 70.8,137.0 71.2,137.1 71.6,137.2 72.0,137.3 72.4,137.4 72.8,137.5 73.2,137.6 73.6,137.7 74.0,137.8 74.4,137.8 74.7,137.9 75.1,138.0 75.5,138.1 75.9,138.2 76.3,138.3 76.7,138.4 77.1,138.5 77.5,138.6 77.9,138.7 78.3,138.8 78.7,138.9 79.1,139.0 79.5,139.1 79.9,139.3 80.3,139.4 80.7,139.5 81.1,139.6 81.5,139.7 81.9,139.8 82.3,139.9 82.7,140.0 83.1,140.2 83.5,140.3 83.9,140.4 84.3,140.5 84.6,140.7 85.0,140.8 85.4,140.9 85.8,141.0 86.2,141.2 86.6,141.3 87.0,141.4 87.4,141.6 87.8,141.7 88.2,141.8 88.6,142.0 89.0,142.1 89.4,142.3 89.8,142.4 90.2,142.6 90.6,142.7 91.0,142.9 91.4,143.0 91.8,143.2 92.2,143.3 92.6,143.5 93.0,143.7 93.4,143.8 93.8,144.0 94.2,144.2 94.5,144.3 94.9,144.5 95.3,144.7 95.7,144.9 96.1,145.1 96.5,145.2 96.9,145.4 97.3,145.6 97.7,145.8 98.1,146.0 98.5,146.2 98.9,146.4 99.3,146.6 99.7,146.8 100.1,147.0 100.5,147.3 100.9,147.5 101.3,147.7 101.7,147.9 102.1,148.2 102.5,148.4 102.9,148.6 103.3,148.9 103.7,149.1 104.1,149.4 104.4,149.6 104.8,149.9 105.2,150.2 105.6,150.4 106.0,150.7 106.4,151.0 106.8,151.3 107.2,151.6 107.6,151.9 108.0,152.2 108.4,152.5 108.8,152.8 109.2,153.1 109.6,153.4 110.0,153.7 110.4,154.1 110.8,154.4 111.2,154.8 111.6,155.1 112.0,155.5 112.4,155.9 112.8,156.3 113.2,156.6 113.6,157.0 114.0,157.5 114.3,157.9 114.7,158.3 115.1,158.7 115.5,159.2 115.9,159.6 116.3,160.1 116.7,160.6 117.1,161.1 117.5,161.6 117.9,162.1 118.3,162.6 118.7,163.1 119.1,163.7 119.5,164.3 119.9,164.8 120.3,165.4 120.7,166.0 121.1,166.7 121.5,167.3 121.9,168.0 122.3,168.7 122.7,169.4 123.1,170.1 123.5,170.9 123.9,171.6 124.2,172.4 124.6,173.2 125.0,174.1 125.4,175.0 125.8,175.9 126.2,176.8 126.6,177.8 127.0,178.7 127.4,179.8 127.8,180.8 128.2,181.9 128.6,183.1 129.0,184.3 129.4,185.5 129.8,186.8 130.2,188.1 130.6,189.5 131.0,191.0 131.4,192.5 131.8,194.1 132.2,195.7 132.6,197.4 133.0,199.2 133.4,201.1 133.8,203.1 134.1,205.2 134.5,207.3 134.9,209.6" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<polyline points="165.1,30.4 165.5,32.7 165.9,34.8 166.2,36.9 166.6,38.9 167.0,40.8 167.4,42.6 167.8,44.3 168.2,45.9 168.6,47.5 169.0,49.0 169.4,50.5 169.8,51.9 170.2,53.2 170.6,54.5 171.0,55.7 171.4,56.9 171.8,58.1 172.2,59.2 172.6,60.2 173.0,61.3 173.4,62.2 173.8,63.2 174.2,64.1 174.6,65.0 175.0,65.9 175.4,66.8 175.8,67.6 176.1,68.4 176.5,69.1 176.9,69.9 177.3,70.6 177.7,71.3 178.1,72.0 178.5,72.7 178.9,73.3 179.3,74.0 179.7,74.6 180.1,75.2 180.5,75.7 180.9,76.3 181.3,76.9 181.7,77.4 182.1,77.9 182.5,78.4 182.9,78.9 183.3,79.4 183.7,79.9 184.1,80.4 184.5,80.8 184.9,81.3 185.3,81.7 185.7,82.1 186.0,82.5 186.4,83.0 186.8,83.4 187.2,83.7 187.6,84.1 188.0,84.5 188.4,84.9 188.8,85.2 189.2,85.6 189.6,85.9 190.0,86.3 190.4,86.6 190.8,86.9 191.2,87.2 191.6,87.5 192.0,87.8 192.4,88.1 192.8,88.4 193.2,88.7 193.6,89.0 194.0,89.3 194.4,89.6 194.8,89.8 195.2,90.1 195.6,90.4 195.9,90.6 196.3,90.9 196.7,91.1 197.1,91.4 197.5,91.6 197.9,91.8 198.3,92.1 198.7,92.3 199.1,92.5 199.5,92.7 199.9,93.0 200.3,93.2 200.7,93.4 201.1,93.6 201.5,93.8 201.9,94.0 202.3,94.2 202.7,94.4 203.1,94.6 203.5,94.8 203.9,94.9 204.3,95.1 204.7,95.3 205.1,95.5 205.5,95.7 205.8,95.8 206.2,96.0 206.6,96.2 207.0,96.3 207.4,96.5 207.8,96.7 208.2,96.8 208.6,97.0 209.0,97.1 209.4,97.3 209.8,97.4 210.2,97.6 210.6,97.7 211.0,97.9 211.4,98.0 211.8,98.2 212.2,98.3 212.6,98.4 213.0,98.6 213.4,98.7 213.8,98.8 214.2,99.0 214.6,99.1 215.0,99.2 215.4,99.3 215.7,99.5 216.1,99.6 216.5,99.7 216.9,99.8 217.3,100.0 217.7,100.1 218.1,100.2 218.5,100.3 218.9,100.4 219.3,100.5 219.7,100.6 220.1,100.7 220.5,100.9 220.9,101.0 221.3,101.1 221.7,101.2 222.1,101.3 222.5,101.4 222.9,101.5 223.3,101.6 223.7,101.7 224.1,101.8 224.5,101.9 224.9,102.0 225.3,102.1 225.6,102.2 226.0,102.2 226.4,102.3 226.8,102.4 227.2,102.5 227.6,102.6 228.0,102.7 228.4,102.8 228.8,102.9 229.2,103.0 229.6,103.0 230.0,103.1 230.4,103.2 230.8,103.3 231.2,103.4 231.6,103.5 232.0,103.5 232.4,103.6 232.8,103.7 233.2,103.8 233.6,103.8 234.0,103.9 234.4,104.0 234.8,104.1 235.2,104.1 235.5,104.2 235.9,104.3 236.3,104.4 236.7,104.4 237.1,104.5 237.5,104.6 237.9,104.6 238.3,104.7 238.7,104.8 239.1,104.9 239.5,104.9 239.9,105.0 240.3,105.0 240.7,105.1 241.1,105.2 241.5,105.2 241.9,105.3 242.3,105.4 242.7,105.4 243.1,105.5 243.5,105.6 243.9,105.6 244.3,105.7 244.7,105.7 245.1,105.8 245.4,105.9 245.8,105.9 246.2,106.0 246.6,106.0 247.0,106.1 247.4,106.1 247.8,106.2 248.2,106.3 248.6,106.3 249.0,106.4 249.4,106.4 249.8,106.5 250.2,106.5 250.6,106.6 251.0,106.6 251.4,106.7 251.8,106.7 252.2,106.8 252.6,106.8 253.0,106.9 253.4,106.9 253.8,107.0 254.2,107.0 254.6,107.1 255.0,107.1 255.3,107.2 255.7,107.2 256.1,107.3 256.5,107.3 256.9,107.4 257.3,107.4 257.7,107.5 258.1,107.5 258.5,107.6 258.9,107.6 259.3,107.6 259.7,107.7 260.1,107.7 260.5,107.8 260.9,107.8 261.3,107.9 261.7,107.9 262.1,108.0 262.5,108.0 262.9,108.0 263.3,108.1 263.7,108.1 264.1,108.2 264.5,108.2 264.9,108.2 265.2,108.3 265.6,108.3 266.0,108.4 266.4,108.4 266.8,108.4 267.2,108.5 267.6,108.5 268.0,108.6 268.4,108.6 268.8,108.6 269.2,108.7 269.6,108.7 270.0,108.8" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<line x1="150.0" y1="210.0" x2="150.0" y2="30.0" stroke="#888" stroke-width="1" stroke-dasharray="5 4"/>
+<circle cx="90.0" cy="142.5" r="4" fill="#dc2626"/>
+<circle cx="210.0" cy="97.5" r="4" fill="#16a34a"/>
+<text x="36.0" y="43.5" font-size="12" fill="#4f46e5" text-anchor="start" font-style="italic">y = 1/(x − 2)</text>
+<text x="155.0" y="201.0" font-size="11" fill="#666" text-anchor="start">asymptote x = 2</text>
+</svg>
+</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A false root</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = \dfrac{1}{x - 2}$. Show that $\mathrm{f}(1)$ and $\mathrm{f}(3)$ have opposite signs, and explain why $\mathrm{f}(x) = 0$ has no root with $1 \leqslant x \leqslant 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(1) = -1$ and $\mathrm{f}(3) = 1$: opposite signs.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>But $\dfrac{1}{x-2}$ is never zero — a fraction is only zero when its numerator is.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The sign change happens because $\mathrm{f}$ is undefined at $x = 2$: there is a vertical asymptote. $\mathrm{f}$ is <strong>not continuous</strong> for $1 \leqslant x \leqslant 3$, so the principle does not apply.</span></div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+<svg width="300" height="240" viewBox="0 0 300 240" role="img" aria-label="Graph of y = (x minus 1) squared times (x plus 2): it touches the x-axis at x = 1, so f(0.5) and f(1.5) are both positive" font-family="Segoe UI, Arial, sans-serif">
+<line x1="24.0" y1="184.3" x2="282.0" y2="184.3" stroke="#333" stroke-width="1.2"/>
+<line x1="150.0" y1="216.0" x2="150.0" y2="18.0" stroke="#333" stroke-width="1.2"/>
+<text x="286.0" y="188.3" font-size="13" font-style="italic">x</text>
+<text x="146.0" y="14.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="54.0" y1="181.3" x2="54.0" y2="187.3" stroke="#333"/>
+<text x="54.0" y="200.3" font-size="11" text-anchor="middle">−2</text>
+<line x1="198.0" y1="181.3" x2="198.0" y2="187.3" stroke="#333"/>
+<text x="198.0" y="200.3" font-size="11" text-anchor="middle">1</text>
+<line x1="246.0" y1="181.3" x2="246.0" y2="187.3" stroke="#333"/>
+<text x="246.0" y="200.3" font-size="11" text-anchor="middle">2</text>
+<line x1="147.0" y1="132.9" x2="153.0" y2="132.9" stroke="#333"/>
+<text x="144.0" y="136.9" font-size="11" text-anchor="end">2</text>
+<line x1="147.0" y1="81.4" x2="153.0" y2="81.4" stroke="#333"/>
+<text x="144.0" y="85.4" font-size="11" text-anchor="end">4</text>
+<polyline points="49.2,209.0 50.4,202.5 51.6,196.2 52.8,190.2 54.0,184.3 55.2,178.6 56.4,173.1 57.6,167.8 58.8,162.7 60.0,157.7 61.2,153.0 62.4,148.4 63.6,144.0 64.8,139.7 66.0,135.7 67.2,131.8 68.4,128.0 69.6,124.5 70.8,121.1 72.0,117.8 73.2,114.8 74.4,111.8 75.6,109.0 76.8,106.4 78.0,103.9 79.2,101.6 80.4,99.4 81.6,97.3 82.8,95.4 84.0,93.6 85.2,92.0 86.4,90.5 87.6,89.1 88.8,87.8 90.0,86.7 91.2,85.6 92.4,84.7 93.6,83.9 94.8,83.3 96.0,82.7 97.2,82.2 98.4,81.9 99.6,81.6 100.8,81.5 102.0,81.4 103.2,81.5 104.4,81.6 105.6,81.9 106.8,82.2 108.0,82.6 109.2,83.1 110.4,83.7 111.6,84.3 112.8,85.0 114.0,85.8 115.2,86.7 116.4,87.7 117.6,88.7 118.8,89.8 120.0,90.9 121.2,92.1 122.4,93.4 123.6,94.7 124.8,96.1 126.0,97.5 127.2,99.0 128.4,100.5 129.6,102.0 130.8,103.6 132.0,105.3 133.2,107.0 134.4,108.7 135.6,110.4 136.8,112.2 138.0,114.0 139.2,115.8 140.4,117.6 141.6,119.5 142.8,121.4 144.0,123.3 145.2,125.2 146.4,127.1 147.6,129.0 148.8,130.9 150.0,132.9 151.2,134.8 152.4,136.7 153.6,138.6 154.8,140.5 156.0,142.4 157.2,144.3 158.4,146.2 159.6,148.1 160.8,149.9 162.0,151.7 163.2,153.5 164.4,155.3 165.6,157.0 166.8,158.8 168.0,160.4 169.2,162.1 170.4,163.7 171.6,165.2 172.8,166.7 174.0,168.2 175.2,169.6 176.4,171.0 177.6,172.3 178.8,173.6 180.0,174.8 181.2,175.9 182.4,177.0 183.6,178.0 184.8,179.0 186.0,179.9 187.2,180.7 188.4,181.4 189.6,182.1 190.8,182.6 192.0,183.1 193.2,183.5 194.4,183.9 195.6,184.1 196.8,184.2 198.0,184.3 199.2,184.2 200.4,184.1 201.6,183.8 202.8,183.5 204.0,183.0 205.2,182.5 206.4,181.8 207.6,181.0 208.8,180.1 210.0,179.1 211.2,177.9 212.4,176.6 213.6,175.3 214.8,173.7 216.0,172.1 217.2,170.3 218.4,168.4 219.6,166.3 220.8,164.1 222.0,161.8 223.2,159.3 224.4,156.7 225.6,153.9 226.8,151.0 228.0,147.9 229.2,144.6 230.4,141.2 231.6,137.7 232.8,133.9 234.0,130.0 235.2,126.0 236.4,121.7 237.6,117.3 238.8,112.8 240.0,108.0 241.2,103.1 242.4,97.9 243.6,92.6 244.8,87.1 246.0,81.4 247.2,75.5 248.4,69.5 249.6,63.2 250.8,56.7 252.0,50.0 253.2,43.2 254.4,36.1" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<circle cx="174.0" cy="168.2" r="4" fill="#16a34a"/>
+<circle cx="222.0" cy="161.8" r="4" fill="#16a34a"/>
+<circle cx="198.0" cy="184.3" r="3.5" fill="#7c3aed"/>
+<text x="34.8" y="42.9" font-size="12" fill="#4f46e5" text-anchor="start" font-style="italic">y = (x − 1)²(x + 2)</text>
+<text x="194.0" y="208.3" font-size="11" fill="#7c3aed" text-anchor="middle">touches at x = 1</text>
+</svg>
+</div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A root with no sign change</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 - 3x + 2$. Find $\mathrm{f}(0.5)$ and $\mathrm{f}(1.5)$, and comment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}(0.5) = 0.125 - 1.5 + 2 = 0.625$ and $\mathrm{f}(1.5) = 3.375 - 4.5 + 2 = 0.875$. Both positive.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Yet $\mathrm{f}(1) = 1 - 3 + 2 = 0$: there <em>is</em> a root in the interval.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(x) = (x-1)^2(x+2)$. The squared factor means the curve touches the axis at $x = 1$ and turns back, so the sign never changes.</span></div>
+      <div class="tip">No sign change does <strong>not</strong> mean no root. Repeated roots are exactly where change of sign methods are blind — a sketch or factorising will reveal them.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>The principle</h4><p>$\mathrm{f}$ continuous for $a \leqslant x \leqslant b$ and $\mathrm{f}(a)\mathrm{f}(b) &lt; 0$ $\Rightarrow$ a root with $a &lt; x &lt; b$.</p></div>
+    <div class="ref-card"><h4>Set up</h4><p>Rearrange to $\mathrm{f}(x) = 0$ before testing signs.</p></div>
+    <div class="ref-card"><h4>Show the values</h4><p>Write $\mathrm{f}(a)$ and $\mathrm{f}(b)$ as numbers, then conclude.</p></div>
+    <div class="ref-card"><h4>Conclusion</h4><p>"Change of sign, $\mathrm{f}$ continuous, so a root lies in the interval."</p></div>
+    <div class="ref-card"><h4>Accuracy</h4><p>For $\alpha = 1.796$ (3 d.p.), test $1.7955$ and $1.7965$.</p></div>
+    <div class="ref-card"><h4>Radians</h4><p>Always, for trigonometric functions.</p></div>
+    <div class="ref-card"><h4>Asymptote</h4><p>Sign change but no root — discontinuity.</p></div>
+    <div class="ref-card"><h4>Repeated root</h4><p>Root but no sign change — the curve touches.</p></div>
+    <div class="ref-card"><h4>Sketch first</h4><p>Tells you how many roots to look for.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Show that $x^3 - 5x + 1 = 0$ has a root between $x = 2$ and $x = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = x^3 - 5x + 1$.</p>
+          <p>$\mathrm{f}(2) = 8 - 10 + 1 = -1 &lt; 0$ and $\mathrm{f}(3) = 27 - 15 + 1 = 13 &gt; 0$.</p>
+          <p>There is a change of sign and $\mathrm{f}$ is continuous, so there is a root between $2$ and $3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Show that the equation $\mathrm{e}^x = 4 - x$ has a root with $1 &lt; x &lt; 1.1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = \mathrm{e}^x + x - 4$.</p>
+          <p>$\mathrm{f}(1) = \mathrm{e} - 3 = -0.2817\ldots &lt; 0$</p>
+          <p>$\mathrm{f}(1.1) = \mathrm{e}^{1.1} - 2.9 = 0.1042\ldots &gt; 0$</p>
+          <p>Change of sign and $\mathrm{f}$ is continuous, so there is a root with $1 &lt; x &lt; 1.1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that the equation $\ln x = 3 - x$ has a root between $2$ and $3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = \ln x + x - 3$, which is continuous for $x &gt; 0$.</p>
+          <p>$\mathrm{f}(2) = \ln 2 - 1 = -0.3068\ldots &lt; 0$ and $\mathrm{f}(3) = \ln 3 = 1.0986\ldots &gt; 0$.</p>
+          <p>Change of sign, so there is a root with $2 &lt; x &lt; 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Show that the equation $x\sin x = 1$ has a root $\alpha = 1.11$ correct to $2$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = x\sin x - 1$ (radians). Test the bounds $1.105$ and $1.115$.</p>
+          <p>$\mathrm{f}(1.105) = -0.0127\ldots &lt; 0$ and $\mathrm{f}(1.115) = 0.00117\ldots &gt; 0$.</p>
+          <p>Change of sign and $\mathrm{f}$ is continuous, so $1.105 &lt; \alpha &lt; 1.115$, giving $\alpha = 1.11$ to $2$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Show that $x^3 - 2x - 5 = 0$ has a root $\alpha = 2.095$ correct to $3$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = x^3 - 2x - 5$. Test $2.0945$ and $2.0955$.</p>
+          <p>$\mathrm{f}(2.0945) = -0.000575\ldots &lt; 0$</p>
+          <p>$\mathrm{f}(2.0955) = 0.0106\ldots &gt; 0$</p>
+          <p>Change of sign, $\mathrm{f}$ continuous, so $2.0945 &lt; \alpha &lt; 2.0955$ and $\alpha = 2.095$ to $3$ d.p.</p>
+          <p><em>Note:</em> $\mathrm{f}(2.0945)$ is very small — the root ($2.09455\ldots$) is only just above the lower bound. That is why you must work to enough significant figures.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A student finds that $\tan 1 &gt; 0$ and $\tan 2 &lt; 0$ and concludes that $\tan x = 0$ has a root between $1$ and $2$. Explain the error.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tan 1 = 1.557\ldots$ and $\tan 2 = -2.185\ldots$, so the signs are indeed different.</p>
+          <p>But $\tan x$ has a vertical asymptote at $x = \dfrac{\pi}{2} = 1.5707\ldots$, which lies between $1$ and $2$. The function is not continuous for $1 \leqslant x \leqslant 2$, so the change of sign principle does not apply.</p>
+          <p>In fact the roots of $\tan x = 0$ are $x = 0, \pm\pi, \ldots$ — none lies between $1$ and $2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = 4x^2 - 4x + 1$. Show that $\mathrm{f}(0)$ and $\mathrm{f}(1)$ have the same sign. Does this mean there is no root with $0 \leqslant x \leqslant 1$?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(0) = 1$ and $\mathrm{f}(1) = 4 - 4 + 1 = 1$, both positive.</p>
+          <p>No: $\mathrm{f}(x) = (2x - 1)^2$, which has a repeated root at $x = 0.5$. The graph touches the axis there without crossing, so there is no sign change even though there is a root.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = x^3 - 3x - 1$. Given $\mathrm{f}(-2) = -3$ and $\mathrm{f}(2) = 1$, a student says "there is one root between $-2$ and $2$". By evaluating $\mathrm{f}(-1)$ and $\mathrm{f}(0)$, show that there are in fact three roots, and give an interval of width $1$ for each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(-1) = -1 + 3 - 1 = 1$ and $\mathrm{f}(0) = -1$.</p>
+          <table>
+            <tr><th>$x$</th><td>$-2$</td><td>$-1$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr>
+            <tr><th>$\mathrm{f}(x)$</th><td>$-3$</td><td>$1$</td><td>$-1$</td><td>$-3$</td><td>$1$</td></tr>
+          </table>
+          <p>Sign changes for $-2 &lt; x &lt; -1$, for $-1 &lt; x &lt; 0$ and for $1 &lt; x &lt; 2$: three roots. A cubic has at most three, so these are all of them.</p>
+          <p>The sign change between $-2$ and $2$ only guarantees <em>at least</em> one root.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The equation $2^x = 3x$ has two roots. Show that the larger root lies between $3.3$ and $3.4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = 2^x - 3x$.</p>
+          <p>$\mathrm{f}(3.3) = 2^{3.3} - 9.9 = -0.0508\ldots &lt; 0$</p>
+          <p>$\mathrm{f}(3.4) = 2^{3.4} - 10.2 = 0.356\ldots &gt; 0$</p>
+          <p>Change of sign and $\mathrm{f}$ continuous, so a root lies in $3.3 &lt; x &lt; 3.4$. (The other root satisfies $0 &lt; x &lt; 1$, as in Worked Example 3.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The amount of a drug in a patient's bloodstream, in mg, $t$ hours after an injection is modelled by $D = 20t\,\mathrm{e}^{-0.5t}$. The drug is effective while $D \geqslant 10$.</p>
+      <p>(a) Show that $D = 10$ when $20t\,\mathrm{e}^{-0.5t} - 10 = 0$ has a root between $t = 0.7$ and $t = 0.8$.<br>(b) Show that there is a second root between $t = 4$ and $t = 5$.<br>(c) Show that the first root is $0.71$ correct to $2$ decimal places.<br>(d) Given that the second root is $4.31$ to $2$ d.p., estimate for how long the drug is effective.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{g}(t) = 20t\,\mathrm{e}^{-0.5t} - 10$, which is continuous.</p>
+          <p><strong>(a)</strong> $\mathrm{g}(0.7) = -0.134\ldots &lt; 0$ and $\mathrm{g}(0.8) = 0.725\ldots &gt; 0$. Change of sign, so a root lies in $0.7 &lt; t &lt; 0.8$.</p>
+          <p><strong>(b)</strong> $\mathrm{g}(4) = 0.827\ldots &gt; 0$ and $\mathrm{g}(5) = -1.79\ldots &lt; 0$. Change of sign, so a root lies in $4 &lt; t &lt; 5$.</p>
+          <p><strong>(c)</strong> $\mathrm{g}(0.705) = -0.0887\ldots &lt; 0$ and $\mathrm{g}(0.715) = 0.00174\ldots &gt; 0$. Change of sign, so the root lies in $0.705 &lt; t &lt; 0.715$ and equals $0.71$ to $2$ d.p.</p>
+          <p><strong>(d)</strong> $D \geqslant 10$ between the two roots, so the drug is effective for about $4.31 - 0.71 = 3.6$ hours.</p>
+          <p><em>Check:</em> at $t = 2$ (between the roots) $D = 40\mathrm{e}^{-1} = 14.7 &gt; 10$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Locating Roots &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

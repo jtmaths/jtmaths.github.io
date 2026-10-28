@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordinate Geometry Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Coordinate Geometry Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Coordinate geometry</strong> turns pictures into equations. Once a line or a circle has an equation, geometric questions — Do these lines cross? Is this angle a right angle? Does this line touch the circle? — become algebra questions you can answer with certainty.</p>
+
+  <div class="concept">
+    Every problem in this topic rests on <strong>four facts</strong>: the gradient between two points, the distance between two points, the midpoint of two points, and the rule $m_1 m_2 = -1$ for perpendicular lines. Lines and circles are both built from these.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    $y - y_1 = m(x - x_1)$ and $ax + by + c = 0$ &middot; lines in context<br>
+    Circles with any centre: $(x-a)^2 + (y-b)^2 = r^2$<br>
+    Completing the square to find a centre &middot; the discriminant for tangency
+  </div>
+
+  <div class="tip">
+    <strong>Always sketch.</strong> A rough diagram with the points roughly in the right place costs ten seconds and shows you immediately whether an answer like "centre $(-3, 2)$" is plausible. This is DfE content area <strong>C · Coordinate geometry in the $(x, y)$ plane</strong>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Gradient</strong></td><td>Change in $y$ divided by change in $x$; steepness.</td><td>$y = 3x - 1$ has gradient $3$</td></tr>
+    <tr><td><strong>Intercept</strong></td><td>Where a graph crosses an axis.</td><td>$y = 3x - 1$ crosses the $y$-axis at $(0, -1)$</td></tr>
+    <tr><td><strong>Parallel</strong></td><td>Same direction; equal gradients.</td><td>$y = 2x$ and $y = 2x + 5$</td></tr>
+    <tr><td><strong>Perpendicular</strong></td><td>At right angles; gradients multiply to $-1$.</td><td>$y = 2x$ and $y = -\tfrac12 x$</td></tr>
+    <tr><td><strong>Collinear</strong></td><td>Lying on one straight line.</td><td>$(0, 0)$, $(1, 2)$, $(3, 6)$</td></tr>
+    <tr><td><strong>Perpendicular bisector</strong></td><td>The line at right angles to $AB$ through its midpoint.</td><td>All points equidistant from $A$ and $B$</td></tr>
+    <tr><td><strong>Chord</strong></td><td>A line segment joining two points of a circle.</td><td>A diameter is the longest chord</td></tr>
+    <tr><td><strong>Tangent</strong></td><td>A line touching a circle at exactly one point.</td><td>Perpendicular to the radius there</td></tr>
+    <tr><td><strong>Discriminant</strong></td><td>$b^2 - 4ac$ for a quadratic $ax^2 + bx + c$.</td><td>$= 0$ means a repeated root (tangency)</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>"Exact" means no decimals.</strong> A length like $\sqrt{45}$ should be left as $3\sqrt5$, not $6.708\ldots$. Simplifying surds from <a href="../algebra/indices-surds.html">Indices and Surds</a> is used constantly here.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Six Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Gradient, midpoint and distance</div>
+    $m = \dfrac{y_2 - y_1}{x_2 - x_1}$ &nbsp;&middot;&nbsp; $\left(\dfrac{x_1 + x_2}{2}, \dfrac{y_1 + y_2}{2}\right)$ &nbsp;&middot;&nbsp; $\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Equation of a line</div>
+    $y - y_1 = m(x - x_1)$, then tidy into $y = mx + c$ or $ax + by + c = 0$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Parallel and perpendicular</div>
+    Parallel: $m_1 = m_2$ &nbsp;&middot;&nbsp; Perpendicular: $m_1 m_2 = -1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Equation of a circle</div>
+    $(x - a)^2 + (y - b)^2 = r^2$: centre $(a, b)$, radius $r$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Completing the square</div>
+    $x^2 + y^2 + px + qy + c = 0 \;\to\; \left(x + \tfrac{p}{2}\right)^2 + \left(y + \tfrac{q}{2}\right)^2 = \tfrac{p^2}{4} + \tfrac{q^2}{4} - c$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">6 — Line meets circle</div>
+    Substitute, form a quadratic, use the discriminant: $>0$ two points, $=0$ tangent, $<0$ none
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>The circle $x^2 + y^2 - 4x + 2y - 20 = 0$ has centre $C$. The point $P(5, 3)$ lies on the circle. Find the equation of the tangent at $P$, and where it crosses the $y$-axis.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Complete the square: $(x - 2)^2 - 4 + (y + 1)^2 - 1 - 20 = 0$, so $(x-2)^2 + (y+1)^2 = 25$. Centre $C(2, -1)$, radius $5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Check $P$: $3^2 + 4^2 = 25$ ✓</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Gradient of $CP$: $\dfrac{3 - (-1)}{5 - 2} = \dfrac43$, so the tangent gradient is $-\tfrac34$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y - 3 = -\tfrac34(x - 5) \;\Rightarrow\; 4y - 12 = -3x + 15 \;\Rightarrow\; 3x + 4y - 27 = 0$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>On the $y$-axis $x = 0$: $4y = 27$, so the tangent crosses at $\left(0, \tfrac{27}{4}\right)$.</span></div>
+      <div class="tip">This uses completing the square, the perpendicular gradient rule, the point–gradient form and an intercept — four techniques for one question, which is typical.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Coordinate Geometry Subtopics</div>
+<div class="section-body">
+
+  <p>The content of DfE area C, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">C</span><span><a href="straight-lines.html">Straight Lines</a><span class="desc">$y - y_1 = m(x - x_1)$ and $ax + by + c = 0$; parallel and perpendicular lines; midpoints, distances and intersections; straight-line models.</span></span></li>
+    <li><span class="code">C</span><span><a href="circles.html">Circles</a><span class="desc">$(x-a)^2 + (y-b)^2 = r^2$; completing the square; angle in a semicircle, chords and tangents; the discriminant for line–circle intersections.</span></span></li>
+  </ul>
+
+  <p>Year 2 extends this topic to curves given by <strong>parametric equations</strong>.</p>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Reading the gradient straight off $ax + by + c = 0$.</strong> The gradient of $2x + 3y = 6$ is not $2$. Rearrange: $y = -\tfrac23 x + 2$, so $m = -\tfrac23$.
+  </div>
+
+  <div class="warn">
+    <strong>Half the perpendicular rule.</strong> The perpendicular to gradient $\tfrac25$ is $-\tfrac52$: flip <em>and</em> change sign. $-\tfrac25$ and $\tfrac52$ are both wrong.
+  </div>
+
+  <div class="warn">
+    <strong>Wrong signs for the centre.</strong> $(x + 3)^2 + (y - 2)^2 = 16$ has centre $(-3, 2)$, not $(3, -2)$.
+  </div>
+
+  <div class="warn">
+    <strong>Giving $r^2$ as the radius.</strong> In $(x-1)^2 + y^2 = 20$ the radius is $\sqrt{20} = 2\sqrt5$, not $20$.
+  </div>
+
+  <div class="warn">
+    <strong>Subtracting the wrong way in a gradient.</strong> Keep the same order on top and bottom: $\dfrac{y_2 - y_1}{x_2 - x_1}$, never $\dfrac{y_2 - y_1}{x_1 - x_2}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Gradient</h4><p>$\dfrac{y_2 - y_1}{x_2 - x_1}$</p></div>
+    <div class="ref-card"><h4>Line</h4><p>$y - y_1 = m(x - x_1)$</p></div>
+    <div class="ref-card"><h4>Perpendicular</h4><p>$m_1 m_2 = -1$</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>Average the coordinates.</p></div>
+    <div class="ref-card"><h4>Distance</h4><p>Pythagoras on the changes in $x$ and $y$.</p></div>
+    <div class="ref-card"><h4>Circle</h4><p>$(x-a)^2 + (y-b)^2 = r^2$</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>Perpendicular to the radius.</p></div>
+    <div class="ref-card"><h4>Chord</h4><p>Perpendicular bisector goes through the centre.</p></div>
+    <div class="ref-card"><h4>Semicircle</h4><p>Angle subtended by a diameter is $90°$.</p></div>
+    <div class="ref-card"><h4>Discriminant</h4><p>$b^2 - 4ac = 0$ means tangent.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Coordinate Geometry topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the gradient of the line through $(-1, 3)$ and $(3, 11)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$m = \dfrac{11 - 3}{3 - (-1)} = \dfrac{8}{4} = 2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the equation of the line through $(2, 1)$ perpendicular to $y = \tfrac12 x + 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Perpendicular gradient: $-2$.</p>
+          <p>$y - 1 = -2(x - 2)$, so $y = -2x + 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the distance between $(1, -2)$ and $(7, 6)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{6^2 + 8^2} = \sqrt{100} = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Write $4x - 6y + 3 = 0$ in the form $y = mx + c$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$6y = 4x + 3$, so $y = \tfrac23 x + \tfrac12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>State the centre and the exact radius of $(x - 2)^2 + (y + 3)^2 = 20$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Centre $(2, -3)$. Radius $\sqrt{20} = 2\sqrt5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the centre and radius of $x^2 + y^2 - 8x + 2y - 8 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x - 4)^2 - 16 + (y + 1)^2 - 1 - 8 = 0$</p>
+          <p>$(x - 4)^2 + (y + 1)^2 = 25$: centre $(4, -1)$, radius $5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Does the point $(1, 2)$ lie inside, on or outside the circle in Question 6?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(1 - 4)^2 + (2 + 1)^2 = 9 + 9 = 18$.</p>
+          <p>$18 < 25$, so the point is <strong>inside</strong> the circle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the values of $c$ for which $y = x + c$ is a tangent to $x^2 + y^2 = 18$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + (x + c)^2 = 18 \;\Rightarrow\; 2x^2 + 2cx + c^2 - 18 = 0$</p>
+          <p>Discriminant $= 4c^2 - 8(c^2 - 18) = 144 - 4c^2$</p>
+          <p>Tangent when $144 - 4c^2 = 0$, so $c^2 = 36$ and $c = \pm 6$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find where the line $x + y = 7$ meets the circle $x^2 + y^2 = 25$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 7 - x$: $x^2 + (7 - x)^2 = 25 \;\Rightarrow\; 2x^2 - 14x + 24 = 0 \;\Rightarrow\; x^2 - 7x + 12 = 0$</p>
+          <p>$(x - 3)(x - 4) = 0$, so $x = 3$ or $4$.</p>
+          <p>Points $(3, 4)$ and $(4, 3)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A garden is modelled on coordinate axes with units of metres. A sprinkler at $S(4, 3)$ waters every point within $5$ m of it. A straight path follows the line $y = x - 6$.</p>
+      <p>(a) Write down the equation of the boundary of the watered region. &nbsp; (b) Find the coordinates of the ends of the section of path that gets wet. &nbsp; (c) Find the length of path that gets wet, to 3 significant figures. &nbsp; (d) Find the shortest distance from the sprinkler to the path.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(x - 4)^2 + (y - 3)^2 = 25$</p>
+          <p><strong>(b)</strong> Substitute $y = x - 6$: $(x - 4)^2 + (x - 9)^2 = 25$</p>
+          <p>$2x^2 - 26x + 97 - 25 = 0 \;\Rightarrow\; x^2 - 13x + 36 = 0 \;\Rightarrow\; (x - 4)(x - 9) = 0$</p>
+          <p>Ends at $(4, -2)$ and $(9, 3)$.</p>
+          <p><strong>(c)</strong> $\sqrt{5^2 + 5^2} = 5\sqrt2 \approx 7.07$ m.</p>
+          <p><strong>(d)</strong> The perpendicular from the centre bisects the chord, so the closest point is the midpoint $(6.5, 0.5)$.</p>
+          <p>Distance $= \sqrt{2.5^2 + 2.5^2} = 2.5\sqrt2 \approx 3.54$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Coordinate Geometry Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

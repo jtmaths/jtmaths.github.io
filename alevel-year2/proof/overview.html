@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 Proof Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>A <strong>proof</strong> is a chain of logical steps that shows a statement is true in <em>every</em> case it claims to cover. Checking examples, however many, is not a proof: it only shows that the statement has not failed <em>yet</em>.</p>
+
+  <div class="concept">
+    In Year 1 you met three methods: <strong>deduction</strong>, <strong>exhaustion</strong> and <strong>disproof by counter-example</strong>. Year 2 adds a fourth, <strong>proof by contradiction</strong>, which is the method of choice when a direct argument has nothing to get hold of.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">DfE content area A · Proof</div>
+    Understand and use the structure of mathematical proof, proceeding from given assumptions through a series of logical steps to a conclusion<br>
+    Use methods of proof, including proof by deduction, proof by exhaustion, disproof by counter-example, and proof by contradiction
+  </div>
+
+  <div class="tip">
+    <strong>Proof is examined everywhere.</strong> A question on trigonometric identities, sequences or calculus can end with "prove that…". The methods on this page are tools you will carry into every other topic.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word or symbol</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Statement</strong></td><td>A sentence that is either true or false.</td><td>"$17$ is prime."</td></tr>
+    <tr><td><strong>Conjecture</strong></td><td>A statement believed to be true but not yet proved.</td><td>"Every even number greater than $2$ is the sum of two primes."</td></tr>
+    <tr><td><strong>Theorem</strong></td><td>A statement that has been proved.</td><td>Pythagoras' theorem</td></tr>
+    <tr><td>$\Rightarrow$</td><td>"implies": if the left is true, so is the right.</td><td>$x = 3 \Rightarrow x^2 = 9$</td></tr>
+    <tr><td>$\Leftarrow$</td><td>"is implied by".</td><td>$x^2 = 9 \Leftarrow x = -3$</td></tr>
+    <tr><td>$\Leftrightarrow$</td><td>"if and only if": each implies the other.</td><td>$2x + 1 = 7 \Leftrightarrow x = 3$</td></tr>
+    <tr><td><strong>Negation</strong></td><td>The statement that is true exactly when the original is false.</td><td>"$n$ is even" negates to "$n$ is odd" (for integers)</td></tr>
+    <tr><td>$\mathbb{Z},\ \mathbb{Q},\ \mathbb{R}$</td><td>Integers, rational numbers, real numbers.</td><td>$\tfrac{3}{4} \in \mathbb{Q}$, &nbsp;$\sqrt{2} \notin \mathbb{Q}$</td></tr>
+    <tr><td><strong>Rational</strong></td><td>Can be written $\dfrac{a}{b}$ with $a, b \in \mathbb{Z}$ and $b \neq 0$.</td><td>$0.125 = \tfrac{1}{8}$</td></tr>
+    <tr><td><strong>Irrational</strong></td><td>Real, but not rational.</td><td>$\sqrt{2}$, $\pi$, $\mathrm{e}$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>$\Rightarrow$ is one-way.</strong> $x = 3 \Rightarrow x^2 = 9$ is true, but $x^2 = 9 \Rightarrow x = 3$ is false (take $x = -3$). Only write $\Leftrightarrow$ when the argument genuinely works in both directions.
+  </div>
+
+  <div class="concept">
+    <strong>Standard algebraic forms.</strong> For an integer $n$: an even number is $2n$, an odd number is $2n+1$, consecutive integers are $n, n+1, n+2$, and a multiple of $3$ is $3n$. Every integer is one of $3n$, $3n+1$ or $3n+2$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE FOUR METHODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Four Methods of Proof</div>
+<div class="section-body">
+
+  <p>The first three are recapped in full on the Year 1 page <a href="../../alevel-year1/proof/overview.html">Proof Overview</a>.</p>
+
+  <div class="formula-box">
+    <div class="label">1 — Proof by deduction (Year 1)</div>
+    Start from known facts and definitions; use algebra to reach the conclusion directly
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Proof by exhaustion (Year 1)</div>
+    Split into a finite number of cases that cover every possibility, and prove each one
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Disproof by counter-example (Year 1)</div>
+    One example where the statement fails is enough to show it is false
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Proof by contradiction (Year 2)</div>
+    Assume the statement is false; deduce something impossible; conclude the statement is true
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Deduction</div>
+    <div class="example-body">
+      <p>Prove that the difference between the squares of two consecutive odd numbers is a multiple of $8$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the odd numbers be $2n+1$ and $2n+3$, where $n \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(2n+3)^2 - (2n+1)^2 = (4n^2 + 12n + 9) - (4n^2 + 4n + 1)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 8n + 8 = 8(n+1)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n + 1$ is an integer, so the difference is a multiple of $8$. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Exhaustion</div>
+    <div class="example-body">
+      <p>Prove that no square number ends in the digit $7$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The last digit of $n^2$ depends only on the last digit of $n$, which is one of $0, 1, \ldots, 9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Squares of $0$ to $9$ end in $0, 1, 4, 9, 6, 5, 6, 9, 4, 1$ respectively.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>None of the ten cases ends in $7$, and the cases cover every integer. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Counter-example</div>
+    <div class="example-body">
+      <p>Show that the statement "$2^n - 1$ is prime for every prime $n$" is false.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$n = 2, 3, 5, 7$ give $3, 7, 31, 127$, all prime. This proves nothing.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = 11$: $2^{11} - 1 = 2047 = 23 \times 89$, which is not prime.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n = 11$ is a counter-example, so the statement is false.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WHERE CONTRADICTION FITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Where Contradiction Fits</div>
+<div class="section-body">
+
+  <p>Some statements are hard to attack directly because they say something <em>cannot</em> happen, or that something goes on <em>for ever</em>. "$\sqrt{2}$ is not a fraction." "There is no largest prime." There is no obvious first line for a deduction. Contradiction gives you one: <strong>suppose it can happen</strong>, and follow the consequences.</p>
+
+  <table>
+    <tr><th>The statement says…</th><th>Usually prove by…</th></tr>
+    <tr><td>"For all integers $n$, an expression is even / a multiple of $k$"</td><td>Deduction, often with cases (exhaustion)</td></tr>
+    <tr><td>"For all $n$ from $1$ to $10$…" or "for every digit…"</td><td>Exhaustion</td></tr>
+    <tr><td>"Every…" when you suspect it is false</td><td>Counter-example</td></tr>
+    <tr><td>"…is irrational", "there are infinitely many…", "there is no largest/smallest…", "…has no integer solutions"</td><td>Contradiction</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A first proof by contradiction</div>
+    <div class="example-body">
+      <p>Prove that there is no largest integer.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume the opposite:</strong> there is a largest integer, $N$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$N + 1$ is also an integer, and $N + 1 > N$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>This contradicts the assumption that $N$ is the largest.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So the assumption is false: there is no largest integer. $\blacksquare$</span></div>
+      <div class="tip">Every proof by contradiction has this shape: <strong>assume</strong>, <strong>deduce</strong>, <strong>contradict</strong>, <strong>conclude</strong>. Examiners look for the first line and the last line as much as the middle.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> The Proof Subtopics</div>
+<div class="section-body">
+
+  <p>The Year 2 page, and the Year 1 pages it builds on.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">A</span><span><a href="contradiction.html">Proof by Contradiction</a><span class="desc">Negating a statement, the irrationality of $\sqrt{2}$, infinitely many primes, and results such as $a^2 - 4b \neq 2$.</span></span></li>
+    <li><span class="code">Y1</span><span><a href="../../alevel-year1/proof/deduction-exhaustion.html">Proof by Deduction and Exhaustion</a><span class="desc">Direct algebraic proof, and splitting into cases. (Year 1 recap.)</span></span></li>
+    <li><span class="code">Y1</span><span><a href="../../alevel-year1/proof/counter-examples.html">Disproof by Counter-example</a><span class="desc">One failing case is enough. (Year 1 recap.)</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Proof by example.</strong> Showing that a result works for $n = 1, 2, 3$ is not a proof unless those are the <em>only</em> cases (exhaustion).
+  </div>
+
+  <div class="warn">
+    <strong>Using one letter for two numbers.</strong> "Let the two odd numbers be $2n+1$ and $2n+1$" proves the result only for two equal numbers. Use $2m+1$ and $2n+1$.
+  </div>
+
+  <div class="warn">
+    <strong>Negating wrongly.</strong> The opposite of "$\sqrt{2}$ is irrational" is "$\sqrt{2}$ is rational", not "$\sqrt{2}$ is an integer". The opposite of "there are infinitely many primes" is "there are finitely many primes".
+  </div>
+
+  <div class="warn">
+    <strong>Assuming what you are trying to prove.</strong> In a proof by deduction, start from the left-hand side and reach the right. Do not start by writing the result and "checking" it.
+  </div>
+
+  <div class="warn">
+    <strong>No conclusion.</strong> End with a sentence that restates what has been proved. In a proof by contradiction, say explicitly that the assumption was false.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Even / odd</h4><p>$2n$ and $2n+1$, with $n \in \mathbb{Z}$.</p></div>
+    <div class="ref-card"><h4>Deduction</h4><p>Known facts $\to$ logical steps $\to$ result.</p></div>
+    <div class="ref-card"><h4>Exhaustion</h4><p>Finite list of cases that covers everything.</p></div>
+    <div class="ref-card"><h4>Counter-example</h4><p>One failure disproves a "for all" statement.</p></div>
+    <div class="ref-card"><h4>Contradiction</h4><p>Assume false, reach an impossibility, conclude true.</p></div>
+    <div class="ref-card"><h4>Rational</h4><p>$\dfrac{a}{b}$ with $a, b \in \mathbb{Z}$, $b \neq 0$.</p></div>
+    <div class="ref-card"><h4>$\Rightarrow$ vs $\Leftrightarrow$</h4><p>Only use $\Leftrightarrow$ if it works both ways.</p></div>
+    <div class="ref-card"><h4>Finish</h4><p>A concluding sentence, or $\blacksquare$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions using all four methods. Decide which method to use before you start writing.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Prove that the sum of any three consecutive integers is a multiple of $3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the integers be $n$, $n+1$, $n+2$ with $n \in \mathbb{Z}$.</p>
+          <p>Sum $= 3n + 3 = 3(n+1)$, and $n+1$ is an integer.</p>
+          <p>So the sum is a multiple of $3$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Show that the statement "if $a > b$ then $a^2 > b^2$" is false.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Take $a = 1$, $b = -2$. Then $a > b$.</p>
+          <p>But $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.</p>
+          <p>This counter-example shows the statement is false. (It is true when $a$ and $b$ are both non-negative.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Write down the negation of each statement. &nbsp; (a) "$x$ is irrational." &nbsp; (b) "There are infinitely many prime numbers." &nbsp; (c) "There is a largest even number." &nbsp; (d) "$n^2$ is even." (with $n$ an integer)</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> "$x$ is rational."</p>
+          <p><strong>(b)</strong> "There are finitely many prime numbers."</p>
+          <p><strong>(c)</strong> "There is no largest even number."</p>
+          <p><strong>(d)</strong> "$n^2$ is odd."</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Prove that the product of any two odd numbers is odd.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the odd numbers be $2m+1$ and $2n+1$, where $m, n \in \mathbb{Z}$.</p>
+          <p>$(2m+1)(2n+1) = 4mn + 2m + 2n + 1 = 2(2mn + m + n) + 1$</p>
+          <p>$2mn + m + n$ is an integer, so the product has the form $2k + 1$ and is odd. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Prove by exhaustion that $n^3 - n$ is a multiple of $3$ for every integer $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Factorise: $n^3 - n = (n-1)n(n+1)$. Every integer is $3k$, $3k+1$ or $3k+2$.</p>
+          <p>$n = 3k$: the factor $n$ is a multiple of $3$.</p>
+          <p>$n = 3k + 1$: the factor $n - 1 = 3k$ is a multiple of $3$.</p>
+          <p>$n = 3k + 2$: the factor $n + 1 = 3k + 3 = 3(k+1)$ is a multiple of $3$.</p>
+          <p>In every case one factor is a multiple of $3$, so $n^3 - n$ is too. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Prove by contradiction that there is no smallest positive rational number.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> there is a smallest positive rational number, $q$.</p>
+          <p>Then $\dfrac{q}{2}$ is also rational (if $q = \tfrac{a}{b}$ then $\tfrac{q}{2} = \tfrac{a}{2b}$) and positive.</p>
+          <p>But $\dfrac{q}{2} < q$, contradicting the assumption that $q$ is the smallest.</p>
+          <p>So there is no smallest positive rational number. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Prove that $x^2 - 6x + 10 > 0$ for all real $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Complete the square: $x^2 - 6x + 10 = (x - 3)^2 + 1$.</p>
+          <p>$(x-3)^2 \geqslant 0$ for all real $x$, so $(x-3)^2 + 1 \geqslant 1 > 0$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Ali claims that "$n^2 + n + 41$ is prime for every positive integer $n$." He has checked $n = 1$ to $n = 10$. Explain why this does not prove the claim, and show that the claim is false.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Checking ten cases says nothing about the infinitely many other positive integers.</p>
+          <p>Take $n = 41$: $41^2 + 41 + 41 = 41(41 + 1 + 1) = 41 \times 43$, which is not prime.</p>
+          <p>So $n = 41$ is a counter-example. (In fact $n = 40$ also works: $40^2 + 40 + 41 = 1681 = 41^2$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Prove by contradiction that there are no integers $a$ and $b$ for which $6a + 9b = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> there are integers $a$ and $b$ with $6a + 9b = 1$.</p>
+          <p>Then $3(2a + 3b) = 1$, so $2a + 3b = \dfrac{1}{3}$.</p>
+          <p>But $2a + 3b$ is an integer and $\tfrac{1}{3}$ is not — a contradiction.</p>
+          <p>So no such integers exist. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Prove that, for any integer $n$, $n^2$ leaves a remainder of $0$ or $1$ when divided by $4$. &nbsp; (b) Hence prove by contradiction that no integer of the form $4k + 3$ can be written as the sum of two square numbers. &nbsp; (c) Find the smallest positive integer of the form $4k + 1$ that is <em>not</em> the sum of two squares (where $0$ counts as a square), and explain what this shows about the statement "every number of the form $4k+1$ is a sum of two squares".</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> (Exhaustion.) If $n = 2m$ then $n^2 = 4m^2$, remainder $0$.</p>
+          <p>If $n = 2m + 1$ then $n^2 = 4m^2 + 4m + 1 = 4(m^2 + m) + 1$, remainder $1$. $\blacksquare$</p>
+          <p><strong>(b)</strong> <strong>Assume</strong> $4k + 3 = a^2 + b^2$ for some integers $a, b, k$.</p>
+          <p>By (a), $a^2$ and $b^2$ each leave remainder $0$ or $1$ on division by $4$, so $a^2 + b^2$ leaves remainder $0$, $1$ or $2$.</p>
+          <p>But $4k + 3$ leaves remainder $3$ — a contradiction. So no such $a$, $b$ exist. $\blacksquare$</p>
+          <p><strong>(c)</strong> Check in turn: $1 = 1 + 0$, $5 = 4 + 1$, $9 = 9 + 0$, $13 = 9 + 4$, $17 = 16 + 1$.</p>
+          <p>$21$: the squares below $21$ are $0, 1, 4, 9, 16$, and $21 - 0 = 21$, $21 - 1 = 20$, $21 - 4 = 17$, $21 - 9 = 12$, $21 - 16 = 5$ — none is a square.</p>
+          <p>So $21$ is the smallest. It is a counter-example, which shows the statement is <strong>false</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Proof Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

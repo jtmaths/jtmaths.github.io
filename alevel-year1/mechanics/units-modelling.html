@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantities, Units and Modelling &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 Quantities, Units and Modelling</h1>
+  <p>A Level Maths Year 1 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – SI UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> SI Base Units</div>
+<div class="section-body">
+
+  <p>Mechanics begins with measurement (DfE content area P · Quantities and units in mechanics). Every quantity you meet is built from just three <strong>SI base units</strong>.</p>
+
+  <table>
+    <tr><th>Quantity</th><th>SI unit</th><th>Symbol</th></tr>
+    <tr><td>Length (distance, displacement)</td><td>metre</td><td>m</td></tr>
+    <tr><td>Time</td><td>second</td><td>s</td></tr>
+    <tr><td>Mass</td><td>kilogram</td><td>kg</td></tr>
+  </table>
+
+  <div class="concept">
+    If every value in a calculation is in <strong>SI units</strong>, the answer comes out in SI units automatically. So the safest first step in any mechanics problem is to <strong>convert everything to metres, seconds and kilograms</strong>.
+  </div>
+
+  <div class="warn">
+    <strong>The kilogram is the base unit, not the gram.</strong> A mass of $500$ g must be written as $0.5$ kg before you use it in $F = ma$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DERIVED UNITS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Derived Units</div>
+<div class="section-body">
+
+  <p>Other units are <strong>derived</strong> by combining the base units in the same way as the quantities combine. A Level notation uses negative indices rather than a slash: m s$^{-1}$ rather than m/s.</p>
+
+  <table>
+    <tr><th>Quantity</th><th>Definition</th><th>Unit</th></tr>
+    <tr><td>Velocity / speed</td><td>displacement ÷ time</td><td>m s$^{-1}$</td></tr>
+    <tr><td>Acceleration</td><td>change in velocity ÷ time</td><td>m s$^{-2}$</td></tr>
+    <tr><td>Force</td><td>mass × acceleration</td><td>newton, N $=$ kg m s$^{-2}$</td></tr>
+    <tr><td>Weight</td><td>mass × $g$</td><td>N</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The newton</div>
+    $1\ \text{N}$ is the force that gives a mass of $1$ kg an acceleration of $1$ m s$^{-2}$: &nbsp;$1\ \text{N} = 1\ \text{kg m s}^{-2}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Converting speeds</div>
+    <div class="example-body">
+      <p>Convert (a) $108$ km h$^{-1}$ and (b) $45$ km h$^{-1}$ to m s$^{-1}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$1$ km h$^{-1}$ $= \dfrac{1000\ \text{m}}{3600\ \text{s}} = \dfrac{1}{3.6}$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(a) $108 \div 3.6 = 30$ m s$^{-1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $45 \div 3.6 = 12.5$ m s$^{-1}$</span></div>
+      <div class="tip"><strong>Sense check:</strong> m s$^{-1}$ values are always smaller than the km h$^{-1}$ values for the same speed — a car at motorway speed ($\approx 110$ km h$^{-1}$) travels about $30$ m every second.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Checking units of a formula</div>
+    <div class="example-body">
+      <p>Show that $\tfrac12 a t^2$ has units of length, where $a$ is an acceleration and $t$ is a time.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Units of $a t^2$: $\text{m s}^{-2} \times \text{s}^2 = \text{m}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The $\tfrac12$ is a pure number with no units, so $\tfrac12 at^2$ is measured in metres — a length ✓</span></div>
+      <div class="tip">Checking units like this is a quick way to spot an error in a rearranged formula: every term in an equation must have the <em>same</em> units.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SCALARS AND VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Scalars and Vectors</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>scalar</strong> has size (magnitude) only. A <strong>vector</strong> has both magnitude <strong>and direction</strong>. Many mechanics words come in scalar–vector pairs.
+  </div>
+
+  <table>
+    <tr><th>Scalar</th><th>Vector partner</th><th>Difference</th></tr>
+    <tr><td>Distance</td><td>Displacement</td><td>Displacement is distance in a stated direction from a fixed origin; it can be negative.</td></tr>
+    <tr><td>Speed</td><td>Velocity</td><td>Speed is the magnitude of velocity; it is never negative.</td></tr>
+    <tr><td>Mass</td><td>Weight</td><td>Mass (kg) is the amount of matter; weight (N) is the gravitational force on it, acting downwards.</td></tr>
+    <tr><td>Time</td><td>—</td><td>Always a scalar.</td></tr>
+    <tr><td>—</td><td>Acceleration, force</td><td>Both are vectors.</td></tr>
+  </table>
+
+  <p>In one dimension, direction is shown by a sign: choose a positive direction and stick to it. In two dimensions, use $\mathbf{i}$ and $\mathbf{j}$ components (see <a href="../vectors/vectors-2d.html">Vectors in Two Dimensions</a>).</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Distance and displacement</div>
+    <div class="example-body">
+      <p>A runner goes $300$ m east along a straight road, then $500$ m west. Taking east as positive, find her final displacement and the total distance travelled.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Displacement $= +300 - 500 = -200$ m, i.e. $200$ m west of the start.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Distance $= 300 + 500 = 800$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Speed from a velocity vector</div>
+    <div class="example-body">
+      <p>A boat has velocity $(6\mathbf{i} - 8\mathbf{j})$ m s$^{-1}$. Find its speed.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Speed $= |6\mathbf{i} - 8\mathbf{j}| = \sqrt{6^2 + (-8)^2} = \sqrt{100} = 10$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The direction is $\tan^{-1}\!\left(\tfrac{8}{6}\right) = 53.1^\circ$ below the $\mathbf{i}$ direction.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – WEIGHT AND g
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Weight and the Acceleration due to Gravity</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Weight</div>
+    $W = mg$, &nbsp; with $g = 9.8$ m s$^{-2}$ unless a question says otherwise
+  </div>
+
+  <div class="concept">
+    Near the Earth's surface every object in free fall (ignoring air resistance) accelerates downwards at the same rate, $g$. The value varies slightly with location; A Level questions use $g = 9.8$ m s$^{-2}$. Because $g$ is given to 2 significant figures, final answers that use it should normally be given to <strong>2 or 3 significant figures</strong>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Weight and mass</div>
+    <div class="example-body">
+      <p>(a) Find the weight of a $65$ kg student. (b) A crate has weight $11\,760$ N. Find its mass.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $W = 65 \times 9.8 = 637$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $m = \dfrac{W}{g} = \dfrac{11\,760}{9.8} = 1200$ kg.</span></div>
+      <div class="warn">Do not say a student "weighs $65$ kg". In mechanics, $65$ kg is the <em>mass</em>; the weight is a force measured in newtons.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – MODELLING ASSUMPTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Modelling Assumptions</div>
+<div class="section-body">
+
+  <p>Real objects are complicated. A <strong>mathematical model</strong> simplifies them so the maths is manageable. Each simplifying word has a precise meaning and a precise consequence.</p>
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Consequence in the model</th></tr>
+    <tr><td><strong>Particle</strong></td><td>The object's size is negligible; all its mass is at one point.</td><td>No rotation; air resistance often ignored; forces all act at one point.</td></tr>
+    <tr><td><strong>Light</strong> (string, rod, pulley)</td><td>Its mass is negligible.</td><td>Tension is the same throughout a light string; a light object has no weight.</td></tr>
+    <tr><td><strong>Inextensible</strong> (string)</td><td>It does not stretch.</td><td>Objects joined by it have the same speed and the same magnitude of acceleration.</td></tr>
+    <tr><td><strong>Smooth</strong> (surface, pulley)</td><td>There is no friction.</td><td>No frictional force; tension is the same on both sides of a smooth pulley.</td></tr>
+    <tr><td><strong>Rough</strong></td><td>Friction acts.</td><td>A frictional force opposes motion (or the tendency to move).</td></tr>
+    <tr><td><strong>Rigid</strong> (rod, body)</td><td>It does not bend or deform.</td><td>Its shape and length stay fixed.</td></tr>
+    <tr><td><strong>Uniform</strong></td><td>Its mass is evenly spread.</td><td>Its weight acts at its geometric centre.</td></tr>
+    <tr><td><strong>Lamina</strong>, <strong>wire</strong>, <strong>bead</strong>, <strong>peg</strong></td><td>Flat object; one-dimensional object; particle threaded on a wire; fixed support.</td><td>Thickness / width ignored; bead moves along the wire only.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Stating and criticising assumptions</div>
+    <div class="example-body">
+      <p>A cricket ball is hit and its path is modelled using $g = 9.8$ m s$^{-2}$ and no other forces. (a) State two modelling assumptions. (b) Suggest one way the model could be improved.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) The ball is modelled as a <strong>particle</strong> (so it does not spin); <strong>air resistance is negligible</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Include air resistance, which would reduce the range and maximum height. (Or: allow for the spin of the ball, or a more accurate value of $g$.)</span></div>
+      <div class="tip">Make improvements <strong>specific to the context</strong>. "Make it more realistic" earns nothing; "include air resistance, which will slow the ball" earns the mark.</div>
+    </div>
+  </div>
+
+  <ul class="steps">
+    <li><span><strong>Set up</strong> a model: draw a diagram, list assumptions, choose axes and a positive direction.</span></li>
+    <li><span><strong>Solve</strong> the mathematical problem.</span></li>
+    <li><span><strong>Interpret</strong> the answer in context, with units and sensible accuracy.</span></li>
+    <li><span><strong>Evaluate</strong>: is the answer reasonable? Which assumption is weakest? Refine the model if needed.</span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Base units</h4><p>m, s, kg.</p></div>
+    <div class="ref-card"><h4>Derived units</h4><p>m s$^{-1}$, m s$^{-2}$, N $=$ kg m s$^{-2}$.</p></div>
+    <div class="ref-card"><h4>km h$^{-1}$ to m s$^{-1}$</h4><p>Divide by $3.6$.</p></div>
+    <div class="ref-card"><h4>Weight</h4><p>$W = mg$, &nbsp;$g = 9.8$ m s$^{-2}$.</p></div>
+    <div class="ref-card"><h4>Scalars</h4><p>Distance, speed, mass, time.</p></div>
+    <div class="ref-card"><h4>Vectors</h4><p>Displacement, velocity, acceleration, force, weight.</p></div>
+    <div class="ref-card"><h4>Particle</h4><p>No size: no rotation, all forces at a point.</p></div>
+    <div class="ref-card"><h4>Light, inextensible string</h4><p>Same tension throughout; connected objects share the same acceleration.</p></div>
+    <div class="ref-card"><h4>Smooth</h4><p>No friction.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Take $g = 9.8$ m s$^{-2}$ throughout.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write down the SI units of (a) velocity, (b) acceleration, (c) force, in base units.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) m s$^{-1}$ &nbsp; (b) m s$^{-2}$ &nbsp; (c) kg m s$^{-2}$ (the newton)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Convert $72$ km h$^{-1}$ to m s$^{-1}$, and $15$ m s$^{-1}$ to km h$^{-1}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$72 \div 3.6 = 20$ m s$^{-1}$.</p>
+          <p>$15 \times 3.6 = 54$ km h$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Classify each as a scalar or a vector: speed, weight, mass, displacement, time, acceleration.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Scalars:</strong> speed, mass, time.</p>
+          <p><strong>Vectors:</strong> weight, displacement, acceleration.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the weight of a bag of flour of mass $1.5$ kg, and the mass of a box of weight $49$ N.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$W = 1.5 \times 9.8 = 14.7$ N.</p>
+          <p>$m = 49 \div 9.8 = 5$ kg.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A particle has velocity $(-2\mathbf{i} + 5\mathbf{j})$ m s$^{-1}$. Find its speed, and the angle its direction of motion makes with the $\mathbf{j}$ direction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Speed $= \sqrt{(-2)^2 + 5^2} = \sqrt{29} = 5.39$ m s$^{-1}$ (3 s.f.).</p>
+          <p>The velocity has $5$ units along $\mathbf{j}$ and $2$ units against $\mathbf{i}$, so the angle with $\mathbf{j}$ is $\tan^{-1}\!\left(\tfrac{2}{5}\right) = 21.8^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A bus travels $4$ km north, then $1.5$ km south. Taking north as positive, find its displacement and the distance it has travelled.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Displacement $= 4 - 1.5 = 2.5$ km, i.e. $2500$ m north.</p>
+          <p>Distance $= 4 + 1.5 = 5.5$ km $= 5500$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain what is meant by modelling a string as (a) light, (b) inextensible, and give the consequence of each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) <strong>Light:</strong> the mass of the string is negligible, so the tension is the same all the way along it.</p>
+          <p>(b) <strong>Inextensible:</strong> the string does not stretch, so particles joined by it move with the same speed and acceleration (in magnitude).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A student writes the formula $s = ut + \tfrac12 a t$ for displacement. Use units to show the formula must be wrong.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$ut$ has units m s$^{-1}$ × s $=$ m ✓.</p>
+          <p>$at$ has units m s$^{-2}$ × s $=$ m s$^{-1}$, a velocity, not a length.</p>
+          <p>You cannot add a length to a velocity, so the formula is wrong. (The correct term is $\tfrac12 at^2$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A density of $2.7$ g cm$^{-3}$ is given for aluminium. Convert this to kg m$^{-3}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1$ g $= 10^{-3}$ kg and $1$ cm$^3$ $= (10^{-2})^3$ m$^3$ $= 10^{-6}$ m$^3$.</p>
+          <p>$2.7$ g cm$^{-3}$ $= \dfrac{2.7 \times 10^{-3}}{10^{-6}}$ kg m$^{-3}$ $= 2700$ kg m$^{-3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A child of mass $25$ kg slides down a playground slide. The motion is modelled with the child as a particle on a smooth, straight, rigid slide.</p>
+      <p>(a) Find the weight of the child. &nbsp; (b) Explain what each of the words <em>particle</em>, <em>smooth</em> and <em>rigid</em> means here. &nbsp; (c) The model predicts a speed at the bottom of $7.7$ m s$^{-1}$, but the child is measured at $5.2$ m s$^{-1}$. Suggest which assumption is most responsible and how to refine the model.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $W = 25 \times 9.8 = 245$ N.</p>
+          <p><strong>(b)</strong> <em>Particle:</em> the child's size is ignored, so all forces act at one point and there is no rotation. <em>Smooth:</em> there is no friction between the child and the slide. <em>Rigid:</em> the slide does not bend under the child's weight.</p>
+          <p><strong>(c)</strong> The measured speed is much lower, so a resistive force has been ignored. The "smooth" assumption is most responsible: in reality friction (and some air resistance) acts. Refine the model by treating the slide as rough and including a frictional force.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Quantities, Units and Modelling &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

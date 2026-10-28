@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectors in Two Dimensions &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>↗️ Vectors in Two Dimensions</h1>
+  <p>A Level Maths Year 1 · Vectors</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – NOTATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Vector Is, and How to Write One</div>
+<div class="section-body">
+
+  <p>A <strong>scalar</strong> has size only (mass $5$ kg, speed $12$ m s$^{-1}$). A <strong>vector</strong> has size <em>and</em> direction (a force of $5$ N upwards, a velocity of $12$ m s$^{-1}$ due east). This page is DfE content area <strong>J · Vectors</strong>; in Year 1 every vector is two-dimensional.</p>
+
+  <table>
+    <tr><th>Notation</th><th>Example</th><th>Notes</th></tr>
+    <tr><td>Bold lower case (printed)</td><td>$\mathbf{a}$</td><td>Handwritten as $\underline{a}$ — underline it, or you lose the distinction from a number.</td></tr>
+    <tr><td>Arrow between points</td><td>$\overrightarrow{AB}$</td><td>The displacement from $A$ to $B$.</td></tr>
+    <tr><td>$\mathbf{i}, \mathbf{j}$ form</td><td>$3\mathbf{i} + 4\mathbf{j}$</td><td>$\mathbf{i}$ and $\mathbf{j}$ are unit vectors along the $x$- and $y$-axes.</td></tr>
+    <tr><td>Column vector</td><td>$\begin{pmatrix} 3 \\ 4 \end{pmatrix}$</td><td>Exactly the same vector as $3\mathbf{i} + 4\mathbf{j}$.</td></tr>
+  </table>
+
+  <div class="svg-block">
+    <svg width="240" height="230" viewBox="0 0 240 230" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+      <defs><marker id="ah" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#4f46e5"/></marker></defs>
+      <line x1="30" y1="200" x2="225" y2="200" stroke="#1e1e2e" stroke-width="1.2"/>
+      <line x1="40" y1="215" x2="40" y2="20" stroke="#1e1e2e" stroke-width="1.2"/>
+      <line x1="40" y1="200" x2="160" y2="200" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="160" y1="200" x2="160" y2="40" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="40" y1="200" x2="158.8" y2="41.6" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#ah)"/>
+      <text x="88" y="216" fill="#6d28d9">3</text><text x="166" y="124" fill="#6d28d9">4</text>
+      <text x="64" y="118" fill="#4f46e5" font-weight="700">a = 3i + 4j</text>
+      <text x="108" y="150" font-size="11">|a| = 5</text>
+      <path d="M 70 200 A 30 30 0 0 0 58 176" fill="none" stroke="#1e1e2e"/>
+      <text x="72" y="190" font-size="11">θ</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    <strong>A vector has no fixed position.</strong> Any arrow 3 across and 4 up represents $3\mathbf{i} + 4\mathbf{j}$, wherever it is drawn. Two vectors are <strong>equal</strong> when both components are equal.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – MAGNITUDE AND DIRECTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Magnitude and Direction</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Magnitude and direction of $\mathbf{a} = x\mathbf{i} + y\mathbf{j}$</div>
+    $|\mathbf{a}| = \sqrt{x^2 + y^2}$ &nbsp;&nbsp;&nbsp; angle with $\mathbf{i}$: $\tan\theta = \dfrac{y}{x}$ (then check the quadrant)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Magnitude and direction</div>
+    <div class="example-body">
+      <p>Find the magnitude of $\mathbf{a} = 3\mathbf{i} + 4\mathbf{j}$ and the angle it makes with $\mathbf{i}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$|\mathbf{a}| = \sqrt{3^2 + 4^2} = 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tan\theta = \tfrac43$, so $\theta = 53.1°$ above the positive $x$-axis.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A vector in the second quadrant</div>
+    <div class="example-body">
+      <p>Find the magnitude of $\mathbf{b} = -2\mathbf{i} + 5\mathbf{j}$ and the angle it makes with the positive $x$-direction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$|\mathbf{b}| = \sqrt{4 + 25} = \sqrt{29} \approx 5.39$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Sketch: $\mathbf{b}$ points up and to the left. The angle it makes with the <em>negative</em> $x$-axis is $\tan^{-1}\tfrac52 = 68.2°$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the angle from the positive $x$-direction is $180° - 68.2° = 111.8°$.</span></div>
+      <div class="warn">Typing $\tan^{-1}\left(\tfrac{5}{-2}\right)$ gives $-68.2°$, which points into the <em>fourth</em> quadrant — the wrong way. Always draw the vector first.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — From magnitude and direction to components</div>
+    <div class="example-body">
+      <p>(a) A force of $10$ N acts at $30°$ above the positive $x$-axis. Write it in $\mathbf{i}, \mathbf{j}$ form. &nbsp; (b) A boat moves at $12$ km h$^{-1}$ on a bearing of $060°$. With $\mathbf{i}$ east and $\mathbf{j}$ north, write its velocity as a vector.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $10\cos 30°\,\mathbf{i} + 10\sin 30°\,\mathbf{j} = 5\sqrt3\,\mathbf{i} + 5\mathbf{j}$ N</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) A bearing is measured from north, so the angle to $\mathbf{j}$ is $60°$: east component $12\sin 60° = 6\sqrt3$, north component $12\cos 60° = 6$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{v} = 6\sqrt3\,\mathbf{i} + 6\mathbf{j}$ km h$^{-1}$</span></div>
+      <div class="formula-box">
+        <div class="label">Resolving</div>
+        Magnitude $r$ at angle $\theta$ to $\mathbf{i}$: &nbsp;$r\cos\theta\,\mathbf{i} + r\sin\theta\,\mathbf{j}$
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ARITHMETIC AND UNIT VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Adding, Scaling and Unit Vectors</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Component by component</div>
+    $(a_1\mathbf{i} + a_2\mathbf{j}) + (b_1\mathbf{i} + b_2\mathbf{j}) = (a_1 + b_1)\mathbf{i} + (a_2 + b_2)\mathbf{j}$ &nbsp;&nbsp;&nbsp; $\lambda(a_1\mathbf{i} + a_2\mathbf{j}) = \lambda a_1\mathbf{i} + \lambda a_2\mathbf{j}$
+  </div>
+
+  <div class="concept">
+    <strong>Geometrically</strong>, $\mathbf{a} + \mathbf{b}$ means "do $\mathbf{a}$, then do $\mathbf{b}$" (the triangle law). Multiplying by a scalar $\lambda$ stretches the vector by factor $|\lambda|$, and reverses it if $\lambda < 0$. So $\lambda\mathbf{a}$ is always <strong>parallel</strong> to $\mathbf{a}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A linear combination</div>
+    <div class="example-body">
+      <p>$\mathbf{a} = 2\mathbf{i} + \mathbf{j}$ and $\mathbf{b} = -\mathbf{i} + 3\mathbf{j}$. Find $3\mathbf{a} - 2\mathbf{b}$ and its magnitude.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3\mathbf{a} = 6\mathbf{i} + 3\mathbf{j}$, &nbsp;$2\mathbf{b} = -2\mathbf{i} + 6\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3\mathbf{a} - 2\mathbf{b} = 8\mathbf{i} - 3\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|8\mathbf{i} - 3\mathbf{j}| = \sqrt{64 + 9} = \sqrt{73} \approx 8.54$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding unknown scalars</div>
+    <div class="example-body">
+      <p>With $\mathbf{a}$ and $\mathbf{b}$ as above, find $p$ and $q$ such that $p\mathbf{a} + q\mathbf{b} = 7\mathbf{i} + 7\mathbf{j}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{i}$: $2p - q = 7$ &nbsp;&nbsp; $\mathbf{j}$: $p + 3q = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>From the first, $q = 2p - 7$. Then $p + 6p - 21 = 7$, so $p = 4$ and $q = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check: $4(2\mathbf{i} + \mathbf{j}) + (-\mathbf{i} + 3\mathbf{j}) = 7\mathbf{i} + 7\mathbf{j}$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Unit vector in the direction of $\mathbf{a}$</div>
+    $\hat{\mathbf{a}} = \dfrac{\mathbf{a}}{|\mathbf{a}|}$ &nbsp;— magnitude $1$, same direction
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Unit vector and a given magnitude</div>
+    <div class="example-body">
+      <p>Find the unit vector in the direction of $3\mathbf{i} - 4\mathbf{j}$, and a vector of magnitude $15$ in the same direction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$|3\mathbf{i} - 4\mathbf{j}| = 5$, so the unit vector is $\tfrac15(3\mathbf{i} - 4\mathbf{j}) = 0.6\mathbf{i} - 0.8\mathbf{j}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Magnitude $15$: $15(0.6\mathbf{i} - 0.8\mathbf{j}) = 9\mathbf{i} - 12\mathbf{j}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Parallel vectors</div>
+    <div class="example-body">
+      <p>$(k + 1)\mathbf{i} + 4\mathbf{j}$ is parallel to $3\mathbf{i} + 6\mathbf{j}$. Find $k$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Parallel means one is a multiple of the other: $(k + 1)\mathbf{i} + 4\mathbf{j} = \lambda(3\mathbf{i} + 6\mathbf{j})$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{j}$: $4 = 6\lambda$, so $\lambda = \tfrac23$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{i}$: $k + 1 = 3 \times \tfrac23 = 2$, so $k = 1$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – POSITION VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Position Vectors and Distances</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>position vector</strong> of a point $A$ is $\overrightarrow{OA}$, the vector from the origin to $A$, usually written $\mathbf{a}$. The point $A(2, 5)$ has position vector $\mathbf{a} = 2\mathbf{i} + 5\mathbf{j}$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The key result</div>
+    $\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$ &nbsp;&nbsp; ("end minus start") &nbsp;&nbsp;&nbsp; distance $AB = |\mathbf{b} - \mathbf{a}|$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Displacement and distance</div>
+    <div class="example-body">
+      <p>$A$ and $B$ have position vectors $2\mathbf{i} + 5\mathbf{j}$ and $6\mathbf{i} - \mathbf{j}$. Find $\overrightarrow{AB}$, the exact distance $AB$, and the position vector of the midpoint $M$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = (6 - 2)\mathbf{i} + (-1 - 5)\mathbf{j} = 4\mathbf{i} - 6\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$AB = \sqrt{16 + 36} = \sqrt{52} = 2\sqrt{13}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{OM} = \mathbf{a} + \tfrac12\overrightarrow{AB} = (2\mathbf{i} + 5\mathbf{j}) + (2\mathbf{i} - 3\mathbf{j}) = 4\mathbf{i} + 2\mathbf{j}$</span></div>
+      <div class="tip">In general $\overrightarrow{OM} = \tfrac12(\mathbf{a} + \mathbf{b})$ — the vector form of the midpoint formula from <a href="../coordinate-geometry/straight-lines.html">Straight Lines</a>.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Notation</h4><p>$x\mathbf{i} + y\mathbf{j} = \begin{pmatrix} x \\ y \end{pmatrix}$; underline by hand.</p></div>
+    <div class="ref-card"><h4>Magnitude</h4><p>$\sqrt{x^2 + y^2}$</p></div>
+    <div class="ref-card"><h4>Direction</h4><p>$\tan\theta = \dfrac{y}{x}$ — sketch for the quadrant.</p></div>
+    <div class="ref-card"><h4>Resolving</h4><p>$r\cos\theta\,\mathbf{i} + r\sin\theta\,\mathbf{j}$</p></div>
+    <div class="ref-card"><h4>Unit vector</h4><p>$\dfrac{\mathbf{a}}{|\mathbf{a}|}$</p></div>
+    <div class="ref-card"><h4>Parallel</h4><p>$\mathbf{a} = \lambda\mathbf{b}$</p></div>
+    <div class="ref-card"><h4>Equal vectors</h4><p>Equate $\mathbf{i}$ and $\mathbf{j}$ components.</p></div>
+    <div class="ref-card"><h4>Position vector</h4><p>$\overrightarrow{OA} = \mathbf{a}$</p></div>
+    <div class="ref-card"><h4>Displacement</h4><p>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>$\tfrac12(\mathbf{a} + \mathbf{b})$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the magnitude of $5\mathbf{i} - 12\mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{25 + 144} = \sqrt{169} = 13$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$\mathbf{a} = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} -2 \\ 4 \end{pmatrix}$. Find $2\mathbf{a} + \mathbf{b}$ and $\mathbf{a} - 3\mathbf{b}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\mathbf{a} + \mathbf{b} = \begin{pmatrix} 6 - 2 \\ 2 + 4 \end{pmatrix} = \begin{pmatrix} 4 \\ 6 \end{pmatrix}$</p>
+          <p>$\mathbf{a} - 3\mathbf{b} = \begin{pmatrix} 3 + 6 \\ 1 - 12 \end{pmatrix} = \begin{pmatrix} 9 \\ -11 \end{pmatrix}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the unit vector in the direction of $6\mathbf{i} + 8\mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$|6\mathbf{i} + 8\mathbf{j}| = 10$, so the unit vector is $0.6\mathbf{i} + 0.8\mathbf{j}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the angle between $2\mathbf{i} - 5\mathbf{j}$ and the positive $x$-direction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The vector points right and down (fourth quadrant).</p>
+          <p>$\tan^{-1}\tfrac52 = 68.2°$, so it is $68.2°$ <em>below</em> the positive $x$-axis (equivalently $291.8°$ measured anticlockwise).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$A(-1, 4)$ and $B(5, -4)$. Find $\overrightarrow{AB}$ and the distance $AB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a} = 6\mathbf{i} - 8\mathbf{j}$</p>
+          <p>$AB = \sqrt{36 + 64} = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find a vector of magnitude $26$ in the same direction as $5\mathbf{i} - 12\mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$|5\mathbf{i} - 12\mathbf{j}| = 13$, so multiply by $\tfrac{26}{13} = 2$: $10\mathbf{i} - 24\mathbf{j}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find $p$ and $q$ such that $p(\mathbf{i} + 2\mathbf{j}) + q(3\mathbf{i} - \mathbf{j}) = 11\mathbf{i} + \mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{i}$: $p + 3q = 11$; &nbsp;$\mathbf{j}$: $2p - q = 1$, so $q = 2p - 1$.</p>
+          <p>$p + 6p - 3 = 11 \;\Rightarrow\; p = 2$, $q = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The vector $k\mathbf{i} + 3\mathbf{j}$ has magnitude $5$. Find the possible values of $k$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k^2 + 9 = 25 \;\Rightarrow\; k^2 = 16 \;\Rightarrow\; k = \pm 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$ABCD$ is a parallelogram with $A(1, 2)$, $B(5, 3)$ and $C(7, 8)$. Find the position vector of $D$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In a parallelogram $\overrightarrow{AD} = \overrightarrow{BC} = \mathbf{c} - \mathbf{b} = 2\mathbf{i} + 5\mathbf{j}$.</p>
+          <p>$\mathbf{d} = \mathbf{a} + \overrightarrow{AD} = (\mathbf{i} + 2\mathbf{j}) + (2\mathbf{i} + 5\mathbf{j}) = 3\mathbf{i} + 7\mathbf{j}$.</p>
+          <p><em>Check:</em> $\overrightarrow{DC} = 4\mathbf{i} + \mathbf{j} = \overrightarrow{AB}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A drone takes off from $O$. It flies on a displacement of $(3\mathbf{i} + 4\mathbf{j})$ km to $A$, then $(5\mathbf{i} - 10\mathbf{j})$ km to $B$, where $\mathbf{i}$ is east and $\mathbf{j}$ is north.</p>
+      <p>(a) Find the position vector of $B$. &nbsp; (b) Find the straight-line distance $OB$. &nbsp; (c) Find the bearing of $B$ from $O$. &nbsp; (d) Find the total distance flown, and how much further this is than flying directly from $O$ to $B$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{OB} = (3 + 5)\mathbf{i} + (4 - 10)\mathbf{j} = 8\mathbf{i} - 6\mathbf{j}$ km.</p>
+          <p><strong>(b)</strong> $|8\mathbf{i} - 6\mathbf{j}| = \sqrt{64 + 36} = 10$ km.</p>
+          <p><strong>(c)</strong> $B$ is east and south of $O$. The angle below east is $\tan^{-1}\tfrac68 = 36.9°$.</p>
+          <p>Bearing $= 090° + 36.9° = 126.9°$, about $127°$.</p>
+          <p><strong>(d)</strong> $|3\mathbf{i} + 4\mathbf{j}| = 5$ and $|5\mathbf{i} - 10\mathbf{j}| = \sqrt{125} = 5\sqrt5$.</p>
+          <p>Total $= 5 + 5\sqrt5 \approx 16.18$ km, which is $16.18 - 10 = 6.18$ km further than the direct route.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vectors in Two Dimensions &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

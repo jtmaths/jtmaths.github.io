@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correlation and Outliers &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔗 Correlation and Outliers</h1>
+  <p>A Level Maths Year 1 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – SCATTER DIAGRAMS AND CORRELATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Scatter Diagrams and Correlation</div>
+<div class="section-body">
+
+  <p><strong>Bivariate data</strong> are pairs of values $(x, y)$ measured on the same items — the height and mass of each student, or the temperature and ice-cream sales on each day. A scatter diagram shows whether the two variables are related.</p>
+
+  <table>
+    <tr><th>Pattern</th><th>Description</th><th>Interpretation</th></tr>
+    <tr><td>Points close to a line sloping upwards</td><td>Strong positive correlation</td><td>As $x$ increases, $y$ tends to increase</td></tr>
+    <tr><td>Points loosely around a line sloping downwards</td><td>Weak negative correlation</td><td>As $x$ increases, $y$ tends to decrease, but not reliably</td></tr>
+    <tr><td>No pattern</td><td>No (or zero) correlation</td><td>No linear relationship between the variables</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Correlation</strong> describes how close the points are to a straight line. At AS you interpret it informally — "strong", "weak", "positive", "negative". (The product moment correlation coefficient, $r$, measures it on a scale from $-1$ to $1$; testing it is in Year 2.) Correlation only measures <em>linear</em> association: points lying on a clear curve can have weak correlation.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Explanatory and response variables</div>
+    The <strong>explanatory</strong> (independent) variable $x$ is the one that is controlled or that may influence the other; it goes on the horizontal axis.<br>
+    The <strong>response</strong> (dependent) variable $y$ goes on the vertical axis.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Describing a scatter diagram</div>
+    <div class="example-body">
+      <p>The diagram shows the hours of revision $x$ and test score $y$ (%) for $12$ students, with the regression line of $y$ on $x$. Describe the relationship.</p>
+      <div class="svg-block">
+        <svg width="400" height="270" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+          <g stroke="#e0e7ff" stroke-width="1">
+            <line x1="50" y1="170" x2="370" y2="170"/><line x1="50" y1="110" x2="370" y2="110"/><line x1="50" y1="50" x2="370" y2="50"/>
+          </g>
+          <line x1="50" y1="230" x2="375" y2="230" stroke="#555" stroke-width="1.2"/>
+          <line x1="50" y1="230" x2="50" y2="35" stroke="#555" stroke-width="1.2"/>
+          <g fill="#555" text-anchor="middle">
+            <text x="50" y="245">0</text><text x="106" y="245">2</text><text x="162" y="245">4</text><text x="218" y="245">6</text><text x="274" y="245">8</text><text x="330" y="245">10</text>
+            <text x="210" y="263">Hours of revision, x</text>
+          </g>
+          <g fill="#555" text-anchor="end"><text x="45" y="174">20</text><text x="45" y="114">40</text><text x="45" y="54">60</text></g>
+          <text x="14" y="140" fill="#555" transform="rotate(-90 14 140)" text-anchor="middle">Score (%), y</text>
+          <line x1="78" y1="179.4" x2="358" y2="54.5" stroke="#dc2626" stroke-width="1.5"/>
+          <g fill="#4f46e5">
+            <circle cx="106" cy="170" r="3.5"/> <circle cx="134" cy="146" r="3.5"/> <circle cx="148" cy="158" r="3.5"/> <circle cx="162" cy="134" r="3.5"/> <circle cx="190" cy="140" r="3.5"/> <circle cx="204" cy="116" r="3.5"/> <circle cx="218" cy="110" r="3.5"/> <circle cx="246" cy="113" r="3.5"/> <circle cx="274" cy="86" r="3.5"/> <circle cx="288" cy="98" r="3.5"/> <circle cx="302" cy="74" r="3.5"/> <circle cx="330" cy="65" r="3.5"/>
+          </g>
+          <text x="250" y="60" fill="#dc2626">y = 12.7 + 4.16x</text>
+        </svg>
+      </div>
+      <div class="step-row"><span class="arrow">①</span><span>The points lie close to an upward-sloping line: <strong>strong positive correlation</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>In context: students who revised for longer tended to score higher.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – REGRESSION LINES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Regression Lines</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>regression line of $y$ on $x$</strong>, $y = a + bx$, is the line of best fit calculated to make the vertical distances of the points from the line as small as possible (least squares). At AS you will be <em>given</em> its equation and asked to interpret and use it — calculating it is not required.
+  </div>
+
+  <table>
+    <tr><th>Part</th><th>Meaning</th><th>In Worked Example 1</th></tr>
+    <tr><td>Gradient $b$</td><td>The change in $y$ for each increase of $1$ in $x$</td><td>Each extra hour of revision is associated with about $4.16$ more marks</td></tr>
+    <tr><td>Intercept $a$</td><td>The value of $y$ when $x = 0$</td><td>A student who did no revision would score about $12.7\%$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Interpret the intercept with care.</strong> If $x = 0$ lies outside the range of the data (here the students revised between $2$ and $10$ hours), the intercept is an extrapolation and may have no sensible meaning.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Interpolation and extrapolation</div>
+    <strong>Interpolation</strong>: predicting within the range of the data — usually reliable if correlation is strong<br>
+    <strong>Extrapolation</strong>: predicting outside the range of the data — unreliable, because the relationship may not continue
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using a regression line</div>
+    <div class="example-body">
+      <p>Use $y = 12.7 + 4.16x$ to estimate the score of a student who revised for (a) $6$ hours, (b) $25$ hours. Comment on the reliability of each.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $y = 12.7 + 4.16(6) = 37.66 \approx 37.7\%$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$6$ hours is within the data range $2$–$10$ (interpolation) and the correlation is strong, so this is reliable.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $y = 12.7 + 4.16(25) = 116.7\%$ — impossible.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$25$ hours is far outside the data (extrapolation); the linear relationship clearly cannot continue, as scores cannot exceed $100\%$.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Use $y$ on $x$ to predict $y$.</strong> The regression line of $y$ on $x$ is designed to predict $y$ from a given $x$. It should not in general be rearranged to predict $x$ from $y$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CORRELATION AND CAUSATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Correlation Is Not Causation</div>
+<div class="section-body">
+
+  <div class="concept">
+    A correlation shows that two variables tend to change together. It does <strong>not</strong> show that a change in one causes the change in the other. Both may be driven by a third (<strong>confounding</strong>) variable, or the link may be coincidence.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A third variable</div>
+    <div class="example-body">
+      <p>Over a year, the monthly number of ice creams sold at a beach and the monthly number of sunburn cases at a clinic show strong positive correlation. A newspaper claims ice cream causes sunburn. Comment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both variables increase in hot, sunny months.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The weather (temperature / hours of sunshine) is a likely third variable causing both.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Correlation does not imply causation, so the claim is not justified by these data.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Distinct sections of a population</div>
+    <div class="example-body">
+      <p>The diagram shows height $x$ cm and mass $y$ kg for $10$ children (circles) and $10$ adults (squares). Comment on the correlation.</p>
+      <div class="svg-block">
+        <svg width="400" height="270" viewBox="0 0 400 270" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+          <line x1="50" y1="230" x2="380" y2="230" stroke="#555" stroke-width="1.2"/>
+          <line x1="50" y1="230" x2="50" y2="25" stroke="#555" stroke-width="1.2"/>
+          <g fill="#555" text-anchor="middle">
+            <text x="50" y="245">110</text><text x="130" y="245">130</text><text x="210" y="245">150</text><text x="290" y="245">170</text><text x="370" y="245">190</text>
+            <text x="210" y="263">Height, x (cm)</text>
+          </g>
+          <g fill="#555" text-anchor="end"><text x="45" y="186">30</text><text x="45" y="138">50</text><text x="45" y="90">70</text><text x="45" y="42">90</text></g>
+          <text x="14" y="130" fill="#555" transform="rotate(-90 14 130)" text-anchor="middle">Mass, y (kg)</text>
+          <g fill="#4f46e5">
+            <circle cx="82" cy="196" r="3.5"/> <circle cx="94" cy="182" r="3.5"/> <circle cx="106" cy="192" r="3.5"/> <circle cx="114" cy="175" r="3.5"/> <circle cx="126" cy="187" r="3.5"/> <circle cx="134" cy="170" r="3.5"/> <circle cx="142" cy="189" r="3.5"/> <circle cx="150" cy="180" r="3.5"/> <circle cx="162" cy="168" r="3.5"/> <circle cx="170" cy="182" r="3.5"/>
+          </g>
+          <g fill="#7c3aed">
+            <rect x="247" y="78" width="7" height="7"/> <rect x="259" y="107" width="7" height="7"/> <rect x="271" y="59" width="7" height="7"/> <rect x="279" y="97" width="7" height="7"/> <rect x="291" y="83" width="7" height="7"/> <rect x="299" y="112" width="7" height="7"/> <rect x="311" y="69" width="7" height="7"/> <rect x="319" y="93" width="7" height="7"/> <rect x="331" y="102" width="7" height="7"/> <rect x="343" y="73" width="7" height="7"/>
+          </g>
+          <text x="90" y="160" fill="#4f46e5">children</text><text x="300" y="45" fill="#7c3aed">adults</text>
+        </svg>
+      </div>
+      <div class="step-row"><span class="arrow">①</span><span>Taken all together, the points suggest strong positive correlation.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>But the data fall into two distinct groups. Within each group the correlation is weak.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The apparent strong correlation is mostly due to the difference between the groups. A single regression line through all $20$ points would be misleading; it would be better to analyse the groups separately.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – OUTLIERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Outliers</div>
+<div class="section-body">
+
+  <div class="concept">
+    An <strong>outlier</strong> is a value that is unusually far from the rest of the data. There is no single definition; the question will tell you which rule to use. The two most common are:
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rule 1 — based on quartiles</div>
+    Outlier if below $Q_1 - 1.5 \times \text{IQR}$ or above $Q_3 + 1.5 \times \text{IQR}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rule 2 — based on the mean and standard deviation</div>
+    Outlier if more than $2$ (or $3$) standard deviations from the mean: outside $\bar{x} \pm 2\sigma$ (or $\bar{x} \pm 3\sigma$)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — The quartile rule</div>
+    <div class="example-body">
+      <p>A data set has $Q_1 = 24$ and $Q_3 = 36$. Its smallest value is $3$ and its largest is $58$. Are either of these outliers?</p>
+      <div class="step-row"><span class="arrow">①</span><span>IQR $= 12$, and $1.5 \times 12 = 18$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Fences: $24 - 18 = 6$ and $36 + 18 = 54$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$3 &lt; 6$ and $58 &gt; 54$, so both are outliers.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — The standard deviation rule</div>
+    <div class="example-body">
+      <p>A data set has mean $50$ and standard deviation $6$. Decide whether $65$ and $39$ are outliers using (a) $\bar{x} \pm 2\sigma$, (b) $\bar{x} \pm 3\sigma$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Limits $50 \pm 12$: $38$ to $62$. $65$ is an outlier; $39$ is not.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Limits $50 \pm 18$: $32$ to $68$. Neither is an outlier.</span></div>
+      <div class="tip">The choice of rule matters — always use the one stated in the question, and quote the limits you calculated.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>What to do with an outlier.</strong> First ask why it is there. If it is an <strong>error</strong> (a recording mistake, an impossible value, wrong units), correct it or remove it. If it is a <strong>genuine but unusual</strong> value, it is real information and should normally be kept — though you might report results with and without it, or use the median and IQR, which it does not distort.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – CLEANING DATA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Cleaning Data and the Large Data Set</div>
+<div class="section-body">
+
+  <p>Real data sets are messy. <strong>Cleaning</strong> means checking the data before analysing them and dealing with:</p>
+
+  <ul class="steps">
+    <li><span><strong>Missing values</strong> — blanks or codes such as "n/a". Usually exclude that item from calculations, and say so.</span></li>
+    <li><span><strong>Errors</strong> — impossible values (a negative mass, a percentage over $100$) or obvious typing mistakes.</span></li>
+    <li><span><strong>Inconsistent units or formats</strong> — some heights in metres, others in centimetres.</span></li>
+    <li><span><strong>Outliers</strong> — investigate; remove only if they are errors.</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Cleaning a small data set</div>
+    <div class="example-body">
+      <p>A survey of sixth-form students records height (cm): $172,\; 165,\; 1.68,\; 181,\; \text{n/a},\; 159,\; 1680,\; 176$. Clean the data and find the mean height.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$1.68$ is almost certainly in metres: convert to $168$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1680$ is impossible; it is probably $168.0$ with a misplaced decimal point. Either correct it (if this can be checked) or remove it. Here we remove it.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>"n/a" is missing: exclude it.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Cleaned data: $172, 165, 168, 181, 159, 176$; $n = 6$, $\sum x = 1021$, mean $= 170.2$ cm (1 d.p.).</span></div>
+      <div class="warn">Including $1.68$ and $1680$ unchanged would have given a mean of $\dfrac{2534.68}{7} = 362.1$ cm — absurd. Always look at your data before calculating.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Your board's large data set.</strong> Each exam board publishes a large data set of real data (for example on weather, transport or health) for you to explore with a spreadsheet during the course. Questions may assume you know its context — what the variables mean, typical values and units, and how missing values are coded — and may ask you to clean, sample or interpret it. Spend time with your own board's data set; it can help you recognise when a value or a conclusion is unrealistic.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Correlation</h4><p>Strength and direction of a <em>linear</em> relationship.</p></div>
+    <div class="ref-card"><h4>Axes</h4><p>Explanatory $x$ horizontal; response $y$ vertical.</p></div>
+    <div class="ref-card"><h4>Gradient $b$</h4><p>Change in $y$ per unit increase in $x$.</p></div>
+    <div class="ref-card"><h4>Intercept $a$</h4><p>$y$ when $x = 0$ — beware if outside the data.</p></div>
+    <div class="ref-card"><h4>Interpolation</h4><p>Within the data range — reliable.</p></div>
+    <div class="ref-card"><h4>Extrapolation</h4><p>Outside the data range — unreliable.</p></div>
+    <div class="ref-card"><h4>Causation</h4><p>Correlation alone never proves it.</p></div>
+    <div class="ref-card"><h4>Outlier rules</h4><p>$Q_1 - 1.5\,$IQR, $Q_3 + 1.5\,$IQR; or $\bar{x} \pm 2\sigma$ / $3\sigma$.</p></div>
+    <div class="ref-card"><h4>Cleaning</h4><p>Missing, errors, units, outliers.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>State the type of correlation you would expect between (a) the age of a car and its value; (b) shoe size and score in a maths test, for adults; (c) height and arm span.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) Negative — older cars tend to be worth less.</p>
+          <p>(b) None — no reason for a relationship.</p>
+          <p>(c) Positive — taller people tend to have longer arm spans.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>For temperatures $x\,^\circ$C between $8$ and $28$, a café finds the regression line of daily cold-drink sales $y$ on $x$ is $y = 14 + 6.5x$. (a) Interpret $6.5$. (b) Estimate sales when $x = 20$. (c) Comment on using the line when $x = 40$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> For each $1\,^\circ$C rise in temperature, about $6.5$ more cold drinks are sold per day.</p>
+          <p><strong>(b)</strong> $14 + 6.5(20) = 144$ drinks.</p>
+          <p><strong>(c)</strong> $40\,^\circ$C is outside the range of the data ($8$ to $28$), so this would be extrapolation and the prediction ($274$) would be unreliable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Data for many towns show strong positive correlation between the number of doctors and the number of deaths each year. Someone concludes that doctors cause deaths. Explain the flaw.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Correlation does not imply causation. Larger towns have both more doctors and more deaths simply because they have more people: population size is a confounding variable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A data set has $Q_1 = 15$ and $Q_3 = 27$. Using the $1.5 \times \text{IQR}$ rule, decide whether the values $2$ and $47$ are outliers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>IQR $= 12$, $1.5 \times 12 = 18$. Fences: $15 - 18 = -3$ and $27 + 18 = 45$.</p>
+          <p>$2 &gt; -3$, so $2$ is not an outlier. $47 &gt; 45$, so $47$ is an outlier.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The heights of a group of adults have mean $170$ cm and standard deviation $8$ cm. An outlier is defined as more than $3$ standard deviations from the mean. Are $150$ cm and $198$ cm outliers?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Limits: $170 \pm 24$, i.e. $146$ to $194$.</p>
+          <p>$150$ is within the limits — not an outlier. $198 &gt; 194$ — an outlier.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>For $10$ values, $\sum x = 250$ and $\sum x^2 = 6390$. The largest value is $33$. Is it an outlier using the rule "more than $2$ standard deviations from the mean"?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\bar{x} = 25$; $\sigma^2 = 639 - 625 = 14$, so $\sigma = 3.742$.</p>
+          <p>Upper limit: $25 + 2(3.742) = 32.48$.</p>
+          <p>$33 &gt; 32.48$, so $33$ is an outlier (only just).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Daily rainfall (mm) at a weather station for a week is recorded as $3.2,\; 0,\; -1.5,\; 12.4,\; \text{(blank)},\; 0.8,\; 124$. Identify the problems and suggest how to deal with each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$-1.5$: rainfall cannot be negative — an error; remove it (or check the original record).</p>
+          <p>Blank: a missing value — exclude it from calculations and note this.</p>
+          <p>$124$: far larger than the rest — possibly $12.4$ entered wrongly, or a genuine extreme storm. Check the source before deciding; do not simply delete a value that could be real.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A scientist records the amount of fertiliser $x$ g given to plants and their final height $y$ cm. (a) Which is the explanatory variable? (b) Explain why the scientist should be wary of predicting the height for a fertiliser amount twice as large as any used in the experiment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The amount of fertiliser $x$, which the scientist controls.</p>
+          <p><strong>(b)</strong> This is extrapolation. The linear relationship may not continue — for example, too much fertiliser could damage the plants.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The values $4, 5, 6, 6, 7, 8, 30$ are recorded. Find the mean and standard deviation (a) with and (b) without the value $30$. Comment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\sum x = 66$, $\sum x^2 = 1126$, $n = 7$: $\bar{x} = 9.43$, $\sigma^2 = \tfrac{1126}{7} - 9.43^2 = 71.96$, $\sigma = 8.48$.</p>
+          <p><strong>(b)</strong> $\sum x = 36$, $\sum x^2 = 226$, $n = 6$: $\bar{x} = 6$, $\sigma^2 = \tfrac{226}{6} - 36 = 1.667$, $\sigma = 1.29$.</p>
+          <p>The single value $30$ raises the mean by over $3$ and multiplies the standard deviation by more than $6$. The mean and standard deviation are very sensitive to outliers.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>For $30$ summer days at a seaside kiosk, the daily maximum temperature $x\,^\circ$C ranged from $12$ to $26$. The regression line of ice creams sold, $y$, on $x$ is $y = -45 + 9.2x$.</p>
+      <p>(a) Interpret the gradient. &nbsp; (b) Estimate the sales on a day with maximum temperature $20\,^\circ$C. &nbsp; (c) Use the line to estimate sales at $2\,^\circ$C, and explain why the answer is not sensible. &nbsp; (d) On one day with $x = 24$, only $12$ ice creams were sold. Compare this with the line, suggest a possible reason, and say whether the point should be removed. &nbsp; (e) The owner says "hot weather causes people to buy ice creams". Do the data prove this?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Each $1\,^\circ$C increase in maximum temperature is associated with about $9.2$ more ice creams sold.</p>
+          <p><strong>(b)</strong> $-45 + 9.2(20) = 139$ ice creams.</p>
+          <p><strong>(c)</strong> $-45 + 9.2(2) = -26.6$: negative sales are impossible. $2\,^\circ$C is far outside the data range, so this is extrapolation.</p>
+          <p><strong>(d)</strong> The line predicts $-45 + 9.2(24) = 175.8$, so $12$ is far below — a likely outlier. Perhaps the kiosk closed early, or there was heavy rain despite the warmth. If it is a genuine but unusual day, it should not simply be deleted; if it was caused by something unrelated to temperature (such as the kiosk being shut), there is a case for excluding it, with an explanation.</p>
+          <p><strong>(e)</strong> No. The data show a strong association, and the claim is plausible, but correlation alone does not prove causation. Other factors that rise with temperature — school holidays, numbers of tourists, weekends — could also explain the sales.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Correlation and Outliers &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

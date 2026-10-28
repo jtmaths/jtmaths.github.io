@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigonometry Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Trigonometry Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>Year 2 trigonometry (DfE content area E · Trigonometry) does two things. It switches the unit of angle from degrees to <strong>radians</strong>, which is the natural unit for calculus. And it gives you a much bigger <strong>toolkit of identities</strong>, so that almost any trigonometric expression can be rewritten in a form you can solve, differentiate or integrate.</p>
+
+  <div class="concept">
+    Nearly every question in this topic is the same game: <strong>rewrite the expression until it contains only one trig function of one angle</strong>, then solve. The skill is choosing which identity gets you there.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with Year 1</div>
+    Radians, arcs and sectors &middot; small angle approximations<br>
+    $\sec$, $\operatorname{cosec}$, $\cot$ and $\arcsin$, $\arccos$, $\arctan$<br>
+    Compound and double angle formulae &middot; $R\cos(\theta \pm \alpha)$ &middot; proof and modelling
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong>, but check the mode every time: <strong>RAD</strong> when the interval is in radians, <strong>DEG</strong> when you see degree signs. When a question asks for exact answers or says <em>"show detailed reasoning"</em>, you must use exact values and identities, not decimal answers from a solver.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Radian</strong></td><td>Angle subtended by an arc equal in length to the radius.</td><td>$\pi$ rad $= 180^\circ$</td></tr>
+    <tr><td><strong>Sector / segment</strong></td><td>Region bounded by two radii and an arc / by a chord and an arc.</td><td>Sector area $\tfrac12r^2\theta$</td></tr>
+    <tr><td><strong>Reciprocal function</strong></td><td>One over a trig function.</td><td>$\sec x = \dfrac{1}{\cos x}$</td></tr>
+    <tr><td><strong>Inverse function</strong></td><td>Gives the angle from the ratio, on a restricted range.</td><td>$\arcsin\tfrac12 = \tfrac{\pi}{6}$</td></tr>
+    <tr><td><strong>Identity</strong></td><td>True for every value of the variable; written with $\equiv$.</td><td>$1 + \tan^2 x \equiv \sec^2 x$</td></tr>
+    <tr><td><strong>Compound angle</strong></td><td>A sum or difference of angles.</td><td>$\sin(A + B)$</td></tr>
+    <tr><td><strong>Amplitude</strong></td><td>The height of a wave above its centre line.</td><td>$R$ in $R\sin(\theta + \alpha)$</td></tr>
+    <tr><td><strong>Period</strong></td><td>The length of one full cycle.</td><td>$\sin 3x$ has period $\tfrac{2\pi}{3}$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Inverse is not reciprocal.</strong> $\sin^{-1}x$ means $\arcsin x$, an angle. The reciprocal $\dfrac{1}{\sin x}$ is $\operatorname{cosec} x$. But $\sin^2 x$ <em>does</em> mean $(\sin x)^2$ — the notation is inconsistent, so read carefully.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE TOOLKIT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Toolkit</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Radians, arcs and sectors</div>
+    $\pi$ rad $= 180^\circ$ &middot; &nbsp;$s = r\theta$ &middot; &nbsp;$A = \tfrac12r^2\theta$ &middot; &nbsp;segment $\tfrac12r^2(\theta - \sin\theta)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Small angles ($\theta$ in radians)</div>
+    $\sin\theta \approx \theta$, &nbsp;$\tan\theta \approx \theta$, &nbsp;$\cos\theta \approx 1 - \tfrac12\theta^2$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Pythagorean identities</div>
+    $\sin^2\theta + \cos^2\theta \equiv 1$ &middot; &nbsp;$1 + \tan^2\theta \equiv \sec^2\theta$ &middot; &nbsp;$1 + \cot^2\theta \equiv \operatorname{cosec}^2\theta$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Compound and double angles</div>
+    $\sin(A \pm B) \equiv \sin A\cos B \pm \cos A\sin B$ &middot; &nbsp;$\cos(A \pm B) \equiv \cos A\cos B \mp \sin A\sin B$<br>
+    $\sin 2A \equiv 2\sin A\cos A$ &middot; &nbsp;$\cos 2A \equiv 2\cos^2 A - 1 \equiv 1 - 2\sin^2 A$ &middot; &nbsp;$\tan 2A \equiv \dfrac{2\tan A}{1 - \tan^2 A}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Harmonic form</div>
+    $a\cos\theta + b\sin\theta \equiv R\cos(\theta - \alpha)$, &nbsp;$R = \sqrt{a^2 + b^2}$, &nbsp;$\tan\alpha = \tfrac{b}{a}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several tools in one question</div>
+    <div class="example-body">
+      <p>(a) Prove that $\dfrac{\cos 2\theta}{\cos\theta + \sin\theta} \equiv \cos\theta - \sin\theta$. (b) Hence solve $\dfrac{\cos 2\theta}{\cos\theta + \sin\theta} = 1$ for $0 \leqslant \theta \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\cos 2\theta = \cos^2\theta - \sin^2\theta = (\cos\theta - \sin\theta)(\cos\theta + \sin\theta)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Cancel the factor $(\cos\theta + \sin\theta)$: LHS $= \cos\theta - \sin\theta$ $\blacksquare$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) Solve $\cos\theta - \sin\theta = 1$. Write it as $R\cos(\theta + \alpha)$: $R\cos\alpha = 1$, $R\sin\alpha = 1$, so $R = \sqrt2$, $\alpha = \tfrac{\pi}{4}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\cos\left(\theta + \tfrac{\pi}{4}\right) = \tfrac{\sqrt2}{2}$, with $\tfrac{\pi}{4} \leqslant \theta + \tfrac{\pi}{4} \leqslant \tfrac{9\pi}{4}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\theta + \tfrac{\pi}{4} = \tfrac{\pi}{4}, \tfrac{7\pi}{4}, \tfrac{9\pi}{4}$, so $\theta = 0, \tfrac{3\pi}{2}, 2\pi$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Check none makes the original denominator zero ($\cos\theta + \sin\theta = 0$ only at $\tfrac{3\pi}{4}, \tfrac{7\pi}{4}$) ✓</span></div>
+      <div class="tip">This one question uses a double angle formula, the difference of two squares, the harmonic form, and an equation in radians. Expect that kind of mixing.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Trigonometry Subtopics</div>
+<div class="section-body">
+
+  <p>All of the Year 2 content in DfE content area E, and the page that covers each part. The Year 1 pages on <a href="../../alevel-year1/trigonometry/trig-graphs.html">trigonometric graphs</a>, <a href="../../alevel-year1/trigonometry/identities.html">identities</a> and <a href="../../alevel-year1/trigonometry/equations.html">equations</a> are assumed throughout.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">E</span><span><a href="radians.html">Radians, Arcs and Sectors</a><span class="desc">Radian measure, exact values, arc length $r\theta$, sector area $\tfrac12r^2\theta$, segments.</span></span></li>
+    <li><span class="code">E</span><span><a href="small-angles.html">Small Angle Approximations</a><span class="desc">$\sin\theta \approx \theta$, $\cos\theta \approx 1 - \tfrac12\theta^2$, $\tan\theta \approx \theta$, and using them.</span></span></li>
+    <li><span class="code">E</span><span><a href="reciprocal-inverse.html">Reciprocal and Inverse Functions</a><span class="desc">$\sec$, $\operatorname{cosec}$, $\cot$; $\arcsin$, $\arccos$, $\arctan$; the two new Pythagorean identities.</span></span></li>
+    <li><span class="code">E</span><span><a href="compound-angles.html">Compound and Double Angles</a><span class="desc">The addition formulae, double angle formulae, exact values and equations.</span></span></li>
+    <li><span class="code">E</span><span><a href="harmonic-form.html">The R cos(x + a) Form</a><span class="desc">Writing $a\cos\theta + b\sin\theta$ as a single wave; maxima, minima and equations.</span></span></li>
+    <li><span class="code">E</span><span><a href="proof-modelling.html">Trigonometric Proof and Modelling</a><span class="desc">Proving identities, solving equations in radians, tides, Ferris wheels and daylight.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Wrong calculator mode.</strong> $\sin 2$ in degree mode is $0.0349$; in radians it is $0.9093$. Any radian question answered in degree mode is wrong throughout.
+  </div>
+
+  <div class="warn">
+    <strong>Using $r\theta$ or $\tfrac12r^2\theta$ with $\theta$ in degrees.</strong> These formulae are only true in radians.
+  </div>
+
+  <div class="warn">
+    <strong>Splitting a compound angle.</strong> $\cos(A + B) \neq \cos A + \cos B$. Use the formula, and remember that the sign in the middle of $\cos(A \pm B)$ is the opposite one.
+  </div>
+
+  <div class="warn">
+    <strong>Dividing by a trig function.</strong> In $\sin 2x = \sin x$, dividing by $\sin x$ loses every solution of $\sin x = 0$. Factorise instead.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting to transform the interval.</strong> For $\cos 2x$ with $0 \leqslant x \leqslant 2\pi$ you need $0 \leqslant 2x \leqslant 4\pi$; for $\sin(x + \alpha)$ you need to shift the interval by $\alpha$.
+  </div>
+
+  <div class="warn">
+    <strong>Dropping the cosine term in small angles.</strong> $1 - \cos\theta \approx \tfrac12\theta^2$, not $0$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Radians</h4><p>$\pi$ rad $= 180^\circ$; &nbsp;$s = r\theta$, &nbsp;$A = \tfrac12r^2\theta$</p></div>
+    <div class="ref-card"><h4>Small angles</h4><p>$\sin\theta \approx \tan\theta \approx \theta$; &nbsp;$\cos\theta \approx 1 - \tfrac12\theta^2$</p></div>
+    <div class="ref-card"><h4>Reciprocals</h4><p>$\sec = \tfrac{1}{\cos}$, &nbsp;$\operatorname{cosec} = \tfrac{1}{\sin}$, &nbsp;$\cot = \tfrac{1}{\tan}$</p></div>
+    <div class="ref-card"><h4>Pythagorean</h4><p>$1 + \tan^2 \equiv \sec^2$; &nbsp;$1 + \cot^2 \equiv \operatorname{cosec}^2$</p></div>
+    <div class="ref-card"><h4>Inverse ranges</h4><p>arcsin, arctan: about $0$, up to $\pm\tfrac{\pi}{2}$; arccos: $0$ to $\pi$.</p></div>
+    <div class="ref-card"><h4>Addition</h4><p>$\sin(A\pm B)$, $\cos(A\pm B)$, $\tan(A\pm B)$</p></div>
+    <div class="ref-card"><h4>Double angle</h4><p>$\cos 2A$ has three forms — pick the one that leaves one function.</p></div>
+    <div class="ref-card"><h4>Harmonic form</h4><p>$R = \sqrt{a^2 + b^2}$; max $R$, min $-R$.</p></div>
+    <div class="ref-card"><h4>Models</h4><p>$A + B\sin(\omega t + c)$: period $\tfrac{2\pi}{\omega}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of Year 2 Trigonometry. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Convert $\dfrac{3\pi}{5}$ to degrees and $210^\circ$ to radians.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{3 \times 180^\circ}{5} = 108^\circ$. &nbsp;$210 \times \dfrac{\pi}{180} = \dfrac{7\pi}{6}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A sector has radius $9$ cm and angle $\dfrac{2\pi}{3}$. Find the exact arc length and area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$s = 9 \times \tfrac{2\pi}{3} = 6\pi$ cm. &nbsp;$A = \tfrac12 \times 81 \times \tfrac{2\pi}{3} = 27\pi$ cm$^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For small $\theta$, find an approximation for $\dfrac{1 - \cos\theta}{\theta\sin 2\theta}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\frac12\theta^2}{\theta \times 2\theta} = \dfrac{\frac12\theta^2}{2\theta^2} = \dfrac14$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the exact values of $\sec\dfrac{7\pi}{6}$ and $\arccos\left(-\dfrac{\sqrt3}{2}\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos\tfrac{7\pi}{6} = -\tfrac{\sqrt3}{2}$, so $\sec\tfrac{7\pi}{6} = -\tfrac{2}{\sqrt3} = -\tfrac{2\sqrt3}{3}$.</p>
+          <p>$\arccos\left(-\tfrac{\sqrt3}{2}\right) = \pi - \tfrac{\pi}{6} = \tfrac{5\pi}{6}$ (in the range $0$ to $\pi$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the exact value of $\cos 15^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos(45^\circ - 30^\circ) = \tfrac{\sqrt2}{2}\cdot\tfrac{\sqrt3}{2} + \tfrac{\sqrt2}{2}\cdot\tfrac12 = \dfrac{\sqrt6 + \sqrt2}{4}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $\sec^2 x - 2\tan x = 4$ for $0^\circ \leqslant x \leqslant 360^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 + \tan^2 x - 2\tan x - 4 = 0 \Rightarrow \tan^2 x - 2\tan x - 3 = 0 \Rightarrow (\tan x - 3)(\tan x + 1) = 0$.</p>
+          <p>$\tan x = 3$: $x = 71.6^\circ, 251.6^\circ$. &nbsp;$\tan x = -1$: $x = 135^\circ, 315^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Prove that $\sin(A + B)\sin(A - B) \equiv \sin^2 A - \sin^2 B$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $= (\sin A\cos B + \cos A\sin B)(\sin A\cos B - \cos A\sin B) = \sin^2 A\cos^2 B - \cos^2 A\sin^2 B$</p>
+          <p>$= \sin^2 A(1 - \sin^2 B) - (1 - \sin^2 A)\sin^2 B = \sin^2 A - \sin^2 B$ $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $\cos 2x + \sin x = 0$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 - 2\sin^2 x + \sin x = 0 \Rightarrow 2\sin^2 x - \sin x - 1 = 0 \Rightarrow (2\sin x + 1)(\sin x - 1) = 0$.</p>
+          <p>$\sin x = 1$: $x = \tfrac{\pi}{2}$. &nbsp;$\sin x = -\tfrac12$: $x = \tfrac{7\pi}{6}, \tfrac{11\pi}{6}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Express $5\sin x + 12\cos x$ in the form $R\sin(x + \alpha)$ with $0^\circ < \alpha < 90^\circ$, and state its maximum value and the value of $x$ between $0^\circ$ and $360^\circ$ at which it occurs.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\cos\alpha = 5$, $R\sin\alpha = 12$: $R = 13$, $\alpha = \arctan\tfrac{12}{5} = 67.38^\circ$.</p>
+          <p>Maximum $13$ when $x + 67.38^\circ = 90^\circ$, i.e. $x = 22.6^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>An alternating voltage is modelled by $V = 3\sin(100\pi t) + 4\cos(100\pi t)$ volts, $t$ seconds after switching on.</p>
+      <p>(a) Express $V$ in the form $R\sin(100\pi t + \alpha)$, with $0 < \alpha < \tfrac{\pi}{2}$. &nbsp; (b) State the peak voltage and find the first time it occurs. &nbsp; (c) Find the period and frequency. &nbsp; (d) Find the fraction of each cycle for which $V > 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $R\cos\alpha = 3$, $R\sin\alpha = 4$: $R = 5$, $\alpha = \arctan\tfrac43 = 0.9273$. &nbsp;$V = 5\sin(100\pi t + 0.9273)$.</p>
+          <p><strong>(b)</strong> Peak $5$ V when $100\pi t + 0.9273 = \tfrac{\pi}{2}$: $t = \dfrac{1.5708 - 0.9273}{100\pi} = 0.00205$ s (3 s.f.).</p>
+          <p><strong>(c)</strong> Period $= \dfrac{2\pi}{100\pi} = \dfrac{1}{50}$ s, so the frequency is $50$ cycles per second ($50$ Hz).</p>
+          <p><strong>(d)</strong> $\sin\phi > 0.8$ where $\phi = 100\pi t + 0.9273$. Over one cycle this holds for $0.9273 < \phi < \pi - 0.9273$, an interval of length $\pi - 1.8546 = 1.2870$.</p>
+          <p>Fraction $= \dfrac{1.2870}{2\pi} = 0.205$ (3 s.f.) — about a fifth of each cycle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Trigonometry Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

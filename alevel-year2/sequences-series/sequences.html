@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequences and Sigma Notation &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔁 Sequences and Sigma Notation</h1>
+  <p>A Level Maths Year 2 · Sequences and Series</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – TWO WAYS TO DEFINE A SEQUENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Two Ways to Define a Sequence</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>sequence</strong> is an ordered list of numbers $u_1, u_2, u_3, \ldots$ called <strong>terms</strong>. The subscript tells you the position. A rule is needed to generate the terms, and at A Level there are two kinds of rule.
+  </div>
+
+  <table>
+    <tr><th>Type of rule</th><th>What it gives you</th><th>Example</th></tr>
+    <tr><td><strong>$n$th term</strong> (position-to-term)</td><td>Any term directly from its position $n$.</td><td>$u_n = 3n^2 - 2$</td></tr>
+    <tr><td><strong>Recurrence relation</strong> (term-to-term)</td><td>Each term from the one before, plus a starting value.</td><td>$u_{n+1} = 2u_n - 3,\; u_1 = 5$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using an $n$th term</div>
+    <div class="example-body">
+      <p>A sequence has $n$th term $u_n = 3n^2 - 2$. Write down the first three terms, and find which term is equal to $145$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u_1 = 3 - 2 = 1$, &nbsp;$u_2 = 12 - 2 = 10$, &nbsp;$u_3 = 27 - 2 = 25$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Set $3n^2 - 2 = 145$, so $3n^2 = 147$ and $n^2 = 49$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n = 7$ (reject $n = -7$, since a position must be a positive integer).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$145$ is the $7$th term.</span></div>
+      <div class="tip"><strong>Is $100$ a term?</strong> $3n^2 = 102$ gives $n^2 = 34$, which is not a perfect square. So $100$ is <em>not</em> in the sequence — a non-integer $n$ is the proof.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – RECURRENCE RELATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Recurrence Relations</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">A recurrence relation</div>
+    $u_{n+1} = \mathrm{f}(u_n)$ &nbsp;together with a first term such as $u_1 = a$
+  </div>
+
+  <p>The same rule with a different starting value gives a completely different sequence, so the first term is part of the definition. Some textbooks write $x_{n+1} = \mathrm{f}(x_n)$; the letter does not matter.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Generating terms</div>
+    <div class="example-body">
+      <p>$u_{n+1} = 2u_n - 3$ with $u_1 = 5$. Find $u_2$, $u_3$ and $u_4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u_2 = 2(5) - 3 = 7$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$u_3 = 2(7) - 3 = 11$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$u_4 = 2(11) - 3 = 19$</span></div>
+      <div class="tip">On a calculator: type $5$, press <strong>=</strong>, then type $2\times\text{Ans} - 3$ and press <strong>=</strong> repeatedly. Each press gives the next term.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding an unknown constant</div>
+    <div class="example-body">
+      <p>A sequence is defined by $u_{n+1} = k u_n + 4$, $u_1 = 2$. Given that $u_3 = 20$, find the possible values of $k$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u_2 = 2k + 4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$u_3 = k(2k + 4) + 4 = 2k^2 + 4k + 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2k^2 + 4k + 4 = 20 \;\Rightarrow\; k^2 + 2k - 8 = 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$(k + 4)(k - 2) = 0$, so $k = 2$ or $k = -4$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Check $k = -4$: $u_2 = -4$, $u_3 = -4(-4) + 4 = 20$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>Limits.</strong> If a sequence defined by $u_{n+1} = \mathrm{f}(u_n)$ <strong>converges</strong> to a limit $L$, then for large $n$ both $u_n$ and $u_{n+1}$ are close to $L$. So $L$ must satisfy $L = \mathrm{f}(L)$. This gives the value of the limit — but it does not prove that the sequence actually converges.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – BEHAVIOUR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Increasing, Decreasing and Periodic Sequences</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Definition</th><th>Example</th></tr>
+    <tr><td><strong>Increasing</strong></td><td>$u_{n+1} > u_n$ for all $n$</td><td>$2, 5, 8, 11, \ldots$</td></tr>
+    <tr><td><strong>Decreasing</strong></td><td>$u_{n+1} < u_n$ for all $n$</td><td>$1, \tfrac12, \tfrac14, \tfrac18, \ldots$</td></tr>
+    <tr><td><strong>Periodic</strong></td><td>The terms repeat: $u_{n+k} = u_n$ for all $n$</td><td>$2, -1, \tfrac12, 2, -1, \tfrac12, \ldots$</td></tr>
+  </table>
+
+  <p>The smallest such $k$ is the <strong>order</strong> (or period) of a periodic sequence. A sequence can also be none of these, for example $1, -2, 3, -4, \ldots$ (it <em>oscillates</em> but never repeats).</p>
+
+  <div class="formula-box">
+    <div class="label">To prove a sequence is increasing</div>
+    Show that $u_{n+1} - u_n > 0$ for <strong>every</strong> $n \geqslant 1$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Proving a sequence is increasing</div>
+    <div class="example-body">
+      <p>Prove that the sequence with $n$th term $u_n = \dfrac{n}{n+1}$ is increasing.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u_{n+1} - u_n = \dfrac{n+1}{n+2} - \dfrac{n}{n+1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= \dfrac{(n+1)^2 - n(n+2)}{(n+1)(n+2)} = \dfrac{n^2 + 2n + 1 - n^2 - 2n}{(n+1)(n+2)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{1}{(n+1)(n+2)}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>For $n \geqslant 1$ the denominator is positive, so $u_{n+1} - u_n > 0$ and the sequence is increasing. $\blacksquare$</span></div>
+      <div class="tip">Writing out $\tfrac12, \tfrac23, \tfrac34, \ldots$ shows the pattern, but checking a few terms is <em>not</em> a proof. You must deal with a general $n$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A periodic sequence</div>
+    <div class="example-body">
+      <p>$u_{n+1} = \dfrac{1}{1 - u_n}$ with $u_1 = 2$. Show that the sequence is periodic, state its order, and find $\displaystyle\sum_{r=1}^{100} u_r$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u_2 = \dfrac{1}{1-2} = -1$, &nbsp;$u_3 = \dfrac{1}{1-(-1)} = \dfrac12$, &nbsp;$u_4 = \dfrac{1}{1 - \frac12} = 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$u_4 = u_1$, and each term depends only on the one before, so the pattern $2, -1, \tfrac12$ repeats for ever. The sequence is periodic with <strong>order 3</strong>.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>One cycle sums to $2 - 1 + \tfrac12 = \tfrac32$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$100 = 3 \times 33 + 1$: thirty-three full cycles, then one more term $u_{100} = u_1 = 2$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\displaystyle\sum_{r=1}^{100} u_r = 33 \times \tfrac32 + 2 = 49.5 + 2 = 51.5$</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Trig sequences are often periodic.</strong> $u_n = \cos\left(\dfrac{n\pi}{2}\right)$ gives $0, -1, 0, 1, 0, -1, \ldots$ — order $4$, because $\cos$ repeats every $2\pi$ and each step adds $\tfrac{\pi}{2}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SIGMA NOTATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Sigma Notation</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Sigma notation</div>
+    $\displaystyle\sum_{r=1}^{n} u_r = u_1 + u_2 + u_3 + \cdots + u_n$
+  </div>
+
+  <p>$\Sigma$ (capital sigma) means "add up". The letter $r$ is a dummy variable: it takes every whole-number value from the bottom limit to the top limit, inclusive.</p>
+
+  <div class="warn">
+    <strong>Counting terms.</strong> $\displaystyle\sum_{r=4}^{20}$ has $20 - 4 + 1 = 17$ terms, not $16$. The number of terms from $r = a$ to $r = b$ is $b - a + 1$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Evaluating a short sum</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{5} (2r + 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$r = 1, 2, 3, 4, 5$ give $3, 5, 7, 9, 11$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Sum $= 3 + 5 + 7 + 9 + 11 = 35$.</span></div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Useful standard results</div>
+    $\displaystyle\sum_{r=1}^{n} 1 = n$ &nbsp;&nbsp;&nbsp; $\displaystyle\sum_{r=1}^{n} r = \tfrac12 n(n+1)$ &nbsp;&nbsp;&nbsp; $\displaystyle\sum_{r=1}^{n} (a u_r + b v_r) = a\sum_{r=1}^{n} u_r + b\sum_{r=1}^{n} v_r$
+  </div>
+
+  <p>The formula for $\sum r$ is proved on the <a href="arithmetic.html">arithmetic series</a> page.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Splitting a sum</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{20} (3r - 2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\sum_{r=1}^{20} (3r - 2) = 3\sum_{r=1}^{20} r - \sum_{r=1}^{20} 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 3 \times \tfrac12(20)(21) - 2 \times 20$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 630 - 40 = 590$</span></div>
+      <div class="warn">$\displaystyle\sum_{r=1}^{20} 2$ is $2 + 2 + \cdots + 2$ with twenty terms, which is $40$ — not $2$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A sum that does not start at 1</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\sum_{r=11}^{30} r$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take everything up to $30$ and remove everything up to $10$:</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\sum_{r=11}^{30} r = \sum_{r=1}^{30} r - \sum_{r=1}^{10} r$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \tfrac12(30)(31) - \tfrac12(10)(11) = 465 - 55 = 410$</span></div>
+      <div class="warn">Subtract the sum up to $10$, <strong>not</strong> up to $11$ — the term $r = 11$ must stay in.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Writing a sum in sigma notation</div>
+    <div class="example-body">
+      <p>Write $4 + 7 + 10 + \cdots + 61$ using sigma notation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The terms go up by $3$, starting at $4$, so $u_r = 3r + 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Last term: $3r + 1 = 61$ gives $r = 20$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle 4 + 7 + \cdots + 61 = \sum_{r=1}^{20} (3r + 1)$</span></div>
+      <div class="tip">There is more than one correct answer: $\displaystyle\sum_{r=0}^{19}(3r + 4)$ describes exactly the same sum.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$n$th term</h4><p>Position to term: substitute $n$ directly.</p></div>
+    <div class="ref-card"><h4>Recurrence</h4><p>$u_{n+1} = \mathrm{f}(u_n)$ plus a first term.</p></div>
+    <div class="ref-card"><h4>Is it a term?</h4><p>Solve $u_n = $ value; it is a term only if $n$ is a positive integer.</p></div>
+    <div class="ref-card"><h4>Increasing</h4><p>Prove $u_{n+1} - u_n > 0$ for all $n$.</p></div>
+    <div class="ref-card"><h4>Periodic</h4><p>$u_{n+k} = u_n$; order $k$ is the shortest repeat.</p></div>
+    <div class="ref-card"><h4>Limit</h4><p>If it converges, $L = \mathrm{f}(L)$.</p></div>
+    <div class="ref-card"><h4>Counting terms</h4><p>$r = a$ to $r = b$ has $b - a + 1$ terms.</p></div>
+    <div class="ref-card"><h4>Standard sums</h4><p>$\sum 1 = n$, &nbsp;$\sum r = \tfrac12 n(n+1)$.</p></div>
+    <div class="ref-card"><h4>Not from 1</h4><p>$\sum_{a}^{b} = \sum_{1}^{b} - \sum_{1}^{a-1}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A sequence has $n$th term $u_n = 5n - 3$. Find $u_1$ and $u_{10}$, and find which term equals $92$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_1 = 5 - 3 = 2$ and $u_{10} = 50 - 3 = 47$.</p>
+          <p>$5n - 3 = 92 \Rightarrow 5n = 95 \Rightarrow n = 19$. So $92$ is the $19$th term.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$u_{n+1} = 3u_n - 1$ with $u_1 = 2$. Find $u_2$, $u_3$ and $u_4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_2 = 3(2) - 1 = 5$</p>
+          <p>$u_3 = 3(5) - 1 = 14$</p>
+          <p>$u_4 = 3(14) - 1 = 41$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Write $2 + 5 + 8 + \cdots + 59$ in sigma notation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The terms increase by $3$ from $2$, so $u_r = 3r - 1$.</p>
+          <p>$3r - 1 = 59 \Rightarrow r = 20$.</p>
+          <p>$\displaystyle 2 + 5 + \cdots + 59 = \sum_{r=1}^{20} (3r - 1)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{4} 2^r$ and $\displaystyle\sum_{r=0}^{3} (r^2 + 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\sum_{r=1}^{4} 2^r = 2 + 4 + 8 + 16 = 30$</p>
+          <p>$\displaystyle\sum_{r=0}^{3} (r^2 + 1) = 1 + 2 + 5 + 10 = 18$ (note that $r = 0$ is included, giving four terms).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Is the sequence $u_n = n^2 - 6n$ increasing, decreasing, or neither? Justify your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_{n+1} - u_n = (n+1)^2 - 6(n+1) - n^2 + 6n = 2n - 5$.</p>
+          <p>This is negative for $n = 1, 2$ and positive for $n \geqslant 3$.</p>
+          <p>The terms are $-5, -8, -9, -8, -5, \ldots$: they fall then rise, so the sequence is <strong>neither</strong> increasing nor decreasing.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find $a$ and $b$ given that the sequence $u_{n+1} = a u_n + b$ has $u_1 = 4$, $u_2 = 7$ and $u_3 = 13$. Hence find $u_4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_2$: $4a + b = 7$. &nbsp;$u_3$: $7a + b = 13$.</p>
+          <p>Subtract: $3a = 6$, so $a = 2$ and $b = 7 - 8 = -1$.</p>
+          <p>$u_4 = 2(13) - 1 = 25$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$u_{n+1} = -\dfrac{1}{u_n}$ with $u_1 = 3$. Show that the sequence is periodic, state its order, and find $\displaystyle\sum_{r=1}^{25} u_r$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_2 = -\tfrac13$, $u_3 = -\dfrac{1}{-\frac13} = 3 = u_1$. The sequence is periodic with order $2$.</p>
+          <p>Each pair sums to $3 - \tfrac13 = \tfrac83$.</p>
+          <p>$25 = 2 \times 12 + 1$: twelve pairs, then $u_{25} = u_1 = 3$.</p>
+          <p>$\displaystyle\sum_{r=1}^{25} u_r = 12 \times \tfrac83 + 3 = 32 + 3 = 35$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\sum_{r=10}^{25} (2r - 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\sum_{r=1}^{n} (2r - 1) = 2 \times \tfrac12 n(n+1) - n = n^2$.</p>
+          <p>$\displaystyle\sum_{r=10}^{25} (2r-1) = \sum_{r=1}^{25} (2r-1) - \sum_{r=1}^{9} (2r-1) = 625 - 81 = 544$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that $\displaystyle\sum_{r=1}^{n} (4r + 3) = 2n^2 + 5n$, and hence find $n$ such that $\displaystyle\sum_{r=1}^{n} (4r + 3) = 250$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\sum_{r=1}^{n} (4r + 3) = 4 \times \tfrac12 n(n+1) + 3n = 2n^2 + 2n + 3n = 2n^2 + 5n$ ✓</p>
+          <p>$2n^2 + 5n - 250 = 0 \Rightarrow (2n + 25)(n - 10) = 0$.</p>
+          <p>$n$ must be a positive integer, so $n = 10$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A lake is stocked with fish. Each year $20\%$ of the fish are caught, and then $300$ new fish are added. At the start there are $1000$ fish. Let $P_n$ be the number of fish after $n$ years.</p>
+      <p>(a) Explain why $P_{n+1} = 0.8P_n + 300$, with $P_0 = 1000$. &nbsp; (b) Find $P_1$, $P_2$ and $P_3$. &nbsp; (c) Given that the sequence converges, find its limit. &nbsp; (d) Verify that $P_n = 1500 - 500(0.8)^n$ satisfies the recurrence relation, and hence find the first year in which the population exceeds $1450$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Losing $20\%$ leaves $0.8P_n$; adding $300$ gives $0.8P_n + 300$.</p>
+          <p><strong>(b)</strong> $P_1 = 800 + 300 = 1100$, &nbsp;$P_2 = 880 + 300 = 1180$, &nbsp;$P_3 = 944 + 300 = 1244$.</p>
+          <p><strong>(c)</strong> $L = 0.8L + 300 \Rightarrow 0.2L = 300 \Rightarrow L = 1500$ fish.</p>
+          <p><strong>(d)</strong> $P_0 = 1500 - 500 = 1000$ ✓. &nbsp;$0.8P_n + 300 = 1200 - 400(0.8)^n + 300 = 1500 - 500(0.8)^{n+1} = P_{n+1}$ ✓</p>
+          <p>Need $1500 - 500(0.8)^n > 1450$, i.e. $(0.8)^n < 0.1$.</p>
+          <p>Take logs: $n \ln 0.8 < \ln 0.1$. Since $\ln 0.8 < 0$ the inequality reverses: $n > \dfrac{\ln 0.1}{\ln 0.8} = 10.32\ldots$</p>
+          <p>So $n = 11$: the population first exceeds $1450$ after $11$ years ($P_{10} \approx 1446$, $P_{11} \approx 1457$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Sequences and Sigma Notation &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

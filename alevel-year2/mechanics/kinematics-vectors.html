@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kinematics with Calculus and Vectors &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧭 Kinematics with Calculus and Vectors</h1>
+  <p>A Level Maths Year 2 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – VECTORS IN KINEMATICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Motion in Two Dimensions</div>
+<div class="section-body">
+
+  <p>In Year 1, displacement, velocity and acceleration were numbers with a sign along a straight line. In Year 2 (DfE content areas <strong>Q · Kinematics</strong> and <strong>R · Forces and Newton's laws</strong>) they become <strong>vectors</strong> in the plane, written with the unit vectors $\mathbf{i}$ and $\mathbf{j}$.</p>
+
+  <table>
+    <tr><th>Quantity</th><th>Vector</th><th>Magnitude</th></tr>
+    <tr><td>Position (from origin $O$)</td><td>$\mathbf{r} = x\mathbf{i} + y\mathbf{j}$</td><td>distance from $O$</td></tr>
+    <tr><td>Velocity</td><td>$\mathbf{v} = v_x\mathbf{i} + v_y\mathbf{j}$</td><td><strong>speed</strong> $= \sqrt{v_x^2 + v_y^2}$</td></tr>
+    <tr><td>Acceleration</td><td>$\mathbf{a} = a_x\mathbf{i} + a_y\mathbf{j}$</td><td>$|\mathbf{a}|$</td></tr>
+    <tr><td>Force</td><td>$\mathbf{F} = m\mathbf{a}$</td><td>$|\mathbf{F}| = m|\mathbf{a}|$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Direction of motion</strong> is the direction of the <em>velocity</em>, not the position. "Moving parallel to $\mathbf{j}$" means the $\mathbf{i}$-component of $\mathbf{v}$ is zero. "At rest" means <em>both</em> components of $\mathbf{v}$ are zero at the same time. If $\mathbf{i}$ is east and $\mathbf{j}$ north, "moving north-east" means the two components of $\mathbf{v}$ are equal and positive.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CONSTANT ACCELERATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Constant Acceleration in Vector Form</div>
+<div class="section-body">
+
+  <p>The Year 1 <a href="../../alevel-year1/mechanics/suvat.html">suvat</a> equations work unchanged with vectors, provided the acceleration is constant.</p>
+
+  <div class="formula-box">
+    <div class="label">Constant acceleration vectors</div>
+    $\mathbf{v} = \mathbf{u} + \mathbf{a}t$ &nbsp;&nbsp;&nbsp; $\mathbf{r} = \mathbf{r}_0 + \mathbf{u}t + \tfrac12\mathbf{a}t^2$<br>
+    ($\mathbf{r}_0$ is the starting position; displacement $\mathbf{s} = \mathbf{r} - \mathbf{r}_0$)
+  </div>
+
+  <div class="warn">
+    <strong>Only use the vector forms above.</strong> $v^2 = u^2 + 2as$ does not work directly with vectors, because you cannot square a vector. Work with each component separately or stick to the two equations shown.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Velocity and position</div>
+    <div class="example-body">
+      <p>A particle starts at the point with position vector $(2\mathbf{i} - 3\mathbf{j})$ m with velocity $(4\mathbf{i} + \mathbf{j})$ m s$^{-1}$ and constant acceleration $(-\mathbf{i} + 2\mathbf{j})$ m s$^{-2}$. Find its velocity, speed and position after $3$ s.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{v} = (4\mathbf{i} + \mathbf{j}) + 3(-\mathbf{i} + 2\mathbf{j}) = \mathbf{i} + 7\mathbf{j}$ m s$^{-1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Speed $= \sqrt{1 + 49} = \sqrt{50} = 7.07$ m s$^{-1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{r} = (2\mathbf{i} - 3\mathbf{j}) + 3(4\mathbf{i} + \mathbf{j}) + \tfrac12(9)(-\mathbf{i} + 2\mathbf{j})$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= (2 + 12 - 4.5)\mathbf{i} + (-3 + 3 + 9)\mathbf{j} = 9.5\mathbf{i} + 9\mathbf{j}$ m</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — When is it moving parallel to $\mathbf{j}$?</div>
+    <div class="example-body">
+      <p>For the particle in Worked Example 1, find when it is moving parallel to $\mathbf{j}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{v} = (4 - t)\mathbf{i} + (1 + 2t)\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Parallel to $\mathbf{j}$ when the $\mathbf{i}$-component is zero: $4 - t = 0$, so $t = 4$ s.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check the $\mathbf{j}$-component is not also zero: $1 + 8 = 9 \neq 0$ ✓, so $\mathbf{v} = 9\mathbf{j}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Newton's second law in vector form</div>
+    <div class="example-body">
+      <p>A particle of mass $2$ kg moves with constant acceleration. Its velocity changes from $(3\mathbf{i} - 2\mathbf{j})$ m s$^{-1}$ to $(9\mathbf{i} + 6\mathbf{j})$ m s$^{-1}$ in $4$ s. Find the resultant force and its magnitude.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{a} = \dfrac{\mathbf{v} - \mathbf{u}}{t} = \dfrac{6\mathbf{i} + 8\mathbf{j}}{4} = 1.5\mathbf{i} + 2\mathbf{j}$ m s$^{-2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{F} = m\mathbf{a} = 3\mathbf{i} + 4\mathbf{j}$ N</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|\mathbf{F}| = \sqrt{9 + 16} = 5$ N</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Two ships and the closest approach</div>
+    <div class="example-body">
+      <p>Two ships move with constant velocity. At time $t$ hours, ship $A$ is at $(2\mathbf{i} + 5\mathbf{j}) + t(3\mathbf{i} - \mathbf{j})$ km and ship $B$ at $(8\mathbf{i} + \mathbf{j}) + t(\mathbf{i} + \mathbf{j})$ km. Show the ships do not collide and find their least distance apart.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Equal $\mathbf{i}$-components: $2 + 3t = 8 + t \Rightarrow t = 3$. Equal $\mathbf{j}$-components: $5 - t = 1 + t \Rightarrow t = 2$. Different times, so they never occupy the same point at the same time.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AB} = \mathbf{r}_B - \mathbf{r}_A = (6 - 2t)\mathbf{i} + (2t - 4)\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|\overrightarrow{AB}|^2 = (6 - 2t)^2 + (2t - 4)^2 = 8t^2 - 40t + 52$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Minimum when $\dfrac{\mathrm{d}}{\mathrm{d}t}(8t^2 - 40t + 52) = 16t - 40 = 0$, i.e. $t = 2.5$ h.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$|\overrightarrow{AB}|^2 = 50 - 100 + 52 = 2$, so the least distance is $\sqrt{2} = 1.41$ km.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VARIABLE ACCELERATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Variable Acceleration with Vectors</div>
+<div class="section-body">
+
+  <p>When the acceleration changes with time, use calculus as in Year 1 <a href="../../alevel-year1/mechanics/variable-acceleration.html">Variable Acceleration</a> — but now apply it to each component separately.</p>
+
+  <div class="formula-box">
+    <div class="label">Calculus with vectors — one component at a time</div>
+    $\mathbf{r} \;\xrightarrow{\;\text{differentiate}\;}\; \mathbf{v} = \dfrac{\mathrm{d}\mathbf{r}}{\mathrm{d}t} = \dot{\mathbf{r}} \;\xrightarrow{\;\text{differentiate}\;}\; \mathbf{a} = \dfrac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \ddot{\mathbf{r}}$<br>
+    $\mathbf{a} \;\xrightarrow{\;\text{integrate}\;}\; \mathbf{v} = \displaystyle\int \mathbf{a}\,\mathrm{d}t \;\xrightarrow{\;\text{integrate}\;}\; \mathbf{r} = \displaystyle\int \mathbf{v}\,\mathrm{d}t$
+  </div>
+
+  <div class="tip">
+    <strong>The constant of integration is a vector</strong>, $\mathbf{c} = c_1\mathbf{i} + c_2\mathbf{j}$. Find it from the given initial velocity or position.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Differentiating a position vector</div>
+    <div class="example-body">
+      <p>A particle has position $\mathbf{r} = (t^3 - 3t)\mathbf{i} + (2t^2 + 1)\mathbf{j}$ m at time $t$ s. Find $\mathbf{v}$ and $\mathbf{a}$, the speed at $t = 2$, and when the particle is moving parallel to $\mathbf{j}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{v} = (3t^2 - 3)\mathbf{i} + 4t\,\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{a} = 6t\,\mathbf{i} + 4\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $t = 2$: $\mathbf{v} = 9\mathbf{i} + 8\mathbf{j}$, speed $= \sqrt{145} = 12.0$ m s$^{-1}$; $\mathbf{a} = 12\mathbf{i} + 4\mathbf{j}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Parallel to $\mathbf{j}$: $3t^2 - 3 = 0 \Rightarrow t = 1$ (taking $t \geqslant 0$). Then $\mathbf{v} = 4\mathbf{j} \neq \mathbf{0}$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Integrating an acceleration vector</div>
+    <div class="example-body">
+      <p>A particle has acceleration $\mathbf{a} = 6t\,\mathbf{i} - 4\mathbf{j}$ m s$^{-2}$. At $t = 0$ it is at the point with position vector $\mathbf{i}$ m, moving with velocity $(2\mathbf{i} + 3\mathbf{j})$ m s$^{-1}$. Find $\mathbf{v}$ and $\mathbf{r}$ at time $t$, and its position at $t = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{v} = 3t^2\,\mathbf{i} - 4t\,\mathbf{j} + \mathbf{c}$. At $t = 0$: $\mathbf{c} = 2\mathbf{i} + 3\mathbf{j}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{v} = (3t^2 + 2)\mathbf{i} + (3 - 4t)\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{r} = (t^3 + 2t)\mathbf{i} + (3t - 2t^2)\mathbf{j} + \mathbf{d}$. At $t = 0$: $\mathbf{d} = \mathbf{i}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathbf{r} = (t^3 + 2t + 1)\mathbf{i} + (3t - 2t^2)\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $t = 2$: $\mathbf{r} = 13\mathbf{i} - 2\mathbf{j}$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="250" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ka1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs>
+      <line x1="50" y1="140" x2="425" y2="140" stroke="#475569" stroke-width="1.5"/>
+      <line x1="60" y1="20" x2="60" y2="240" stroke="#475569" stroke-width="1.5"/>
+      <text x="428" y="144" font-family="Arial" font-size="13" fill="#475569">x</text>
+      <text x="66" y="24" font-family="Arial" font-size="13" fill="#475569">y</text>
+      <line x1="185" y1="136" x2="185" y2="144" stroke="#475569"/><text x="181" y="156" font-family="Arial" font-size="11" fill="#475569">5</text>
+      <line x1="310" y1="136" x2="310" y2="144" stroke="#475569"/><text x="303" y="156" font-family="Arial" font-size="11" fill="#475569">10</text>
+      <line x1="56" y1="60" x2="64" y2="60" stroke="#475569"/><text x="44" y="64" font-family="Arial" font-size="11" fill="#475569">2</text>
+      <line x1="56" y1="220" x2="64" y2="220" stroke="#475569"/><text x="40" y="224" font-family="Arial" font-size="11" fill="#475569">−2</text>
+      <text x="48" y="154" font-family="Arial" font-size="11" fill="#475569">O</text>
+      <polyline points="85.0,140.0 90.0,128.8 95.2,119.2 100.7,111.2 106.6,104.8 113.1,100.0 120.4,96.8 128.6,95.2 137.8,95.2 148.2,96.8 160.0,100.0 173.3,104.8 188.2,111.2 204.9,119.2 223.6,128.8 244.4,140.0 267.4,152.8 292.8,167.2 320.8,183.2 351.5,200.8 385.0,220.0" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+      <circle cx="85" cy="140" r="4" fill="#4f46e5"/><text x="74" y="130" font-family="Arial" font-size="12" fill="#3730a3">t = 0</text>
+      <circle cx="160" cy="100" r="4" fill="#4f46e5"/><text x="146" y="88" font-family="Arial" font-size="12" fill="#3730a3">t = 1</text>
+      <circle cx="385" cy="220" r="4" fill="#4f46e5"/><text x="356" y="240" font-family="Arial" font-size="12" fill="#3730a3">t = 2: (13, −2)</text>
+      <line x1="160" y1="100" x2="222.5" y2="120" stroke="#dc2626" stroke-width="2.5" marker-end="url(#ka1)"/>
+      <text x="214" y="102" font-family="Arial" font-size="12" fill="#b91c1c">v = 5i − j</text>
+    </svg>
+  </div>
+
+  <p style="text-align:center;font-size:.9rem;color:#555;">The path of the particle in Worked Example 6 for $0 \leqslant t \leqslant 2$. The velocity is always tangent to the path.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Circular motion and $\mathbf{F} = m\mathbf{a}$</div>
+    <div class="example-body">
+      <p>A particle of mass $0.5$ kg moves so that $\mathbf{r} = 3\cos(2t)\,\mathbf{i} + 3\sin(2t)\,\mathbf{j}$ m. Show that its speed is constant, and find the resultant force on it.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{v} = -6\sin(2t)\,\mathbf{i} + 6\cos(2t)\,\mathbf{j}$ (Year 2 <a href="../differentiation/overview.html">differentiation</a> with the chain rule).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Speed $= \sqrt{36\sin^2 2t + 36\cos^2 2t} = \sqrt{36} = 6$ m s$^{-1}$ — constant.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{a} = -12\cos(2t)\,\mathbf{i} - 12\sin(2t)\,\mathbf{j} = -4\mathbf{r}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathbf{F} = 0.5\mathbf{a} = -2\mathbf{r}$, of magnitude $2 \times 3 = 6$ N, always directed towards $O$.</span></div>
+      <div class="tip">Constant <em>speed</em> does not mean zero acceleration: the <em>direction</em> of the velocity is changing, and that needs a force.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Several forces</div>
+    <div class="example-body">
+      <p>Forces $(2\mathbf{i} + 5\mathbf{j})$ N, $(4\mathbf{i} - 2\mathbf{j})$ N and $(-3\mathbf{i} + \mathbf{j})$ N act on a particle of mass $1.5$ kg, initially at rest at $O$. Find its position after $2$ s.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Resultant $\mathbf{F} = 3\mathbf{i} + 4\mathbf{j}$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{a} = \dfrac{\mathbf{F}}{1.5} = 2\mathbf{i} + \tfrac83\mathbf{j}$ m s$^{-2}$ (constant).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{r} = \tfrac12\mathbf{a}t^2 = 2\left(2\mathbf{i} + \tfrac83\mathbf{j}\right) = 4\mathbf{i} + \tfrac{16}{3}\mathbf{j}$ m.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Distance from $O$: $\sqrt{16 + \tfrac{256}{9}} = \tfrac{20}{3} = 6.67$ m.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Constant $\mathbf{a}$</h4><p>$\mathbf{v} = \mathbf{u} + \mathbf{a}t$, $\mathbf{r} = \mathbf{r}_0 + \mathbf{u}t + \tfrac12\mathbf{a}t^2$.</p></div>
+    <div class="ref-card"><h4>Speed</h4><p>$|\mathbf{v}| = \sqrt{v_x^2 + v_y^2}$.</p></div>
+    <div class="ref-card"><h4>Parallel to $\mathbf{j}$</h4><p>$\mathbf{i}$-component of $\mathbf{v}$ is $0$.</p></div>
+    <div class="ref-card"><h4>At rest</h4><p>Both components of $\mathbf{v}$ zero at the same $t$.</p></div>
+    <div class="ref-card"><h4>Differentiate</h4><p>$\mathbf{r} \to \mathbf{v} \to \mathbf{a}$, each component.</p></div>
+    <div class="ref-card"><h4>Integrate</h4><p>$\mathbf{a} \to \mathbf{v} \to \mathbf{r}$, with a vector constant.</p></div>
+    <div class="ref-card"><h4>Newton II</h4><p>$\mathbf{F} = m\mathbf{a}$, sum the force vectors first.</p></div>
+    <div class="ref-card"><h4>Collide?</h4><p>Same position at the <em>same</em> time.</p></div>
+    <div class="ref-card"><h4>Closest approach</h4><p>Minimise $|\mathbf{r}_B - \mathbf{r}_A|^2$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>$\mathbf{i}$ and $\mathbf{j}$ are perpendicular unit vectors; distances in metres and times in seconds unless stated. Give answers to 3 significant figures where they are not exact.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A particle has initial velocity $(3\mathbf{i} + 4\mathbf{j})$ m s$^{-1}$ and constant acceleration $(2\mathbf{i} - \mathbf{j})$ m s$^{-2}$. Find its velocity and speed after $5$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{v} = (3\mathbf{i} + 4\mathbf{j}) + 5(2\mathbf{i} - \mathbf{j}) = 13\mathbf{i} - \mathbf{j}$ m s$^{-1}$.</p>
+          <p>Speed $= \sqrt{169 + 1} = \sqrt{170} = 13.0$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A particle leaves the origin with velocity $(5\mathbf{i} - 2\mathbf{j})$ m s$^{-1}$ and constant acceleration $(-\mathbf{i} + \mathbf{j})$ m s$^{-2}$. Show that it is on the $x$-axis when $t = 4$, and find its distance from $O$ then.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{r} = t(5\mathbf{i} - 2\mathbf{j}) + \tfrac12t^2(-\mathbf{i} + \mathbf{j})$.</p>
+          <p>At $t = 4$: $\mathbf{r} = (20 - 8)\mathbf{i} + (-8 + 8)\mathbf{j} = 12\mathbf{i}$.</p>
+          <p>The $\mathbf{j}$-component is $0$, so it is on the $x$-axis, $12$ m from $O$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A constant force $(6\mathbf{i} - 8\mathbf{j})$ N acts on a particle of mass $4$ kg, initially at rest at $O$. Find the acceleration, the speed after $3$ s and the distance from $O$ then.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{a} = \tfrac14(6\mathbf{i} - 8\mathbf{j}) = 1.5\mathbf{i} - 2\mathbf{j}$ m s$^{-2}$ (magnitude $2.5$).</p>
+          <p>$\mathbf{v} = 3\mathbf{a} = 4.5\mathbf{i} - 6\mathbf{j}$; speed $= 7.5$ m s$^{-1}$.</p>
+          <p>$\mathbf{r} = \tfrac12(9)\mathbf{a} = 6.75\mathbf{i} - 9\mathbf{j}$; distance $= \sqrt{45.5625 + 81} = 11.25$ m.</p>
+          <p>(It moves in a straight line from rest, so distance $= \tfrac12 \times 2.5 \times 9$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A particle has position $\mathbf{r} = (t^2 - 4t)\mathbf{i} + (t^3 - 3t)\mathbf{j}$. Find its speed when $t = 2$ and show that it is never at rest.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{v} = (2t - 4)\mathbf{i} + (3t^2 - 3)\mathbf{j}$.</p>
+          <p>At $t = 2$: $\mathbf{v} = 0\mathbf{i} + 9\mathbf{j}$, speed $= 9$ m s$^{-1}$.</p>
+          <p>$\mathbf{i}$-component is zero only at $t = 2$; $\mathbf{j}$-component is zero only at $t = \pm 1$. They are never zero together, so the particle is never at rest.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A particle has acceleration $(2\mathbf{i} - 6t\,\mathbf{j})$ m s$^{-2}$ and initial velocity $(\mathbf{i} + 4\mathbf{j})$ m s$^{-1}$. Find when it is moving parallel to $\mathbf{i}$ ($t > 0$), and its speed then.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{v} = (1 + 2t)\mathbf{i} + (4 - 3t^2)\mathbf{j}$.</p>
+          <p>Parallel to $\mathbf{i}$: $4 - 3t^2 = 0 \Rightarrow t = \dfrac{2}{\sqrt3} = 1.15$ s.</p>
+          <p>Speed $= 1 + 2 \times 1.155 = 3.31$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Three forces $(2\mathbf{i} + 5\mathbf{j})$ N, $(4\mathbf{i} - 2\mathbf{j})$ N and $(p\mathbf{i} + q\mathbf{j})$ N act on a particle of mass $3$ kg, giving it acceleration $(3\mathbf{i} - \mathbf{j})$ m s$^{-2}$. Find $p$ and $q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{F} = m\mathbf{a} = 9\mathbf{i} - 3\mathbf{j}$.</p>
+          <p>$(6 + p)\mathbf{i} + (3 + q)\mathbf{j} = 9\mathbf{i} - 3\mathbf{j}$, so $p = 3$ and $q = -6$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>With $\mathbf{i}$ due east and $\mathbf{j}$ due north, a particle has velocity $\mathbf{v} = (3 + t)\mathbf{i} + (2t - 4)\mathbf{j}$ m s$^{-1}$. Find when it is moving north-east, and its speed then.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>North-east needs equal, positive components: $3 + t = 2t - 4 \Rightarrow t = 7$.</p>
+          <p>$\mathbf{v} = 10\mathbf{i} + 10\mathbf{j}$ (both positive ✓). Speed $= 10\sqrt2 = 14.1$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A particle starts from $O$ with velocity $\mathbf{v} = 6\mathrm{e}^{-2t}\,\mathbf{i} + (4 - 2t)\,\mathbf{j}$ m s$^{-1}$, $t \geqslant 0$. (a) Find the magnitude of its acceleration when $t = 0$. (b) Find $\mathbf{r}$ at time $t$. (c) Describe its position when $t = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathbf{a} = -12\mathrm{e}^{-2t}\,\mathbf{i} - 2\mathbf{j}$; at $t = 0$, $\mathbf{a} = -12\mathbf{i} - 2\mathbf{j}$, magnitude $\sqrt{148} = 12.2$ m s$^{-2}$.</p>
+          <p><strong>(b)</strong> $\mathbf{r} = -3\mathrm{e}^{-2t}\,\mathbf{i} + (4t - t^2)\mathbf{j} + \mathbf{c}$; $\mathbf{r} = \mathbf{0}$ at $t = 0$ gives $\mathbf{c} = 3\mathbf{i}$.</p>
+          <p>$\mathbf{r} = 3\left(1 - \mathrm{e}^{-2t}\right)\mathbf{i} + (4t - t^2)\mathbf{j}$.</p>
+          <p><strong>(c)</strong> At $t = 4$: $\mathbf{r} = 3(1 - \mathrm{e}^{-8})\mathbf{i} + 0\mathbf{j} \approx 3.00\mathbf{i}$ — back on the $x$-axis, almost exactly $3$ m from $O$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Particles $A$ and $B$ have positions $\mathbf{r}_A = (\mathbf{i} + 2\mathbf{j}) + t(2\mathbf{i} + \mathbf{j})$ and $\mathbf{r}_B = (7\mathbf{i} - 4\mathbf{j}) + t(-\mathbf{i} + 3\mathbf{j})$. Show that they do not collide and find their least distance apart.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{i}$: $1 + 2t = 7 - t \Rightarrow t = 2$. &nbsp; $\mathbf{j}$: $2 + t = -4 + 3t \Rightarrow t = 3$. Different times, so no collision.</p>
+          <p>$\mathbf{r}_B - \mathbf{r}_A = (6 - 3t)\mathbf{i} + (2t - 6)\mathbf{j}$.</p>
+          <p>$d^2 = (6 - 3t)^2 + (2t - 6)^2 = 13t^2 - 60t + 72$.</p>
+          <p>$\dfrac{\mathrm{d}(d^2)}{\mathrm{d}t} = 26t - 60 = 0 \Rightarrow t = \dfrac{30}{13}$.</p>
+          <p>$d^2 = 72 - \dfrac{900}{13} = \dfrac{36}{13}$, so $d = \dfrac{6}{\sqrt{13}} = 1.66$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A particle $P$ of mass $2$ kg moves so that its velocity at time $t$ s is $\mathbf{v} = (3t^2 - 12)\mathbf{i} + (4t - 2)\mathbf{j}$ m s$^{-1}$. At $t = 0$, $P$ is at the point with position vector $(2\mathbf{i} - \mathbf{j})$ m.</p>
+      <p>(a) Find the magnitude of the resultant force on $P$ when $t = 1$. &nbsp; (b) Find the value of $t$ ($t \geqslant 0$) when $P$ is moving parallel to $\mathbf{j}$. &nbsp; (c) Find the position vector of $P$ at that time. &nbsp; (d) Find the distance of $P$ from $O$ at that time.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathbf{a} = 6t\,\mathbf{i} + 4\mathbf{j}$; at $t = 1$, $\mathbf{a} = 6\mathbf{i} + 4\mathbf{j}$.</p>
+          <p>$\mathbf{F} = 2\mathbf{a} = 12\mathbf{i} + 8\mathbf{j}$, $|\mathbf{F}| = \sqrt{208} = 14.4$ N.</p>
+          <p><strong>(b)</strong> $3t^2 - 12 = 0 \Rightarrow t = 2$. (Then $\mathbf{v} = 6\mathbf{j} \neq \mathbf{0}$ ✓)</p>
+          <p><strong>(c)</strong> $\mathbf{r} = (t^3 - 12t)\mathbf{i} + (2t^2 - 2t)\mathbf{j} + \mathbf{c}$; at $t = 0$, $\mathbf{c} = 2\mathbf{i} - \mathbf{j}$.</p>
+          <p>$\mathbf{r} = (t^3 - 12t + 2)\mathbf{i} + (2t^2 - 2t - 1)\mathbf{j}$.</p>
+          <p>At $t = 2$: $\mathbf{r} = (8 - 24 + 2)\mathbf{i} + (8 - 4 - 1)\mathbf{j} = -14\mathbf{i} + 3\mathbf{j}$ m.</p>
+          <p><strong>(d)</strong> $|\mathbf{r}| = \sqrt{196 + 9} = \sqrt{205} = 14.3$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Kinematics with Calculus and Vectors &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

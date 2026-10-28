@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concavity and Points of Inflection &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>〰️ Concavity and Points of Inflection</h1>
+  <p>A Level Maths Year 2 · Differentiation</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT THE SECOND DERIVATIVE MEASURES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What the Second Derivative Tells You</div>
+<div class="section-body">
+
+  <p>The first derivative $\mathrm{f}'(x)$ is the gradient. The second derivative $\mathrm{f}''(x)$ is the <strong>rate of change of the gradient</strong> — it tells you which way the curve is bending.</p>
+
+  <div class="concept">
+    If $\mathrm{f}''(x) &gt; 0$ the gradient is increasing, so the curve bends upwards like a cup (∪). If $\mathrm{f}''(x) &lt; 0$ the gradient is decreasing, so the curve bends downwards like a cap (∩).
+  </div>
+
+  <table>
+    <tr><th>Term</th><th>Condition</th><th>Shape</th><th>Chords</th></tr>
+    <tr><td><strong>Convex</strong></td><td>$\mathrm{f}''(x) \geqslant 0$ for every $x$ in the range</td><td>Bends upwards (∪)</td><td>Lie above the curve</td></tr>
+    <tr><td><strong>Concave</strong></td><td>$\mathrm{f}''(x) \leqslant 0$ for every $x$ in the range</td><td>Bends downwards (∩)</td><td>Lie below the curve</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Memory aid:</strong> a con<em>cave</em> curve is like the roof of a cave, ∩. Convex curves "hold water". The link to chords is why concavity decides whether the <a href="../numerical-methods/trapezium-rule.html">trapezium rule</a> over- or underestimates.
+  </div>
+
+  <div class="svg-block">
+<svg width="420" height="300" viewBox="0 0 420 300" role="img" aria-label="Graph of y = x cubed minus 6x squared plus 9x plus 1: concave (red) for x less than 2 and convex (green) for x greater than 2, with a point of inflection at (2, 3)" font-family="Segoe UI, Arial, sans-serif">
+<line x1="28.0" y1="222.5" x2="398.0" y2="222.5" stroke="#333" stroke-width="1.2"/>
+<line x1="62.7" y1="272.0" x2="62.7" y2="22.0" stroke="#333" stroke-width="1.2"/>
+<text x="402.0" y="226.5" font-size="13" font-style="italic">x</text>
+<text x="58.7" y="18.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="134.6" y1="219.5" x2="134.6" y2="225.5" stroke="#333"/>
+<text x="134.6" y="238.5" font-size="11" text-anchor="middle">1</text>
+<line x1="206.4" y1="219.5" x2="206.4" y2="225.5" stroke="#333"/>
+<text x="206.4" y="238.5" font-size="11" text-anchor="middle">2</text>
+<line x1="278.2" y1="219.5" x2="278.2" y2="225.5" stroke="#333"/>
+<text x="278.2" y="238.5" font-size="11" text-anchor="middle">3</text>
+<line x1="350.1" y1="219.5" x2="350.1" y2="225.5" stroke="#333"/>
+<text x="350.1" y="238.5" font-size="11" text-anchor="middle">4</text>
+<line x1="59.7" y1="193.5" x2="65.7" y2="193.5" stroke="#333"/>
+<text x="56.7" y="197.5" font-size="11" text-anchor="end">1</text>
+<line x1="59.7" y1="135.5" x2="65.7" y2="135.5" stroke="#333"/>
+<text x="56.7" y="139.5" font-size="11" text-anchor="end">3</text>
+<line x1="59.7" y1="77.5" x2="65.7" y2="77.5" stroke="#333"/>
+<text x="56.7" y="81.5" font-size="11" text-anchor="end">5</text>
+<polyline points="46.1,263.8 46.9,259.7 47.8,255.6 48.7,251.6 49.5,247.6 50.4,243.7 51.2,239.8 52.1,236.0 53.0,232.3 53.8,228.6 54.7,225.0 55.6,221.4 56.4,217.8 57.3,214.4 58.1,210.9 59.0,207.5 59.9,204.2 60.7,200.9 61.6,197.7 62.4,194.5 63.3,191.4 64.2,188.3 65.0,185.3 65.9,182.4 66.8,179.4 67.6,176.5 68.5,173.7 69.3,170.9 70.2,168.2 71.1,165.5 71.9,162.9 72.8,160.3 73.7,157.7 74.5,155.2 75.4,152.8 76.2,150.4 77.1,148.0 78.0,145.7 78.8,143.4 79.7,141.2 80.6,139.0 81.4,136.9 82.3,134.8 83.1,132.7 84.0,130.7 84.9,128.8 85.7,126.8 86.6,125.0 87.4,123.1 88.3,121.3 89.2,119.6 90.0,117.9 90.9,116.2 91.8,114.5 92.6,112.9 93.5,111.4 94.3,109.9 95.2,108.4 96.1,107.0 96.9,105.6 97.8,104.2 98.7,102.9 99.5,101.6 100.4,100.3 101.2,99.1 102.1,98.0 103.0,96.8 103.8,95.7 104.7,94.6 105.5,93.6 106.4,92.6 107.3,91.7 108.1,90.7 109.0,89.8 109.9,89.0 110.7,88.2 111.6,87.4 112.4,86.6 113.3,85.9 114.2,85.2 115.0,84.5 115.9,83.9 116.8,83.3 117.6,82.7 118.5,82.2 119.3,81.7 120.2,81.2 121.1,80.8 121.9,80.4 122.8,80.0 123.7,79.6 124.5,79.3 125.4,79.0 126.2,78.7 127.1,78.5 128.0,78.3 128.8,78.1 129.7,77.9 130.5,77.8 131.4,77.7 132.3,77.6 133.1,77.5 134.0,77.5 134.9,77.5 135.7,77.5 136.6,77.6 137.4,77.6 138.3,77.7 139.2,77.8 140.0,78.0 140.9,78.2 141.8,78.3 142.6,78.6 143.5,78.8 144.3,79.0 145.2,79.3 146.1,79.6 146.9,79.9 147.8,80.3 148.7,80.6 149.5,81.0 150.4,81.4 151.2,81.8 152.1,82.3 153.0,82.7 153.8,83.2 154.7,83.7 155.5,84.2 156.4,84.7 157.3,85.3 158.1,85.8 159.0,86.4 159.9,87.0 160.7,87.6 161.6,88.3 162.4,88.9 163.3,89.6 164.2,90.2 165.0,90.9 165.9,91.6 166.8,92.4 167.6,93.1 168.5,93.8 169.3,94.6 170.2,95.4 171.1,96.1 171.9,96.9 172.8,97.8 173.7,98.6 174.5,99.4 175.4,100.3 176.2,101.1 177.1,102.0 178.0,102.8 178.8,103.7 179.7,104.6 180.5,105.5 181.4,106.4 182.3,107.4 183.1,108.3 184.0,109.2 184.9,110.2 185.7,111.1 186.6,112.1 187.4,113.1 188.3,114.0 189.2,115.0 190.0,116.0 190.9,117.0 191.8,118.0 192.6,119.0 193.5,120.0 194.3,121.0 195.2,122.0 196.1,123.1 196.9,124.1 197.8,125.1 198.6,126.1 199.5,127.2 200.4,128.2 201.2,129.2 202.1,130.3 203.0,131.3 203.8,132.4 204.7,133.4 205.5,134.5 206.4,135.5" fill="none" stroke="#dc2626" stroke-width="2.4"/>
+<polyline points="206.4,135.5 207.3,136.6 208.2,137.7 209.1,138.8 210.0,139.8 210.9,140.9 211.8,142.0 212.7,143.1 213.6,144.2 214.5,145.2 215.4,146.3 216.3,147.4 217.2,148.5 218.1,149.5 219.0,150.6 219.9,151.6 220.8,152.7 221.7,153.7 222.6,154.7 223.5,155.8 224.4,156.8 225.3,157.8 226.2,158.8 227.1,159.8 228.0,160.8 228.9,161.8 229.8,162.8 230.7,163.7 231.6,164.7 232.4,165.7 233.3,166.6 234.2,167.5 235.1,168.4 236.0,169.4 236.9,170.2 237.8,171.1 238.7,172.0 239.6,172.9 240.5,173.7 241.4,174.6 242.3,175.4 243.2,176.2 244.1,177.0 245.0,177.8 245.9,178.5 246.8,179.3 247.7,180.0 248.6,180.7 249.5,181.4 250.4,182.1 251.3,182.8 252.2,183.4 253.1,184.1 254.0,184.7 254.9,185.3 255.8,185.9 256.7,186.5 257.6,187.0 258.5,187.5 259.4,188.0 260.3,188.5 261.2,189.0 262.1,189.4 263.0,189.8 263.9,190.3 264.8,190.6 265.7,191.0 266.6,191.3 267.5,191.6 268.4,191.9 269.3,192.2 270.2,192.4 271.1,192.7 272.0,192.9 272.9,193.0 273.8,193.2 274.7,193.3 275.6,193.4 276.4,193.4 277.3,193.5 278.2,193.5 279.1,193.5 280.0,193.4 280.9,193.4 281.8,193.3 282.7,193.2 283.6,193.0 284.5,192.8 285.4,192.6 286.3,192.4 287.2,192.1 288.1,191.8 289.0,191.4 289.9,191.1 290.8,190.7 291.7,190.3 292.6,189.8 293.5,189.3 294.4,188.8 295.3,188.2 296.2,187.6 297.1,187.0 298.0,186.3 298.9,185.6 299.8,184.9 300.7,184.1 301.6,183.3 302.5,182.5 303.4,181.6 304.3,180.7 305.2,179.7 306.1,178.7 307.0,177.7 307.9,176.7 308.8,175.6 309.7,174.4 310.6,173.2 311.5,172.0 312.4,170.8 313.3,169.5 314.2,168.1 315.1,166.7 316.0,165.3 316.9,163.9 317.8,162.4 318.7,160.8 319.6,159.2 320.4,157.6 321.3,155.9 322.2,154.2 323.1,152.4 324.0,150.6 324.9,148.8 325.8,146.9 326.7,144.9 327.6,143.0 328.5,140.9 329.4,138.8 330.3,136.7 331.2,134.5 332.1,132.3 333.0,130.1 333.9,127.7 334.8,125.4 335.7,123.0 336.6,120.5 337.5,118.0 338.4,115.4 339.3,112.8 340.2,110.2 341.1,107.5 342.0,104.7 342.9,101.9 343.8,99.0 344.7,96.1 345.6,93.1 346.5,90.1 347.4,87.0 348.3,83.9 349.2,80.7 350.1,77.5 351.0,74.2 351.9,70.9 352.8,67.5 353.7,64.0 354.6,60.5 355.5,56.9 356.4,53.3 357.3,49.6 358.2,45.9 359.1,42.1 360.0,38.2 360.9,34.3" fill="none" stroke="#16a34a" stroke-width="2.4"/>
+<circle cx="206.4" cy="135.5" r="4.5" fill="#7c3aed"/>
+<text x="214.4" y="129.5" font-size="11" fill="#7c3aed" text-anchor="start">point of inflection (2, 3)</text>
+<circle cx="134.6" cy="77.5" r="3" fill="#333"/>
+<circle cx="278.2" cy="193.5" r="3" fill="#333"/>
+<text x="77.1" y="45.6" font-size="12" fill="#dc2626" text-anchor="start">concave: f″(x) &lt; 0</text>
+<text x="228.0" y="60.1" font-size="12" fill="#16a34a" text-anchor="start">convex: f″(x) &gt; 0</text>
+<text x="284.2" y="209.5" font-size="11" fill="#333" text-anchor="start">min (3, 1)</text>
+<text x="134.6" y="69.5" font-size="11" fill="#333" text-anchor="middle">max (1, 5)</text>
+</svg>
+</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CONVEX AND CONCAVE REGIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding Where a Curve Is Convex or Concave</div>
+<div class="section-body">
+
+  <ol class="steps">
+    <li><span>Differentiate twice to find $\mathrm{f}''(x)$.</span></li>
+    <li><span>Solve the inequality $\mathrm{f}''(x) &gt; 0$ (convex) or $\mathrm{f}''(x) &lt; 0$ (concave).</span></li>
+    <li><span>Give the answer as an inequality in $x$, e.g. "convex for $x &gt; 2$".</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A cubic</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 - 6x^2 + 9x + 1$. Find the set of values of $x$ for which the curve is concave, and the point where it changes from concave to convex.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 3x^2 - 12x + 9$, $\;\mathrm{f}''(x) = 6x - 12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Concave: $6x - 12 &lt; 0 \Rightarrow x &lt; 2$. Convex for $x &gt; 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The change happens at $x = 2$, where $\mathrm{f}(2) = 8 - 24 + 18 + 1 = 3$: the point $(2, 3)$ — see the graph above.</span></div>
+      <div class="tip">For any cubic the point of inflection lies exactly half-way between the two stationary points: here $x = 2$ is half-way between $x = 1$ and $x = 3$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Showing a function is convex everywhere</div>
+    <div class="example-body">
+      <p>Show that $\mathrm{f}(x) = \mathrm{e}^{2x} + x^2$ is convex for all real $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = 2\mathrm{e}^{2x} + 2x$, &nbsp;$\mathrm{f}''(x) = 4\mathrm{e}^{2x} + 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{e}^{2x} &gt; 0$ for all $x$, so $\mathrm{f}''(x) &gt; 2 &gt; 0$ for all $x$. Hence $\mathrm{f}$ is convex everywhere.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A condition on a constant</div>
+    <div class="example-body">
+      <p>Find the values of $k$ for which $y = x^4 + kx^3 + 6x^2$ is convex for all $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y'' = 12x^2 + 6kx + 12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>We need $12x^2 + 6kx + 12 \geqslant 0$ for all $x$: a positive quadratic that never goes below the axis, so its discriminant must satisfy $b^2 - 4ac \leqslant 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$36k^2 - 4(12)(12) \leqslant 0 \Rightarrow 36k^2 \leqslant 576 \Rightarrow k^2 \leqslant 16$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$-4 \leqslant k \leqslant 4$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – POINTS OF INFLECTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Points of Inflection</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Point of inflection</div>
+    A point where the curve changes from concave to convex, or from convex to concave:<br>
+    $\mathrm{f}''(x) = 0$ <strong>and</strong> $\mathrm{f}''(x)$ changes sign either side
+  </div>
+
+  <div class="warn">
+    <strong>$\mathrm{f}''(x) = 0$ is not enough.</strong> For $y = x^4$, $y'' = 12x^2$ is zero at $x = 0$ but positive on <em>both</em> sides. The curve is convex throughout, and $(0, 0)$ is a minimum, not a point of inflection. Always check the sign change.
+  </div>
+
+  <div class="concept">
+    A point of inflection may or may not be a stationary point. If $\mathrm{f}'(x) = 0$ there as well, it is a <strong>stationary point of inflection</strong> (like $y = x^3$ at the origin); otherwise it is a <strong>non-stationary</strong> point of inflection, where the tangent crosses the curve.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Two kinds of inflection</div>
+    <div class="example-body">
+      <p>Find the points of inflection on $y = x^4 - 4x^3$ and say whether each is stationary.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y' = 4x^3 - 12x^2 = 4x^2(x - 3)$, &nbsp;$y'' = 12x^2 - 24x = 12x(x - 2)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y'' = 0$ at $x = 0$ and $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Sign of $y''$: positive for $x &lt; 0$, negative for $0 &lt; x &lt; 2$, positive for $x &gt; 2$. It changes sign at both, so both are points of inflection.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At $x = 0$: $y = 0$ and $y' = 0$ — a <strong>stationary</strong> point of inflection at $(0, 0)$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>At $x = 2$: $y = 16 - 32 = -16$ and $y' = 16(-1) = -16 \neq 0$ — a <strong>non-stationary</strong> point of inflection at $(2, -16)$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — An exponential product</div>
+    <div class="example-body">
+      <p>Find the point of inflection on $y = x\mathrm{e}^x$ and state where the curve is convex.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y' = \mathrm{e}^x + x\mathrm{e}^x = (1 + x)\mathrm{e}^x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y'' = \mathrm{e}^x + (1 + x)\mathrm{e}^x = (2 + x)\mathrm{e}^x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{e}^x &gt; 0$, so the sign of $y''$ is the sign of $2 + x$: it changes at $x = -2$. Point of inflection $\left(-2, -2\mathrm{e}^{-2}\right)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Convex for $x &gt; -2$; concave for $x &lt; -2$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Two inflections</div>
+    <div class="example-body">
+      <p>Show that $y = \ln(1 + x^2)$ has points of inflection at $x = \pm1$, and find the set of values of $x$ for which it is convex.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y' = \dfrac{2x}{1 + x^2}$ (chain rule).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Quotient rule: $y'' = \dfrac{(1 + x^2)(2) - 2x(2x)}{(1 + x^2)^2} = \dfrac{2(1 - x^2)}{(1 + x^2)^2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The denominator is positive, so $y''$ has the sign of $1 - x^2$: positive for $-1 &lt; x &lt; 1$, negative for $|x| &gt; 1$. It changes sign at $x = \pm1$, giving points of inflection $(\pm1, \ln 2)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Convex for $-1 &lt; x &lt; 1$ (strictly; or $-1 \leqslant x \leqslant 1$ using $\mathrm{f}'' \geqslant 0$).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CLASSIFYING STATIONARY POINTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When the Second Derivative Test Fails</div>
+<div class="section-body">
+
+  <p>From Year 1: at a stationary point, $\mathrm{f}'' &gt; 0$ means a minimum and $\mathrm{f}'' &lt; 0$ a maximum. If $\mathrm{f}'' = 0$ the test gives <strong>no information</strong> — it could be a maximum, minimum or point of inflection. Check the sign of $\mathrm{f}'$ on either side instead.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A stationary point of inflection</div>
+    <div class="example-body">
+      <p>Find and classify the stationary point of $y = x^3 + 3x^2 + 3x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y' = 3x^2 + 6x + 3 = 3(x + 1)^2 = 0 \Rightarrow x = -1$, $y = -1 + 3 - 3 = -1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y'' = 6x + 6 = 0$ at $x = -1$: inconclusive.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y' = 3(x + 1)^2 \geqslant 0$ on both sides: the curve rises, levels off, then rises again.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y''$ changes sign at $x = -1$, so $(-1, -1)$ is a <strong>stationary point of inflection</strong>. (Indeed $y = (x + 1)^3 - 1$.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Convex</h4><p>$\mathrm{f}''(x) \geqslant 0$; bends upwards; chords above.</p></div>
+    <div class="ref-card"><h4>Concave</h4><p>$\mathrm{f}''(x) \leqslant 0$; bends downwards; chords below.</p></div>
+    <div class="ref-card"><h4>Inflection</h4><p>$\mathrm{f}''(x) = 0$ <em>and</em> $\mathrm{f}''$ changes sign.</p></div>
+    <div class="ref-card"><h4>Stationary inflection</h4><p>Also $\mathrm{f}'(x) = 0$, e.g. $y = x^3$ at $0$.</p></div>
+    <div class="ref-card"><h4>Not an inflection</h4><p>$y = x^4$: $\mathrm{f}''(0) = 0$ but no sign change.</p></div>
+    <div class="ref-card"><h4>Max / min test</h4><p>$\mathrm{f}'' &lt; 0$ max, $\mathrm{f}'' &gt; 0$ min, $\mathrm{f}'' = 0$ check signs.</p></div>
+    <div class="ref-card"><h4>Factor out</h4><p>Positive factors like $\mathrm{e}^x$ don't affect the sign of $\mathrm{f}''$.</p></div>
+    <div class="ref-card"><h4>Cubics</h4><p>Inflection half-way between the turning points.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the coordinates of the point of inflection on $y = x^3 - 3x^2 + 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y' = 3x^2 - 6x$, $y'' = 6x - 6 = 0 \Rightarrow x = 1$; $y''$ changes sign there.</p>
+          <p>$y = 1 - 3 + 4 = 2$: point of inflection $(1, 2)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the set of values of $x$ for which $\mathrm{f}(x) = x^4 - 6x^2$ is concave.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}''(x) = 12x^2 - 12 = 12(x - 1)(x + 1)$.</p>
+          <p>Concave when $\mathrm{f}''(x) \leqslant 0$: $-1 \leqslant x \leqslant 1$, i.e. $\{x : -1 \leqslant x \leqslant 1\}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that $y = x\ln x$ is convex for all $x &gt; 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y' = \ln x + x \cdot \tfrac1x = \ln x + 1$, $\;y'' = \tfrac1x$.</p>
+          <p>For $x &gt; 0$, $\tfrac1x &gt; 0$, so the curve is convex.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>For both $y = x^5$ and $y = x^6$, the second derivative is zero at $x = 0$. Determine in each case whether the origin is a point of inflection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = x^5$: $y'' = 20x^3$, negative for $x &lt; 0$ and positive for $x &gt; 0$. Sign change: a (stationary) point of inflection.</p>
+          <p>$y = x^6$: $y'' = 30x^4 \geqslant 0$ on both sides. No sign change: not a point of inflection (it is a minimum).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the point of inflection on $y = 2\sin x$ for $0 &lt; x &lt; 2\pi$, and state where the curve is concave.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y'' = -2\sin x = 0 \Rightarrow x = \pi$ (in the range). $y'' &lt; 0$ for $0 &lt; x &lt; \pi$ and $y'' &gt; 0$ for $\pi &lt; x &lt; 2\pi$, so there is a sign change.</p>
+          <p>Point of inflection $(\pi, 0)$. Concave for $0 &lt; x &lt; \pi$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the exact $x$-coordinates of the points of inflection on $y = x^2\mathrm{e}^{-x}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y' = 2x\mathrm{e}^{-x} - x^2\mathrm{e}^{-x} = (2x - x^2)\mathrm{e}^{-x}$.</p>
+          <p>$y'' = (2 - 2x)\mathrm{e}^{-x} - (2x - x^2)\mathrm{e}^{-x} = (x^2 - 4x + 2)\mathrm{e}^{-x}$.</p>
+          <p>$x^2 - 4x + 2 = 0 \Rightarrow x = 2 \pm \sqrt2$. These are simple roots, so $y''$ changes sign at each: both are points of inflection.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find and classify the stationary points of $y = x^3 + 3x^2 - 2$, and find the range of values of $x$ for which the curve is convex.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y' = 3x^2 + 6x = 3x(x + 2) = 0 \Rightarrow x = 0$ or $x = -2$.</p>
+          <p>$y'' = 6x + 6$. At $x = 0$: $y'' = 6 &gt; 0$, minimum $(0, -2)$. At $x = -2$: $y'' = -6 &lt; 0$, maximum $(-2, 2)$.</p>
+          <p>Convex when $6x + 6 &gt; 0$, i.e. $x &gt; -1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find and classify the stationary point on $y = x^4 - 4x^3$ at $x = 3$, and explain why the second derivative test cannot classify the one at $x = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y' = 4x^2(x - 3)$, $y'' = 12x(x - 2)$.</p>
+          <p>At $x = 3$: $y = 81 - 108 = -27$ and $y'' = 36 &gt; 0$: minimum $(3, -27)$.</p>
+          <p>At $x = 0$: $y'' = 0$, so the test is inconclusive. $y' = 4x^2(x - 3)$ is negative on both sides of $0$, so it is a stationary point of inflection (as in Worked Example 4).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The curve $y = x^3 + ax^2 + bx$ has a point of inflection at $(1, -4)$. Find $a$ and $b$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y'' = 6x + 2a$. At $x = 1$: $6 + 2a = 0 \Rightarrow a = -3$.</p>
+          <p>The point lies on the curve: $1 - 3 + b = -4 \Rightarrow b = -2$.</p>
+          <p>(A cubic's $y''$ is linear and always changes sign at its root, so this is indeed a point of inflection.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The shape of a normal distribution curve is given by $\mathrm{f}(x) = \mathrm{e}^{-x^2/2}$.</p>
+      <p>(a) Show that $\mathrm{f}''(x) = (x^2 - 1)\mathrm{e}^{-x^2/2}$.<br>(b) Find the exact coordinates of the points of inflection.<br>(c) State the set of values of $x$ for which the curve is convex.<br>(d) Find the equation of the tangent at the point of inflection with $x &gt; 0$, and where it meets the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}'(x) = -x\mathrm{e}^{-x^2/2}$ (chain rule). Product rule: $\mathrm{f}''(x) = -\mathrm{e}^{-x^2/2} + (-x)(-x)\mathrm{e}^{-x^2/2} = (x^2 - 1)\mathrm{e}^{-x^2/2}$.</p>
+          <p><strong>(b)</strong> $\mathrm{e}^{-x^2/2} &gt; 0$, so $\mathrm{f}'' = 0$ when $x = \pm1$, with a sign change at each. Points of inflection $\left(\pm1, \mathrm{e}^{-1/2}\right)$.</p>
+          <p><strong>(c)</strong> Convex when $x^2 - 1 &gt; 0$: $\{x : x &lt; -1\} \cup \{x : x &gt; 1\}$.</p>
+          <p><strong>(d)</strong> $\mathrm{f}'(1) = -\mathrm{e}^{-1/2}$. Tangent: $y - \mathrm{e}^{-1/2} = -\mathrm{e}^{-1/2}(x - 1)$, i.e. $y = \mathrm{e}^{-1/2}(2 - x)$. It meets the $x$-axis at $x = 2$.</p>
+          <p>In statistics this is why the points of inflection of a normal curve lie exactly one standard deviation either side of the mean.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Concavity and Points of Inflection &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

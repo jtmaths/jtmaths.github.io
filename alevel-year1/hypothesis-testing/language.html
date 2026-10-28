@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Language of Hypothesis Testing &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📖 The Language of Hypothesis Testing</h1>
+  <p>A Level Maths Year 1 · Hypothesis Testing</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHY TEST
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Hypothesis Test Does</div>
+<div class="section-body">
+
+  <p>A <strong>hypothesis test</strong> (DfE content area O · Statistical hypothesis testing) uses data from a <strong>sample</strong> to make a decision about a <strong>population parameter</strong>. At AS level the parameter is the probability $p$ of "success" in a binomial model — the probability that a coin lands heads, that a seed germinates, that a patient recovers.</p>
+
+  <div class="concept">
+    A sample never tells you $p$ exactly. Even a fair coin will not give exactly $10$ heads in every $20$ throws. A hypothesis test asks: <strong>is the sample result so far from what we expected that "chance" is no longer a believable explanation?</strong>
+  </div>
+
+  <p>The whole topic rests on a small set of precisely defined words. Each section below defines one or two of them, with an example in the same context so you can see how they fit together.</p>
+
+  <div class="tip">
+    <strong>Running context.</strong> A website claims that $30\%$ of its visitors make a purchase. A marketing manager believes a redesign has <em>increased</em> this proportion. She takes a random sample of $20$ visitors and counts how many make a purchase.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – HYPOTHESES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Null and Alternative Hypotheses</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>null hypothesis</strong> $H_0$ is the claim that is assumed to be true unless the evidence says otherwise. It always states a single exact value of the parameter.<br>
+    The <strong>alternative hypothesis</strong> $H_1$ is what you will conclude is likely if the evidence goes against $H_0$. It states a range of values.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The general form</div>
+    $H_0: p = p_0 \qquad H_1: p &gt; p_0 \;\;\text{or}\;\; p &lt; p_0 \;\;\text{or}\;\; p \neq p_0$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Writing hypotheses</div>
+    <div class="example-body">
+      <p>Write hypotheses for the website context, and for two further situations.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Website:</strong> let $p$ = probability that a visitor makes a purchase. $H_0: p = 0.3$, &nbsp;$H_1: p &gt; 0.3$ (the manager suspects an increase).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Spinner:</strong> a five-sided spinner should land on red with probability $0.2$; Ali thinks it lands on red too rarely. $H_0: p = 0.2$, &nbsp;$H_1: p &lt; 0.2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span><strong>Left-handedness:</strong> $11\%$ of people are left-handed; a researcher asks whether the proportion is different among musicians. $H_0: p = 0.11$, &nbsp;$H_1: p \neq 0.11$.</span></div>
+      <div class="tip">Always <strong>define $p$ in words</strong> first. "$p = 0.3$" means nothing until you say what $p$ is the probability <em>of</em>.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Hypotheses are about the population parameter.</strong> "$H_0: X = 6$" or "$H_0$: the sample proportion is $0.3$" are wrong. The sample is what you <em>observe</em>; the hypothesis is about what is true for the whole population.
+  </div>
+
+  <div class="warn">
+    <strong>Decide $H_1$ before looking at the data.</strong> The direction of the test comes from the question being asked ("increased", "decreased", "changed"), never from whether the sample happened to come out high or low.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TEST STATISTIC, SIGNIFICANCE, TAILS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Test Statistic, Significance Level and Tails</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Website example</th></tr>
+    <tr><td><strong>Test statistic</strong></td><td>A quantity calculated from the sample, used to decide whether to reject $H_0$.</td><td>$X$ = number of the $20$ visitors who buy</td></tr>
+    <tr><td><strong>Null distribution</strong></td><td>The distribution of the test statistic when $H_0$ is true.</td><td>$X \sim \mathrm{B}(20,\,0.3)$</td></tr>
+    <tr><td><strong>Significance level</strong> $\alpha$</td><td>The probability threshold below which a result is judged too unlikely to have happened by chance under $H_0$.</td><td>$5\%$</td></tr>
+    <tr><td><strong>One-tailed test</strong></td><td>$H_1$ is $p &gt; p_0$ or $p &lt; p_0$; only one direction counts as evidence.</td><td>$H_1: p &gt; 0.3$</td></tr>
+    <tr><td><strong>Two-tailed test</strong></td><td>$H_1$ is $p \neq p_0$; extreme results in either direction count, so $\alpha$ is split equally between the two tails.</td><td>—</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — One tail or two?</div>
+    <div class="example-body">
+      <p>State whether each test is one- or two-tailed and write $H_1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>"Test whether the coin is <strong>biased</strong>." Biased could mean either way: two-tailed, $H_1: p \neq 0.5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>"Test whether the coin is <strong>biased towards tails</strong>", with $p$ = P(heads). One-tailed, $H_1: p &lt; 0.5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>"Test whether the new fertiliser <strong>improves</strong> the germination rate of $85\%$." One-tailed, $H_1: p &gt; 0.85$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>"Test whether the proportion of defective items is <strong>different from</strong> $5\%$." Two-tailed, $H_1: p \neq 0.05$.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Why choose $5\%$?</strong> It is a convention, not a law. A smaller significance level (say $1\%$) demands stronger evidence before rejecting $H_0$. That is sensible when a wrong rejection would be costly — for example, switching a whole hospital to a new drug.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CRITICAL REGION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Critical Region, Critical Value and Acceptance Region</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>critical region</strong> (or rejection region) is the set of values of the test statistic that would lead you to reject $H_0$. The <strong>critical value</strong> is the first value inside the critical region — the boundary. The <strong>acceptance region</strong> is everything else: values that do not lead to rejecting $H_0$.
+  </div>
+
+  <p>For a one-tailed test at level $\alpha$, the critical region is chosen to be <strong>as large as possible</strong> while its total probability under $H_0$ is still <strong>no more than $\alpha$</strong>.</p>
+
+  <div class="svg-block">
+    <svg width="540" height="280" viewBox="0 0 540 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="220" x2="520" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="50" y1="220" x2="50" y2="30" stroke="#475569" stroke-width="2"/>
+      <rect x="53.0" y="219.3" width="22.8" height="0.7" fill="#a5b4fc"/>
+      <text x="64.4" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">0</text>
+      <rect x="81.8" y="213.9" width="22.8" height="6.1" fill="#a5b4fc"/>
+      <text x="93.1" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">1</text>
+      <rect x="110.5" y="195.3" width="22.8" height="24.7" fill="#a5b4fc"/>
+      <text x="121.9" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">2</text>
+      <rect x="139.2" y="156.5" width="22.8" height="63.5" fill="#a5b4fc"/>
+      <text x="150.6" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">3</text>
+      <rect x="168.0" y="104.3" width="22.8" height="115.7" fill="#a5b4fc"/>
+      <text x="179.4" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">4</text>
+      <rect x="196.8" y="61.3" width="22.8" height="158.7" fill="#a5b4fc"/>
+      <text x="208.1" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">5</text>
+      <rect x="225.5" y="50.0" width="22.8" height="170.0" fill="#a5b4fc"/>
+      <text x="236.9" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">6</text>
+      <rect x="254.2" y="74.3" width="22.8" height="145.7" fill="#a5b4fc"/>
+      <text x="265.6" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">7</text>
+      <rect x="283.0" y="118.5" width="22.8" height="101.5" fill="#a5b4fc"/>
+      <text x="294.4" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">8</text>
+      <rect x="311.8" y="162.0" width="22.8" height="58.0" fill="#a5b4fc"/>
+      <text x="323.1" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">9</text>
+      <rect x="340.5" y="192.7" width="22.8" height="27.3" fill="#ef4444"/>
+      <text x="351.9" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">10</text>
+      <rect x="369.2" y="209.3" width="22.8" height="10.7" fill="#ef4444"/>
+      <text x="380.6" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">11</text>
+      <rect x="398.0" y="216.6" width="22.8" height="3.4" fill="#ef4444"/>
+      <text x="409.4" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">12</text>
+      <rect x="426.8" y="219.1" width="22.8" height="0.9" fill="#ef4444"/>
+      <text x="438.1" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">13</text>
+      <rect x="455.5" y="219.8" width="22.8" height="0.2" fill="#ef4444"/>
+      <text x="466.9" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">14</text>
+      <rect x="484.2" y="220.0" width="22.8" height="0.0" fill="#ef4444"/>
+      <text x="495.6" y="235" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">15</text>
+      <line x1="46" y1="175.6" x2="50" y2="175.6" stroke="#475569"/>
+      <text x="43" y="179.6" font-family="Arial" font-size="10" fill="#475569" text-anchor="end">0.05</text>
+      <line x1="46" y1="131.3" x2="50" y2="131.3" stroke="#475569"/>
+      <text x="43" y="135.3" font-family="Arial" font-size="10" fill="#475569" text-anchor="end">0.10</text>
+      <line x1="46" y1="86.9" x2="50" y2="86.9" stroke="#475569"/>
+      <text x="43" y="90.9" font-family="Arial" font-size="10" fill="#475569" text-anchor="end">0.15</text>
+      <text x="520" y="252" font-family="Arial" font-size="12" fill="#475569" text-anchor="end">x</text>
+      <text x="56" y="26" font-family="Arial" font-size="12" fill="#475569">P(X = x)</text>
+      <text x="338" y="178" font-family="Arial" font-size="13" fill="#b91c1c" font-weight="bold">critical region</text>
+      <text x="150" y="40" font-family="Arial" font-size="13" fill="#3730a3" font-weight="bold">acceptance region</text>
+      <text x="270.0" y="272" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">X ~ B(20, 0.3): the critical region X &#8805; 10 (red) has total probability 0.0480</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding the critical region</div>
+    <div class="example-body">
+      <p>For the website test ($H_0: p = 0.3$, $H_1: p &gt; 0.3$, $n = 20$, $5\%$ level), find the critical region.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Under $H_0$, $X \sim \mathrm{B}(20,\,0.3)$. The mean is $np = 6$; evidence for $H_1$ means large values of $X$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Try $X \geqslant 9$: &nbsp;$\mathrm{P}(X \geqslant 9) = 1 - \mathrm{P}(X \leqslant 8) = 1 - 0.8867 = 0.1133$. Too big.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Try $X \geqslant 10$: &nbsp;$\mathrm{P}(X \geqslant 10) = 1 - \mathrm{P}(X \leqslant 9) = 1 - 0.9520 = 0.0480$. Less than $0.05$ ✓</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Critical region: $X \geqslant 10$. &nbsp;Critical value: $10$. &nbsp;Acceptance region: $X \leqslant 9$.</span></div>
+      <div class="tip">Show <strong>both</strong> probabilities — the one just inside ($0.0480$) and the one just outside ($0.1133$). That is how the examiner sees that your boundary is correct.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>"Critical value" for discrete data.</strong> The critical value is a value of $X$ — here $10$ — not a probability. Do not write "the critical value is $0.0480$".
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – P-VALUE AND ACTUAL SIGNIFICANCE LEVEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> p-values and the Actual Significance Level</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>p-value</strong> is the probability, assuming $H_0$ is true, of getting a result <strong>at least as extreme</strong> as the one observed (in the direction of $H_1$). If the p-value is less than or equal to the significance level, the result is <strong>significant</strong> and $H_0$ is rejected.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Upper-tail and lower-tail p-values</div>
+    $H_1: p &gt; p_0$: &nbsp; p-value $= \mathrm{P}(X \geqslant x_{\text{obs}})$ &nbsp;&nbsp;&nbsp; $H_1: p &lt; p_0$: &nbsp; p-value $= \mathrm{P}(X \leqslant x_{\text{obs}})$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using a p-value</div>
+    <div class="example-body">
+      <p>In the website sample, $10$ of the $20$ visitors make a purchase. Find the p-value and make a decision.</p>
+      <div class="step-row"><span class="arrow">①</span><span>p-value $= \mathrm{P}(X \geqslant 10) = 0.0480$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.0480 &lt; 0.05$: the result is significant at the $5\%$ level, so reject $H_0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Consistent with Worked Example 3: $10$ is in the critical region.</span></div>
+    </div>
+  </div>
+
+  <div class="concept">
+    Because the binomial distribution is discrete, the critical region rarely has probability <em>exactly</em> $\alpha$. Its true probability under $H_0$ is the <strong>actual significance level</strong>. It is also the <strong>probability of rejecting $H_0$ when $H_0$ is in fact true</strong>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Actual significance level</div>
+    <div class="example-body">
+      <p>State the actual significance level of the website test, and interpret it.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Actual significance level $= \mathrm{P}(X \geqslant 10 \mid p = 0.3) = 0.0480 = 4.80\%$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Interpretation: if the redesign has made no difference, there is a $4.80\%$ chance that the manager will wrongly conclude that it has increased sales.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    For a <strong>two-tailed</strong> test the actual significance level is the <strong>sum</strong> of the probabilities of both tails of the critical region.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – CONCLUSIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Writing a Conclusion</div>
+<div class="section-body">
+
+  <p>A full conclusion has <strong>two parts</strong>: a statistical decision, and what it means in context. The language must be <strong>non-assertive</strong>, because a test never proves anything.</p>
+
+  <table>
+    <tr><th>Decision</th><th>Good conclusion</th></tr>
+    <tr><td>Reject $H_0$</td><td>"There is sufficient evidence at the $5\%$ level to suggest that the proportion of visitors making a purchase has increased."</td></tr>
+    <tr><td>Do not reject $H_0$</td><td>"There is insufficient evidence at the $5\%$ level to suggest that the proportion of visitors making a purchase has increased."</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Improving a weak conclusion</div>
+    <div class="example-body">
+      <p>Explain what is wrong with each conclusion.</p>
+      <div class="step-row"><span class="arrow">①</span><span>"Reject $H_0$." — No context. It says nothing about visitors or purchases.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>"This proves the redesign increased sales." — Too assertive. A fair test can give a significant result by chance ($4.80\%$ of the time here).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>"Accept $H_0$: the proportion is $0.3$." — Not rejecting $H_0$ does not show it is true. There is simply not enough evidence against it.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>"The sample proportion is greater than $0.3$." — True ($10/20 = 0.5$) but irrelevant; the question is about the <em>population</em>.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not contradict yourself.</strong> If you reject $H_0$, the context sentence must say there <em>is</em> evidence for $H_1$. A mismatch between the decision and the sentence loses the final mark.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$H_0$</h4><p>Assumed true; one exact value, $p = p_0$.</p></div>
+    <div class="ref-card"><h4>$H_1$</h4><p>$p &gt; p_0$, $p &lt; p_0$ (one-tailed) or $p \neq p_0$ (two-tailed).</p></div>
+    <div class="ref-card"><h4>Test statistic</h4><p>The count $X$; under $H_0$, $X \sim \mathrm{B}(n,\,p_0)$.</p></div>
+    <div class="ref-card"><h4>Significance level</h4><p>Threshold probability for rejecting $H_0$.</p></div>
+    <div class="ref-card"><h4>Critical region</h4><p>Values of $X$ that lead to rejecting $H_0$; probability $\leqslant \alpha$.</p></div>
+    <div class="ref-card"><h4>Critical value</h4><p>The boundary value of $X$ inside the critical region.</p></div>
+    <div class="ref-card"><h4>Acceptance region</h4><p>Values of $X$ that do not lead to rejecting $H_0$.</p></div>
+    <div class="ref-card"><h4>p-value</h4><p>P(observed or more extreme $\mid H_0$).</p></div>
+    <div class="ref-card"><h4>Actual significance level</h4><p>P(critical region $\mid H_0$) = P(wrongly rejecting $H_0$).</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Give probabilities to 4 decimal places. Use the binomial functions on your calculator.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Explain the difference between the null hypothesis and the alternative hypothesis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The null hypothesis $H_0$ is the claim assumed to be true; it gives a single exact value of the parameter, such as $p = 0.3$.</p>
+          <p>The alternative hypothesis $H_1$ is what is suspected instead and is accepted as likely if there is enough evidence against $H_0$; it gives a range of values, such as $p &gt; 0.3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A games company says that a sticker appears in $1$ in $6$ packets of cards. A collector thinks stickers are more common than this. Define a parameter and write down suitable hypotheses.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ be the probability that a packet contains a sticker.</p>
+          <p>$H_0: p = \tfrac16$, &nbsp;$H_1: p &gt; \tfrac16$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>In a town, $35\%$ of adults cycle to work. A councillor wants to test whether the proportion is different in a neighbouring town. Write down hypotheses and state whether the test is one- or two-tailed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ be the probability that an adult in the neighbouring town cycles to work.</p>
+          <p>$H_0: p = 0.35$, &nbsp;$H_1: p \neq 0.35$. "Different" allows either direction, so the test is <strong>two-tailed</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A two-tailed test of $H_0: p = 0.3$ with $n = 20$ has critical region $X \leqslant 1$ or $X \geqslant 11$. (a) Write down the critical values. (b) Write down the acceptance region.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The critical values are $1$ and $11$.</p>
+          <p><strong>(b)</strong> Acceptance region: $2 \leqslant X \leqslant 10$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>For the test in Question 4, find the actual significance level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(20,\,0.3)$.</p>
+          <p>$\mathrm{P}(X \leqslant 1) = 0.0076$</p>
+          <p>$\mathrm{P}(X \geqslant 11) = 1 - \mathrm{P}(X \leqslant 10) = 1 - 0.9829 = 0.0171$</p>
+          <p>Actual significance level $= 0.00764 + 0.01714 = 0.0248$ (to 4 d.p.), i.e. $2.48\%$. Add the unrounded values — adding the 4 d.p. figures gives $0.0247$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$H_0: p = 0.5$, $H_1: p &gt; 0.5$, and the observed value of $X \sim \mathrm{B}(12,\,0.5)$ is $10$. Find the p-value and state whether the result is significant at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>p-value $= \mathrm{P}(X \geqslant 10) = 1 - \mathrm{P}(X \leqslant 9) = 1 - 0.9807 = 0.0193$.</p>
+          <p>$0.0193 &lt; 0.05$, so the result is significant: reject $H_0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A student writes: "The p-value is $0.0193$, so there is a $1.93\%$ chance that $H_0$ is true." Explain the error.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The p-value is calculated <em>assuming</em> $H_0$ is true. It is the probability of getting a result at least as extreme as the one observed <em>if</em> $H_0$ is true.</p>
+          <p>It is not the probability that $H_0$ is true — $H_0$ is either true or false, and the test does not give a probability for that.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Rewrite this conclusion so that it would earn full marks: "Reject $H_0$. The dice is definitely biased." (The test was of $H_1: p &gt; \tfrac16$, where $p$ is the probability of a six, at the $5\%$ level.)</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>"Reject $H_0$. There is sufficient evidence at the $5\%$ level to suggest that the die shows a six more often than one time in six."</p>
+          <p>The word "definitely" is too assertive, and "biased" does not match the one-tailed alternative hypothesis.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A test of $H_0: p = 0.2$ against $H_1: p &gt; 0.2$ uses a sample of $25$, at the $5\%$ level. The critical region is $X \geqslant 9$. (a) Find the actual significance level. (b) The observed value is $8$. Write a conclusion.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Under $H_0$, $X \sim \mathrm{B}(25,\,0.2)$. $\mathrm{P}(X \geqslant 9) = 1 - \mathrm{P}(X \leqslant 8) = 1 - 0.9532 = 0.0468$, i.e. $4.68\%$.</p>
+          <p><strong>(b)</strong> $8$ is not in the critical region, so do not reject $H_0$. There is insufficient evidence at the $5\%$ level to suggest that $p$ is greater than $0.2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A café owner believes that $25\%$ of customers order a hot chocolate. A new barista thinks the proportion is higher. A random sample of $20$ customers is taken.</p>
+      <p>(a) Define a parameter and write down hypotheses. &nbsp; (b) Find the critical region at the $5\%$ level. &nbsp; (c) State the actual significance level and explain what it means here. &nbsp; (d) $8$ customers in the sample order hot chocolate. What should the barista conclude?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $p$ be the probability that a customer orders a hot chocolate. $H_0: p = 0.25$, &nbsp;$H_1: p &gt; 0.25$.</p>
+          <p><strong>(b)</strong> Under $H_0$, $X \sim \mathrm{B}(20,\,0.25)$.</p>
+          <p>$\mathrm{P}(X \geqslant 8) = 1 - \mathrm{P}(X \leqslant 7) = 0.1018$ — too big.</p>
+          <p>$\mathrm{P}(X \geqslant 9) = 1 - \mathrm{P}(X \leqslant 8) = 0.0409$ — less than $0.05$ ✓</p>
+          <p>Critical region: $X \geqslant 9$.</p>
+          <p><strong>(c)</strong> Actual significance level $= 0.0409 = 4.09\%$. If the true proportion really is $25\%$, there is a $4.09\%$ chance that the test will wrongly suggest that it is higher.</p>
+          <p><strong>(d)</strong> $8$ is not in the critical region, so do not reject $H_0$. There is insufficient evidence at the $5\%$ level to suggest that more than $25\%$ of customers order a hot chocolate.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The Language of Hypothesis Testing &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

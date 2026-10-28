@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigonometric Identities &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🟰 Trigonometric Identities</h1>
+  <p>A Level Maths Year 1 · Trigonometry</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE TWO IDENTITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Two Year 1 Identities</div>
+<div class="section-body">
+
+  <p>An <strong>identity</strong> is true for <em>every</em> value of the variable, and is written with $\equiv$. In Year 1 you need exactly two trigonometric identities, but you need to use them fluently: to find exact values, to simplify, to prove other identities, and to turn equations into ones you can solve. This page is part of DfE content area <strong>E · Trigonometry</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">The Year 1 identities</div>
+    $\tan\theta \equiv \dfrac{\sin\theta}{\cos\theta}$ &nbsp;($\cos\theta \neq 0$) &nbsp;&nbsp;&nbsp;&nbsp; $\sin^2\theta + \cos^2\theta \equiv 1$
+  </div>
+
+  <div class="concept">
+    <strong>Where they come from.</strong> On the unit circle the point at angle $\theta$ is $P(\cos\theta, \sin\theta)$.
+    <ul style="margin:8px 0 0 20px;">
+      <li>The gradient of $OP$ is $\dfrac{\sin\theta}{\cos\theta}$, and that gradient is what $\tan\theta$ means.</li>
+      <li>$OP = 1$, so by Pythagoras $(\cos\theta)^2 + (\sin\theta)^2 = 1^2$.</li>
+    </ul>
+    Because the unit-circle definition works for every angle, so do the identities.
+  </div>
+
+  <div class="tip">
+    <strong>Notation.</strong> $\sin^2\theta$ means $(\sin\theta)^2$. It is <em>not</em> $\sin(\theta^2)$, and it is not $\sin(\sin\theta)$.
+  </div>
+
+  <table>
+    <tr><th>Rearrangement</th><th>Use it when you want to…</th></tr>
+    <tr><td>$\sin^2\theta \equiv 1 - \cos^2\theta$</td><td>replace $\sin^2$ so an expression is all in $\cos$</td></tr>
+    <tr><td>$\cos^2\theta \equiv 1 - \sin^2\theta$</td><td>replace $\cos^2$ so an expression is all in $\sin$</td></tr>
+    <tr><td>$\sin\theta \equiv \tan\theta\cos\theta$</td><td>get rid of a fraction involving $\tan$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EXACT VALUES FROM ONE RATIO
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding One Ratio from Another</div>
+<div class="section-body">
+
+  <p>If you know one of $\sin\theta$, $\cos\theta$, $\tan\theta$ <em>and</em> which quadrant $\theta$ is in, the identities give the other two exactly.</p>
+
+  <ol class="steps">
+    <li><span>Use $\sin^2\theta + \cos^2\theta = 1$ to find the <em>size</em> of the missing ratio.</span></li>
+    <li><span>Use the quadrant (CAST, or the graphs on <a href="trig-graphs.html">Trigonometric Graphs</a>) to choose the <em>sign</em>.</span></li>
+    <li><span>Use $\tan\theta = \dfrac{\sin\theta}{\cos\theta}$ for the third.</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — An obtuse angle</div>
+    <div class="example-body">
+      <p>Given that $\sin\theta = \tfrac35$ and $\theta$ is obtuse, find the exact values of $\cos\theta$ and $\tan\theta$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\cos^2\theta = 1 - \left(\tfrac35\right)^2 = 1 - \tfrac{9}{25} = \tfrac{16}{25}$, so $\cos\theta = \pm\tfrac45$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\theta$ is obtuse (second quadrant), where cos is negative: $\cos\theta = -\tfrac45$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tan\theta = \dfrac{3/5}{-4/5} = -\tfrac34$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Starting from tan</div>
+    <div class="example-body">
+      <p>Given that $\tan\theta = -2$ and $270° < \theta < 360°$, find the exact values of $\sin\theta$ and $\cos\theta$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sin\theta = -2\cos\theta$. Substitute into the Pythagorean identity: $4\cos^2\theta + \cos^2\theta = 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos^2\theta = \tfrac15$, so $\cos\theta = \pm\tfrac{1}{\sqrt5}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Fourth quadrant: cos positive, sin negative. $\cos\theta = \dfrac{1}{\sqrt5} = \dfrac{\sqrt5}{5}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\sin\theta = -2\cos\theta = -\dfrac{2\sqrt5}{5}$</span></div>
+      <div class="tip"><strong>Alternative:</strong> draw a right-angled triangle with opposite $2$ and adjacent $1$. The hypotenuse is $\sqrt5$, giving the sizes; the quadrant gives the signs.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SIMPLIFYING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Simplifying Expressions</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Three quick simplifications</div>
+    <div class="example-body">
+      <p>Simplify (a) $4 - 4\sin^2\theta$ &nbsp; (b) $\dfrac{\sin\theta}{\tan\theta}$ &nbsp; (c) $\dfrac{1 - \cos^2\theta}{\sin\theta\cos\theta}$</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $4(1 - \sin^2\theta) = 4\cos^2\theta$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\sin\theta \div \dfrac{\sin\theta}{\cos\theta} = \sin\theta \times \dfrac{\cos\theta}{\sin\theta} = \cos\theta$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $\dfrac{\sin^2\theta}{\sin\theta\cos\theta} = \dfrac{\sin\theta}{\cos\theta} = \tan\theta$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>$\sin^2\theta + \cos^2\theta = 1$ needs the same angle.</strong> $\sin^2 2x + \cos^2 2x = 1$ is fine, but $\sin^2 x + \cos^2 2x$ does not simplify to $1$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PROVING IDENTITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Proving Identities</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>The rule.</strong> Start with one side — usually the more complicated one — and transform it step by step until it becomes the other side. Write "LHS $\equiv$ …" and finish with "$\equiv$ RHS". Do <em>not</em> write the identity down and manipulate both sides as if it were an equation: that assumes what you are trying to prove.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Useful moves</div>
+    Write $\tan$ as $\dfrac{\sin}{\cos}$ &middot; combine fractions over a common denominator &middot; expand brackets &middot; spot $\sin^2 + \cos^2$ &middot; factorise (especially a difference of two squares)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Expanding a bracket</div>
+    <div class="example-body">
+      <p>Prove that $(\sin\theta + \cos\theta)^2 \equiv 1 + 2\sin\theta\cos\theta$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $\equiv \sin^2\theta + 2\sin\theta\cos\theta + \cos^2\theta$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\equiv (\sin^2\theta + \cos^2\theta) + 2\sin\theta\cos\theta$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\equiv 1 + 2\sin\theta\cos\theta \equiv$ RHS &nbsp;■</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Combining fractions</div>
+    <div class="example-body">
+      <p>Prove that $\tan\theta + \dfrac{1}{\tan\theta} \equiv \dfrac{1}{\sin\theta\cos\theta}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $\equiv \dfrac{\sin\theta}{\cos\theta} + \dfrac{\cos\theta}{\sin\theta}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\equiv \dfrac{\sin^2\theta + \cos^2\theta}{\sin\theta\cos\theta}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\equiv \dfrac{1}{\sin\theta\cos\theta} \equiv$ RHS &nbsp;■</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Difference of two squares</div>
+    <div class="example-body">
+      <p>Prove that $\sin^4\theta - \cos^4\theta \equiv 1 - 2\cos^2\theta$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $\equiv (\sin^2\theta - \cos^2\theta)(\sin^2\theta + \cos^2\theta)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\equiv (\sin^2\theta - \cos^2\theta) \times 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\equiv (1 - \cos^2\theta) - \cos^2\theta \equiv 1 - 2\cos^2\theta \equiv$ RHS &nbsp;■</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Multiplying top and bottom</div>
+    <div class="example-body">
+      <p>Prove that $\dfrac{\cos\theta}{1 - \sin\theta} \equiv \dfrac{1 + \sin\theta}{\cos\theta}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $\equiv \dfrac{\cos\theta}{1 - \sin\theta} \times \dfrac{1 + \sin\theta}{1 + \sin\theta} \equiv \dfrac{\cos\theta(1 + \sin\theta)}{1 - \sin^2\theta}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\equiv \dfrac{\cos\theta(1 + \sin\theta)}{\cos^2\theta}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\equiv \dfrac{1 + \sin\theta}{\cos\theta} \equiv$ RHS &nbsp;■</span></div>
+      <div class="tip">Multiplying by $1 + \sin\theta$ creates $1 - \sin^2\theta$, which the identity turns into $\cos^2\theta$ — the same trick as rationalising a surd denominator.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Disproving a false "identity"</div>
+    <div class="example-body">
+      <p>Show that $\sin(A + B) \equiv \sin A + \sin B$ is false.</p>
+      <div class="step-row"><span class="arrow">①</span><span>One counter-example is enough. Take $A = B = 90°$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>LHS $= \sin 180° = 0$, but RHS $= 1 + 1 = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0 \neq 2$, so the statement is not an identity. (The correct formula for $\sin(A+B)$ is a Year 2 result.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – IDENTITIES IN EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using Identities to Change an Equation</div>
+<div class="section-body">
+
+  <p>An equation containing both $\sin$ and $\cos$ usually cannot be solved directly. An identity rewrites it in <strong>one</strong> trig function.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Rewriting in terms of sin</div>
+    <div class="example-body">
+      <p>Show that the equation $2\cos^2 x + 3\sin x = 3$ can be written as $2\sin^2 x - 3\sin x + 1 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Replace $\cos^2 x$ by $1 - \sin^2 x$: $2(1 - \sin^2 x) + 3\sin x = 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2 - 2\sin^2 x + 3\sin x - 3 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$-2\sin^2 x + 3\sin x - 1 = 0$, so $2\sin^2 x - 3\sin x + 1 = 0$ &nbsp;■</span></div>
+      <div class="tip">This is now a quadratic in $\sin x$. Solving it is covered in <a href="equations.html">Trigonometric Equations</a>.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Turning sin and cos into tan</div>
+    <div class="example-body">
+      <p>Write $3\sin x = 4\cos x$ as an equation in $\tan x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Divide both sides by $\cos x$ (allowed, because $\cos x = 0$ would force $\sin x = 0$ too, which is impossible since $\sin^2 x + \cos^2 x = 1$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3\tan x = 4$, so $\tan x = \tfrac43$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Quotient identity</h4><p>$\tan\theta \equiv \dfrac{\sin\theta}{\cos\theta}$</p></div>
+    <div class="ref-card"><h4>Pythagorean identity</h4><p>$\sin^2\theta + \cos^2\theta \equiv 1$</p></div>
+    <div class="ref-card"><h4>Rearranged</h4><p>$\sin^2\theta \equiv 1 - \cos^2\theta$; $\cos^2\theta \equiv 1 - \sin^2\theta$</p></div>
+    <div class="ref-card"><h4>Missing ratio</h4><p>Size from the identity, sign from the quadrant.</p></div>
+    <div class="ref-card"><h4>Proof layout</h4><p>LHS $\equiv \ldots \equiv$ RHS. Never work on both sides.</p></div>
+    <div class="ref-card"><h4>Fractions</h4><p>Common denominator, then look for $\sin^2 + \cos^2$.</p></div>
+    <div class="ref-card"><h4>Fourth powers</h4><p>Difference of two squares.</p></div>
+    <div class="ref-card"><h4>$1 \pm \sin\theta$</h4><p>Multiply by the "conjugate" $1 \mp \sin\theta$.</p></div>
+    <div class="ref-card"><h4>Disproof</h4><p>One counter-example is enough.</p></div>
+    <div class="ref-card"><h4>Equations</h4><p>Use an identity to get one function only.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Simplify $5\sin^2\theta + 5\cos^2\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5(\sin^2\theta + \cos^2\theta) = 5 \times 1 = 5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Simplify $\tan\theta\cos\theta$ and $\dfrac{1 - \sin^2\theta}{\cos\theta}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tan\theta\cos\theta = \dfrac{\sin\theta}{\cos\theta} \times \cos\theta = \sin\theta$</p>
+          <p>$\dfrac{1 - \sin^2\theta}{\cos\theta} = \dfrac{\cos^2\theta}{\cos\theta} = \cos\theta$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Given that $\cos\theta = -\tfrac{5}{13}$ and $90° < \theta < 180°$, find the exact values of $\sin\theta$ and $\tan\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin^2\theta = 1 - \tfrac{25}{169} = \tfrac{144}{169}$, so $\sin\theta = \pm\tfrac{12}{13}$.</p>
+          <p>Second quadrant: sin positive, so $\sin\theta = \tfrac{12}{13}$.</p>
+          <p>$\tan\theta = \dfrac{12/13}{-5/13} = -\tfrac{12}{5}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Given that $\tan\theta = 2$ and $180° < \theta < 270°$, find the exact values of $\sin\theta$ and $\cos\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin\theta = 2\cos\theta$, so $4\cos^2\theta + \cos^2\theta = 1$ and $\cos^2\theta = \tfrac15$.</p>
+          <p>Third quadrant: both sin and cos negative (tan positive ✓).</p>
+          <p>$\cos\theta = -\dfrac{1}{\sqrt5} = -\dfrac{\sqrt5}{5}$, &nbsp;$\sin\theta = 2\cos\theta = -\dfrac{2\sqrt5}{5}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Prove that $(1 - \sin^2\theta)\tan\theta \equiv \sin\theta\cos\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $\equiv \cos^2\theta \times \dfrac{\sin\theta}{\cos\theta}$</p>
+          <p>$\equiv \sin\theta\cos\theta \equiv$ RHS &nbsp;■</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Prove that $(\cos\theta + \sin\theta)^2 + (\cos\theta - \sin\theta)^2 \equiv 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $\equiv (\cos^2\theta + 2\sin\theta\cos\theta + \sin^2\theta) + (\cos^2\theta - 2\sin\theta\cos\theta + \sin^2\theta)$</p>
+          <p>$\equiv 2\cos^2\theta + 2\sin^2\theta$</p>
+          <p>$\equiv 2(\cos^2\theta + \sin^2\theta) \equiv 2 \equiv$ RHS &nbsp;■</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Prove that $1 + \tan^2\theta \equiv \dfrac{1}{\cos^2\theta}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $\equiv 1 + \dfrac{\sin^2\theta}{\cos^2\theta} \equiv \dfrac{\cos^2\theta + \sin^2\theta}{\cos^2\theta}$</p>
+          <p>$\equiv \dfrac{1}{\cos^2\theta} \equiv$ RHS &nbsp;■</p>
+          <p>(In Year 2 this becomes $1 + \tan^2\theta \equiv \sec^2\theta$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Prove that $\dfrac{\sin\theta}{1 + \cos\theta} + \dfrac{1 + \cos\theta}{\sin\theta} \equiv \dfrac{2}{\sin\theta}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>LHS $\equiv \dfrac{\sin^2\theta + (1 + \cos\theta)^2}{\sin\theta(1 + \cos\theta)}$</p>
+          <p>Numerator: $\sin^2\theta + 1 + 2\cos\theta + \cos^2\theta = 2 + 2\cos\theta = 2(1 + \cos\theta)$</p>
+          <p>LHS $\equiv \dfrac{2(1 + \cos\theta)}{\sin\theta(1 + \cos\theta)} \equiv \dfrac{2}{\sin\theta} \equiv$ RHS &nbsp;■</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A curve is given by $x = 2 + 3\cos\theta$, $y = 3\sin\theta - 1$. Use an identity to find an equation linking $x$ and $y$ only, and describe the curve.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos\theta = \dfrac{x - 2}{3}$ and $\sin\theta = \dfrac{y + 1}{3}$.</p>
+          <p>$\sin^2\theta + \cos^2\theta = 1$: $\dfrac{(y+1)^2}{9} + \dfrac{(x-2)^2}{9} = 1$</p>
+          <p>$(x - 2)^2 + (y + 1)^2 = 9$: a circle with centre $(2, -1)$ and radius $3$ (see <a href="../coordinate-geometry/circles.html">Circles</a>).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Show that $2\sin^2\theta + 3\cos\theta = 0$ can be written as $2\cos^2\theta - 3\cos\theta - 2 = 0$. &nbsp; (b) Hence solve $2\sin^2\theta + 3\cos\theta = 0$ for $0° \leqslant \theta \leqslant 360°$. &nbsp; (c) Explain why one of the factors gives no solutions. &nbsp; (d) Hence solve $2\sin^2 2x + 3\cos 2x = 0$ for $0° \leqslant x \leqslant 180°$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $2(1 - \cos^2\theta) + 3\cos\theta = 0 \;\Rightarrow\; 2 - 2\cos^2\theta + 3\cos\theta = 0$</p>
+          <p>Multiply by $-1$: $2\cos^2\theta - 3\cos\theta - 2 = 0$ &nbsp;■</p>
+          <p><strong>(b)</strong> $(2\cos\theta + 1)(\cos\theta - 2) = 0$, so $\cos\theta = -\tfrac12$ or $\cos\theta = 2$.</p>
+          <p>$\cos\theta = -\tfrac12$: $\theta = 120°$ or $\theta = 360° - 120° = 240°$.</p>
+          <p><strong>(c)</strong> $-1 \leqslant \cos\theta \leqslant 1$, so $\cos\theta = 2$ is impossible.</p>
+          <p><strong>(d)</strong> The same working with $\theta = 2x$, where $0° \leqslant 2x \leqslant 360°$: $2x = 120°$ or $240°$.</p>
+          <p>$x = 60°$ or $x = 120°$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Trigonometric Identities &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

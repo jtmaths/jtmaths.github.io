@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indices and Surds &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔢 Indices and Surds</h1>
+  <p>A Level Maths Year 1 · Algebra and Functions</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE LAWS OF INDICES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Laws of Indices</div>
+<div class="section-body">
+
+  <div class="concept">
+    In $a^n$ the number $a$ is the <strong>base</strong> and $n$ is the <strong>index</strong> (or power, or exponent). At GCSE the index was usually a positive whole number. At A Level the index can be <strong>any rational number</strong> — negative, zero or a fraction — and the same three laws still hold.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The three laws (same base $a$)</div>
+    $a^m \times a^n = a^{m+n}$ &nbsp;&middot;&nbsp; $a^m \div a^n = a^{m-n}$ &nbsp;&middot;&nbsp; $\left(a^m\right)^n = a^{mn}$
+  </div>
+
+  <table>
+    <tr><th>Law</th><th>In words</th><th>Example</th></tr>
+    <tr><td>$a^m \times a^n = a^{m+n}$</td><td>Multiplying: add the indices</td><td>$x^3 \times x^5 = x^8$</td></tr>
+    <tr><td>$a^m \div a^n = a^{m-n}$</td><td>Dividing: subtract the indices</td><td>$x^7 \div x^2 = x^5$</td></tr>
+    <tr><td>$\left(a^m\right)^n = a^{mn}$</td><td>Power of a power: multiply</td><td>$\left(x^4\right)^3 = x^{12}$</td></tr>
+    <tr><td>$(ab)^n = a^n b^n$</td><td>A power applies to every factor</td><td>$\left(2x\right)^3 = 8x^3$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>The laws only work with the same base.</strong> $2^3 \times 3^2$ cannot be simplified to a single power, and $x^2 + x^3$ is <em>not</em> $x^5$ — the laws are for multiplying and dividing, never for adding.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Simplifying with several laws</div>
+    <div class="example-body">
+      <p>Simplify $\dfrac{\left(2x^3\right)^4}{8x^5}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The power applies to the $2$ as well: $\left(2x^3\right)^4 = 2^4 x^{12} = 16x^{12}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide the numbers and subtract the indices: $\dfrac{16}{8}\,x^{12-5}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 2x^7$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ZERO, NEGATIVE AND FRACTIONAL INDICES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Zero, Negative and Fractional Indices</div>
+<div class="section-body">
+
+  <p>The definitions below are not new rules to memorise blindly — each is <em>forced</em> by the laws in Section 1. For example $a^3 \div a^3 = a^0$ by the division law, but the answer is obviously $1$, so $a^0$ must be $1$.</p>
+
+  <div class="formula-box">
+    <div class="label">The definitions ($a \neq 0$)</div>
+    $a^0 = 1$ &nbsp;&middot;&nbsp; $a^{-n} = \dfrac{1}{a^n}$ &nbsp;&middot;&nbsp; $a^{\frac{1}{n}} = \sqrt[n]{a}$ &nbsp;&middot;&nbsp; $a^{\frac{m}{n}} = \left(\sqrt[n]{a}\right)^m$
+  </div>
+
+  <div class="concept">
+    <strong>Reading a fractional index.</strong> In $a^{\frac{m}{n}}$ the <strong>denominator is the root</strong> and the <strong>numerator is the power</strong>. A negative sign means "one over". Take the root first — it keeps the numbers small.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Evaluating without a calculator</div>
+    <div class="example-body">
+      <p>Evaluate (a) $27^{-\frac{2}{3}}$ &nbsp; (b) $\left(\dfrac{16}{81}\right)^{\frac{3}{4}}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Cube root first: $\sqrt[3]{27} = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Square it: $3^2 = 9$. The negative index means reciprocal: $27^{-\frac{2}{3}} = \dfrac{1}{9}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) Fourth roots of top and bottom: $\sqrt[4]{16} = 2$ and $\sqrt[4]{81} = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Cube: $\left(\dfrac{2}{3}\right)^3 = \dfrac{8}{27}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Writing in the form $ax^p + bx^q$</div>
+    <div class="example-body">
+      <p>Write $\dfrac{3x^2 - 2\sqrt{x}}{x}$ in the form $ax^p + bx^q$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Write the root as a power: $\sqrt{x} = x^{\frac{1}{2}}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Split the fraction: $\dfrac{3x^2}{x} - \dfrac{2x^{\frac12}}{x}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Subtract indices: $3x^{2-1} - 2x^{\frac12 - 1} = 3x - 2x^{-\frac{1}{2}}$.</span></div>
+      <div class="tip"><strong>Why this matters:</strong> this exact skill is the first step of almost every differentiation and integration question. You cannot differentiate a fraction term by term — you must rewrite it as a sum of powers of $x$ first.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>The coefficient is not raised to the power unless it is inside the bracket.</strong> $\dfrac{1}{2x^3} = \dfrac{1}{2}x^{-3}$, but $\dfrac{1}{(2x)^3} = \dfrac{1}{8}x^{-3}$. Also, $2x^{-1} = \dfrac{2}{x}$, not $\dfrac{1}{2x}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – EQUATIONS WITH INDICES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Solving Equations with Indices</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Same base, same index</div>
+    If $a^p = a^q$ (with $a > 0$, $a \neq 1$) then $p = q$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Writing both sides with a common base</div>
+    <div class="example-body">
+      <p>Solve $4^{x+1} = 8^x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both $4$ and $8$ are powers of $2$: $4 = 2^2$ and $8 = 2^3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\left(2^2\right)^{x+1} = \left(2^3\right)^x \;\Rightarrow\; 2^{2x+2} = 2^{3x}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Equate indices: $2x + 2 = 3x$, so $x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Check: $4^3 = 64$ and $8^2 = 64$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Undoing a fractional power</div>
+    <div class="example-body">
+      <p>Solve $x^{\frac{3}{2}} = 8$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Raise both sides to the reciprocal power $\tfrac{2}{3}$: $x = 8^{\frac{2}{3}}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt[3]{8} = 2$, and $2^2 = 4$, so $x = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check: $4^{\frac32} = \left(\sqrt{4}\right)^3 = 2^3 = 8$ ✓</span></div>
+      <div class="tip">Equations that need logarithms, such as $3^x = 20$, are covered in the Exponentials and Logarithms topic. Here the numbers are chosen so a common base exists.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SURDS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Manipulating Surds</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>surd</strong> is an irrational root such as $\sqrt{2}$ or $\sqrt{15}$. Leaving answers in surd form keeps them <strong>exact</strong>; a decimal would be rounded. Questions that say "give your answer in exact form" or "in the form $a + b\sqrt{c}$" expect surds, and a calculator decimal earns no credit.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The two rules</div>
+    $\sqrt{ab} = \sqrt{a}\,\sqrt{b}$ &nbsp;&middot;&nbsp; $\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}$ &nbsp; (for $a, b > 0$)
+  </div>
+
+  <div class="warn">
+    <strong>There is no rule for adding.</strong> $\sqrt{9 + 16} = \sqrt{25} = 5$, but $\sqrt{9} + \sqrt{16} = 3 + 4 = 7$. So $\sqrt{a+b} \neq \sqrt{a} + \sqrt{b}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Simplifying and collecting</div>
+    <div class="example-body">
+      <p>Simplify $\sqrt{12} + \sqrt{75}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Find the largest square factor of each: $12 = 4 \times 3$ and $75 = 25 \times 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt{12} = 2\sqrt{3}$ and $\sqrt{75} = 5\sqrt{3}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>They are now "like terms": $2\sqrt{3} + 5\sqrt{3} = 7\sqrt{3}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Expanding brackets with surds</div>
+    <div class="example-body">
+      <p>Expand and simplify $\left(3 + \sqrt{2}\right)\left(5 - 2\sqrt{2}\right)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Every term times every term: $15 - 6\sqrt{2} + 5\sqrt{2} - 2\left(\sqrt{2}\right)^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\left(\sqrt{2}\right)^2 = 2$, so the last term is $-4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 15 - 4 - \sqrt{2} = 11 - \sqrt{2}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – RATIONALISING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Rationalising the Denominator</div>
+<div class="section-body">
+
+  <p><strong>Rationalising</strong> means rewriting a fraction so that there is no surd in the denominator. You multiply top and bottom by the same thing, so the value does not change.</p>
+
+  <table>
+    <tr><th>Denominator</th><th>Multiply top and bottom by</th><th>Why it works</th></tr>
+    <tr><td>$\sqrt{b}$</td><td>$\sqrt{b}$</td><td>$\sqrt{b}\times\sqrt{b} = b$</td></tr>
+    <tr><td>$a + \sqrt{b}$</td><td>$a - \sqrt{b}$</td><td>$(a+\sqrt{b})(a-\sqrt{b}) = a^2 - b$</td></tr>
+    <tr><td>$a - \sqrt{b}$</td><td>$a + \sqrt{b}$</td><td>difference of two squares again</td></tr>
+    <tr><td>$\sqrt{a} - \sqrt{b}$</td><td>$\sqrt{a} + \sqrt{b}$</td><td>$(\sqrt{a}-\sqrt{b})(\sqrt{a}+\sqrt{b}) = a - b$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>The conjugate.</strong> $a - \sqrt{b}$ is called the conjugate of $a + \sqrt{b}$. Multiplying a pair of conjugates is the difference of two squares, and the surd terms cancel exactly.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Two rationalisations</div>
+    <div class="example-body">
+      <p>Rationalise (a) $\dfrac{6}{\sqrt{3}}$ &nbsp; (b) $\dfrac{4}{3 - \sqrt{5}}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\dfrac{6}{\sqrt{3}} \times \dfrac{\sqrt{3}}{\sqrt{3}} = \dfrac{6\sqrt{3}}{3} = 2\sqrt{3}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Multiply by the conjugate: $\dfrac{4\left(3 + \sqrt{5}\right)}{\left(3 - \sqrt{5}\right)\left(3 + \sqrt{5}\right)}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Denominator: $9 - 5 = 4$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{4\left(3+\sqrt{5}\right)}{4} = 3 + \sqrt{5}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Answer in the form $a + b\sqrt{c}$</div>
+    <div class="example-body">
+      <p>Express $\dfrac{2 + \sqrt{3}}{2 - \sqrt{3}}$ in the form $a + b\sqrt{3}$, where $a$ and $b$ are integers.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiply top and bottom by $2 + \sqrt{3}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Denominator: $4 - 3 = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Numerator: $\left(2 + \sqrt{3}\right)^2 = 4 + 4\sqrt{3} + 3 = 7 + 4\sqrt{3}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So $a = 7$, $b = 4$. Check: $\dfrac{3.732}{0.268} \approx 13.93$ and $7 + 4(1.732) \approx 13.93$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — An equation with surd coefficients</div>
+    <div class="example-body">
+      <p>Solve $x\sqrt{8} = x\sqrt{2} + 3$, giving $x$ with a rational denominator.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sqrt{8} = 2\sqrt{2}$, so $2\sqrt{2}\,x - \sqrt{2}\,x = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt{2}\,x = 3$, so $x = \dfrac{3}{\sqrt{2}}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Rationalise: $x = \dfrac{3\sqrt{2}}{2}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Multiply / divide</h4><p>Add / subtract the indices (same base only).</p></div>
+    <div class="ref-card"><h4>Power of a power</h4><p>$\left(a^m\right)^n = a^{mn}$; applies to every factor in the bracket.</p></div>
+    <div class="ref-card"><h4>Zero index</h4><p>$a^0 = 1$ for any $a \neq 0$.</p></div>
+    <div class="ref-card"><h4>Negative index</h4><p>$a^{-n} = \dfrac{1}{a^n}$ — reciprocal, not negative.</p></div>
+    <div class="ref-card"><h4>Fractional index</h4><p>$a^{\frac{m}{n}}$: denominator is the root, numerator the power.</p></div>
+    <div class="ref-card"><h4>Equations</h4><p>Write both sides with the same base, then equate indices.</p></div>
+    <div class="ref-card"><h4>Simplifying surds</h4><p>Pull out the largest square factor: $\sqrt{50} = 5\sqrt{2}$.</p></div>
+    <div class="ref-card"><h4>No adding rule</h4><p>$\sqrt{a+b} \neq \sqrt{a}+\sqrt{b}$.</p></div>
+    <div class="ref-card"><h4>Rationalising</h4><p>Multiply by $\sqrt{b}$, or by the conjugate $a \mp \sqrt{b}$.</p></div>
+    <div class="ref-card"><h4>Exact form</h4><p>Leave surds in; a decimal is not exact.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Answer these without a calculator — that is how indices and surds are usually tested.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Evaluate (a) $64^{\frac{2}{3}}$ &nbsp; (b) $32^{-\frac{3}{5}}$ &nbsp; (c) $\left(\dfrac{9}{4}\right)^{-\frac{1}{2}}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\sqrt[3]{64} = 4$, then $4^2 = 16$.</p>
+          <p>(b) $\sqrt[5]{32} = 2$, then $2^3 = 8$; the negative index gives $\dfrac{1}{8}$.</p>
+          <p>(c) The negative index flips the fraction: $\left(\dfrac{4}{9}\right)^{\frac12} = \dfrac{2}{3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{6x^5y^2}{4x^2y^{-1}}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Numbers: $\dfrac{6}{4} = \dfrac{3}{2}$.</p>
+          <p>$x$: $x^{5-2} = x^3$. &nbsp; $y$: $y^{2-(-1)} = y^3$.</p>
+          <p>$\dfrac{3}{2}x^3y^3$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Write $\dfrac{x^2 + 4}{\sqrt{x}}$ as a sum of powers of $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Divide each term by $x^{\frac12}$:</p>
+          <p>$\dfrac{x^2}{x^{\frac12}} + \dfrac{4}{x^{\frac12}} = x^{\frac{3}{2}} + 4x^{-\frac{1}{2}}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Simplify $\sqrt{50} - \sqrt{18} + \sqrt{8}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{50} = 5\sqrt{2}$, &nbsp;$\sqrt{18} = 3\sqrt{2}$, &nbsp;$\sqrt{8} = 2\sqrt{2}$.</p>
+          <p>$5\sqrt{2} - 3\sqrt{2} + 2\sqrt{2} = 4\sqrt{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Expand and simplify $\left(2\sqrt{3} - 1\right)^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\left(2\sqrt{3}\right)^2 - 2\left(2\sqrt{3}\right)(1) + 1^2$</p>
+          <p>$= 4 \times 3 - 4\sqrt{3} + 1 = 13 - 4\sqrt{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Rationalise the denominator of $\dfrac{10}{\sqrt{7} - \sqrt{2}}$, simplifying your answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiply top and bottom by $\sqrt{7} + \sqrt{2}$.</p>
+          <p>Denominator: $7 - 2 = 5$.</p>
+          <p>$\dfrac{10\left(\sqrt{7} + \sqrt{2}\right)}{5} = 2\sqrt{7} + 2\sqrt{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $9^x = 27^{x-1}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Base $3$: $\left(3^2\right)^x = \left(3^3\right)^{x-1}$, so $3^{2x} = 3^{3x-3}$.</p>
+          <p>$2x = 3x - 3$, giving $x = 3$.</p>
+          <p>Check: $9^3 = 729$ and $27^2 = 729$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Express $\dfrac{5 + \sqrt{3}}{2 - \sqrt{3}}$ in the form $a + b\sqrt{3}$, where $a$ and $b$ are integers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Multiply top and bottom by $2 + \sqrt{3}$. The denominator becomes $4 - 3 = 1$.</p>
+          <p>Numerator: $(5 + \sqrt{3})(2 + \sqrt{3}) = 10 + 5\sqrt{3} + 2\sqrt{3} + 3$.</p>
+          <p>$= 13 + 7\sqrt{3}$, so $a = 13$, $b = 7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>(a) Given $y = 2^x$, write $4^x$ and $2^{x+3}$ in terms of $y$. &nbsp; (b) Hence solve $4^x - 2^{x+3} + 16 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $4^x = \left(2^2\right)^x = \left(2^x\right)^2 = y^2$, and $2^{x+3} = 2^x \times 2^3 = 8y$.</p>
+          <p><strong>(b)</strong> The equation becomes $y^2 - 8y + 16 = 0$, i.e. $(y - 4)^2 = 0$.</p>
+          <p>So $y = 4$, meaning $2^x = 4 = 2^2$, and $x = 2$.</p>
+          <p>Check: $16 - 32 + 16 = 0$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A rectangle has sides of length $\left(3 + \sqrt{5}\right)$ cm and $\left(3 - \sqrt{5}\right)$ cm. Giving every answer in exact form, find:</p>
+      <p>(a) its area &nbsp; (b) its perimeter &nbsp; (c) the length of its diagonal, in the form $k\sqrt{7}$ &nbsp; (d) the ratio of the longer side to the shorter side, in the form $\dfrac{a + b\sqrt{5}}{2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Difference of two squares: $(3 + \sqrt{5})(3 - \sqrt{5}) = 9 - 5 = 4$ cm$^2$.</p>
+          <p><strong>(b)</strong> $2(3 + \sqrt{5}) + 2(3 - \sqrt{5}) = 12$ cm — the surds cancel.</p>
+          <p><strong>(c)</strong> $(3 + \sqrt{5})^2 = 14 + 6\sqrt{5}$ and $(3 - \sqrt{5})^2 = 14 - 6\sqrt{5}$.</p>
+          <p>By Pythagoras, $d^2 = 28$, so $d = \sqrt{28} = 2\sqrt{7}$ cm.</p>
+          <p><strong>(d)</strong> $\dfrac{3 + \sqrt{5}}{3 - \sqrt{5}} \times \dfrac{3 + \sqrt{5}}{3 + \sqrt{5}} = \dfrac{14 + 6\sqrt{5}}{4} = \dfrac{7 + 3\sqrt{5}}{2}$</p>
+          <p>Check: $\dfrac{5.236}{0.764} \approx 6.85$ and $\dfrac{7 + 6.708}{2} \approx 6.85$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Indices and Surds &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

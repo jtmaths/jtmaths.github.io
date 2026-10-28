@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radians, Arcs and Sectors &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⭕ Radians, Arcs and Sectors</h1>
+  <p>A Level Maths Year 2 · Trigonometry</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A RADIAN IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Radian Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>One radian</strong> is the angle at the centre of a circle subtended by an arc whose length is equal to the radius. Because the whole circumference is $2\pi r$, a full turn is $2\pi$ radians.
+  </div>
+
+  <div class="svg-block">
+    <svg width="320" height="230" viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="13">
+      <circle cx="150" cy="150" r="100" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
+      <path d="M150,150 L250,150 A100,100 0 0 0 204.03,65.85 Z" fill="#ede9fe" stroke="none"/>
+      <line x1="150" y1="150" x2="250" y2="150" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="150" y1="150" x2="204.03" y2="65.85" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M250,150 A100,100 0 0 0 204.03,65.85" fill="none" stroke="#7c3aed" stroke-width="3.5"/>
+      <path d="M180,150 A30,30 0 0 0 176.33,135.62" fill="none" stroke="#333" stroke-width="1.2"/>
+      <circle cx="150" cy="150" r="3" fill="#333"/>
+      <text x="138" y="166">O</text>
+      <text x="200" y="168" text-anchor="middle">r</text>
+      <text x="166" y="102" text-anchor="end">r</text>
+      <text x="252" y="98" fill="#6d28d9">arc = r</text>
+      <text x="186" y="146">1 rad</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Converting</div>
+    $2\pi \text{ rad} = 360^\circ \qquad \pi \text{ rad} = 180^\circ \qquad 1 \text{ rad} \approx 57.3^\circ$<br>
+    degrees $\to$ radians: $\times\dfrac{\pi}{180}$ &nbsp;&nbsp;&nbsp; radians $\to$ degrees: $\times\dfrac{180}{\pi}$
+  </div>
+
+  <div class="tip">
+    <strong>Why bother?</strong> In radians, arc length and sector area have very simple formulae, and — crucially for Year 2 calculus — $\dfrac{\mathrm{d}}{\mathrm{d}x}(\sin x) = \cos x$ is only true when $x$ is in radians. From now on, assume radians unless you see a degree sign.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Converting</div>
+    <div class="example-body">
+      <p>(a) Convert $135^\circ$ to radians. (b) Convert $\dfrac{5\pi}{6}$ to degrees. (c) Convert $2.5$ rad to degrees.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $135 \times \dfrac{\pi}{180} = \dfrac{3\pi}{4}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\dfrac{5\pi}{6} \times \dfrac{180}{\pi} = 150^\circ$. (Quick method: replace $\pi$ by $180^\circ$.)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $2.5 \times \dfrac{180}{\pi} = 143.2^\circ$ (1 d.p.).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EXACT VALUES IN RADIANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Exact Values in Radians</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>$\theta$</th><th>$0$</th><th>$\dfrac{\pi}{6}$ ($30^\circ$)</th><th>$\dfrac{\pi}{4}$ ($45^\circ$)</th><th>$\dfrac{\pi}{3}$ ($60^\circ$)</th><th>$\dfrac{\pi}{2}$ ($90^\circ$)</th></tr>
+    <tr><td>$\sin\theta$</td><td>$0$</td><td>$\tfrac12$</td><td>$\tfrac{\sqrt2}{2}$</td><td>$\tfrac{\sqrt3}{2}$</td><td>$1$</td></tr>
+    <tr><td>$\cos\theta$</td><td>$1$</td><td>$\tfrac{\sqrt3}{2}$</td><td>$\tfrac{\sqrt2}{2}$</td><td>$\tfrac12$</td><td>$0$</td></tr>
+    <tr><td>$\tan\theta$</td><td>$0$</td><td>$\tfrac{\sqrt3}{3}$</td><td>$1$</td><td>$\sqrt3$</td><td>undefined</td></tr>
+  </table>
+
+  <p>The symmetries of the graphs from Year 1 carry straight over, with $180^\circ$ replaced by $\pi$ and $360^\circ$ by $2\pi$:</p>
+
+  <div class="formula-box">
+    <div class="label">Symmetry in radians</div>
+    $\sin(\pi - \theta) = \sin\theta \qquad \cos(2\pi - \theta) = \cos\theta \qquad \tan(\pi + \theta) = \tan\theta$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Exact values of larger angles</div>
+    <div class="example-body">
+      <p>Find the exact values of $\sin\dfrac{5\pi}{6}$, $\cos\dfrac{4\pi}{3}$ and $\tan\dfrac{7\pi}{4}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{5\pi}{6} = \pi - \dfrac{\pi}{6}$ (second quadrant, sine positive): $\sin\dfrac{5\pi}{6} = \sin\dfrac{\pi}{6} = \dfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{4\pi}{3} = \pi + \dfrac{\pi}{3}$ (third quadrant, cosine negative): $\cos\dfrac{4\pi}{3} = -\dfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{7\pi}{4} = 2\pi - \dfrac{\pi}{4}$ (fourth quadrant, tangent negative): $\tan\dfrac{7\pi}{4} = -1$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — An equation in radians</div>
+    <div class="example-body">
+      <p>Solve $\cos 2x = \tfrac12$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $u = 2x$. Then $0 \leqslant u \leqslant 4\pi$ — the interval doubles too.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos u = \tfrac12$: principal value $u = \dfrac{\pi}{3}$, and $u = 2\pi - \dfrac{\pi}{3} = \dfrac{5\pi}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add $2\pi$ to each: $u = \dfrac{7\pi}{3}, \dfrac{11\pi}{3}$ are also in range.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Halve: $x = \dfrac{\pi}{6}, \dfrac{5\pi}{6}, \dfrac{7\pi}{6}, \dfrac{11\pi}{6}$.</span></div>
+      <div class="warn">If the interval is given in radians, your answers must be in radians. Set your calculator to <strong>RAD</strong> mode before you start.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – ARC LENGTH AND SECTOR AREA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Arc Length and Sector Area</div>
+<div class="section-body">
+
+  <p>A sector with angle $\theta$ is the fraction $\dfrac{\theta}{2\pi}$ of the whole circle. So:</p>
+
+  <div class="formula-box">
+    <div class="label">Arc length and sector area — $\theta$ in radians</div>
+    $s = \dfrac{\theta}{2\pi} \times 2\pi r = r\theta \qquad\qquad A = \dfrac{\theta}{2\pi} \times \pi r^2 = \tfrac12 r^2\theta$
+  </div>
+
+  <div class="warn">
+    <strong>Radians only.</strong> With $\theta$ in degrees you must go back to the GCSE formulae $\tfrac{\theta}{360} \times 2\pi r$ and $\tfrac{\theta}{360} \times \pi r^2$. Using $r\theta$ with $\theta = 60$ gives an arc sixty times the radius.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Arc, perimeter and area</div>
+    <div class="example-body">
+      <p>A sector has radius $8$ cm and angle $1.2$ radians. Find its arc length, its perimeter and its area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Arc length: $s = 8 \times 1.2 = 9.6$ cm.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Perimeter: two radii plus the arc $= 8 + 8 + 9.6 = 25.6$ cm.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area: $\tfrac12 \times 8^2 \times 1.2 = 38.4$ cm$^2$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Working backwards</div>
+    <div class="example-body">
+      <p>A sector has perimeter $20$ cm and area $16$ cm$^2$. Find its radius and angle.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2r + r\theta = 20$, so $r\theta = 20 - 2r$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Area: $\tfrac12 r^2\theta = \tfrac12 r (r\theta) = \tfrac12 r(20 - 2r) = 16$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$10r - r^2 = 16 \Rightarrow r^2 - 10r + 16 = 0 \Rightarrow (r - 2)(r - 8) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$r = 2$ gives $\theta = \dfrac{16}{2} = 8$ rad — more than $2\pi$, impossible. Reject.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$r = 8$ gives $\theta = \dfrac{4}{8} = 0.5$ rad. &nbsp;So $r = 8$ cm, $\theta = 0.5$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SEGMENTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Segments</div>
+<div class="section-body">
+
+  <p>A <strong>segment</strong> is the region between a chord and its arc. It is the sector minus the triangle $OAB$, and the triangle's area is $\tfrac12 ab\sin C = \tfrac12 r^2\sin\theta$.</p>
+
+  <div class="svg-block">
+    <svg width="300" height="190" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="13">
+      <circle cx="150" cy="140" r="100" fill="none" stroke="#c7d2fe" stroke-width="1.2" stroke-dasharray="4,4"/>
+      <path d="M78.26,70.33 A100,100 0 0 1 221.74,70.33 Z" fill="#c4b5fd" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M150,140 L78.26,70.33 L221.74,70.33 Z" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <circle cx="150" cy="140" r="3" fill="#333"/>
+      <text x="145" y="160">O</text>
+      <text x="62" y="70">A</text>
+      <text x="226" y="70">B</text>
+      <text x="150" y="112" text-anchor="middle">θ</text>
+      <text x="150" y="60" text-anchor="middle" fill="#4c1d95" font-weight="bold">segment</text>
+      <text x="100" y="114" text-anchor="end">r</text>
+      <text x="200" y="114">r</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Area of a segment</div>
+    $A = \tfrac12 r^2\theta - \tfrac12 r^2\sin\theta = \tfrac12 r^2(\theta - \sin\theta)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — An exact segment area</div>
+    <div class="example-body">
+      <p>A chord of a circle of radius $6$ cm subtends an angle of $\dfrac{\pi}{3}$ at the centre. Find the exact area of the minor segment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$A = \tfrac12 \times 36\left(\dfrac{\pi}{3} - \sin\dfrac{\pi}{3}\right) = 18\left(\dfrac{\pi}{3} - \dfrac{\sqrt3}{2}\right)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 6\pi - 9\sqrt3$ cm$^2$ $\;(\approx 3.26$ cm$^2)$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Chord length and segment perimeter</div>
+    <div class="example-body">
+      <p>For a circle of radius $7$ cm, a chord $AB$ subtends an angle of $2.4$ rad at the centre. Find the length of $AB$ and the perimeter of the minor segment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Split the isosceles triangle in half: $AB = 2r\sin\dfrac{\theta}{2} = 14\sin 1.2 = 13.05$ cm (2 d.p.).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Arc length $= 7 \times 2.4 = 16.8$ cm.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Perimeter $= 16.8 + 13.05 = 29.85$ cm.</span></div>
+      <div class="tip">The cosine rule gives the chord too: $AB^2 = 7^2 + 7^2 - 2(7)(7)\cos 2.4$. Both routes need the calculator in radians.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$1$ rad: arc length equals radius.</p></div>
+    <div class="ref-card"><h4>Full turn</h4><p>$2\pi$ rad $= 360^\circ$; $\pi$ rad $= 180^\circ$.</p></div>
+    <div class="ref-card"><h4>Convert</h4><p>Deg $\to$ rad: $\times \tfrac{\pi}{180}$. Rad $\to$ deg: $\times\tfrac{180}{\pi}$.</p></div>
+    <div class="ref-card"><h4>Arc length</h4><p>$s = r\theta$</p></div>
+    <div class="ref-card"><h4>Sector area</h4><p>$A = \tfrac12 r^2\theta$</p></div>
+    <div class="ref-card"><h4>Segment area</h4><p>$\tfrac12 r^2(\theta - \sin\theta)$</p></div>
+    <div class="ref-card"><h4>Chord</h4><p>$2r\sin\tfrac{\theta}{2}$</p></div>
+    <div class="ref-card"><h4>Sector perimeter</h4><p>$2r + r\theta$</p></div>
+    <div class="ref-card"><h4>Calculator</h4><p>RAD mode for every radian question.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Convert $240^\circ$ to radians, and $\dfrac{7\pi}{12}$ to degrees.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$240 \times \dfrac{\pi}{180} = \dfrac{4\pi}{3}$.</p>
+          <p>$\dfrac{7 \times 180^\circ}{12} = 105^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the exact values of $\cos\dfrac{5\pi}{4}$, $\sin\left(-\dfrac{\pi}{6}\right)$ and $\tan\dfrac{2\pi}{3}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{5\pi}{4} = \pi + \dfrac{\pi}{4}$, third quadrant: $\cos\dfrac{5\pi}{4} = -\dfrac{\sqrt2}{2}$.</p>
+          <p>Sine is odd: $\sin\left(-\dfrac{\pi}{6}\right) = -\dfrac12$.</p>
+          <p>$\dfrac{2\pi}{3} = \pi - \dfrac{\pi}{3}$, second quadrant: $\tan\dfrac{2\pi}{3} = -\sqrt3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A sector has radius $5$ cm and angle $0.8$ rad. Find its arc length and area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$s = 5 \times 0.8 = 4$ cm.</p>
+          <p>$A = \tfrac12 \times 25 \times 0.8 = 10$ cm$^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A sector of radius $6$ cm has area $30$ cm$^2$. Find the angle of the sector and its perimeter.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tfrac12 \times 36 \times \theta = 30 \Rightarrow \theta = \tfrac{30}{18} = \tfrac53$ rad.</p>
+          <p>Arc $= 6 \times \tfrac53 = 10$ cm, so perimeter $= 6 + 6 + 10 = 22$ cm.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $\sin x = -\dfrac{\sqrt3}{2}$ for $0 \leqslant x \leqslant 2\pi$, giving exact answers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The reference angle is $\dfrac{\pi}{3}$. Sine is negative in the third and fourth quadrants.</p>
+          <p>$x = \pi + \dfrac{\pi}{3} = \dfrac{4\pi}{3}$ and $x = 2\pi - \dfrac{\pi}{3} = \dfrac{5\pi}{3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the area of the minor segment cut off by a chord that subtends an angle of $2$ rad at the centre of a circle of radius $10$ cm.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = \tfrac12 \times 100 \times (2 - \sin 2) = 50(2 - 0.9093) = 54.5$ cm$^2$ (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A sector has perimeter $24$ cm and area $32$ cm$^2$. Find the two possible pairs of values of $r$ and $\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r\theta = 24 - 2r$, and $\tfrac12 r(r\theta) = 32 \Rightarrow \tfrac12 r(24 - 2r) = 32$.</p>
+          <p>$12r - r^2 = 32 \Rightarrow r^2 - 12r + 32 = 0 \Rightarrow (r - 4)(r - 8) = 0$.</p>
+          <p>$r = 4$: $\theta = \tfrac{16}{4} = 4$ rad. &nbsp;$r = 8$: $\theta = \tfrac{8}{8} = 1$ rad.</p>
+          <p>Both angles are less than $2\pi$, so both are valid.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the exact area of the segment of a circle of radius $4$ cm cut off by a chord subtending $\dfrac{2\pi}{3}$ at the centre.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$A = \tfrac12 \times 16\left(\dfrac{2\pi}{3} - \sin\dfrac{2\pi}{3}\right) = 8\left(\dfrac{2\pi}{3} - \dfrac{\sqrt3}{2}\right)$</p>
+          <p>$= \dfrac{16\pi}{3} - 4\sqrt3$ cm$^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A sector has a fixed perimeter $P$. Show that its area is $A = \tfrac12 r(P - 2r)$, and hence show that the area is greatest when $\theta = 2$ radians.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$P = 2r + r\theta \Rightarrow r\theta = P - 2r$, so $A = \tfrac12 r^2\theta = \tfrac12 r(r\theta) = \tfrac12 r(P - 2r)$ ✓</p>
+          <p>$A = \tfrac12 Pr - r^2$ is a quadratic in $r$ with a maximum where $\dfrac{\mathrm{d}A}{\mathrm{d}r} = \tfrac12P - 2r = 0$, i.e. $r = \tfrac{P}{4}$.</p>
+          <p>Then $r\theta = P - \tfrac{P}{2} = \tfrac{P}{2}$, so $\theta = \dfrac{P/2}{P/4} = 2$ rad. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A car windscreen wiper pivots at a point $O$. The rubber blade lies along the arm from $15$ cm to $55$ cm from $O$, and the arm turns through an angle of $2.2$ radians.</p>
+      <p>(a) Find the distance travelled by the tip of the blade. &nbsp; (b) Find the area of windscreen wiped. &nbsp; (c) The manufacturer wants the wiped area to be at least $3500$ cm$^2$. Find the minimum angle, in radians and in degrees.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The tip moves on an arc of radius $55$: $55 \times 2.2 = 121$ cm.</p>
+          <p><strong>(b)</strong> Wiped region = large sector minus small sector:</p>
+          <p>$\tfrac12(55^2)(2.2) - \tfrac12(15^2)(2.2) = \tfrac12(3025 - 225)(2.2) = 1400 \times 2.2 = 3080$ cm$^2$.</p>
+          <p><strong>(c)</strong> $1400\theta \geqslant 3500 \Rightarrow \theta \geqslant 2.5$ rad.</p>
+          <p>$2.5 \times \dfrac{180}{\pi} = 143.2^\circ$ (1 d.p.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Radians, Arcs and Sectors &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

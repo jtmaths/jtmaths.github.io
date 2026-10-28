@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Normal Distribution &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔔 The Normal Distribution</h1>
+  <p>A Level Maths Year 2 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – A CONTINUOUS DISTRIBUTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> A Continuous Distribution</div>
+<div class="section-body">
+
+  <p>The binomial distribution from Year 1 (see <a href="../../alevel-year1/probability/binomial-distribution.html">The Binomial Distribution</a>) is <strong>discrete</strong>: it counts things. Heights, masses, times and lengths are <strong>continuous</strong> — they can take any value in a range. The most important model for continuous data is the <strong>normal distribution</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Notation</div>
+    $X \sim \mathrm{N}(\mu,\ \sigma^2)$<br>
+    mean $\mu$ &nbsp;&middot;&nbsp; <strong>variance</strong> $\sigma^2$ &nbsp;&middot;&nbsp; standard deviation $\sigma$
+  </div>
+
+  <div class="warn">
+    <strong>The second number is the variance.</strong> $X \sim \mathrm{N}(50,\ 16)$ has standard deviation $\sqrt{16} = 4$, not $16$. Entering $16$ as the standard deviation in your calculator is the single most common error on this topic.
+  </div>
+
+  <div class="concept">
+    For a continuous variable, probability is <strong>area under the curve</strong>. The total area is $1$, and the probability of any single exact value is zero: $\mathrm{P}(X = a) = 0$. So $\mathrm{P}(X < a) = \mathrm{P}(X \leqslant a)$ — the inequality sign does not matter.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – PROPERTIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Properties of the Normal Curve</div>
+<div class="section-body">
+
+  <div class="svg-block">
+    <svg width="440" height="250" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+      <polygon points="160,200 160.0,103.2 166.0,93.6 172.0,84.1 178.0,75.1 184.0,66.7 190.0,59.2 196.0,52.7 202.0,47.4 208.0,43.6 214.0,41.2 220.0,40.4 226.0,41.2 232.0,43.6 238.0,47.4 244.0,52.7 250.0,59.2 256.0,66.7 262.0,75.1 268.0,84.1 274.0,93.6 280.0,103.2 280,200" fill="#c7d2fe" fill-opacity="0.7"/>
+      <polyline points="10.0,199.7 16.0,199.5 22.0,199.3 28.0,199.0 34.0,198.7 40.0,198.2 46.0,197.6 52.0,196.8 58.0,195.8 64.0,194.6 70.0,193.0 76.0,191.0 82.0,188.7 88.0,185.8 94.0,182.4 100.0,178.4 106.0,173.8 112.0,168.4 118.0,162.4 124.0,155.6 130.0,148.2 136.0,140.1 142.0,131.5 148.0,122.3 154.0,112.9 160.0,103.2 166.0,93.6 172.0,84.1 178.0,75.1 184.0,66.7 190.0,59.2 196.0,52.7 202.0,47.4 208.0,43.6 214.0,41.2 220.0,40.4 226.0,41.2 232.0,43.6 238.0,47.4 244.0,52.7 250.0,59.2 256.0,66.7 262.0,75.1 268.0,84.1 274.0,93.6 280.0,103.2 286.0,112.9 292.0,122.3 298.0,131.5 304.0,140.1 310.0,148.2 316.0,155.6 322.0,162.4 328.0,168.4 334.0,173.8 340.0,178.4 346.0,182.4 352.0,185.8 358.0,188.7 364.0,191.0 370.0,193.0 376.0,194.6 382.0,195.8 388.0,196.8 394.0,197.6 400.0,198.2 406.0,198.7 412.0,199.0 418.0,199.3 424.0,199.5 430.0,199.7" fill="none" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="5" y1="200" x2="435" y2="200" stroke="#334" stroke-width="1.5"/>
+      <line x1="220" y1="40" x2="220" y2="200" stroke="#7c3aed" stroke-dasharray="4,3"/>
+      <circle cx="160" cy="103.2" r="4.5" fill="#ef4444"/>
+      <circle cx="280" cy="103.2" r="4.5" fill="#ef4444"/>
+      <line x1="100" y1="200" x2="100" y2="205" stroke="#334"/>
+      <line x1="160" y1="200" x2="160" y2="205" stroke="#334"/>
+      <line x1="220" y1="200" x2="220" y2="205" stroke="#334"/>
+      <line x1="280" y1="200" x2="280" y2="205" stroke="#334"/>
+      <line x1="340" y1="200" x2="340" y2="205" stroke="#334"/>
+      <text x="100" y="220" font-size="13" text-anchor="middle">μ − 2σ</text>
+      <text x="160" y="220" font-size="13" text-anchor="middle">μ − σ</text>
+      <text x="220" y="220" font-size="13" text-anchor="middle">μ</text>
+      <text x="280" y="220" font-size="13" text-anchor="middle">μ + σ</text>
+      <text x="340" y="220" font-size="13" text-anchor="middle">μ + 2σ</text>
+      <text x="220" y="160" font-size="13" text-anchor="middle">≈ 68%</text>
+      <text x="300" y="98" font-size="12" fill="#b91c1c">point of inflection</text>
+      <text x="220" y="243" font-size="12" text-anchor="middle" fill="#555">Shaded: P(μ − σ &lt; X &lt; μ + σ) ≈ 0.683</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li><span>Bell-shaped and <strong>symmetrical</strong> about the mean $\mu$, so mean $=$ median $=$ mode.</span></li>
+    <li><span>The curve never touches the horizontal axis — every real value is possible in principle — but values more than $3\sigma$ from the mean are very rare.</span></li>
+    <li><span>The <strong>points of inflection</strong> are at $x = \mu - \sigma$ and $x = \mu + \sigma$. This is where the curve changes from concave to convex (see <a href="../differentiation/concavity.html">Concavity and Points of Inflection</a>).</span></li>
+    <li><span>Changing $\mu$ slides the curve left or right; increasing $\sigma$ makes it wider and lower, keeping total area $1$.</span></li>
+  </ul>
+
+  <table>
+    <tr><th>Interval</th><th>Probability (computed)</th><th>Rule of thumb</th></tr>
+    <tr><td>$\mu \pm \sigma$</td><td>$0.6827$</td><td>about $68\%$</td></tr>
+    <tr><td>$\mu \pm 2\sigma$</td><td>$0.9545$</td><td>about $95\%$</td></tr>
+    <tr><td>$\mu \pm 3\sigma$</td><td>$0.9973$</td><td>almost all</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Checking whether a normal model is plausible:</strong> data should be roughly symmetrical, unimodal, and have about $95\%$ of values within $2\sigma$ of the mean. A quantity that must be positive is a poor fit if $\mu - 3\sigma$ is negative.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – STANDARDISING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Standardising and Finding Probabilities</div>
+<div class="section-body">
+
+  <p>Every normal distribution is a stretched and shifted copy of the <strong>standard normal distribution</strong> $Z \sim \mathrm{N}(0,\ 1)$. Converting $X$ to $Z$ is called <strong>standardising</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Standardising</div>
+    $Z = \dfrac{X - \mu}{\sigma} \sim \mathrm{N}(0,\ 1)$ &nbsp;&nbsp;&nbsp; $\mathrm{P}(Z < z) = \Phi(z)$
+  </div>
+
+  <div class="concept">
+    $z$ measures <strong>how many standard deviations</strong> a value is from the mean. Your calculator's normal cumulative distribution function finds probabilities for any $\mathrm{N}(\mu,\sigma^2)$ directly, but standardising is essential for problems with an unknown $\mu$ or $\sigma$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Basic probabilities</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{N}(50,\ 16)$. Find (a) $\mathrm{P}(X < 56)$, (b) $\mathrm{P}(45 < X < 53)$, (c) $\mathrm{P}(X > 58)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sigma = \sqrt{16} = 4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(a) $z = \dfrac{56 - 50}{4} = 1.5$, so $\mathrm{P}(X < 56) = \Phi(1.5) = 0.9332$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $z$-values $\dfrac{45-50}{4} = -1.25$ and $\dfrac{53-50}{4} = 0.75$; $\Phi(0.75) - \Phi(-1.25) = 0.6677$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(c) $z = \dfrac{58-50}{4} = 2$; $\mathrm{P}(X > 58) = 1 - \Phi(2) = 0.0228$ (3 s.f.).</span></div>
+      <div class="tip"><strong>Sketch first.</strong> A quick bell curve with the region shaded tells you whether your answer should be more or less than $0.5$ — an excellent check.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Normal and binomial together</div>
+    <div class="example-body">
+      <p>The masses of bags of flour are $\mathrm{N}(1005,\ 4^2)$ grams. A bag is underweight if its mass is less than $1000$ g. Find the probability that a box of $10$ bags contains at most one underweight bag.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{P}(M < 1000) = \Phi\!\left(\dfrac{1000 - 1005}{4}\right) = \Phi(-1.25) = 0.10565$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $U$ = number underweight in the box: $U \sim \mathrm{B}(10,\ 0.10565)$, assuming bags are independent.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(U \leqslant 1) = 0.89435^{10} + 10(0.10565)(0.89435)^9 = 0.714$ (3 s.f.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – INVERSE NORMAL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Inverse Normal Problems</div>
+<div class="section-body">
+
+  <p>Sometimes you know the probability and want the value. Use the <strong>inverse normal</strong> function on your calculator — but check whether it wants the area to the left (most do).</p>
+
+  <table>
+    <tr><th>$p$</th><th>$0.9$</th><th>$0.95$</th><th>$0.975$</th><th>$0.99$</th><th>$0.995$</th></tr>
+    <tr><td>$z$ with $\Phi(z) = p$</td><td>$1.2816$</td><td>$1.6449$</td><td>$1.9600$</td><td>$2.3263$</td><td>$2.5758$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding a value from a probability</div>
+    <div class="example-body">
+      <p>Adult heights are $H \sim \mathrm{N}(170,\ 8^2)$ cm. (a) Find $h$ such that $\mathrm{P}(H < h) = 0.9$. (b) Find the interval, symmetrical about the mean, containing the middle $95\%$ of heights.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\Phi(z) = 0.9 \Rightarrow z = 1.2816$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$h = \mu + z\sigma = 170 + 1.2816 \times 8 = 180.3$ cm.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) The middle $95\%$ leaves $2.5\%$ in each tail, so $z = \pm 1.96$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$170 \pm 1.96 \times 8 = 170 \pm 15.68$, i.e. $154.3 < H < 185.7$ cm.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – UNKNOWN MEAN OR SD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Finding an Unknown $\mu$ or $\sigma$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The method</div>
+    Turn the probability into a $z$-value, then solve $\dfrac{x - \mu}{\sigma} = z$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Unknown standard deviation</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{N}(30,\ \sigma^2)$ and $\mathrm{P}(X > 35) = 0.1$. Find $\sigma$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{P}(X < 35) = 0.9$, so $\dfrac{35 - 30}{\sigma} = 1.2816$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sigma = \dfrac{5}{1.2816} = 3.90$ (3 s.f.)</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Unknown mean</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 2.5^2)$ and $\mathrm{P}(X < 20) = 0.05$. Find $\mu$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\Phi(z) = 0.05 \Rightarrow z = -1.6449$. The $z$-value is negative because $20$ is in the lower tail.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{20 - \mu}{2.5} = -1.6449 \Rightarrow 20 - \mu = -4.112$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mu = 24.1$ (3 s.f.)</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Both unknown: simultaneous equations</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{N}(\mu,\ \sigma^2)$ with $\mathrm{P}(X < 40) = 0.2$ and $\mathrm{P}(X > 65) = 0.1$. Find $\mu$ and $\sigma$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\Phi(z) = 0.2 \Rightarrow z = -0.8416$: &nbsp; $40 - \mu = -0.8416\sigma$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\Phi(z) = 0.9 \Rightarrow z = 1.2816$: &nbsp; $65 - \mu = 1.2816\sigma$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Subtract: $25 = 2.1232\sigma \Rightarrow \sigma = 11.77$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mu = 40 + 0.8416 \times 11.77 = 49.9$ (3 s.f.)</span></div>
+      <div class="tip">Keep at least four decimal places in the $z$-values and the full calculator value of $\sigma$ until the end; rounding early can shift the final answer.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Sign of $z$.</strong> If the value is below the mean, its $z$-value must be negative. A quick sketch prevents a wrong sign, which otherwise gives a nonsensical $\sigma < 0$ or a mean on the wrong side.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Notation</h4><p>$X \sim \mathrm{N}(\mu,\sigma^2)$ — second parameter is the <em>variance</em>.</p></div>
+    <div class="ref-card"><h4>Shape</h4><p>Symmetric bell; mean = median = mode.</p></div>
+    <div class="ref-card"><h4>Inflection</h4><p>Points of inflection at $x = \mu \pm \sigma$.</p></div>
+    <div class="ref-card"><h4>Standardise</h4><p>$Z = \dfrac{X - \mu}{\sigma} \sim \mathrm{N}(0,1)$</p></div>
+    <div class="ref-card"><h4>68–95–99.7</h4><p>Within $1$, $2$, $3$ s.d. of the mean.</p></div>
+    <div class="ref-card"><h4>Continuous</h4><p>$\mathrm{P}(X = a) = 0$, so $<$ and $\leqslant$ give the same answer.</p></div>
+    <div class="ref-card"><h4>Inverse normal</h4><p>$x = \mu + z\sigma$ where $\Phi(z) = p$.</p></div>
+    <div class="ref-card"><h4>Unknowns</h4><p>Form $\dfrac{x-\mu}{\sigma} = z$ for each fact; solve.</p></div>
+    <div class="ref-card"><h4>Key $z$-values</h4><p>$1.2816$, $1.6449$, $1.9600$, $2.3263$, $2.5758$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions, from routine to exam-style. Give answers to $3$ significant figures unless told otherwise.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$Z \sim \mathrm{N}(0,1)$. Find (a) $\mathrm{P}(Z < 1.2)$, (b) $\mathrm{P}(Z > -0.8)$, (c) $\mathrm{P}(-1 < Z < 1.5)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\Phi(1.2) = 0.885$</p>
+          <p><strong>(b)</strong> By symmetry $\mathrm{P}(Z > -0.8) = \Phi(0.8) = 0.788$</p>
+          <p><strong>(c)</strong> $\Phi(1.5) - \Phi(-1) = 0.9332 - 0.1587 = 0.775$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(20,\ 9)$. Find (a) $\mathrm{P}(X > 24)$, (b) $\mathrm{P}(17 < X < 25)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sigma = 3$.</p>
+          <p><strong>(a)</strong> $z = \dfrac{4}{3}$; $1 - \Phi(1.333) = 0.0912$</p>
+          <p><strong>(b)</strong> $z$ from $-1$ to $\dfrac{5}{3}$: $\Phi(1.667) - \Phi(-1) = 0.794$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\sigma^2)$. Explain why $\mathrm{P}(X \leqslant a) = \mathrm{P}(X < a)$, and why $\mathrm{P}(X < \mu) = 0.5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$X$ is continuous, so the probability of any single exact value is zero (a line has no area). Hence including or excluding $a$ makes no difference.</p>
+          <p>The curve is symmetrical about $\mu$, so exactly half the area lies on each side.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>IQ scores are modelled by $\mathrm{N}(100,\ 15^2)$. Find the score exceeded by only $5\%$ of the population.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Need $\mathrm{P}(X < a) = 0.95$, so $z = 1.6449$.</p>
+          <p>$a = 100 + 1.6449 \times 15 = 124.7$ (to 1 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The curve of a normal distribution has points of inflection at $x = 12$ and $x = 18$. Find $\mu$ and $\sigma$, and hence $\mathrm{P}(X > 20)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Inflections are at $\mu \pm \sigma$, so $\mu = \dfrac{12 + 18}{2} = 15$ and $\sigma = 3$.</p>
+          <p>$\mathrm{P}(X > 20) = 1 - \Phi\!\left(\dfrac{5}{3}\right) = 0.0478$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 16)$ and $\mathrm{P}(X < 10) = 0.3$. Find $\mu$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sigma = 4$. $\Phi(z) = 0.3 \Rightarrow z = -0.5244$.</p>
+          <p>$\dfrac{10 - \mu}{4} = -0.5244 \Rightarrow \mu = 10 + 2.098 = 12.1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(50,\ \sigma^2)$ and $\mathrm{P}(45 < X < 55) = 0.8$. Find $\sigma$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>By symmetry, $0.1$ lies in each tail, so $\mathrm{P}(X < 55) = 0.9$.</p>
+          <p>$\dfrac{55 - 50}{\sigma} = 1.2816 \Rightarrow \sigma = 3.90$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ \sigma^2)$ with $\mathrm{P}(X > 80) = 0.15$ and $\mathrm{P}(X < 50) = 0.25$. Find $\mu$ and $\sigma$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Phi(z) = 0.85 \Rightarrow z = 1.0364$: &nbsp; $80 - \mu = 1.0364\sigma$</p>
+          <p>$\Phi(z) = 0.25 \Rightarrow z = -0.6745$: &nbsp; $50 - \mu = -0.6745\sigma$</p>
+          <p>Subtract: $30 = 1.7109\sigma \Rightarrow \sigma = 17.5$</p>
+          <p>$\mu = 80 - 1.0364 \times 17.53 = 61.8$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(64,\ 2.5^2)$. Find the interval, symmetrical about the mean, that contains the middle $90\%$ of the distribution.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5\%$ in each tail: $z = \pm 1.6449$.</p>
+          <p>$64 \pm 1.6449 \times 2.5 = 64 \pm 4.11$, so $59.9 < X < 68.1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The lifetimes of a brand of battery are modelled by $L \sim \mathrm{N}(220,\ 15^2)$ hours.</p>
+      <p>(a) Find $\mathrm{P}(L > 250)$. (b) Find $\mathrm{P}(200 < L < 240)$. (c) The manufacturer wants only $2\%$ of batteries to fail before the guaranteed time $t$. Find $t$. (d) Find the probability that all four batteries in a pack last more than $200$ hours. (e) A battery has already lasted $230$ hours. Find the probability that it lasts more than $250$ hours.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $z = 2$: $1 - \Phi(2) = 0.0228$</p>
+          <p><strong>(b)</strong> $z = \pm\dfrac{4}{3}$: $\Phi(1.333) - \Phi(-1.333) = 0.818$</p>
+          <p><strong>(c)</strong> $\Phi(z) = 0.02 \Rightarrow z = -2.0537$; $t = 220 - 2.0537 \times 15 = 189$ hours (3 s.f.)</p>
+          <p><strong>(d)</strong> $\mathrm{P}(L > 200) = \Phi(1.333) = 0.9088$; assuming independence, $0.9088^4 = 0.682$</p>
+          <p><strong>(e)</strong> Conditional probability: $\mathrm{P}(L > 250 \mid L > 230) = \dfrac{\mathrm{P}(L > 250)}{\mathrm{P}(L > 230)}$, since $L > 250$ already implies $L > 230$.</p>
+          <p>$\mathrm{P}(L > 230) = 1 - \Phi(0.667) = 0.2525$, so the answer is $\dfrac{0.02275}{0.2525} = 0.0901$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The Normal Distribution &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

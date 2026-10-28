@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Differentiating Powers of x &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✏️ Differentiating Powers of x</h1>
+  <p>A Level Maths Year 1 · Differentiation</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE POWER RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Power Rule</div>
+<div class="section-body">
+
+  <div class="concept">
+    <a href="first-principles.html">First principles</a> showed that $x^2 \to 2x$, $x^3 \to 3x^2$ and $\dfrac1x \to -\dfrac{1}{x^2}$. All of these follow one rule: <strong>multiply by the power, then reduce the power by one</strong>. DfE content area G requires you to differentiate $x^n$ for <strong>rational</strong> values of $n$ — positive, negative and fractional — together with constant multiples, sums and differences.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Differentiating powers of x</div>
+    $y = kx^n \;\Rightarrow\; \dfrac{\mathrm{d}y}{\mathrm{d}x} = knx^{n-1}$ &nbsp;&nbsp;&nbsp; (any rational $n$, any constant $k$)
+  </div>
+
+  <table>
+    <tr><th>Rule</th><th>In symbols</th><th>Example</th></tr>
+    <tr><td>Constant multiple</td><td>$\dfrac{\mathrm{d}}{\mathrm{d}x}\left(k\,\mathrm{f}(x)\right) = k\,\mathrm{f}'(x)$</td><td>$7x^3 \to 21x^2$</td></tr>
+    <tr><td>Sum and difference</td><td>$\dfrac{\mathrm{d}}{\mathrm{d}x}\left(\mathrm{f} \pm \mathrm{g}\right) = \mathrm{f}' \pm \mathrm{g}'$</td><td>$x^2 + x^3 \to 2x + 3x^2$</td></tr>
+    <tr><td>Linear term</td><td>$kx \to k$</td><td>$-5x \to -5$</td></tr>
+    <tr><td>Constant</td><td>$c \to 0$</td><td>$9 \to 0$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A polynomial</div>
+    <div class="example-body">
+      <p>Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ when $y = 4x^5 - 3x^2 + 7x - 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4x^5 \to 4 \times 5x^4 = 20x^4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-3x^2 \to -6x$; &nbsp; $7x \to 7$; &nbsp; $-2 \to 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 20x^4 - 6x + 7$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – NEGATIVE AND FRACTIONAL POWERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Negative and Fractional Powers</div>
+<div class="section-body">
+
+  <p>The rule only works on terms written as $kx^n$. Roots and fractions must be rewritten using <a href="../algebra/indices-surds.html">the laws of indices</a> first.</p>
+
+  <table>
+    <tr><th>Written as</th><th>Rewrite as</th><th>Derivative</th><th>Tidied</th></tr>
+    <tr><td>$\dfrac{1}{x^2}$</td><td>$x^{-2}$</td><td>$-2x^{-3}$</td><td>$-\dfrac{2}{x^3}$</td></tr>
+    <tr><td>$\sqrt{x}$</td><td>$x^{1/2}$</td><td>$\tfrac12 x^{-1/2}$</td><td>$\dfrac{1}{2\sqrt x}$</td></tr>
+    <tr><td>$\dfrac{1}{\sqrt x}$</td><td>$x^{-1/2}$</td><td>$-\tfrac12 x^{-3/2}$</td><td>$-\dfrac{1}{2x\sqrt x}$</td></tr>
+    <tr><td>$\sqrt[3]{x^2}$</td><td>$x^{2/3}$</td><td>$\tfrac23 x^{-1/3}$</td><td>$\dfrac{2}{3\sqrt[3]{x}}$</td></tr>
+    <tr><td>$x\sqrt{x}$</td><td>$x^{3/2}$</td><td>$\tfrac32 x^{1/2}$</td><td>$\tfrac32\sqrt x$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Subtracting one from a negative power makes it more negative.</strong> $x^{-2} \to -2x^{-3}$, not $-2x^{-1}$. And $\dfrac{4}{3x^3}$ is $\tfrac43 x^{-3}$ — the $3$ is not raised to the power.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Negative power</div>
+    <div class="example-body">
+      <p>Differentiate $y = \dfrac{6}{x^2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rewrite: $y = 6x^{-2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6 \times (-2)x^{-3} = -12x^{-3} = -\dfrac{12}{x^3}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Square root</div>
+    <div class="example-body">
+      <p>Differentiate $y = 4\sqrt{x}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 4x^{1/2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4 \times \tfrac12 x^{-1/2} = 2x^{-1/2} = \dfrac{2}{\sqrt x}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Two fractional powers</div>
+    <div class="example-body">
+      <p>Differentiate $y = \dfrac{3}{\sqrt x} + x\sqrt x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 3x^{-1/2} + x^{3/2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3 \times \left(-\tfrac12\right)x^{-3/2} + \tfrac32 x^{1/2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= -\tfrac32 x^{-3/2} + \tfrac32 x^{1/2}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – REWRITING FIRST
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Rewriting Before Differentiating</div>
+<div class="section-body">
+
+  <div class="concept">
+    At this stage there is <strong>no rule for products or quotients</strong> (those come in Year 2). So brackets must be <strong>multiplied out</strong>, and fractions with a single-term denominator must be <strong>split into separate terms</strong>, before you differentiate.
+  </div>
+
+  <div class="warn">
+    <strong>You cannot differentiate a product term by term.</strong> The derivative of $(2x-1)(x+3)$ is <em>not</em> $(2)(1) = 2$. Expand first.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Expanding brackets</div>
+    <div class="example-body">
+      <p>Differentiate $y = (2x - 1)(x + 3)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expand: $y = 2x^2 + 6x - x - 3 = 2x^2 + 5x - 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x + 5$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Splitting a fraction</div>
+    <div class="example-body">
+      <p>Differentiate $y = \dfrac{x^3 - 4x + 1}{x^2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Divide each term by $x^2$: $y = \dfrac{x^3}{x^2} - \dfrac{4x}{x^2} + \dfrac{1}{x^2} = x - 4x^{-1} + x^{-2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 1 + 4x^{-2} - 2x^{-3} = 1 + \dfrac{4}{x^2} - \dfrac{2}{x^3}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Squaring a bracket with a root</div>
+    <div class="example-body">
+      <p>Differentiate $y = \left(\sqrt x + 2\right)^2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expand: $\left(\sqrt x\right)^2 + 4\sqrt x + 4 = x + 4x^{1/2} + 4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 1 + 2x^{-1/2} = 1 + \dfrac{2}{\sqrt x}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – USING THE DERIVATIVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Gradients at Points, and Rates of Change</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li><strong>Gradient at a known point:</strong> differentiate, then substitute the $x$-coordinate into $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ (not into $y$).</li>
+    <li><strong>Point with a known gradient:</strong> set $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ equal to the gradient, solve for $x$, then substitute into $y$ for the $y$-coordinate.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Gradient at a point</div>
+    <div class="example-body">
+      <p>Find the gradient of $y = 2\sqrt x + \dfrac{8}{x}$ at the point where $x = 4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 2x^{1/2} + 8x^{-1}$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = x^{-1/2} - 8x^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 4$: $\dfrac{1}{\sqrt4} - \dfrac{8}{16} = \dfrac12 - \dfrac12 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The gradient is $0$: the tangent is horizontal there (a <a href="stationary-points.html">stationary point</a>).</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Points with a given gradient</div>
+    <div class="example-body">
+      <p>Find the coordinates of the points on $y = x^3 - 6x^2 + 5$ where the gradient is $-9$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 12x = -9$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3x^2 - 12x + 9 = 0 \Rightarrow x^2 - 4x + 3 = 0 \Rightarrow (x - 1)(x - 3) = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 1$: $y = 1 - 6 + 5 = 0$. &nbsp; $x = 3$: $y = 27 - 54 + 5 = -22$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Points $(1, 0)$ and $(3, -22)$.</span></div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>Other letters.</strong> $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ is the rate of change of $y$ with respect to $x$. The same rule works with any variables: if $s = 4t^2 - t^3$ then $\dfrac{\mathrm{d}s}{\mathrm{d}t} = 8t - 3t^2$; if $V = \tfrac43\pi r^3$ then $\dfrac{\mathrm{d}V}{\mathrm{d}r} = 4\pi r^2$. Treat $\pi$ as the constant it is.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – SECOND DERIVATIVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> The Second Derivative</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Differentiate twice</div>
+    $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = \dfrac{\mathrm{d}}{\mathrm{d}x}\left(\dfrac{\mathrm{d}y}{\mathrm{d}x}\right)$ &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp; $\mathrm{f}''(x)$
+  </div>
+
+  <p>The second derivative is the <strong>rate of change of the gradient</strong>. It tells you whether the gradient is increasing or decreasing, which is how it is used to classify stationary points. In mechanics, if $s$ is displacement then $\frac{\mathrm{d}s}{\mathrm{d}t}$ is velocity and $\frac{\mathrm{d}^2s}{\mathrm{d}t^2}$ is acceleration.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Two derivatives</div>
+    <div class="example-body">
+      <p>(a) $y = x^4 - 2x^3 + 5x$. Find $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$. &nbsp; (b) $\mathrm{f}(x) = 6\sqrt x$. Find $\mathrm{f}''(4)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4x^3 - 6x^2 + 5$, so $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 12x^2 - 12x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\mathrm{f}(x) = 6x^{1/2}$, $\;\mathrm{f}'(x) = 3x^{-1/2}$, $\;\mathrm{f}''(x) = -\tfrac32 x^{-3/2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$4^{-3/2} = \dfrac{1}{8}$, so $\mathrm{f}''(4) = -\dfrac32 \times \dfrac18 = -\dfrac{3}{16}$.</span></div>
+      <div class="warn">$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$ is not $\left(\dfrac{\mathrm{d}y}{\mathrm{d}x}\right)^2$. You differentiate again; you do not square.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Power rule</h4><p>$kx^n \to knx^{n-1}$, any rational $n$.</p></div>
+    <div class="ref-card"><h4>Constants</h4><p>$c \to 0$; &nbsp;$kx \to k$</p></div>
+    <div class="ref-card"><h4>Sums</h4><p>Differentiate term by term.</p></div>
+    <div class="ref-card"><h4>Roots</h4><p>$\sqrt[m]{x^n} = x^{n/m}$</p></div>
+    <div class="ref-card"><h4>Reciprocals</h4><p>$\dfrac{1}{x^n} = x^{-n}$</p></div>
+    <div class="ref-card"><h4>Products</h4><p>Expand the brackets first.</p></div>
+    <div class="ref-card"><h4>Quotients</h4><p>Split over a single-term denominator.</p></div>
+    <div class="ref-card"><h4>Gradient at a point</h4><p>Substitute $x$ into $\dfrac{\mathrm{d}y}{\mathrm{d}x}$.</p></div>
+    <div class="ref-card"><h4>Second derivative</h4><p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$ or $\mathrm{f}''(x)$: differentiate again.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate $y = 5x^4 - 2x^3 + x - 9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 20x^3 - 6x^2 + 1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Differentiate (a) $\dfrac{3}{x}$ &nbsp; (b) $8\sqrt x$ &nbsp; (c) $\sqrt[3]{x^2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $3x^{-1} \to -3x^{-2} = -\dfrac{3}{x^2}$</p>
+          <p>(b) $8x^{1/2} \to 4x^{-1/2} = \dfrac{4}{\sqrt x}$</p>
+          <p>(c) $x^{2/3} \to \tfrac23 x^{-1/3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ when $y = (x + 3)(x - 5)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = x^2 - 2x - 15$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Differentiate $y = \dfrac{x^2 + 6}{\sqrt x}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Split: $y = \dfrac{x^2}{x^{1/2}} + \dfrac{6}{x^{1/2}} = x^{3/2} + 6x^{-1/2}$.</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \tfrac32 x^{1/2} - 3x^{-3/2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = x^3 - 2x + 4$ at the point $(2, 8)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 2$. At $x = 2$: $12 - 2 = 10$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Given $\mathrm{f}(x) = 2x^5 - \dfrac{4}{x}$, find $\mathrm{f}'(x)$ and $\mathrm{f}''(x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(x) = 2x^5 - 4x^{-1}$</p>
+          <p>$\mathrm{f}'(x) = 10x^4 + 4x^{-2}$</p>
+          <p>$\mathrm{f}''(x) = 40x^3 - 8x^{-3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the coordinates of the points on $y = x^3 - 3x^2 - 9x + 2$ where the gradient is zero.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x - 3)(x + 1) = 0$</p>
+          <p>$x = 3$: $y = 27 - 27 - 27 + 2 = -25$. &nbsp; $x = -1$: $y = -1 - 3 + 9 + 2 = 7$.</p>
+          <p>Points $(3, -25)$ and $(-1, 7)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The curve $y = ax^2 + bx$ has gradient $7$ at $x = 1$ and gradient $-5$ at $x = -2$. Find $a$ and $b$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2ax + b$.</p>
+          <p>$x = 1$: $2a + b = 7$. &nbsp; $x = -2$: $-4a + b = -5$.</p>
+          <p>Subtract: $6a = 12$, so $a = 2$ and $b = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = 4x^{3/2} - 6x^{1/2}$ for $x > 0$. (a) Solve $\mathrm{f}'(x) = 0$. (b) Find the exact value of $\mathrm{f}''(x)$ at this value of $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\mathrm{f}'(x) = 6x^{1/2} - 3x^{-1/2}$. Multiply $\mathrm{f}'(x) = 0$ by $x^{1/2}$: $6x - 3 = 0$, so $x = \tfrac12$.</p>
+          <p>(b) $\mathrm{f}''(x) = 3x^{-1/2} + \tfrac32 x^{-3/2}$.</p>
+          <p>$\left(\tfrac12\right)^{-1/2} = \sqrt2$ and $\left(\tfrac12\right)^{-3/2} = 2\sqrt2$.</p>
+          <p>$\mathrm{f}''\left(\tfrac12\right) = 3\sqrt2 + 3\sqrt2 = 6\sqrt2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A ball is thrown vertically upwards. Its height above the ground after $t$ seconds is modelled by $h = 20t - 5t^2$ metres.</p>
+      <p>(a) Find $\dfrac{\mathrm{d}h}{\mathrm{d}t}$ and hence the velocity after $1$ second. &nbsp; (b) Find when the ball is momentarily at rest, and its height then. &nbsp; (c) Find $\dfrac{\mathrm{d}^2h}{\mathrm{d}t^2}$ and interpret it. &nbsp; (d) Find the velocity with which the ball hits the ground.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{\mathrm{d}h}{\mathrm{d}t} = 20 - 10t$. At $t = 1$: $10$ m s$^{-1}$ (upwards).</p>
+          <p><strong>(b)</strong> $20 - 10t = 0 \Rightarrow t = 2$ s. Height $= 40 - 20 = 20$ m.</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}^2h}{\mathrm{d}t^2} = -10$: a constant acceleration of $10$ m s$^{-2}$ downwards — the model's value for gravity.</p>
+          <p><strong>(d)</strong> $h = 0 \Rightarrow 5t(4 - t) = 0 \Rightarrow t = 4$ (not $t = 0$, which is the throw). Velocity $= 20 - 40 = -20$ m s$^{-1}$, i.e. $20$ m s$^{-1}$ downwards.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Differentiating Powers of x &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regression and Exponential Models &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Regression and Exponential Models</h1>
+  <p>A Level Maths Year 2 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE CORRELATION COEFFICIENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Interpreting the Correlation Coefficient</div>
+<div class="section-body">
+
+  <p>In Year 1 you described correlation by eye from a scatter diagram (see <a href="../../alevel-year1/statistics/bivariate-data.html">Correlation and Outliers</a>). In Year 2 you attach a number to it: the <strong>product moment correlation coefficient</strong>, written $r$. You find it with the statistics mode of your calculator — you are not expected to compute it by hand.</p>
+
+  <div class="concept">
+    $r$ measures the strength of <strong>linear</strong> association between two variables. It always lies in the range $-1 \leqslant r \leqslant 1$. The closer $|r|$ is to $1$, the closer the points lie to a straight line.
+  </div>
+
+  <table>
+    <tr><th>Value of $r$</th><th>Description</th><th>Scatter diagram</th></tr>
+    <tr><td>$r = 1$</td><td>Perfect positive linear correlation</td><td>Points exactly on a line with positive gradient</td></tr>
+    <tr><td>$0.7 \lesssim r < 1$</td><td>Strong positive correlation</td><td>Points close to an upward line</td></tr>
+    <tr><td>$0.3 \lesssim r \lesssim 0.7$</td><td>Moderate / weak positive correlation</td><td>An upward trend with a lot of scatter</td></tr>
+    <tr><td>$r \approx 0$</td><td>No linear correlation</td><td>No straight-line pattern (there may be a curved one)</td></tr>
+    <tr><td>$-1 < r \lesssim -0.7$</td><td>Strong negative correlation</td><td>Points close to a downward line</td></tr>
+    <tr><td>$r = -1$</td><td>Perfect negative linear correlation</td><td>Points exactly on a line with negative gradient</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Correlation does not imply causation.</strong> Ice-cream sales and drownings are positively correlated, but both are driven by a third variable — hot weather. In an answer, say "there is an association", not "$x$ causes $y$", unless the context makes a causal link obvious.
+  </div>
+
+  <div class="warn">
+    <strong>$r \approx 0$ does not mean "no relationship".</strong> Points lying on a perfect U-shaped curve can give $r = 0$. The coefficient only detects <em>linear</em> association, so always look at the scatter diagram too.
+  </div>
+
+  <div class="tip">
+    <strong>Is $r$ big enough?</strong> Whether a given value of $r$ is evidence of genuine correlation depends on the sample size: $r = 0.6$ is convincing from $30$ points but not from $5$. Deciding this properly is a hypothesis test — see <a href="../hypothesis-testing/correlation-tests.html">Testing for Correlation</a>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – REGRESSION LINES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Regression Line $y = a + bx$</div>
+<div class="section-body">
+
+  <p>The <strong>least squares regression line of $y$ on $x$</strong> is the straight line that makes the sum of the squared vertical distances from the points to the line as small as possible. Your calculator gives the values of $a$ and $b$ directly.</p>
+
+  <div class="formula-box">
+    <div class="label">Regression line of $y$ on $x$</div>
+    $y = a + bx$<br>
+    $b$ = gradient &nbsp;&middot;&nbsp; $a$ = $y$-intercept &nbsp;&middot;&nbsp; the line always passes through $(\bar{x},\,\bar{y})$
+  </div>
+
+  <div class="concept">
+    <strong>Explanatory and response variables.</strong> $x$ is the <strong>explanatory</strong> (independent) variable — the one that is controlled or that you know. $y$ is the <strong>response</strong> (dependent) variable — the one you want to predict. The line of $y$ on $x$ is only for predicting $y$ from $x$.
+  </div>
+
+  <table>
+    <tr><th>Coefficient</th><th>Meaning in context</th><th>Typical wording</th></tr>
+    <tr><td>$b$</td><td>The change in $y$ for each increase of $1$ unit in $x$</td><td>"For each extra hour of revision the score increases by about $3.8$ marks."</td></tr>
+    <tr><td>$a$</td><td>The value of $y$ when $x = 0$</td><td>"A student who does no revision is predicted to score about $31$ marks."</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Interpreting $a$ can be nonsense.</strong> If $x = 0$ is far outside the data, $a$ is an extrapolation and may have no sensible meaning (for example a negative mass). Say so if that is the case.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Finding and interpreting a regression line</div>
+    <div class="example-body">
+      <p>Eight students recorded the number of hours of revision, $x$, and their test score out of $100$, $y$.</p>
+      <table>
+        <tr><th>$x$</th><td>2</td><td>4</td><td>5</td><td>7</td><td>8</td><td>10</td><td>11</td><td>13</td></tr>
+        <tr><th>$y$</th><td>38</td><td>45</td><td>52</td><td>55</td><td>63</td><td>66</td><td>74</td><td>80</td></tr>
+      </table>
+      <p>Find $r$ and the equation of the regression line of $y$ on $x$, and interpret the coefficients.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Enter the data in two-variable statistics mode. The calculator gives $r = 0.991$ (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>It also gives $a = 30.69\ldots$ and $b = 3.790\ldots$, so $y = 30.7 + 3.79x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$r = 0.991$ is very close to $1$: strong positive linear correlation, so a linear model is appropriate.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$b = 3.79$: each extra hour of revision is associated with about $3.8$ more marks.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$a = 30.7$: a student who did no revision would be predicted to score about $31$. ($x = 0$ is just outside the data, so treat this with caution.)</span></div>
+      <div class="tip"><strong>Check:</strong> $\bar{x} = 7.5$ and $\bar{y} = 59.125$; $30.69 + 3.791 \times 7.5 = 59.12$ ✓ — the line passes through the mean point.</div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="340" viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+      <line x1="50" y1="290" x2="415" y2="290" stroke="#334" stroke-width="1.5"/>
+      <line x1="50" y1="290" x2="50" y2="40" stroke="#334" stroke-width="1.5"/>
+      <line x1="50" y1="290" x2="50" y2="295" stroke="#334"/><text x="50" y="310" font-size="12" text-anchor="middle">0</text>
+      <line x1="100" y1="290" x2="100" y2="295" stroke="#334"/><text x="100" y="310" font-size="12" text-anchor="middle">2</text>
+      <line x1="150" y1="290" x2="150" y2="295" stroke="#334"/><text x="150" y="310" font-size="12" text-anchor="middle">4</text>
+      <line x1="200" y1="290" x2="200" y2="295" stroke="#334"/><text x="200" y="310" font-size="12" text-anchor="middle">6</text>
+      <line x1="250" y1="290" x2="250" y2="295" stroke="#334"/><text x="250" y="310" font-size="12" text-anchor="middle">8</text>
+      <line x1="300" y1="290" x2="300" y2="295" stroke="#334"/><text x="300" y="310" font-size="12" text-anchor="middle">10</text>
+      <line x1="350" y1="290" x2="350" y2="295" stroke="#334"/><text x="350" y="310" font-size="12" text-anchor="middle">12</text>
+      <line x1="400" y1="290" x2="400" y2="295" stroke="#334"/><text x="400" y="310" font-size="12" text-anchor="middle">14</text>
+      <line x1="45" y1="290" x2="50" y2="290" stroke="#334"/><text x="40" y="294" font-size="12" text-anchor="end">30</text>
+      <line x1="45" y1="250" x2="50" y2="250" stroke="#334"/><text x="40" y="254" font-size="12" text-anchor="end">40</text>
+      <line x1="45" y1="210" x2="50" y2="210" stroke="#334"/><text x="40" y="214" font-size="12" text-anchor="end">50</text>
+      <line x1="45" y1="170" x2="50" y2="170" stroke="#334"/><text x="40" y="174" font-size="12" text-anchor="end">60</text>
+      <line x1="45" y1="130" x2="50" y2="130" stroke="#334"/><text x="40" y="134" font-size="12" text-anchor="end">70</text>
+      <line x1="45" y1="90" x2="50" y2="90" stroke="#334"/><text x="40" y="94" font-size="12" text-anchor="end">80</text>
+      <line x1="45" y1="50" x2="50" y2="50" stroke="#334"/><text x="40" y="54" font-size="12" text-anchor="end">90</text>
+      <line x1="75" y1="272.1" x2="400" y2="74.9" stroke="#7c3aed" stroke-width="2"/>
+      <circle cx="100" cy="258" r="4" fill="#4f46e5"/>
+      <circle cx="150" cy="230" r="4" fill="#4f46e5"/>
+      <circle cx="175" cy="202" r="4" fill="#4f46e5"/>
+      <circle cx="225" cy="190" r="4" fill="#4f46e5"/>
+      <circle cx="250" cy="158" r="4" fill="#4f46e5"/>
+      <circle cx="300" cy="146" r="4" fill="#4f46e5"/>
+      <circle cx="325" cy="114" r="4" fill="#4f46e5"/>
+      <circle cx="375" cy="90" r="4" fill="#4f46e5"/>
+      <text x="232" y="332" font-size="13" text-anchor="middle">Hours of revision, x</text>
+      <text x="16" y="165" font-size="13" text-anchor="middle" transform="rotate(-90 16 165)">Score, y</text>
+      <text x="300" y="70" font-size="13" fill="#7c3aed">y = 30.7 + 3.79x</text>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – INTERPOLATION AND EXTRAPOLATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Interpolation and Extrapolation</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Interpolation</strong> means predicting within the range of the data. It is usually reliable, provided the correlation is strong.<br>
+    <strong>Extrapolation</strong> means predicting outside the range of the data. It is unreliable, because there is no evidence that the linear pattern continues.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reliability of predictions</div>
+    <div class="example-body">
+      <p>Using $y = 30.69 + 3.791x$ from Worked Example 1, estimate the score of a student who revises for (a) $9$ hours, (b) $20$ hours, and comment on the reliability of each estimate.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $y = 30.69 + 3.791 \times 9 = 64.8$, so about $65$ marks.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 9$ lies inside the data range $2 \leqslant x \leqslant 13$ (interpolation) and $r = 0.991$ is strong, so this is reliable.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $y = 30.69 + 3.791 \times 20 = 106.5$ marks.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>This is extrapolation, and the answer is impossible — the test is out of $100$. The linear model must break down for large $x$; the estimate is unreliable.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not use the line of $y$ on $x$ to predict $x$ from $y$.</strong> The least squares line minimises vertical distances only. Exam questions are set so that you predict the response variable from the explanatory one.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Interpreting a negative gradient</div>
+    <div class="example-body">
+      <p>For $12$ towns, the regression line of the mean daily heating cost, $c$ pence, on the mean outdoor temperature, $T$ °C, is $c = 248 - 9.6T$, for $2 \leqslant T \leqslant 14$. Interpret the gradient, and explain why the model should not be used to estimate the cost when $T = 30$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>For every $1$ °C rise in temperature, the daily heating cost falls by about $9.6$ pence.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $T = 30$ the model gives $c = 248 - 288 = -40$: a negative cost, which is impossible.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$T = 30$ is far outside the data range, so this is extrapolation. In reality the cost would level off at zero once heating is switched off.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – EXPONENTIAL MODELS y = kb^x
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Change of Variable: $y = kb^x$</div>
+<div class="section-body">
+
+  <p>Many relationships are not linear — population growth, radioactive decay, depreciation. The trick is to <strong>change the variable</strong> so the relationship becomes linear, and then use a regression line. This links directly to the logarithm work in DfE content area F.</p>
+
+  <div class="formula-box">
+    <div class="label">Exponential model</div>
+    $y = kb^x \quad\Longrightarrow\quad \log y = \log k + x\log b$<br>
+    Plot $\log y$ against $x$: gradient $= \log b$, intercept $= \log k$
+  </div>
+
+  <div class="concept">
+    If the regression line of $\log_{10} y$ on $x$ is $\log_{10} y = c + mx$, then
+    \[ k = 10^{c}, \qquad b = 10^{m}. \]
+    If natural logs are used, $\ln y = c + mx$ gives $k = \mathrm{e}^{c}$ and $b = \mathrm{e}^{m}$, i.e. $y = \mathrm{e}^{c}\mathrm{e}^{mx}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — From a log-linear line to $y = kb^x$</div>
+    <div class="example-body">
+      <p>The number of bacteria, $N$, in a culture was counted every hour.</p>
+      <table>
+        <tr><th>$t$ (hours)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+        <tr><th>$N$</th><td>52</td><td>79</td><td>118</td><td>180</td><td>265</td><td>401</td></tr>
+        <tr><th>$\log_{10} N$</th><td>1.7160</td><td>1.8976</td><td>2.0719</td><td>2.2553</td><td>2.4232</td><td>2.6031</td></tr>
+      </table>
+      <p>Find a model of the form $N = kb^t$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Regression of $\log_{10} N$ on $t$ (calculator): $\log_{10} N = 1.7186 + 0.17703t$, with $r = 0.99995$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The near-perfect $r$ for the <em>transformed</em> data supports an exponential model.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 10^{1.7186} = 52.3$ &nbsp;and&nbsp; $b = 10^{0.17703} = 1.50$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$N = 52.3 \times 1.50^{t}$: the initial count is about $52$, and the population grows by about $50\%$ per hour.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Natural logarithms</div>
+    <div class="example-body">
+      <p>The temperature excess, $\theta$ °C, of a cooling liquid satisfies $\ln\theta = 2.1 - 0.35t$, where $t$ is in minutes. Write the model in the form $\theta = Ab^t$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\theta = \mathrm{e}^{2.1 - 0.35t} = \mathrm{e}^{2.1} \times \left(\mathrm{e}^{-0.35}\right)^t$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{e}^{2.1} = 8.17$ and $\mathrm{e}^{-0.35} = 0.705$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\theta = 8.17 \times 0.705^{t}$ — the excess falls by about $29.5\%$ each minute.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – POWER MODELS y = ax^n
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Change of Variable: $y = ax^n$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Power model</div>
+    $y = ax^n \quad\Longrightarrow\quad \log y = \log a + n\log x$<br>
+    Plot $\log y$ against $\log x$: gradient $= n$, intercept $= \log a$
+  </div>
+
+  <table>
+    <tr><th>Model</th><th>Plot</th><th>Gradient</th><th>Intercept</th></tr>
+    <tr><td>$y = kb^x$</td><td>$\log y$ against $x$</td><td>$\log b$</td><td>$\log k$</td></tr>
+    <tr><td>$y = ax^n$</td><td>$\log y$ against $\log x$</td><td>$n$</td><td>$\log a$</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Which model?</strong> If the variable $x$ is in the <em>power</em> ($b^x$), only $y$ is logged. If $x$ is the <em>base</em> ($x^n$), both are logged. The gradient of a log–log graph is the power itself — no need to undo a logarithm.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A power law from data</div>
+    <div class="example-body">
+      <p>The period, $T$ seconds, of a pendulum of length $L$ cm was measured.</p>
+      <table>
+        <tr><th>$L$</th><td>10</td><td>20</td><td>40</td><td>60</td><td>80</td><td>100</td></tr>
+        <tr><th>$T$</th><td>0.64</td><td>0.89</td><td>1.27</td><td>1.55</td><td>1.80</td><td>2.01</td></tr>
+      </table>
+      <p>Show that a model $T = aL^n$ is appropriate and find $a$ and $n$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Compute $X = \log_{10} L$ and $Y = \log_{10} T$: e.g. $L = 10$ gives $(1,\,-0.1938)$; $L = 100$ gives $(2,\,0.3032)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Regression of $Y$ on $X$: $Y = -0.6958 + 0.4991X$, with $r = 0.99992$ — the log–log points are almost exactly linear, so a power model fits.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n = 0.499 \approx 0.5$ and $a = 10^{-0.6958} = 0.201$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T \approx 0.201L^{0.5} = 0.201\sqrt{L}$ — the familiar result that the period is proportional to the square root of the length.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Reading a model from a log–log line</div>
+    <div class="example-body">
+      <p>A line of best fit for $\log_{10} y$ against $\log_{10} x$ has gradient $1.6$ and passes through $(0,\,0.48)$. Find $y$ in the form $ax^n$ and estimate $y$ when $x = 5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\log_{10} y = 0.48 + 1.6\log_{10} x$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = 1.6$ and $a = 10^{0.48} = 3.02$, so $y = 3.02x^{1.6}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 5$: $y = 3.02 \times 5^{1.6} = 3.02 \times 13.13 = 39.7$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>PMCC $r$</h4><p>$-1 \leqslant r \leqslant 1$; measures <em>linear</em> association only.</p></div>
+    <div class="ref-card"><h4>Regression line</h4><p>$y = a + bx$ predicts $y$ from $x$; passes through $(\bar{x},\bar{y})$.</p></div>
+    <div class="ref-card"><h4>Gradient $b$</h4><p>Change in $y$ per unit increase in $x$.</p></div>
+    <div class="ref-card"><h4>Intercept $a$</h4><p>Value of $y$ when $x = 0$ — may be meaningless.</p></div>
+    <div class="ref-card"><h4>Interpolation</h4><p>Within the data range: reliable if $r$ is strong.</p></div>
+    <div class="ref-card"><h4>Extrapolation</h4><p>Outside the data range: unreliable.</p></div>
+    <div class="ref-card"><h4>$y = kb^x$</h4><p>$\log y$ vs $x$; $k = 10^{\text{intercept}}$, $b = 10^{\text{gradient}}$.</p></div>
+    <div class="ref-card"><h4>$y = ax^n$</h4><p>$\log y$ vs $\log x$; $n$ = gradient, $a = 10^{\text{intercept}}$.</p></div>
+    <div class="ref-card"><h4>Causation</h4><p>Correlation alone never proves cause and effect.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions, from routine to exam-style. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>For $20$ households, the correlation coefficient between outdoor temperature and gas used is $r = -0.87$. Describe the correlation and interpret it in context.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Strong negative linear correlation.</p>
+          <p>Households tend to use less gas on warmer days. (This is an association; the coefficient alone does not prove cause.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>The regression line of daily ice-cream sales, $s$, on maximum temperature, $t$ °C, is $s = 45 + 12.5t$. Interpret the values $12.5$ and $45$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$12.5$: for each $1$ °C rise in maximum temperature, about $12.5$ more ice creams are sold per day.</p>
+          <p>$45$: on a day with maximum temperature $0$ °C the model predicts $45$ sales — but $0$ °C is probably outside the data, so this may not be reliable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The data used in Question 2 had $10 \leqslant t \leqslant 28$. Estimate the sales when $t = 20$ and when $t = 35$, commenting on the reliability of each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$t = 20$: $s = 45 + 250 = 295$. Interpolation — reliable if the correlation is strong.</p>
+          <p>$t = 35$: $s = 45 + 437.5 = 482.5$, about $483$. Extrapolation — unreliable; e.g. the shop may sell out, or people may avoid extreme heat.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>The regression line of $\log_{10} y$ on $x$ is $\log_{10} y = 0.6 + 0.2x$. Express $y$ in the form $kb^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 10^{0.6 + 0.2x} = 10^{0.6} \times \left(10^{0.2}\right)^x$</p>
+          <p>$k = 10^{0.6} = 3.98$, $b = 10^{0.2} = 1.58$ (3 s.f.)</p>
+          <p>$y = 3.98 \times 1.58^{x}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The regression line of $\log_{10} y$ on $\log_{10} x$ is $\log_{10} y = 0.48 + 1.6\log_{10} x$. Find $a$ and $n$ such that $y = ax^n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log_{10} y = \log_{10}\left(10^{0.48}\right) + \log_{10}\left(x^{1.6}\right) = \log_{10}\left(10^{0.48}x^{1.6}\right)$</p>
+          <p>$a = 10^{0.48} = 3.02$ and $n = 1.6$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A population of a rare plant is modelled by $\ln P = 4.2 - 0.08t$, where $t$ is in years. (a) Write the model as $P = Ab^t$. (b) Estimate $P$ when $t = 10$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $P = \mathrm{e}^{4.2}\left(\mathrm{e}^{-0.08}\right)^t = 66.7 \times 0.923^{t}$</p>
+          <p><strong>(b)</strong> $P = \mathrm{e}^{4.2 - 0.8} = \mathrm{e}^{3.4} = 29.96$, so about $30$ plants.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Explain why, if $y = kb^x$, a graph of $\log y$ against $x$ is a straight line. State what graph you would plot to test whether $y = ax^n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Taking logs: $\log y = \log k + \log\left(b^x\right) = \log k + x\log b$.</p>
+          <p>This has the form $Y = c + mx$ with $Y = \log y$, constant intercept $c = \log k$ and constant gradient $m = \log b$, so it is a straight line.</p>
+          <p>For $y = ax^n$, $\log y = \log a + n\log x$, so plot $\log y$ against $\log x$ and look for a straight line.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A café records the hours of sunshine, $x$, and the number of cold drinks sold (in tens), $y$, on six days.</p>
+      <table>
+        <tr><th>$x$</th><td>3</td><td>5</td><td>6</td><td>8</td><td>9</td><td>11</td></tr>
+        <tr><th>$y$</th><td>14</td><td>19</td><td>21</td><td>26</td><td>27</td><td>33</td></tr>
+      </table>
+      <p>(a) Find $r$. (b) Find the regression line of $y$ on $x$. (c) Estimate $y$ when $x = 10$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Calculator: $r = 0.997$ — very strong positive correlation.</p>
+          <p><strong>(b)</strong> $a = 7.17$, $b = 2.31$, so $y = 7.17 + 2.31x$.</p>
+          <p><em>Check:</em> $\bar{x} = 7$, $\bar{y} = 23.33$, and $7.167 + 2.3095 \times 7 = 23.33$ ✓</p>
+          <p><strong>(c)</strong> $y = 7.167 + 2.3095 \times 10 = 30.26$, i.e. about $303$ drinks. Interpolation, with $r$ close to $1$, so reliable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A graph of $\log_{10} y$ against $x$ is a straight line passing through $(0,\,1.25)$ and $(8,\,2.85)$. Find $y$ in the form $kb^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= \dfrac{2.85 - 1.25}{8 - 0} = 0.2$; intercept $= 1.25$.</p>
+          <p>$\log_{10} y = 1.25 + 0.2x$</p>
+          <p>$k = 10^{1.25} = 17.8$, $b = 10^{0.2} = 1.58$, so $y = 17.8 \times 1.58^{x}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The value, £$V$, of a model of car is recorded for cars aged $t$ years, $1 \leqslant t \leqslant 8$. The regression line of $\log_{10} V$ on $t$ is $\log_{10} V = 4.32 - 0.065t$, and the correlation coefficient between $\log_{10} V$ and $t$ is $-0.993$.</p>
+      <p>(a) Explain what the value $-0.993$ suggests about a model $V = kb^t$. (b) Find $k$ and $b$. (c) Interpret $k$ and $b$ in context. (d) Estimate the value of a $5$-year-old car. (e) Comment on using the model for a $20$-year-old car.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\log_{10} V$ and $t$ have very strong negative linear correlation, so $\log_{10} V$ is close to linear in $t$ — an exponential model $V = kb^t$ is appropriate.</p>
+          <p><strong>(b)</strong> $k = 10^{4.32} = 20\,900$ (3 s.f.), $b = 10^{-0.065} = 0.861$ (3 s.f.).</p>
+          <p><strong>(c)</strong> $k$: the model's value of a new car ($t = 0$) is about £$20\,900$ — slightly outside the data, so approximate. $b$: each year the car keeps $86.1\%$ of its value, i.e. it loses about $13.9\%$ per year.</p>
+          <p><strong>(d)</strong> $\log_{10} V = 4.32 - 0.325 = 3.995$, so $V = 10^{3.995} = 9886$, about £$9900$.</p>
+          <p><strong>(e)</strong> $t = 20$ is well outside $1 \leqslant t \leqslant 8$: extrapolation. Older cars may hold their value (or become worthless/classic), so the estimate of about £$1050$ is unreliable.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Regression and Exponential Models &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projectiles &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🏀 Projectiles</h1>
+  <p>A Level Maths Year 2 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE PROJECTILE MODEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Projectile Model</div>
+<div class="section-body">
+
+  <p>A <strong>projectile</strong> is a particle moving freely under gravity alone — a kicked ball, a stone thrown from a cliff, a jet of water. DfE content area <strong>Q · Kinematics</strong> asks you to model this motion in two dimensions.</p>
+
+  <div class="concept">
+    <strong>The key idea:</strong> treat the horizontal and vertical motions <strong>separately</strong>. They share only one thing — the <strong>time</strong> $t$.<br>
+    &bull; Horizontally there is no force (no air resistance), so the velocity is <strong>constant</strong>.<br>
+    &bull; Vertically there is constant acceleration $g$ <strong>downwards</strong>, so the Year 1 <a href="../../alevel-year1/mechanics/suvat.html">suvat</a> equations apply.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Projected with speed $u$ at angle $\theta$ above the horizontal</div>
+    Initial components: &nbsp; horizontal $u\cos\theta$, &nbsp; vertical $u\sin\theta$<br>
+    $x = (u\cos\theta)\,t$ &nbsp;&nbsp;&nbsp; $y = (u\sin\theta)\,t - \tfrac12 g t^2$<br>
+    $\dot{x} = u\cos\theta$ &nbsp;&nbsp;&nbsp; $\dot{y} = u\sin\theta - gt$
+  </div>
+
+  <div class="svg-block">
+    <svg width="480" height="260" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="pa1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/></marker></defs>
+      <line x1="30" y1="230" x2="470" y2="230" stroke="#475569" stroke-width="2"/>
+      <polyline points="50.0,230.0 69.2,217.2 88.4,205.8 107.5,195.8 126.7,187.0 145.9,179.6 165.1,173.6 184.2,168.9 203.4,165.5 222.6,163.5 241.8,162.9 261.0,163.5 280.1,165.5 299.3,168.9 318.5,173.6 337.7,179.6 356.8,187.0 376.0,195.8 395.2,205.8 414.4,217.2 433.5,230.0" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+      <line x1="50" y1="230" x2="99.1" y2="195.6" stroke="#4f46e5" stroke-width="3" marker-end="url(#pa1)"/>
+      <text x="78" y="186" font-family="Arial" font-size="13" fill="#4338ca" font-weight="bold">u</text>
+      <path d="M 75 230 A 25 25 0 0 0 70.5 215.7" fill="none" stroke="#475569" stroke-width="1.2"/>
+      <text x="80" y="226" font-family="Arial" font-size="12" fill="#1e1e2e">θ</text>
+      <line x1="241.8" y1="162.9" x2="241.8" y2="230" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="248" y="205" font-family="Arial" font-size="13" fill="#475569">H</text>
+      <circle cx="241.8" cy="162.9" r="4" fill="#7c3aed"/>
+      <text x="196" y="150" font-family="Arial" font-size="12" fill="#6d28d9">top: vertical velocity 0</text>
+      <line x1="50" y1="248" x2="433.5" y2="248" stroke="#475569" stroke-width="1"/>
+      <line x1="50" y1="243" x2="50" y2="253" stroke="#475569"/><line x1="433.5" y1="243" x2="433.5" y2="253" stroke="#475569"/>
+      <text x="236" y="258" font-family="Arial" font-size="13" fill="#475569">R</text>
+      <text x="300" y="120" font-family="Arial" font-size="12" fill="#475569">u = 20 m s⁻¹, θ = 35° (to scale)</text>
+    </svg>
+  </div>
+
+  <div class="tip">
+    <strong>Choose a sign convention</strong> and stick to it. Taking upwards as positive means the vertical acceleration is $-9.8$ m s$^{-2}$ and a point below the launch height has a negative $y$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – HORIZONTAL PROJECTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Projected Horizontally</div>
+<div class="section-body">
+
+  <p>When $\theta = 0$ the initial vertical velocity is zero, so the vertical motion is just a dropped object.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Off a cliff</div>
+    <div class="example-body">
+      <p>A stone is thrown horizontally at $15$ m s$^{-1}$ from the top of a cliff $40$ m above the sea. Find the time to reach the sea, the horizontal distance travelled, and the speed and direction of motion as it hits the water.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Vertical (down positive): $s = 40$, $u = 0$, $a = 9.8$. $40 = 4.9t^2 \Rightarrow t = 2.857$ s, so $2.86$ s.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Horizontal: $x = 15 \times 2.857 = 42.9$ m.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Vertical velocity at impact: $v_y = 9.8 \times 2.857 = 28.0$ m s$^{-1}$ downwards; horizontal still $15$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Speed $\sqrt{15^2 + 28^2} = 31.8$ m s$^{-1}$, at $\tan^{-1}\!\left(\tfrac{28}{15}\right) = 61.8^\circ$ below the horizontal.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TIME OF FLIGHT, RANGE, MAXIMUM HEIGHT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Time of Flight, Range and Maximum Height</div>
+<div class="section-body">
+
+  <p>For a projectile launched from and landing on <strong>level ground</strong>:</p>
+
+  <table>
+    <tr><th>Quantity</th><th>Condition</th><th>Result</th></tr>
+    <tr><td><strong>Time to the top</strong></td><td>vertical velocity $= 0$</td><td>$t = \dfrac{u\sin\theta}{g}$</td></tr>
+    <tr><td><strong>Maximum height</strong> $H$</td><td>$0 = (u\sin\theta)^2 - 2gH$</td><td>$H = \dfrac{u^2\sin^2\theta}{2g}$</td></tr>
+    <tr><td><strong>Time of flight</strong> $T$</td><td>$y = 0$, $t \neq 0$</td><td>$T = \dfrac{2u\sin\theta}{g}$</td></tr>
+    <tr><td><strong>Range</strong> $R$</td><td>$x$ at time $T$</td><td>$R = \dfrac{u^2\sin 2\theta}{g}$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Deriving the range:</strong> $R = u\cos\theta \times \dfrac{2u\sin\theta}{g} = \dfrac{u^2(2\sin\theta\cos\theta)}{g} = \dfrac{u^2\sin 2\theta}{g}$, using the double-angle identity. Since $\sin 2\theta \leqslant 1$, the maximum range is $\dfrac{u^2}{g}$, at $\theta = 45^\circ$.
+  </div>
+
+  <div class="warn">
+    <strong>These formulae only work on level ground</strong>, and exam questions often ask you to <em>derive</em> them. It is safer to work from the component equations every time than to memorise results.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A ball kicked from the ground</div>
+    <div class="example-body">
+      <p>A ball is kicked from level ground at $20$ m s$^{-1}$ at $35^\circ$ above the horizontal. Find the time of flight, the range and the greatest height.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Components: $u_x = 20\cos 35^\circ = 16.38$, $u_y = 20\sin 35^\circ = 11.47$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Lands when $y = 0$: $11.47t - 4.9t^2 = 0 \Rightarrow t = \dfrac{11.47}{4.9} = 2.34$ s.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Range $= 16.38 \times 2.341 = 38.4$ m.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Top: $0 = 11.47^2 - 2(9.8)H \Rightarrow H = 6.71$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Velocity at a given time</div>
+    <div class="example-body">
+      <p>For the ball in Worked Example 2, find its speed and direction of motion $1.5$ s after it is kicked.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$v_x = 16.38$ m s$^{-1}$ (unchanged).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$v_y = 11.47 - 9.8 \times 1.5 = -3.23$ m s$^{-1}$ — negative, so it is already coming down.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Speed $\sqrt{16.38^2 + 3.23^2} = 16.7$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Direction $\tan^{-1}\!\left(\tfrac{3.23}{16.38}\right) = 11.1^\circ$ below the horizontal.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding the angle from the range</div>
+    <div class="example-body">
+      <p>A particle projected at $30$ m s$^{-1}$ from level ground lands $60$ m away. Find the possible angles of projection.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$60 = \dfrac{30^2\sin 2\theta}{9.8} \Rightarrow \sin 2\theta = \dfrac{588}{900} = 0.6533$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2\theta = 40.79^\circ$ or $180^\circ - 40.79^\circ = 139.21^\circ$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\theta = 20.4^\circ$ or $69.6^\circ$.</span></div>
+      <div class="tip">The two angles are <strong>complementary</strong> (they add to $90^\circ$). A low, flat shot and a high lob reach the same point.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PROJECTION FROM A HEIGHT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Projection from a Height, and Clearing Obstacles</div>
+<div class="section-body">
+
+  <p>If the launch and landing heights differ, the level-ground formulae fail. Go back to $y = (u\sin\theta)t - \tfrac12gt^2$ and solve a quadratic in $t$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Thrown upwards from a cliff</div>
+    <div class="example-body">
+      <p>A stone is thrown at $15$ m s$^{-1}$ at $30^\circ$ above the horizontal from the top of a cliff $25$ m above the sea. Find how long it takes to hit the sea and how far from the foot of the cliff it lands.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Up positive, origin at the launch point. The sea is at $y = -25$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-25 = 15\sin 30^\circ\,t - 4.9t^2 \Rightarrow 4.9t^2 - 7.5t - 25 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t = \dfrac{7.5 + \sqrt{7.5^2 + 4(4.9)(25)}}{9.8} = \dfrac{7.5 + 23.37}{9.8} = 3.15$ s (the negative root is rejected).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = 15\cos 30^\circ \times 3.150 = 40.9$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Clearing a wall</div>
+    <div class="example-body">
+      <p>A ball is projected from ground level at $25$ m s$^{-1}$ at $40^\circ$ to the horizontal towards a wall $6$ m high, $30$ m away. Does it clear the wall?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Use the horizontal motion to find <strong>when</strong> it reaches the wall: $t = \dfrac{30}{25\cos 40^\circ} = 1.567$ s.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Height then: $y = 25\sin 40^\circ(1.567) - 4.9(1.567)^2 = 25.18 - 12.03 = 13.1$ m.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$13.1 > 6$, so it clears the wall, by about $7.1$ m.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – THE TRAJECTORY EQUATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> The Equation of the Trajectory</div>
+<div class="section-body">
+
+  <p>Eliminate $t$ between the $x$ and $y$ equations to get the path as a Cartesian equation. From $x = (u\cos\theta)t$, $t = \dfrac{x}{u\cos\theta}$. Substitute:</p>
+
+  <div class="formula-box">
+    <div class="label">Trajectory of a projectile (origin at the point of projection)</div>
+    $y = x\tan\theta - \dfrac{gx^2}{2u^2\cos^2\theta}$ &nbsp;&nbsp; $=\; x\tan\theta - \dfrac{gx^2}{2u^2}\left(1 + \tan^2\theta\right)$
+  </div>
+
+  <div class="concept">
+    It is a quadratic in $x$ with a negative $x^2$ coefficient — the path is a <strong>parabola</strong>. The second form uses $\sec^2\theta = 1 + \tan^2\theta$ and turns "find the angle" problems into a quadratic in $\tan\theta$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Hitting a target</div>
+    <div class="example-body">
+      <p>A particle is projected from $O$ at $20$ m s$^{-1}$. It must pass through the point $(30, 5)$ m. Find the possible angles of projection.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $T = \tan\theta$: $5 = 30T - \dfrac{9.8 \times 900}{2 \times 400}(1 + T^2) = 30T - 11.025(1 + T^2)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$11.025T^2 - 30T + 16.025 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$T = \dfrac{30 \pm \sqrt{900 - 4(11.025)(16.025)}}{2(11.025)} = \dfrac{30 \pm 13.90}{22.05}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T = 1.991$ or $0.7301$, so $\theta = 63.3^\circ$ or $36.1^\circ$.</span></div>
+      <div class="tip">If the discriminant were negative, the target would be out of reach at that speed.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Components</h4><p>$u\cos\theta$ across, $u\sin\theta$ up.</p></div>
+    <div class="ref-card"><h4>Horizontal</h4><p>Constant velocity: $x = (u\cos\theta)t$.</p></div>
+    <div class="ref-card"><h4>Vertical</h4><p>suvat with $a = -g$.</p></div>
+    <div class="ref-card"><h4>Top</h4><p>Vertical velocity $= 0$.</p></div>
+    <div class="ref-card"><h4>Level ground</h4><p>$T = \dfrac{2u\sin\theta}{g}$, $R = \dfrac{u^2\sin2\theta}{g}$.</p></div>
+    <div class="ref-card"><h4>Max height</h4><p>$H = \dfrac{u^2\sin^2\theta}{2g}$.</p></div>
+    <div class="ref-card"><h4>Max range</h4><p>At $45^\circ$: $u^2/g$.</p></div>
+    <div class="ref-card"><h4>From a height</h4><p>Solve $y = -h$ as a quadratic in $t$.</p></div>
+    <div class="ref-card"><h4>Trajectory</h4><p>$y = x\tan\theta - \dfrac{gx^2}{2u^2}(1+\tan^2\theta)$.</p></div>
+    <div class="ref-card"><h4>Speed</h4><p>$\sqrt{v_x^2 + v_y^2}$, direction $\tan^{-1}(v_y/v_x)$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Use $g = 9.8$ m s$^{-2}$, ignore air resistance, and give answers to 3 significant figures where they are not exact.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A stone is thrown horizontally at $8$ m s$^{-1}$ from a point $20$ m above level ground. Find the time it takes to land and the horizontal distance travelled.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$20 = 4.9t^2 \Rightarrow t = \sqrt{\dfrac{20}{4.9}} = 2.02$ s.</p>
+          <p>$x = 8 \times 2.020 = 16.2$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A particle is projected from level ground at $30$ m s$^{-1}$ at $50^\circ$ above the horizontal. Find the time of flight, the range and the greatest height.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_x = 30\cos 50^\circ = 19.28$, $u_y = 30\sin 50^\circ = 22.98$.</p>
+          <p>Time of flight: $T = \dfrac{2(22.98)}{9.8} = 4.69$ s.</p>
+          <p>Range: $19.28 \times 4.690 = 90.4$ m.</p>
+          <p>Greatest height: $H = \dfrac{22.98^2}{2 \times 9.8} = 26.9$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For the particle in Question 2, find its speed and direction of motion $2$ s after projection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v_x = 19.28$; $v_y = 22.98 - 19.6 = 3.38$ m s$^{-1}$ (still rising).</p>
+          <p>Speed $= \sqrt{19.28^2 + 3.38^2} = 19.6$ m s$^{-1}$.</p>
+          <p>Direction $\tan^{-1}\!\left(\tfrac{3.38}{19.28}\right) = 9.95^\circ$ above the horizontal.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Show that a particle projected from level ground with speed $u$ at angle $\theta$ has range $\dfrac{u^2\sin 2\theta}{g}$, and deduce the angle giving the greatest range.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Vertically: $y = u\sin\theta\,t - \tfrac12gt^2 = t\left(u\sin\theta - \tfrac12gt\right)$. $y = 0$ when $t = 0$ or $t = \dfrac{2u\sin\theta}{g}$.</p>
+          <p>Horizontally: $R = u\cos\theta \times \dfrac{2u\sin\theta}{g} = \dfrac{u^2 \cdot 2\sin\theta\cos\theta}{g} = \dfrac{u^2\sin 2\theta}{g}$.</p>
+          <p>$\sin 2\theta$ has maximum $1$ when $2\theta = 90^\circ$, so the greatest range is at $\theta = 45^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A ball is kicked from level ground at $18$ m s$^{-1}$ at angle $\alpha$ above the horizontal, where $\tan\alpha = \tfrac34$. For how long is the ball more than $4$ m above the ground?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin\alpha = 0.6$, so $u_y = 18 \times 0.6 = 10.8$ m s$^{-1}$.</p>
+          <p>$4 = 10.8t - 4.9t^2 \Rightarrow 4.9t^2 - 10.8t + 4 = 0$.</p>
+          <p>$t = \dfrac{10.8 \pm \sqrt{116.64 - 78.4}}{9.8} = \dfrac{10.8 \pm 6.184}{9.8}$, so $t = 0.471$ s or $1.733$ s.</p>
+          <p>Time above $4$ m $= 1.733 - 0.471 = 1.26$ s.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A ball is thrown from the top of a building $30$ m high at $12$ m s$^{-1}$ at $20^\circ$ above the horizontal. Find the time to reach the ground, the horizontal distance travelled and the speed on landing.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_x = 12\cos 20^\circ = 11.28$, $u_y = 12\sin 20^\circ = 4.104$.</p>
+          <p>$-30 = 4.104t - 4.9t^2 \Rightarrow 4.9t^2 - 4.104t - 30 = 0$.</p>
+          <p>$t = \dfrac{4.104 + \sqrt{4.104^2 + 588}}{9.8} = \dfrac{4.104 + 24.59}{9.8} = 2.93$ s.</p>
+          <p>Distance: $11.28 \times 2.928 = 33.0$ m.</p>
+          <p>$v_y = 4.104 - 9.8(2.928) = -24.59$; speed $= \sqrt{11.28^2 + 24.59^2} = 27.1$ m s$^{-1}$.</p>
+          <p>(Check: $v^2 = u^2 + 2gh = 144 + 588 = 732$, $v = 27.1$ ✓ — the speed does not depend on the angle.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A particle projected from $O$ at $14$ m s$^{-1}$ passes through the point $(10, 2.5)$ m. Show that $\tan^2\theta - 4\tan\theta + 2 = 0$ and hence find the two possible angles of projection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{gx^2}{2u^2} = \dfrac{9.8 \times 100}{2 \times 196} = 2.5$.</p>
+          <p>$2.5 = 10\tan\theta - 2.5(1 + \tan^2\theta) \Rightarrow 2.5\tan^2\theta - 10\tan\theta + 5 = 0$.</p>
+          <p>Divide by $2.5$: $\tan^2\theta - 4\tan\theta + 2 = 0$ ✓</p>
+          <p>$\tan\theta = 2 \pm \sqrt{2}$, i.e. $3.414$ or $0.5858$.</p>
+          <p>$\theta = 73.7^\circ$ or $30.4^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A golf ball is struck from level ground at $35$ m s$^{-1}$ at $25^\circ$ to the horizontal. A tree $12$ m high stands $50$ m away. Does the ball clear the tree?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Time to reach the tree: $t = \dfrac{50}{35\cos 25^\circ} = 1.576$ s.</p>
+          <p>Height: $y = 35\sin 25^\circ(1.576) - 4.9(1.576)^2 = 23.31 - 12.17 = 11.1$ m.</p>
+          <p>$11.1 < 12$, so the ball does <strong>not</strong> clear the tree (it hits it about $0.9$ m below the top).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A dart is thrown horizontally from a height of $1.8$ m and hits the board $2.4$ m away at a height of $1.6$ m. Find the speed of throw.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Vertical drop $= 0.2$ m: $0.2 = 4.9t^2 \Rightarrow t = 0.2020$ s.</p>
+          <p>Horizontal: $u = \dfrac{2.4}{0.2020} = 11.9$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A ball is projected from a point $A$, $1.5$ m above level ground, with speed $U$ m s$^{-1}$ at angle $\alpha$ above the horizontal, where $\tan\alpha = \tfrac43$. Its greatest height above the ground is $8$ m.</p>
+      <p>(a) Find $U$. &nbsp; (b) Find the time from projection until the ball hits the ground. &nbsp; (c) Find the horizontal distance travelled. &nbsp; (d) Find the speed of the ball as it hits the ground. &nbsp; (e) Give one way in which the model could be refined.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin\alpha = 0.8$, $\cos\alpha = 0.6$.</p>
+          <p><strong>(a)</strong> The ball rises $8 - 1.5 = 6.5$ m. At the top $v_y = 0$: $0 = (0.8U)^2 - 2(9.8)(6.5)$.</p>
+          <p>$0.8U = \sqrt{127.4} = 11.29 \Rightarrow U = 14.1$ m s$^{-1}$.</p>
+          <p><strong>(b)</strong> $-1.5 = 11.29t - 4.9t^2 \Rightarrow 4.9t^2 - 11.29t - 1.5 = 0$.</p>
+          <p>$t = \dfrac{11.29 + \sqrt{127.4 + 29.4}}{9.8} = \dfrac{11.29 + 12.52}{9.8} = 2.43$ s.</p>
+          <p><strong>(c)</strong> $x = 0.6U \times t = 8.465 \times 2.4295 = 20.6$ m.</p>
+          <p><strong>(d)</strong> $v_y = 11.29 - 9.8(2.4295) = -12.52$; speed $= \sqrt{8.465^2 + 12.52^2} = 15.1$ m s$^{-1}$.</p>
+          <p><strong>(e)</strong> Include air resistance; or model the ball's spin; or treat the ball as having size rather than as a particle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Projectiles &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

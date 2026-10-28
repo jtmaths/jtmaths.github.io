@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectors Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➡️ Vectors Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>A <strong>vector</strong> is a quantity with both magnitude and direction. Writing vectors as $x\mathbf{i} + y\mathbf{j}$ lets you add, scale and compare them with ordinary arithmetic — and that turns geometric facts ("these lines are parallel", "these points are in a line") into simple algebra.</p>
+
+  <div class="concept">
+    Almost everything in this topic comes from two ideas: <strong>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$</strong> (end minus start), and <strong>parallel means "a multiple of"</strong>. Master those and the proofs follow.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    $\mathbf{i}, \mathbf{j}$ notation &middot; magnitude and direction &middot; unit vectors<br>
+    Position vectors and distances &middot; dividing a line in a ratio<br>
+    Vectors in mechanics: resultant forces, equilibrium and velocities
+  </div>
+
+  <div class="tip">
+    <strong>Year 1 is two-dimensional.</strong> Year 2 extends everything here to three dimensions with $\mathbf{k}$, and uses vectors throughout mechanics. This topic is DfE content area <strong>J · Vectors</strong>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Scalar</strong></td><td>A quantity with size only.</td><td>Speed $5$ m s$^{-1}$, mass $2$ kg</td></tr>
+    <tr><td><strong>Vector</strong></td><td>A quantity with size and direction.</td><td>Velocity $3\mathbf{i} + 4\mathbf{j}$ m s$^{-1}$</td></tr>
+    <tr><td><strong>Magnitude</strong></td><td>The length (size) of a vector, $|\mathbf{a}|$.</td><td>$|3\mathbf{i} + 4\mathbf{j}| = 5$</td></tr>
+    <tr><td><strong>Unit vector</strong></td><td>A vector of magnitude $1$.</td><td>$\mathbf{i}$, $\mathbf{j}$, $0.6\mathbf{i} + 0.8\mathbf{j}$</td></tr>
+    <tr><td><strong>Position vector</strong></td><td>The vector from the origin to a point.</td><td>$A(2, 5)$ has $\mathbf{a} = 2\mathbf{i} + 5\mathbf{j}$</td></tr>
+    <tr><td><strong>Displacement</strong></td><td>The vector from one point to another.</td><td>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$</td></tr>
+    <tr><td><strong>Collinear</strong></td><td>Lying on a single straight line.</td><td>$\overrightarrow{AB} = 2\overrightarrow{BC}$</td></tr>
+    <tr><td><strong>Resultant</strong></td><td>The single vector equivalent to several added together.</td><td>The sum of all forces on a particle</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Underline vectors in handwriting.</strong> Printed vectors are bold, $\mathbf{a}$; written ones must be $\underline{a}$. Without the underline, $a$ is just a number and your working is ambiguous.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Six Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Arithmetic</div>
+    Add, subtract and scale component by component
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Magnitude and direction</div>
+    $|x\mathbf{i} + y\mathbf{j}| = \sqrt{x^2 + y^2}$, &nbsp;$\tan\theta = \dfrac{y}{x}$ (sketch to find the quadrant)
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Unit vector</div>
+    $\hat{\mathbf{a}} = \dfrac{\mathbf{a}}{|\mathbf{a}|}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Position vectors</div>
+    $\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$, &nbsp;distance $= |\mathbf{b} - \mathbf{a}|$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Parallel, collinear and ratios</div>
+    Parallel: $\mathbf{a} = \lambda\mathbf{b}$ &nbsp;&middot;&nbsp; $AP : PB = m : n$ gives $\overrightarrow{OP} = \mathbf{a} + \dfrac{m}{m+n}\overrightarrow{AB}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">6 — Forces and velocities</div>
+    Resultant = vector sum &nbsp;&middot;&nbsp; equilibrium means resultant $= \mathbf{0}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>$A$ and $B$ have position vectors $\mathbf{i} + 2\mathbf{j}$ and $7\mathbf{i} + 5\mathbf{j}$. $P$ lies on $AB$ with $AP : PB = 2 : 1$. Find the position vector of $P$, the exact distance $OP$, and a unit vector in the direction of $\overrightarrow{OP}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a} = 6\mathbf{i} + 3\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{OP} = \mathbf{a} + \tfrac23\overrightarrow{AB} = (\mathbf{i} + 2\mathbf{j}) + (4\mathbf{i} + 2\mathbf{j}) = 5\mathbf{i} + 4\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$OP = \sqrt{25 + 16} = \sqrt{41}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Unit vector: $\dfrac{1}{\sqrt{41}}(5\mathbf{i} + 4\mathbf{j})$</span></div>
+      <div class="tip">Four techniques — displacement, ratio, magnitude, unit vector — in one short question.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Vectors Subtopics</div>
+<div class="section-body">
+
+  <p>The Year 1 content of DfE area J, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">J</span><span><a href="vectors-2d.html">Vectors in Two Dimensions</a><span class="desc">$\mathbf{i}$, $\mathbf{j}$ and column notation; magnitude and direction; unit vectors; position vectors and distances; addition and scalar multiples.</span></span></li>
+    <li><span class="code">J</span><span><a href="vector-geometry.html">Vector Geometry</a><span class="desc">Parallel vectors and collinear points; dividing a line in a ratio; geometric proof; forces and velocities.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>End minus start, not start minus end.</strong> $\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$, not $\mathbf{a} - \mathbf{b}$. Getting this backwards reverses the vector.
+  </div>
+
+  <div class="warn">
+    <strong>Wrong quadrant for the direction.</strong> $\tan^{-1}\left(\tfrac{5}{-2}\right)$ on a calculator gives $-68.2°$, but $-2\mathbf{i} + 5\mathbf{j}$ points up and left. Sketch first.
+  </div>
+
+  <div class="warn">
+    <strong>Collinear proofs without a common point.</strong> $\overrightarrow{AB} = k\overrightarrow{CD}$ only shows parallel lines. You need a shared point to conclude the points are on one line.
+  </div>
+
+  <div class="warn">
+    <strong>Adding magnitudes instead of vectors.</strong> Forces of $3$ N and $4$ N at right angles have a resultant of $5$ N, not $7$ N.
+  </div>
+
+  <div class="warn">
+    <strong>Mixing speed and velocity.</strong> If asked for a velocity, give a vector; if asked for a speed, give its magnitude with units.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Notation</h4><p>$x\mathbf{i} + y\mathbf{j} = \begin{pmatrix} x \\ y \end{pmatrix}$</p></div>
+    <div class="ref-card"><h4>Magnitude</h4><p>$\sqrt{x^2 + y^2}$</p></div>
+    <div class="ref-card"><h4>Unit vector</h4><p>$\mathbf{a} \div |\mathbf{a}|$</p></div>
+    <div class="ref-card"><h4>Displacement</h4><p>$\mathbf{b} - \mathbf{a}$</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>$\tfrac12(\mathbf{a} + \mathbf{b})$</p></div>
+    <div class="ref-card"><h4>Parallel</h4><p>$\mathbf{a} = \lambda\mathbf{b}$</p></div>
+    <div class="ref-card"><h4>Collinear</h4><p>Parallel plus a common point.</p></div>
+    <div class="ref-card"><h4>Resolving</h4><p>$r\cos\theta\,\mathbf{i} + r\sin\theta\,\mathbf{j}$</p></div>
+    <div class="ref-card"><h4>Equilibrium</h4><p>Forces sum to $\mathbf{0}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Vectors topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $|-6\mathbf{i} + 8\mathbf{j}|$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt{36 + 64} = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$\mathbf{a} = 2\mathbf{i} - \mathbf{j}$ and $\mathbf{b} = -3\mathbf{i} + 4\mathbf{j}$. Find $3\mathbf{a} - \mathbf{b}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(6\mathbf{i} - 3\mathbf{j}) - (-3\mathbf{i} + 4\mathbf{j}) = 9\mathbf{i} - 7\mathbf{j}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$A(3, -2)$ and $B(-1, 1)$. Find $\overrightarrow{AB}$ and the distance $AB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = -4\mathbf{i} + 3\mathbf{j}$; $AB = \sqrt{16 + 9} = 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the unit vector in the direction of $5\mathbf{i} + 12\mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Magnitude $13$, so $\tfrac{1}{13}(5\mathbf{i} + 12\mathbf{j}) = \tfrac{5}{13}\mathbf{i} + \tfrac{12}{13}\mathbf{j}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Write a velocity of $8$ m s$^{-1}$ on a bearing of $150°$ in the form $x\mathbf{i} + y\mathbf{j}$, where $\mathbf{i}$ is east and $\mathbf{j}$ is north. Give exact values.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$150°$ is $30°$ east of south.</p>
+          <p>East component $8\sin 30° = 4$; south component $8\cos 30° = 4\sqrt3$.</p>
+          <p>$\mathbf{v} = 4\mathbf{i} - 4\sqrt3\,\mathbf{j}$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$2\mathbf{i} + k\mathbf{j}$ is parallel to $6\mathbf{i} + 15\mathbf{j}$. Find $k$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\mathbf{i} + k\mathbf{j} = \tfrac13(6\mathbf{i} + 15\mathbf{j})$, so $k = 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Show that $(1, 1)$, $(3, 4)$ and $(7, 10)$ are collinear.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Call them $A$, $B$, $C$. $\overrightarrow{AB} = 2\mathbf{i} + 3\mathbf{j}$, $\overrightarrow{BC} = 4\mathbf{i} + 6\mathbf{j} = 2\overrightarrow{AB}$.</p>
+          <p>Parallel, with common point $B$, so collinear.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$A(-2, 6)$ and $B(6, -2)$. $P$ lies on $AB$ with $AP : PB = 1 : 3$. Find $P$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = 8\mathbf{i} - 8\mathbf{j}$; $P$ is $\tfrac14$ of the way along.</p>
+          <p>$\overrightarrow{OP} = (-2\mathbf{i} + 6\mathbf{j}) + (2\mathbf{i} - 2\mathbf{j}) = 4\mathbf{j}$, so $P(0, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Forces $(3\mathbf{i} - 4\mathbf{j})$ N and $(-\mathbf{i} + 7\mathbf{j})$ N act on a particle. Find the force $\mathbf{F}$ which must be added for equilibrium, and its magnitude.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Resultant so far: $2\mathbf{i} + 3\mathbf{j}$. So $\mathbf{F} = (-2\mathbf{i} - 3\mathbf{j})$ N.</p>
+          <p>$|\mathbf{F}| = \sqrt{4 + 9} = \sqrt{13} \approx 3.61$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = 4\mathbf{i} + \mathbf{j}$ and $\overrightarrow{OC} = \mathbf{i} + 3\mathbf{j}$.</p>
+      <p>(a) Find $\overrightarrow{OB}$ and $\overrightarrow{AC}$. &nbsp; (b) Find the exact lengths of the two diagonals. &nbsp; (c) Show that the midpoint of $OB$ is also the midpoint of $AC$. &nbsp; (d) Show that $OABC$ is not a rectangle.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\overrightarrow{OB} = \overrightarrow{OA} + \overrightarrow{AB} = (4\mathbf{i} + \mathbf{j}) + (\mathbf{i} + 3\mathbf{j}) = 5\mathbf{i} + 4\mathbf{j}$.</p>
+          <p>$\overrightarrow{AC} = \mathbf{c} - \mathbf{a} = -3\mathbf{i} + 2\mathbf{j}$.</p>
+          <p><strong>(b)</strong> $OB = \sqrt{25 + 16} = \sqrt{41}$; $AC = \sqrt{9 + 4} = \sqrt{13}$.</p>
+          <p><strong>(c)</strong> Midpoint of $OB$: $\tfrac12(5\mathbf{i} + 4\mathbf{j}) = 2.5\mathbf{i} + 2\mathbf{j}$.</p>
+          <p>Midpoint of $AC$: $\mathbf{a} + \tfrac12\overrightarrow{AC} = (4\mathbf{i} + \mathbf{j}) + (-1.5\mathbf{i} + \mathbf{j}) = 2.5\mathbf{i} + 2\mathbf{j}$ ✓</p>
+          <p><strong>(d)</strong> A rectangle's diagonals are equal in length, but $\sqrt{41} \neq \sqrt{13}$, so $OABC$ is not a rectangle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vectors Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

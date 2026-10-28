@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indefinite Integration &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔁 Indefinite Integration</h1>
+  <p>A Level Maths Year 1 · Integration</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – REVERSING DIFFERENTIATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Integration Reverses Differentiation</div>
+<div class="section-body">
+
+  <div class="concept">
+    If $\dfrac{d}{dx}\big(\mathrm{F}(x)\big) = \mathrm{f}(x)$, then $\mathrm{F}(x)$ is an <strong>integral</strong> (or antiderivative) of $\mathrm{f}(x)$. We write
+    $$\int \mathrm{f}(x)\,dx = \mathrm{F}(x) + c.$$
+  </div>
+
+  <p>Think about which functions differentiate to $2x$. Certainly $x^2$ does — but so do $x^2 + 1$, $x^2 - 7$ and $x^2 + 100$, because the derivative of a constant is zero. Differentiating throws the constant away, so integrating cannot recover it. All we can say is</p>
+
+  <div class="formula-box">
+    <div class="label">The constant of integration</div>
+    $\displaystyle\int 2x\,dx = x^2 + c$, &nbsp;where $c$ is an arbitrary constant
+  </div>
+
+  <div class="svg-block">
+    <svg width="380" height="285" viewBox="0 0 380 285" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+      <line x1="20" y1="200" x2="360" y2="200" stroke="#555" stroke-width="1.2"/>
+      <line x1="190" y1="265" x2="190" y2="10" stroke="#555" stroke-width="1.2"/>
+      <text x="352" y="216">x</text><text x="196" y="20">y</text>
+      <path d="M 70,20 Q 190,300 310,20" fill="none" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M 70,60 Q 190,340 310,60" fill="none" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M 70,100 Q 190,380 310,100" fill="none" stroke="#a78bfa" stroke-width="2"/>
+      <text x="314" y="24" fill="#4f46e5">c = 2</text>
+      <text x="314" y="64" fill="#7c3aed">c = 0</text>
+      <text x="314" y="104" fill="#8b5cf6">c = −2</text>
+      <text x="80" y="280" fill="#555">every curve y = x² + c has gradient 2x</text>
+    </svg>
+  </div>
+
+  <p>Geometrically, $\displaystyle\int 2x\,dx$ is a whole <strong>family of curves</strong>, each a vertical translation of the others. At any given $x$ they all have the same gradient. One extra piece of information — a point on the curve — picks out a single member of the family.</p>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE POWER RULE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Integrating Powers of $x$</div>
+<div class="section-body">
+
+  <p>To differentiate $x^n$ you multiply by the power and then reduce it by one. To integrate, do the opposite in the opposite order: <strong>increase the power by one, then divide by the new power</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">The power rule for integration</div>
+    $\displaystyle\int x^n\,dx = \frac{x^{n+1}}{n+1} + c, \qquad n \neq -1$<br>
+    $\displaystyle\int kx^n\,dx = \frac{k\,x^{n+1}}{n+1} + c$ &nbsp;and&nbsp; $\displaystyle\int k\,dx = kx + c$
+  </div>
+
+  <p>The rule works for <em>any</em> rational power — positive, negative or fractional — except $n = -1$. Sums and differences are integrated term by term.</p>
+
+  <div class="warn">
+    <strong>Why not $n = -1$?</strong> The formula would give $\dfrac{x^0}{0}$, which is meaningless. The integral of $\dfrac1x$ does exist — it is $\ln|x| + c$ — but that belongs to Year 2.
+  </div>
+
+  <table>
+    <tr><th>Integrand</th><th>New power</th><th>Integral</th></tr>
+    <tr><td>$x^5$</td><td>$6$</td><td>$\tfrac16x^6 + c$</td></tr>
+    <tr><td>$12x^3$</td><td>$4$</td><td>$3x^4 + c$</td></tr>
+    <tr><td>$7$</td><td>$1$</td><td>$7x + c$</td></tr>
+    <tr><td>$x^{-2}$</td><td>$-1$</td><td>$-x^{-1} + c = -\dfrac1x + c$</td></tr>
+    <tr><td>$x^{1/2}$</td><td>$\tfrac32$</td><td>$\tfrac23x^{3/2} + c$</td></tr>
+    <tr><td>$x^{-1/2}$</td><td>$\tfrac12$</td><td>$2x^{1/2} + c$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A polynomial</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \left(6x^2 - 4x + 5\right)dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$6x^2 \to \dfrac{6x^3}{3} = 2x^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-4x \to \dfrac{-4x^2}{2} = -2x^2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5 \to 5x$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int \left(6x^2 - 4x + 5\right)dx = 2x^3 - 2x^2 + 5x + c$</span></div>
+      <div class="tip"><strong>Check by differentiating:</strong> $\dfrac{d}{dx}\left(2x^3 - 2x^2 + 5x + c\right) = 6x^2 - 4x + 5$ ✓. This takes ten seconds and catches almost every slip.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Negative and fractional powers</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \left(\frac{3}{x^2} + 4\sqrt{x}\right)dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rewrite with indices: $3x^{-2} + 4x^{1/2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3x^{-2} \to \dfrac{3x^{-1}}{-1} = -3x^{-1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$4x^{1/2} \to \dfrac{4x^{3/2}}{3/2} = \dfrac83x^{3/2}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= -\dfrac{3}{x} + \dfrac83x^{3/2} + c$</span></div>
+      <div class="tip">Dividing by a fraction means multiplying by its reciprocal: $\div \tfrac32$ is $\times \tfrac23$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – REWRITE BEFORE INTEGRATING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Rewrite Before You Integrate</div>
+<div class="section-body">
+
+  <p>The power rule only applies to a <strong>sum of terms $kx^n$</strong>. There is no product rule or quotient rule for integration at this level, so brackets must be expanded and fractions split first.</p>
+
+  <ul class="steps">
+    <li><span>Expand any brackets.</span></li>
+    <li><span>Split a fraction with a single-term denominator into separate terms.</span></li>
+    <li><span>Write every root and reciprocal as a power of $x$.</span></li>
+    <li><span>Integrate term by term and add $c$.</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Expanding brackets</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int (x+2)(x-3)\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expand: $(x+2)(x-3) = x^2 - x - 6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Integrate: $\tfrac13x^3 - \tfrac12x^2 - 6x + c$.</span></div>
+      <div class="warn">Integrating each bracket separately and multiplying the results is a classic error — differentiate that "answer" and you will not get $(x+2)(x-3)$ back.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Splitting a fraction</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \frac{2x^2 + 5}{\sqrt{x}}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Split: $\dfrac{2x^2}{x^{1/2}} + \dfrac{5}{x^{1/2}} = 2x^{3/2} + 5x^{-1/2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2x^{3/2} \to \dfrac{2x^{5/2}}{5/2} = \dfrac45x^{5/2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5x^{-1/2} \to \dfrac{5x^{1/2}}{1/2} = 10x^{1/2}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \dfrac45x^{5/2} + 10\sqrt{x} + c$</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Other letters.</strong> The variable need not be $x$. $\displaystyle\int \left(3t^2 - 1\right)dt = t^3 - t + c$. The $dt$ tells you which letter is the variable; any other letter is treated as a constant.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FINDING THE CONSTANT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Finding a Curve from Its Gradient</div>
+<div class="section-body">
+
+  <div class="concept">
+    If you know $\dfrac{dy}{dx}$ (or $\mathrm{f}'(x)$) <strong>and</strong> one point on the curve, you can find the curve exactly: integrate to get the family, then substitute the point to fix $c$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A curve through a given point</div>
+    <div class="example-body">
+      <p>A curve has gradient $\dfrac{dy}{dx} = 3x^2 - 6x + 1$ and passes through $(2, 5)$. Find its equation.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Integrate: $y = x^3 - 3x^2 + x + c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Substitute $x = 2$, $y = 5$: $5 = 8 - 12 + 2 + c$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5 = -2 + c$, so $c = 7$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = x^3 - 3x^2 + x + 7$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Function notation and fractional powers</div>
+    <div class="example-body">
+      <p>Given $\mathrm{f}'(x) = 6\sqrt{x} - \dfrac{2}{x^2}$ for $x > 0$ and $\mathrm{f}(4) = 20$, find $\mathrm{f}(x)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rewrite: $\mathrm{f}'(x) = 6x^{1/2} - 2x^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Integrate: $\mathrm{f}(x) = \dfrac{6x^{3/2}}{3/2} - \dfrac{2x^{-1}}{-1} + c = 4x^{3/2} + \dfrac{2}{x} + c$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{f}(4) = 4(4)^{3/2} + \dfrac24 + c = 32 + \tfrac12 + c$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$32.5 + c = 20$, so $c = -12.5$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{f}(x) = 4x^{3/2} + \dfrac2x - \dfrac{25}{2}$</span></div>
+      <div class="tip">$4^{3/2} = \left(\sqrt4\right)^3 = 8$. Take the root first — the numbers stay small.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Using a stationary point</div>
+    <div class="example-body">
+      <p>A curve has $\dfrac{dy}{dx} = kx^2 - 12$, where $k$ is a constant. The curve has a stationary point at $(2, -10)$. Find $k$ and the equation of the curve.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Stationary at $x = 2$ means $\dfrac{dy}{dx} = 0$ there: $4k - 12 = 0$, so $k = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Integrate $3x^2 - 12$: $y = x^3 - 12x + c$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $(2, -10)$: $-10 = 8 - 24 + c$, so $c = 6$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = x^3 - 12x + 6$</span></div>
+      <div class="tip">A stationary point gives you <em>two</em> facts: the gradient is zero there, and the point lies on the curve. Use both.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – IN CONTEXT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Integration in Context</div>
+<div class="section-body">
+
+  <p>Any rate of change can be integrated to recover the quantity itself. The constant of integration is then fixed by an <strong>initial condition</strong> — the value at the start.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Filling a tank</div>
+    <div class="example-body">
+      <p>Water flows into a tank so that, $t$ minutes after a tap is opened, $\dfrac{dV}{dt} = 30 - 2t$ litres per minute, for $0 \leqslant t \leqslant 15$. Initially the tank holds $100$ litres. Find $V$ in terms of $t$ and the volume when the tap closes at $t = 15$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Integrate with respect to $t$: $V = 30t - t^2 + c$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$V = 100$ when $t = 0$, so $c = 100$: $V = 30t - t^2 + 100$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $t = 15$: $V = 450 - 225 + 100 = 325$ litres.</span></div>
+      <div class="tip">The rate $30 - 2t$ falls to zero at $t = 15$, which is why the model is only used up to then. Stating the domain of a model is part of good modelling.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Power rule</h4><p>Add one to the power, divide by the new power.</p></div>
+    <div class="ref-card"><h4>Exception</h4><p>$n = -1$ is not covered at AS.</p></div>
+    <div class="ref-card"><h4>Constant</h4><p>$\int k\,dx = kx + c$.</p></div>
+    <div class="ref-card"><h4>$+\,c$</h4><p>Every indefinite integral needs it.</p></div>
+    <div class="ref-card"><h4>Rewrite first</h4><p>Expand brackets; split fractions; roots to powers.</p></div>
+    <div class="ref-card"><h4>Roots</h4><p>$\sqrt{x} = x^{1/2}$, $\dfrac{1}{\sqrt x} = x^{-1/2}$.</p></div>
+    <div class="ref-card"><h4>Finding $c$</h4><p>Integrate first, then substitute the known point.</p></div>
+    <div class="ref-card"><h4>Stationary point</h4><p>Gives $\dfrac{dy}{dx} = 0$ <em>and</em> a point on the curve.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Differentiate your answer.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int 4x^3\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{4x^4}{4} + c = x^4 + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(5x^4 - 6x^2 + 3\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^5 - 2x^3 + 3x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \frac{6}{x^3}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{6}{x^3} = 6x^{-3}$.</p>
+          <p>$\dfrac{6x^{-2}}{-2} + c = -3x^{-2} + c = -\dfrac{3}{x^2} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(3\sqrt{x} - \frac{1}{\sqrt{x}}\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Rewrite: $3x^{1/2} - x^{-1/2}$.</p>
+          <p>$3x^{1/2} \to \dfrac{3x^{3/2}}{3/2} = 2x^{3/2}$ &nbsp; and &nbsp; $-x^{-1/2} \to -\dfrac{x^{1/2}}{1/2} = -2x^{1/2}$</p>
+          <p>$= 2x^{3/2} - 2\sqrt{x} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int (2x - 1)^2\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand: $(2x-1)^2 = 4x^2 - 4x + 1$.</p>
+          <p>$\dfrac43x^3 - 2x^2 + x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \frac{x^4 + 3x}{x^3}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Split: $\dfrac{x^4}{x^3} + \dfrac{3x}{x^3} = x + 3x^{-2}$.</p>
+          <p>$\tfrac12x^2 + \dfrac{3x^{-1}}{-1} + c = \tfrac12x^2 - \dfrac{3}{x} + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A curve has $\dfrac{dy}{dx} = 4x - 3$ and passes through $(1, 6)$. Find its equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 2x^2 - 3x + c$</p>
+          <p>At $(1, 6)$: $6 = 2 - 3 + c$, so $c = 7$.</p>
+          <p>$y = 2x^2 - 3x + 7$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{f}'(x) = 3x^2 + \dfrac{2}{x^2}$ and $\mathrm{f}(1) = 4$. Find $\mathrm{f}(x)$ and hence $\mathrm{f}(2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 3x^2 + 2x^{-2}$, so $\mathrm{f}(x) = x^3 - 2x^{-1} + c = x^3 - \dfrac2x + c$.</p>
+          <p>$\mathrm{f}(1) = 1 - 2 + c = 4$, so $c = 5$.</p>
+          <p>$\mathrm{f}(x) = x^3 - \dfrac2x + 5$, and $\mathrm{f}(2) = 8 - 1 + 5 = 12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The gradient of a curve is $kx - 4$, where $k$ is a constant. The curve has a stationary point at $(2, -3)$. Find the equation of the curve.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Stationary at $x = 2$: $2k - 4 = 0$, so $k = 2$.</p>
+          <p>$\dfrac{dy}{dx} = 2x - 4$, so $y = x^2 - 4x + c$.</p>
+          <p>At $(2, -3)$: $-3 = 4 - 8 + c$, so $c = 1$.</p>
+          <p>$y = x^2 - 4x + 1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The height $h$ cm of a plant, $t$ weeks after it is planted, is modelled by $\dfrac{dh}{dt} = 2 + 3\sqrt{t}$ for $t \geqslant 1$. When $t = 1$ the plant is $5$ cm tall.</p>
+      <p>(a) Find $h$ in terms of $t$. &nbsp; (b) Find the height when $t = 4$. &nbsp; (c) Show that the plant grows $20$ cm between $t = 1$ and $t = 4$. &nbsp; (d) Give one reason why the model is unlikely to be valid for large values of $t$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{dh}{dt} = 2 + 3t^{1/2}$, so $h = 2t + \dfrac{3t^{3/2}}{3/2} + c = 2t + 2t^{3/2} + c$.</p>
+          <p>When $t = 1$, $h = 5$: $5 = 2 + 2 + c$, so $c = 1$.</p>
+          <p>$h = 2t + 2t^{3/2} + 1$</p>
+          <p><strong>(b)</strong> $h(4) = 8 + 2(8) + 1 = 25$ cm.</p>
+          <p><strong>(c)</strong> $h(4) - h(1) = 25 - 5 = 20$ cm ✓</p>
+          <p><strong>(d)</strong> The rate of growth $2 + 3\sqrt t$ keeps increasing, so the model predicts the plant grows faster and faster without limit. Real plants reach a maximum height, so the model must fail eventually.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Indefinite Integration &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

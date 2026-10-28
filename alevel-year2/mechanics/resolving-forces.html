@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resolving Forces and Inclined Planes &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Resolving Forces and Inclined Planes</h1>
+  <p>A Level Maths Year 2 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – COMPONENTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Resolving a Force into Components</div>
+<div class="section-body">
+
+  <p>In Year 1 forces acted along a line — up and down, or left and right. In Year 2 (DfE content area <strong>R · Forces and Newton's laws</strong>) forces act at any angle in a plane. The trick that makes every such problem manageable is to <strong>resolve</strong>: replace each force with two perpendicular components.</p>
+
+  <div class="formula-box">
+    <div class="label">A force $F$ at angle $\theta$ to the horizontal</div>
+    horizontal component $F\cos\theta$ &nbsp;&nbsp;·&nbsp;&nbsp; vertical component $F\sin\theta$<br>
+    in vector form $\mathbf{F} = F\cos\theta\,\mathbf{i} + F\sin\theta\,\mathbf{j}$
+  </div>
+
+  <div class="tip">
+    <strong>"cos is across".</strong> The component <em>adjacent</em> to the angle you are given uses $\cos$; the component <em>opposite</em> it uses $\sin$. Always check which line the angle is measured from.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Combining components back into one force</div>
+    If $\mathbf{R} = X\mathbf{i} + Y\mathbf{j}$: &nbsp; $|\mathbf{R}| = \sqrt{X^2 + Y^2}$, &nbsp; direction $\tan^{-1}\!\left(\dfrac{Y}{X}\right)$ from $\mathbf{i}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Components of a single force</div>
+    <div class="example-body">
+      <p>A rope pulls with a force of $12$ N at $35^\circ$ above the horizontal. Find its horizontal and vertical components.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Horizontal: $12\cos 35^\circ = 9.83$ N</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Vertical: $12\sin 35^\circ = 6.88$ N</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check: $\sqrt{9.83^2 + 6.88^2} = 12.0$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — The resultant of three forces</div>
+    <div class="example-body">
+      <p>Three forces act on a particle: $5$ N along $\mathbf{i}$, $8$ N at $60^\circ$ to $\mathbf{i}$, and $6$ N at $150^\circ$ to $\mathbf{i}$ (all measured anticlockwise). Find the magnitude and direction of the resultant.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$X = 5 + 8\cos 60^\circ + 6\cos 150^\circ = 5 + 4 - 5.196 = 3.804$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$Y = 0 + 8\sin 60^\circ + 6\sin 150^\circ = 6.928 + 3 = 9.928$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|\mathbf{R}| = \sqrt{3.804^2 + 9.928^2} = 10.6$ N</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Direction $\tan^{-1}\!\left(\dfrac{9.928}{3.804}\right) = 69.0^\circ$ anticlockwise from $\mathbf{i}$.</span></div>
+      <div class="tip">Make a table with one row per force and columns for $\mathbf{i}$ and $\mathbf{j}$. It keeps the signs under control.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EQUILIBRIUM OF A PARTICLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Equilibrium of a Particle</div>
+<div class="section-body">
+
+  <div class="concept">
+    A particle is in <strong>equilibrium</strong> when the resultant force on it is zero. With coplanar forces that gives <strong>two</strong> equations: the components in any two perpendicular directions each sum to zero. Two equations means you can find two unknowns.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Equilibrium of a particle</div>
+    $\sum F_x = 0$ &nbsp;&nbsp; and &nbsp;&nbsp; $\sum F_y = 0$ &nbsp;&nbsp; (equivalently $\sum \mathbf{F} = \mathbf{0}$)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A weight hanging from two strings</div>
+    <div class="example-body">
+      <p>A particle of weight $20$ N hangs in equilibrium from two light strings making $30^\circ$ and $60^\circ$ with the horizontal. Find the tensions $T_1$ and $T_2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Horizontal: $T_1\cos 30^\circ = T_2 \cos 60^\circ$, so $T_2 = \sqrt{3}\,T_1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Vertical: $T_1 \sin 30^\circ + T_2 \sin 60^\circ = 20$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Substitute: $\tfrac12 T_1 + \sqrt{3}T_1 \cdot \tfrac{\sqrt3}{2} = 2T_1 = 20$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T_1 = 10$ N and $T_2 = 10\sqrt{3} = 17.3$ N.</span></div>
+      <div class="tip">The steeper string carries the larger tension — a quick plausibility check.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Finding a missing force</div>
+    <div class="example-body">
+      <p>A particle is in equilibrium under forces $(3\mathbf{i} - 5\mathbf{j})$ N, $(-7\mathbf{i} + 2\mathbf{j})$ N and $\mathbf{P}$. Find the magnitude and direction of $\mathbf{P}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{P} = -\big[(3 - 7)\mathbf{i} + (-5 + 2)\mathbf{j}\big] = 4\mathbf{i} + 3\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$|\mathbf{P}| = \sqrt{16 + 9} = 5$ N</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Direction $\tan^{-1}\!\left(\tfrac34\right) = 36.9^\circ$ above $\mathbf{i}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SMOOTH INCLINED PLANES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Inclined Planes</div>
+<div class="section-body">
+
+  <p>On a slope, resolve <strong>parallel</strong> and <strong>perpendicular</strong> to the plane, not horizontally and vertically. Then the normal reaction and the motion each lie along one axis.</p>
+
+  <div class="svg-block">
+    <svg width="420" height="240" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ra1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+        <marker id="ra2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+        <marker id="ra3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+      </defs>
+      <polygon points="40,220 360,220 360,35.2" fill="#eef2ff" stroke="#475569" stroke-width="2"/>
+      <g transform="translate(216,118.4) rotate(-30)"><rect x="-20" y="-30" width="40" height="30" fill="#c7d2fe" stroke="#4338ca"/></g>
+      <line x1="208.5" y1="105.4" x2="208.5" y2="185.4" stroke="#dc2626" stroke-width="3" marker-end="url(#ra1)"/>
+      <text x="214" y="200" font-family="Arial" font-size="13" fill="#b91c1c">mg</text>
+      <line x1="208.5" y1="105.4" x2="168.5" y2="36.1" stroke="#16a34a" stroke-width="3" marker-end="url(#ra2)"/>
+      <text x="150" y="34" font-family="Arial" font-size="13" fill="#15803d">R</text>
+      <line x1="208.5" y1="105.4" x2="173.9" y2="125.4" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#ra3)"/>
+      <text x="96" y="132" font-family="Arial" font-size="12" fill="#6d28d9">mg sin α</text>
+      <line x1="208.5" y1="105.4" x2="243.1" y2="165.4" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#ra3)"/>
+      <text x="250" y="170" font-family="Arial" font-size="12" fill="#6d28d9">mg cos α</text>
+      <path d="M 80 220 A 40 40 0 0 0 74.6 200" fill="none" stroke="#475569" stroke-width="1.5"/>
+      <text x="86" y="212" font-family="Arial" font-size="13" fill="#1e1e2e">α</text>
+    </svg>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Particle of mass $m$ on a plane inclined at $\alpha$</div>
+    component of weight <strong>down</strong> the slope: $mg\sin\alpha$<br>
+    component of weight <strong>into</strong> the slope: $mg\cos\alpha$
+  </div>
+
+  <div class="warn">
+    <strong>$R = mg\cos\alpha$ only if nothing else pushes into or out of the plane.</strong> If there is a horizontal force, or a string at an angle to the slope, it has a perpendicular component too, and $R$ changes. Always resolve perpendicular to the plane from scratch.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Sliding down a smooth slope</div>
+    <div class="example-body">
+      <p>A particle of mass $4$ kg slides down a smooth plane inclined at $25^\circ$. Find its acceleration and the normal reaction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Parallel ($F = ma$): $4g\sin 25^\circ = 4a$, so $a = g\sin 25^\circ = 4.14$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Perpendicular (no acceleration): $R = 4g\cos 25^\circ = 35.5$ N.</span></div>
+      <div class="tip">On a smooth slope the acceleration $g\sin\alpha$ does not depend on the mass.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Held by a horizontal force</div>
+    <div class="example-body">
+      <p>A particle of mass $2$ kg is held at rest on a smooth plane inclined at $30^\circ$ by a horizontal force $P$. Find $P$ and the normal reaction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$P$ is horizontal, so it makes $30^\circ$ with the slope: component up the slope $P\cos 30^\circ$, component into the slope $P\sin 30^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Parallel: $P\cos 30^\circ = 2g\sin 30^\circ$, so $P = 2g\tan 30^\circ = 11.3$ N.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Perpendicular: $R = 2g\cos 30^\circ + P\sin 30^\circ = 16.97 + 5.66 = 22.6$ N.</span></div>
+      <div class="warn">Here $R \neq mg\cos\alpha$, because $P$ also pushes the particle into the plane.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Pulled up a smooth slope</div>
+    <div class="example-body">
+      <p>A $3$ kg box is pulled up a smooth slope inclined at $20^\circ$ by a force of $30$ N parallel to the slope. Find its acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Up the slope: $30 - 3g\sin 20^\circ = 3a$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$30 - 10.06 = 3a$, so $a = 6.65$ m s$^{-2}$ up the slope.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CONNECTED PARTICLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Connected Particles on Slopes</div>
+<div class="section-body">
+
+  <p>The Year 1 pulley problems (see <a href="../../alevel-year1/mechanics/forces-newtons-laws.html">Forces and Newton's Laws</a>) extend directly: write $F = ma$ for <strong>each particle separately</strong>, in its own direction of motion, then solve simultaneously.</p>
+
+  <div class="concept">
+    <strong>Light inextensible string over a smooth pulley</strong> means: the tension is the same throughout the string, and both particles have the same speed and the same magnitude of acceleration.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A slope and a hanging mass</div>
+    <div class="example-body">
+      <p>Particle $A$ of mass $3$ kg lies on a smooth plane inclined at $30^\circ$. It is attached by a light inextensible string, passing over a smooth pulley at the top of the plane, to particle $B$ of mass $5$ kg hanging freely. The system is released from rest. Find the acceleration, the tension, and the force on the pulley.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$B$'s weight $5g = 49$ N exceeds $A$'s component down the slope $3g\sin 30^\circ = 14.7$ N, so $B$ falls.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$B$ (down): $5g - T = 5a$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$A$ (up the slope): $T - 3g\sin 30^\circ = 3a$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Add: $5g - 1.5g = 8a$, so $a = \dfrac{3.5g}{8} = 4.29$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$T = 5(g - a) = 5 \times 5.5125 = 27.6$ N.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>The two string sections leave the pulley along the slope (down at $30^\circ$ below horizontal) and vertically down, so the angle between them is $60^\circ$. The resultant is $2T\cos 30^\circ = 47.7$ N, along the bisector of the angle between the strings.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Decide the direction of motion first</strong> by comparing the driving forces. If you guess wrong on a smooth system you just get a negative acceleration — but once friction is involved (see <a href="friction.html">Friction</a>) a wrong guess gives nonsense, because friction's direction depends on the motion.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Components</h4><p>$F\cos\theta$ adjacent to $\theta$, $F\sin\theta$ opposite.</p></div>
+    <div class="ref-card"><h4>Resultant</h4><p>$\sqrt{X^2+Y^2}$ at $\tan^{-1}(Y/X)$.</p></div>
+    <div class="ref-card"><h4>Equilibrium</h4><p>$\sum F_x = 0$, $\sum F_y = 0$.</p></div>
+    <div class="ref-card"><h4>Down a slope</h4><p>$mg\sin\alpha$.</p></div>
+    <div class="ref-card"><h4>Into a slope</h4><p>$mg\cos\alpha$.</p></div>
+    <div class="ref-card"><h4>Smooth slope</h4><p>Released from rest: $a = g\sin\alpha$.</p></div>
+    <div class="ref-card"><h4>Normal reaction</h4><p>Resolve perpendicular every time — include all forces.</p></div>
+    <div class="ref-card"><h4>Pulleys</h4><p>Same $T$ and same $a$ for both particles.</p></div>
+    <div class="ref-card"><h4>Two strings at $\phi$</h4><p>Force on pulley $2T\cos(\phi/2)$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Use $g = 9.8$ m s$^{-2}$ and give answers to 3 significant figures where they are not exact.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the horizontal and vertical components of a $50$ N force acting at $40^\circ$ above the horizontal.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Horizontal: $50\cos 40^\circ = 38.3$ N. &nbsp; Vertical: $50\sin 40^\circ = 32.1$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the magnitude and direction of the resultant of $(4\mathbf{i} + 3\mathbf{j})$ N and $(2\mathbf{i} - 7\mathbf{j})$ N.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Resultant $= 6\mathbf{i} - 4\mathbf{j}$.</p>
+          <p>Magnitude $\sqrt{36 + 16} = \sqrt{52} = 7.21$ N.</p>
+          <p>Direction $\tan^{-1}\!\left(\tfrac46\right) = 33.7^\circ$ <strong>below</strong> $\mathbf{i}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A particle of weight $W$ hangs from two light strings making $40^\circ$ and $50^\circ$ with the horizontal. The tension in the first string is $15$ N. Find the other tension and $W$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Horizontal: $15\cos 40^\circ = T_2\cos 50^\circ$, so $T_2 = \dfrac{15\cos 40^\circ}{\cos 50^\circ} = 17.9$ N.</p>
+          <p>Vertical: $W = 15\sin 40^\circ + T_2\sin 50^\circ = 9.64 + 13.69 = 23.3$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A particle is released from rest on a smooth plane inclined at $15^\circ$. Find its speed after it has moved $3$ m down the plane.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = g\sin 15^\circ = 2.536$ m s$^{-2}$.</p>
+          <p>$v^2 = u^2 + 2as = 0 + 2(2.536)(3) = 15.22$, so $v = 3.90$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A particle of mass $5$ kg is held at rest on a smooth plane inclined at $35^\circ$ by a force $P$ acting up the line of greatest slope. Find $P$ and the normal reaction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Parallel: $P = 5g\sin 35^\circ = 28.1$ N.</p>
+          <p>Perpendicular: $R = 5g\cos 35^\circ = 40.1$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A box of mass $2$ kg on a smooth slope inclined at $20^\circ$ is pushed up the slope by a <strong>horizontal</strong> force of $15$ N. Find its acceleration and the normal reaction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The horizontal force makes $20^\circ$ with the slope.</p>
+          <p>Parallel: $15\cos 20^\circ - 2g\sin 20^\circ = 2a \Rightarrow 14.10 - 6.70 = 2a \Rightarrow a = 3.70$ m s$^{-2}$.</p>
+          <p>Perpendicular: $R = 2g\cos 20^\circ + 15\sin 20^\circ = 18.42 + 5.13 = 23.5$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A particle is in equilibrium under three forces: $12$ N along $\mathbf{i}$, $10$ N at $120^\circ$ anticlockwise from $\mathbf{i}$, and a third force $\mathbf{F}$. Find the magnitude of $\mathbf{F}$ and the angle it makes with $\mathbf{i}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sum of the two known forces: $\mathbf{i}$: $12 + 10\cos 120^\circ = 7$; $\mathbf{j}$: $10\sin 120^\circ = 8.660$.</p>
+          <p>So $\mathbf{F} = -7\mathbf{i} - 8.660\mathbf{j}$.</p>
+          <p>$|\mathbf{F}| = \sqrt{49 + 75} = \sqrt{124} = 11.1$ N.</p>
+          <p>$\tan^{-1}\!\left(\tfrac{8.660}{7}\right) = 51.1^\circ$, and $\mathbf{F}$ is in the third quadrant, so it acts at $180^\circ + 51.1^\circ = 231^\circ$ anticlockwise from $\mathbf{i}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Particle $A$ ($4$ kg) is on a smooth plane inclined at $40^\circ$, connected by a light inextensible string over a smooth pulley at the top to particle $B$ ($3$ kg) hanging freely. Determine which way the system moves, and find the acceleration and tension.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Compare: $3g = 29.4$ N against $4g\sin 40^\circ = 25.2$ N. So $B$ descends.</p>
+          <p>$B$: $3g - T = 3a$. &nbsp; $A$: $T - 4g\sin 40^\circ = 4a$.</p>
+          <p>Add: $3g - 4g\sin 40^\circ = 7a \Rightarrow a = \dfrac{4.203}{7} = 0.600$ m s$^{-2}$.</p>
+          <p>$T = 3(g - a) = 27.6$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A particle of mass $3$ kg rests on a smooth plane inclined at $\alpha$, where $\tan\alpha = \tfrac34$. It is held in equilibrium by a force $P$ acting at $30^\circ$ <em>above</em> the line of greatest slope. Find $P$ and the normal reaction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>From $\tan\alpha = \tfrac34$: $\sin\alpha = 0.6$, $\cos\alpha = 0.8$.</p>
+          <p>Parallel: $P\cos 30^\circ = 3g(0.6) = 17.64 \Rightarrow P = 20.4$ N.</p>
+          <p>Perpendicular: $R + P\sin 30^\circ = 3g(0.8) \Rightarrow R = 23.52 - 10.18 = 13.3$ N.</p>
+          <p>Here $P$ pulls partly <em>away</em> from the plane, so $R$ is less than $mg\cos\alpha$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A wedge has two smooth faces inclined at $30^\circ$ and $60^\circ$ to the horizontal, meeting at a smooth pulley at the top. Particle $A$ ($4$ kg) is on the $30^\circ$ face and particle $B$ ($3$ kg) on the $60^\circ$ face, joined by a light inextensible string over the pulley. The system is released from rest.</p>
+      <p>(a) Show that $B$ moves down its face. &nbsp; (b) Find the acceleration and the tension. &nbsp; (c) Find the speed of $B$ after $1.5$ s and the distance it has moved. &nbsp; (d) Find the magnitude of the force exerted on the pulley by the string.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Component of $B$'s weight down its face: $3g\sin 60^\circ = 25.5$ N. For $A$: $4g\sin 30^\circ = 19.6$ N. $25.5 > 19.6$, so $B$ moves down.</p>
+          <p><strong>(b)</strong> $B$: $3g\sin 60^\circ - T = 3a$. &nbsp; $A$: $T - 4g\sin 30^\circ = 4a$.</p>
+          <p>Add: $25.46 - 19.6 = 7a \Rightarrow a = 0.837$ m s$^{-2}$.</p>
+          <p>$T = 4a + 19.6 = 22.9$ N.</p>
+          <p><strong>(c)</strong> $v = 0 + 0.837 \times 1.5 = 1.26$ m s$^{-1}$; &nbsp; $s = \tfrac12(0.837)(1.5)^2 = 0.942$ m.</p>
+          <p><strong>(d)</strong> The strings run down the two faces, so the angle between them is $180^\circ - 30^\circ - 60^\circ = 90^\circ$.</p>
+          <p>Resultant $= \sqrt{T^2 + T^2} = T\sqrt{2} = 32.5$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Resolving Forces and Inclined Planes &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Probability &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎲 Conditional Probability</h1>
+  <p>A Level Maths Year 2 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT CONDITIONAL PROBABILITY MEANS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What Conditional Probability Means</div>
+<div class="section-body">
+
+  <p>In Year 1 you worked with Venn diagrams, mutually exclusive events and independent events (see <a href="../../alevel-year1/probability/probability.html">Probability and Venn Diagrams</a>). Year 2 adds the idea of a probability that is <strong>conditional</strong> on something you already know.</p>
+
+  <div class="concept">
+    $\mathrm{P}(A \mid B)$ is read "the probability of $A$ <strong>given</strong> $B$". It is the probability that $A$ happens when we know that $B$ has happened. Knowing $B$ shrinks the sample space to $B$ alone.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Conditional probability</div>
+    $\mathrm{P}(A \mid B) = \dfrac{\mathrm{P}(A \cap B)}{\mathrm{P}(B)}, \qquad \mathrm{P}(B) \neq 0$
+  </div>
+
+  <div class="warn">
+    <strong>$\mathrm{P}(A \mid B)$ is not $\mathrm{P}(B \mid A)$.</strong> The probability that a person is a footballer given that they are fit is small; the probability that they are fit given that they are a footballer is large. The event after the bar is the one you divide by.
+  </div>
+
+  <table>
+    <tr><th>Notation</th><th>Meaning</th></tr>
+    <tr><td>$\mathrm{P}(A \cap B)$</td><td>$A$ and $B$ both happen</td></tr>
+    <tr><td>$\mathrm{P}(A \cup B)$</td><td>$A$ or $B$ or both happen</td></tr>
+    <tr><td>$\mathrm{P}(A')$</td><td>$A$ does not happen; $\mathrm{P}(A') = 1 - \mathrm{P}(A)$</td></tr>
+    <tr><td>$\mathrm{P}(A \mid B)$</td><td>$A$ happens, given that $B$ has happened</td></tr>
+    <tr><td>$\mathrm{P}(A \mid B')$</td><td>$A$ happens, given that $B$ has <em>not</em> happened</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – TWO-WAY TABLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Two-Way Tables</div>
+<div class="section-body">
+
+  <p>With a two-way table of frequencies, conditional probability is just "restrict to one row or column, then count".</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reading conditional probabilities from a table</div>
+    <div class="example-body">
+      <p>$120$ sixth-formers were asked how they travel to school.</p>
+      <table>
+        <tr><th></th><th>Bus</th><th>Car</th><th>Walk</th><th>Total</th></tr>
+        <tr><td><strong>Year 12</strong></td><td>28</td><td>18</td><td>14</td><td>60</td></tr>
+        <tr><td><strong>Year 13</strong></td><td>22</td><td>24</td><td>14</td><td>60</td></tr>
+        <tr><td><strong>Total</strong></td><td>50</td><td>42</td><td>28</td><td>120</td></tr>
+      </table>
+      <p>A student is chosen at random. Find (a) $\mathrm{P}(\text{Bus} \mid \text{Year 12})$, (b) $\mathrm{P}(\text{Year 12} \mid \text{Bus})$, (c) whether "walks" and "Year 13" are independent.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Restrict to the Year 12 row ($60$ students): $\mathrm{P}(\text{Bus} \mid \text{Y12}) = \dfrac{28}{60} = \dfrac{7}{15}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Restrict to the Bus column ($50$ students): $\mathrm{P}(\text{Y12} \mid \text{Bus}) = \dfrac{28}{50} = \dfrac{14}{25}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $\mathrm{P}(\text{Walk}) = \dfrac{28}{120} = \dfrac{7}{30}$ and $\mathrm{P}(\text{Walk} \mid \text{Y13}) = \dfrac{14}{60} = \dfrac{7}{30}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>These are equal, so knowing a student is in Year 13 does not change the chance they walk: the events <strong>are independent</strong>.</span></div>
+      <div class="tip">Parts (a) and (b) have the same numerator $28$ but different denominators — the "given" event decides the denominator.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VENN DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Venn Diagrams</div>
+<div class="section-body">
+
+  <p>Fill in a Venn diagram from the <strong>inside out</strong>: the intersection first, then the "only" regions, then the outside. Then $\mathrm{P}(A \mid B)$ is the overlap divided by the whole of circle $B$.</p>
+
+  <div class="svg-block">
+    <svg width="420" height="260" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+      <rect x="20" y="20" width="380" height="220" fill="#fafafe" stroke="#334" stroke-width="1.5"/>
+      <circle cx="165" cy="130" r="85" fill="#c7d2fe" fill-opacity="0.5" stroke="#4f46e5" stroke-width="2"/>
+      <circle cx="255" cy="130" r="85" fill="#ddd6fe" fill-opacity="0.5" stroke="#7c3aed" stroke-width="2"/>
+      <text x="95" y="55" font-size="18" font-style="italic" fill="#4f46e5">A</text>
+      <text x="318" y="55" font-size="18" font-style="italic" fill="#7c3aed">B</text>
+      <text x="125" y="135" font-size="15" text-anchor="middle">0.35</text>
+      <text x="210" y="135" font-size="15" text-anchor="middle">0.15</text>
+      <text x="295" y="135" font-size="15" text-anchor="middle">0.25</text>
+      <text x="370" y="228" font-size="15" text-anchor="middle">0.25</text>
+      <text x="35" y="36" font-size="13">ξ</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Conditional probability from a Venn diagram</div>
+    <div class="example-body">
+      <p>$\mathrm{P}(A) = 0.5$, $\mathrm{P}(B) = 0.4$ and $\mathrm{P}(A \cap B) = 0.15$. Find $\mathrm{P}(A \mid B)$, $\mathrm{P}(B \mid A)$, $\mathrm{P}(A \mid B')$ and $\mathrm{P}(B' \mid A')$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Fill in: $A$ only $= 0.35$, $B$ only $= 0.25$, both $= 0.15$, neither $= 1 - 0.75 = 0.25$ (the diagram above).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(A \mid B) = \dfrac{0.15}{0.4} = 0.375$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(B \mid A) = \dfrac{0.15}{0.5} = 0.3$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{P}(A \mid B') = \dfrac{\mathrm{P}(A \cap B')}{\mathrm{P}(B')} = \dfrac{0.35}{0.6} = \dfrac{7}{12}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\mathrm{P}(B' \mid A') = \dfrac{\mathrm{P}(\text{neither})}{\mathrm{P}(A')} = \dfrac{0.25}{0.5} = 0.5$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Three sets</div>
+    <div class="example-body">
+      <p>$60$ students were asked whether they play football ($F$), tennis ($T$) or swim ($S$). The Venn diagram regions are: $F$ only $12$, $T$ only $8$, $S$ only $10$, $F \cap T$ only $5$, $F \cap S$ only $6$, $T \cap S$ only $4$, all three $3$, none $12$. Find $\mathrm{P}(F \mid S)$ and $\mathrm{P}(T \mid F \cap S)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total in $S$: $10 + 6 + 4 + 3 = 23$. Of these, in $F$: $6 + 3 = 9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(F \mid S) = \dfrac{9}{23}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>In $F \cap S$: $6 + 3 = 9$ students, of whom $3$ also play tennis.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{P}(T \mid F \cap S) = \dfrac{3}{9} = \dfrac{1}{3}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TREE DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Tree Diagrams and the Multiplication Rule</div>
+<div class="section-body">
+
+  <p>Rearranging the definition gives the rule you have used on tree diagrams since GCSE. The probabilities on the second set of branches <em>are</em> conditional probabilities.</p>
+
+  <div class="formula-box">
+    <div class="label">Multiplication rule</div>
+    $\mathrm{P}(A \cap B) = \mathrm{P}(A) \times \mathrm{P}(B \mid A)$
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="230" viewBox="0 0 440 230" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+      <line x1="30" y1="115" x2="150" y2="60" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="30" y1="115" x2="150" y2="170" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="175" y1="60" x2="295" y2="30" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="175" y1="60" x2="295" y2="90" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="175" y1="170" x2="295" y2="140" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="175" y1="170" x2="295" y2="200" stroke="#7c3aed" stroke-width="2"/>
+      <text x="162" y="65" font-size="15" text-anchor="middle" font-style="italic">D</text>
+      <text x="162" y="175" font-size="15" text-anchor="middle" font-style="italic">D′</text>
+      <text x="305" y="35" font-size="15" font-style="italic">+</text>
+      <text x="305" y="95" font-size="15" font-style="italic">−</text>
+      <text x="305" y="145" font-size="15" font-style="italic">+</text>
+      <text x="305" y="205" font-size="15" font-style="italic">−</text>
+      <text x="80" y="76" font-size="13" text-anchor="middle">0.02</text>
+      <text x="80" y="163" font-size="13" text-anchor="middle">0.98</text>
+      <text x="232" y="36" font-size="13" text-anchor="middle">0.95</text>
+      <text x="232" y="92" font-size="13" text-anchor="middle">0.05</text>
+      <text x="232" y="146" font-size="13" text-anchor="middle">0.08</text>
+      <text x="232" y="202" font-size="13" text-anchor="middle">0.92</text>
+      <text x="335" y="35" font-size="13">0.019</text>
+      <text x="335" y="95" font-size="13">0.001</text>
+      <text x="335" y="145" font-size="13">0.0784</text>
+      <text x="335" y="205" font-size="13">0.9016</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Reversing the condition</div>
+    <div class="example-body">
+      <p>$2\%$ of a population have a disease $D$. A test gives a positive result for $95\%$ of people with the disease and for $8\%$ of people without it. A person tests positive. Find the probability that they have the disease.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The tree gives $\mathrm{P}(D \cap +) = 0.02 \times 0.95 = 0.019$ and $\mathrm{P}(D' \cap +) = 0.98 \times 0.08 = 0.0784$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(+) = 0.019 + 0.0784 = 0.0974$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(D \mid +) = \dfrac{\mathrm{P}(D \cap +)}{\mathrm{P}(+)} = \dfrac{0.019}{0.0974} = 0.195$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Only about $1$ in $5$ positive results comes from someone with the disease — because the disease is rare, false positives outnumber true ones.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Without replacement</div>
+    <div class="example-body">
+      <p>A bag holds $5$ red and $3$ blue counters. Two are taken without replacement. Find $\mathrm{P}(\text{first red} \mid \text{second red})$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{P}(RR) = \dfrac{5}{8} \times \dfrac{4}{7} = \dfrac{20}{56} = \dfrac{5}{14}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(\text{second red}) = \mathrm{P}(RR) + \mathrm{P}(BR) = \dfrac{20}{56} + \dfrac{3}{8} \times \dfrac{5}{7} = \dfrac{20}{56} + \dfrac{15}{56} = \dfrac{35}{56} = \dfrac{5}{8}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(\text{first red} \mid \text{second red}) = \dfrac{5/14}{5/8} = \dfrac{8}{14} = \dfrac{4}{7}$</span></div>
+      <div class="tip">By symmetry the answer equals $\mathrm{P}(\text{second red} \mid \text{first red}) = \dfrac{4}{7}$ — once you know one red is gone, $4$ of the remaining $7$ are red, whichever draw it was.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – INDEPENDENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Independence</div>
+<div class="section-body">
+
+  <div class="concept">
+    $A$ and $B$ are <strong>independent</strong> if knowing that $B$ has happened does not change the probability of $A$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Tests for independence (any one is enough)</div>
+    $\mathrm{P}(A \mid B) = \mathrm{P}(A)$ &nbsp;&middot;&nbsp; $\mathrm{P}(B \mid A) = \mathrm{P}(B)$ &nbsp;&middot;&nbsp; $\mathrm{P}(A \cap B) = \mathrm{P}(A)\,\mathrm{P}(B)$
+  </div>
+
+  <div class="warn">
+    <strong>Independent is not the same as mutually exclusive.</strong> Mutually exclusive means $\mathrm{P}(A \cap B) = 0$ — if one happens, the other cannot, so they are very much <em>dependent</em> (unless one of them has probability $0$).
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Testing for independence</div>
+    <div class="example-body">
+      <p>$\mathrm{P}(A) = 0.4$, $\mathrm{P}(B) = 0.35$ and $\mathrm{P}(A \cup B) = 0.61$. Determine whether $A$ and $B$ are independent.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Addition rule: $\mathrm{P}(A \cap B) = 0.4 + 0.35 - 0.61 = 0.14$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(A)\,\mathrm{P}(B) = 0.4 \times 0.35 = 0.14$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>They are equal, so $A$ and $B$ are independent. Equivalently $\mathrm{P}(A \mid B) = 0.14 / 0.35 = 0.4 = \mathrm{P}(A)$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — An unknown conditional probability</div>
+    <div class="example-body">
+      <p>$\mathrm{P}(A) = 0.3$, $\mathrm{P}(B \mid A) = 0.6$ and $\mathrm{P}(B) = 0.46$. Find $\mathrm{P}(B \mid A')$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $\mathrm{P}(B \mid A') = x$. From the tree: $\mathrm{P}(B) = 0.3 \times 0.6 + 0.7x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$0.18 + 0.7x = 0.46 \Rightarrow 0.7x = 0.28 \Rightarrow x = 0.4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Since $\mathrm{P}(B \mid A) = 0.6 \neq 0.46 = \mathrm{P}(B)$, the events are not independent.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – MODELLING WITH PROBABILITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Modelling with Probability</div>
+<div class="section-body">
+
+  <p>The DfE content asks you to model with probability and to <strong>critique the assumptions</strong> made. Every probability calculation in context rests on assumptions — exam questions often ask you to name one and say whether it is reasonable.</p>
+
+  <table>
+    <tr><th>Assumption</th><th>Typical critique</th></tr>
+    <tr><td>Events are independent</td><td>Rain today makes rain tomorrow more likely; a player who misses a penalty may lose confidence.</td></tr>
+    <tr><td>Probabilities stay constant</td><td>A machine wears out; a learner improves with practice.</td></tr>
+    <tr><td>Probability estimated from data is exact</td><td>Relative frequency from a small sample is only an estimate.</td></tr>
+    <tr><td>Outcomes are equally likely</td><td>A real die or spinner may be biased.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Critiquing a model</div>
+    <div class="example-body">
+      <p>From past records, the probability that a train is late on any day is $0.15$. A commuter models the probability that the train is late on both Monday and Tuesday as $0.15^2 = 0.0225$. Comment on this model.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The calculation assumes lateness on Monday and Tuesday is independent.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>This is doubtful: engineering works, bad weather or staff shortages often last several days, so $\mathrm{P}(\text{late Tue} \mid \text{late Mon})$ is probably greater than $0.15$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The true probability is therefore likely to be higher than $0.0225$. Also $0.15$ is only an estimate from past data.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$\mathrm{P}(A \mid B) = \dfrac{\mathrm{P}(A \cap B)}{\mathrm{P}(B)}$</p></div>
+    <div class="ref-card"><h4>Multiplication rule</h4><p>$\mathrm{P}(A \cap B) = \mathrm{P}(A)\,\mathrm{P}(B \mid A)$</p></div>
+    <div class="ref-card"><h4>Addition rule</h4><p>$\mathrm{P}(A \cup B) = \mathrm{P}(A) + \mathrm{P}(B) - \mathrm{P}(A \cap B)$</p></div>
+    <div class="ref-card"><h4>Independence</h4><p>$\mathrm{P}(A \mid B) = \mathrm{P}(A)$, or $\mathrm{P}(A \cap B) = \mathrm{P}(A)\,\mathrm{P}(B)$.</p></div>
+    <div class="ref-card"><h4>Mutually exclusive</h4><p>$\mathrm{P}(A \cap B) = 0$ — not the same as independent.</p></div>
+    <div class="ref-card"><h4>Two-way table</h4><p>Restrict to the row or column of the "given" event.</p></div>
+    <div class="ref-card"><h4>Venn diagram</h4><p>Fill in from the intersection outwards; divide by the given region.</p></div>
+    <div class="ref-card"><h4>Tree diagram</h4><p>Second-level branches are conditional probabilities.</p></div>
+    <div class="ref-card"><h4>Reverse condition</h4><p>$\mathrm{P}(A \mid B) = \dfrac{\mathrm{P}(A)\,\mathrm{P}(B \mid A)}{\mathrm{P}(B)}$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions, from routine to exam-style. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.6$, $\mathrm{P}(B) = 0.5$ and $\mathrm{P}(A \cap B) = 0.2$. Find $\mathrm{P}(A \mid B)$ and $\mathrm{P}(B \mid A)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \mid B) = \dfrac{0.2}{0.5} = 0.4$</p>
+          <p>$\mathrm{P}(B \mid A) = \dfrac{0.2}{0.6} = \dfrac{1}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$80$ people were surveyed.</p>
+      <table>
+        <tr><th></th><th>Glasses</th><th>No glasses</th><th>Total</th></tr>
+        <tr><td><strong>Right-handed</strong></td><td>26</td><td>42</td><td>68</td></tr>
+        <tr><td><strong>Left-handed</strong></td><td>4</td><td>8</td><td>12</td></tr>
+        <tr><td><strong>Total</strong></td><td>30</td><td>50</td><td>80</td></tr>
+      </table>
+      <p>Find (a) $\mathrm{P}(\text{glasses} \mid \text{left-handed})$, (b) $\mathrm{P}(\text{left-handed} \mid \text{glasses})$, (c) whether being left-handed is independent of wearing glasses.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{4}{12} = \dfrac{1}{3}$</p>
+          <p><strong>(b)</strong> $\dfrac{4}{30} = \dfrac{2}{15}$</p>
+          <p><strong>(c)</strong> $\mathrm{P}(\text{left}) = \dfrac{12}{80} = \dfrac{3}{20} = 0.15$, but $\mathrm{P}(\text{left} \mid \text{glasses}) = \dfrac{2}{15} \approx 0.133$. These differ, so the events are not independent (for this sample).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.25$, $\mathrm{P}(B) = 0.6$ and $\mathrm{P}(A \cap B) = 0.15$. Show that $A$ and $B$ are independent, and write down $\mathrm{P}(A \mid B')$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A)\,\mathrm{P}(B) = 0.25 \times 0.6 = 0.15 = \mathrm{P}(A \cap B)$, so independent.</p>
+          <p>If $A$ and $B$ are independent, so are $A$ and $B'$. Hence $\mathrm{P}(A \mid B') = \mathrm{P}(A) = 0.25$.</p>
+          <p><em>Check:</em> $\mathrm{P}(A \cap B') = 0.25 - 0.15 = 0.1$ and $\mathrm{P}(B') = 0.4$, giving $0.1 / 0.4 = 0.25$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>The probability that it rains on a given day is $0.4$. If it rains, the probability that Sam is late for work is $0.3$; if it does not rain, it is $0.1$. Find the probability that Sam is late, and the probability that it rained given that Sam was late.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(L) = 0.4 \times 0.3 + 0.6 \times 0.1 = 0.12 + 0.06 = 0.18$</p>
+          <p>$\mathrm{P}(R \mid L) = \dfrac{0.12}{0.18} = \dfrac{2}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A box contains $4$ green and $6$ yellow counters. Two are taken at random without replacement. Find the probability that both are green, given that they are the same colour.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(GG) = \dfrac{4}{10} \times \dfrac{3}{9} = \dfrac{12}{90}$, &nbsp; $\mathrm{P}(YY) = \dfrac{6}{10} \times \dfrac{5}{9} = \dfrac{30}{90}$</p>
+          <p>$\mathrm{P}(\text{same}) = \dfrac{42}{90} = \dfrac{7}{15}$</p>
+          <p>$\mathrm{P}(GG \mid \text{same}) = \dfrac{12/90}{42/90} = \dfrac{12}{42} = \dfrac{2}{7}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.45$, $\mathrm{P}(B) = 0.3$ and $\mathrm{P}(A \cup B) = 0.6$. Find (a) $\mathrm{P}(A \mid B)$, (b) $\mathrm{P}(B \mid A')$. (c) Are $A$ and $B$ independent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \cap B) = 0.45 + 0.3 - 0.6 = 0.15$</p>
+          <p><strong>(a)</strong> $\mathrm{P}(A \mid B) = \dfrac{0.15}{0.3} = 0.5$</p>
+          <p><strong>(b)</strong> $\mathrm{P}(B \cap A') = 0.3 - 0.15 = 0.15$ and $\mathrm{P}(A') = 0.55$, so $\mathrm{P}(B \mid A') = \dfrac{0.15}{0.55} = \dfrac{3}{11}$.</p>
+          <p><strong>(c)</strong> $\mathrm{P}(A \mid B) = 0.5 \neq 0.45 = \mathrm{P}(A)$, so not independent.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Using the football ($F$), tennis ($T$), swimming ($S$) data from Worked Example 3, find (a) the probability that a student plays exactly two sports, given that they play tennis, (b) $\mathrm{P}(F \mid T')$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Total in $T$: $8 + 5 + 4 + 3 = 20$. Exactly two sports within $T$: $5 + 4 = 9$. Probability $= \dfrac{9}{20}$.</p>
+          <p><strong>(b)</strong> Not in $T$: $60 - 20 = 40$. Of these, in $F$: $12 + 6 = 18$. $\mathrm{P}(F \mid T') = \dfrac{18}{40} = \dfrac{9}{20}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.4$, $\mathrm{P}(B \mid A) = 0.25$ and $\mathrm{P}(B \mid A') = 0.5$. Find $\mathrm{P}(B)$ and $\mathrm{P}(A \mid B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(B) = 0.4 \times 0.25 + 0.6 \times 0.5 = 0.1 + 0.3 = 0.4$</p>
+          <p>$\mathrm{P}(A \mid B) = \dfrac{0.1}{0.4} = 0.25$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$A$ and $B$ are independent, with $\mathrm{P}(B) = 0.3$ and $\mathrm{P}(A \cup B) = 0.58$. Find $\mathrm{P}(A)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{P}(A) = p$. Independence gives $\mathrm{P}(A \cap B) = 0.3p$.</p>
+          <p>$p + 0.3 - 0.3p = 0.58 \Rightarrow 0.7p = 0.28 \Rightarrow p = 0.4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A condition affects $1.5\%$ of adults. A screening test is positive for $90\%$ of adults with the condition and for $6\%$ of adults without it.</p>
+      <p>(a) Find the probability that a randomly chosen adult tests positive. (b) Given a positive result, find the probability that the adult has the condition. (c) Given a negative result, find the probability that the adult does not have the condition. (d) Anyone testing positive takes a second, identical test. Assuming the results are independent for a given person, find the probability that someone with two positive results has the condition. (e) Comment on the independence assumption.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{P}(+) = 0.015 \times 0.9 + 0.985 \times 0.06 = 0.0135 + 0.0591 = 0.0726$</p>
+          <p><strong>(b)</strong> $\mathrm{P}(C \mid +) = \dfrac{0.0135}{0.0726} = 0.186$ (3 s.f.)</p>
+          <p><strong>(c)</strong> $\mathrm{P}(C' \cap -) = 0.985 \times 0.94 = 0.9259$ and $\mathrm{P}(-) = 1 - 0.0726 = 0.9274$, so $\mathrm{P}(C' \mid -) = \dfrac{0.9259}{0.9274} = 0.998$ (3 s.f.).</p>
+          <p><strong>(d)</strong> $\mathrm{P}(C \cap {+}{+}) = 0.015 \times 0.9^2 = 0.01215$; $\mathrm{P}(C' \cap {+}{+}) = 0.985 \times 0.06^2 = 0.003546$.</p>
+          <p>$\mathrm{P}(C \mid {+}{+}) = \dfrac{0.01215}{0.01215 + 0.003546} = 0.774$ (3 s.f.)</p>
+          <p><strong>(e)</strong> It may not be reasonable: whatever caused a false positive the first time (for example another medical condition) may well cause one again, so the two results for the same person are likely to be positively related. The true value of $\mathrm{P}(C \mid {+}{+})$ would then be lower than $0.774$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Conditional Probability &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

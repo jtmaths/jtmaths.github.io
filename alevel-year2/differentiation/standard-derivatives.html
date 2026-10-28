@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponentials, Logs and Trig &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌊 Exponentials, Logs and Trig</h1>
+  <p>A Level Maths Year 2 · Differentiation</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – EXPONENTIALS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Exponential Functions</div>
+<div class="section-body">
+
+  <p>In Year 1 you met the defining property of $\mathrm{e}$: the gradient of $y = \mathrm{e}^x$ at every point equals its $y$-value. Year 2 extends this to every exponential.</p>
+
+  <div class="formula-box">
+    <div class="label">Exponentials</div>
+    $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(\mathrm{e}^{kx}\right) = k\mathrm{e}^{kx}$ &nbsp;&nbsp;&nbsp; $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(a^{kx}\right) = k\,a^{kx}\ln a$
+  </div>
+
+  <div class="concept">
+    <strong>Why $a^x$ gives $\ln a$.</strong> Since $a = \mathrm{e}^{\ln a}$, we can write $a^x = \left(\mathrm{e}^{\ln a}\right)^x = \mathrm{e}^{(\ln a)x}$. This is $\mathrm{e}^{kx}$ with $k = \ln a$, so its derivative is $(\ln a)\,\mathrm{e}^{(\ln a)x} = a^x\ln a$. Only for $a = \mathrm{e}$ is the multiplier $\ln a$ equal to $1$ — that is what makes $\mathrm{e}$ special.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Exponentials with a coefficient in the power</div>
+    <div class="example-body">
+      <p>Differentiate $y = 3\mathrm{e}^{2x} - 4\mathrm{e}^{-x/2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}}{\mathrm{d}x}\left(3\mathrm{e}^{2x}\right) = 3 \times 2\mathrm{e}^{2x} = 6\mathrm{e}^{2x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}}{\mathrm{d}x}\left(-4\mathrm{e}^{-x/2}\right) = -4 \times \left(-\tfrac12\right)\mathrm{e}^{-x/2} = 2\mathrm{e}^{-x/2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6\mathrm{e}^{2x} + 2\mathrm{e}^{-x/2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Other bases</div>
+    <div class="example-body">
+      <p>Find the gradient of $y = 5^x$ at $x = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 5^x\ln 5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 2$: $25\ln 5 = 40.2$ (3 s.f.)</span></div>
+      <div class="warn">$\dfrac{\mathrm{d}}{\mathrm{d}x}(5^x)$ is <strong>not</strong> $x \cdot 5^{x-1}$. The power rule only works when the <em>index</em> is constant and the <em>base</em> varies. Here it is the other way round.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – LOGARITHMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Natural Logarithm</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Natural logarithm</div>
+    $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(\ln x\right) = \dfrac{1}{x}$ &nbsp;&nbsp; $(x &gt; 0)$
+  </div>
+
+  <div class="concept">
+    <strong>Where it comes from.</strong> If $y = \ln x$ then $x = \mathrm{e}^y$, so $\dfrac{\mathrm{d}x}{\mathrm{d}y} = \mathrm{e}^y = x$. Turning this upside down (see <a href="chain-product-quotient.html">dy/dx = 1/(dx/dy)</a>) gives $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{1}{x}$.
+  </div>
+
+  <div class="tip">
+    <strong>Use the laws of logs first.</strong> $\ln(kx) = \ln k + \ln x$, and $\ln k$ is a constant, so $\dfrac{\mathrm{d}}{\mathrm{d}x}\ln(kx) = \dfrac1x$ for any positive constant $k$. Similarly $\ln\left(x^n\right) = n\ln x$ has derivative $\dfrac{n}{x}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Simplify, then differentiate</div>
+    <div class="example-body">
+      <p>Differentiate (a) $y = \ln(3x)$ &nbsp;(b) $y = \ln\left(x^4\right)$ &nbsp;(c) $y = \ln\!\left(\dfrac{x^2}{\mathrm{e}}\right)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\ln 3 + \ln x$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{1}{x}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $4\ln x$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{4}{x}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $2\ln x - \ln\mathrm{e} = 2\ln x - 1$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{2}{x}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FIRST PRINCIPLES FOR SIN AND COS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Sine and Cosine from First Principles</div>
+<div class="section-body">
+
+  <p>The derivatives of $\sin x$ and $\cos x$ can be proved from the definition of the derivative, using the compound angle formulae and the <a href="../trigonometry/small-angles.html">small angle approximations</a>. <strong>All angles are in radians</strong> — the results are false in degrees.</p>
+
+  <div class="formula-box">
+    <div class="label">The tools</div>
+    $\mathrm{f}'(x) = \displaystyle\lim_{h \to 0}\frac{\mathrm{f}(x + h) - \mathrm{f}(x)}{h}$ &nbsp;&nbsp; $\sin h \approx h$, &nbsp;$\cos h \approx 1 - \dfrac{h^2}{2}$ for small $h$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Proving the derivative of $\sin x$</div>
+    <div class="example-body">
+      <p>Prove from first principles that $\dfrac{\mathrm{d}}{\mathrm{d}x}(\sin x) = \cos x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = \displaystyle\lim_{h \to 0}\frac{\sin(x + h) - \sin x}{h}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expand: $\sin(x + h) = \sin x\cos h + \cos x\sin h$, so the numerator is $\sin x(\cos h - 1) + \cos x\sin h$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>For small $h$: $\cos h - 1 \approx -\dfrac{h^2}{2}$ and $\sin h \approx h$, so the fraction is approximately $\dfrac{-\tfrac12 h^2\sin x + h\cos x}{h} = -\tfrac12 h\sin x + \cos x$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>As $h \to 0$, $-\tfrac12 h\sin x \to 0$, leaving $\mathrm{f}'(x) = \cos x$. $\blacksquare$</span></div>
+      <div class="tip">An equivalent version uses the limits $\dfrac{\sin h}{h} \to 1$ and $\dfrac{\cos h - 1}{h} \to 0$ as $h \to 0$. Either is acceptable; state clearly which results you use.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Proving the derivative of $\cos x$</div>
+    <div class="example-body">
+      <p>Prove from first principles that $\dfrac{\mathrm{d}}{\mathrm{d}x}(\cos x) = -\sin x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{f}'(x) = \displaystyle\lim_{h \to 0}\frac{\cos(x + h) - \cos x}{h}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos(x + h) = \cos x\cos h - \sin x\sin h$, so the numerator is $\cos x(\cos h - 1) - \sin x\sin h$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Using the small angle results: $\dfrac{-\tfrac12 h^2\cos x - h\sin x}{h} = -\tfrac12 h\cos x - \sin x$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>As $h \to 0$ this tends to $-\sin x$. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+<svg width="460" height="240" viewBox="0 0 460 240" role="img" aria-label="Graph of y = sin x with tangents at 0, pi/2, pi, 3pi/2 and 2pi, and the dashed graph of y = cos x, whose value equals the gradient of sin x at every point" font-family="Segoe UI, Arial, sans-serif">
+<line x1="28.0" y1="123.0" x2="438.0" y2="123.0" stroke="#333" stroke-width="1.2"/>
+<line x1="51.0" y1="212.0" x2="51.0" y2="22.0" stroke="#333" stroke-width="1.2"/>
+<text x="442.0" y="127.0" font-size="13" font-style="italic">x</text>
+<text x="47.0" y="18.0" font-size="13" font-style="italic" text-anchor="middle">y</text>
+<line x1="140.3" y1="120.0" x2="140.3" y2="126.0" stroke="#333"/>
+<text x="140.3" y="139.0" font-size="11" text-anchor="middle">π/2</text>
+<line x1="229.5" y1="120.0" x2="229.5" y2="126.0" stroke="#333"/>
+<text x="229.5" y="139.0" font-size="11" text-anchor="middle">π</text>
+<line x1="318.8" y1="120.0" x2="318.8" y2="126.0" stroke="#333"/>
+<text x="318.8" y="139.0" font-size="11" text-anchor="middle">3π/2</text>
+<line x1="408.0" y1="120.0" x2="408.0" y2="126.0" stroke="#333"/>
+<text x="408.0" y="139.0" font-size="11" text-anchor="middle">2π</text>
+<line x1="48.0" y1="182.3" x2="54.0" y2="182.3" stroke="#333"/>
+<text x="45.0" y="186.3" font-size="11" text-anchor="end">−1</text>
+<line x1="48.0" y1="63.7" x2="54.0" y2="63.7" stroke="#333"/>
+<text x="45.0" y="67.7" font-size="11" text-anchor="end">1</text>
+<polyline points="34.0,66.3 35.3,65.9 36.6,65.6 37.9,65.2 39.2,64.9 40.5,64.7 41.8,64.4 43.1,64.2 44.5,64.1 45.8,63.9 47.1,63.8 48.4,63.7 49.7,63.7 51.0,63.7 52.3,63.7 53.6,63.7 54.9,63.8 56.2,63.9 57.5,64.0 58.8,64.2 60.1,64.4 61.4,64.6 62.7,64.9 64.1,65.2 65.4,65.5 66.7,65.9 68.0,66.3 69.3,66.7 70.6,67.1 71.9,67.6 73.2,68.1 74.5,68.6 75.8,69.2 77.1,69.8 78.4,70.4 79.7,71.1 81.0,71.7 82.3,72.4 83.7,73.2 85.0,73.9 86.3,74.7 87.6,75.5 88.9,76.3 90.2,77.2 91.5,78.1 92.8,79.0 94.1,79.9 95.4,80.8 96.7,81.8 98.0,82.8 99.3,83.8 100.6,84.9 101.9,85.9 103.3,87.0 104.6,88.1 105.9,89.2 107.2,90.3 108.5,91.5 109.8,92.6 111.1,93.8 112.4,95.0 113.7,96.2 115.0,97.4 116.3,98.7 117.6,99.9 118.9,101.2 120.2,102.5 121.5,103.8 122.9,105.1 124.2,106.4 125.5,107.7 126.8,109.0 128.1,110.3 129.4,111.7 130.7,113.0 132.0,114.3 133.3,115.7 134.6,117.1 135.9,118.4 137.2,119.8 138.5,121.1 139.8,122.5 141.1,123.9 142.5,125.2 143.8,126.6 145.1,128.0 146.4,129.3 147.7,130.7 149.0,132.0 150.3,133.4 151.6,134.7 152.9,136.0 154.2,137.4 155.5,138.7 156.8,140.0 158.1,141.3 159.4,142.6 160.7,143.9 162.1,145.1 163.4,146.4 164.7,147.6 166.0,148.9 167.3,150.1 168.6,151.3 169.9,152.5 171.2,153.7 172.5,154.8 173.8,156.0 175.1,157.1 176.4,158.2 177.7,159.3 179.0,160.4 180.3,161.4 181.7,162.4 183.0,163.4 184.3,164.4 185.6,165.4 186.9,166.3 188.2,167.3 189.5,168.2 190.8,169.0 192.1,169.9 193.4,170.7 194.7,171.5 196.0,172.3 197.3,173.0 198.6,173.7 199.9,174.4 201.3,175.1 202.6,175.7 203.9,176.3 205.2,176.9 206.5,177.5 207.8,178.0 209.1,178.5 210.4,178.9 211.7,179.4 213.0,179.8 214.3,180.2 215.6,180.5 216.9,180.8 218.2,181.1 219.5,181.4 220.9,181.6 222.2,181.8 223.5,181.9 224.8,182.1 226.1,182.2 227.4,182.2 228.7,182.3 230.0,182.3 231.3,182.2 232.6,182.2 233.9,182.1 235.2,182.0 236.5,181.8 237.8,181.6 239.1,181.4 240.5,181.2 241.8,180.9 243.1,180.6 244.4,180.3 245.7,179.9 247.0,179.5 248.3,179.1 249.6,178.6 250.9,178.1 252.2,177.6 253.5,177.1 254.8,176.5 256.1,175.9 257.4,175.3 258.7,174.6 260.1,173.9 261.4,173.2 262.7,172.5 264.0,171.7 265.3,170.9 266.6,170.1 267.9,169.3 269.2,168.4 270.5,167.5 271.8,166.6 273.1,165.7 274.4,164.7 275.7,163.7 277.0,162.7 278.3,161.7 279.7,160.6 281.0,159.6 282.3,158.5 283.6,157.4 284.9,156.3 286.2,155.1 287.5,154.0 288.8,152.8 290.1,151.6 291.4,150.4 292.7,149.2 294.0,148.0 295.3,146.7 296.6,145.5 297.9,144.2 299.3,142.9 300.6,141.6 301.9,140.3 303.2,139.0 304.5,137.7 305.8,136.4 307.1,135.1 308.4,133.7 309.7,132.4 311.0,131.0 312.3,129.7 313.6,128.3 314.9,127.0 316.2,125.6 317.5,124.2 318.9,122.9 320.2,121.5 321.5,120.1 322.8,118.8 324.1,117.4 325.4,116.1 326.7,114.7 328.0,113.4 329.3,112.0 330.6,110.7 331.9,109.4 333.2,108.0 334.5,106.7 335.8,105.4 337.1,104.1 338.5,102.8 339.8,101.5 341.1,100.3 342.4,99.0 343.7,97.8 345.0,96.5 346.3,95.3 347.6,94.1 348.9,93.0 350.2,91.8 351.5,90.6 352.8,89.5 354.1,88.4 355.4,87.3 356.7,86.2 358.1,85.1 359.4,84.1 360.7,83.1 362.0,82.1 363.3,81.1 364.6,80.1 365.9,79.2 367.2,78.3 368.5,77.4 369.8,76.6 371.1,75.7 372.4,74.9 373.7,74.1 375.0,73.4 376.3,72.6 377.7,71.9 379.0,71.2 380.3,70.6 381.6,70.0 382.9,69.4 384.2,68.8 385.5,68.2 386.8,67.7 388.1,67.3 389.4,66.8 390.7,66.4 392.0,66.0 393.3,65.6 394.6,65.3 395.9,65.0 397.3,64.7 398.6,64.5 399.9,64.3 401.2,64.1 402.5,63.9 403.8,63.8 405.1,63.7 406.4,63.7 407.7,63.7 409.0,63.7 410.3,63.7 411.6,63.8 412.9,63.9 414.2,64.0 415.5,64.2 416.9,64.4 418.2,64.6 419.5,64.9 420.8,65.1 422.1,65.5 423.4,65.8 424.7,66.2 426.0,66.6" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="6 4"/>
+<polyline points="34.0,140.5 35.3,139.2 36.6,137.9 37.9,136.5 39.2,135.2 40.5,133.9 41.8,132.5 43.1,131.2 44.5,129.8 45.8,128.5 47.1,127.1 48.4,125.8 49.7,124.4 51.0,123.0 52.3,121.7 53.6,120.3 54.9,118.9 56.2,117.6 57.5,116.2 58.8,114.9 60.1,113.5 61.4,112.2 62.7,110.8 64.1,109.5 65.4,108.2 66.7,106.9 68.0,105.6 69.3,104.3 70.6,103.0 71.9,101.7 73.2,100.4 74.5,99.2 75.8,97.9 77.1,96.7 78.4,95.5 79.7,94.3 81.0,93.1 82.3,91.9 83.7,90.8 85.0,89.6 86.3,88.5 87.6,87.4 88.9,86.3 90.2,85.3 91.5,84.2 92.8,83.2 94.1,82.2 95.4,81.2 96.7,80.3 98.0,79.3 99.3,78.4 100.6,77.5 101.9,76.7 103.3,75.8 104.6,75.0 105.9,74.2 107.2,73.4 108.5,72.7 109.8,72.0 111.1,71.3 112.4,70.7 113.7,70.0 115.0,69.4 116.3,68.9 117.6,68.3 118.9,67.8 120.2,67.3 121.5,66.9 122.9,66.4 124.2,66.0 125.5,65.7 126.8,65.3 128.1,65.0 129.4,64.7 130.7,64.5 132.0,64.3 133.3,64.1 134.6,64.0 135.9,63.8 137.2,63.7 138.5,63.7 139.8,63.7 141.1,63.7 142.5,63.7 143.8,63.8 145.1,63.9 146.4,64.0 147.7,64.2 149.0,64.3 150.3,64.6 151.6,64.8 152.9,65.1 154.2,65.4 155.5,65.8 156.8,66.2 158.1,66.6 159.4,67.0 160.7,67.5 162.1,68.0 163.4,68.5 164.7,69.0 166.0,69.6 167.3,70.2 168.6,70.9 169.9,71.5 171.2,72.2 172.5,72.9 173.8,73.7 175.1,74.5 176.4,75.3 177.7,76.1 179.0,76.9 180.3,77.8 181.7,78.7 183.0,79.6 184.3,80.6 185.6,81.5 186.9,82.5 188.2,83.5 189.5,84.5 190.8,85.6 192.1,86.7 193.4,87.8 194.7,88.9 196.0,90.0 197.3,91.1 198.6,92.3 199.9,93.5 201.3,94.7 202.6,95.9 203.9,97.1 205.2,98.3 206.5,99.6 207.8,100.8 209.1,102.1 210.4,103.4 211.7,104.7 213.0,106.0 214.3,107.3 215.6,108.6 216.9,109.9 218.2,111.3 219.5,112.6 220.9,114.0 222.2,115.3 223.5,116.7 224.8,118.0 226.1,119.4 227.4,120.7 228.7,122.1 230.0,123.5 231.3,124.8 232.6,126.2 233.9,127.6 235.2,128.9 236.5,130.3 237.8,131.6 239.1,133.0 240.5,134.3 241.8,135.6 243.1,137.0 244.4,138.3 245.7,139.6 247.0,140.9 248.3,142.2 249.6,143.5 250.9,144.8 252.2,146.0 253.5,147.3 254.8,148.5 256.1,149.7 257.4,151.0 258.7,152.1 260.1,153.3 261.4,154.5 262.7,155.6 264.0,156.8 265.3,157.9 266.6,159.0 267.9,160.0 269.2,161.1 270.5,162.1 271.8,163.2 273.1,164.1 274.4,165.1 275.7,166.1 277.0,167.0 278.3,167.9 279.7,168.8 281.0,169.6 282.3,170.5 283.6,171.3 284.9,172.0 286.2,172.8 287.5,173.5 288.8,174.2 290.1,174.9 291.4,175.5 292.7,176.2 294.0,176.7 295.3,177.3 296.6,177.8 297.9,178.3 299.3,178.8 300.6,179.3 301.9,179.7 303.2,180.1 304.5,180.4 305.8,180.7 307.1,181.0 308.4,181.3 309.7,181.5 311.0,181.7 312.3,181.9 313.6,182.0 314.9,182.1 316.2,182.2 317.5,182.3 318.9,182.3 320.2,182.3 321.5,182.2 322.8,182.1 324.1,182.0 325.4,181.9 326.7,181.7 328.0,181.5 329.3,181.3 330.6,181.0 331.9,180.7 333.2,180.4 334.5,180.0 335.8,179.6 337.1,179.2 338.5,178.7 339.8,178.3 341.1,177.8 342.4,177.2 343.7,176.7 345.0,176.1 346.3,175.4 347.6,174.8 348.9,174.1 350.2,173.4 351.5,172.7 352.8,171.9 354.1,171.1 355.4,170.3 356.7,169.5 358.1,168.6 359.4,167.8 360.7,166.9 362.0,165.9 363.3,165.0 364.6,164.0 365.9,163.0 367.2,162.0 368.5,161.0 369.8,159.9 371.1,158.8 372.4,157.7 373.7,156.6 375.0,155.5 376.3,154.3 377.7,153.2 379.0,152.0 380.3,150.8 381.6,149.6 382.9,148.3 384.2,147.1 385.5,145.9 386.8,144.6 388.1,143.3 389.4,142.0 390.7,140.7 392.0,139.4 393.3,138.1 394.6,136.8 395.9,135.5 397.3,134.1 398.6,132.8 399.9,131.4 401.2,130.1 402.5,128.7 403.8,127.4 405.1,126.0 406.4,124.6 407.7,123.3 409.0,121.9 410.3,120.5 411.6,119.2 412.9,117.8 414.2,116.5 415.5,115.1 416.9,113.8 418.2,112.4 419.5,111.1 420.8,109.7 422.1,108.4 423.4,107.1 424.7,105.8 426.0,104.5" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+<line x1="25.5" y1="149.7" x2="76.6" y2="96.3" stroke="#16a34a" stroke-width="1.6"/>
+<circle cx="51.0" cy="123.0" r="3" fill="#16a34a"/>
+<line x1="114.7" y1="63.7" x2="165.8" y2="63.7" stroke="#16a34a" stroke-width="1.6"/>
+<circle cx="140.3" cy="63.7" r="3" fill="#16a34a"/>
+<line x1="204.0" y1="96.3" x2="255.1" y2="149.7" stroke="#16a34a" stroke-width="1.6"/>
+<circle cx="229.5" cy="123.0" r="3" fill="#16a34a"/>
+<line x1="293.2" y1="182.3" x2="344.3" y2="182.3" stroke="#16a34a" stroke-width="1.6"/>
+<circle cx="318.8" cy="182.3" r="3" fill="#16a34a"/>
+<line x1="382.4" y1="149.7" x2="433.6" y2="96.3" stroke="#16a34a" stroke-width="1.6"/>
+<circle cx="408.0" cy="123.0" r="3" fill="#16a34a"/>
+<text x="59.6" y="45.9" font-size="12" fill="#4f46e5" text-anchor="start" font-style="italic">y = sin x</text>
+<text x="249.9" y="45.9" font-size="12" fill="#ea580c" text-anchor="start" font-style="italic">y = cos x  (gradient of sin x)</text>
+</svg>
+</div>
+
+  <p>The diagram confirms the result: where $\sin x$ has a horizontal tangent ($x = \tfrac{\pi}{2}, \tfrac{3\pi}{2}$), $\cos x = 0$; where $\sin x$ is steepest uphill ($x = 0, 2\pi$), $\cos x = 1$.</p>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – sin kx, cos kx, tan kx
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> $\sin kx$, $\cos kx$ and $\tan kx$</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>$y$</th><th>$\dfrac{\mathrm{d}y}{\mathrm{d}x}$</th><th>Memory aid</th></tr>
+    <tr><td>$\sin kx$</td><td>$k\cos kx$</td><td>sin → cos</td></tr>
+    <tr><td>$\cos kx$</td><td>$-k\sin kx$</td><td>cos → minus sin</td></tr>
+    <tr><td>$\tan kx$</td><td>$k\sec^2 kx$</td><td>from $\tan = \dfrac{\sin}{\cos}$ by the quotient rule</td></tr>
+  </table>
+
+  <div class="concept">
+    The factor $k$ appears because the inside of the function changes $k$ times as fast as $x$ — this is the chain rule, covered fully in <a href="chain-product-quotient.html">Chain, Product and Quotient Rules</a>. The result for $\tan kx$ is proved there as well.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Trigonometric derivatives</div>
+    <div class="example-body">
+      <p>Differentiate $y = 2\sin 3x + \cos\dfrac{x}{2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}}{\mathrm{d}x}(2\sin 3x) = 2 \times 3\cos 3x = 6\cos 3x$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}}{\mathrm{d}x}\left(\cos\tfrac{x}{2}\right) = -\tfrac12\sin\tfrac{x}{2}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6\cos 3x - \tfrac12\sin\dfrac{x}{2}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A tangent to a tan curve</div>
+    <div class="example-body">
+      <p>Find the equation of the tangent to $y = 3\tan 2x$ at the point where $x = \dfrac{\pi}{8}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 3\tan\dfrac{\pi}{4} = 3$, so the point is $\left(\dfrac{\pi}{8}, 3\right)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6\sec^2 2x$. At $x = \dfrac{\pi}{8}$: $\sec^2\dfrac{\pi}{4} = \dfrac{1}{\cos^2(\pi/4)} = 2$, so the gradient is $12$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y - 3 = 12\left(x - \dfrac{\pi}{8}\right)$, i.e. $y = 12x + 3 - \dfrac{3\pi}{2}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – USING THE RESULTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using the New Derivatives</div>
+<div class="section-body">
+
+  <p>Everything from Year 1 — tangents, normals, stationary points, rates of change — now works for these functions too.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A stationary point</div>
+    <div class="example-body">
+      <p>Find the stationary point of $y = \mathrm{e}^x - 2x$ and determine its nature.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \mathrm{e}^x - 2 = 0 \Rightarrow \mathrm{e}^x = 2 \Rightarrow x = \ln 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y = \mathrm{e}^{\ln 2} - 2\ln 2 = 2 - 2\ln 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = \mathrm{e}^x$, which is $2 &gt; 0$ at $x = \ln 2$: a <strong>minimum</strong> at $(\ln 2,\ 2 - 2\ln 2)$.</span></div>
+      <div class="tip">Leave answers in exact form ($\ln 2$, not $0.693$) unless a decimal is asked for — many questions say "give your answer in the form $a + b\ln c$".</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Exponential growth</div>
+    <div class="example-body">
+      <p>A culture of bacteria has $N = 500\mathrm{e}^{0.2t}$ cells after $t$ hours. Show that $\dfrac{\mathrm{d}N}{\mathrm{d}t} = 0.2N$ and interpret this.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}N}{\mathrm{d}t} = 500 \times 0.2\,\mathrm{e}^{0.2t} = 0.2 \times 500\mathrm{e}^{0.2t} = 0.2N$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The rate of growth is proportional to the current size: the more bacteria there are, the faster they multiply. This is the defining feature of exponential models.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$\mathrm{e}^{kx}$</h4><p>$\to k\mathrm{e}^{kx}$</p></div>
+    <div class="ref-card"><h4>$a^{kx}$</h4><p>$\to k\,a^{kx}\ln a$</p></div>
+    <div class="ref-card"><h4>$\ln x$</h4><p>$\to \dfrac1x$; and $\ln(kx) \to \dfrac1x$ too.</p></div>
+    <div class="ref-card"><h4>$\sin kx$</h4><p>$\to k\cos kx$</p></div>
+    <div class="ref-card"><h4>$\cos kx$</h4><p>$\to -k\sin kx$</p></div>
+    <div class="ref-card"><h4>$\tan kx$</h4><p>$\to k\sec^2 kx$</p></div>
+    <div class="ref-card"><h4>Radians</h4><p>The trig results only hold in radians.</p></div>
+    <div class="ref-card"><h4>First principles</h4><p>Compound angle formula, then $\sin h \approx h$, $\cos h \approx 1 - \tfrac12 h^2$.</p></div>
+    <div class="ref-card"><h4>Logs first</h4><p>Use log laws to simplify before differentiating.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate (a) $4\mathrm{e}^{3x}$ &nbsp;(b) $\mathrm{e}^{-5x}$ &nbsp;(c) $\dfrac{2}{\mathrm{e}^{x}}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $12\mathrm{e}^{3x}$ &nbsp; (b) $-5\mathrm{e}^{-5x}$</p>
+          <p>(c) Rewrite as $2\mathrm{e}^{-x}$; derivative $-2\mathrm{e}^{-x}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = 2^x$ at $x = 3$, giving an exact answer and a decimal to $3$ s.f.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2^x\ln 2$. At $x = 3$: $8\ln 2 = 5.55$ (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Differentiate $y = \ln(5x) + \ln\left(x^2\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = \ln 5 + \ln x + 2\ln x = \ln 5 + 3\ln x$.</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac{3}{x}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Differentiate $y = \sin 4x - 3\cos 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4\cos 4x - 3(-2\sin 2x) = 4\cos 4x + 6\sin 2x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Differentiate $y = \tan\dfrac{x}{3}$, and find the gradient at $x = \dfrac{3\pi}{4}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = \dfrac13\sec^2\dfrac{x}{3}$.</p>
+          <p>At $x = \dfrac{3\pi}{4}$: $\sec^2\dfrac{\pi}{4} = 2$, so the gradient is $\dfrac23$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = 3\sin 2x$ at $x = \dfrac{\pi}{6}$, and the equation of the normal there.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6\cos 2x$; at $x = \dfrac{\pi}{6}$, $6\cos\dfrac{\pi}{3} = 3$.</p>
+          <p>The point: $y = 3\sin\dfrac{\pi}{3} = \dfrac{3\sqrt3}{2}$.</p>
+          <p>Normal gradient $-\dfrac13$: &nbsp;$y - \dfrac{3\sqrt3}{2} = -\dfrac13\left(x - \dfrac{\pi}{6}\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the exact coordinates of the stationary point of $y = 4x - \mathrm{e}^{2x}$ and show that it is a maximum.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4 - 2\mathrm{e}^{2x} = 0 \Rightarrow \mathrm{e}^{2x} = 2 \Rightarrow x = \tfrac12\ln 2$.</p>
+          <p>$y = 4 \times \tfrac12\ln 2 - 2 = 2\ln 2 - 2$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = -4\mathrm{e}^{2x} = -8 &lt; 0$ there, so it is a maximum at $\left(\tfrac12\ln 2,\ 2\ln 2 - 2\right)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the equation of the tangent to $y = \ln x$ at $x = \mathrm{e}$, and show that it passes through the origin.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Point: $(\mathrm{e}, 1)$. Gradient: $\dfrac{1}{\mathrm{e}}$.</p>
+          <p>$y - 1 = \dfrac{1}{\mathrm{e}}(x - \mathrm{e}) \Rightarrow y = \dfrac{x}{\mathrm{e}} - 1 + 1 = \dfrac{x}{\mathrm{e}}$.</p>
+          <p>When $x = 0$, $y = 0$, so the tangent passes through the origin.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Using the small angle approximations, prove from first principles that the derivative of $\sin 2x$ is $2\cos 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = \displaystyle\lim_{h \to 0}\frac{\sin(2x + 2h) - \sin 2x}{h}$.</p>
+          <p>$\sin(2x + 2h) = \sin 2x\cos 2h + \cos 2x\sin 2h$.</p>
+          <p>For small $h$: $\cos 2h \approx 1 - \dfrac{(2h)^2}{2} = 1 - 2h^2$ and $\sin 2h \approx 2h$.</p>
+          <p>So the fraction $\approx \dfrac{\sin 2x(-2h^2) + \cos 2x(2h)}{h} = -2h\sin 2x + 2\cos 2x$.</p>
+          <p>As $h \to 0$ this tends to $2\cos 2x$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The population of a town is modelled by $P = 20\,000\,\mathrm{e}^{0.03t}$, where $t$ is the time in years.</p>
+      <p>(a) Find $\dfrac{\mathrm{d}P}{\mathrm{d}t}$ and show that it equals $0.03P$.<br>(b) Find the rate of growth when $t = 10$, to the nearest whole number.<br>(c) Find the value of $t$ at which the population is growing at $1000$ people per year.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\dfrac{\mathrm{d}P}{\mathrm{d}t} = 20\,000 \times 0.03\,\mathrm{e}^{0.03t} = 600\mathrm{e}^{0.03t} = 0.03P$.</p>
+          <p><strong>(b)</strong> $600\mathrm{e}^{0.3} = 809.9\ldots \approx 810$ people per year.</p>
+          <p><strong>(c)</strong> $600\mathrm{e}^{0.03t} = 1000 \Rightarrow \mathrm{e}^{0.03t} = \dfrac53 \Rightarrow t = \dfrac{\ln(5/3)}{0.03} = 17.0$ years (3 s.f.).</p>
+          <p>(At that moment $P = 1000 \div 0.03 \approx 33\,300$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exponentials, Logs and Trig &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

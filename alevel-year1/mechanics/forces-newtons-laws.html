@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forces and Newton's Laws &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🍎 Forces and Newton's Laws</h1>
+  <p>A Level Maths Year 1 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – TYPES OF FORCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Forces and Force Diagrams</div>
+<div class="section-body">
+
+  <p>Kinematics describes motion; <strong>dynamics</strong> explains it. A <strong>force</strong> is a push or pull, measured in newtons (N), and it is a <strong>vector</strong> (DfE content area R · Forces and Newton's laws).</p>
+
+  <table>
+    <tr><th>Force</th><th>Symbol</th><th>Where it acts and which way</th></tr>
+    <tr><td><strong>Weight</strong></td><td>$W = mg$</td><td>Vertically downwards, from the centre of mass.</td></tr>
+    <tr><td><strong>Normal reaction</strong></td><td>$R$</td><td>Perpendicular to a surface, pushing the object away from it.</td></tr>
+    <tr><td><strong>Tension</strong></td><td>$T$</td><td>Along a taut string or rod, pulling <em>away</em> from the object.</td></tr>
+    <tr><td><strong>Thrust</strong> (compression)</td><td>$T$</td><td>Along a rod, pushing <em>towards</em> the object.</td></tr>
+    <tr><td><strong>Friction</strong></td><td>$F$</td><td>Along a rough surface, opposing motion (or attempted motion).</td></tr>
+    <tr><td><strong>Driving force / resistance</strong></td><td>$D$, $R$</td><td>Forward force from an engine; resistance opposes motion.</td></tr>
+  </table>
+
+  <div class="concept">
+    A <strong>force diagram</strong> shows the object (as a dot or a box) and <strong>every force acting on it</strong>, each as a labelled arrow. Show the acceleration separately with a double-headed arrow. Never include forces that the object exerts on <em>other</em> things.
+  </div>
+
+  <div class="tip">
+    <strong>Resolve in a direction:</strong> add the components of all forces in that direction, taking one way as positive. For now, every force is horizontal or vertical (or given in $\mathbf{i}$, $\mathbf{j}$ form), so there is no trigonometry — that comes in Year 2.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – NEWTON'S LAWS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Newton's Three Laws</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Newton's laws of motion</div>
+    <strong>1st:</strong> A body stays at rest or moves with constant velocity unless a resultant force acts on it.<br>
+    <strong>2nd:</strong> Resultant force $=$ mass × acceleration: &nbsp;$\mathbf{F} = m\mathbf{a}$<br>
+    <strong>3rd:</strong> If body $A$ exerts a force on body $B$, then $B$ exerts an equal and opposite force on $A$.
+  </div>
+
+  <div class="concept">
+    <strong>Equilibrium</strong> means the resultant force is zero. By the first law, a particle in equilibrium is either <strong>at rest</strong> or moving with <strong>constant velocity</strong> — both count.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — F = ma in one dimension</div>
+    <div class="example-body">
+      <p>A box of mass $4$ kg is pushed across a floor by a horizontal force of $30$ N against a resistance of $12$ N. Find its acceleration and the normal reaction.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Horizontally ($\rightarrow$ positive): $30 - 12 = 4a \Rightarrow a = 4.5$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Vertically, no acceleration: $R - 4g = 0 \Rightarrow R = 39.2$ N.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A particle on a string</div>
+    <div class="example-body">
+      <p>A particle of mass $2$ kg hangs on a light string and is pulled upwards with tension $26$ N. Find its acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Up positive: $26 - 2g = 2a$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$26 - 19.6 = 6.4 = 2a \Rightarrow a = 3.2$ m s$^{-2}$ upwards.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Weight and normal reaction are not a third-law pair.</strong> Both act on the <em>same</em> object. The third-law partner of the box's weight is the box's gravitational pull on the Earth; the partner of the normal reaction is the box pushing down on the floor.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VECTORS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Forces as Vectors</div>
+<div class="section-body">
+
+  <p>When forces are given in $\mathbf{i}$, $\mathbf{j}$ form, add them component by component (see <a href="../vectors/vectors-2d.html">Vectors in Two Dimensions</a>). Newton's second law applies to each component separately.</p>
+
+  <div class="formula-box">
+    <div class="label">In two dimensions</div>
+    $\mathbf{F}_1 + \mathbf{F}_2 + \cdots = m\mathbf{a}$; &nbsp; equilibrium $\iff$ $\sum \mathbf{F} = \mathbf{0}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Acceleration from vector forces</div>
+    <div class="example-body">
+      <p>Forces $(3\mathbf{i} + 4\mathbf{j})$ N and $(5\mathbf{i} - 10\mathbf{j})$ N act on a particle of mass $2$ kg. Find its acceleration and the magnitude of the acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Resultant $= (8\mathbf{i} - 6\mathbf{j})$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{a} = \dfrac{1}{2}(8\mathbf{i} - 6\mathbf{j}) = (4\mathbf{i} - 3\mathbf{j})$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|\mathbf{a}| = \sqrt{16 + 9} = 5$ m s$^{-2}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Equilibrium</div>
+    <div class="example-body">
+      <p>Forces $(2\mathbf{i} - 3\mathbf{j})$, $(-5\mathbf{i} + q\mathbf{j})$ and $(p\mathbf{i} + 7\mathbf{j})$ N act on a particle in equilibrium. Find $p$ and $q$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{i}$: $2 - 5 + p = 0 \Rightarrow p = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathbf{j}$: $-3 + q + 7 = 0 \Rightarrow q = -4$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – LIFTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Connected Particles: Lifts</div>
+<div class="section-body">
+
+  <div class="concept">
+    For connected objects that move together, you can apply $F = ma$ to the <strong>whole system</strong> (internal forces cancel) or to <strong>each part separately</strong> (internal forces appear). Use whichever gives the unknown you want most directly — and use the other as a check.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Person in a lift</div>
+    <div class="example-body">
+      <p>A lift of mass $430$ kg carries a man of mass $70$ kg. It accelerates upwards at $0.5$ m s$^{-2}$. Find the tension in the lift cable and the normal reaction of the floor on the man.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Whole system ($500$ kg), up positive: $T - 500g = 500(0.5)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$T = 4900 + 250 = 5150$ N.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Man alone: $R - 70g = 70(0.5) \Rightarrow R = 686 + 35 = 721$ N.</span></div>
+      <div class="tip">$R$ is greater than his weight ($686$ N): he feels heavier while the lift accelerates upwards. When it decelerates on the way up, $R$ is less than $686$ N.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – CARS AND TRAILERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Connected Particles: Cars and Trailers</div>
+<div class="section-body">
+
+  <p>A car and trailer are joined by a light, rigid towbar. When the car pulls, the towbar is in <strong>tension</strong>; when the car brakes, the trailer pushes on it and the towbar is in <strong>thrust</strong>.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Tension in a towbar</div>
+    <div class="example-body">
+      <p>A car of mass $1200$ kg tows a trailer of mass $400$ kg along a straight horizontal road. The engine's driving force is $2500$ N; resistances are $300$ N on the car and $200$ N on the trailer. Find the acceleration and the tension in the towbar.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Whole system: $2500 - 300 - 200 = 1600a \Rightarrow a = 1.25$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Trailer alone: $T - 200 = 400(1.25) \Rightarrow T = 700$ N.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Check with the car: $2500 - 300 - 700 = 1500 = 1200 \times 1.25$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PULLEYS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Connected Particles: Pulleys</div>
+<div class="section-body">
+
+  <div class="concept">
+    For particles joined by a <strong>light inextensible string</strong> over a <strong>smooth pulley</strong>: the tension is the same on both sides, and both particles have the same magnitude of acceleration. Write an equation for <strong>each particle</strong>, in its own direction of motion.
+  </div>
+
+  <div class="svg-block">
+    <svg width="360" height="260" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="140" y1="20" x2="220" y2="20" stroke="#475569" stroke-width="4"/>
+      <line x1="180" y1="20" x2="180" y2="50" stroke="#475569" stroke-width="2"/>
+      <circle cx="180" cy="60" r="20" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="160" y1="60" x2="160" y2="170" stroke="#475569" stroke-width="2"/>
+      <line x1="200" y1="60" x2="200" y2="120" stroke="#475569" stroke-width="2"/>
+      <rect x="140" y="170" width="40" height="34" fill="#c7d2fe" stroke="#4f46e5"/>
+      <text x="160" y="192" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle">5 kg</text>
+      <rect x="182" y="120" width="36" height="30" fill="#c7d2fe" stroke="#4f46e5"/>
+      <text x="200" y="140" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle">3 kg</text>
+      <text x="150" y="140" font-family="Arial" font-size="13" fill="#b91c1c" text-anchor="end">T ↑</text>
+      <text x="206" y="105" font-family="Arial" font-size="13" fill="#b91c1c">T ↑</text>
+      <line x1="160" y1="204" x2="160" y2="240" stroke="#b91c1c" stroke-width="2"/>
+      <polygon points="155,234 165,234 160,244" fill="#b91c1c"/>
+      <text x="168" y="240" font-family="Arial" font-size="13" fill="#b91c1c">5g</text>
+      <line x1="200" y1="150" x2="200" y2="186" stroke="#b91c1c" stroke-width="2"/>
+      <polygon points="195,180 205,180 200,190" fill="#b91c1c"/>
+      <text x="208" y="186" font-family="Arial" font-size="13" fill="#b91c1c">3g</text>
+      <text x="80" y="200" font-family="Arial" font-size="12" fill="#166534">a ↓</text>
+      <text x="250" y="140" font-family="Arial" font-size="12" fill="#166534">a ↑</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two particles over a pulley</div>
+    <div class="example-body">
+      <p>Particles of mass $5$ kg and $3$ kg hang on a light inextensible string over a smooth pulley and are released from rest. Find the acceleration and the tension.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5$ kg (down positive): $5g - T = 5a$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3$ kg (up positive): $T - 3g = 3a$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add: $2g = 8a \Rightarrow a = \dfrac{2g}{8} = 2.45$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T = 3(g + a) = 3(12.25) = 36.75 \approx 36.8$ N.</span></div>
+      <div class="tip">The force on the pulley from the string is $2T = 73.5$ N, acting downwards — a common follow-up question.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Table and pulley</div>
+    <div class="example-body">
+      <p>A block of mass $4$ kg on a smooth horizontal table is joined by a light inextensible string over a smooth pulley at the table's edge to a particle of mass $1$ kg hanging freely. Find the acceleration and tension.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Block (horizontal): $T = 4a$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Hanging particle (down positive): $g - T = a$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add: $g = 5a \Rightarrow a = 1.96$ m s$^{-2}$; &nbsp;$T = 4(1.96) = 7.84$ N.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not treat a pulley system as one body with $F = ma$ in a single direction</strong> unless you are careful: the weights act in different directions relative to the motion. Writing one equation per particle is always safe.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Newton's 2nd law</h4><p>Resultant force $= ma$, in the direction of the acceleration.</p></div>
+    <div class="ref-card"><h4>Weight</h4><p>$W = mg$, vertically downwards.</p></div>
+    <div class="ref-card"><h4>Equilibrium</h4><p>$\sum \mathbf{F} = \mathbf{0}$: at rest or constant velocity.</p></div>
+    <div class="ref-card"><h4>Vectors</h4><p>Add $\mathbf{i}$ and $\mathbf{j}$ components separately; $\mathbf{F} = m\mathbf{a}$.</p></div>
+    <div class="ref-card"><h4>3rd law</h4><p>Equal and opposite forces on <em>different</em> bodies.</p></div>
+    <div class="ref-card"><h4>Lift</h4><p>$R - mg = ma$ (up positive).</p></div>
+    <div class="ref-card"><h4>Towbar</h4><p>Tension when pulling; thrust when braking.</p></div>
+    <div class="ref-card"><h4>Smooth pulley</h4><p>Same $T$ both sides; same $|a|$; one equation per particle.</p></div>
+    <div class="ref-card"><h4>Whole system</h4><p>Internal forces cancel: use it to find $a$ quickly.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Take $g = 9.8$ m s$^{-2}$. Draw a force diagram for every question.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A crate of mass $6$ kg is pulled along a horizontal floor by a horizontal force of $40$ N against a resistance of $16$ N. Find its acceleration.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$40 - 16 = 6a \Rightarrow a = 4$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A book of mass $3$ kg rests on a horizontal table. Draw a force diagram and find the normal reaction. State the third-law pair of the normal reaction.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Forces on the book: weight $3g$ down, normal reaction $R$ up. Equilibrium: $R = 3g = 29.4$ N.</p>
+          <p>Its third-law pair is the force of $29.4$ N exerted by the book <em>on the table</em>, acting downwards.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Forces $(2\mathbf{i} + \mathbf{j})$ N and $(\mathbf{i} - 5\mathbf{j})$ N act on a particle of mass $0.5$ kg. Find the acceleration and its magnitude.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Resultant $= (3\mathbf{i} - 4\mathbf{j})$ N.</p>
+          <p>$\mathbf{a} = \dfrac{3\mathbf{i} - 4\mathbf{j}}{0.5} = (6\mathbf{i} - 8\mathbf{j})$ m s$^{-2}$; &nbsp;$|\mathbf{a}| = \sqrt{36 + 64} = 10$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A particle is in equilibrium under forces $(a\mathbf{i} + 2\mathbf{j})$ N, $(4\mathbf{i} - b\mathbf{j})$ N and $(-7\mathbf{i} + 5\mathbf{j})$ N. Find $a$ and $b$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{i}$: $a + 4 - 7 = 0 \Rightarrow a = 3$.</p>
+          <p>$\mathbf{j}$: $2 - b + 5 = 0 \Rightarrow b = 7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A woman of mass $60$ kg stands in a lift that is moving upwards and decelerating at $1.2$ m s$^{-2}$. Find the normal reaction of the floor on her.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Up positive; decelerating while moving up means $a = -1.2$.</p>
+          <p>$R - 60g = 60(-1.2) \Rightarrow R = 588 - 72 = 516$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A car of mass $1000$ kg tows a trailer of mass $500$ kg. The car brakes with a braking force of $3000$ N acting on the car only; other resistances are negligible. Find the deceleration and the force in the towbar, stating whether it is a tension or a thrust.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Whole system: $-3000 = 1500a \Rightarrow a = -2$, a deceleration of $2$ m s$^{-2}$.</p>
+          <p>Trailer alone: the only horizontal force is from the towbar, $F = 500(-2) = -1000$ N.</p>
+          <p>The towbar pushes <em>backwards</em> on the trailer with $1000$ N: it is a <strong>thrust</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Particles of mass $4$ kg and $6$ kg hang on a light inextensible string over a smooth fixed pulley. Find the acceleration, the tension, and the force exerted on the pulley by the string.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$6g - T = 6a$ and $T - 4g = 4a$. Adding: $2g = 10a \Rightarrow a = 1.96$ m s$^{-2}$.</p>
+          <p>$T = 4(g + a) = 4(11.76) = 47.04 \approx 47.0$ N.</p>
+          <p>Force on pulley $= 2T = 94.1$ N vertically downwards.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A block of mass $3$ kg lies on a rough horizontal table, where a constant resistance of $5$ N opposes its motion. It is connected by a light inextensible string over a smooth pulley at the table's edge to a particle of mass $2$ kg hanging freely. Find the acceleration and the tension.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Block: $T - 5 = 3a$. &nbsp;Hanging particle: $2g - T = 2a$.</p>
+          <p>Add: $2g - 5 = 5a \Rightarrow 14.6 = 5a \Rightarrow a = 2.92$ m s$^{-2}$.</p>
+          <p>$T = 2(g - a) = 2(6.88) = 13.76 \approx 13.8$ N. Check: $3(2.92) + 5 = 13.76$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A particle of mass $2$ kg, initially at rest, is acted on by a constant force $(6\mathbf{i} + 8\mathbf{j})$ N and no other force. Find its speed after $3$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{a} = (3\mathbf{i} + 4\mathbf{j})$ m s$^{-2}$, constant.</p>
+          <p>$\mathbf{v} = \mathbf{u} + \mathbf{a}t = \mathbf{0} + 3(3\mathbf{i} + 4\mathbf{j}) = (9\mathbf{i} + 12\mathbf{j})$ m s$^{-1}$.</p>
+          <p>Speed $= \sqrt{81 + 144} = 15$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Particles $A$ (mass $3$ kg) and $B$ (mass $2$ kg) are connected by a light inextensible string over a smooth fixed pulley. They are released from rest with the string taut, $A$ at a height of $1.5$ m above the floor and $B$ well below the pulley.</p>
+      <p>(a) Find the acceleration and the tension. &nbsp; (b) Find the speed of $A$ when it hits the floor. &nbsp; (c) $A$ does not rebound. Find the further distance $B$ rises before coming instantaneously to rest. &nbsp; (d) State where in your solution you used the fact that the string is inextensible.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $A$: $3g - T = 3a$. &nbsp;$B$: $T - 2g = 2a$. Adding: $g = 5a \Rightarrow a = 1.96$ m s$^{-2}$.</p>
+          <p>$T = 2(g + a) = 2(11.76) = 23.52 \approx 23.5$ N.</p>
+          <p><strong>(b)</strong> $v^2 = 0 + 2(1.96)(1.5) = 5.88 \Rightarrow v = 2.42$ m s$^{-1}$ (3 s.f.).</p>
+          <p><strong>(c)</strong> When $A$ lands the string goes slack, so $B$ moves freely under gravity with $u = 2.42$ upwards: $0 = 5.88 - 2(9.8)s \Rightarrow s = 0.3$ m.</p>
+          <p><strong>(d)</strong> In (a), taking the same magnitude of acceleration for $A$ and $B$ (and in (b)–(c), the same speed for both when $A$ lands).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Forces and Newton's Laws &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

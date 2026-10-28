@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebra Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧮 Algebra Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>In Year 1, algebra was mostly about <em>expressions</em>: expanding, factorising, solving. In Year 2 the focus shifts to <strong>functions</strong> — rules that turn inputs into outputs — and to the tools that make later calculus possible.</p>
+
+  <div class="concept">
+    Think of a function as a machine. Year 2 asks four questions about it: <strong>What can go in?</strong> (domain) <strong>What can come out?</strong> (range) <strong>What happens if I chain two machines?</strong> (composite) <strong>Can I run it backwards?</strong> (inverse).
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new in Year 2 · DfE content area B · Algebra and functions</div>
+    Simplifying rational expressions · algebraic division · partial fractions<br>
+    The modulus function $|x|$ · graphs of $y = |\mathrm{f}(x)|$ and $y = \mathrm{f}(|x|)$<br>
+    Domain and range · composite and inverse functions · combined transformations
+  </div>
+
+  <div class="tip">
+    <strong>Why it matters.</strong> Partial fractions are needed to <a href="../integration/partial-fractions.html">integrate rational functions</a> and to <a href="../sequences-series/binomial-expansion.html">expand them as series</a>. Inverse functions explain why $\ln x$ undoes $\mathrm{e}^x$ and why $\arcsin x$ needs a restricted domain.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Function</strong></td><td>A mapping where every input has exactly one output.</td><td>$\mathrm{f}(x) = x^2$</td></tr>
+    <tr><td><strong>Domain</strong></td><td>The set of allowed inputs.</td><td>$x \geqslant 0$</td></tr>
+    <tr><td><strong>Range</strong></td><td>The set of outputs actually produced.</td><td>$\mathrm{f}(x) \geqslant 0$</td></tr>
+    <tr><td><strong>One-one</strong></td><td>Different inputs always give different outputs.</td><td>$\mathrm{f}(x) = 2x + 1$</td></tr>
+    <tr><td><strong>Many-one</strong></td><td>Two or more inputs share an output.</td><td>$\mathrm{f}(x) = x^2$, $x \in \mathbb{R}$</td></tr>
+    <tr><td><strong>Composite</strong></td><td>One function applied to the output of another.</td><td>$\mathrm{fg}(x) = \mathrm{f}(\mathrm{g}(x))$</td></tr>
+    <tr><td><strong>Inverse</strong></td><td>The function that undoes $\mathrm{f}$.</td><td>$\mathrm{f}^{-1}(x)$</td></tr>
+    <tr><td><strong>Modulus</strong></td><td>The size of a number, ignoring its sign.</td><td>$|-3| = 3$</td></tr>
+    <tr><td><strong>Rational expression</strong></td><td>One polynomial divided by another.</td><td>$\dfrac{x+1}{x^2-4}$</td></tr>
+    <tr><td><strong>Improper</strong></td><td>Numerator degree $\geqslant$ denominator degree.</td><td>$\dfrac{x^2}{x-1}$</td></tr>
+    <tr><td><strong>Partial fractions</strong></td><td>A sum of simpler fractions equal to one fraction.</td><td>$\dfrac{2}{x-1} + \dfrac{3}{x+2}$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>$\mathrm{f}^{-1}(x)$ is not $\dfrac{1}{\mathrm{f}(x)}$.</strong> The $-1$ means "inverse function", not "reciprocal". If $\mathrm{f}(x) = 2x$, then $\mathrm{f}^{-1}(x) = \tfrac{x}{2}$, not $\tfrac{1}{2x}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Partial fractions</div>
+    $\dfrac{px + q}{(x - a)(x - b)} \equiv \dfrac{A}{x - a} + \dfrac{B}{x - b}$ &nbsp;·&nbsp; repeated factor: $\dfrac{B}{x - b} + \dfrac{C}{(x - b)^2}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Modulus equations and inequalities</div>
+    $|A| = |B| \iff A^2 = B^2$ &nbsp;·&nbsp; $|x - a| < b \iff a - b < x < a + b$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Composite functions</div>
+    $\mathrm{fg}(x) = \mathrm{f}\big(\mathrm{g}(x)\big)$: apply $\mathrm{g}$ first
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Inverse functions</div>
+    $y = \mathrm{f}(x)$, make $x$ the subject, swap · domain of $\mathrm{f}^{-1}$ = range of $\mathrm{f}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Combined transformations</div>
+    $(p, q)$ on $y = \mathrm{f}(x)$ $\longmapsto$ $\left(\dfrac{p - c}{b},\; aq + d\right)$ on $y = a\,\mathrm{f}(bx + c) + d$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = |2x - 4|$, $x \in \mathbb{R}$, and $\mathrm{g}(x) = x + 1$, $x \in \mathbb{R}$. (a) State the range of $\mathrm{f}$. (b) Explain why $\mathrm{f}$ has no inverse. (c) Solve $\mathrm{fg}(x) = \mathrm{g}(x)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $y = |2x - 4|$ is a V with vertex $(2, 0)$, so the range is $\mathrm{f}(x) \geqslant 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\mathrm{f}$ is many-one: e.g. $\mathrm{f}(1) = \mathrm{f}(3) = 2$. Only one-one functions have inverses.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $\mathrm{fg}(x) = |2(x + 1) - 4| = |2x - 2|$, so solve $|2x - 2| = x + 1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$2x - 2 = x + 1 \Rightarrow x = 3$ (check: $|4| = 4$ ✓).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$-(2x - 2) = x + 1 \Rightarrow 3x = 1 \Rightarrow x = \tfrac13$ (check: $\left|-\tfrac43\right| = \tfrac43$ ✓).</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$x = \tfrac13$ or $x = 3$.</span></div>
+      <div class="tip">This one question uses domain and range, one-one functions, composites and modulus equations. Expect the topics in this section to be mixed together.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Algebra and Functions Subtopics</div>
+<div class="section-body">
+
+  <p>Every Year 2 part of content area B, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">B</span><span><a href="partial-fractions.html">Algebraic and Partial Fractions</a><span class="desc">Simplifying rational expressions, algebraic division, and partial fractions with linear and repeated linear factors.</span></span></li>
+    <li><span class="code">B</span><span><a href="modulus.html">The Modulus Function</a><span class="desc">Graphs of $y = |ax + b|$ and $y = |\mathrm{f}(x)|$; solving modulus equations and inequalities.</span></span></li>
+    <li><span class="code">B</span><span><a href="functions.html">Composite and Inverse Functions</a><span class="desc">Mappings, domain and range, one-one and many-one, composites, and inverses as reflections in $y = x$.</span></span></li>
+    <li><span class="code">B</span><span><a href="transformations.html">Combined Transformations</a><span class="desc">$y = a\,\mathrm{f}(bx + c) + d$, the order of transformations, and $y = \mathrm{f}(|x|)$.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Composite in the wrong order.</strong> $\mathrm{fg}(x)$ means $\mathrm{g}$ first. If $\mathrm{f}(x) = x^2$ and $\mathrm{g}(x) = x + 1$, then $\mathrm{fg}(x) = (x+1)^2$ but $\mathrm{gf}(x) = x^2 + 1$.
+  </div>
+
+  <div class="warn">
+    <strong>Range in terms of $x$.</strong> Write "$\mathrm{f}(x) \geqslant -3$", not "$x \geqslant -3$". The range is about outputs.
+  </div>
+
+  <div class="warn">
+    <strong>Not checking modulus solutions.</strong> In $|A| = B$ where $B$ contains $x$, a "solution" that makes $B$ negative must be rejected.
+  </div>
+
+  <div class="warn">
+    <strong>Missing a term for a repeated factor.</strong> $\dfrac{\ldots}{(x+1)(x-2)^2}$ needs <em>three</em> partial fractions, including $\dfrac{B}{x-2}$.
+  </div>
+
+  <div class="warn">
+    <strong>Splitting an improper fraction directly.</strong> If the numerator's degree is at least the denominator's, there is a polynomial part. Divide first.
+  </div>
+
+  <div class="warn">
+    <strong>Horizontal transformations the wrong way.</strong> $\mathrm{f}(x + 3)$ moves the graph <em>left</em>; $\mathrm{f}(2x)$ <em>squashes</em> it by a factor $\tfrac12$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Function</h4><p>One output for every input.</p></div>
+    <div class="ref-card"><h4>Inverse exists</h4><p>Only for one-one functions.</p></div>
+    <div class="ref-card"><h4>Inverse graph</h4><p>Reflection in $y = x$.</p></div>
+    <div class="ref-card"><h4>Composite</h4><p>$\mathrm{fg}(x) = \mathrm{f}(\mathrm{g}(x))$.</p></div>
+    <div class="ref-card"><h4>Modulus graph</h4><p>$|\mathrm{f}(x)|$: reflect below-axis parts up.</p></div>
+    <div class="ref-card"><h4>$\mathrm{f}(|x|)$</h4><p>Mirror the right half in the $y$-axis.</p></div>
+    <div class="ref-card"><h4>Partial fractions</h4><p>Substitute roots, compare coefficients.</p></div>
+    <div class="ref-card"><h4>Improper</h4><p>Divide first, then split.</p></div>
+    <div class="ref-card"><h4>Transformations</h4><p>Inside: opposite, on $x$. Outside: as written, on $y$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of this section. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Simplify $\dfrac{x^2 - x - 12}{x^2 - 16}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{(x - 4)(x + 3)}{(x - 4)(x + 4)} = \dfrac{x + 3}{x + 4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Express $\dfrac{3x + 7}{(x + 1)(x + 3)}$ in partial fractions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x + 7 \equiv A(x + 3) + B(x + 1)$.</p>
+          <p>$x = -1$: $4 = 2A$, $A = 2$. &nbsp; $x = -3$: $-2 = -2B$, $B = 1$.</p>
+          <p>$\dfrac{2}{x + 1} + \dfrac{1}{x + 3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $|4x - 3| = 9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$4x - 3 = 9 \Rightarrow x = 3$; &nbsp; $4x - 3 = -9 \Rightarrow x = -\tfrac32$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $|x + 1| \leqslant 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$-4 \leqslant x + 1 \leqslant 4 \Rightarrow -5 \leqslant x \leqslant 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = 3x + 2$ and $\mathrm{g}(x) = \dfrac{1}{x}$, $x \neq 0$. Find $\mathrm{fg}(x)$ and $\mathrm{gf}(x)$, stating any value that must be excluded from the domain of $\mathrm{gf}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{fg}(x) = 3 \times \dfrac{1}{x} + 2 = \dfrac{3}{x} + 2$, $x \neq 0$.</p>
+          <p>$\mathrm{gf}(x) = \dfrac{1}{3x + 2}$, which needs $3x + 2 \neq 0$, so $x \neq -\tfrac23$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{x + 4}{2}$, $x \in \mathbb{R}$. Find $\mathrm{f}^{-1}(x)$ and verify that $\mathrm{f}\mathrm{f}^{-1}(x) = x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = \dfrac{x + 4}{2} \Rightarrow x = 2y - 4$, so $\mathrm{f}^{-1}(x) = 2x - 4$.</p>
+          <p>$\mathrm{f}\mathrm{f}^{-1}(x) = \dfrac{(2x - 4) + 4}{2} = \dfrac{2x}{2} = x$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The point $(2, 8)$ lies on $y = \mathrm{f}(x)$. Find its image on $y = \tfrac12\mathrm{f}(x + 3) - 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x + 3 = 2 \Rightarrow x = -1$; &nbsp;$y = \tfrac12(8) - 1 = 3$.</p>
+          <p>Image $(-1, 3)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Express $\dfrac{x^2 + 3x - 1}{x + 2}$ in the form $Ax + B + \dfrac{C}{x + 2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 \div x = x$; subtract $x^2 + 2x$ to leave $x - 1$.</p>
+          <p>$x \div x = 1$; subtract $x + 2$ to leave $-3$.</p>
+          <p>$x + 1 - \dfrac{3}{x + 2}$, so $A = 1$, $B = 1$, $C = -3$. (Check: substituting $x = -2$ into the numerator gives $4 - 6 - 1 = -3$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = (x + 1)^2 + 2$, $x \geqslant -1$. Find $\mathrm{f}^{-1}(x)$, state its domain, and describe how the graphs of $y = \mathrm{f}(x)$ and $y = \mathrm{f}^{-1}(x)$ are related.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Range of $\mathrm{f}$: $\mathrm{f}(x) \geqslant 2$.</p>
+          <p>$y = (x + 1)^2 + 2 \Rightarrow x + 1 = \sqrt{y - 2}$ (positive root since $x \geqslant -1$).</p>
+          <p>$\mathrm{f}^{-1}(x) = \sqrt{x - 2} - 1$, domain $x \geqslant 2$.</p>
+          <p>Each graph is the reflection of the other in the line $y = x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{5x - 1}{(x + 1)(2x - 1)}$, $x > \tfrac12$.</p>
+      <p>(a) Express $\mathrm{f}(x)$ in partial fractions. &nbsp;(b) Show that $\mathrm{f}(1) = 2$. &nbsp;(c) The function $\mathrm{g}$ is defined by $\mathrm{g}(x) = |x - 3|$, $x \in \mathbb{R}$. Find $\mathrm{gf}(1)$, and solve $\mathrm{g}(x) = 2x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $5x - 1 \equiv A(2x - 1) + B(x + 1)$.</p>
+          <p>$x = -1$: $-6 = -3A$, $A = 2$. &nbsp; $x = \tfrac12$: $\tfrac32 = \tfrac32 B$, $B = 1$.</p>
+          <p>$\mathrm{f}(x) = \dfrac{2}{x + 1} + \dfrac{1}{2x - 1}$</p>
+          <p><strong>(b)</strong> $\mathrm{f}(1) = \dfrac{2}{2} + \dfrac{1}{1} = 2$ ✓ (or directly, $\dfrac{4}{2 \times 1} = 2$).</p>
+          <p><strong>(c)</strong> $\mathrm{gf}(1) = \mathrm{g}(2) = |2 - 3| = 1$.</p>
+          <p>$|x - 3| = 2x$: case $x - 3 = 2x$ gives $x = -3$, but then $2x = -6 < 0$: reject.</p>
+          <p>Case $3 - x = 2x$ gives $x = 1$; check $|1 - 3| = 2 = 2(1)$ ✓. So $x = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Algebra Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerical Methods Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔢 Numerical Methods Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Numerical methods</strong> (DfE content area I) are what you do when algebra runs out. Equations such as $x^3 - x - 4 = 0$, $\mathrm{e}^{-x} = x$ or $\theta = \tfrac{\pi}{2} + \sin\theta$ have no exact solution you can write down, and integrals such as $\displaystyle\int_0^1 \mathrm{e}^{x^2}\,\mathrm{d}x$ cannot be done by any standard technique. But we can find their values to any accuracy we like.</p>
+
+  <div class="concept">
+    Every numerical method is a trade: you give up an exact answer and get a <strong>process</strong> that produces better and better approximations. The skills examined are carrying out the process accurately, <strong>proving</strong> how accurate the result is, and explaining <strong>when the process fails</strong>.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The four tools in this topic</div>
+    Change of sign &middot; Fixed point iteration &middot; The Newton-Raphson method &middot; The trapezium rule
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are essential here</strong> — learn to use the <code>Ans</code> key for iterations and the table mode for sign checks. Put the calculator in <strong>radians</strong> whenever trigonometric functions appear. Write down enough working (each iterate, each ordinate) for an examiner to follow your method.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Root</strong></td><td>A solution of $\mathrm{f}(x) = 0$; where $y = \mathrm{f}(x)$ meets the $x$-axis.</td><td>$\alpha \approx 1.796$ for $x^3 - x - 4 = 0$</td></tr>
+    <tr><td><strong>Continuous</strong></td><td>The graph has no breaks, jumps or asymptotes over the range considered.</td><td>Polynomials, $\mathrm{e}^x$; not $\tfrac1x$ near $0$</td></tr>
+    <tr><td><strong>Change of sign</strong></td><td>$\mathrm{f}(a)$ and $\mathrm{f}(b)$ have opposite signs.</td><td>$\mathrm{f}(1) = -4$, $\mathrm{f}(2) = 2$</td></tr>
+    <tr><td><strong>Iteration</strong></td><td>Repeatedly applying a formula to its own output.</td><td>$x_{n+1} = \sqrt[3]{x_n + 4}$</td></tr>
+    <tr><td><strong>Fixed point</strong></td><td>A value with $\mathrm{g}(\alpha) = \alpha$ — where $y = \mathrm{g}(x)$ meets $y = x$.</td><td>$\alpha = \sqrt[3]{\alpha + 4}$</td></tr>
+    <tr><td><strong>Converge / diverge</strong></td><td>The terms approach a limit / move away without settling.</td><td>$|\mathrm{g}'(\alpha)| &lt; 1$ / $&gt; 1$</td></tr>
+    <tr><td><strong>Staircase / cobweb</strong></td><td>Diagrams showing one-sided / alternating iterations.</td><td>$\mathrm{g}'(\alpha) &gt; 0$ / $\mathrm{g}'(\alpha) &lt; 0$</td></tr>
+    <tr><td><strong>Ordinate</strong></td><td>A $y$-value used in the trapezium rule.</td><td>$n$ strips use $n + 1$ ordinates</td></tr>
+    <tr><td><strong>Upper / lower bound</strong></td><td>The limits of values that round to a given answer.</td><td>$1.7955$ and $1.7965$ for $1.796$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Four Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Change of sign</div>
+    $\mathrm{f}$ continuous for $a \leqslant x \leqslant b$ and $\mathrm{f}(a)$, $\mathrm{f}(b)$ of opposite signs $\Rightarrow$ a root between $a$ and $b$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Fixed point iteration</div>
+    $\mathrm{f}(x) = 0 \;\to\; x = \mathrm{g}(x)$, &nbsp; $x_{n+1} = \mathrm{g}(x_n)$; &nbsp;converges if $|\mathrm{g}'(\alpha)| &lt; 1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — The Newton-Raphson method</div>
+    $x_{n+1} = x_n - \dfrac{\mathrm{f}(x_n)}{\mathrm{f}'(x_n)}$; &nbsp;fails if $\mathrm{f}'(x_n) = 0$ or is close to $0$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — The trapezium rule</div>
+    $\displaystyle\int_a^b y\,\mathrm{d}x \approx \frac{h}{2}\Big[y_0 + y_n + 2(y_1 + \cdots + y_{n-1})\Big]$, &nbsp;$h = \dfrac{b-a}{n}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Three methods on one equation</div>
+    <div class="example-body">
+      <p>$\mathrm{f}(x) = x^3 + x - 3$. (a) Show that $\mathrm{f}(x) = 0$ has a root $\alpha$ between $1$ and $2$. (b) Use $x_{n+1} = \sqrt[3]{3 - x_n}$ with $x_1 = 1$ to find $x_2$, $x_3$, $x_4$. (c) Use the Newton-Raphson method with $x_0 = 1$ to find $\alpha$ to $3$ d.p. (d) Prove your answer is correct to $3$ d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\mathrm{f}(1) = -1 &lt; 0$, $\mathrm{f}(2) = 7 &gt; 0$; change of sign and $\mathrm{f}$ is continuous, so $1 &lt; \alpha &lt; 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $x_2 = \sqrt[3]{2} = 1.2599$, $x_3 = 1.2028$, $x_4 = 1.2158$ — a cobweb, closing in slowly.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) $\mathrm{f}'(x) = 3x^2 + 1$. $x_1 = 1 - \dfrac{-1}{4} = 1.25$, $x_2 = 1.21429$, $x_3 = 1.21341$, $x_4 = 1.21341$. So $\alpha \approx 1.213$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(d) $\mathrm{f}(1.2125) = -0.00494 &lt; 0$ and $\mathrm{f}(1.2135) = 0.00048 &gt; 0$. Change of sign, so $1.2125 &lt; \alpha &lt; 1.2135$ and $\alpha = 1.213$ to $3$ d.p.</span></div>
+      <div class="tip">This is the typical shape of an exam question: <em>locate</em> with a sign change, <em>refine</em> with iteration or Newton-Raphson, then <em>prove</em> the accuracy with a sign change on the bounds.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Numerical Methods Subtopics</div>
+<div class="section-body">
+
+  <p>Each part of DfE content area I, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">I</span><span><a href="locating-roots.html">Locating Roots</a><span class="desc">Change of sign, narrowing down to a given accuracy, and when the method fails (asymptotes, repeated roots).</span></span></li>
+    <li><span class="code">I</span><span><a href="iteration.html">Iteration</a><span class="desc">$x_{n+1} = \mathrm{g}(x_n)$, staircase and cobweb diagrams, and why some rearrangements diverge.</span></span></li>
+    <li><span class="code">I</span><span><a href="newton-raphson.html">The Newton-Raphson Method</a><span class="desc">The formula from the tangent, rapid convergence, and failure near stationary points.</span></span></li>
+    <li><span class="code">I</span><span><a href="trapezium-rule.html">The Trapezium Rule</a><span class="desc">Estimating integrals, over- and underestimates from concavity, and using it in context.</span></span></li>
+  </ul>
+
+  <div class="tip">Numerical methods lean on other topics: Newton-Raphson and the convergence test need <a href="../differentiation/overview.html">differentiation</a>, and judging a trapezium estimate needs <a href="../differentiation/concavity.html">concavity</a>.</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>No conclusion after a sign change.</strong> Two values are not an answer. Finish with "change of sign and $\mathrm{f}$ is continuous, so there is a root between $a$ and $b$."
+  </div>
+
+  <div class="warn">
+    <strong>Testing the wrong values for accuracy.</strong> To show $\alpha = 2.208$ to 3 d.p., test $2.2075$ and $2.2085$ — not $2.207$ and $2.209$.
+  </div>
+
+  <div class="warn">
+    <strong>Degrees mode.</strong> Every trigonometric calculation in this topic is in radians.
+  </div>
+
+  <div class="warn">
+    <strong>Rounding iterates and re-entering them.</strong> Use the full calculator value (<code>Ans</code>) and round only what you write down.
+  </div>
+
+  <div class="warn">
+    <strong>Strips versus ordinates.</strong> "$6$ ordinates" means $5$ strips. Work out $h$ carefully.
+  </div>
+
+  <div class="warn">
+    <strong>Trusting a sign change across an asymptote</strong>, or assuming no sign change means no root. Sketch the graph.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Sign change</h4><p>Continuous $\mathrm{f}$, opposite signs $\Rightarrow$ a root between.</p></div>
+    <div class="ref-card"><h4>Accuracy proof</h4><p>Sign change across the rounding bounds.</p></div>
+    <div class="ref-card"><h4>Fails</h4><p>Asymptotes (false root); repeated or paired roots (no sign change).</p></div>
+    <div class="ref-card"><h4>Iteration</h4><p>$x_{n+1} = \mathrm{g}(x_n)$ converges if $|\mathrm{g}'(\alpha)| &lt; 1$.</p></div>
+    <div class="ref-card"><h4>Diagrams</h4><p>$\mathrm{g}' &gt; 0$ staircase; $\mathrm{g}' &lt; 0$ cobweb.</p></div>
+    <div class="ref-card"><h4>Newton-Raphson</h4><p>$x_{n+1} = x_n - \mathrm{f}(x_n)/\mathrm{f}'(x_n)$</p></div>
+    <div class="ref-card"><h4>N-R fails</h4><p>$\mathrm{f}'(x_n) \approx 0$: start away from stationary points.</p></div>
+    <div class="ref-card"><h4>Trapezium</h4><p>$\frac h2[\text{ends} + 2 \times \text{middles}]$</p></div>
+    <div class="ref-card"><h4>Over or under</h4><p>Convex: over. Concave: under.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Numerical Methods topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Show that $x^3 - 4x + 1 = 0$ has a root between $x = 1$ and $x = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = x^3 - 4x + 1$. $\mathrm{f}(1) = -2 &lt; 0$ and $\mathrm{f}(2) = 1 &gt; 0$.</p>
+          <p>Change of sign and $\mathrm{f}$ is continuous, so there is a root between $1$ and $2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Show that the equation $\cos x = x$ has a root between $0.7$ and $0.8$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $\mathrm{f}(x) = x - \cos x$ (radians).</p>
+          <p>$\mathrm{f}(0.7) = -0.0648\ldots &lt; 0$ and $\mathrm{f}(0.8) = 0.1033\ldots &gt; 0$.</p>
+          <p>Change of sign and $\mathrm{f}$ continuous, so there is a root with $0.7 &lt; x &lt; 0.8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Use $x_{n+1} = 2 + \dfrac{1}{x_n}$ with $x_1 = 2$ to find $x_2$ to $x_5$. Find the exact limit.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x_2 = 2.5$, $x_3 = 2.4$, $x_4 = 2.41667$, $x_5 = 2.41379$.</p>
+          <p>The limit satisfies $\alpha = 2 + \dfrac1\alpha$, so $\alpha^2 - 2\alpha - 1 = 0$ and $\alpha = 1 \pm \sqrt2$. The terms are positive, so $\alpha = 1 + \sqrt2 = 2.41421\ldots$</p>
+          <p>The terms alternate above and below the limit — a cobweb, since $\mathrm{g}'(x) = -\dfrac{1}{x^2} &lt; 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$x^3 - 4x + 1 = 0$ has roots near $-2.11$, $0.254$ and $1.861$. It is rearranged to $x = \dfrac{x^3 + 1}{4}$. Show that the iteration $x_{n+1} = \dfrac{x_n^3 + 1}{4}$ can converge to the root near $0.254$ but not to the root near $1.861$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{g}'(x) = \dfrac{3x^2}{4}$.</p>
+          <p>At $0.254$: $\mathrm{g}'(\alpha) \approx 0.048$, between $-1$ and $1$, so it converges (and very quickly: from $x_1 = 0.5$ we get $0.28125,\ 0.25556,\ 0.25417, \ldots$).</p>
+          <p>At $1.861$: $\mathrm{g}'(\beta) \approx 2.60 &gt; 1$, so it diverges from this root (from $1.9$: $1.9648,\ 2.1461,\ 2.7211, \ldots$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Use the Newton-Raphson method with $x_0 = 2$ to find the largest root of $x^3 - 4x + 1 = 0$ to $4$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 3x^2 - 4$. $x_1 = 2 - \dfrac{1}{8} = 1.875$.</p>
+          <p>$x_2 = 1.860979\ldots$, $x_3 = 1.860806\ldots$, $x_4 = 1.860806\ldots$</p>
+          <p>Root $= 1.8608$ to $4$ d.p.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Explain why $x_0 = \dfrac{2}{\sqrt3}$ is not a suitable starting value for the Newton-Raphson method on $\mathrm{f}(x) = x^3 - 4x + 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'\!\left(\tfrac{2}{\sqrt3}\right) = 3 \times \tfrac43 - 4 = 0$. This is a stationary point: the tangent is horizontal and does not meet the $x$-axis, so $x_1$ cannot be found (division by zero).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Use the trapezium rule with $4$ strips to estimate $\displaystyle\int_0^1 2^x\,\mathrm{d}x$ to $4$ d.p.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$h = 0.25$; ordinates $1,\ 1.18921,\ 1.41421,\ 1.68179,\ 2$.</p>
+          <p>$0.125\big[1 + 2 + 2(1.18921 + 1.41421 + 1.68179)\big] = 0.125 \times 11.57042 = 1.4463$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The exact value of the integral in Question 7 is $\dfrac{1}{\ln 2}$. Explain why the estimate is too large, and find the percentage error.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}^2}{\mathrm{d}x^2}2^x = (\ln 2)^2\, 2^x &gt; 0$, so the curve is convex and the chords lie above it: an overestimate.</p>
+          <p>$\dfrac{1}{\ln 2} = 1.44270$. Error $= \dfrac{1.44630 - 1.44270}{1.44270} \times 100 = 0.25\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \dfrac{3x - 1}{x - 2}$. Show that $\mathrm{f}(1)$ and $\mathrm{f}(3)$ have opposite signs, and explain why $\mathrm{f}(x) = 0$ has no root between $1$ and $3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}(1) = \dfrac{2}{-1} = -2$ and $\mathrm{f}(3) = \dfrac{8}{1} = 8$: opposite signs.</p>
+          <p>The only root is where the numerator is zero, $x = \tfrac13$, which is not between $1$ and $3$. The sign change is caused by the vertical asymptote $x = 2$: $\mathrm{f}$ is not continuous for $1 \leqslant x \leqslant 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$\mathrm{f}(x) = \ln x + x - 3$.</p>
+      <p>(a) Show that $\mathrm{f}(x) = 0$ has a root $\alpha$ between $2$ and $3$.<br>(b) Use $x_{n+1} = 3 - \ln x_n$ with $x_1 = 2$ to find $x_2$, $x_3$ and $x_4$ to $4$ d.p.<br>(c) Use the Newton-Raphson method with $x_0 = 2$ to find $x_1$ and $x_2$.<br>(d) Show that $\alpha = 2.208$ to $3$ d.p.<br>(e) Comment on the two methods.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathrm{f}(2) = -0.307 &lt; 0$, $\mathrm{f}(3) = 1.099 &gt; 0$. Change of sign and $\mathrm{f}$ continuous for $x &gt; 0$, so $2 &lt; \alpha &lt; 3$.</p>
+          <p><strong>(b)</strong> $x_2 = 3 - \ln 2 = 2.3069$, $x_3 = 2.1641$, $x_4 = 2.2280$.</p>
+          <p><strong>(c)</strong> $\mathrm{f}'(x) = \dfrac1x + 1$. $x_1 = 2 - \dfrac{-0.30685}{1.5} = 2.20457$, $x_2 = 2.20794$.</p>
+          <p><strong>(d)</strong> $\mathrm{f}(2.2075) = -0.00064 &lt; 0$ and $\mathrm{f}(2.2085) = 0.00081 &gt; 0$. Change of sign, so $2.2075 &lt; \alpha &lt; 2.2085$ and $\alpha = 2.208$ to $3$ d.p.</p>
+          <p><strong>(e)</strong> The iteration oscillates (a cobweb, as $\mathrm{g}'(x) = -\tfrac1x \approx -0.45$ near $\alpha$) and after three steps is only accurate to $1$ d.p. Newton-Raphson is correct to $4$ d.p. after two steps — much faster, at the cost of needing $\mathrm{f}'(x)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Numerical Methods Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

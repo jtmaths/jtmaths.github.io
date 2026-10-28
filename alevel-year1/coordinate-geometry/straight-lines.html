@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Straight Lines &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📏 Straight Lines</h1>
+  <p>A Level Maths Year 1 · Coordinate Geometry</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – GRADIENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Gradient: the Number That Describes a Line</div>
+<div class="section-body">
+
+  <p>Everything about a straight line follows from two facts: its <strong>gradient</strong> (how steep it is) and <strong>one point</strong> it passes through. This page is DfE content area <strong>C · Coordinate geometry</strong>, and it builds directly on the $y = mx + c$ work you met at GCSE.</p>
+
+  <div class="formula-box">
+    <div class="label">Gradient between two points</div>
+    $m = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{\text{change in } y}{\text{change in } x}$
+  </div>
+
+  <div class="svg-block">
+    <svg width="320" height="390" viewBox="0 0 320 390" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+      <!-- grid -->
+      <g stroke="#e0e7ff" stroke-width="1">
+        <line x1="20" y1="20" x2="20" y2="370"/><line x1="120" y1="20" x2="120" y2="370"/><line x1="170" y1="20" x2="170" y2="370"/><line x1="220" y1="20" x2="220" y2="370"/><line x1="270" y1="20" x2="270" y2="370"/>
+        <line x1="20" y1="20" x2="295" y2="20"/><line x1="20" y1="70" x2="295" y2="70"/><line x1="20" y1="120" x2="295" y2="120"/><line x1="20" y1="170" x2="295" y2="170"/><line x1="20" y1="270" x2="295" y2="270"/><line x1="20" y1="320" x2="295" y2="320"/><line x1="20" y1="370" x2="295" y2="370"/>
+      </g>
+      <!-- axes -->
+      <line x1="20" y1="220" x2="300" y2="220" stroke="#1e1e2e" stroke-width="1.5"/>
+      <line x1="70" y1="375" x2="70" y2="15" stroke="#1e1e2e" stroke-width="1.5"/>
+      <text x="304" y="224">x</text><text x="74" y="14">y</text>
+      <text x="116" y="234">2</text><text x="166" y="234">4</text><text x="216" y="234">6</text><text x="266" y="234">8</text>
+      <text x="56" y="174">2</text><text x="56" y="124">4</text><text x="56" y="74">6</text><text x="52" y="274">−2</text><text x="52" y="324">−4</text>
+      <!-- line y = 2x - 5 from x=0.5 to x=6.5 -->
+      <line x1="82.5" y1="320" x2="232.5" y2="20" stroke="#4f46e5" stroke-width="2.5"/>
+      <!-- gradient triangle -->
+      <line x1="120" y1="245" x2="220" y2="245" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="220" y1="245" x2="220" y2="45" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="150" y="262" fill="#6d28d9">run = 4</text>
+      <text x="226" y="150" fill="#6d28d9">rise = 8</text>
+      <circle cx="120" cy="245" r="4" fill="#4f46e5"/><circle cx="220" cy="45" r="4" fill="#4f46e5"/><circle cx="70" cy="345" r="4" fill="#ef4444"/>
+      <text x="90" y="258">(2, −1)</text><text x="168" y="45">(6, 7)</text><text x="76" y="360" fill="#b91c1c">(0, −5)</text>
+      <text x="236" y="34" fill="#4f46e5">y = 2x − 5</text>
+    </svg>
+  </div>
+
+  <div class="concept">
+    A <strong>positive</strong> gradient slopes up from left to right, a <strong>negative</strong> gradient slopes down. A horizontal line $y = k$ has gradient $0$; a vertical line $x = k$ has no gradient defined (you would be dividing by zero).
+  </div>
+
+  <div class="tip">
+    <strong>Gradient is a rate.</strong> In context the gradient always has units: "metres per second", "pounds per hour", "cm per gram". Saying what the gradient <em>means</em> is a common one-mark question.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EQUATIONS OF A LINE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Three Forms of the Equation</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Form</th><th>When to use it</th><th>What you read off</th></tr>
+    <tr><td>$y = mx + c$</td><td>Sketching; comparing gradients</td><td>Gradient $m$, $y$-intercept $(0, c)$</td></tr>
+    <tr><td>$y - y_1 = m(x - x_1)$</td><td>You know a gradient and a point</td><td>Passes through $(x_1, y_1)$ with gradient $m$</td></tr>
+    <tr><td>$ax + by + c = 0$</td><td>Final answers "in the form…" with integer $a, b, c$</td><td>Rearrange to find $m = -\dfrac{a}{b}$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The point–gradient form — the one to use by default</div>
+    $y - y_1 = m(x - x_1)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The line through two points</div>
+    <div class="example-body">
+      <p>Find the equation of the line through $A(2, -1)$ and $B(6, 7)$, giving it in the form $ax + by + c = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Gradient: $m = \dfrac{7 - (-1)}{6 - 2} = \dfrac{8}{4} = 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Use the point $A$: $y - (-1) = 2(x - 2)$, i.e. $y + 1 = 2x - 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $y = 2x - 5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Rearrange: $2x - y - 5 = 0$</span></div>
+      <div class="tip"><strong>Check with the other point:</strong> $2(6) - 7 - 5 = 0$ ✓. It takes five seconds and catches nearly every sign slip.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Reading a line given as $ax + by + c = 0$</div>
+    <div class="example-body">
+      <p>The line $L$ has equation $3x + 4y - 12 = 0$. Find its gradient and the points where it crosses the axes.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Make $y$ the subject: $4y = -3x + 12$, so $y = -\tfrac34 x + 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Gradient $-\tfrac34$; $y$-intercept $(0, 3)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>On the $x$-axis $y = 0$: $3x = 12$, so $(4, 0)$</span></div>
+      <div class="tip">For a quick sketch, the two intercepts are all you need: put $x = 0$, then $y = 0$.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>"Integer coefficients" means integers.</strong> If the question asks for $ax + by + c = 0$ with $a$, $b$, $c$ integers, an answer like $y = \tfrac23 x - 4$ loses the final mark. Multiply through: $2x - 3y - 12 = 0$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PARALLEL AND PERPENDICULAR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Parallel and Perpendicular Lines</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Gradient conditions</div>
+    Parallel: $m_1 = m_2$ &nbsp;&nbsp;&middot;&nbsp;&nbsp; Perpendicular: $m_1 \times m_2 = -1$, &nbsp;i.e.&nbsp; $m_2 = -\dfrac{1}{m_1}$
+  </div>
+
+  <div class="concept">
+    <strong>Why $-1$?</strong> Rotating a line through $90°$ turns a "run" of $1$ and "rise" of $m$ into a run of $-m$ and a rise of $1$, so the new gradient is $\dfrac{1}{-m}$. "Flip the fraction and change the sign."
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A perpendicular line</div>
+    <div class="example-body">
+      <p>Find the equation of the line through $(4, 1)$ that is perpendicular to $2x - 3y + 6 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rearrange the given line: $3y = 2x + 6$, so $y = \tfrac23 x + 2$. Gradient $\tfrac23$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Perpendicular gradient: $-\tfrac32$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y - 1 = -\tfrac32(x - 4)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Multiply by $2$: $2y - 2 = -3x + 12$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$3x + 2y - 14 = 0$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Proving a right angle</div>
+    <div class="example-body">
+      <p>$P(1, 2)$, $Q(5, 4)$ and $R(3, 8)$. Show that triangle $PQR$ is right-angled and find its area.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$m_{PQ} = \dfrac{4-2}{5-1} = \dfrac12$ &nbsp;and&nbsp; $m_{QR} = \dfrac{8-4}{3-5} = -2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tfrac12 \times (-2) = -1$, so $PQ \perp QR$: the right angle is at $Q$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$PQ = \sqrt{4^2 + 2^2} = \sqrt{20}$ &nbsp;and&nbsp; $QR = \sqrt{(-2)^2 + 4^2} = \sqrt{20}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Area $= \tfrac12 \times PQ \times QR = \tfrac12 \times \sqrt{20} \times \sqrt{20} = 10$</span></div>
+      <div class="tip">The two perpendicular sides are the base and height, so no extra height calculation is needed. The triangle is also isosceles, since $PQ = QR$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – MIDPOINTS, DISTANCES, INTERSECTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Midpoints, Distances and Intersections</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Midpoint and distance of $(x_1, y_1)$ and $(x_2, y_2)$</div>
+    $M = \left(\dfrac{x_1 + x_2}{2},\ \dfrac{y_1 + y_2}{2}\right)$ &nbsp;&nbsp;&nbsp; $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+  </div>
+
+  <p>The distance formula is just Pythagoras: the horizontal and vertical changes are the two shorter sides of a right-angled triangle.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A perpendicular bisector</div>
+    <div class="example-body">
+      <p>$A(-3, 2)$ and $B(5, -4)$. Find the length $AB$, and the equation of the perpendicular bisector of $AB$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$AB = \sqrt{8^2 + (-6)^2} = \sqrt{100} = 10$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Midpoint $M = \left(\dfrac{-3+5}{2}, \dfrac{2-4}{2}\right) = (1, -1)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$m_{AB} = \dfrac{-6}{8} = -\tfrac34$, so the perpendicular gradient is $\tfrac43$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y + 1 = \tfrac43(x - 1) \;\Rightarrow\; 3y + 3 = 4x - 4$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$4x - 3y - 7 = 0$</span></div>
+      <div class="tip">Every point on the perpendicular bisector is the <strong>same distance</strong> from $A$ and $B$. That is why it is the key tool for finding the centre of a circle — see <a href="circles.html">Circles</a>.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Where two lines meet</div>
+    <div class="example-body">
+      <p>Find the point of intersection of $x + 2y = 7$ and $3x - y = 7$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>From the first equation, $x = 7 - 2y$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Substitute: $3(7 - 2y) - y = 7 \;\Rightarrow\; 21 - 7y = 7 \;\Rightarrow\; y = 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = 7 - 4 = 3$, so the lines meet at $(3, 2)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Check in the second equation: $9 - 2 = 7$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Collinear points</div>
+    <div class="example-body">
+      <p>Show that $(-1, -4)$, $(2, 2)$ and $(5, 8)$ lie on a straight line.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Gradient from the first to the second point: $\dfrac{2 - (-4)}{2 - (-1)} = \dfrac{6}{3} = 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Gradient from the second to the third: $\dfrac{8 - 2}{5 - 2} = \dfrac{6}{3} = 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Equal gradients <em>and</em> a common point $(2, 2)$, so the three points are collinear.</span></div>
+      <div class="warn">Equal gradients alone only prove the segments are <em>parallel</em>. You must mention the shared point to conclude they lie on one line.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – MODELLING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Straight-Line Models</div>
+<div class="section-body">
+
+  <p>The subject content asks you to use straight-line models in a variety of contexts. A linear model says one quantity changes at a <strong>constant rate</strong> with respect to another.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A spring</div>
+    <div class="example-body">
+      <p>The length of a spring is $12$ cm when a $100$ g mass hangs from it, and $15$ cm with a $250$ g mass. Assume the length $L$ cm is a linear function of the mass $m$ g.</p>
+      <p>(a) Find $L$ in terms of $m$. &nbsp; (b) Interpret the gradient and intercept. &nbsp; (c) Predict $L$ for a $400$ g mass and comment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Gradient $= \dfrac{15 - 12}{250 - 100} = \dfrac{3}{150} = 0.02$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$L - 12 = 0.02(m - 100)$, so $L = 0.02m + 10$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The spring stretches $0.02$ cm for every extra gram. The intercept $10$ cm is the natural (unstretched) length.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$m = 400$: $L = 8 + 10 = 18$ cm.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$400$ g is outside the data range ($100$–$250$ g), so this is <strong>extrapolation</strong>. A large mass might overstretch the spring beyond its elastic limit, where the linear model fails.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Evaluating a model.</strong> Good comments are specific: say <em>which</em> assumption might fail and <em>why</em> (a quantity cannot become negative; a rate is unlikely to stay constant; the prediction is far outside the data).
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Gradient</h4><p>$m = \dfrac{y_2 - y_1}{x_2 - x_1}$</p></div>
+    <div class="ref-card"><h4>Point–gradient</h4><p>$y - y_1 = m(x - x_1)$</p></div>
+    <div class="ref-card"><h4>General form</h4><p>$ax + by + c = 0$, gradient $-\dfrac{a}{b}$</p></div>
+    <div class="ref-card"><h4>Parallel</h4><p>Same gradient.</p></div>
+    <div class="ref-card"><h4>Perpendicular</h4><p>$m_1 m_2 = -1$: flip and change sign.</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>Average the $x$'s, average the $y$'s.</p></div>
+    <div class="ref-card"><h4>Distance</h4><p>$\sqrt{(\Delta x)^2 + (\Delta y)^2}$</p></div>
+    <div class="ref-card"><h4>Perpendicular bisector</h4><p>Through the midpoint, perpendicular gradient.</p></div>
+    <div class="ref-card"><h4>Intersection</h4><p>Solve the equations simultaneously.</p></div>
+    <div class="ref-card"><h4>Models</h4><p>Gradient = rate of change, with units.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the equation of the line through $(-2, 5)$ and $(4, -7)$ in the form $y = mx + c$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$m = \dfrac{-7 - 5}{4 - (-2)} = \dfrac{-12}{6} = -2$</p>
+          <p>$y - 5 = -2(x + 2) = -2x - 4$</p>
+          <p>$y = -2x + 1$. &nbsp;Check: $-2(4) + 1 = -7$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the gradient and $y$-intercept of the line $5x - 2y + 8 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2y = 5x + 8$, so $y = \tfrac52 x + 4$.</p>
+          <p>Gradient $\tfrac52$, $y$-intercept $(0, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the equation of the line through $(3, -2)$ parallel to $y = 4x + 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Parallel, so the gradient is $4$.</p>
+          <p>$y + 2 = 4(x - 3)$, so $y = 4x - 14$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the equation of the line through $(-1, 4)$ perpendicular to $2x + 5y = 3$. Give your answer in the form $ax + by + c = 0$ where $a$, $b$ and $c$ are integers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5y = -2x + 3$, so the given gradient is $-\tfrac25$.</p>
+          <p>Perpendicular gradient: $\tfrac52$.</p>
+          <p>$y - 4 = \tfrac52(x + 1) \;\Rightarrow\; 2y - 8 = 5x + 5$</p>
+          <p>$5x - 2y + 13 = 0$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$A(2, -3)$ and $B(-4, 5)$. Find the midpoint of $AB$ and the length $AB$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Midpoint $\left(\dfrac{2 - 4}{2}, \dfrac{-3 + 5}{2}\right) = (-1, 1)$</p>
+          <p>$AB = \sqrt{(-6)^2 + 8^2} = \sqrt{100} = 10$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the perpendicular bisector of $P(1, 6)$ and $Q(7, 2)$, giving your answer in the form $ax + by + c = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Midpoint $(4, 4)$. &nbsp;$m_{PQ} = \dfrac{2 - 6}{7 - 1} = -\tfrac23$, so the perpendicular gradient is $\tfrac32$.</p>
+          <p>$y - 4 = \tfrac32(x - 4) \;\Rightarrow\; 2y - 8 = 3x - 12$</p>
+          <p>$3x - 2y - 4 = 0$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find the point where $y = 3x - 1$ meets $2x + 3y = 19$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Substitute: $2x + 3(3x - 1) = 19 \;\Rightarrow\; 11x - 3 = 19 \;\Rightarrow\; x = 2$.</p>
+          <p>$y = 3(2) - 1 = 5$. The lines meet at $(2, 5)$.</p>
+          <p>Check: $2(2) + 3(5) = 19$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The points $(1, k)$, $(3, 7)$ and $(6, 13)$ are collinear. Find $k$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient between $(3, 7)$ and $(6, 13)$: $\dfrac{6}{3} = 2$.</p>
+          <p>The gradient from $(1, k)$ to $(3, 7)$ must also be $2$: $\dfrac{7 - k}{2} = 2$.</p>
+          <p>$7 - k = 4$, so $k = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$A(-2, 1)$, $B(4, 4)$ and $C(2, 8)$. Show that angle $ABC$ is a right angle and find the exact area of triangle $ABC$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$m_{AB} = \dfrac{4 - 1}{4 + 2} = \dfrac12$, &nbsp;$m_{BC} = \dfrac{8 - 4}{2 - 4} = -2$.</p>
+          <p>$\tfrac12 \times (-2) = -1$, so $AB \perp BC$ and angle $ABC = 90°$.</p>
+          <p>$AB = \sqrt{6^2 + 3^2} = \sqrt{45} = 3\sqrt5$, &nbsp;$BC = \sqrt{(-2)^2 + 4^2} = \sqrt{20} = 2\sqrt5$.</p>
+          <p>Area $= \tfrac12 \times 3\sqrt5 \times 2\sqrt5 = \tfrac12 \times 30 = 15$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A candle burns at a steady rate. After $2$ hours it is $24$ cm tall; after $5$ hours it is $15$ cm tall. Let $h$ cm be the height after $t$ hours.</p>
+      <p>(a) Find a linear model for $h$ in terms of $t$. &nbsp; (b) Interpret the gradient and the intercept in context. &nbsp; (c) Find when the candle burns out. &nbsp; (d) State a suitable domain for the model, and give one reason why the model may not be accurate near the end.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Gradient $= \dfrac{15 - 24}{5 - 2} = -3$.</p>
+          <p>$h - 24 = -3(t - 2)$, so $h = 30 - 3t$.</p>
+          <p><strong>(b)</strong> The gradient $-3$ means the candle gets $3$ cm shorter every hour. The intercept $30$ means it was $30$ cm tall when first lit.</p>
+          <p><strong>(c)</strong> $h = 0$: $30 - 3t = 0$, so $t = 10$ hours.</p>
+          <p><strong>(d)</strong> $0 \leqslant t \leqslant 10$ — outside this range the model gives a height above the original or a negative height, which are impossible.</p>
+          <p>Near the end the wick may sit in a pool of wax or the candle may be in a holder, so it may not burn at the same constant rate (or may go out before $h$ reaches $0$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Straight Lines &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

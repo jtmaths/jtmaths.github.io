@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic Sequences and Series &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>➕ Arithmetic Sequences and Series</h1>
+  <p>A Level Maths Year 2 · Sequences and Series</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – ARITHMETIC SEQUENCES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Arithmetic Sequences</div>
+<div class="section-body">
+
+  <div class="concept">
+    An <strong>arithmetic sequence</strong> (or arithmetic progression, AP) goes up or down by the same amount every time. That fixed amount is the <strong>common difference</strong> $d$, and the first term is $a$.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The $n$th term of an arithmetic sequence</div>
+    $u_n = a + (n-1)d$
+  </div>
+
+  <p>The $(n-1)$ is there because to reach the $n$th term you start at $a$ and take $n - 1$ steps of size $d$. As a recurrence relation an AP is simply $u_{n+1} = u_n + d$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using the $n$th term</div>
+    <div class="example-body">
+      <p>For the sequence $7, 11, 15, 19, \ldots$ find the $20$th term, and find which term equals $199$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 7$, $d = 4$, so $u_n = 7 + 4(n-1) = 4n + 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$u_{20} = 4(20) + 3 = 83$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$4n + 3 = 199 \Rightarrow 4n = 196 \Rightarrow n = 49$. It is the $49$th term.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Two terms given</div>
+    <div class="example-body">
+      <p>The $5$th term of an arithmetic sequence is $17$ and the $12$th term is $45$. Find $a$ and $d$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a + 4d = 17$ &nbsp;and&nbsp; $a + 11d = 45$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Subtract: $7d = 28$, so $d = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$a = 17 - 16 = 1$.</span></div>
+      <div class="tip">From the $5$th to the $12$th term is $7$ steps, so $7d = 45 - 17$ straight away. Counting steps is quicker than solving equations.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Three consecutive terms</div>
+    <div class="example-body">
+      <p>$2k$, $5k - 3$ and $6k + 2$ are consecutive terms of an arithmetic sequence. Find $k$ and the three terms.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The middle term is the mean of its neighbours, so $2(5k - 3) = 2k + (6k + 2)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$10k - 6 = 8k + 2 \Rightarrow 2k = 8 \Rightarrow k = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The terms are $8$, $17$, $26$ (common difference $9$ ✓).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE SUM FORMULA AND ITS PROOF
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Arithmetic Series and the Sum Formula</div>
+<div class="section-body">
+
+  <p>A <strong>series</strong> is the sum of the terms of a sequence. $S_n$ means the sum of the first $n$ terms.</p>
+
+  <div class="formula-box">
+    <div class="label">Sum of an arithmetic series</div>
+    $S_n = \dfrac{n}{2}\big[2a + (n-1)d\big] \qquad\text{or}\qquad S_n = \dfrac{n}{2}(a + l)$<br>
+    <span style="font-size:.9rem">where $l = a + (n-1)d$ is the last term</span>
+  </div>
+
+  <p>You must be able to <strong>prove</strong> this formula. The trick is to write the sum twice, once forwards and once backwards.</p>
+
+  <div class="example">
+    <div class="example-header">Proof — The sum of an arithmetic series</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$S_n = a + (a + d) + (a + 2d) + \cdots + \big(a + (n-1)d\big)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Reverse the order: $S_n = \big(a + (n-1)d\big) + \big(a + (n-2)d\big) + \cdots + a$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add the two lines term by term. Every pair adds to $2a + (n-1)d$, and there are $n$ pairs:</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$2S_n = n\big[2a + (n-1)d\big]$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$S_n = \dfrac{n}{2}\big[2a + (n-1)d\big]$ $\blacksquare$</span></div>
+      <div class="tip">Since $2a + (n-1)d = a + \big(a + (n-1)d\big) = a + l$, the same proof gives $S_n = \tfrac{n}{2}(a + l)$: the number of terms times the average of the first and last.</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Special case: the first $n$ natural numbers</div>
+    $\displaystyle\sum_{r=1}^{n} r = 1 + 2 + 3 + \cdots + n = \dfrac{n(n+1)}{2}$
+  </div>
+
+  <p>This is the case $a = 1$, $d = 1$, $l = n$. For example $1 + 2 + \cdots + 100 = \tfrac12(100)(101) = 5050$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A straightforward sum</div>
+    <div class="example-body">
+      <p>Find the sum of the first $30$ terms of $3 + 7 + 11 + \cdots$</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 3$, $d = 4$, $n = 30$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S_{30} = \dfrac{30}{2}\big[6 + 29 \times 4\big] = 15 \times 122 = 1830$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Using the last term</div>
+    <div class="example-body">
+      <p>Find the sum of all the multiples of $3$ between $100$ and $300$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The first multiple is $102$ and the last is $297$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Number of terms: $\dfrac{297 - 102}{3} + 1 = 65 + 1 = 66$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$S = \dfrac{66}{2}(102 + 297) = 33 \times 399 = 13\,167$.</span></div>
+      <div class="warn">The "$+1$" is the most common error: $\dfrac{297 - 102}{3}$ counts the <em>gaps</em>, and there is always one more term than gaps.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – FINDING n
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Finding the Number of Terms</div>
+<div class="section-body">
+
+  <p>When the sum is given and $n$ is unknown, the sum formula becomes a <strong>quadratic in $n$</strong>. Only a positive integer solution makes sense.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — An exact sum</div>
+    <div class="example-body">
+      <p>An arithmetic series has first term $5$ and common difference $3$. The sum of the first $n$ terms is $1105$. Find $n$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{n}{2}\big[10 + 3(n-1)\big] = 1105 \Rightarrow \dfrac{n}{2}(3n + 7) = 1105$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3n^2 + 7n - 2210 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n = \dfrac{-7 \pm \sqrt{49 + 26\,520}}{6} = \dfrac{-7 \pm 163}{6}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n = 26$ (the other root, $-\tfrac{85}{3}$, is rejected).</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — When does the sum first exceed a value?</div>
+    <div class="example-body">
+      <p>For $2 + 5 + 8 + \cdots$, find the least $n$ for which $S_n > 1000$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$S_n = \dfrac{n}{2}\big[4 + 3(n-1)\big] = \dfrac{n(3n + 1)}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{n(3n+1)}{2} > 1000 \Rightarrow 3n^2 + n - 2000 > 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Roots of $3n^2 + n - 2000 = 0$: $n = \dfrac{-1 \pm \sqrt{24\,001}}{6}$, positive root $n \approx 25.65$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So $n > 25.65$, and the least integer is $n = 26$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Check: $S_{25} = \tfrac{25 \times 76}{2} = 950$ and $S_{26} = \tfrac{26 \times 79}{2} = 1027$ ✓</span></div>
+      <div class="tip">Always check the integers either side of the critical value — it is quick and it catches rounding errors.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — From $S_n$ back to $u_n$</div>
+    <div class="example-body">
+      <p>The sum of the first $n$ terms of a series is $S_n = 3n^2 + 2n$. Find $u_n$ and show the series is arithmetic.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u_n = S_n - S_{n-1}$ (the first $n$ terms minus the first $n - 1$).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 3n^2 + 2n - \big[3(n-1)^2 + 2(n-1)\big] = 3n^2 + 2n - 3n^2 + 6n - 3 - 2n + 2$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$u_n = 6n - 1$. Check: $u_1 = 5 = S_1$ ✓</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$u_{n+1} - u_n = 6$ is constant, so the series is arithmetic with $a = 5$, $d = 6$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PROBLEMS IN CONTEXT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Problems in Context</div>
+<div class="section-body">
+
+  <p>Anything that increases by a fixed amount each step — a salary with a fixed annual rise, rows of seats, a training plan — is an arithmetic model. Decide carefully what $a$, $d$ and $n$ represent.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — A salary scale</div>
+    <div class="example-body">
+      <p>Sam's starting salary is £$24\,000$ and rises by £$1500$ each year. (a) Find Sam's total earnings over the first $10$ years. (b) In which year does the salary first exceed £$40\,000$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $a = 24\,000$, $d = 1500$, $n = 10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S_{10} = \dfrac{10}{2}\big[48\,000 + 9 \times 1500\big] = 5 \times 61\,500 = $ £$307\,500$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $24\,000 + 1500(n - 1) > 40\,000 \Rightarrow n - 1 > 10.67$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n > 11.67$, so the salary first exceeds £$40\,000$ in year $12$ (when it is £$40\,500$).</span></div>
+      <div class="warn">Read whether the question wants a single year's value ($u_n$) or a running total ($S_n$). Mixing them up is the commonest error in context questions.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$n$th term</h4><p>$u_n = a + (n-1)d$</p></div>
+    <div class="ref-card"><h4>Sum</h4><p>$S_n = \tfrac{n}{2}[2a + (n-1)d]$</p></div>
+    <div class="ref-card"><h4>Sum with last term</h4><p>$S_n = \tfrac{n}{2}(a + l)$</p></div>
+    <div class="ref-card"><h4>Natural numbers</h4><p>$\sum_{r=1}^{n} r = \tfrac12 n(n+1)$</p></div>
+    <div class="ref-card"><h4>Proof</h4><p>Write $S_n$ forwards and backwards, then add.</p></div>
+    <div class="ref-card"><h4>Number of terms</h4><p>$\dfrac{l - a}{d} + 1$</p></div>
+    <div class="ref-card"><h4>Consecutive terms</h4><p>$2 \times \text{middle} = \text{first} + \text{third}$</p></div>
+    <div class="ref-card"><h4>From $S_n$ to $u_n$</h4><p>$u_n = S_n - S_{n-1}$</p></div>
+    <div class="ref-card"><h4>Unknown $n$</h4><p>Quadratic in $n$; keep the positive integer.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the $25$th term of the arithmetic sequence $5, 9, 13, \ldots$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = 5$, $d = 4$: $u_{25} = 5 + 24 \times 4 = 101$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the sum of the first $20$ terms of $2 + 6 + 10 + \cdots$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$S_{20} = \dfrac{20}{2}\big[4 + 19 \times 4\big] = 10 \times 80 = 800$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>The $4$th term of an arithmetic sequence is $10$ and the $9$th term is $30$. Find the first term, the common difference, and the sum of the first $15$ terms.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Five steps from $u_4$ to $u_9$: $5d = 20$, so $d = 4$.</p>
+          <p>$a + 3d = 10 \Rightarrow a = -2$.</p>
+          <p>$S_{15} = \dfrac{15}{2}\big[-4 + 14 \times 4\big] = \dfrac{15}{2} \times 52 = 390$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{40} (5r - 2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>This is arithmetic with $a = 3$, $l = 198$, $n = 40$.</p>
+          <p>$S = \dfrac{40}{2}(3 + 198) = 20 \times 201 = 4020$.</p>
+          <p><em>Or:</em> $5 \times \tfrac12(40)(41) - 2 \times 40 = 4100 - 80 = 4020$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$x$, $2x + 3$ and $4x - 1$ are consecutive terms of an arithmetic sequence. Find $x$ and the common difference.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2(2x + 3) = x + (4x - 1) \Rightarrow 4x + 6 = 5x - 1 \Rightarrow x = 7$.</p>
+          <p>The terms are $7, 17, 27$, so $d = 10$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the sum of all the odd numbers between $100$ and $200$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First $101$, last $199$, $d = 2$.</p>
+          <p>Number of terms: $\dfrac{199 - 101}{2} + 1 = 50$.</p>
+          <p>$S = \dfrac{50}{2}(101 + 199) = 25 \times 300 = 7500$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Prove that the sum of the first $n$ odd numbers is $n^2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The odd numbers $1, 3, 5, \ldots$ form an AP with $a = 1$, $d = 2$.</p>
+          <p>$S_n = \dfrac{n}{2}\big[2 + 2(n-1)\big] = \dfrac{n}{2} \times 2n = n^2$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>An arithmetic series has first term $30$ and common difference $-4$. (a) Find the value of $n$ for which $S_n = 0$. (b) Find the greatest value of $S_n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$S_n = \dfrac{n}{2}\big[60 - 4(n-1)\big] = \dfrac{n}{2}(64 - 4n) = n(32 - 2n)$.</p>
+          <p><strong>(a)</strong> $n(32 - 2n) = 0$ gives $n = 16$ (ignoring $n = 0$).</p>
+          <p><strong>(b)</strong> The sum is greatest while the terms are still positive. The terms are $30, 26, \ldots, 6, 2, -2, \ldots$, so the first $8$ terms are positive.</p>
+          <p>$S_8 = 8(32 - 16) = 128$. (Equivalently, $n(32-2n)$ is a quadratic with its maximum at $n = 8$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the least number of terms of $3 + 7 + 11 + \cdots$ needed for the sum to exceed $500$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$S_n = \dfrac{n}{2}\big[6 + 4(n-1)\big] = n(2n + 1)$.</p>
+          <p>$2n^2 + n - 500 > 0$. Positive root: $n = \dfrac{-1 + \sqrt{4001}}{4} \approx 15.56$.</p>
+          <p>So $n = 16$. Check: $S_{15} = 15 \times 31 = 465$, $S_{16} = 16 \times 33 = 528$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Priya starts a training plan. On day $1$ she runs $2$ km, and each day she runs $0.5$ km further than the day before.</p>
+      <p>(a) How far does she run on day $15$? &nbsp; (b) Find her total distance over the first $15$ days. &nbsp; (c) Show that her total distance after $n$ days is $\dfrac{n(n+7)}{4}$ km, and find the number of days needed for her total to reach $200$ km. &nbsp; (d) Comment on the suitability of the model for large $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $u_{15} = 2 + 14 \times 0.5 = 9$ km.</p>
+          <p><strong>(b)</strong> $S_{15} = \dfrac{15}{2}(2 + 9) = 82.5$ km.</p>
+          <p><strong>(c)</strong> $S_n = \dfrac{n}{2}\big[4 + 0.5(n - 1)\big] = \dfrac{n}{2}\cdot\dfrac{n + 7}{2} = \dfrac{n(n+7)}{4}$ ✓</p>
+          <p>$\dfrac{n(n+7)}{4} \geqslant 200 \Rightarrow n^2 + 7n - 800 \geqslant 0$.</p>
+          <p>$n = \dfrac{-7 + \sqrt{49 + 3200}}{2} = \dfrac{-7 + 57}{2} = 25$.</p>
+          <p>So she reaches exactly $200$ km at the end of day $25$ (check: $\tfrac{25 \times 32}{4} = 200$ ✓).</p>
+          <p><strong>(d)</strong> The daily distance grows without limit — on day $81$ she would run $42$ km, a marathon every day. In reality there is a maximum distance she can run, so the model is only sensible for a limited period.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Arithmetic Sequences and Series &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability and Venn Diagrams &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⭕ Probability and Venn Diagrams</h1>
+  <p>A Level Maths Year 1 · Probability and Distributions</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BASICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Events and Probabilities</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Term</th><th>Meaning</th><th>Notation</th></tr>
+    <tr><td><strong>Sample space</strong></td><td>The set of all possible outcomes.</td><td>$S$ or $\xi$</td></tr>
+    <tr><td><strong>Event</strong></td><td>A set of outcomes.</td><td>$A$, $B$</td></tr>
+    <tr><td><strong>Complement</strong></td><td>"$A$ does not happen".</td><td>$A'$</td></tr>
+    <tr><td><strong>Intersection</strong></td><td>"$A$ and $B$ both happen".</td><td>$A \cap B$</td></tr>
+    <tr><td><strong>Union</strong></td><td>"$A$ or $B$ (or both) happen".</td><td>$A \cup B$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Basic rules</div>
+    $0 \leqslant \mathrm{P}(A) \leqslant 1$ &nbsp;&nbsp;&nbsp; $\mathrm{P}(A') = 1 - \mathrm{P}(A)$<br>
+    For equally likely outcomes: $\mathrm{P}(A) = \dfrac{\text{number of outcomes in } A}{\text{total number of outcomes}}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The addition rule</div>
+    $\mathrm{P}(A \cup B) = \mathrm{P}(A) + \mathrm{P}(B) - \mathrm{P}(A \cap B)$
+  </div>
+
+  <div class="concept">
+    Adding $\mathrm{P}(A)$ and $\mathrm{P}(B)$ counts the overlap $A \cap B$ twice, so it is subtracted once. A Venn diagram makes this obvious.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – VENN DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Venn Diagrams</div>
+<div class="section-body">
+
+  <p>A Venn diagram shows the sample space as a rectangle and events as overlapping circles. Fill it in <strong>from the middle outwards</strong>: the intersection first, then the "only" regions, then the region outside all circles.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Filling in a Venn diagram</div>
+    <div class="example-body">
+      <p>In a group of $40$ students, $18$ study French, $15$ study Spanish and $6$ study both. A student is chosen at random. Find (a) P(French or Spanish), (b) P(neither), (c) P(exactly one language).</p>
+      <div class="svg-block">
+        <svg width="340" height="190" viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+          <rect x="10" y="10" width="320" height="170" fill="#fafafe" stroke="#4f46e5" stroke-width="1.5" rx="6"/>
+          <circle cx="135" cy="95" r="65" fill="#c4b5fd" fill-opacity="0.45" stroke="#4f46e5" stroke-width="1.5"/>
+          <circle cx="210" cy="95" r="65" fill="#a5b4fc" fill-opacity="0.45" stroke="#7c3aed" stroke-width="1.5"/>
+          <text x="80" y="35" fill="#4f46e5" font-weight="700">F</text>
+          <text x="258" y="35" fill="#7c3aed" font-weight="700">S</text>
+          <text x="100" y="100">12</text><text x="166" y="100">6</text><text x="232" y="100">9</text>
+          <text x="295" y="165">13</text>
+        </svg>
+      </div>
+      <div class="step-row"><span class="arrow">①</span><span>Both: $6$. French only: $18 - 6 = 12$. Spanish only: $15 - 6 = 9$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Neither: $40 - (12 + 6 + 9) = 13$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(a) $\mathrm{P}(F \cup S) = \dfrac{27}{40}$ &nbsp;(check: $\tfrac{18}{40} + \tfrac{15}{40} - \tfrac{6}{40} = \tfrac{27}{40}$ ✓)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) $\mathrm{P}(\text{neither}) = \dfrac{13}{40}$. &nbsp; (c) $\mathrm{P}(\text{exactly one}) = \dfrac{12 + 9}{40} = \dfrac{21}{40}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Using the addition rule</div>
+    <div class="example-body">
+      <p>$\mathrm{P}(A) = 0.5$, $\mathrm{P}(B) = 0.4$ and $\mathrm{P}(A \cup B) = 0.7$. Find $\mathrm{P}(A \cap B)$ and $\mathrm{P}(A \cap B')$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$0.7 = 0.5 + 0.4 - \mathrm{P}(A \cap B)$, so $\mathrm{P}(A \cap B) = 0.2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(A \cap B')$ is "$A$ only": $0.5 - 0.2 = 0.3$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MUTUALLY EXCLUSIVE AND INDEPENDENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Mutually Exclusive and Independent Events</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Mutually exclusive events</div>
+    $A$ and $B$ cannot both happen: $\mathrm{P}(A \cap B) = 0$, so $\mathrm{P}(A \cup B) = \mathrm{P}(A) + \mathrm{P}(B)$<br>
+    On a Venn diagram the circles do not overlap
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Independent events</div>
+    One happening does not change the probability of the other:<br>
+    $\mathrm{P}(A \cap B) = \mathrm{P}(A) \times \mathrm{P}(B)$
+  </div>
+
+  <div class="warn">
+    <strong>These are different ideas.</strong> Mutually exclusive events with non-zero probabilities can <em>never</em> be independent: if one happens, the other's probability drops to zero. "Mutually exclusive" is about the <em>overlap</em>; "independent" is about whether one event <em>affects</em> the other.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Testing for independence</div>
+    <div class="example-body">
+      <p>Using the probabilities in Worked Example 2, are $A$ and $B$ independent?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{P}(A) \times \mathrm{P}(B) = 0.5 \times 0.4 = 0.2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(A \cap B) = 0.2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>They are equal, so $A$ and $B$ are independent.</span></div>
+      <div class="tip">To <em>show</em> independence or dependence you must calculate both sides and compare them explicitly.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Independence in a Venn diagram</div>
+    <div class="example-body">
+      <p>Using the French/Spanish data in Worked Example 1, are "studies French" and "studies Spanish" independent?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathrm{P}(F) \times \mathrm{P}(S) = \dfrac{18}{40} \times \dfrac{15}{40} = \dfrac{270}{1600} = 0.16875$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(F \cap S) = \dfrac{6}{40} = 0.15$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0.15 \neq 0.16875$, so the events are not independent.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Finding unknowns</div>
+    <div class="example-body">
+      <p>In a Venn diagram, $\mathrm{P}(A \text{ only}) = 0.3$, $\mathrm{P}(A \cap B) = x$, $\mathrm{P}(B \text{ only}) = 0.2$ and $\mathrm{P}(\text{neither}) = 0.3$. Find $x$ and determine whether $A$ and $B$ are independent.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Probabilities total $1$: $0.3 + x + 0.2 + 0.3 = 1$, so $x = 0.2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mathrm{P}(A) = 0.5$, $\mathrm{P}(B) = 0.4$, and $0.5 \times 0.4 = 0.2 = \mathrm{P}(A \cap B)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $A$ and $B$ are independent.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TREE DIAGRAMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Tree Diagrams</div>
+<div class="section-body">
+
+  <div class="concept">
+    A tree diagram shows events happening in stages. <strong>Multiply along</strong> the branches to find the probability of a path; <strong>add</strong> the probabilities of different paths that give the outcome you want. The branches from any one point must add to $1$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A two-stage tree</div>
+    <div class="example-body">
+      <p>The probability that it rains on a given morning is $0.3$. If it rains, the probability that Sam's bus is late is $0.6$; if it does not rain, it is $0.2$. Find the probability that the bus is late.</p>
+      <div class="svg-block">
+        <svg width="380" height="190" viewBox="0 0 380 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+          <g stroke="#4f46e5" stroke-width="1.5">
+            <line x1="20" y1="95" x2="130" y2="50"/><line x1="20" y1="95" x2="130" y2="140"/>
+            <line x1="165" y1="50" x2="265" y2="25"/><line x1="165" y1="50" x2="265" y2="75"/>
+            <line x1="165" y1="140" x2="265" y2="115"/><line x1="165" y1="140" x2="265" y2="165"/>
+          </g>
+          <text x="135" y="54" font-weight="700">Rain</text><text x="135" y="144" font-weight="700">Dry</text>
+          <text x="60" y="62" fill="#6d28d9">0.3</text><text x="60" y="138" fill="#6d28d9">0.7</text>
+          <text x="270" y="29">Late</text><text x="270" y="79">On time</text><text x="270" y="119">Late</text><text x="270" y="169">On time</text>
+          <text x="205" y="30" fill="#6d28d9">0.6</text><text x="205" y="77" fill="#6d28d9">0.4</text>
+          <text x="205" y="120" fill="#6d28d9">0.2</text><text x="205" y="167" fill="#6d28d9">0.8</text>
+          <text x="325" y="29" fill="#dc2626">0.18</text><text x="325" y="119" fill="#dc2626">0.14</text>
+        </svg>
+      </div>
+      <div class="step-row"><span class="arrow">①</span><span>Rain and late: $0.3 \times 0.6 = 0.18$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Dry and late: $0.7 \times 0.2 = 0.14$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(\text{late}) = 0.18 + 0.14 = 0.32$.</span></div>
+      <div class="tip">Rain and lateness are <em>not</em> independent here — the second-stage probabilities depend on the first. Tree diagrams handle this naturally; formal conditional probability notation, $\mathrm{P}(B \mid A)$, comes in Year 2.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Without replacement</div>
+    <div class="example-body">
+      <p>A bag holds $5$ red and $3$ blue counters. Two are taken at random without replacement. Find the probability that they are the same colour.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Both red: $\dfrac58 \times \dfrac47 = \dfrac{20}{56}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Both blue: $\dfrac38 \times \dfrac27 = \dfrac{6}{56}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(\text{same}) = \dfrac{26}{56} = \dfrac{13}{28}$.</span></div>
+      <div class="warn">Without replacement, the second-stage denominators drop by one and the numerators change too.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — "At least one"</div>
+    <div class="example-body">
+      <p>A fair die is rolled four times. Find the probability of at least one six.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The complement of "at least one six" is "no sixes".</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Rolls are independent, so $\mathrm{P}(\text{no sixes}) = \left(\tfrac56\right)^4 = \tfrac{625}{1296}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(\text{at least one six}) = 1 - \tfrac{625}{1296} = \tfrac{671}{1296} \approx 0.518$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Complement</h4><p>$\mathrm{P}(A') = 1 - \mathrm{P}(A)$</p></div>
+    <div class="ref-card"><h4>Addition rule</h4><p>$\mathrm{P}(A \cup B) = \mathrm{P}(A) + \mathrm{P}(B) - \mathrm{P}(A \cap B)$</p></div>
+    <div class="ref-card"><h4>Mutually exclusive</h4><p>$\mathrm{P}(A \cap B) = 0$</p></div>
+    <div class="ref-card"><h4>Independent</h4><p>$\mathrm{P}(A \cap B) = \mathrm{P}(A)\,\mathrm{P}(B)$</p></div>
+    <div class="ref-card"><h4>Venn diagram</h4><p>Fill from the middle outwards.</p></div>
+    <div class="ref-card"><h4>Tree diagram</h4><p>Multiply along, add between paths.</p></div>
+    <div class="ref-card"><h4>Without replacement</h4><p>Second-stage probabilities change.</p></div>
+    <div class="ref-card"><h4>At least one</h4><p>$1 - \mathrm{P}(\text{none})$</p></div>
+    <div class="ref-card"><h4>Check</h4><p>All probabilities in a diagram total $1$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.35$. Find $\mathrm{P}(A')$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 - 0.35 = 0.65$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$A$ and $B$ are mutually exclusive, with $\mathrm{P}(A) = 0.25$ and $\mathrm{P}(B) = 0.4$. Find $\mathrm{P}(A \cup B)$ and $\mathrm{P}\big((A \cup B)'\big)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \cup B) = 0.25 + 0.4 = 0.65$; &nbsp; $\mathrm{P}\big((A \cup B)'\big) = 0.35$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$A$ and $B$ are independent, with $\mathrm{P}(A) = 0.6$ and $\mathrm{P}(B) = 0.3$. Find $\mathrm{P}(A \cap B)$ and $\mathrm{P}(A \cup B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \cap B) = 0.6 \times 0.3 = 0.18$</p>
+          <p>$\mathrm{P}(A \cup B) = 0.6 + 0.3 - 0.18 = 0.72$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Of $50$ people, $28$ drink tea, $20$ drink coffee and $7$ drink neither. Find the probability that a person chosen at random drinks exactly one of the two.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Drink at least one: $50 - 7 = 43$. Both: $28 + 20 - 43 = 5$.</p>
+          <p>Tea only $23$, coffee only $15$, so exactly one: $38$.</p>
+          <p>$\mathrm{P} = \dfrac{38}{50} = 0.76$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.4$, $\mathrm{P}(B) = 0.25$ and $\mathrm{P}(A \cap B) = 0.1$. Are $A$ and $B$ independent? Are they mutually exclusive?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.4 \times 0.25 = 0.1 = \mathrm{P}(A \cap B)$, so they are independent.</p>
+          <p>$\mathrm{P}(A \cap B) \neq 0$, so they are not mutually exclusive.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A darts player hits the target with probability $0.7$ on each throw, independently. In three throws, find the probability that she hits the target (a) exactly twice, (b) at least once.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> The miss can be on any of the $3$ throws: $3 \times 0.7^2 \times 0.3 = 0.441$.</p>
+          <p><strong>(b)</strong> $1 - 0.3^3 = 1 - 0.027 = 0.973$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A box contains $4$ green and $6$ yellow balls. Two are drawn without replacement. Find the probability that they are different colours.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>GY: $\tfrac{4}{10} \times \tfrac69 = \tfrac{24}{90}$. &nbsp; YG: $\tfrac{6}{10} \times \tfrac49 = \tfrac{24}{90}$.</p>
+          <p>Total: $\dfrac{48}{90} = \dfrac{8}{15}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.5$, $\mathrm{P}(B) = 0.3$ and $\mathrm{P}(A \cup B) = 0.65$. Draw a Venn diagram showing the probability of each region, and determine whether $A$ and $B$ are independent.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \cap B) = 0.5 + 0.3 - 0.65 = 0.15$.</p>
+          <p>Regions: $A$ only $0.35$; both $0.15$; $B$ only $0.15$; neither $0.35$.</p>
+          <p>$0.5 \times 0.3 = 0.15 = \mathrm{P}(A \cap B)$, so independent.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Of $100$ students: $4$ play football, hockey and swim; $6$ play football and hockey only; $5$ play football and swim only; $3$ play hockey and swim only; $20$ play football only; $12$ hockey only; $15$ swim only. (a) How many do none? (b) Find P(exactly two activities). (c) Are "plays football" and "swims" independent?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $4 + 6 + 5 + 3 + 20 + 12 + 15 = 65$, so $35$ do none.</p>
+          <p><strong>(b)</strong> $\dfrac{6 + 5 + 3}{100} = 0.14$</p>
+          <p><strong>(c)</strong> $\mathrm{P}(F) = \dfrac{20 + 6 + 5 + 4}{100} = 0.35$, $\mathrm{P}(S) = \dfrac{15 + 5 + 3 + 4}{100} = 0.27$, $\mathrm{P}(F \cap S) = \dfrac{5 + 4}{100} = 0.09$.</p>
+          <p>$0.35 \times 0.27 = 0.0945 \neq 0.09$, so not independent.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A factory has two machines. On any day, machine A breaks down with probability $0.05$ and machine B with probability $0.08$, independently.</p>
+      <p>(a) Find the probability that on a given day both break down. &nbsp; (b) Find the probability that at least one breaks down. &nbsp; (c) Find the probability that exactly one breaks down. &nbsp; (d) Find the probability that neither breaks down on any of $5$ consecutive days. &nbsp; (e) The machines share a power supply. Comment on the independence assumption.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $0.05 \times 0.08 = 0.004$</p>
+          <p><strong>(b)</strong> $\mathrm{P}(\text{neither}) = 0.95 \times 0.92 = 0.874$, so $1 - 0.874 = 0.126$.</p>
+          <p><strong>(c)</strong> $0.05 \times 0.92 + 0.95 \times 0.08 = 0.046 + 0.076 = 0.122$ &nbsp;(check: $0.126 - 0.004 = 0.122$ ✓)</p>
+          <p><strong>(d)</strong> Assuming days are independent: $0.874^5 = 0.510$ (3 s.f.).</p>
+          <p><strong>(e)</strong> A power failure could stop both machines at once, so breakdowns would tend to happen together. Then $\mathrm{P}(\text{both})$ would be larger than $0.004$ and the events would not be independent.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Probability and Venn Diagrams &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

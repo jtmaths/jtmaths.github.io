@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Graphs &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Motion Graphs</h1>
+  <p>A Level Maths Year 1 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE LANGUAGE OF MOTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Language of Motion</div>
+<div class="section-body">
+
+  <p>Kinematics (DfE content area Q) describes motion without asking what causes it. On this page all motion is in a <strong>straight line</strong>, so direction is shown by a sign. Choose a positive direction at the start and keep it.</p>
+
+  <table>
+    <tr><th>Quantity</th><th>Symbol</th><th>Meaning</th><th>Can it be negative?</th></tr>
+    <tr><td><strong>Position / displacement</strong></td><td>$s$ or $x$</td><td>Distance from a fixed origin, in the positive or negative direction</td><td>Yes</td></tr>
+    <tr><td><strong>Distance</strong></td><td>—</td><td>Total length of path travelled</td><td>No</td></tr>
+    <tr><td><strong>Velocity</strong></td><td>$v$</td><td>Rate of change of displacement</td><td>Yes — negative means moving in the negative direction</td></tr>
+    <tr><td><strong>Speed</strong></td><td>—</td><td>Magnitude of velocity, $|v|$</td><td>No</td></tr>
+    <tr><td><strong>Acceleration</strong></td><td>$a$</td><td>Rate of change of velocity</td><td>Yes</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Averages</div>
+    average speed $= \dfrac{\text{total distance}}{\text{total time}}$ &nbsp;&nbsp;&nbsp; average velocity $= \dfrac{\text{displacement}}{\text{total time}}$
+  </div>
+
+  <div class="warn">
+    <strong>"Deceleration" is a word, not a sign.</strong> A deceleration of $2$ m s$^{-2}$ means the speed is falling by $2$ m s$^{-1}$ every second. If the particle moves in the positive direction, its acceleration is $a = -2$ m s$^{-2}$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DISPLACEMENT-TIME GRAPHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Displacement–Time Graphs</div>
+<div class="section-body">
+
+  <div class="concept">
+    On a <strong>displacement–time graph</strong>, the <strong>gradient is the velocity</strong>. A straight section means constant velocity; a horizontal section means the object is at rest; a negative gradient means it is moving back towards (or past) the origin. A curved section means the velocity is changing.
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="260" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="220" x2="470" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="220" x2="60" y2="40" stroke="#475569" stroke-width="2"/>
+      <text x="474" y="225" font-family="Arial" font-size="13" fill="#475569">t (s)</text>
+      <text x="40" y="36" font-family="Arial" font-size="13" fill="#475569">s (m)</text>
+      <line x1="56" y1="70" x2="60" y2="70" stroke="#475569"/>
+      <text x="52" y="74" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">50</text>
+      <text x="52" y="224" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">0</text>
+      <text x="190" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">10</text>
+      <text x="320" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">20</text>
+      <text x="450" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">30</text>
+      <line x1="190" y1="70" x2="190" y2="220" stroke="#c7d2fe" stroke-dasharray="4,3"/>
+      <line x1="320" y1="70" x2="320" y2="220" stroke="#c7d2fe" stroke-dasharray="4,3"/>
+      <polyline points="60,220 190,70 320,70 450,220" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <text x="92" y="130" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">v = 5</text>
+      <text x="230" y="62" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">v = 0</text>
+      <text x="395" y="130" font-family="Arial" font-size="12" fill="#3730a3" font-weight="bold">v = −5</text>
+      <text x="255" y="254" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Gradient of a displacement–time graph = velocity</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Reading a displacement–time graph</div>
+    <div class="example-body">
+      <p>The graph above shows a cyclist's displacement from home. Describe the motion and find the average speed and average velocity for the whole $30$ s.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$0$–$10$ s: gradient $= \dfrac{50}{10} = 5$, so she rides away from home at $5$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$10$–$20$ s: gradient $0$, so she is at rest $50$ m from home.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$20$–$30$ s: gradient $= \dfrac{0 - 50}{10} = -5$, so she rides back home at $5$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Average speed $= \dfrac{100}{30} = 3.33$ m s$^{-1}$ (3 s.f.). Average velocity $= \dfrac{0}{30} = 0$ m s$^{-1}$, because she ends where she started.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – VELOCITY-TIME GRAPHS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Velocity–Time Graphs</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The two facts that do everything</div>
+    <strong>Gradient</strong> of a $v$–$t$ graph $=$ <strong>acceleration</strong><br>
+    <strong>Area</strong> between a $v$–$t$ graph and the $t$-axis $=$ <strong>displacement</strong>
+  </div>
+
+  <div class="svg-block">
+    <svg width="500" height="260" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,220 140,64 340,64 460,220" fill="#c7d2fe" opacity=".6"/>
+      <line x1="60" y1="220" x2="480" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="220" x2="60" y2="40" stroke="#475569" stroke-width="2"/>
+      <text x="484" y="225" font-family="Arial" font-size="13" fill="#475569">t (s)</text>
+      <text x="30" y="36" font-family="Arial" font-size="13" fill="#475569">v (m s⁻¹)</text>
+      <line x1="56" y1="64" x2="60" y2="64" stroke="#475569"/>
+      <text x="52" y="68" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">12</text>
+      <text x="52" y="224" font-family="Arial" font-size="11" fill="#475569" text-anchor="end">0</text>
+      <text x="140" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">4</text>
+      <text x="340" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">14</text>
+      <text x="460" y="236" font-family="Arial" font-size="11" fill="#475569" text-anchor="middle">20</text>
+      <line x1="140" y1="64" x2="140" y2="220" stroke="#4f46e5" stroke-dasharray="4,3"/>
+      <line x1="340" y1="64" x2="340" y2="220" stroke="#4f46e5" stroke-dasharray="4,3"/>
+      <polyline points="60,220 140,64 340,64 460,220" fill="none" stroke="#4f46e5" stroke-width="3"/>
+      <text x="106" y="185" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">24</text>
+      <text x="240" y="150" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">120</text>
+      <text x="380" y="185" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">36</text>
+      <text x="76" y="120" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">a = 3</text>
+      <text x="410" y="120" font-family="Arial" font-size="12" fill="#b91c1c" font-weight="bold">a = −2</text>
+      <text x="260" y="254" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Shaded area = 24 + 120 + 36 = 180 m</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Accelerations and distance</div>
+    <div class="example-body">
+      <p>A car starts from rest and accelerates uniformly to $12$ m s$^{-1}$ in $4$ s, travels at this speed for $10$ s, then decelerates uniformly to rest in $6$ s (graph above). Find the accelerations and the total distance.</p>
+      <div class="step-row"><span class="arrow">①</span><span>First stage: $a = \dfrac{12 - 0}{4} = 3$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Last stage: $a = \dfrac{0 - 12}{6} = -2$ m s$^{-2}$ (a deceleration of $2$ m s$^{-2}$).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area $= \tfrac12(4)(12) + (10)(12) + \tfrac12(6)(12) = 24 + 120 + 36 = 180$ m.</span></div>
+      <div class="tip">The whole shape is a trapezium with parallel sides $10$ and $20$: area $= \tfrac12(10 + 20)(12) = 180$ m ✓. Using the trapezium formula is faster when the graph starts and ends at rest.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding an unknown time</div>
+    <div class="example-body">
+      <p>A train accelerates uniformly from rest to $20$ m s$^{-1}$ in $25$ s, travels at constant speed for $T$ s, then decelerates uniformly to rest in $15$ s. The total distance is $2$ km. Find $T$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Area $= \tfrac12(25)(20) + 20T + \tfrac12(15)(20) = 250 + 20T + 150$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$400 + 20T = 2000$ &nbsp;(convert $2$ km to $2000$ m)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$20T = 1600 \Rightarrow T = 80$ s.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – NEGATIVE VELOCITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> When the Velocity Changes Sign</div>
+<div class="section-body">
+
+  <div class="concept">
+    Area <strong>below</strong> the $t$-axis on a $v$–$t$ graph represents displacement in the <strong>negative</strong> direction. For <strong>displacement</strong>, subtract it; for <strong>distance</strong>, add its size.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Displacement versus distance</div>
+    <div class="example-body">
+      <p>A particle's velocity decreases uniformly from $6$ m s$^{-1}$ at $t = 0$ to $-4$ m s$^{-1}$ at $t = 10$. Find (a) the acceleration, (b) when it is instantaneously at rest, (c) its displacement and (d) the distance travelled in the $10$ s.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $a = \dfrac{-4 - 6}{10} = -1$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $v = 6 - t = 0$ when $t = 6$ s.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Area above the axis ($0 \leqslant t \leqslant 6$): $\tfrac12(6)(6) = 18$. Area below ($6 \leqslant t \leqslant 10$): $\tfrac12(4)(4) = 8$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(c) Displacement $= 18 - 8 = 10$ m. &nbsp;(d) Distance $= 18 + 8 = 26$ m.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Sketching from a description</div>
+    <div class="example-body">
+      <p>A ball is thrown vertically upwards at $9.8$ m s$^{-1}$ and caught at the same height. Taking upwards as positive and ignoring air resistance, sketch its $v$–$t$ graph.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The acceleration is $-9.8$ m s$^{-2}$ throughout, so the graph is a single straight line with gradient $-9.8$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>It starts at $v = 9.8$, crosses the axis at $t = 1$ (top of flight) and ends at $v = -9.8$ when $t = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The two triangles have equal area ($4.9$ m), so the displacement is $0$: the ball returns to its start ✓</span></div>
+      <div class="warn">The graph does <em>not</em> bounce back up at the top. The velocity passes smoothly through zero and becomes negative.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Acceleration–time graphs:</strong> the area under an $a$–$t$ graph gives the <strong>change in velocity</strong>, in the same way that the area under a $v$–$t$ graph gives the change in displacement.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$s$–$t$ gradient</h4><p>Velocity.</p></div>
+    <div class="ref-card"><h4>$v$–$t$ gradient</h4><p>Acceleration.</p></div>
+    <div class="ref-card"><h4>$v$–$t$ area</h4><p>Displacement (below axis counts negative).</p></div>
+    <div class="ref-card"><h4>$a$–$t$ area</h4><p>Change in velocity.</p></div>
+    <div class="ref-card"><h4>Horizontal $s$–$t$</h4><p>At rest.</p></div>
+    <div class="ref-card"><h4>Horizontal $v$–$t$</h4><p>Constant velocity, $a = 0$.</p></div>
+    <div class="ref-card"><h4>Average speed</h4><p>Total distance ÷ total time.</p></div>
+    <div class="ref-card"><h4>Average velocity</h4><p>Displacement ÷ total time.</p></div>
+    <div class="ref-card"><h4>Trapezium</h4><p>Start and end at rest: area $= \tfrac12(\text{top} + \text{bottom}) \times \text{height}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Sketch a graph for every question, even when it is not asked for. Take $g = 9.8$ m s$^{-2}$.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A straight-line displacement–time graph passes through $(0, 0)$ and $(8, 120)$, with $t$ in seconds and $s$ in metres. Find the velocity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= \dfrac{120}{8} = 15$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A cyclist's velocity increases uniformly from $4$ m s$^{-1}$ to $16$ m s$^{-1}$ in $6$ s. Find the acceleration and the distance travelled.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = \dfrac{16 - 4}{6} = 2$ m s$^{-2}$.</p>
+          <p>Distance = trapezium area $= \tfrac12(4 + 16)(6) = 60$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A lift starts from rest, accelerates uniformly to $2.5$ m s$^{-1}$ in $2$ s, moves at constant speed for $8$ s and decelerates uniformly to rest in $3$ s. Find the distance travelled.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Trapezium with parallel sides $8$ and $2 + 8 + 3 = 13$, height $2.5$.</p>
+          <p>Distance $= \tfrac12(8 + 13)(2.5) = 26.25$ m.</p>
+          <p><em>Check:</em> $2.5 + 20 + 3.75 = 26.25$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A walker's displacement–time graph has three straight sections: from $(0, 0)$ to $(600, 900)$, then to $(900, 900)$, then to $(1500, 0)$, with $t$ in s and $s$ in m. Describe the motion and find the walker's speed in each section.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0$–$600$ s: walks away at $\dfrac{900}{600} = 1.5$ m s$^{-1}$.</p>
+          <p>$600$–$900$ s: at rest, $900$ m from the start.</p>
+          <p>$900$–$1500$ s: gradient $\dfrac{-900}{600} = -1.5$, so walks back to the start at $1.5$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>For the walker in Question 4, find the average speed and the average velocity over the whole $1500$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Average speed $= \dfrac{1800}{1500} = 1.2$ m s$^{-1}$.</p>
+          <p>Displacement is $0$, so average velocity $= 0$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A bus accelerates uniformly from rest to $12$ m s$^{-1}$ in $8$ s, travels at $12$ m s$^{-1}$ for $T$ s, then decelerates uniformly to rest in $6$ s. It travels $840$ m altogether. Find $T$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tfrac12(8)(12) + 12T + \tfrac12(6)(12) = 840$</p>
+          <p>$48 + 12T + 36 = 840 \Rightarrow 12T = 756 \Rightarrow T = 63$ s.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A particle's velocity decreases uniformly from $8$ m s$^{-1}$ at $t = 0$ to $-4$ m s$^{-1}$ at $t = 6$. Find its displacement and the distance it travels in these $6$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = \dfrac{-4 - 8}{6} = -2$ m s$^{-2}$, so $v = 8 - 2t$, which is zero when $t = 4$.</p>
+          <p>Area above: $\tfrac12(4)(8) = 16$. Area below: $\tfrac12(2)(4) = 4$.</p>
+          <p>Displacement $= 16 - 4 = 12$ m. Distance $= 16 + 4 = 20$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A stone is thrown vertically upwards at $14.7$ m s$^{-1}$. Taking upwards as positive and ignoring air resistance, sketch the $v$–$t$ graph until it returns to its starting point, and use it to find the greatest height reached.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Straight line of gradient $-9.8$ from $(0,\,14.7)$, crossing the axis at $t = \dfrac{14.7}{9.8} = 1.5$ s and ending at $(3,\,-14.7)$.</p>
+          <p>Greatest height = area of the first triangle $= \tfrac12(1.5)(14.7) = 11.025 \approx 11.0$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A car passes a stationary motorbike at a constant $15$ m s$^{-1}$. At that instant the motorbike sets off in the same direction, accelerating uniformly at $2.5$ m s$^{-2}$ until it reaches $25$ m s$^{-1}$, then continuing at that speed. Find when and where the motorbike overtakes the car.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The motorbike reaches $25$ m s$^{-1}$ after $\dfrac{25}{2.5} = 10$ s, having travelled $\tfrac12(10)(25) = 125$ m. The car has travelled $150$ m — still ahead.</p>
+          <p>For $t &gt; 10$: motorbike at $125 + 25(t - 10)$, car at $15t$.</p>
+          <p>$125 + 25t - 250 = 15t \Rightarrow 10t = 125 \Rightarrow t = 12.5$ s.</p>
+          <p>Distance $= 15 \times 12.5 = 187.5$ m from the starting point.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A train travels between two stations $3$ km apart. It starts from rest and accelerates uniformly at $0.5$ m s$^{-2}$ until reaching $20$ m s$^{-1}$, travels at $20$ m s$^{-1}$, then decelerates uniformly at $1$ m s$^{-2}$ to stop at the second station.</p>
+      <p>(a) Sketch the $v$–$t$ graph. &nbsp; (b) Find the time spent accelerating and decelerating. &nbsp; (c) Find the total journey time. &nbsp; (d) Find the average speed for the journey.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A trapezium: rising line from $(0,0)$, horizontal at $v = 20$, falling line to the $t$-axis.</p>
+          <p><strong>(b)</strong> Accelerating: $\dfrac{20}{0.5} = 40$ s. Decelerating: $\dfrac{20}{1} = 20$ s.</p>
+          <p><strong>(c)</strong> Distance in those stages: $\tfrac12(40)(20) + \tfrac12(20)(20) = 400 + 200 = 600$ m.</p>
+          <p>Remaining $3000 - 600 = 2400$ m at $20$ m s$^{-1}$ takes $120$ s.</p>
+          <p>Total time $= 40 + 120 + 20 = 180$ s.</p>
+          <p><strong>(d)</strong> Average speed $= \dfrac{3000}{180} = 16.7$ m s$^{-1}$ (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Motion Graphs &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

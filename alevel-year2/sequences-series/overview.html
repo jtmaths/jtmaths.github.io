@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequences and Series Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔢 Sequences and Series Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>A <strong>sequence</strong> is a list of numbers that follows a rule. A <strong>series</strong> is what you get when you add the terms up. This topic (DfE content area D · Sequences and series) is about describing sequences precisely, and about finding sums without adding every term by hand.</p>
+
+  <div class="concept">
+    Two families dominate. In an <strong>arithmetic</strong> sequence you <em>add</em> the same amount each time; in a <strong>geometric</strong> sequence you <em>multiply</em> by the same amount each time. Each family has a formula for its $n$th term and a formula for its sum — and you are expected to be able to <strong>prove</strong> both sum formulae.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with Year 1</div>
+    Recurrence relations and sigma notation &middot; increasing, decreasing and periodic sequences<br>
+    Arithmetic and geometric series &middot; the sum to infinity<br>
+    The binomial expansion of $(a + bx)^n$ for <em>any</em> rational $n$
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong>, and they make light work of generating terms of a recurrence. But a question that says <em>"show that"</em> or asks for a proof needs every algebraic step written out — a list of numbers checked on a calculator is not a proof.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Term</strong></td><td>One number in the sequence; $u_n$ is the $n$th term.</td><td>In $2, 5, 8$: $u_2 = 5$</td></tr>
+    <tr><td><strong>Recurrence relation</strong></td><td>A rule giving each term from the previous one.</td><td>$u_{n+1} = 2u_n + 1$, $u_1 = 3$</td></tr>
+    <tr><td><strong>Series</strong></td><td>The sum of the terms of a sequence.</td><td>$2 + 5 + 8 + 11$</td></tr>
+    <tr><td><strong>$S_n$</strong></td><td>The sum of the first $n$ terms.</td><td>$S_3 = 2 + 5 + 8 = 15$</td></tr>
+    <tr><td><strong>$\Sigma$ (sigma)</strong></td><td>"Add up", with limits for the dummy variable.</td><td>$\sum_{r=1}^{4} r^2 = 30$</td></tr>
+    <tr><td><strong>Common difference $d$</strong></td><td>The fixed amount added in an arithmetic sequence.</td><td>$d = 3$ in $2, 5, 8$</td></tr>
+    <tr><td><strong>Common ratio $r$</strong></td><td>The fixed multiplier in a geometric sequence.</td><td>$r = \tfrac12$ in $8, 4, 2$</td></tr>
+    <tr><td><strong>Convergent</strong></td><td>The terms (or sums) approach a fixed limit.</td><td>$S_n$ for $1 + \tfrac12 + \tfrac14 + \cdots \to 2$</td></tr>
+    <tr><td><strong>Divergent</strong></td><td>Not convergent: no finite limit.</td><td>$1 + 2 + 4 + 8 + \cdots$</td></tr>
+    <tr><td><strong>Periodic</strong></td><td>The terms repeat in a cycle; the cycle length is the <em>order</em>.</td><td>$1, 3, 1, 3, \ldots$ has order $2$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Sequence or series?</strong> A sequence is a <em>list</em>, separated by commas. A series is a <em>sum</em>, joined by plus signs. "Find the $10$th term" is about the sequence; "find the sum of the first $10$ terms" is about the series.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE FORMULAE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Core Formulae</div>
+<div class="section-body">
+
+  <table>
+    <tr><th></th><th>Arithmetic</th><th>Geometric</th></tr>
+    <tr><td><strong>Rule</strong></td><td>$u_{n+1} = u_n + d$</td><td>$u_{n+1} = r\,u_n$</td></tr>
+    <tr><td><strong>$n$th term</strong></td><td>$a + (n-1)d$</td><td>$ar^{n-1}$</td></tr>
+    <tr><td><strong>Sum of $n$ terms</strong></td><td>$\tfrac{n}{2}[2a + (n-1)d]$ or $\tfrac{n}{2}(a + l)$</td><td>$\dfrac{a(1 - r^n)}{1 - r}$, &nbsp;$r \neq 1$</td></tr>
+    <tr><td><strong>Sum to infinity</strong></td><td>Never exists (unless $a = d = 0$)</td><td>$\dfrac{a}{1-r}$, only if $|r| < 1$</td></tr>
+    <tr><td><strong>Proof of the sum</strong></td><td>Write forwards and backwards, add</td><td>Write $S_n$ and $rS_n$, subtract</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The general binomial expansion — valid for $|x| < 1$</div>
+    $(1 + x)^n = 1 + nx + \dfrac{n(n-1)}{2!}x^2 + \dfrac{n(n-1)(n-2)}{3!}x^3 + \cdots$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — An arithmetic and a geometric sequence together</div>
+    <div class="example-body">
+      <p>An arithmetic sequence has first term $a$ and non-zero common difference $d$. Its $1$st, $3$rd and $9$th terms are the first three terms of a geometric sequence. (a) Show that $d = a$. (b) Given $a = 2$, find the sum of the first $20$ terms of the arithmetic sequence and the sum of the first $5$ terms of the geometric sequence.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The terms are $a$, $a + 2d$, $a + 8d$. For a geometric sequence, $(\text{middle})^2 = \text{first} \times \text{third}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(a + 2d)^2 = a(a + 8d) \Rightarrow a^2 + 4ad + 4d^2 = a^2 + 8ad \Rightarrow 4d^2 = 4ad$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$d \neq 0$, so divide by $4d$: $d = a$. $\blacksquare$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>With $a = d = 2$: $S_{20} = \tfrac{20}{2}[4 + 19 \times 2] = 10 \times 42 = 420$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The geometric terms are $2, 6, 18$, so $r = 3$: $S_5 = \dfrac{2(3^5 - 1)}{3 - 1} = 242$.</span></div>
+      <div class="tip">The statement "$d$ is non-zero" is there for a reason: it is what allows you to divide by $d$. Always say so when you use it.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Sequences and Series Subtopics</div>
+<div class="section-body">
+
+  <p>All of DfE content area D, and the page that covers each part.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">D</span><span><a href="sequences.html">Sequences and Sigma Notation</a><span class="desc">$n$th terms and recurrence relations; increasing, decreasing and periodic sequences; $\Sigma$ notation.</span></span></li>
+    <li><span class="code">D</span><span><a href="arithmetic.html">Arithmetic Sequences and Series</a><span class="desc">The $n$th term, the sum formula and its proof, $\sum r = \tfrac12n(n+1)$, and problems in context.</span></span></li>
+    <li><span class="code">D</span><span><a href="geometric.html">Geometric Sequences and Series</a><span class="desc">The $n$th term, the sum formula and its proof, the sum to infinity, and modelling with logarithms.</span></span></li>
+    <li><span class="code">D</span><span><a href="binomial-expansion.html">The General Binomial Expansion</a><span class="desc">$(a + bx)^n$ for rational $n$, the range of validity, approximations and partial fractions.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Using $n$ instead of $n - 1$.</strong> The $n$th term is $a + (n-1)d$ or $ar^{n-1}$. The first term has no steps taken, so it uses $0$, not $1$.
+  </div>
+
+  <div class="warn">
+    <strong>Miscounting terms.</strong> From $r = 5$ to $r = 20$ there are $16$ terms, not $15$. From $102$ to $297$ in steps of $3$ there are $\tfrac{297-102}{3} + 1 = 66$ terms.
+  </div>
+
+  <div class="warn">
+    <strong>Using $S_\infty$ when it does not exist.</strong> $\dfrac{a}{1-r}$ is only valid for $|r| < 1$. For $r = 2$ it gives a negative "sum" of positive numbers — a sure sign of an error.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting to reverse an inequality.</strong> Solving $0.9^n < 0.2$ by logs means dividing by $\ln 0.9$, which is negative. The answer is $n > \dfrac{\ln 0.2}{\ln 0.9}$.
+  </div>
+
+  <div class="warn">
+    <strong>Binomial errors.</strong> In $(2 + 3x)^{-2}$ you must take out $2^{-2} = \tfrac14$, not $2$. In $(1 - 2x)^{1/2}$ the square of $-2x$ is $4x^2$, not $-2x^2$. And always state the range of validity.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Recurrence</h4><p>$u_{n+1} = \mathrm{f}(u_n)$; a limit satisfies $L = \mathrm{f}(L)$.</p></div>
+    <div class="ref-card"><h4>Sigma</h4><p>$\sum_{r=a}^{b}$ has $b - a + 1$ terms.</p></div>
+    <div class="ref-card"><h4>Arithmetic</h4><p>$u_n = a + (n-1)d$, &nbsp;$S_n = \tfrac{n}{2}(a + l)$</p></div>
+    <div class="ref-card"><h4>Natural numbers</h4><p>$\sum_{r=1}^{n} r = \tfrac12n(n+1)$</p></div>
+    <div class="ref-card"><h4>Geometric</h4><p>$u_n = ar^{n-1}$, &nbsp;$S_n = \dfrac{a(1-r^n)}{1-r}$</p></div>
+    <div class="ref-card"><h4>Sum to infinity</h4><p>$\dfrac{a}{1-r}$ for $|r| < 1$</p></div>
+    <div class="ref-card"><h4>Consecutive terms</h4><p>AP: $2b = a + c$. &nbsp;GP: $b^2 = ac$.</p></div>
+    <div class="ref-card"><h4>Binomial</h4><p>$(1+bx)^n$ valid for $|bx| < 1$.</p></div>
+    <div class="ref-card"><h4>Finding $n$</h4><p>Quadratic for an AP; logarithms for a GP.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of Sequences and Series. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write down the first four terms of the sequence with $n$th term $u_n = 2^n - n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_1 = 2 - 1 = 1$, $u_2 = 4 - 2 = 2$, $u_3 = 8 - 3 = 5$, $u_4 = 16 - 4 = 12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{12} (2r + 5)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\displaystyle\sum_{r=1}^{12} r + \sum_{r=1}^{12} 5 = 2 \times \tfrac12(12)(13) + 60 = 156 + 60 = 216$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>An arithmetic sequence has first term $-7$ and common difference $3$. Find the $20$th term and the sum of the first $20$ terms.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_{20} = -7 + 19 \times 3 = 50$.</p>
+          <p>$S_{20} = \tfrac{20}{2}(-7 + 50) = 10 \times 43 = 430$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the sum to infinity of $6 + 4 + \tfrac83 + \cdots$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r = \tfrac46 = \tfrac23$, and $|r| < 1$.</p>
+          <p>$S_\infty = \dfrac{6}{1 - \frac23} = 18$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$u_{n+1} = 4 - u_n$ with $u_1 = 1$. Describe the sequence and find $\displaystyle\sum_{r=1}^{51} u_r$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_2 = 3$, $u_3 = 1$, $u_4 = 3, \ldots$ — periodic with order $2$.</p>
+          <p>$51 = 2 \times 25 + 1$: twenty-five pairs each summing to $4$, plus $u_{51} = 1$.</p>
+          <p>Sum $= 100 + 1 = 101$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Expand $(1 + x)^{1/3}$ in ascending powers of $x$ up to $x^2$, stating the range of validity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 + \tfrac13x + \dfrac{\frac13\left(-\frac23\right)}{2}x^2 = 1 + \tfrac13x - \tfrac19x^2 + \cdots$</p>
+          <p>Valid for $|x| < 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The $3$rd term of an arithmetic series is $9$ and the sum of the first $10$ terms is $165$. Find the first term and the common difference.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a + 2d = 9$ and $\tfrac{10}{2}(2a + 9d) = 165 \Rightarrow 2a + 9d = 33$.</p>
+          <p>Double the first: $2a + 4d = 18$. Subtract: $5d = 15$, so $d = 3$ and $a = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A geometric series has first term $8$ and fourth term $1$. Find the sum to infinity, and the least $n$ for which $S_n > 15.9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$8r^3 = 1 \Rightarrow r = \tfrac12$. &nbsp;$S_\infty = \dfrac{8}{1 - \frac12} = 16$.</p>
+          <p>$S_n = 16\left(1 - 0.5^n\right) > 15.9 \Rightarrow 0.5^n < \tfrac{0.1}{16} = \tfrac{1}{160}$.</p>
+          <p>$n > \dfrac{\ln(1/160)}{\ln 0.5} = 7.32\ldots$ (reversed, as $\ln 0.5 < 0$), so $n = 8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\sum_{r=1}^{\infty} 5(0.4)^r$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The first term ($r = 1$) is $5 \times 0.4 = 2$, and the ratio is $0.4$.</p>
+          <p>$S_\infty = \dfrac{2}{1 - 0.4} = \dfrac{2}{0.6} = \dfrac{10}{3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A graduate is offered two jobs, each with a starting salary of £$30\,000$. In Job A the salary rises by £$1200$ each year. In Job B it rises by $3.5\%$ each year.</p>
+      <p>(a) Find the salary in year $10$ for each job. &nbsp; (b) Find the total earned over the first $10$ years in each job. &nbsp; (c) Find the first year in which the Job B salary is greater than the Job A salary.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> A (arithmetic): $30\,000 + 9 \times 1200 = $ £$40\,800$. &nbsp;B (geometric): $30\,000 \times 1.035^9 = $ £$40\,886.92$.</p>
+          <p><strong>(b)</strong> A: $S_{10} = \tfrac{10}{2}(30\,000 + 40\,800) = $ £$354\,000$.</p>
+          <p>B: $S_{10} = \dfrac{30\,000(1.035^{10} - 1)}{0.035} = $ £$351\,941.79$.</p>
+          <p>Job A pays more in total over ten years, even though Job B's salary is higher by year $10$.</p>
+          <p><strong>(c)</strong> Need $30\,000 \times 1.035^{n-1} > 30\,000 + 1200(n-1)$. This mixes a power with a linear term, so test values:</p>
+          <p>$n = 9$: A £$39\,600$, B £$39\,504.27$ (A higher). &nbsp;$n = 10$: A £$40\,800$, B £$40\,886.92$ (B higher).</p>
+          <p>Job B's salary first exceeds Job A's in <strong>year 10</strong>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Sequences and Series Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Differentiation Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📉 Differentiation Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>This topic is <strong>DfE content area G · Differentiation</strong>. Differentiation measures <strong>rate of change</strong>: how fast $y$ changes as $x$ changes. On a graph that is the gradient of the curve; in context it is a speed, a growth rate or a marginal cost.</p>
+
+  <div class="concept">
+    At GCSE you found the gradient of a curve by drawing a tangent and measuring it. Differentiation gives an exact <strong>gradient function</strong> $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ that tells you the gradient at every point at once. Set it to zero and you find the peaks and troughs of the curve — which is how calculus solves "largest" and "smallest" problems.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    The derivative as a limit (first principles) &middot; $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(x^n\right) = nx^{n-1}$<br>
+    Tangents and normals &middot; increasing and decreasing functions<br>
+    Stationary points, the second derivative, and optimisation
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong>, but many calculators can only find a numerical gradient at a point. Exam questions expect you to differentiate algebraically and show your working — and a question saying <em>"from first principles"</em> wants the limit argument, not the rule.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Derivative / gradient function</strong></td><td>The function giving the gradient at each point.</td><td>$\mathrm{f}'(x) = 2x$ for $\mathrm{f}(x) = x^2$</td></tr>
+    <tr><td><strong>$\dfrac{\mathrm{d}y}{\mathrm{d}x}$</strong></td><td>The rate of change of $y$ with respect to $x$.</td><td>$y = x^3 \Rightarrow \dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2$</td></tr>
+    <tr><td><strong>Second derivative</strong></td><td>The derivative of the derivative.</td><td>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$ or $\mathrm{f}''(x)$</td></tr>
+    <tr><td><strong>Chord</strong></td><td>A straight line joining two points on a curve.</td><td>Used in first principles</td></tr>
+    <tr><td><strong>Limit</strong></td><td>The value approached as $h$ gets closer to $0$.</td><td>$\displaystyle\lim_{h \to 0}(2x + h) = 2x$</td></tr>
+    <tr><td><strong>Tangent</strong></td><td>Line touching the curve with the same gradient.</td><td>Gradient $\mathrm{f}'(a)$</td></tr>
+    <tr><td><strong>Normal</strong></td><td>Line perpendicular to the tangent at the point.</td><td>Gradient $-1/\mathrm{f}'(a)$</td></tr>
+    <tr><td><strong>Stationary point</strong></td><td>Where the gradient is zero.</td><td>Maximum, minimum or inflection</td></tr>
+    <tr><td><strong>Increasing</strong></td><td>$y$ rises as $x$ rises: $\mathrm{f}'(x) > 0$.</td><td>$x^3 + x$ for all $x$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — First principles</div>
+    $\mathrm{f}'(x) = \displaystyle\lim_{h \to 0}\dfrac{\mathrm{f}(x+h) - \mathrm{f}(x)}{h}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — The power rule (n rational)</div>
+    $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(kx^n\right) = knx^{n-1}$ &nbsp;— rewrite roots and fractions as powers first
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Tangents and normals</div>
+    $y - y_1 = m(x - x_1)$ with $m = \mathrm{f}'(a)$ for the tangent, $m = -\dfrac{1}{\mathrm{f}'(a)}$ for the normal
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Stationary points</div>
+    Solve $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 0$; &nbsp; $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} < 0$ maximum, $\; > 0$ minimum
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Optimisation</div>
+    Form an expression in one variable, differentiate, set to zero, justify, interpret
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>The curve $C$ has equation $y = x^3 - 3x^2 - 9x + 5$. Find the stationary points of $C$ and their nature, and the equation of the tangent where $C$ crosses the $y$-axis.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 6x - 9 = 3(x - 3)(x + 1)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Zero at $x = 3$ ($y = 27 - 27 - 27 + 5 = -22$) and $x = -1$ ($y = -1 - 3 + 9 + 5 = 10$).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x - 6$: at $x = 3$ it is $12 > 0$, minimum $(3, -22)$; at $x = -1$ it is $-12 < 0$, maximum $(-1, 10)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$C$ crosses the $y$-axis at $(0, 5)$, where the gradient is $-9$. Tangent: $y = -9x + 5$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Differentiation Subtopics</div>
+<div class="section-body">
+
+  <p>Content area G for Year 1, split into four pages.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">G</span><span><a href="first-principles.html">Differentiation from First Principles</a><span class="desc">The gradient of a chord, the limit, and proofs for $x^2$, $x^3$ and other simple functions.</span></span></li>
+    <li><span class="code">G</span><span><a href="rules.html">Differentiating Powers of x</a><span class="desc">$x^n$ for rational $n$, rewriting before differentiating, and the second derivative.</span></span></li>
+    <li><span class="code">G</span><span><a href="tangents-normals.html">Tangents and Normals</a><span class="desc">Equations of tangents and normals, and working backwards from a gradient.</span></span></li>
+    <li><span class="code">G</span><span><a href="stationary-points.html">Stationary Points and Optimisation</a><span class="desc">Increasing and decreasing functions, maxima and minima, gradient graphs and optimisation.</span></span></li>
+  </ul>
+
+  <div class="tip">The gradient of $e^{kx}$ is covered with the exponential function in <a href="../exponentials-logarithms/exponential-functions.html">Exponential Functions and e</a>. Integration — the reverse process — comes next in <a href="../integration/overview.html">Integration</a>.</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Differentiating a product or quotient term by term.</strong> Expand $(x+1)(x-3)$ or split $\dfrac{x^2 + 1}{x}$ before you differentiate.
+  </div>
+
+  <div class="warn">
+    <strong>Getting negative powers wrong.</strong> $x^{-2} \to -2x^{-3}$. The power goes <em>down</em> by one, so it becomes more negative.
+  </div>
+
+  <div class="warn">
+    <strong>Substituting into the wrong equation.</strong> The $y$-coordinate comes from $y$; the gradient from $\dfrac{\mathrm{d}y}{\mathrm{d}x}$.
+  </div>
+
+  <div class="warn">
+    <strong>Stopping at $x$.</strong> A stationary <em>point</em> needs both coordinates, and a question asking for its nature needs a justification.
+  </div>
+
+  <div class="warn">
+    <strong>Trusting $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 0$.</strong> It does not mean a point of inflection. Test the gradient either side.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Definition</h4><p>$\displaystyle\lim_{h\to0}\dfrac{\mathrm{f}(x+h)-\mathrm{f}(x)}{h}$</p></div>
+    <div class="ref-card"><h4>Power rule</h4><p>$kx^n \to knx^{n-1}$</p></div>
+    <div class="ref-card"><h4>Constants</h4><p>$c \to 0$, &nbsp;$kx \to k$</p></div>
+    <div class="ref-card"><h4>Rewrite</h4><p>$\sqrt x = x^{1/2}$, &nbsp;$\dfrac1{x^n} = x^{-n}$</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>Gradient $\mathrm{f}'(a)$ through $(a, \mathrm{f}(a))$.</p></div>
+    <div class="ref-card"><h4>Normal</h4><p>Gradient $-1/\mathrm{f}'(a)$.</p></div>
+    <div class="ref-card"><h4>Increasing</h4><p>$\mathrm{f}'(x) > 0$; decreasing $\mathrm{f}'(x) < 0$.</p></div>
+    <div class="ref-card"><h4>Nature</h4><p>$\mathrm{f}'' < 0$ max; $\mathrm{f}'' > 0$ min.</p></div>
+    <div class="ref-card"><h4>Optimise</h4><p>One variable, differentiate, $= 0$, check.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of content area G for Year 1. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Differentiate $y = 3x^4 - 5x^2 + \dfrac{2}{x}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = 3x^4 - 5x^2 + 2x^{-1}$</p>
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 12x^3 - 10x - 2x^{-2} = 12x^3 - 10x - \dfrac{2}{x^2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Prove from first principles that the derivative of $4x^2$ is $8x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{4(x+h)^2 - 4x^2}{h} = \dfrac{8xh + 4h^2}{h} = 8x + 4h$</p>
+          <p>$\mathrm{f}'(x) = \displaystyle\lim_{h\to0}(8x + 4h) = 8x$ &nbsp;$\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = x\sqrt x$ at the point where $x = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = x^{3/2}$, so $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \tfrac32 x^{1/2}$.</p>
+          <p>At $x = 4$: $\tfrac32 \times 2 = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Given $\mathrm{f}(x) = (x - 2)\left(x^2 + 1\right)$, find $\mathrm{f}'(x)$ and $\mathrm{f}''(x)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Expand: $\mathrm{f}(x) = x^3 - 2x^2 + x - 2$.</p>
+          <p>$\mathrm{f}'(x) = 3x^2 - 4x + 1$; &nbsp; $\mathrm{f}''(x) = 6x - 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the equation of the tangent to $y = x^2 - 2x$ at the point where $x = 3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Point $(3, 3)$. $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2x - 2 = 4$.</p>
+          <p>$y - 3 = 4(x - 3) \Rightarrow y = 4x - 9$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the equation of the normal to $y = \dfrac{8}{x}$ at $(2, 4)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = -\dfrac{8}{x^2} = -2$ at $x = 2$, so the normal gradient is $\dfrac12$.</p>
+          <p>$y - 4 = \dfrac12(x - 2) \Rightarrow y = \dfrac12 x + 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find and classify the stationary points of $y = x^3 - 3x + 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3x^2 - 3 = 0 \Rightarrow x = \pm 1$.</p>
+          <p>$x = 1$: $y = 0$. &nbsp; $x = -1$: $y = -1 + 3 + 2 = 4$.</p>
+          <p>$\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2} = 6x$: at $x = 1$, $6 > 0$, minimum $(1, 0)$; at $x = -1$, $-6 < 0$, maximum $(-1, 4)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Show that $\mathrm{f}(x) = 2x^3 + x - 4$ is increasing for all values of $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{f}'(x) = 6x^2 + 1$. Since $x^2 \geqslant 0$, $\mathrm{f}'(x) \geqslant 1 > 0$ for all $x$.</p>
+          <p>So $\mathrm{f}$ is increasing for all $x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that there is exactly one point on $y = x^3 - 6x^2$ where the gradient is $-12$, and find the equation of the tangent there.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x^2 - 12x = -12 \Rightarrow x^2 - 4x + 4 = 0 \Rightarrow (x - 2)^2 = 0$.</p>
+          <p>A repeated root, so exactly one point: $x = 2$, $y = 8 - 24 = -16$.</p>
+          <p>Tangent: $y + 16 = -12(x - 2) \Rightarrow y = -12x + 8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A closed cuboid box has a base measuring $x$ cm by $2x$ cm, and a volume of $36$ cm³.</p>
+      <p>(a) Show that the height is $\dfrac{18}{x^2}$ cm and that the surface area is $A = 4x^2 + \dfrac{108}{x}$. &nbsp; (b) Find the value of $x$ that minimises $A$, giving it exactly and to 3 s.f. &nbsp; (c) Show that this gives a minimum. &nbsp; (d) Find the minimum surface area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $2x^2h = 36 \Rightarrow h = \dfrac{18}{x^2}$.</p>
+          <p>$A = 2(x \cdot 2x) + 2(x \cdot h) + 2(2x \cdot h) = 4x^2 + 6xh = 4x^2 + 6x \cdot \dfrac{18}{x^2} = 4x^2 + \dfrac{108}{x}$ ✓</p>
+          <p><strong>(b)</strong> $\dfrac{\mathrm{d}A}{\mathrm{d}x} = 8x - 108x^{-2} = 0 \Rightarrow x^3 = 13.5 \Rightarrow x = \sqrt[3]{13.5} \approx 2.38$.</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}^2A}{\mathrm{d}x^2} = 8 + 216x^{-3} = 8 + \dfrac{216}{13.5} = 24 > 0$: a minimum.</p>
+          <p><strong>(d)</strong> $A = 4(2.381)^2 + \dfrac{108}{2.381} \approx 22.7 + 45.4 = 68.0$ cm² (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Differentiation Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constant Acceleration (suvat) &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚗 Constant Acceleration (suvat)</h1>
+  <p>A Level Maths Year 1 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE FIVE EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Five Equations</div>
+<div class="section-body">
+
+  <p>When the acceleration is <strong>constant</strong>, motion in a straight line is described by five variables and five equations (DfE content area Q · Kinematics). They are known as the <em>suvat</em> equations after the five letters.</p>
+
+  <table>
+    <tr><th>Symbol</th><th>Meaning</th><th>Units</th></tr>
+    <tr><td>$s$</td><td>displacement from the starting point</td><td>m</td></tr>
+    <tr><td>$u$</td><td>initial velocity</td><td>m s$^{-1}$</td></tr>
+    <tr><td>$v$</td><td>final velocity</td><td>m s$^{-1}$</td></tr>
+    <tr><td>$a$</td><td>(constant) acceleration</td><td>m s$^{-2}$</td></tr>
+    <tr><td>$t$</td><td>time taken</td><td>s</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">The suvat equations (each omits one variable)</div>
+    $v = u + at$ &nbsp;&nbsp;(no $s$)<br>
+    $s = \dfrac{(u + v)}{2}\,t$ &nbsp;&nbsp;(no $a$)<br>
+    $s = ut + \tfrac12 at^2$ &nbsp;&nbsp;(no $v$)<br>
+    $s = vt - \tfrac12 at^2$ &nbsp;&nbsp;(no $u$)<br>
+    $v^2 = u^2 + 2as$ &nbsp;&nbsp;(no $t$)
+  </div>
+
+  <div class="concept">
+    <strong>The method:</strong> list the five letters, fill in the three you know, mark the one you want, and choose the equation that <strong>leaves out</strong> the fifth.
+  </div>
+
+  <div class="warn">
+    <strong>Only for constant acceleration.</strong> If the acceleration depends on time — for example $a = 6t - 2$ — the suvat equations are wrong, and you must use calculus (see <a href="variable-acceleration.html">Variable Acceleration</a>).
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DERIVATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Deriving the Equations from a Velocity–Time Graph</div>
+<div class="section-body">
+
+  <p>You may be asked to derive the equations. With constant acceleration the $v$–$t$ graph is a straight line from $(0,\,u)$ to $(t,\,v)$.</p>
+
+  <div class="svg-block">
+    <svg width="480" height="260" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,220 60,170 400,60 400,220" fill="#c7d2fe" opacity=".6"/>
+      <line x1="60" y1="220" x2="450" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="60" y1="220" x2="60" y2="30" stroke="#475569" stroke-width="2"/>
+      <text x="454" y="225" font-family="Arial" font-size="13" fill="#475569">time</text>
+      <text x="40" y="26" font-family="Arial" font-size="13" fill="#475569">velocity</text>
+      <line x1="60" y1="170" x2="400" y2="60" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="60" y1="170" x2="400" y2="170" stroke="#4f46e5" stroke-dasharray="5,4"/>
+      <line x1="400" y1="60" x2="400" y2="220" stroke="#475569" stroke-dasharray="5,4"/>
+      <text x="50" y="174" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="end">u</text>
+      <text x="50" y="64" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="end">v</text>
+      <line x1="56" y1="60" x2="400" y2="60" stroke="#c7d2fe" stroke-dasharray="2,3"/>
+      <text x="400" y="238" font-family="Arial" font-size="13" fill="#3730a3" text-anchor="middle">t</text>
+      <text x="410" y="120" font-family="Arial" font-size="12" fill="#b91c1c">at</text>
+      <text x="230" y="200" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">rectangle: ut</text>
+      <text x="290" y="140" font-family="Arial" font-size="12" fill="#3730a3" text-anchor="middle">triangle: ½·t·at</text>
+      <text x="240" y="256" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Gradient = a; total shaded area = s</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The derivation</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>Gradient $= a$, so $\dfrac{v - u}{t} = a$, giving $\boxed{v = u + at}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Area of the trapezium $= s$, so $\boxed{s = \tfrac12(u + v)t}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Substitute $v = u + at$ into ②: $s = \tfrac12(2u + at)t = \boxed{ut + \tfrac12 at^2}$ — the rectangle plus the triangle.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Substitute $u = v - at$ into ②: $s = \tfrac12(2v - at)t = \boxed{vt - \tfrac12 at^2}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>From ①, $t = \dfrac{v - u}{a}$. Into ②: $s = \dfrac{(u + v)(v - u)}{2a} = \dfrac{v^2 - u^2}{2a}$, so $\boxed{v^2 = u^2 + 2as}$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – HORIZONTAL PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Using the Equations</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Braking distance</div>
+    <div class="example-body">
+      <p>A car travelling at $20$ m s$^{-1}$ brakes with constant deceleration $5$ m s$^{-2}$. Find the stopping distance and stopping time.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$u = 20$, $v = 0$, $a = -5$; want $s$ and $t$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$v^2 = u^2 + 2as$: &nbsp;$0 = 400 - 10s \Rightarrow s = 40$ m.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$v = u + at$: &nbsp;$0 = 20 - 5t \Rightarrow t = 4$ s.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding $u$ and $a$</div>
+    <div class="example-body">
+      <p>A particle accelerating uniformly travels $30$ m in $4$ s, finishing with speed $10$ m s$^{-1}$. Find its initial speed and its acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$s = 30$, $t = 4$, $v = 10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$s = \tfrac12(u + v)t$: &nbsp;$30 = \tfrac12(u + 10)(4) = 2(u + 10) \Rightarrow u = 5$ m s$^{-1}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$v = u + at$: &nbsp;$10 = 5 + 4a \Rightarrow a = 1.25$ m s$^{-2}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Returning to the start</div>
+    <div class="example-body">
+      <p>A particle passes $O$ at $5$ m s$^{-1}$ with constant acceleration $-0.5$ m s$^{-2}$. Find the greatest distance it reaches from $O$ (in the positive direction) and when it returns to $O$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Greatest distance when $v = 0$: $0 = 25 + 2(-0.5)s \Rightarrow s = 25$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Back at $O$ when $s = 0$: $0 = 5t - 0.25t^2 = t(5 - 0.25t)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t = 0$ (the start) or $t = 20$ s.</span></div>
+      <div class="tip">One suvat equation covers the whole motion — out <em>and back</em> — because the acceleration is the same throughout. You do not need to split it at the turning point.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – VERTICAL MOTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Vertical Motion under Gravity</div>
+<div class="section-body">
+
+  <div class="concept">
+    Ignoring air resistance, a particle moving vertically has constant acceleration $g = 9.8$ m s$^{-2}$ <strong>downwards</strong>, whether it is going up, coming down or at the top. Choose a positive direction (usually upwards, so $a = -9.8$) and keep it for the whole problem.
+  </div>
+
+  <table>
+    <tr><th>Situation</th><th>What you know</th></tr>
+    <tr><td>Dropped / released from rest</td><td>$u = 0$</td></tr>
+    <tr><td>Greatest height</td><td>$v = 0$</td></tr>
+    <tr><td>Returns to the point of projection</td><td>$s = 0$</td></tr>
+    <tr><td>Lands below its start (e.g. sea below a cliff)</td><td>$s$ is negative if up is positive</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Thrown up from a cliff</div>
+    <div class="example-body">
+      <p>A stone is thrown vertically upwards at $12$ m s$^{-1}$ from the top of a cliff $40$ m above the sea. Find the time it takes to reach the sea and its speed as it hits the water.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Up positive: $u = 12$, $a = -9.8$, $s = -40$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$s = ut + \tfrac12 at^2$: &nbsp;$-40 = 12t - 4.9t^2 \Rightarrow 4.9t^2 - 12t - 40 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t = \dfrac{12 \pm \sqrt{144 + 784}}{9.8} = \dfrac{12 \pm \sqrt{928}}{9.8}$; the positive root is $t = 4.33$ s (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$v^2 = u^2 + 2as = 144 + 2(-9.8)(-40) = 928 \Rightarrow$ speed $= \sqrt{928} = 30.5$ m s$^{-1}$ (3 s.f.).</span></div>
+      <div class="warn">The negative root $t = -1.88$ is rejected — it is a time before the stone was thrown.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Time above a height</div>
+    <div class="example-body">
+      <p>A ball is projected vertically upwards at $20$ m s$^{-1}$ from ground level. For how long is it at least $15$ m above the ground?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$15 = 20t - 4.9t^2 \Rightarrow 4.9t^2 - 20t + 15 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$t = \dfrac{20 \pm \sqrt{400 - 294}}{9.8} = \dfrac{20 \pm \sqrt{106}}{9.8}$, so $t = 0.990$ s or $t = 3.09$ s.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The ball passes $15$ m on the way up and on the way down. Time above $15$ m $= \dfrac{2\sqrt{106}}{9.8} = 2.10$ s (3 s.f.).</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – MULTI-STAGE PROBLEMS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Multi-Stage Problems</div>
+<div class="section-body">
+
+  <p>If the acceleration <strong>changes</strong> part-way through, split the motion into stages. Each stage has its own constant acceleration; the <strong>final velocity of one stage is the initial velocity of the next</strong>.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two stages</div>
+    <div class="example-body">
+      <p>A car starts from rest and accelerates at $2$ m s$^{-2}$ for $10$ s. It then decelerates uniformly, coming to rest in a further $50$ m. Find the deceleration and the total time.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Stage 1: $v = 0 + 2(10) = 20$ m s$^{-1}$; $s = \tfrac12(2)(10^2) = 100$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Stage 2: $u = 20$, $v = 0$, $s = 50$: $0 = 400 + 100a \Rightarrow a = -4$, a deceleration of $4$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0 = 20 - 4t \Rightarrow t = 5$ s. Total time $= 10 + 5 = 15$ s.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Two particles meeting</div>
+    <div class="example-body">
+      <p>Particle $P$ is dropped from a height of $50$ m. At the same moment, particle $Q$ is projected vertically upwards from the ground directly below at $25$ m s$^{-1}$. Find when and at what height they meet.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Height of $P$: $50 - 4.9t^2$. &nbsp;Height of $Q$: $25t - 4.9t^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Equal when $50 - 4.9t^2 = 25t - 4.9t^2 \Rightarrow 25t = 50 \Rightarrow t = 2$ s.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Height $= 50 - 4.9(4) = 30.4$ m.</span></div>
+      <div class="tip">Both particles have the same acceleration, so the $4.9t^2$ terms cancel — relative to each other they move at a constant $25$ m s$^{-1}$, closing a $50$ m gap in $2$ s.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>No $s$</h4><p>$v = u + at$</p></div>
+    <div class="ref-card"><h4>No $a$</h4><p>$s = \tfrac12(u + v)t$</p></div>
+    <div class="ref-card"><h4>No $v$</h4><p>$s = ut + \tfrac12 at^2$</p></div>
+    <div class="ref-card"><h4>No $u$</h4><p>$s = vt - \tfrac12 at^2$</p></div>
+    <div class="ref-card"><h4>No $t$</h4><p>$v^2 = u^2 + 2as$</p></div>
+    <div class="ref-card"><h4>Gravity</h4><p>$a = -9.8$ with up positive, throughout the flight.</p></div>
+    <div class="ref-card"><h4>Greatest height</h4><p>$v = 0$; height $= \dfrac{u^2}{2g}$.</p></div>
+    <div class="ref-card"><h4>Multi-stage</h4><p>End velocity of one stage = start velocity of the next.</p></div>
+    <div class="ref-card"><h4>Accuracy</h4><p>Using $g = 9.8$: give answers to 2 or 3 s.f.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Take $g = 9.8$ m s$^{-2}$ and give non-exact answers to 3 significant figures.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A particle has initial velocity $4$ m s$^{-1}$ and constant acceleration $3$ m s$^{-2}$. Find its velocity and displacement after $6$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$v = 4 + 3(6) = 22$ m s$^{-1}$.</p>
+          <p>$s = 4(6) + \tfrac12(3)(36) = 24 + 54 = 78$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A train travelling at $25$ m s$^{-1}$ stops with uniform deceleration in $50$ m. Find the deceleration and the time taken.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0 = 625 + 2a(50) \Rightarrow a = -6.25$: deceleration $6.25$ m s$^{-2}$.</p>
+          <p>$s = \tfrac12(u + v)t$: $50 = \tfrac12(25)t \Rightarrow t = 4$ s.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A cyclist passes a post at $8$ m s$^{-1}$ and accelerates uniformly, covering $60$ m in the next $5$ s. Find the acceleration and the final speed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$60 = 8(5) + \tfrac12 a(25) = 40 + 12.5a \Rightarrow a = 1.6$ m s$^{-2}$.</p>
+          <p>$v = 8 + 1.6(5) = 16$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A stone is dropped from rest from a bridge $45$ m above a river. Find the time it takes to reach the water and its speed on impact.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Down positive: $u = 0$, $a = 9.8$, $s = 45$.</p>
+          <p>$45 = 4.9t^2 \Rightarrow t = \sqrt{\dfrac{45}{4.9}} = 3.03$ s.</p>
+          <p>$v^2 = 0 + 2(9.8)(45) = 882 \Rightarrow v = 29.7$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A ball is thrown vertically upwards at $21$ m s$^{-1}$. Find the greatest height and the total time before it returns to the point of projection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>At the top $v = 0$: $0 = 441 - 19.6s \Rightarrow s = 22.5$ m.</p>
+          <p>Returns when $s = 0$: $0 = 21t - 4.9t^2 \Rightarrow t = \dfrac{21}{4.9} = 4.29$ s (exactly $\tfrac{30}{7}$ s).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A particle moving with constant acceleration travels $18$ m in the first $2$ s and $30$ m in the next $2$ s. Find its initial velocity and acceleration.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First $2$ s: $18 = 2u + 2a$, so $u + a = 9$.</p>
+          <p>First $4$ s: $48 = 4u + 8a$, so $u + 2a = 12$.</p>
+          <p>Subtract: $a = 3$ m s$^{-2}$, then $u = 6$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A ball is thrown vertically <em>downwards</em> at $5$ m s$^{-1}$ from the top of a tower $30$ m high. Find the time to reach the ground and the speed on impact.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Down positive: $u = 5$, $a = 9.8$, $s = 30$.</p>
+          <p>$30 = 5t + 4.9t^2 \Rightarrow 4.9t^2 + 5t - 30 = 0$.</p>
+          <p>$t = \dfrac{-5 + \sqrt{25 + 588}}{9.8} = \dfrac{-5 + \sqrt{613}}{9.8} = 2.02$ s.</p>
+          <p>$v^2 = 25 + 2(9.8)(30) = 613 \Rightarrow v = 24.8$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A ball is projected vertically upwards at $15$ m s$^{-1}$. Find the length of time for which it is more than $10$ m above the point of projection.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$10 = 15t - 4.9t^2 \Rightarrow 4.9t^2 - 15t + 10 = 0$.</p>
+          <p>$t = \dfrac{15 \pm \sqrt{225 - 196}}{9.8} = \dfrac{15 \pm \sqrt{29}}{9.8}$, giving $t = 0.981$ s and $t = 2.08$ s.</p>
+          <p>Time above $10$ m $= \dfrac{2\sqrt{29}}{9.8} = 1.10$ s.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Starting from the derivation $v = u + at$ and $s = \tfrac12(u + v)t$, show that $v^2 = u^2 + 2as$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>From $v = u + at$, $t = \dfrac{v - u}{a}$.</p>
+          <p>Substitute: $s = \tfrac12(u + v)\cdot\dfrac{v - u}{a} = \dfrac{v^2 - u^2}{2a}$.</p>
+          <p>So $2as = v^2 - u^2$, i.e. $v^2 = u^2 + 2as$. &nbsp;$\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A model rocket is launched vertically from rest on the ground. Its engine gives it a constant upward acceleration of $4$ m s$^{-2}$ for $5$ s, after which the engine stops and the rocket moves freely under gravity.</p>
+      <p>(a) Find the speed and height of the rocket when the engine stops. &nbsp; (b) Find the greatest height reached. &nbsp; (c) Find the total time from launch until the rocket hits the ground. &nbsp; (d) State one modelling assumption you have made.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $v = 0 + 4(5) = 20$ m s$^{-1}$; height $= \tfrac12(4)(25) = 50$ m.</p>
+          <p><strong>(b)</strong> Free stage, up positive: $u = 20$, $a = -9.8$, $v = 0$.</p>
+          <p>$0 = 400 - 19.6s \Rightarrow s = 20.4$ m. Greatest height $= 50 + 20.4 = 70.4$ m.</p>
+          <p><strong>(c)</strong> Free stage from the cut-out point to the ground: $s = -50$.</p>
+          <p>$-50 = 20t - 4.9t^2 \Rightarrow 4.9t^2 - 20t - 50 = 0$</p>
+          <p>$t = \dfrac{20 + \sqrt{400 + 980}}{9.8} = \dfrac{20 + \sqrt{1380}}{9.8} = 5.83$ s.</p>
+          <p>Total time $= 5 + 5.83 = 10.8$ s.</p>
+          <p><strong>(d)</strong> For example: air resistance is ignored; the rocket is modelled as a particle; the loss of mass as fuel burns is ignored.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Constant Acceleration (suvat) &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

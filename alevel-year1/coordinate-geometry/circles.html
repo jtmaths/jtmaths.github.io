@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circles &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⭕ Circles</h1>
+  <p>A Level Maths Year 1 · Coordinate Geometry</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE EQUATION OF A CIRCLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Equation of a Circle</div>
+<div class="section-body">
+
+  <p>A circle is the set of all points at a fixed distance $r$ (the radius) from a fixed point (the centre). Writing that sentence with the distance formula gives the equation. This page completes DfE content area <strong>C · Coordinate geometry</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Circle with centre $(a, b)$ and radius $r$</div>
+    $(x - a)^2 + (y - b)^2 = r^2$
+  </div>
+
+  <div class="concept">
+    <strong>Where it comes from.</strong> A point $(x, y)$ is on the circle exactly when its distance from $(a, b)$ is $r$: $\sqrt{(x-a)^2 + (y-b)^2} = r$. Squaring both sides gives the formula. With centre the origin it becomes $x^2 + y^2 = r^2$.
+  </div>
+
+  <div class="warn">
+    <strong>Signs inside the brackets are opposite to the centre.</strong> $(x + 4)^2 + (y - 1)^2 = 9$ has centre $(-4, 1)$, and radius $3$ — not $9$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Writing down the equation</div>
+    <div class="example-body">
+      <p>Find the equation of the circle with centre $(3, -2)$ and radius $5$, and show that $(6, 2)$ lies on it.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(x - 3)^2 + (y + 2)^2 = 25$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $(6, 2)$: $(6 - 3)^2 + (2 + 2)^2 = 9 + 16 = 25$ ✓</span></div>
+      <div class="tip"><strong>Inside, on or outside?</strong> Substitute the point into $(x-a)^2 + (y-b)^2$ and compare with $r^2$: less means inside, equal means on, greater means outside.</div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="370" height="360" viewBox="0 0 370 360" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+      <!-- axes: px = 95 + 25x, py = 145 - 25y -->
+      <line x1="15" y1="145" x2="360" y2="145" stroke="#1e1e2e" stroke-width="1.5"/>
+      <line x1="95" y1="350" x2="95" y2="10" stroke="#1e1e2e" stroke-width="1.5"/>
+      <text x="352" y="138">x</text><text x="100" y="16">y</text><text x="82" y="158">O</text>
+      <!-- circle centre (3,-2) r 5 -->
+      <circle cx="170" cy="195" r="125" fill="#eef2ff" fill-opacity="0.6" stroke="#4f46e5" stroke-width="2.5"/>
+      <circle cx="170" cy="195" r="4" fill="#4f46e5"/>
+      <text x="140" y="213">C(3, −2)</text>
+      <!-- radius to (6,2) -->
+      <line x1="170" y1="195" x2="245" y2="95" stroke="#7c3aed" stroke-width="2"/>
+      <text x="196" y="160" fill="#6d28d9">r = 5</text>
+      <circle cx="245" cy="95" r="4" fill="#ef4444"/>
+      <text x="252" y="90">P(6, 2)</text>
+      <!-- tangent 3x + 4y = 26 from (2,5) to (10,-1) -->
+      <line x1="145" y1="20" x2="345" y2="170" stroke="#ef4444" stroke-width="2"/>
+      <text x="290" y="150" fill="#b91c1c">tangent</text>
+      <!-- right-angle mark at P -->
+      <polyline points="239,103 247,109 253,101" fill="none" stroke="#1e1e2e" stroke-width="1.2"/>
+    </svg>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – COMPLETING THE SQUARE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding the Centre and Radius by Completing the Square</div>
+<div class="section-body">
+
+  <p>If you expand $(x-3)^2 + (y+2)^2 = 25$ you get $x^2 + y^2 - 6x + 4y - 12 = 0$, which hides the centre and radius. To get them back, complete the square in $x$ and in $y$ separately.</p>
+
+  <ol class="steps">
+    <li><span>Group the $x$ terms and the $y$ terms. (If $x^2$ and $y^2$ have a common coefficient other than $1$, divide through first.)</span></li>
+    <li><span>Complete the square on each: $x^2 + px \equiv \left(x + \tfrac{p}{2}\right)^2 - \left(\tfrac{p}{2}\right)^2$.</span></li>
+    <li><span>Move all the constants to the right-hand side. That number is $r^2$.</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Centre and radius</div>
+    <div class="example-body">
+      <p>Find the centre and radius of $x^2 + y^2 - 6x + 4y - 12 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 - 6x = (x - 3)^2 - 9$ &nbsp;and&nbsp; $y^2 + 4y = (y + 2)^2 - 4$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x-3)^2 - 9 + (y+2)^2 - 4 - 12 = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(x-3)^2 + (y+2)^2 = 25$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Centre $(3, -2)$, radius $5$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Divide first, and when is it a circle?</div>
+    <div class="example-body">
+      <p>(a) Find the centre and radius of $2x^2 + 2y^2 + 8x - 12y + 8 = 0$. &nbsp; (b) For what values of $k$ does $x^2 + y^2 + 2x - 4y + k = 0$ represent a circle?</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Divide by $2$: $x^2 + y^2 + 4x - 6y + 4 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x+2)^2 - 4 + (y-3)^2 - 9 + 4 = 0 \;\Rightarrow\; (x+2)^2 + (y-3)^2 = 9$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Centre $(-2, 3)$, radius $3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) $(x+1)^2 - 1 + (y-2)^2 - 4 + k = 0 \;\Rightarrow\; (x+1)^2 + (y-2)^2 = 5 - k$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>A circle needs $r^2 > 0$, so $5 - k > 0$, i.e. $k < 5$.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Only if the coefficients of $x^2$ and $y^2$ are equal</strong> (and there is no $xy$ term) can the equation be a circle. $x^2 + 2y^2 = 9$ is not a circle.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CIRCLE PROPERTIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Three Circle Theorems in Coordinates</div>
+<div class="section-body">
+
+  <p>The subject content names three properties from GCSE geometry that you must be able to use with coordinates.</p>
+
+  <table>
+    <tr><th>Property</th><th>How it is used</th></tr>
+    <tr><td>The angle in a semicircle is a right angle</td><td>If $AB$ is a diameter and $C$ is on the circle, then $AC \perp BC$. Conversely, if $\angle ACB = 90°$, then $AB$ is a diameter.</td></tr>
+    <tr><td>The perpendicular from the centre to a chord bisects the chord</td><td>The perpendicular bisector of any chord passes through the centre.</td></tr>
+    <tr><td>The radius is perpendicular to the tangent at the point of contact</td><td>Tangent gradient $= -\dfrac{1}{\text{radius gradient}}$.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — The tangent at a point</div>
+    <div class="example-body">
+      <p>Find the equation of the tangent to $(x-3)^2 + (y+2)^2 = 25$ at $P(6, 2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Gradient of the radius $CP$: $\dfrac{2 - (-2)}{6 - 3} = \dfrac43$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The tangent is perpendicular to the radius: gradient $-\tfrac34$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y - 2 = -\tfrac34(x - 6) \;\Rightarrow\; 4y - 8 = -3x + 18$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3x + 4y - 26 = 0$ (the red line in the diagram above).</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Angle in a semicircle</div>
+    <div class="example-body">
+      <p>$A(-1, 2)$ and $B(5, 10)$ are the ends of a diameter. Find the equation of the circle, and show that $\angle ACB = 90°$ where $C(6, 9)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Centre = midpoint of $AB$ = $(2, 6)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$r^2 = (5 - 2)^2 + (10 - 6)^2 = 9 + 16 = 25$, so $(x-2)^2 + (y-6)^2 = 25$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$C$: $(6-2)^2 + (9-6)^2 = 16 + 9 = 25$ ✓, so $C$ is on the circle.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$m_{AC} = \dfrac{9 - 2}{6 + 1} = 1$, &nbsp;$m_{BC} = \dfrac{9 - 10}{6 - 5} = -1$. Product $-1$, so $\angle ACB = 90°$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — The circle through three points</div>
+    <div class="example-body">
+      <p>Find the equation of the circle through $A(0, 5)$, $B(7, 4)$ and $C(8, 1)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Chord $AB$: midpoint $(3.5, 4.5)$, gradient $-\tfrac17$, so perpendicular gradient $7$. Bisector: $y - 4.5 = 7(x - 3.5)$, i.e. $y = 7x - 20$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Chord $BC$: midpoint $(7.5, 2.5)$, gradient $\dfrac{1 - 4}{8 - 7} = -3$, so perpendicular gradient $\tfrac13$. Bisector: $y - 2.5 = \tfrac13(x - 7.5)$, i.e. $y = \tfrac13 x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Both bisectors pass through the centre: $7x - 20 = \tfrac13 x \;\Rightarrow\; 21x - 60 = x \;\Rightarrow\; x = 3$, $y = 1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$r^2 = (0 - 3)^2 + (5 - 1)^2 = 25$, so $(x-3)^2 + (y-1)^2 = 25$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Check $C$: $25 + 0 = 25$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – LINES AND CIRCLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Where a Line Meets a Circle</div>
+<div class="section-body">
+
+  <p>Substitute the line into the circle. You get a quadratic, and its <strong>discriminant</strong> tells you how many points of intersection there are.</p>
+
+  <table>
+    <tr><th>Discriminant $b^2 - 4ac$</th><th>Number of intersections</th><th>Geometry</th></tr>
+    <tr><td>$> 0$</td><td>Two</td><td>The line is a chord (a secant)</td></tr>
+    <tr><td>$= 0$</td><td>One (repeated root)</td><td>The line is a <strong>tangent</strong></td></tr>
+    <tr><td>$< 0$</td><td>None</td><td>The line misses the circle</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Points of intersection</div>
+    <div class="example-body">
+      <p>Find where the line $y = x + 1$ meets the circle $x^2 + y^2 = 25$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 + (x+1)^2 = 25 \;\Rightarrow\; 2x^2 + 2x - 24 = 0 \;\Rightarrow\; x^2 + x - 12 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x + 4)(x - 3) = 0$, so $x = 3$ or $x = -4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Points: $(3, 4)$ and $(-4, -3)$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A tangency condition</div>
+    <div class="example-body">
+      <p>Find the values of $k$ for which $y = x + k$ is a tangent to $x^2 + y^2 = 8$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^2 + (x + k)^2 = 8 \;\Rightarrow\; 2x^2 + 2kx + k^2 - 8 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Tangent $\iff$ discriminant $= 0$: $(2k)^2 - 4(2)(k^2 - 8) = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$4k^2 - 8k^2 + 64 = 0 \;\Rightarrow\; k^2 = 16$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$k = 4$ or $k = -4$ — one tangent on each side of the circle.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — A chord and its midpoint</div>
+    <div class="example-body">
+      <p>The line $y = 1$ cuts the circle $(x-3)^2 + (y+2)^2 = 25$ at $P$ and $Q$. Find the length $PQ$ and verify that the perpendicular from the centre bisects $PQ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(x - 3)^2 + 9 = 25 \;\Rightarrow\; (x-3)^2 = 16 \;\Rightarrow\; x = 7$ or $x = -1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$P(-1, 1)$, $Q(7, 1)$, so $PQ = 8$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The perpendicular from $C(3, -2)$ to the horizontal chord is the vertical line $x = 3$, meeting it at $(3, 1)$ — the midpoint of $PQ$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>"Show detailed reasoning" questions</strong> on intersections expect the substitution, the quadratic and the discriminant written out. A calculator's equation solver is fine for checking, but not as the method.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Standard form</h4><p>$(x-a)^2 + (y-b)^2 = r^2$</p></div>
+    <div class="ref-card"><h4>Centre signs</h4><p>Opposite to the signs in the brackets.</p></div>
+    <div class="ref-card"><h4>Expanded form</h4><p>Complete the square in $x$ and $y$; the right side is $r^2$.</p></div>
+    <div class="ref-card"><h4>Is it a circle?</h4><p>Need $r^2 > 0$.</p></div>
+    <div class="ref-card"><h4>Semicircle</h4><p>Diameter $AB$, $C$ on circle $\Rightarrow AC \perp BC$.</p></div>
+    <div class="ref-card"><h4>Chord</h4><p>Its perpendicular bisector passes through the centre.</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>Perpendicular to the radius at the contact point.</p></div>
+    <div class="ref-card"><h4>Line meets circle</h4><p>Substitute; the discriminant counts the intersections.</p></div>
+    <div class="ref-card"><h4>Tangent condition</h4><p>$b^2 - 4ac = 0$.</p></div>
+    <div class="ref-card"><h4>Point test</h4><p>Compare $(x-a)^2 + (y-b)^2$ with $r^2$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write down the centre and radius of $(x + 4)^2 + (y - 1)^2 = 49$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Centre $(-4, 1)$, radius $\sqrt{49} = 7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the equation of the circle with centre $(-1, 5)$ that passes through $(2, 1)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r^2 = (2 + 1)^2 + (1 - 5)^2 = 9 + 16 = 25$</p>
+          <p>$(x + 1)^2 + (y - 5)^2 = 25$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the centre and radius of $x^2 + y^2 + 10x - 8y + 5 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x + 5)^2 - 25 + (y - 4)^2 - 16 + 5 = 0$</p>
+          <p>$(x+5)^2 + (y-4)^2 = 36$</p>
+          <p>Centre $(-5, 4)$, radius $6$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$(-3, 4)$ and $(5, -2)$ are the ends of a diameter of a circle. Find its equation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Centre = midpoint $= (1, 1)$.</p>
+          <p>$r^2 = (5 - 1)^2 + (-2 - 1)^2 = 16 + 9 = 25$</p>
+          <p>$(x - 1)^2 + (y - 1)^2 = 25$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Show that $(5, 7)$ lies on the circle $x^2 + y^2 - 4x - 6y - 12 = 0$ and find the equation of the tangent there in the form $ax + by + c = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$25 + 49 - 20 - 42 - 12 = 0$ ✓, so $(5, 7)$ is on the circle.</p>
+          <p>Completing the square: $(x - 2)^2 + (y - 3)^2 = 25$, centre $(2, 3)$.</p>
+          <p>Radius gradient $\dfrac{7 - 3}{5 - 2} = \dfrac43$, so tangent gradient $-\tfrac34$.</p>
+          <p>$y - 7 = -\tfrac34(x - 5) \;\Rightarrow\; 4y - 28 = -3x + 15$</p>
+          <p>$3x + 4y - 43 = 0$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find the coordinates of the points where $y = x + 2$ meets $x^2 + y^2 = 10$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 + (x + 2)^2 = 10 \;\Rightarrow\; 2x^2 + 4x - 6 = 0 \;\Rightarrow\; x^2 + 2x - 3 = 0$</p>
+          <p>$(x + 3)(x - 1) = 0$, so $x = 1$ or $x = -3$.</p>
+          <p>Points $(1, 3)$ and $(-3, -1)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p><em>In this question you must show detailed reasoning.</em> Show that the line $x + y = 10$ does not meet the circle $(x - 2)^2 + (y - 1)^2 = 4$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Substitute $y = 10 - x$: $(x - 2)^2 + (9 - x)^2 = 4$</p>
+          <p>$x^2 - 4x + 4 + x^2 - 18x + 81 - 4 = 0 \;\Rightarrow\; 2x^2 - 22x + 81 = 0$</p>
+          <p>Discriminant: $(-22)^2 - 4(2)(81) = 484 - 648 = -164 < 0$</p>
+          <p>No real roots, so the line and circle do not meet.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The line $y = mx$ is a tangent to the circle $(x - 4)^2 + y^2 = 4$. Find the exact possible values of $m$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x - 4)^2 + m^2x^2 = 4 \;\Rightarrow\; (1 + m^2)x^2 - 8x + 12 = 0$</p>
+          <p>Tangent: $64 - 4(1 + m^2)(12) = 0 \;\Rightarrow\; 1 + m^2 = \tfrac{64}{48} = \tfrac43$</p>
+          <p>$m^2 = \tfrac13$, so $m = \pm\dfrac{1}{\sqrt3} = \pm\dfrac{\sqrt3}{3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The equation $x^2 + y^2 - 6x + 2y + k = 0$ represents a circle. (a) Find the range of possible values of $k$. &nbsp; (b) Find $k$ if the circle touches the $x$-axis.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(x - 3)^2 - 9 + (y + 1)^2 - 1 + k = 0 \;\Rightarrow\; (x-3)^2 + (y+1)^2 = 10 - k$.</p>
+          <p>Need $10 - k > 0$, so $k < 10$.</p>
+          <p><strong>(b)</strong> The centre $(3, -1)$ is $1$ unit from the $x$-axis, so touching the axis means $r = 1$.</p>
+          <p>$10 - k = 1$, so $k = 9$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>$A(-2, -2)$, $B(6, 4)$ and $C(5, 5)$.</p>
+      <p>(a) Show that $\angle ACB = 90°$. &nbsp; (b) Hence find the equation of the circle through $A$, $B$ and $C$. &nbsp; (c) Find the equation of the tangent to the circle at $C$. &nbsp; (d) The tangent meets the $x$-axis at $T$. Find the exact length $CT$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $m_{AC} = \dfrac{5 + 2}{5 + 2} = 1$, &nbsp;$m_{BC} = \dfrac{5 - 4}{5 - 6} = -1$. Product $-1$, so $\angle ACB = 90°$.</p>
+          <p><strong>(b)</strong> The angle in a semicircle is $90°$, so $AB$ is a diameter. Centre $M$ = midpoint of $AB$ = $(2, 1)$.</p>
+          <p>$r = \tfrac12 AB = \tfrac12\sqrt{8^2 + 6^2} = \tfrac12(10) = 5$.</p>
+          <p>$(x - 2)^2 + (y - 1)^2 = 25$. &nbsp;(Check $C$: $9 + 16 = 25$ ✓)</p>
+          <p><strong>(c)</strong> $m_{MC} = \dfrac{5 - 1}{5 - 2} = \dfrac43$, so the tangent gradient is $-\tfrac34$.</p>
+          <p>$y - 5 = -\tfrac34(x - 5) \;\Rightarrow\; 3x + 4y - 35 = 0$</p>
+          <p><strong>(d)</strong> $y = 0$: $3x = 35$, so $T\left(\tfrac{35}{3}, 0\right)$.</p>
+          <p>$CT^2 = \left(\tfrac{35}{3} - 5\right)^2 + (0 - 5)^2 = \tfrac{400}{9} + \tfrac{225}{9} = \tfrac{625}{9}$, so $CT = \tfrac{25}{3}$.</p>
+          <p><em>Check:</em> triangle $MCT$ has a right angle at $C$, so $MT^2 = 5^2 + \left(\tfrac{25}{3}\right)^2 = \tfrac{850}{9}$, and directly $MT^2 = \left(\tfrac{29}{3}\right)^2 + 1^2 = \tfrac{850}{9}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Circles &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

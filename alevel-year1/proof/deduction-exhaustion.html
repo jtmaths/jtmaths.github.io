@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof by Deduction and Exhaustion &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 Proof by Deduction and Exhaustion</h1>
+  <p>A Level Maths Year 1 · Proof</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – PROOF BY DEDUCTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What Proof by Deduction Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    <strong>Proof by deduction</strong> starts from facts that are known to be true — definitions, earlier results, the laws of algebra — and moves step by logical step to the result. Because it uses <em>general</em> letters rather than particular numbers, it covers every case at once.
+  </div>
+
+  <p>Most deduction proofs at this level fall into three families:</p>
+
+  <table>
+    <tr><th>Type</th><th>Key idea</th><th>Example claim</th></tr>
+    <tr><td>Number properties</td><td>Write integers as $2n$, $2n+1$, $n$, $n+1, \dots$ and factorise the result</td><td>"The square of an odd number is odd."</td></tr>
+    <tr><td>Positivity</td><td>Complete the square, then use (square) $\geqslant 0$</td><td>"$x^2 + 4x + 7 &gt; 0$ for all real $x$."</td></tr>
+    <tr><td>Identities</td><td>Expand and simplify one side until it matches the other</td><td>"$(x + y)^2 - (x - y)^2 \equiv 4xy$."</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Representing integers ($n \in \mathbb{Z}$)</div>
+    Even $= 2n$ &nbsp;&middot;&nbsp; Odd $= 2n + 1$ &nbsp;&middot;&nbsp; Multiple of $k$ $= kn$<br>
+    Consecutive: $n,\ n+1,\ n+2$ &nbsp;&middot;&nbsp; Consecutive even: $2n,\ 2n+2$ &nbsp;&middot;&nbsp; Consecutive odd: $2n+1,\ 2n+3$
+  </div>
+
+  <div class="tip">
+    <strong>The target form.</strong> Before you start, decide what the last line must look like. "Even" means $2 \times (\text{integer})$; "odd" means $2 \times (\text{integer}) + 1$; "a multiple of $5$" means $5 \times (\text{integer})$. Then steer your algebra towards that form.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – NUMBER PROOFS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Proofs about Odd, Even and Consecutive Integers</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The square of an odd number</div>
+    <div class="example-body">
+      <p>Prove that the square of any odd number is odd.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the odd number be $2n + 1$, where $n \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(2n + 1)^2 = 4n^2 + 4n + 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 2\left(2n^2 + 2n\right) + 1$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$2n^2 + 2n$ is an integer, so this is of the form $2k + 1$ with $k \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Therefore the square of any odd number is odd. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Consecutive squares</div>
+    <div class="example-body">
+      <p>Prove that the difference between the squares of two consecutive integers is always odd.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the integers be $n$ and $n + 1$, where $n \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(n + 1)^2 - n^2 = n^2 + 2n + 1 - n^2 = 2n + 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2n + 1$ is odd for every integer $n$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Therefore the difference between the squares of two consecutive integers is odd. $\blacksquare$</span></div>
+      <div class="tip">Notice the bonus fact: the difference $2n + 1$ is also the <em>sum</em> of the two integers, $n + (n+1)$. Proofs often reveal more than they were asked for.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Using a known fact inside a proof</div>
+    <div class="example-body">
+      <p>Prove that the product of two consecutive even numbers is a multiple of $8$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the numbers be $2n$ and $2n + 2$, where $n \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2n(2n + 2) = 4n(n + 1)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n$ and $n + 1$ are consecutive integers, so one of them is even. Hence $n(n+1)$ is even: $n(n+1) = 2m$ for some $m \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So the product is $4 \times 2m = 8m$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Therefore the product of two consecutive even numbers is a multiple of $8$. $\blacksquare$</span></div>
+      <div class="warn">Stopping at $4n(n+1)$ only shows a multiple of $4$. The extra factor of $2$ comes from the fact about consecutive integers — and you must <em>say</em> why it holds.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – POSITIVITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Completing the Square to Prove Positivity</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The key fact</div>
+    For every real number $t$: &nbsp; $t^2 \geqslant 0$<br>
+    So $a(x + p)^2 + q &gt; 0$ for all real $x$ whenever $a &gt; 0$ and $q &gt; 0$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A quadratic that is always positive</div>
+    <div class="example-body">
+      <p>Prove that $x^2 + 4x + 7 &gt; 0$ for all real values of $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Complete the square: $x^2 + 4x + 7 \equiv (x + 2)^2 - 4 + 7 = (x + 2)^2 + 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(x + 2)^2 \geqslant 0$ for all real $x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $(x + 2)^2 + 3 \geqslant 3 &gt; 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Therefore $x^2 + 4x + 7 &gt; 0$ for all real $x$. $\blacksquare$</span></div>
+      <div class="tip">The proof gives more than was asked: the <em>least</em> value of the expression is $3$, when $x = -2$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A leading coefficient other than 1</div>
+    <div class="example-body">
+      <p>Prove that $2x^2 - 4x + 5$ is positive for all real $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Factor out the $2$ from the $x$ terms: $2\left(x^2 - 2x\right) + 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 2\left[(x - 1)^2 - 1\right] + 5 = 2(x - 1)^2 + 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(x-1)^2 \geqslant 0 \Rightarrow 2(x - 1)^2 \geqslant 0 \Rightarrow 2(x-1)^2 + 3 \geqslant 3 &gt; 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Therefore $2x^2 - 4x + 5 &gt; 0$ for all real $x$. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — An inequality in two variables</div>
+    <div class="example-body">
+      <p>Prove that $x^2 + y^2 \geqslant 2xy$ for all real $x$ and $y$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Start from a fact that is certainly true: $(x - y)^2 \geqslant 0$ for all real $x, y$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Expand: $x^2 - 2xy + y^2 \geqslant 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add $2xy$ to both sides: $x^2 + y^2 \geqslant 2xy$. $\blacksquare$</span></div>
+      <div class="tip"><strong>How did we know to start there?</strong> Do the rough work backwards — $x^2 + y^2 - 2xy \geqslant 0$ looks like $(x-y)^2$ — then write the proof forwards, starting from the true fact.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – IDENTITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Proving Identities</div>
+<div class="section-body">
+
+  <div class="concept">
+    An <strong>identity</strong>, written with $\equiv$, is true for <em>every</em> value of the variables. To prove one, take one side (usually the more complicated), manipulate it, and arrive at the other side. Never treat it like an equation by doing the same thing to both sides.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Proving an identity, then using it</div>
+    <div class="example-body">
+      <p>(a) Prove that $(x + y)^2 - (x - y)^2 \equiv 4xy$. &nbsp; (b) Hence show that $53^2 - 47^2 = 600$ without a calculator.</p>
+      <div class="step-row"><span class="arrow">①</span><span>LHS $= \left(x^2 + 2xy + y^2\right) - \left(x^2 - 2xy + y^2\right)$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 4xy = $ RHS. $\blacksquare$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $x + y = 53$ and $x - y = 47$ give $x = 50$, $y = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$53^2 - 47^2 = 4(50)(3) = 600$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — An identity that gives a divisibility result</div>
+    <div class="example-body">
+      <p>Prove that $n^3 - n \equiv (n - 1)n(n + 1)$, and hence that $n^3 - n$ is even for every integer $n$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>RHS $= (n-1)(n+1) \times n = \left(n^2 - 1\right)n = n^3 - n = $ LHS. $\blacksquare$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(n-1)$, $n$, $(n+1)$ are three consecutive integers, so at least one of them is even.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>A product with an even factor is even, so $n^3 - n$ is even for every integer $n$. $\blacksquare$</span></div>
+      <div class="tip">The same argument shows $n^3 - n$ is a multiple of $3$ (one of any three consecutive integers is a multiple of $3$) — and so a multiple of $6$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PROOF BY EXHAUSTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Proof by Exhaustion</div>
+<div class="section-body">
+
+  <div class="concept">
+    In <strong>proof by exhaustion</strong> you split the situation into a <em>finite</em> number of cases that between them cover every possibility, and prove the result in each case separately. If even one case is left out, the proof fails.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Useful ways to split the integers</div>
+    Two cases: $2k,\ 2k+1$ &nbsp;&middot;&nbsp; Three cases: $3k,\ 3k+1,\ 3k+2$<br>
+    Four cases: $4k,\ 4k+1,\ 4k+2,\ 4k+3$ &nbsp;&middot;&nbsp; Six cases: $6k,\ 6k+1, \dots, 6k+5$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Square numbers and remainders on division by 3</div>
+    <div class="example-body">
+      <p>Prove that every square number leaves remainder $0$ or $1$ when divided by $3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Every integer $n$ is of the form $3k$, $3k + 1$ or $3k + 2$ for some $k \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$n = 3k$: $\;n^2 = 9k^2 = 3\left(3k^2\right)$, remainder $0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n = 3k + 1$: $\;n^2 = 9k^2 + 6k + 1 = 3\left(3k^2 + 2k\right) + 1$, remainder $1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n = 3k + 2$: $\;n^2 = 9k^2 + 12k + 4 = 3\left(3k^2 + 4k + 1\right) + 1$, remainder $1$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>All cases are covered, so every square leaves remainder $0$ or $1$ on division by $3$. $\blacksquare$</span></div>
+      <div class="tip"><strong>Consequence:</strong> no square number leaves remainder $2$ on division by $3$. For example, $2\,000\,000\,000\,003$ has digit sum $5$, so it leaves remainder $2$ when divided by $3$ — it cannot be a perfect square, and no calculator is needed.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Squares and division by 4</div>
+    <div class="example-body">
+      <p>Prove that the square of any integer is either a multiple of $4$ or one more than a multiple of $4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Case 1, $n$ even: $n = 2k$, so $n^2 = 4k^2$ — a multiple of $4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Case 2, $n$ odd: $n = 2k + 1$, so $n^2 = 4k^2 + 4k + 1 = 4\left(k^2 + k\right) + 1$ — one more than a multiple of $4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Every integer is even or odd, so the result holds for all integers. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 11 — Primes greater than 3</div>
+    <div class="example-body">
+      <p>Prove that every prime number greater than $3$ is one more or one less than a multiple of $6$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Every integer is of the form $6k,\ 6k+1,\ 6k+2,\ 6k+3,\ 6k+4$ or $6k+5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$6k = 2(3k)$, $\;6k + 2 = 2(3k + 1)$ and $6k + 4 = 2(3k + 2)$ are even, so (being greater than $2$) not prime.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$6k + 3 = 3(2k + 1)$ is a multiple of $3$, so (being greater than $3$) not prime.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The only forms left are $6k + 1$ and $6k + 5 = 6(k + 1) - 1$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So every prime greater than $3$ is one more or one less than a multiple of $6$. $\blacksquare$</span></div>
+      <div class="warn"><strong>The converse is false.</strong> $25 = 6(4) + 1$ is of the right form but is not prime. The proof only says primes must be of this form, not that every number of this form is prime.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 12 — Exhaustion over a small finite set</div>
+    <div class="example-body">
+      <p>Prove that $n^2 + n + 11$ is prime for every integer $n$ with $1 \leqslant n \leqslant 6$.</p>
+      <table>
+        <tr><th>$n$</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+        <tr><th>$n^2 + n + 11$</th><td>13</td><td>17</td><td>23</td><td>31</td><td>41</td><td>53</td></tr>
+      </table>
+      <div class="step-row"><span class="arrow">①</span><span>Every value is at most $53$, and $\sqrt{53} &lt; 8$, so it is enough to check divisibility by $2, 3, 5$ and $7$. None of the six values is divisible by any of these, so each one is prime.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Every case in the range has been checked, so the result is proved. $\blacksquare$</span></div>
+      <div class="tip">This is a valid proof <em>only because the set is finite</em>. It says nothing about $n = 11$, where $11^2 + 11 + 11 = 143 = 11 \times 13$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Even / odd</h4><p>$2n$ and $2n+1$, $n \in \mathbb{Z}$. Use different letters for different numbers.</p></div>
+    <div class="ref-card"><h4>Consecutive</h4><p>$n, n+1, n+2, \dots$ — one of any two is even.</p></div>
+    <div class="ref-card"><h4>Target form</h4><p>Factorise to $k \times (\text{integer})$ or $2 \times (\text{integer}) + 1$.</p></div>
+    <div class="ref-card"><h4>Positivity</h4><p>$a(x+p)^2 + q$ with $a, q &gt; 0$ is always positive.</p></div>
+    <div class="ref-card"><h4>Squares</h4><p>$t^2 \geqslant 0$ for every real $t$.</p></div>
+    <div class="ref-card"><h4>Identity</h4><p>Work on one side only until it becomes the other.</p></div>
+    <div class="ref-card"><h4>Exhaustion</h4><p>Finite cases that cover <em>everything</em>; prove each.</p></div>
+    <div class="ref-card"><h4>Remainders</h4><p>Squares are $0$ or $1$ mod $3$, and $0$ or $1$ mod $4$.</p></div>
+    <div class="ref-card"><h4>Finish</h4><p>End with a sentence stating the result.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Prove that the sum of an odd number and an even number is odd.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the numbers be $2m + 1$ and $2n$, with $m, n \in \mathbb{Z}$.</p>
+          <p>Sum $= 2m + 2n + 1 = 2(m + n) + 1$, and $m + n \in \mathbb{Z}$.</p>
+          <p>So the sum is of the form $2k + 1$ — it is odd.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Prove that the sum of any five consecutive integers is a multiple of $5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the integers be $n, n+1, n+2, n+3, n+4$ with $n \in \mathbb{Z}$.</p>
+          <p>Sum $= 5n + 10 = 5(n + 2)$, and $n + 2 \in \mathbb{Z}$.</p>
+          <p>Therefore the sum is a multiple of $5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Prove that $(n + 5)^2 - (n + 1)^2$ is a multiple of $8$ for every integer $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(n+5)^2 - (n+1)^2 = \left(n^2 + 10n + 25\right) - \left(n^2 + 2n + 1\right) = 8n + 24$</p>
+          <p>$= 8(n + 3)$, and $n + 3 \in \mathbb{Z}$.</p>
+          <p>Therefore the expression is a multiple of $8$ for every integer $n$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Prove that $x^2 - 8x + 20 &gt; 0$ for all real $x$, and state the least value of $x^2 - 8x + 20$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x^2 - 8x + 20 \equiv (x - 4)^2 - 16 + 20 = (x - 4)^2 + 4$.</p>
+          <p>$(x - 4)^2 \geqslant 0$, so $(x-4)^2 + 4 \geqslant 4 &gt; 0$ for all real $x$.</p>
+          <p>The least value is $4$, when $x = 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Prove that $3x^2 + 6x + 5 &gt; 0$ for all real $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3x^2 + 6x + 5 = 3\left(x^2 + 2x\right) + 5 = 3\left[(x + 1)^2 - 1\right] + 5 = 3(x + 1)^2 + 2$.</p>
+          <p>$(x + 1)^2 \geqslant 0 \Rightarrow 3(x+1)^2 \geqslant 0 \Rightarrow 3(x+1)^2 + 2 \geqslant 2 &gt; 0$.</p>
+          <p>Therefore $3x^2 + 6x + 5 &gt; 0$ for all real $x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Prove by exhaustion that $n^2 + n$ is even for every integer $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Case 1:</strong> $n$ even, $n = 2k$. Then $n^2 + n = 4k^2 + 2k = 2\left(2k^2 + k\right)$ — even.</p>
+          <p><strong>Case 2:</strong> $n$ odd, $n = 2k + 1$. Then $n^2 + n = 4k^2 + 4k + 1 + 2k + 1 = 4k^2 + 6k + 2 = 2\left(2k^2 + 3k + 1\right)$ — even.</p>
+          <p>Every integer is even or odd, so $n^2 + n$ is even for every integer $n$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>(a) Prove that $(x + 2)^3 - x^3 \equiv 6x^2 + 12x + 8$. &nbsp; (b) Hence prove that the difference between the cubes of two integers that differ by $2$ is always even.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(x+2)^3 = (x+2)\left(x^2 + 4x + 4\right) = x^3 + 4x^2 + 4x + 2x^2 + 8x + 8 = x^3 + 6x^2 + 12x + 8$.</p>
+          <p>Subtracting $x^3$ gives $6x^2 + 12x + 8$, as required.</p>
+          <p><strong>(b)</strong> Let the integers be $n$ and $n + 2$. By (a), $(n+2)^3 - n^3 = 6n^2 + 12n + 8 = 2\left(3n^2 + 6n + 4\right)$.</p>
+          <p>$3n^2 + 6n + 4$ is an integer, so the difference is even.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Prove that $101$ is a prime number.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>If $101$ had a factor other than $1$ and itself, it would have a prime factor no larger than $\sqrt{101} \approx 10.05$.</p>
+          <p>So it is enough to test the primes $2, 3, 5, 7$:</p>
+          <p>$101$ is odd; its digit sum is $2$, so not divisible by $3$; it does not end in $0$ or $5$; and $101 = 7 \times 14 + 3$.</p>
+          <p>None divides $101$, so by exhaustion $101$ is prime.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>(a) Prove that $a^2 + b^2 \geqslant 2ab$ for all real $a$ and $b$. &nbsp; (b) Hence prove that $x + \dfrac{1}{x} \geqslant 2$ for all $x &gt; 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(a - b)^2 \geqslant 0 \Rightarrow a^2 - 2ab + b^2 \geqslant 0 \Rightarrow a^2 + b^2 \geqslant 2ab$.</p>
+          <p><strong>(b)</strong> For $x &gt; 0$ we may take $a = \sqrt{x}$ and $b = \dfrac{1}{\sqrt{x}}$, both real.</p>
+          <p>Then $a^2 = x$, $b^2 = \dfrac1x$ and $ab = 1$, so (a) gives $x + \dfrac1x \geqslant 2$.</p>
+          <p><em>Alternative:</em> $x + \dfrac1x - 2 = \dfrac{x^2 - 2x + 1}{x} = \dfrac{(x-1)^2}{x} \geqslant 0$ since $x &gt; 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) By considering the cases $n = 3k$, $n = 3k + 1$ and $n = 3k + 2$, prove that the cube of any integer leaves remainder $0$, $1$ or $8$ when divided by $9$.</p>
+      <p>(b) Hence list the possible remainders when the sum of two cubes is divided by $9$.</p>
+      <p>(c) Prove that $2021$ cannot be written as the sum of two cubes of integers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $n = 3k$: $\;n^3 = 27k^3 = 9\left(3k^3\right)$, remainder $0$.</p>
+          <p>$n = 3k + 1$: $\;n^3 = 27k^3 + 27k^2 + 9k + 1 = 9\left(3k^3 + 3k^2 + k\right) + 1$, remainder $1$.</p>
+          <p>$n = 3k + 2$: $\;n^3 = 27k^3 + 54k^2 + 36k + 8 = 9\left(3k^3 + 6k^2 + 4k\right) + 8$, remainder $8$.</p>
+          <p>These cases cover every integer, so the remainder is always $0$, $1$ or $8$.</p>
+          <p><strong>(b)</strong> Adding two remainders from $\{0, 1, 8\}$: $0, 1, 8, 2, 9, 16$, which leave remainders $0, 1, 8, 2, 0, 7$ on division by $9$.</p>
+          <p>So the sum of two cubes leaves remainder $0, 1, 2, 7$ or $8$ — never $3, 4, 5$ or $6$.</p>
+          <p><strong>(c)</strong> $2021 = 9 \times 224 + 5$, so $2021$ leaves remainder $5$ on division by $9$.</p>
+          <p>By (b) no sum of two cubes leaves remainder $5$, so $2021$ is not the sum of two cubes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Proof by Deduction and Exhaustion &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

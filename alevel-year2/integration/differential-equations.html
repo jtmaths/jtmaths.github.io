@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Differential Equations &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌡️ Differential Equations</h1>
+  <p>A Level Maths Year 2 · Integration</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT IS A DIFFERENTIAL EQUATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Differential Equation Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>differential equation</strong> is an equation involving a derivative, such as $\dfrac{dy}{dx} = 6x^2y$. Solving it means finding $y$ as a function of $x$ — not a number. A <strong>first-order</strong> equation contains only the first derivative.
+  </div>
+
+  <p>Differential equations are how most real situations are described: we often know how fast something is <em>changing</em> long before we know a formula for the thing itself.</p>
+
+  <table>
+    <tr><th>Statement in words</th><th>Differential equation</th></tr>
+    <tr><td>A population $P$ grows at a rate proportional to its size.</td><td>$\dfrac{dP}{dt} = kP$, &nbsp;$k &gt; 0$</td></tr>
+    <tr><td>The mass $m$ of a substance decreases at a rate proportional to the mass.</td><td>$\dfrac{dm}{dt} = -km$, &nbsp;$k &gt; 0$</td></tr>
+    <tr><td>A body at temperature $\theta$ cools at a rate proportional to the difference between its temperature and the room temperature $20^\circ$C.</td><td>$\dfrac{d\theta}{dt} = -k(\theta - 20)$</td></tr>
+    <tr><td>The volume $V$ of water in a tank decreases at a rate proportional to the square root of the volume.</td><td>$\dfrac{dV}{dt} = -k\sqrt{V}$</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Forming the equation:</strong> "rate of change of $y$" means $\dfrac{dy}{dt}$; "proportional to" means "$= k \times$"; "decreasing" means you write the minus sign explicitly, so that $k$ itself is positive.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – SEPARATING THE VARIABLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Separating the Variables</div>
+<div class="section-body">
+
+  <p>At A Level every differential equation you solve is <strong>separable</strong>: the right-hand side factorises into a function of $x$ times a function of $y$.</p>
+
+  <div class="formula-box">
+    <div class="label">Separation of variables</div>
+    $\dfrac{dy}{dx} = \mathrm{f}(x)\,\mathrm{g}(y) \quad\Longrightarrow\quad \displaystyle\int\frac{1}{\mathrm{g}(y)}\,dy = \int\mathrm{f}(x)\,dx$
+  </div>
+
+  <ol class="steps">
+    <li>Get all the $y$ terms (with $dy$) on one side, all the $x$ terms (with $dx$) on the other.</li>
+    <li>Integrate both sides. Write <strong>one</strong> constant $c$, on the $x$ side.</li>
+    <li>Use any given condition to find $c$.</li>
+    <li>Rearrange into the form $y = \ldots$ if asked.</li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — General solution</div>
+    <div class="example-body">
+      <p>Find the general solution of $\dfrac{dy}{dx} = 6x^2y$, $y &gt; 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Separate: $\displaystyle\int\frac{1}{y}\,dy = \int 6x^2\,dx$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\ln y = 2x^3 + c$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = e^{2x^3 + c} = e^c \cdot e^{2x^3}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Let $A = e^c$: &nbsp;$y = Ae^{2x^3}$</span></div>
+      <div class="tip"><strong>$e^{a + c}$ is $e^a \times e^c$, not $e^a + e^c$.</strong> Replacing $e^c$ by a new constant $A$ is the standard tidy-up.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Particular solution</div>
+    <div class="example-body">
+      <p>Solve $\dfrac{dy}{dx} = y\cos x$, given $y = 3$ when $x = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int\frac{1}{y}\,dy = \int\cos x\,dx \Rightarrow \ln y = \sin x + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 0$, $y = 3$: $\ln 3 = 0 + c$, so $c = \ln 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\ln y = \sin x + \ln 3 \Rightarrow y = e^{\sin x}\cdot e^{\ln 3} = 3e^{\sin x}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Leaving the answer implicit</div>
+    <div class="example-body">
+      <p>Solve $\dfrac{dy}{dx} = \dfrac{x+1}{y^2}$, given $y = 2$ when $x = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int y^2\,dy = \int(x+1)\,dx \Rightarrow \tfrac{1}{3}y^3 = \tfrac{1}{2}x^2 + x + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 0$, $y = 2$: $\tfrac{8}{3} = c$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Multiply by $3$: $y^3 = \tfrac{3}{2}x^2 + 3x + 8$, so $y = \sqrt[3]{\tfrac{3}{2}x^2 + 3x + 8}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Exponentials on both sides</div>
+    <div class="example-body">
+      <p>Solve $\dfrac{dy}{dx} = e^{2x - y}$, given $y = 0$ when $x = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$e^{2x - y} = e^{2x}e^{-y}$, so $\displaystyle\int e^y\,dy = \int e^{2x}\,dx$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$e^y = \tfrac{1}{2}e^{2x} + c$. &nbsp;At $(0, 0)$: $1 = \tfrac{1}{2} + c$, $c = \tfrac{1}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$e^y = \tfrac{1}{2}\left(e^{2x} + 1\right) \Rightarrow y = \ln\left(\dfrac{e^{2x}+1}{2}\right)$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Find $c$ before you rearrange</strong> when the constant ends up inside an exponential or a power — and never write $\ln y = \sin x + c$ as $y = e^{\sin x} + c$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – USING PARTIAL FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Separating with Partial Fractions</div>
+<div class="section-body">
+
+  <p>After separating, the $y$-integral is sometimes a fraction that needs <a href="partial-fractions.html">partial fractions</a>. This is how <strong>logistic</strong> growth — growth that levels off — is modelled.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A limited growth model</div>
+    <div class="example-body">
+      <p>Solve $\dfrac{dx}{dt} = x(3 - x)$, given $x = 1$ when $t = 0$, and describe what happens to $x$ in the long term.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int\frac{1}{x(3-x)}\,dx = \int 1\,dt$, and $\dfrac{1}{x(3-x)} \equiv \dfrac{1}{3}\left(\dfrac{1}{x} + \dfrac{1}{3-x}\right)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\tfrac{1}{3}\left[\ln x - \ln(3 - x)\right] = t + c$ &nbsp;(for $0 &lt; x &lt; 3$; note $\int\frac{1}{3-x}dx = -\ln(3-x)$).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t = 0$, $x = 1$: $\tfrac{1}{3}\ln\tfrac{1}{2} = c$. So $\ln\dfrac{x}{3-x} = 3t + \ln\tfrac{1}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\dfrac{x}{3-x} = \tfrac{1}{2}e^{3t} \Rightarrow 2x = (3 - x)e^{3t} \Rightarrow x\left(2 + e^{3t}\right) = 3e^{3t}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x = \dfrac{3e^{3t}}{2 + e^{3t}} = \dfrac{3}{1 + 2e^{-3t}}$</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>As $t \to \infty$, $e^{-3t} \to 0$ so $x \to 3$: the quantity levels off at $3$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – MODELLING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Modelling and Interpreting Solutions</div>
+<div class="section-body">
+
+  <div class="concept">
+    In a modelling question you usually have <strong>two unknown constants</strong> — the constant of integration and the constant of proportionality $k$ — so you need <strong>two</strong> pieces of information, typically the starting value and one later value.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Newton's law of cooling</div>
+    <div class="example-body">
+      <p>A cup of tea at $90^\circ$C is left in a room at $20^\circ$C. Its temperature $\theta$ after $t$ minutes satisfies $\dfrac{d\theta}{dt} = -k(\theta - 20)$. After $5$ minutes it is $60^\circ$C. (a) Find $\theta$ in terms of $t$. (b) Find when it reaches $30^\circ$C.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int\frac{1}{\theta - 20}\,d\theta = \int -k\,dt \Rightarrow \ln(\theta - 20) = -kt + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\theta - 20 = Ae^{-kt}$. &nbsp;$t = 0$: $70 = A$, so $\theta = 20 + 70e^{-kt}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$t = 5$: $40 = 70e^{-5k} \Rightarrow e^{-5k} = \tfrac{4}{7} \Rightarrow k = \tfrac{1}{5}\ln\tfrac{7}{4} \approx 0.112$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) $30 = 20 + 70e^{-kt} \Rightarrow e^{-kt} = \tfrac{1}{7} \Rightarrow t = \dfrac{\ln 7}{k} = \dfrac{5\ln 7}{\ln(7/4)}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$t \approx 17.4$ minutes.</span></div>
+      <div class="tip"><strong>Interpret:</strong> as $t \to \infty$, $\theta \to 20$ — the tea approaches room temperature but, in this model, never quite reaches it.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A draining tank, and where the model breaks</div>
+    <div class="example-body">
+      <p>The volume $V$ litres in a tank satisfies $\dfrac{dV}{dt} = -k\sqrt{V}$. Initially $V = 100$, and after $10$ minutes $V = 64$. Find when the tank is empty.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int V^{-1/2}\,dV = \int -k\,dt \Rightarrow 2\sqrt{V} = -kt + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$t = 0$: $2(10) = c = 20$. &nbsp;$t = 10$: $2(8) = -10k + 20 \Rightarrow k = 0.4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2\sqrt{V} = 20 - 0.4t$, so $\sqrt{V} = 10 - 0.2t$ and $V = (10 - 0.2t)^2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Empty when $10 - 0.2t = 0$, i.e. $t = 50$ minutes.</span></div>
+      <div class="warn">The formula $V = (10 - 0.2t)^2$ starts <em>increasing</em> again after $t = 50$, which is impossible for a draining tank. The model is only valid for $0 \leqslant t \leqslant 50$ — say so when asked to comment.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Typical "evaluate the model" comments:</strong> does the long-term behaviour make sense? Is the rate realistic at the start and the end? Is the quantity continuous (e.g. a population is really whole numbers)? Are conditions such as room temperature really constant?
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Proportional</h4><p>"Rate $\propto y$" $\Rightarrow \dfrac{dy}{dt} = ky$.</p></div>
+    <div class="ref-card"><h4>Separate</h4><p>$\int\dfrac{1}{\mathrm{g}(y)}\,dy = \int\mathrm{f}(x)\,dx$</p></div>
+    <div class="ref-card"><h4>One constant</h4><p>Only one $+\,c$, on the $x$ side.</p></div>
+    <div class="ref-card"><h4>General solution</h4><p>Contains an arbitrary constant — a family of curves.</p></div>
+    <div class="ref-card"><h4>Particular solution</h4><p>Constant fixed by a given condition.</p></div>
+    <div class="ref-card"><h4>ln y = f(x) + c</h4><p>$y = Ae^{\mathrm{f}(x)}$ with $A = e^c$.</p></div>
+    <div class="ref-card"><h4>Growth / decay</h4><p>$\dfrac{dy}{dt} = ky \Rightarrow y = y_0e^{kt}$</p></div>
+    <div class="ref-card"><h4>Cooling</h4><p>$\dfrac{d\theta}{dt} = -k(\theta - \theta_0) \Rightarrow \theta = \theta_0 + Ae^{-kt}$</p></div>
+    <div class="ref-card"><h4>Two unknowns</h4><p>Need two conditions to find $c$ and $k$.</p></div>
+    <div class="ref-card"><h4>Interpret</h4><p>Long-term value, validity range, limitations.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>The rate at which the radius $r$ cm of a circular ink blot increases is inversely proportional to the radius. Write down a differential equation for $r$ in terms of the time $t$ seconds.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>"Inversely proportional to $r$" means $= \dfrac{k}{r}$.</p>
+          <p>$\dfrac{dr}{dt} = \dfrac{k}{r}$, where $k$ is a positive constant.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $\dfrac{dy}{dx} = 3y$, given $y = 5$ when $x = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\int\frac{1}{y}\,dy = \int 3\,dx \Rightarrow \ln y = 3x + c \Rightarrow y = Ae^{3x}$.</p>
+          <p>$x = 0$: $A = 5$. &nbsp;$y = 5e^{3x}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $\dfrac{dy}{dx} = \dfrac{x}{y}$, given $y = 3$ when $x = 0$, giving $y$ in terms of $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\int y\,dy = \int x\,dx \Rightarrow \tfrac{1}{2}y^2 = \tfrac{1}{2}x^2 + c$.</p>
+          <p>$x = 0$, $y = 3$: $c = \tfrac{9}{2}$. So $y^2 = x^2 + 9$.</p>
+          <p>Since $y = 3 &gt; 0$ at the start, take the positive root: $y = \sqrt{x^2 + 9}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $\dfrac{dy}{dx} = y\sin x$, given $y = 1$ when $x = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\ln y = -\cos x + c$. &nbsp;$x = 0$, $y = 1$: $0 = -1 + c$, $c = 1$.</p>
+          <p>$\ln y = 1 - \cos x \Rightarrow y = e^{1 - \cos x}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $\dfrac{dy}{dx} = 2xy^2$, given $y = 1$ when $x = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\int y^{-2}\,dy = \int 2x\,dx \Rightarrow -\frac{1}{y} = x^2 + c$.</p>
+          <p>$x = 1$, $y = 1$: $-1 = 1 + c$, $c = -2$.</p>
+          <p>$-\dfrac{1}{y} = x^2 - 2 \Rightarrow y = \dfrac{1}{2 - x^2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Given that $x &gt; 0$, solve $\dfrac{dy}{dx} = \dfrac{y}{x(x+1)}$ with $y = 2$ when $x = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\displaystyle\int\frac{1}{y}\,dy = \int\frac{1}{x(x+1)}\,dx$, and $\dfrac{1}{x(x+1)} \equiv \dfrac{1}{x} - \dfrac{1}{x+1}$.</p>
+          <p>$\ln y = \ln x - \ln(x+1) + c = \ln\dfrac{x}{x+1} + c \Rightarrow y = \dfrac{Ax}{x+1}$</p>
+          <p>$x = 1$, $y = 2$: $2 = \tfrac{A}{2}$, $A = 4$. &nbsp;$y = \dfrac{4x}{x+1}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A radioactive substance decays at a rate proportional to the amount $N$ present. Its half-life is $8$ days. How long does it take for the amount to fall to $10\%$ of its initial value?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{dN}{dt} = -kN \Rightarrow N = N_0e^{-kt}$.</p>
+          <p>Half-life: $\tfrac{1}{2} = e^{-8k} \Rightarrow k = \dfrac{\ln 2}{8}$.</p>
+          <p>$0.1 = e^{-kt} \Rightarrow t = \dfrac{\ln 10}{k} = \dfrac{8\ln 10}{\ln 2} \approx 26.6$ days.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A coffee at $85^\circ$C is placed in a room at $20^\circ$C, and $\dfrac{d\theta}{dt} = -k(\theta - 20)$. After $10$ minutes it is $55^\circ$C. Find the exact temperature after $20$ minutes, then give it to 1 decimal place.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\theta = 20 + Ae^{-kt}$; $t = 0$ gives $A = 65$.</p>
+          <p>$t = 10$: $35 = 65e^{-10k} \Rightarrow e^{-10k} = \tfrac{7}{13}$.</p>
+          <p>$t = 20$: $e^{-20k} = \left(e^{-10k}\right)^2 = \tfrac{49}{169}$, so $\theta = 20 + 65 \times \tfrac{49}{169} = 20 + \tfrac{245}{13} = \tfrac{505}{13}$.</p>
+          <p>$\theta \approx 38.8^\circ$C. (Notice $k$ never needed to be found.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>The depth $h$ m of water in a tank satisfies $\dfrac{dh}{dt} = -0.2\sqrt{h}$, where $t$ is in minutes, and initially $h = 9$. (a) Find $h$ in terms of $t$. (b) Find when the tank empties. (c) State the range of $t$ for which your formula is valid.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\displaystyle\int h^{-1/2}\,dh = \int -0.2\,dt \Rightarrow 2\sqrt{h} = -0.2t + c$. &nbsp;$t = 0$: $c = 6$.</p>
+          <p>$\sqrt{h} = 3 - 0.1t \Rightarrow h = (3 - 0.1t)^2$</p>
+          <p><strong>(b)</strong> $3 - 0.1t = 0 \Rightarrow t = 30$ minutes.</p>
+          <p><strong>(c)</strong> $0 \leqslant t \leqslant 30$; beyond this the formula would predict the depth rising again.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A population of $P$ rabbits on an island is modelled by $\dfrac{dP}{dt} = \dfrac{P(500 - P)}{1000}$, where $t$ is in years. Initially there are $100$ rabbits.</p>
+      <p>(a) Express $\dfrac{1}{P(500-P)}$ in partial fractions. &nbsp; (b) Show that $P = \dfrac{500}{1 + 4e^{-t/2}}$. &nbsp; (c) Find the exact time at which the population reaches $250$, and give it to 3 significant figures. &nbsp; (d) State what the model predicts in the long term, and give one limitation of the model.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $1 \equiv A(500 - P) + BP$. &nbsp;$P = 0$: $A = \tfrac{1}{500}$. &nbsp;$P = 500$: $B = \tfrac{1}{500}$.</p>
+          <p>$\dfrac{1}{P(500-P)} \equiv \dfrac{1}{500}\left(\dfrac{1}{P} + \dfrac{1}{500 - P}\right)$</p>
+          <p><strong>(b)</strong> $\displaystyle\int\frac{1000}{P(500-P)}\,dP = \int 1\,dt \Rightarrow 2\left[\ln P - \ln(500 - P)\right] = t + c$</p>
+          <p>$t = 0$, $P = 100$: $c = 2\ln\tfrac{100}{400} = 2\ln\tfrac{1}{4}$.</p>
+          <p>$\ln\dfrac{P}{500 - P} = \dfrac{t}{2} + \ln\tfrac{1}{4} \Rightarrow \dfrac{P}{500-P} = \tfrac{1}{4}e^{t/2}$</p>
+          <p>$4P = (500 - P)e^{t/2} \Rightarrow P\left(4 + e^{t/2}\right) = 500e^{t/2} \Rightarrow P = \dfrac{500e^{t/2}}{4 + e^{t/2}} = \dfrac{500}{1 + 4e^{-t/2}}$ ✓</p>
+          <p><strong>(c)</strong> $250 = \dfrac{500}{1 + 4e^{-t/2}} \Rightarrow 1 + 4e^{-t/2} = 2 \Rightarrow e^{-t/2} = \tfrac{1}{4}$</p>
+          <p>$t = 2\ln 4 = 4\ln 2 \approx 2.77$ years.</p>
+          <p><strong>(d)</strong> As $t \to \infty$, $P \to 500$: the population levels off at $500$ (the most the island can support). Limitations: the model treats $P$ as continuous although rabbits are whole numbers, and it ignores events such as disease, predators or seasonal breeding.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Differential Equations &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponentials and Logarithms Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Exponentials and Logarithms Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>This topic is <strong>DfE content area F · Exponentials and logarithms</strong>. It is about one pair of operations that undo each other: <em>raising a number to a power</em>, and <em>asking what power was used</em>. The first gives exponential functions such as $2^x$ and $e^x$; the second gives logarithms.</p>
+
+  <div class="concept">
+    At GCSE you met exponential growth as repeated multiplication — compound interest, depreciation. At A Level you can <strong>solve</strong> for the unknown time ("when will it reach …?") because logarithms let you bring an unknown down out of an index. You also meet $e$, the base whose exponential function is its own gradient.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    The function $e^x$ and its gradient &middot; $\ln x$ as the inverse of $e^x$<br>
+    Logarithms and their laws &middot; solving $a^x = b$<br>
+    Fitting models by plotting $\log y$ against $x$ or $\log x$
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong> in every A Level paper, but many log questions say <em>"give your answer in exact form"</em> or <em>"show detailed reasoning"</em>. Then you must write the method and leave answers such as $\ln 5$ or $\dfrac{\ln 2}{\ln 3 - \ln 2}$, not a decimal from an equation solver.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Base</strong></td><td>The number being raised to a power.</td><td>The $2$ in $2^x$ or in $\log_2 x$</td></tr>
+    <tr><td><strong>Index / exponent</strong></td><td>The power.</td><td>The $x$ in $2^x$</td></tr>
+    <tr><td><strong>Exponential function</strong></td><td>A function with the variable in the index.</td><td>$y = 3^x$, &nbsp;$y = 5e^{-0.2x}$</td></tr>
+    <tr><td><strong>$e$</strong></td><td>The constant $2.71828\ldots$ for which $e^x$ has gradient $e^x$.</td><td>$\dfrac{\mathrm{d}}{\mathrm{d}x}e^x = e^x$</td></tr>
+    <tr><td><strong>Logarithm</strong></td><td>The power you raise the base to.</td><td>$\log_2 8 = 3$</td></tr>
+    <tr><td><strong>Natural logarithm</strong></td><td>Logarithm to base $e$.</td><td>$\ln x = \log_e x$</td></tr>
+    <tr><td><strong>Inverse</strong></td><td>A function that undoes another.</td><td>$\ln\left(e^x\right) = x$</td></tr>
+    <tr><td><strong>Asymptote</strong></td><td>A line the curve approaches but never meets.</td><td>$y = 0$ for $y = e^x$</td></tr>
+    <tr><td><strong>Growth / decay</strong></td><td>Increasing / decreasing exponentially.</td><td>$Ae^{kt}$ with $k > 0$ / $k < 0$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Switching between forms</div>
+    $\log_a b = c \iff a^c = b$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — The laws of logarithms</div>
+    $\log xy = \log x + \log y \qquad \log\dfrac{x}{y} = \log x - \log y \qquad \log x^k = k\log x$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Solving $a^x = b$</div>
+    Take logs: $x\ln a = \ln b$, so $x = \dfrac{\ln b}{\ln a}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — The gradient of an exponential</div>
+    $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(Ae^{kx}\right) = Ake^{kx}$ &nbsp;— the rate of change is proportional to the value
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Reduction to linear form</div>
+    $y = ab^x \Rightarrow \log y = \log a + x\log b$ &nbsp;&nbsp;&nbsp; $y = ax^n \Rightarrow \log y = \log a + n\log x$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>Solve $3^{2x} - 3^{x+2} + 14 = 0$, giving your answers to 3 significant figures.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Rewrite the terms: $3^{2x} = \left(3^x\right)^2$ and $3^{x+2} = 9 \times 3^x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $y = 3^x$: $y^2 - 9y + 14 = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(y - 2)(y - 7) = 0$, so $3^x = 2$ or $3^x = 7$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Take logs: $x = \dfrac{\ln 2}{\ln 3} = 0.631$ or $x = \dfrac{\ln 7}{\ln 3} = 1.77$.</span></div>
+      <div class="tip">Index laws, a hidden quadratic, and logs to finish — the typical shape of an exam question on this topic.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Exponentials and Logarithms Subtopics</div>
+<div class="section-body">
+
+  <p>Content area F, split into four pages.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">F</span><span><a href="exponential-functions.html">Exponential Functions and e</a><span class="desc">Graphs of $y = a^x$, the number $e$, the gradient of $e^{kx}$, and $y = \ln x$ as the inverse.</span></span></li>
+    <li><span class="code">F</span><span><a href="logarithms.html">Logarithms and Their Laws</a><span class="desc">The definition, the three laws, natural logs, and switching between index and log form.</span></span></li>
+    <li><span class="code">F</span><span><a href="equations.html">Exponential and Log Equations</a><span class="desc">Solving $a^x = b$, hidden quadratics in $e^x$ or $2^x$, and equations involving logs.</span></span></li>
+    <li><span class="code">F</span><span><a href="modelling.html">Exponential Modelling</a><span class="desc">Growth and decay, fitting straight lines to logged data, and the limitations of models.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Inventing a law for $\log(x + y)$.</strong> There isn't one. $\ln(x + 3) \neq \ln x + \ln 3$.
+  </div>
+
+  <div class="warn">
+    <strong>Dividing logs instead of subtracting.</strong> $\dfrac{\ln 8}{\ln 2} = 3$, but $\ln 8 - \ln 2 = \ln 4$. These are different things.
+  </div>
+
+  <div class="warn">
+    <strong>Keeping impossible roots.</strong> $e^x = -2$ and $\ln(-4)$ have no meaning. State that you reject them and why.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting to flip an inequality.</strong> $\ln 0.8 < 0$. Dividing by it reverses the sign.
+  </div>
+
+  <div class="warn">
+    <strong>Misreading the intercept.</strong> On a $\log y$ against $\log x$ graph the intercept is $\log a$, found where $x = 1$, and $a$ itself is $10^{\text{intercept}}$ (or $e^{\text{intercept}}$ for $\ln$).
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$y = a^x$</h4><p>Through $(0,1)$; asymptote $y = 0$.</p></div>
+    <div class="ref-card"><h4>$y = \ln x$</h4><p>Through $(1,0)$; asymptote $x = 0$; only $x > 0$.</p></div>
+    <div class="ref-card"><h4>Inverses</h4><p>$e^{\ln x} = x$, &nbsp;$\ln e^x = x$</p></div>
+    <div class="ref-card"><h4>Definition</h4><p>$\log_a b = c \iff a^c = b$</p></div>
+    <div class="ref-card"><h4>Laws</h4><p>Multiply → add; divide → subtract; power → multiply.</p></div>
+    <div class="ref-card"><h4>$a^x = b$</h4><p>$x = \ln b / \ln a$</p></div>
+    <div class="ref-card"><h4>Gradient</h4><p>$\dfrac{\mathrm{d}}{\mathrm{d}x}e^{kx} = ke^{kx}$</p></div>
+    <div class="ref-card"><h4>Models</h4><p>$N = Ae^{kt}$, &nbsp;$\dfrac{\mathrm{d}N}{\mathrm{d}t} = kN$</p></div>
+    <div class="ref-card"><h4>Linear form</h4><p>$\log y$ v $x$ for $ab^x$; $\log y$ v $\log x$ for $ax^n$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of content area F. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Without a calculator, find $\log_2 64 + \log_3 \tfrac19$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2^6 = 64$, so $\log_2 64 = 6$. &nbsp; $3^{-2} = \tfrac19$, so $\log_3\tfrac19 = -2$.</p>
+          <p>Total: $6 + (-2) = 4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $6^x = 15$, giving your answer to 3 significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = \dfrac{\ln 15}{\ln 6} = 1.51$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that $\ln 12 - \ln 3 + 2\ln\tfrac12 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\ln\tfrac12 = \ln\tfrac14$.</p>
+          <p>$\ln\left(\dfrac{12}{3} \times \dfrac14\right) = \ln 1 = 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = 7e^{-3x}$ at the point where $x = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = -21e^{-3x}$. At $x = 0$: $-21$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Sketch $y = e^x - 4$, giving the equation of the asymptote and the exact coordinates of the axis intercepts.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = e^x$ translated down $4$: asymptote $y = -4$ (approached as $x \to -\infty$).</p>
+          <p>$x = 0$: $y = 1 - 4 = -3$, so $(0, -3)$.</p>
+          <p>$y = 0$: $e^x = 4 \Rightarrow x = \ln 4$, so $(\ln 4,\, 0)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $e^{2x} - 3e^x - 10 = 0$, giving an exact answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $y = e^x$: $y^2 - 3y - 10 = 0 \Rightarrow (y - 5)(y + 2) = 0$.</p>
+          <p>$e^x = -2$ is impossible as $e^x > 0$.</p>
+          <p>$e^x = 5 \Rightarrow x = \ln 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $\log_4 x + \log_4(x - 6) = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log_4\left(x(x-6)\right) = 2 \Rightarrow x^2 - 6x = 16 \Rightarrow x^2 - 6x - 16 = 0$.</p>
+          <p>$(x - 8)(x + 2) = 0$. Reject $x = -2$ (log of a negative).</p>
+          <p>$x = 8$. Check: $\log_4 8 + \log_4 2 = \log_4 16 = 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Data are modelled by $y = ab^x$. A graph of $\log_{10} y$ against $x$ is a straight line with equation $\log_{10} y = 1.3 - 0.1x$. Find $a$ and $b$, and say whether $y$ is growing or decaying.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log_{10} a = 1.3 \Rightarrow a = 10^{1.3} \approx 20.0$.</p>
+          <p>$\log_{10} b = -0.1 \Rightarrow b = 10^{-0.1} \approx 0.794$.</p>
+          <p>$b < 1$, so $y$ is decaying (the line has negative gradient).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>(a) Show that $\ln\left(x^2 - 1\right) - \ln(x + 1) = \ln(x - 1)$ for $x > 1$. &nbsp; (b) Hence solve $\ln\left(x^2 - 1\right) - \ln(x + 1) = 2$, giving an exact answer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\ln\left(\dfrac{x^2 - 1}{x + 1}\right) = \ln\left(\dfrac{(x-1)(x+1)}{x+1}\right) = \ln(x - 1)$.</p>
+          <p>(b) $\ln(x - 1) = 2 \Rightarrow x - 1 = e^2 \Rightarrow x = 1 + e^2$ $(\approx 8.39)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The concentration of a drug in a patient's blood $t$ hours after a dose is modelled by $C = 12e^{-0.25t}$ mg/l.</p>
+      <p>(a) State the initial concentration. &nbsp; (b) The drug is ineffective below $3$ mg/l. Find, in exact form, how long the dose remains effective. &nbsp; (c) Find the rate at which the concentration is falling when $t = 2$. &nbsp; (d) A second, identical dose is given at $t = 4$. Assuming the effects add, find the concentration immediately afterwards.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $12$ mg/l.</p>
+          <p><strong>(b)</strong> $12e^{-0.25t} = 3 \Rightarrow e^{-0.25t} = \tfrac14 \Rightarrow -0.25t = -\ln 4 \Rightarrow t = 4\ln 4$ hours $(\approx 5.55)$.</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}C}{\mathrm{d}t} = -3e^{-0.25t}$. At $t = 2$: $-3e^{-0.5} \approx -1.82$. Falling at $1.82$ mg/l per hour.</p>
+          <p><strong>(d)</strong> Remaining from the first dose: $12e^{-1} \approx 4.41$. Total $\approx 4.41 + 12 = 16.4$ mg/l.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exponentials and Logarithms Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

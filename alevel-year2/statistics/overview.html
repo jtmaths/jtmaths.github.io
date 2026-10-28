@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Statistics Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>Year 1 statistics was mostly about <strong>describing</strong> data and working with one discrete model, the binomial distribution. Year 2 statistics is about <strong>modelling</strong>: fitting lines and curves to bivariate data, handling probabilities that depend on extra information, and using a continuous model — the normal distribution — for measurements.</p>
+
+  <p>This page covers three DfE content areas: <strong>L · Data presentation and interpretation</strong> (regression and exponential models), <strong>M · Probability</strong> (conditional probability and modelling), and <strong>N · Statistical distributions</strong> (the normal distribution and choosing between models).</p>
+
+  <div class="concept">
+    In every topic the same question returns: <strong>is the model appropriate?</strong> A regression line is only reliable inside the data; a probability calculation only holds if its assumptions hold; a normal model is only sensible for roughly symmetrical, bell-shaped data. Expect at least one mark per question for a comment in context.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with Year 1</div>
+    The correlation coefficient $r$ and regression lines $y = a + bx$<br>
+    Linearising $y = kb^x$ and $y = ax^n$ with logarithms<br>
+    Conditional probability $\mathrm{P}(A \mid B)$<br>
+    The normal distribution $\mathrm{N}(\mu,\sigma^2)$ and the normal approximation to the binomial
+  </div>
+
+  <div class="tip">
+    <strong>Calculators do the arithmetic.</strong> You are expected to use your calculator's statistics functions for $r$, regression coefficients and normal probabilities. Marks go for setting the problem up correctly — stating the distribution, the parameters, the region — and for interpreting the answer.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>PMCC</strong></td><td>Product moment correlation coefficient $r$; strength of linear association, $-1 \leqslant r \leqslant 1$.</td><td>$r = 0.94$: strong positive</td></tr>
+    <tr><td><strong>Explanatory variable</strong></td><td>The independent variable, plotted on the $x$-axis.</td><td>Hours of revision</td></tr>
+    <tr><td><strong>Response variable</strong></td><td>The dependent variable, predicted from the explanatory one.</td><td>Test score</td></tr>
+    <tr><td><strong>Extrapolation</strong></td><td>Predicting outside the range of the data — unreliable.</td><td>Using $1$–$8$ year data for a $20$-year-old car</td></tr>
+    <tr><td><strong>Conditional probability</strong></td><td>$\mathrm{P}(A \mid B)$: probability of $A$ given that $B$ has occurred.</td><td>$\mathrm{P}(\text{disease} \mid \text{positive test})$</td></tr>
+    <tr><td><strong>Independent</strong></td><td>$\mathrm{P}(A \mid B) = \mathrm{P}(A)$.</td><td>Two separate dice</td></tr>
+    <tr><td><strong>Continuous</strong></td><td>Can take any value in a range; $\mathrm{P}(X = a) = 0$.</td><td>Height, time, mass</td></tr>
+    <tr><td><strong>$\mathrm{N}(\mu,\sigma^2)$</strong></td><td>Normal distribution, mean $\mu$, <em>variance</em> $\sigma^2$.</td><td>$\mathrm{N}(170,\ 64)$ has $\sigma = 8$</td></tr>
+    <tr><td><strong>$\Phi(z)$</strong></td><td>$\mathrm{P}(Z < z)$ for the standard normal $Z \sim \mathrm{N}(0,1)$.</td><td>$\Phi(1.96) = 0.975$</td></tr>
+    <tr><td><strong>Continuity correction</strong></td><td>Replacing integer $k$ by $k \pm 0.5$ when approximating a discrete distribution by a continuous one.</td><td>$\mathrm{P}(X \leqslant 20) \approx \mathrm{P}(Y < 20.5)$</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Four results that do most of the work</div>
+    $\log y = \log k + x\log b$ &nbsp;(for $y = kb^x$)<br>
+    $\mathrm{P}(A \mid B) = \dfrac{\mathrm{P}(A \cap B)}{\mathrm{P}(B)}$<br>
+    $Z = \dfrac{X - \mu}{\sigma}$<br>
+    $\mathrm{B}(n,p) \approx \mathrm{N}\big(np,\ np(1-p)\big)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Conditional probability with a normal distribution</div>
+    <div class="example-body">
+      <p>The lengths of a species of fish are $X \sim \mathrm{N}(64,\ 5^2)$ cm. A fish caught is longer than the legal minimum of $60$ cm. Find the probability that it is longer than $70$ cm.</p>
+      <div class="step-row"><span class="arrow">①</span><span>We need $\mathrm{P}(X > 70 \mid X > 60) = \dfrac{\mathrm{P}(X > 70 \text{ and } X > 60)}{\mathrm{P}(X > 60)}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Any fish longer than $70$ is longer than $60$, so the numerator is just $\mathrm{P}(X > 70) = 1 - \Phi(1.2) = 0.11507$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(X > 60) = 1 - \Phi(-0.8) = 0.78814$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{P}(X > 70 \mid X > 60) = \dfrac{0.11507}{0.78814} = 0.146$ (3 s.f.)</span></div>
+      <div class="tip">This single question uses <strong>M</strong> (conditional probability) and <strong>N</strong> (the normal distribution). Mixing content areas like this is common in exams.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Choosing and approximating</div>
+    <div class="example-body">
+      <p>$40\%$ of voters support a proposal. In a random sample of $150$ voters, use a suitable approximation to find the probability that fewer than $55$ support it.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$X \sim \mathrm{B}(150,\ 0.4)$: a count of successes in a fixed number of independent trials.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$np = 60$ and $nq = 90$, both $> 5$, so use $Y \sim \mathrm{N}(60,\ 36)$, $\sigma = 6$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Fewer than $55$ means $X \leqslant 54$, so use $\mathrm{P}(Y < 54.5)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\Phi\!\left(\dfrac{54.5 - 60}{6}\right) = \Phi(-0.917) = 0.180$ (3 s.f.)</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Statistics Subtopics</div>
+<div class="section-body">
+
+  <p>Every Year 2 statistics topic outside hypothesis testing, and the page that covers it. The labels give the DfE content area.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">L</span><span><a href="regression.html">Regression and Exponential Models</a><span class="desc">Interpreting $r$, regression lines $y = a + bx$, interpolation and extrapolation, and linearising $y = kb^x$ and $y = ax^n$.</span></span></li>
+    <li><span class="code">M</span><span><a href="conditional-probability.html">Conditional Probability</a><span class="desc">$\mathrm{P}(A \mid B)$ from two-way tables, Venn diagrams and tree diagrams; independence; modelling assumptions.</span></span></li>
+    <li><span class="code">N</span><span><a href="normal-distribution.html">The Normal Distribution</a><span class="desc">Properties, standardising, probabilities, inverse normal, and finding unknown $\mu$ and $\sigma$.</span></span></li>
+    <li><span class="code">N</span><span><a href="choosing-distributions.html">Choosing a Distribution</a><span class="desc">Binomial or normal? The normal approximation with continuity correction, and checking a model against data.</span></span></li>
+  </ul>
+
+  <p>Testing whether a correlation or a mean is significant is covered in <a href="../hypothesis-testing/overview.html">Hypothesis Testing</a>.</p>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Using the variance as the standard deviation.</strong> $\mathrm{N}(50,\ 16)$ has $\sigma = 4$. Check what the second parameter is every time you open the calculator's normal function.
+  </div>
+
+  <div class="warn">
+    <strong>Confusing $\mathrm{P}(A \mid B)$ with $\mathrm{P}(B \mid A)$.</strong> Divide by the probability of the event <em>after</em> the bar.
+  </div>
+
+  <div class="warn">
+    <strong>Mixing up independent and mutually exclusive.</strong> Independent: $\mathrm{P}(A \cap B) = \mathrm{P}(A)\mathrm{P}(B)$. Mutually exclusive: $\mathrm{P}(A \cap B) = 0$.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting or misapplying the continuity correction.</strong> List the integers you want first, then go half a unit beyond them.
+  </div>
+
+  <div class="warn">
+    <strong>Claiming causation.</strong> A high $r$ shows association, not cause and effect.
+  </div>
+
+  <div class="warn">
+    <strong>Undoing logarithms wrongly.</strong> If $\log_{10} y = 0.6 + 0.2x$ then $k = 10^{0.6}$, not $0.6$; for a log–log line the gradient <em>is</em> the power $n$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>PMCC</h4><p>$-1 \leqslant r \leqslant 1$; linear association only.</p></div>
+    <div class="ref-card"><h4>Regression</h4><p>$y = a + bx$; $b$ is change in $y$ per unit $x$.</p></div>
+    <div class="ref-card"><h4>Exponential model</h4><p>$y = kb^x$: plot $\log y$ against $x$.</p></div>
+    <div class="ref-card"><h4>Power model</h4><p>$y = ax^n$: plot $\log y$ against $\log x$.</p></div>
+    <div class="ref-card"><h4>Conditional</h4><p>$\mathrm{P}(A \mid B) = \mathrm{P}(A \cap B) / \mathrm{P}(B)$</p></div>
+    <div class="ref-card"><h4>Independence</h4><p>$\mathrm{P}(A \mid B) = \mathrm{P}(A)$</p></div>
+    <div class="ref-card"><h4>Normal</h4><p>Symmetric; inflection at $\mu \pm \sigma$; $Z = (X - \mu)/\sigma$.</p></div>
+    <div class="ref-card"><h4>Approximation</h4><p>$\mathrm{B}(n,p) \approx \mathrm{N}(np,\ npq)$ if $np, nq > 5$.</p></div>
+    <div class="ref-card"><h4>Continuity</h4><p>Integer $k$ becomes $k \pm 0.5$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Year 2 Statistics section. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>For $40$ adults, the correlation coefficient between shoe size and score on a memory test is $r = 0.08$. Interpret this value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$r$ is very close to $0$: there is little or no linear correlation between shoe size and memory score.</p>
+          <p>(It does not rule out some non-linear relationship, but there is no reason to expect one here.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>The regression line of $\log_{10} y$ on $x$ is $\log_{10} y = 1.1 + 0.3x$. Express $y$ in the form $kb^x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k = 10^{1.1} = 12.6$ and $b = 10^{0.3} = 2.00$ (3 s.f.)</p>
+          <p>$y = 12.6 \times 2.00^{x}$ — roughly, $y$ doubles each time $x$ increases by $1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.7$, $\mathrm{P}(B) = 0.4$ and $\mathrm{P}(A \cap B) = 0.28$. Determine whether $A$ and $B$ are independent, and find $\mathrm{P}(B \mid A)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A)\,\mathrm{P}(B) = 0.7 \times 0.4 = 0.28 = \mathrm{P}(A \cap B)$, so independent.</p>
+          <p>$\mathrm{P}(B \mid A) = \dfrac{0.28}{0.7} = 0.4$ — equal to $\mathrm{P}(B)$, as expected.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Machine $A$ makes $60\%$ of a factory's components and $3\%$ of its output is defective. Machine $B$ makes the rest, and $5\%$ of its output is defective. A component is found to be defective. Find the probability it was made by machine $A$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(D) = 0.6 \times 0.03 + 0.4 \times 0.05 = 0.018 + 0.02 = 0.038$</p>
+          <p>$\mathrm{P}(A \mid D) = \dfrac{0.018}{0.038} = \dfrac{9}{19} = 0.474$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(80,\ 25)$. Find $\mathrm{P}(X < 72)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sigma = 5$, $z = \dfrac{72 - 80}{5} = -1.6$.</p>
+          <p>$\Phi(-1.6) = 0.0548$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{N}(\mu,\ 36)$ and $\mathrm{P}(X > 50) = 0.2$. Find $\mu$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(X < 50) = 0.8$, so $z = 0.8416$.</p>
+          <p>$\dfrac{50 - \mu}{6} = 0.8416 \Rightarrow \mu = 50 - 5.050 = 45.0$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(A) = 0.5$, $\mathrm{P}(B \mid A) = 0.4$ and $\mathrm{P}(A \cup B) = 0.75$. Find $\mathrm{P}(B)$ and $\mathrm{P}(A \mid B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \cap B) = 0.5 \times 0.4 = 0.2$</p>
+          <p>$0.75 = 0.5 + \mathrm{P}(B) - 0.2 \Rightarrow \mathrm{P}(B) = 0.45$</p>
+          <p>$\mathrm{P}(A \mid B) = \dfrac{0.2}{0.45} = \dfrac{4}{9}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A student models the number of girls in families with $4$ children by $\mathrm{B}(4,\ 0.5)$. State two assumptions this model makes and comment on whether each is reasonable.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Constant probability:</strong> each child is a girl with probability $0.5$. Roughly reasonable, though slightly more boys than girls are born (about $0.49$ for a girl).</p>
+          <p><strong>Independence:</strong> the sex of each child does not depend on the others. Largely reasonable, but identical twins are always the same sex, which breaks independence.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(150,\ 0.4)$. Use a normal approximation to find $\mathrm{P}(X > 65)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$Y \sim \mathrm{N}(60,\ 36)$. $X > 65$ means $X \geqslant 66$, so use $\mathrm{P}(Y > 65.5)$.</p>
+          <p>$1 - \Phi\!\left(\dfrac{5.5}{6}\right) = 1 - \Phi(0.917) = 0.180$ (3 s.f.)</p>
+          <p>(This equals the answer to Worked Example 2 by symmetry: $65.5$ and $54.5$ are each $5.5$ from the mean.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Marks in an exam are modelled by $\mathrm{N}(58,\ 12^2)$.</p>
+      <p>(a) Find the probability that a candidate scores more than $75$. (b) The top $10\%$ of candidates receive the top grade. Find the minimum mark needed. (c) Given that a candidate scored above the mean, find the probability that they scored more than $75$. (d) Find the probability that, in a random sample of $30$ candidates, at least $3$ score more than $75$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $z = \dfrac{17}{12} = 1.417$; $1 - \Phi(1.417) = 0.0783$ (3 s.f.)</p>
+          <p><strong>(b)</strong> $\Phi(z) = 0.9 \Rightarrow z = 1.2816$; $58 + 1.2816 \times 12 = 73.4$, so a mark of $74$ (marks are whole numbers).</p>
+          <p><strong>(c)</strong> $\mathrm{P}(X > 75 \mid X > 58) = \dfrac{0.07829}{0.5} = 0.157$ (3 s.f.)</p>
+          <p><strong>(d)</strong> Let $W \sim \mathrm{B}(30,\ 0.07829)$. $\mathrm{P}(W \geqslant 3) = 1 - \mathrm{P}(W \leqslant 2) = 0.421$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Statistics Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

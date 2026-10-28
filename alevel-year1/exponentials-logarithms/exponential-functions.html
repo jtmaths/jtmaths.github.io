@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponential Functions and e &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📈 Exponential Functions and e</h1>
+  <p>A Level Maths Year 1 · Exponentials and Logarithms</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – EXPONENTIAL FUNCTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Graph of $y = a^x$</div>
+<div class="section-body">
+
+  <div class="concept">
+    An <strong>exponential function</strong> has the variable in the <em>index</em>: $y = a^x$, where the <strong>base</strong> $a$ is a positive constant and $a \neq 1$. Compare $x^2$ (variable in the base — a power function) with $2^x$ (variable in the index — an exponential function).
+  </div>
+
+  <p>DfE content area F asks you to know and use the function $a^x$ and its graph, where $a$ is positive. Every graph of this type has the same four features.</p>
+
+  <table>
+    <tr><th>Feature</th><th>For $y = a^x$</th><th>Why</th></tr>
+    <tr><td>$y$-intercept</td><td>$(0,\,1)$</td><td>$a^0 = 1$ for every base</td></tr>
+    <tr><td>Sign</td><td>$y > 0$ for all $x$</td><td>A positive number raised to any power is positive</td></tr>
+    <tr><td>Asymptote</td><td>$y = 0$ (the $x$-axis)</td><td>$a^x$ gets ever closer to $0$ but never reaches it</td></tr>
+    <tr><td>Shape</td><td>Growth if $a > 1$; decay if $0 < a < 1$</td><td>Each step of $1$ in $x$ multiplies $y$ by $a$</td></tr>
+  </table>
+
+    <div class="svg-block">
+    <svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="clip-exp_family"><rect x="34" y="16" width="406" height="242"/></clipPath></defs>
+    <line x1="34.0" y1="16" x2="34.0" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="101.7" y1="16" x2="101.7" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="169.3" y1="16" x2="169.3" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="304.7" y1="16" x2="304.7" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="372.3" y1="16" x2="372.3" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="440.0" y1="16" x2="440.0" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="186.8" x2="440" y2="186.8" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="129.9" x2="440" y2="129.9" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="72.9" x2="440" y2="72.9" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="16.0" x2="440" y2="16.0" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="243.8" x2="440" y2="243.8" stroke="#475569" stroke-width="1.5"/>
+    <line x1="237.0" y1="16" x2="237.0" y2="258" stroke="#475569" stroke-width="1.5"/>
+    <text x="444" y="247.8" font-family="Arial" font-size="13" font-style="italic" fill="#334155">x</text>
+    <text x="242.0" y="26" font-family="Arial" font-size="13" font-style="italic" fill="#334155">y</text>
+    <text x="34.0" y="257.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-3</text>
+    <text x="101.7" y="257.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-2</text>
+    <text x="169.3" y="257.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-1</text>
+    <text x="304.7" y="257.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">1</text>
+    <text x="372.3" y="257.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">2</text>
+    <text x="440.0" y="257.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">3</text>
+    <text x="233.0" y="190.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">2</text>
+    <text x="233.0" y="133.4" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">4</text>
+    <text x="233.0" y="76.4" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">6</text>
+    <text x="233.0" y="19.5" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">8</text>
+    <text x="233.0" y="256.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">O</text>
+    <path d="M 34.0 240.2 L 35.0 240.2 L 36.0 240.1 L 37.0 240.1 L 38.1 240.1 L 39.1 240.0 L 40.1 240.0 L 41.1 239.9 L 42.1 239.9 L 43.1 239.9 L 44.1 239.8 L 45.2 239.8 L 46.2 239.7 L 47.2 239.7 L 48.2 239.6 L 49.2 239.6 L 50.2 239.6 L 51.3 239.5 L 52.3 239.5 L 53.3 239.4 L 54.3 239.4 L 55.3 239.3 L 56.3 239.3 L 57.3 239.2 L 58.4 239.2 L 59.4 239.1 L 60.4 239.1 L 61.4 239.1 L 62.4 239.0 L 63.4 239.0 L 64.5 238.9 L 65.5 238.9 L 66.5 238.8 L 67.5 238.7 L 68.5 238.7 L 69.5 238.6 L 70.5 238.6 L 71.6 238.5 L 72.6 238.5 L 73.6 238.4 L 74.6 238.4 L 75.6 238.3 L 76.6 238.3 L 77.6 238.2 L 78.7 238.1 L 79.7 238.1 L 80.7 238.0 L 81.7 238.0 L 82.7 237.9 L 83.7 237.8 L 84.8 237.8 L 85.8 237.7 L 86.8 237.7 L 87.8 237.6 L 88.8 237.5 L 89.8 237.5 L 90.8 237.4 L 91.9 237.3 L 92.9 237.3 L 93.9 237.2 L 94.9 237.1 L 95.9 237.1 L 96.9 237.0 L 97.9 236.9 L 99.0 236.8 L 100.0 236.8 L 101.0 236.7 L 102.0 236.6 L 103.0 236.5 L 104.0 236.5 L 105.1 236.4 L 106.1 236.3 L 107.1 236.2 L 108.1 236.2 L 109.1 236.1 L 110.1 236.0 L 111.1 235.9 L 112.2 235.8 L 113.2 235.8 L 114.2 235.7 L 115.2 235.6 L 116.2 235.5 L 117.2 235.4 L 118.2 235.3 L 119.3 235.2 L 120.3 235.2 L 121.3 235.1 L 122.3 235.0 L 123.3 234.9 L 124.3 234.8 L 125.4 234.7 L 126.4 234.6 L 127.4 234.5 L 128.4 234.4 L 129.4 234.3 L 130.4 234.2 L 131.4 234.1 L 132.5 234.0 L 133.5 233.9 L 134.5 233.8 L 135.5 233.7 L 136.5 233.6 L 137.5 233.5 L 138.5 233.4 L 139.6 233.3 L 140.6 233.2 L 141.6 233.1 L 142.6 232.9 L 143.6 232.8 L 144.6 232.7 L 145.6 232.6 L 146.7 232.5 L 147.7 232.4 L 148.7 232.2 L 149.7 232.1 L 150.7 232.0 L 151.7 231.9 L 152.8 231.8 L 153.8 231.6 L 154.8 231.5 L 155.8 231.4 L 156.8 231.2 L 157.8 231.1 L 158.8 231.0 L 159.9 230.8 L 160.9 230.7 L 161.9 230.6 L 162.9 230.4 L 163.9 230.3 L 164.9 230.2 L 166.0 230.0 L 167.0 229.9 L 168.0 229.7 L 169.0 229.6 L 170.0 229.4 L 171.0 229.3 L 172.0 229.1 L 173.1 229.0 L 174.1 228.8 L 175.1 228.7 L 176.1 228.5 L 177.1 228.3 L 178.1 228.2 L 179.1 228.0 L 180.2 227.9 L 181.2 227.7 L 182.2 227.5 L 183.2 227.4 L 184.2 227.2 L 185.2 227.0 L 186.2 226.8 L 187.3 226.7 L 188.3 226.5 L 189.3 226.3 L 190.3 226.1 L 191.3 225.9 L 192.3 225.7 L 193.4 225.6 L 194.4 225.4 L 195.4 225.2 L 196.4 225.0 L 197.4 224.8 L 198.4 224.6 L 199.4 224.4 L 200.5 224.2 L 201.5 224.0 L 202.5 223.8 L 203.5 223.6 L 204.5 223.4 L 205.5 223.1 L 206.5 222.9 L 207.6 222.7 L 208.6 222.5 L 209.6 222.3 L 210.6 222.0 L 211.6 221.8 L 212.6 221.6 L 213.7 221.3 L 214.7 221.1 L 215.7 220.9 L 216.7 220.6 L 217.7 220.4 L 218.7 220.2 L 219.7 219.9 L 220.8 219.7 L 221.8 219.4 L 222.8 219.2 L 223.8 218.9 L 224.8 218.6 L 225.8 218.4 L 226.9 218.1 L 227.9 217.8 L 228.9 217.6 L 229.9 217.3 L 230.9 217.0 L 231.9 216.7 L 232.9 216.5 L 234.0 216.2 L 235.0 215.9 L 236.0 215.6 L 237.0 215.3 L 238.0 215.0 L 239.0 214.7 L 240.0 214.4 L 241.1 214.1 L 242.1 213.8 L 243.1 213.5 L 244.1 213.1 L 245.1 212.8 L 246.1 212.5 L 247.2 212.2 L 248.2 211.8 L 249.2 211.5 L 250.2 211.2 L 251.2 210.8 L 252.2 210.5 L 253.2 210.1 L 254.3 209.8 L 255.3 209.4 L 256.3 209.1 L 257.3 208.7 L 258.3 208.3 L 259.3 208.0 L 260.3 207.6 L 261.4 207.2 L 262.4 206.8 L 263.4 206.5 L 264.4 206.1 L 265.4 205.7 L 266.4 205.3 L 267.5 204.9 L 268.5 204.5 L 269.5 204.1 L 270.5 203.6 L 271.5 203.2 L 272.5 202.8 L 273.5 202.4 L 274.6 201.9 L 275.6 201.5 L 276.6 201.1 L 277.6 200.6 L 278.6 200.2 L 279.6 199.7 L 280.6 199.2 L 281.7 198.8 L 282.7 198.3 L 283.7 197.8 L 284.7 197.4 L 285.7 196.9 L 286.7 196.4 L 287.8 195.9 L 288.8 195.4 L 289.8 194.9 L 290.8 194.4 L 291.8 193.8 L 292.8 193.3 L 293.8 192.8 L 294.9 192.3 L 295.9 191.7 L 296.9 191.2 L 297.9 190.6 L 298.9 190.1 L 299.9 189.5 L 300.9 189.0 L 302.0 188.4 L 303.0 187.8 L 304.0 187.2 L 305.0 186.6 L 306.0 186.0 L 307.0 185.4 L 308.0 184.8 L 309.1 184.2 L 310.1 183.6 L 311.1 182.9 L 312.1 182.3 L 313.1 181.7 L 314.1 181.0 L 315.2 180.4 L 316.2 179.7 L 317.2 179.0 L 318.2 178.4 L 319.2 177.7 L 320.2 177.0 L 321.2 176.3 L 322.3 175.6 L 323.3 174.9 L 324.3 174.1 L 325.3 173.4 L 326.3 172.7 L 327.3 171.9 L 328.3 171.2 L 329.4 170.4 L 330.4 169.7 L 331.4 168.9 L 332.4 168.1 L 333.4 167.3 L 334.4 166.5 L 335.5 165.7 L 336.5 164.9 L 337.5 164.1 L 338.5 163.2 L 339.5 162.4 L 340.5 161.5 L 341.5 160.7 L 342.6 159.8 L 343.6 158.9 L 344.6 158.1 L 345.6 157.2 L 346.6 156.3 L 347.6 155.3 L 348.7 154.4 L 349.7 153.5 L 350.7 152.5 L 351.7 151.6 L 352.7 150.6 L 353.7 149.6 L 354.7 148.7 L 355.8 147.7 L 356.8 146.7 L 357.8 145.6 L 358.8 144.6 L 359.8 143.6 L 360.8 142.5 L 361.8 141.5 L 362.9 140.4 L 363.9 139.3 L 364.9 138.2 L 365.9 137.1 L 366.9 136.0 L 367.9 134.9 L 369.0 133.8 L 370.0 132.6 L 371.0 131.5 L 372.0 130.3 L 373.0 129.1 L 374.0 127.9 L 375.0 126.7 L 376.1 125.5 L 377.1 124.2 L 378.1 123.0 L 379.1 121.7 L 380.1 120.4 L 381.1 119.1 L 382.1 117.8 L 383.2 116.5 L 384.2 115.2 L 385.2 113.9 L 386.2 112.5 L 387.2 111.1 L 388.2 109.7 L 389.2 108.3 L 390.3 106.9 L 391.3 105.5 L 392.3 104.0 L 393.3 102.6 L 394.3 101.1 L 395.3 99.6 L 396.4 98.1 L 397.4 96.6 L 398.4 95.1 L 399.4 93.5 L 400.4 91.9 L 401.4 90.3 L 402.4 88.7 L 403.5 87.1 L 404.5 85.5 L 405.5 83.8 L 406.5 82.2 L 407.5 80.5 L 408.5 78.8 L 409.5 77.0 L 410.6 75.3 L 411.6 73.5 L 412.6 71.7 L 413.6 70.0 L 414.6 68.1 L 415.6 66.3 L 416.7 64.4 L 417.7 62.6 L 418.7 60.7 L 419.7 58.8 L 420.7 56.8 L 421.7 54.9 L 422.7 52.9 L 423.8 50.9 L 424.8 48.9 L 425.8 46.9 L 426.8 44.8 L 427.8 42.7 L 428.8 40.6 L 429.8 38.5 L 430.9 36.3 L 431.9 34.2 L 432.9 32.0 L 433.9 29.8 L 434.9 27.5 L 435.9 25.3 L 437.0 23.0 L 438.0 20.7 L 439.0 18.4 L 440.0 16.0" fill="none" stroke="#4f46e5" stroke-width="2.5" clip-path="url(#clip-exp_family)"/>
+    <text x="398.6" y="103.6" font-family="Arial" font-size="12" fill="#4f46e5" font-weight="bold">y = 2ˣ</text>
+    <path d="M 34.0 242.7 L 35.0 242.7 L 36.0 242.7 L 37.0 242.7 L 38.1 242.6 L 39.1 242.6 L 40.1 242.6 L 41.1 242.6 L 42.1 242.6 L 43.1 242.5 L 44.1 242.5 L 45.2 242.5 L 46.2 242.5 L 47.2 242.5 L 48.2 242.4 L 49.2 242.4 L 50.2 242.4 L 51.3 242.4 L 52.3 242.3 L 53.3 242.3 L 54.3 242.3 L 55.3 242.3 L 56.3 242.2 L 57.3 242.2 L 58.4 242.2 L 59.4 242.2 L 60.4 242.1 L 61.4 242.1 L 62.4 242.1 L 63.4 242.1 L 64.5 242.0 L 65.5 242.0 L 66.5 242.0 L 67.5 241.9 L 68.5 241.9 L 69.5 241.9 L 70.5 241.9 L 71.6 241.8 L 72.6 241.8 L 73.6 241.8 L 74.6 241.7 L 75.6 241.7 L 76.6 241.7 L 77.6 241.6 L 78.7 241.6 L 79.7 241.6 L 80.7 241.5 L 81.7 241.5 L 82.7 241.4 L 83.7 241.4 L 84.8 241.4 L 85.8 241.3 L 86.8 241.3 L 87.8 241.2 L 88.8 241.2 L 89.8 241.2 L 90.8 241.1 L 91.9 241.1 L 92.9 241.0 L 93.9 241.0 L 94.9 240.9 L 95.9 240.9 L 96.9 240.8 L 97.9 240.8 L 99.0 240.7 L 100.0 240.7 L 101.0 240.6 L 102.0 240.6 L 103.0 240.5 L 104.0 240.5 L 105.1 240.4 L 106.1 240.4 L 107.1 240.3 L 108.1 240.3 L 109.1 240.2 L 110.1 240.1 L 111.1 240.1 L 112.2 240.0 L 113.2 240.0 L 114.2 239.9 L 115.2 239.8 L 116.2 239.8 L 117.2 239.7 L 118.2 239.6 L 119.3 239.6 L 120.3 239.5 L 121.3 239.4 L 122.3 239.3 L 123.3 239.3 L 124.3 239.2 L 125.4 239.1 L 126.4 239.0 L 127.4 239.0 L 128.4 238.9 L 129.4 238.8 L 130.4 238.7 L 131.4 238.6 L 132.5 238.5 L 133.5 238.5 L 134.5 238.4 L 135.5 238.3 L 136.5 238.2 L 137.5 238.1 L 138.5 238.0 L 139.6 237.9 L 140.6 237.8 L 141.6 237.7 L 142.6 237.6 L 143.6 237.5 L 144.6 237.4 L 145.6 237.3 L 146.7 237.2 L 147.7 237.1 L 148.7 237.0 L 149.7 236.9 L 150.7 236.7 L 151.7 236.6 L 152.8 236.5 L 153.8 236.4 L 154.8 236.3 L 155.8 236.1 L 156.8 236.0 L 157.8 235.9 L 158.8 235.8 L 159.9 235.6 L 160.9 235.5 L 161.9 235.4 L 162.9 235.2 L 163.9 235.1 L 164.9 234.9 L 166.0 234.8 L 167.0 234.6 L 168.0 234.5 L 169.0 234.3 L 170.0 234.2 L 171.0 234.0 L 172.0 233.8 L 173.1 233.7 L 174.1 233.5 L 175.1 233.3 L 176.1 233.2 L 177.1 233.0 L 178.1 232.8 L 179.1 232.6 L 180.2 232.5 L 181.2 232.3 L 182.2 232.1 L 183.2 231.9 L 184.2 231.7 L 185.2 231.5 L 186.2 231.3 L 187.3 231.1 L 188.3 230.9 L 189.3 230.6 L 190.3 230.4 L 191.3 230.2 L 192.3 230.0 L 193.4 229.7 L 194.4 229.5 L 195.4 229.3 L 196.4 229.0 L 197.4 228.8 L 198.4 228.5 L 199.4 228.3 L 200.5 228.0 L 201.5 227.8 L 202.5 227.5 L 203.5 227.2 L 204.5 227.0 L 205.5 226.7 L 206.5 226.4 L 207.6 226.1 L 208.6 225.8 L 209.6 225.5 L 210.6 225.2 L 211.6 224.9 L 212.6 224.6 L 213.7 224.3 L 214.7 224.0 L 215.7 223.6 L 216.7 223.3 L 217.7 222.9 L 218.7 222.6 L 219.7 222.3 L 220.8 221.9 L 221.8 221.5 L 222.8 221.2 L 223.8 220.8 L 224.8 220.4 L 225.8 220.0 L 226.9 219.6 L 227.9 219.2 L 228.9 218.8 L 229.9 218.4 L 230.9 218.0 L 231.9 217.5 L 232.9 217.1 L 234.0 216.7 L 235.0 216.2 L 236.0 215.8 L 237.0 215.3 L 238.0 214.8 L 239.0 214.3 L 240.0 213.9 L 241.1 213.4 L 242.1 212.8 L 243.1 212.3 L 244.1 211.8 L 245.1 211.3 L 246.1 210.7 L 247.2 210.2 L 248.2 209.6 L 249.2 209.1 L 250.2 208.5 L 251.2 207.9 L 252.2 207.3 L 253.2 206.7 L 254.3 206.1 L 255.3 205.5 L 256.3 204.8 L 257.3 204.2 L 258.3 203.5 L 259.3 202.9 L 260.3 202.2 L 261.4 201.5 L 262.4 200.8 L 263.4 200.1 L 264.4 199.3 L 265.4 198.6 L 266.4 197.9 L 267.5 197.1 L 268.5 196.3 L 269.5 195.5 L 270.5 194.7 L 271.5 193.9 L 272.5 193.1 L 273.5 192.2 L 274.6 191.4 L 275.6 190.5 L 276.6 189.6 L 277.6 188.7 L 278.6 187.8 L 279.6 186.9 L 280.6 185.9 L 281.7 185.0 L 282.7 184.0 L 283.7 183.0 L 284.7 182.0 L 285.7 181.0 L 286.7 179.9 L 287.8 178.9 L 288.8 177.8 L 289.8 176.7 L 290.8 175.6 L 291.8 174.4 L 292.8 173.3 L 293.8 172.1 L 294.9 170.9 L 295.9 169.7 L 296.9 168.5 L 297.9 167.2 L 298.9 166.0 L 299.9 164.7 L 300.9 163.4 L 302.0 162.0 L 303.0 160.7 L 304.0 159.3 L 305.0 157.9 L 306.0 156.5 L 307.0 155.0 L 308.0 153.5 L 309.1 152.0 L 310.1 150.5 L 311.1 149.0 L 312.1 147.4 L 313.1 145.8 L 314.1 144.2 L 315.2 142.5 L 316.2 140.8 L 317.2 139.1 L 318.2 137.4 L 319.2 135.6 L 320.2 133.8 L 321.2 132.0 L 322.3 130.1 L 323.3 128.2 L 324.3 126.3 L 325.3 124.4 L 326.3 122.4 L 327.3 120.4 L 328.3 118.3 L 329.4 116.2 L 330.4 114.1 L 331.4 111.9 L 332.4 109.8 L 333.4 107.5 L 334.4 105.3 L 335.5 103.0 L 336.5 100.6 L 337.5 98.2 L 338.5 95.8 L 339.5 93.4 L 340.5 90.9 L 341.5 88.3 L 342.6 85.7 L 343.6 83.1 L 344.6 80.5 L 345.6 77.7 L 346.6 75.0 L 347.6 72.2 L 348.7 69.3 L 349.7 66.4 L 350.7 63.5 L 351.7 60.5 L 352.7 57.4 L 353.7 54.3 L 354.7 51.2 L 355.8 48.0 L 356.8 44.7 L 357.8 41.4 L 358.8 38.1 L 359.8 34.7 L 360.8 31.2 L 361.8 27.6 L 362.9 24.1 L 363.9 20.4 L 364.9 16.7 L 365.9 12.9 L 366.9 9.1 L 367.9 5.2 L 369.0 1.2 L 370.0 -2.8 L 371.0 -6.9 L 372.0 -11.1 L 373.0 -15.3 L 374.0 -19.6 L 375.0 -24.0 L 376.1 -28.4 L 377.1 -33.0 L 378.1 -37.6 L 379.1 -42.2 L 380.1 -47.0 L 381.1 -51.8 L 382.1 -56.7 L 383.2 -61.7 L 384.2 -66.8 L 385.2 -71.9 L 386.2 -77.2 L 387.2 -82.5 L 388.2 -87.9 L 389.2 -93.5 L 390.3 -99.1 L 391.3 -104.8 L 392.3 -110.6 L 393.3 -116.4 L 394.3 -122.4 L 395.3 -128.5 L 396.4 -134.7 L 397.4 -141.0 L 398.4 -147.4 L 399.4 -153.9 L 400.4 -160.5 L 401.4 -167.2 L 402.4 -174.0 L 403.5 -181.0 L 404.5 -188.0 L 405.5 -195.2 L 406.5 -202.5 L 407.5 -209.9 L 408.5 -217.4 L 409.5 -225.1" fill="none" stroke="#7c3aed" stroke-width="2.5" clip-path="url(#clip-exp_family)"/>
+    <text x="347.9" y="87.5" font-family="Arial" font-size="12" fill="#7c3aed" font-weight="bold">y = 3ˣ</text>
+    <path d="M 34.0 16.0 L 35.0 18.4 L 36.0 20.7 L 37.0 23.0 L 38.1 25.3 L 39.1 27.5 L 40.1 29.8 L 41.1 32.0 L 42.1 34.2 L 43.1 36.3 L 44.1 38.5 L 45.2 40.6 L 46.2 42.7 L 47.2 44.8 L 48.2 46.9 L 49.2 48.9 L 50.2 50.9 L 51.3 52.9 L 52.3 54.9 L 53.3 56.8 L 54.3 58.8 L 55.3 60.7 L 56.3 62.6 L 57.3 64.4 L 58.4 66.3 L 59.4 68.1 L 60.4 70.0 L 61.4 71.7 L 62.4 73.5 L 63.4 75.3 L 64.5 77.0 L 65.5 78.8 L 66.5 80.5 L 67.5 82.2 L 68.5 83.8 L 69.5 85.5 L 70.5 87.1 L 71.6 88.7 L 72.6 90.3 L 73.6 91.9 L 74.6 93.5 L 75.6 95.1 L 76.6 96.6 L 77.6 98.1 L 78.7 99.6 L 79.7 101.1 L 80.7 102.6 L 81.7 104.0 L 82.7 105.5 L 83.7 106.9 L 84.8 108.3 L 85.8 109.7 L 86.8 111.1 L 87.8 112.5 L 88.8 113.9 L 89.8 115.2 L 90.8 116.5 L 91.9 117.8 L 92.9 119.1 L 93.9 120.4 L 94.9 121.7 L 95.9 123.0 L 96.9 124.2 L 97.9 125.5 L 99.0 126.7 L 100.0 127.9 L 101.0 129.1 L 102.0 130.3 L 103.0 131.5 L 104.0 132.6 L 105.1 133.8 L 106.1 134.9 L 107.1 136.0 L 108.1 137.1 L 109.1 138.2 L 110.1 139.3 L 111.1 140.4 L 112.2 141.5 L 113.2 142.5 L 114.2 143.6 L 115.2 144.6 L 116.2 145.6 L 117.2 146.7 L 118.2 147.7 L 119.3 148.7 L 120.3 149.6 L 121.3 150.6 L 122.3 151.6 L 123.3 152.5 L 124.3 153.5 L 125.4 154.4 L 126.4 155.3 L 127.4 156.3 L 128.4 157.2 L 129.4 158.1 L 130.4 158.9 L 131.4 159.8 L 132.5 160.7 L 133.5 161.5 L 134.5 162.4 L 135.5 163.2 L 136.5 164.1 L 137.5 164.9 L 138.5 165.7 L 139.6 166.5 L 140.6 167.3 L 141.6 168.1 L 142.6 168.9 L 143.6 169.7 L 144.6 170.4 L 145.6 171.2 L 146.7 171.9 L 147.7 172.7 L 148.7 173.4 L 149.7 174.1 L 150.7 174.9 L 151.7 175.6 L 152.8 176.3 L 153.8 177.0 L 154.8 177.7 L 155.8 178.4 L 156.8 179.0 L 157.8 179.7 L 158.8 180.4 L 159.9 181.0 L 160.9 181.7 L 161.9 182.3 L 162.9 182.9 L 163.9 183.6 L 164.9 184.2 L 166.0 184.8 L 167.0 185.4 L 168.0 186.0 L 169.0 186.6 L 170.0 187.2 L 171.0 187.8 L 172.0 188.4 L 173.1 189.0 L 174.1 189.5 L 175.1 190.1 L 176.1 190.6 L 177.1 191.2 L 178.1 191.7 L 179.1 192.3 L 180.2 192.8 L 181.2 193.3 L 182.2 193.8 L 183.2 194.4 L 184.2 194.9 L 185.2 195.4 L 186.2 195.9 L 187.3 196.4 L 188.3 196.9 L 189.3 197.4 L 190.3 197.8 L 191.3 198.3 L 192.3 198.8 L 193.4 199.2 L 194.4 199.7 L 195.4 200.2 L 196.4 200.6 L 197.4 201.1 L 198.4 201.5 L 199.4 201.9 L 200.5 202.4 L 201.5 202.8 L 202.5 203.2 L 203.5 203.6 L 204.5 204.1 L 205.5 204.5 L 206.5 204.9 L 207.6 205.3 L 208.6 205.7 L 209.6 206.1 L 210.6 206.5 L 211.6 206.8 L 212.6 207.2 L 213.7 207.6 L 214.7 208.0 L 215.7 208.3 L 216.7 208.7 L 217.7 209.1 L 218.7 209.4 L 219.7 209.8 L 220.8 210.1 L 221.8 210.5 L 222.8 210.8 L 223.8 211.2 L 224.8 211.5 L 225.8 211.8 L 226.9 212.2 L 227.9 212.5 L 228.9 212.8 L 229.9 213.1 L 230.9 213.5 L 231.9 213.8 L 232.9 214.1 L 234.0 214.4 L 235.0 214.7 L 236.0 215.0 L 237.0 215.3 L 238.0 215.6 L 239.0 215.9 L 240.0 216.2 L 241.1 216.5 L 242.1 216.7 L 243.1 217.0 L 244.1 217.3 L 245.1 217.6 L 246.1 217.8 L 247.2 218.1 L 248.2 218.4 L 249.2 218.6 L 250.2 218.9 L 251.2 219.2 L 252.2 219.4 L 253.2 219.7 L 254.3 219.9 L 255.3 220.2 L 256.3 220.4 L 257.3 220.6 L 258.3 220.9 L 259.3 221.1 L 260.3 221.3 L 261.4 221.6 L 262.4 221.8 L 263.4 222.0 L 264.4 222.3 L 265.4 222.5 L 266.4 222.7 L 267.5 222.9 L 268.5 223.1 L 269.5 223.4 L 270.5 223.6 L 271.5 223.8 L 272.5 224.0 L 273.5 224.2 L 274.6 224.4 L 275.6 224.6 L 276.6 224.8 L 277.6 225.0 L 278.6 225.2 L 279.6 225.4 L 280.6 225.6 L 281.7 225.7 L 282.7 225.9 L 283.7 226.1 L 284.7 226.3 L 285.7 226.5 L 286.7 226.7 L 287.8 226.8 L 288.8 227.0 L 289.8 227.2 L 290.8 227.4 L 291.8 227.5 L 292.8 227.7 L 293.8 227.9 L 294.9 228.0 L 295.9 228.2 L 296.9 228.3 L 297.9 228.5 L 298.9 228.7 L 299.9 228.8 L 300.9 229.0 L 302.0 229.1 L 303.0 229.3 L 304.0 229.4 L 305.0 229.6 L 306.0 229.7 L 307.0 229.9 L 308.0 230.0 L 309.1 230.2 L 310.1 230.3 L 311.1 230.4 L 312.1 230.6 L 313.1 230.7 L 314.1 230.8 L 315.2 231.0 L 316.2 231.1 L 317.2 231.2 L 318.2 231.4 L 319.2 231.5 L 320.2 231.6 L 321.2 231.8 L 322.3 231.9 L 323.3 232.0 L 324.3 232.1 L 325.3 232.2 L 326.3 232.4 L 327.3 232.5 L 328.3 232.6 L 329.4 232.7 L 330.4 232.8 L 331.4 232.9 L 332.4 233.1 L 333.4 233.2 L 334.4 233.3 L 335.5 233.4 L 336.5 233.5 L 337.5 233.6 L 338.5 233.7 L 339.5 233.8 L 340.5 233.9 L 341.5 234.0 L 342.6 234.1 L 343.6 234.2 L 344.6 234.3 L 345.6 234.4 L 346.6 234.5 L 347.6 234.6 L 348.7 234.7 L 349.7 234.8 L 350.7 234.9 L 351.7 235.0 L 352.7 235.1 L 353.7 235.2 L 354.7 235.2 L 355.8 235.3 L 356.8 235.4 L 357.8 235.5 L 358.8 235.6 L 359.8 235.7 L 360.8 235.8 L 361.8 235.8 L 362.9 235.9 L 363.9 236.0 L 364.9 236.1 L 365.9 236.2 L 366.9 236.2 L 367.9 236.3 L 369.0 236.4 L 370.0 236.5 L 371.0 236.5 L 372.0 236.6 L 373.0 236.7 L 374.0 236.8 L 375.0 236.8 L 376.1 236.9 L 377.1 237.0 L 378.1 237.1 L 379.1 237.1 L 380.1 237.2 L 381.1 237.3 L 382.1 237.3 L 383.2 237.4 L 384.2 237.5 L 385.2 237.5 L 386.2 237.6 L 387.2 237.7 L 388.2 237.7 L 389.2 237.8 L 390.3 237.8 L 391.3 237.9 L 392.3 238.0 L 393.3 238.0 L 394.3 238.1 L 395.3 238.1 L 396.4 238.2 L 397.4 238.3 L 398.4 238.3 L 399.4 238.4 L 400.4 238.4 L 401.4 238.5 L 402.4 238.5 L 403.5 238.6 L 404.5 238.6 L 405.5 238.7 L 406.5 238.7 L 407.5 238.8 L 408.5 238.9 L 409.5 238.9 L 410.6 239.0 L 411.6 239.0 L 412.6 239.1 L 413.6 239.1 L 414.6 239.1 L 415.6 239.2 L 416.7 239.2 L 417.7 239.3 L 418.7 239.3 L 419.7 239.4 L 420.7 239.4 L 421.7 239.5 L 422.7 239.5 L 423.8 239.6 L 424.8 239.6 L 425.8 239.6 L 426.8 239.7 L 427.8 239.7 L 428.8 239.8 L 429.8 239.8 L 430.9 239.9 L 431.9 239.9 L 432.9 239.9 L 433.9 240.0 L 434.9 240.0 L 435.9 240.1 L 437.0 240.1 L 438.0 240.1 L 439.0 240.2 L 440.0 240.2" fill="none" stroke="#ef4444" stroke-width="2.5" clip-path="url(#clip-exp_family)"/>
+    <text x="56.9" y="52.2" font-family="Arial" font-size="12" fill="#ef4444" font-weight="bold">y = (½)ˣ</text>
+    <circle cx="237.0" cy="215.3" r="4.5" fill="#1e1e2e"/>
+    <text x="191.0" y="209.3" font-family="Arial" font-size="11" fill="#1e1e2e" font-weight="bold">(0, 1)</text>
+    <text x="230.0" y="294" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">All pass through (0, 1); the x-axis is an asymptote</text>
+    </svg>
+  </div>
+
+  <div class="tip">
+    <strong>$y = a^{-x}$ is $y = \left(\tfrac{1}{a}\right)^x$.</strong> Because $a^{-x} = \left(a^{-1}\right)^x$, the decay curve $y = \left(\tfrac12\right)^x$ is the same as $y = 2^{-x}$ — the reflection of $y = 2^x$ in the $y$-axis.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Comparing exponential graphs</div>
+    <div class="example-body">
+      <p>On the same axes sketch $y = 3^x$ and $y = 3^{-x}$. State the coordinates of any intersection and the equation of the asymptote.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$y = 3^x$: through $(0,1)$, rising steeply to the right, approaching the $x$-axis to the left. It passes through $(1, 3)$ and $(-1, \tfrac13)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$y = 3^{-x}$ is its reflection in the $y$-axis: through $(0,1)$, $(-1, 3)$ and $(1, \tfrac13)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>They meet where $3^x = 3^{-x}$, i.e. $x = -x$, so $x = 0$: the single point $(0, 1)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Both have asymptote $y = 0$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE GRADIENT OF a^x
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Gradient of an Exponential, and the Number e</div>
+<div class="section-body">
+
+  <p>Exponential graphs have a remarkable property: <strong>the gradient at any point is proportional to the $y$-value there</strong>. The steeper part of the curve is exactly where the curve is highest.</p>
+
+  <p>Measuring the gradient of $y = a^x$ numerically (using a very short chord) gives:</p>
+
+  <table>
+    <tr><th>Function</th><th>Gradient at $(0, 1)$</th><th>Gradient at any $x$</th></tr>
+    <tr><td>$y = 2^x$</td><td>$\approx 0.693$</td><td>$\approx 0.693 \times 2^x$</td></tr>
+    <tr><td>$y = 3^x$</td><td>$\approx 1.099$</td><td>$\approx 1.099 \times 3^x$</td></tr>
+    <tr><td>$y = e^x$</td><td>exactly $1$</td><td>exactly $e^x$</td></tr>
+  </table>
+
+  <div class="concept">
+    The multiplier is below $1$ for base $2$ and above $1$ for base $3$, so somewhere between $2$ and $3$ there is a base for which the multiplier is <strong>exactly $1$</strong>. That base is the number
+    \[ e = 2.718\,281\,828\ldots \]
+    It is irrational, like $\pi$. The function $y = e^x$ is called <strong>the exponential function</strong>, and it is the only exponential whose gradient equals its own value everywhere.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The gradient of e<sup>kx</sup></div>
+    If $y = e^{kx}$ then $\dfrac{\mathrm{d}y}{\mathrm{d}x} = k\,e^{kx}$ &nbsp;&nbsp; (in particular $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(e^x\right) = e^x$)
+  </div>
+
+  <div class="tip">
+    <strong>Constants come along for the ride.</strong> $\dfrac{\mathrm{d}}{\mathrm{d}x}\left(Ae^{kx}\right) = Ak\,e^{kx}$. So for $y = Ae^{kx}$, the gradient is $k$ times the $y$-value: $\dfrac{\mathrm{d}y}{\mathrm{d}x} = ky$. This is the reason exponentials model anything whose <em>rate of change is proportional to its size</em>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Gradient at a point</div>
+    <div class="example-body">
+      <p>Find the gradient of $y = e^{3x}$ at $x = 0$ and at $x = \ln 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 3e^{3x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>At $x = 0$: $3e^0 = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>At $x = \ln 2$: $3e^{3\ln 2} = 3\left(e^{\ln 2}\right)^3 = 3 \times 2^3 = 24$.</span></div>
+      <div class="tip">$e^{\ln 2} = 2$ because $\ln$ undoes $e$ — see Section 4.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Where is the gradient a given value?</div>
+    <div class="example-body">
+      <p>The curve $y = 4e^{-0.5x}$. Find the coordinates of the point where the gradient is $-1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 4 \times (-0.5)e^{-0.5x} = -2e^{-0.5x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$-2e^{-0.5x} = -1 \;\Rightarrow\; e^{-0.5x} = \tfrac12$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Take $\ln$: $-0.5x = \ln\tfrac12 = -\ln 2$, so $x = 2\ln 2 \approx 1.386$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$y = 4e^{-\ln 2} = 4 \times \tfrac12 = 2$. The point is $(2\ln 2,\; 2)$.</span></div>
+      <div class="tip"><strong>Quick check:</strong> gradient $= ky = -0.5 \times 2 = -1$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A sum of exponentials</div>
+    <div class="example-body">
+      <p>Find the gradient of $y = e^{2x} + 3e^{-x}$ at the point where it crosses the $y$-axis.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Differentiate each term: $\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2e^{2x} - 3e^{-x}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The $y$-axis is $x = 0$, where $y = 1 + 3 = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Gradient $= 2(1) - 3(1) = -1$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – TRANSFORMED EXPONENTIALS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Sketching Transformed Exponentials</div>
+<div class="section-body">
+
+  <p>Most exam graphs are of the form $y = A + Be^{kx}$. Three questions pin the sketch down.</p>
+
+  <ul class="steps">
+    <li><strong>Asymptote:</strong> the exponential term tends to $0$ at one end (as $x \to -\infty$ if $k > 0$, as $x \to +\infty$ if $k < 0$), so $y \to A$. The asymptote is $y = A$.</li>
+    <li><strong>$y$-intercept:</strong> put $x = 0$: $y = A + B$.</li>
+    <li><strong>$x$-intercept (if any):</strong> solve $A + Be^{kx} = 0$ using $\ln$.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Sketching $y = 5 - 2e^x$</div>
+    <div class="example-body">
+      <p>Sketch $y = 5 - 2e^x$, showing the asymptote and the points where it crosses the axes.</p>
+      <div class="step-row"><span class="arrow">①</span><span>As $x \to -\infty$, $e^x \to 0$ so $y \to 5$. Asymptote $y = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = 0$: $y = 5 - 2 = 3$, so $(0, 3)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = 0$: $2e^x = 5$, $e^x = 2.5$, $x = \ln 2.5 \approx 0.916$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>As $x$ increases, $-2e^x$ becomes large and negative, so the curve falls steeply.</span></div>
+    </div>
+  </div>
+
+    <div class="svg-block">
+    <svg width="460" height="300" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="clip-five_minus"><rect x="34" y="16" width="406" height="242"/></clipPath></defs>
+    <line x1="34.0" y1="16" x2="34.0" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="101.7" y1="16" x2="101.7" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="169.3" y1="16" x2="169.3" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="237.0" y1="16" x2="237.0" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="372.3" y1="16" x2="372.3" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="440.0" y1="16" x2="440.0" y2="258" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="231.1" x2="440" y2="231.1" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="123.6" x2="440" y2="123.6" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="69.8" x2="440" y2="69.8" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="16.0" x2="440" y2="16.0" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="177.3" x2="440" y2="177.3" stroke="#475569" stroke-width="1.5"/>
+    <line x1="304.7" y1="16" x2="304.7" y2="258" stroke="#475569" stroke-width="1.5"/>
+    <text x="444" y="181.3" font-family="Arial" font-size="13" font-style="italic" fill="#334155">x</text>
+    <text x="309.7" y="26" font-family="Arial" font-size="13" font-style="italic" fill="#334155">y</text>
+    <text x="34.0" y="191.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-4</text>
+    <text x="101.7" y="191.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-3</text>
+    <text x="169.3" y="191.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-2</text>
+    <text x="237.0" y="191.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-1</text>
+    <text x="372.3" y="191.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">1</text>
+    <text x="440.0" y="191.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">2</text>
+    <text x="300.7" y="234.6" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">-2</text>
+    <text x="300.7" y="127.1" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">2</text>
+    <text x="300.7" y="73.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">4</text>
+    <text x="300.7" y="19.5" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">6</text>
+    <text x="300.7" y="190.3" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">O</text>
+    <line x1="34" y1="42.9" x2="440" y2="42.9" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="6 4"/>
+    <path d="M 34.0 43.9 L 35.0 43.9 L 36.0 43.9 L 37.0 43.9 L 38.1 43.9 L 39.1 44.0 L 40.1 44.0 L 41.1 44.0 L 42.1 44.0 L 43.1 44.0 L 44.1 44.0 L 45.2 44.1 L 46.2 44.1 L 47.2 44.1 L 48.2 44.1 L 49.2 44.1 L 50.2 44.1 L 51.3 44.2 L 52.3 44.2 L 53.3 44.2 L 54.3 44.2 L 55.3 44.2 L 56.3 44.3 L 57.3 44.3 L 58.4 44.3 L 59.4 44.3 L 60.4 44.3 L 61.4 44.4 L 62.4 44.4 L 63.4 44.4 L 64.5 44.4 L 65.5 44.5 L 66.5 44.5 L 67.5 44.5 L 68.5 44.5 L 69.5 44.6 L 70.5 44.6 L 71.6 44.6 L 72.6 44.6 L 73.6 44.7 L 74.6 44.7 L 75.6 44.7 L 76.6 44.7 L 77.6 44.8 L 78.7 44.8 L 79.7 44.8 L 80.7 44.9 L 81.7 44.9 L 82.7 44.9 L 83.7 44.9 L 84.8 45.0 L 85.8 45.0 L 86.8 45.0 L 87.8 45.1 L 88.8 45.1 L 89.8 45.1 L 90.8 45.2 L 91.9 45.2 L 92.9 45.2 L 93.9 45.3 L 94.9 45.3 L 95.9 45.3 L 96.9 45.4 L 97.9 45.4 L 99.0 45.5 L 100.0 45.5 L 101.0 45.5 L 102.0 45.6 L 103.0 45.6 L 104.0 45.7 L 105.0 45.7 L 106.1 45.7 L 107.1 45.8 L 108.1 45.8 L 109.1 45.9 L 110.1 45.9 L 111.1 46.0 L 112.2 46.0 L 113.2 46.1 L 114.2 46.1 L 115.2 46.2 L 116.2 46.2 L 117.2 46.3 L 118.2 46.3 L 119.3 46.4 L 120.3 46.4 L 121.3 46.5 L 122.3 46.5 L 123.3 46.6 L 124.3 46.6 L 125.4 46.7 L 126.4 46.7 L 127.4 46.8 L 128.4 46.9 L 129.4 46.9 L 130.4 47.0 L 131.4 47.0 L 132.5 47.1 L 133.5 47.2 L 134.5 47.2 L 135.5 47.3 L 136.5 47.4 L 137.5 47.4 L 138.5 47.5 L 139.6 47.6 L 140.6 47.6 L 141.6 47.7 L 142.6 47.8 L 143.6 47.9 L 144.6 47.9 L 145.6 48.0 L 146.7 48.1 L 147.7 48.2 L 148.7 48.3 L 149.7 48.3 L 150.7 48.4 L 151.7 48.5 L 152.8 48.6 L 153.8 48.7 L 154.8 48.8 L 155.8 48.8 L 156.8 48.9 L 157.8 49.0 L 158.8 49.1 L 159.9 49.2 L 160.9 49.3 L 161.9 49.4 L 162.9 49.5 L 163.9 49.6 L 164.9 49.7 L 166.0 49.8 L 167.0 49.9 L 168.0 50.0 L 169.0 50.1 L 170.0 50.2 L 171.0 50.4 L 172.0 50.5 L 173.1 50.6 L 174.1 50.7 L 175.1 50.8 L 176.1 50.9 L 177.1 51.1 L 178.1 51.2 L 179.1 51.3 L 180.2 51.4 L 181.2 51.6 L 182.2 51.7 L 183.2 51.8 L 184.2 52.0 L 185.2 52.1 L 186.2 52.2 L 187.3 52.4 L 188.3 52.5 L 189.3 52.7 L 190.3 52.8 L 191.3 53.0 L 192.3 53.1 L 193.4 53.3 L 194.4 53.4 L 195.4 53.6 L 196.4 53.7 L 197.4 53.9 L 198.4 54.1 L 199.4 54.2 L 200.5 54.4 L 201.5 54.6 L 202.5 54.8 L 203.5 54.9 L 204.5 55.1 L 205.5 55.3 L 206.5 55.5 L 207.6 55.7 L 208.6 55.9 L 209.6 56.1 L 210.6 56.3 L 211.6 56.5 L 212.6 56.7 L 213.7 56.9 L 214.7 57.1 L 215.7 57.3 L 216.7 57.5 L 217.7 57.8 L 218.7 58.0 L 219.7 58.2 L 220.8 58.5 L 221.8 58.7 L 222.8 58.9 L 223.8 59.2 L 224.8 59.4 L 225.8 59.7 L 226.9 59.9 L 227.9 60.2 L 228.9 60.4 L 229.9 60.7 L 230.9 61.0 L 231.9 61.2 L 232.9 61.5 L 234.0 61.8 L 235.0 62.1 L 236.0 62.4 L 237.0 62.7 L 238.0 63.0 L 239.0 63.3 L 240.0 63.6 L 241.1 63.9 L 242.1 64.2 L 243.1 64.5 L 244.1 64.9 L 245.1 65.2 L 246.1 65.5 L 247.2 65.9 L 248.2 66.2 L 249.2 66.6 L 250.2 66.9 L 251.2 67.3 L 252.2 67.7 L 253.2 68.0 L 254.3 68.4 L 255.3 68.8 L 256.3 69.2 L 257.3 69.6 L 258.3 70.0 L 259.3 70.4 L 260.3 70.8 L 261.4 71.2 L 262.4 71.7 L 263.4 72.1 L 264.4 72.6 L 265.4 73.0 L 266.4 73.5 L 267.5 73.9 L 268.5 74.4 L 269.5 74.9 L 270.5 75.3 L 271.5 75.8 L 272.5 76.3 L 273.5 76.8 L 274.6 77.4 L 275.6 77.9 L 276.6 78.4 L 277.6 78.9 L 278.6 79.5 L 279.6 80.0 L 280.6 80.6 L 281.7 81.2 L 282.7 81.7 L 283.7 82.3 L 284.7 82.9 L 285.7 83.5 L 286.7 84.1 L 287.8 84.8 L 288.8 85.4 L 289.8 86.0 L 290.8 86.7 L 291.8 87.4 L 292.8 88.0 L 293.8 88.7 L 294.9 89.4 L 295.9 90.1 L 296.9 90.8 L 297.9 91.5 L 298.9 92.3 L 299.9 93.0 L 300.9 93.8 L 302.0 94.6 L 303.0 95.3 L 304.0 96.1 L 305.0 96.9 L 306.0 97.8 L 307.0 98.6 L 308.0 99.4 L 309.1 100.3 L 310.1 101.1 L 311.1 102.0 L 312.1 102.9 L 313.1 103.8 L 314.1 104.7 L 315.2 105.7 L 316.2 106.6 L 317.2 107.6 L 318.2 108.6 L 319.2 109.6 L 320.2 110.6 L 321.2 111.6 L 322.3 112.6 L 323.3 113.7 L 324.3 114.8 L 325.3 115.8 L 326.3 116.9 L 327.3 118.1 L 328.3 119.2 L 329.4 120.4 L 330.4 121.5 L 331.4 122.7 L 332.4 123.9 L 333.4 125.1 L 334.4 126.4 L 335.5 127.7 L 336.5 128.9 L 337.5 130.2 L 338.5 131.6 L 339.5 132.9 L 340.5 134.3 L 341.5 135.6 L 342.6 137.0 L 343.6 138.5 L 344.6 139.9 L 345.6 141.4 L 346.6 142.9 L 347.6 144.4 L 348.7 145.9 L 349.7 147.5 L 350.7 149.0 L 351.7 150.6 L 352.7 152.3 L 353.7 153.9 L 354.7 155.6 L 355.8 157.3 L 356.8 159.0 L 357.8 160.8 L 358.8 162.6 L 359.8 164.4 L 360.8 166.2 L 361.8 168.1 L 362.9 170.0 L 363.9 171.9 L 364.9 173.8 L 365.9 175.8 L 366.9 177.8 L 367.9 179.9 L 369.0 181.9 L 370.0 184.0 L 371.0 186.2 L 372.0 188.3 L 373.0 190.5 L 374.0 192.8 L 375.0 195.0 L 376.1 197.3 L 377.1 199.7 L 378.1 202.0 L 379.1 204.4 L 380.1 206.9 L 381.1 209.4 L 382.1 211.9 L 383.2 214.4 L 384.2 217.0 L 385.2 219.7 L 386.2 222.3 L 387.2 225.0 L 388.2 227.8 L 389.2 230.6 L 390.3 233.4 L 391.3 236.3 L 392.3 239.2 L 393.3 242.2 L 394.3 245.2 L 395.3 248.3 L 396.4 251.4 L 397.4 254.5 L 398.4 257.7 L 399.4 261.0 L 400.4 264.3 L 401.4 267.6 L 402.4 271.0 L 403.5 274.5 L 404.5 278.0 L 405.5 281.5 L 406.5 285.1 L 407.5 288.8 L 408.5 292.5 L 409.5 296.3 L 410.6 300.1 L 411.6 304.0 L 412.6 307.9 L 413.6 311.9 L 414.6 316.0 L 415.6 320.1 L 416.7 324.3 L 417.7 328.6 L 418.7 332.9 L 419.7 337.3 L 420.7 341.7 L 421.7 346.2 L 422.7 350.8 L 423.8 355.5 L 424.8 360.2 L 425.8 365.0 L 426.8 369.9 L 427.8 374.8 L 428.8 379.8 L 429.8 384.9 L 430.9 390.1 L 431.9 395.3 L 432.9 400.6 L 433.9 406.1 L 434.9 411.5 L 435.9 417.1 L 437.0 422.8 L 438.0 428.5 L 439.0 434.3 L 440.0 440.3" fill="none" stroke="#4f46e5" stroke-width="2.5" clip-path="url(#clip-five_minus)"/>
+    <text x="334.3" y="119.2" font-family="Arial" font-size="12" fill="#4f46e5" font-weight="bold">y = 5 − 2eˣ</text>
+    <circle cx="304.7" cy="96.7" r="4.5" fill="#7c3aed"/>
+    <text x="310.7" y="90.7" font-family="Arial" font-size="11" fill="#7c3aed" font-weight="bold">(0, 3)</text>
+    <circle cx="366.7" cy="177.3" r="4.5" fill="#7c3aed"/>
+    <text x="372.7" y="169.3" font-family="Arial" font-size="11" fill="#7c3aed" font-weight="bold">(ln 2.5, 0)</text>
+    <text x="40.8" y="36.2" font-family="Arial" font-size="11" fill="#64748b">y = 5</text>
+    <text x="230.0" y="294" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Asymptote y = 5 as x → −∞</text>
+    </svg>
+  </div>
+
+  <div class="warn">
+    <strong>The curve never touches its asymptote.</strong> Draw it getting close to $y = 5$ without crossing or meeting it, and label the asymptote with its equation.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – ln x AS THE INVERSE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> $y = \ln x$, the Inverse of $y = e^x$</div>
+<div class="section-body">
+
+  <div class="concept">
+    The <strong>natural logarithm</strong> $\ln x$ is the logarithm to base $e$: $\ln x = \log_e x$. It undoes the exponential function:
+    \[ y = e^x \iff x = \ln y. \]
+    So its graph is the reflection of $y = e^x$ in the line $y = x$.
+  </div>
+
+    <div class="svg-block">
+    <svg width="400" height="360" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="clip-exp_ln"><rect x="34" y="16" width="346" height="302"/></clipPath></defs>
+    <line x1="77.2" y1="16" x2="77.2" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="120.5" y1="16" x2="120.5" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="207.0" y1="16" x2="207.0" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="250.2" y1="16" x2="250.2" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="293.5" y1="16" x2="293.5" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="336.8" y1="16" x2="336.8" y2="318" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="280.2" x2="380" y2="280.2" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="242.5" x2="380" y2="242.5" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="167.0" x2="380" y2="167.0" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="129.2" x2="380" y2="129.2" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="91.5" x2="380" y2="91.5" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="53.8" x2="380" y2="53.8" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="34" y1="204.8" x2="380" y2="204.8" stroke="#475569" stroke-width="1.5"/>
+    <line x1="163.8" y1="16" x2="163.8" y2="318" stroke="#475569" stroke-width="1.5"/>
+    <text x="384" y="208.8" font-family="Arial" font-size="13" font-style="italic" fill="#334155">x</text>
+    <text x="168.8" y="26" font-family="Arial" font-size="13" font-style="italic" fill="#334155">y</text>
+    <text x="77.2" y="218.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-2</text>
+    <text x="120.5" y="218.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">-1</text>
+    <text x="207.0" y="218.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">1</text>
+    <text x="250.2" y="218.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">2</text>
+    <text x="293.5" y="218.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">3</text>
+    <text x="336.8" y="218.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">4</text>
+    <text x="159.8" y="283.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">-2</text>
+    <text x="159.8" y="246.0" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">-1</text>
+    <text x="159.8" y="170.5" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">1</text>
+    <text x="159.8" y="132.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">2</text>
+    <text x="159.8" y="95.0" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">3</text>
+    <text x="159.8" y="57.2" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">4</text>
+    <text x="159.8" y="217.8" font-family="Arial" font-size="10" fill="#64748b" text-anchor="end">O</text>
+    <path d="M 34.0 202.9 L 34.9 202.8 L 35.7 202.8 L 36.6 202.8 L 37.5 202.7 L 38.3 202.7 L 39.2 202.6 L 40.1 202.6 L 40.9 202.5 L 41.8 202.5 L 42.7 202.5 L 43.5 202.4 L 44.4 202.4 L 45.2 202.3 L 46.1 202.3 L 47.0 202.2 L 47.8 202.2 L 48.7 202.1 L 49.6 202.1 L 50.4 202.0 L 51.3 201.9 L 52.2 201.9 L 53.0 201.8 L 53.9 201.8 L 54.8 201.7 L 55.6 201.7 L 56.5 201.6 L 57.4 201.5 L 58.2 201.5 L 59.1 201.4 L 60.0 201.3 L 60.8 201.3 L 61.7 201.2 L 62.5 201.1 L 63.4 201.0 L 64.3 201.0 L 65.1 200.9 L 66.0 200.8 L 66.9 200.7 L 67.7 200.7 L 68.6 200.6 L 69.5 200.5 L 70.3 200.4 L 71.2 200.3 L 72.1 200.2 L 72.9 200.1 L 73.8 200.0 L 74.7 199.9 L 75.5 199.8 L 76.4 199.7 L 77.2 199.6 L 78.1 199.5 L 79.0 199.4 L 79.8 199.3 L 80.7 199.2 L 81.6 199.1 L 82.4 199.0 L 83.3 198.9 L 84.2 198.8 L 85.0 198.6 L 85.9 198.5 L 86.8 198.4 L 87.6 198.3 L 88.5 198.1 L 89.4 198.0 L 90.2 197.9 L 91.1 197.7 L 92.0 197.6 L 92.8 197.4 L 93.7 197.3 L 94.5 197.1 L 95.4 197.0 L 96.3 196.8 L 97.1 196.7 L 98.0 196.5 L 98.9 196.3 L 99.7 196.2 L 100.6 196.0 L 101.5 195.8 L 102.3 195.6 L 103.2 195.4 L 104.1 195.3 L 104.9 195.1 L 105.8 194.9 L 106.7 194.7 L 107.5 194.5 L 108.4 194.3 L 109.3 194.0 L 110.1 193.8 L 111.0 193.6 L 111.9 193.4 L 112.7 193.2 L 113.6 192.9 L 114.4 192.7 L 115.3 192.4 L 116.2 192.2 L 117.0 191.9 L 117.9 191.7 L 118.8 191.4 L 119.6 191.1 L 120.5 190.9 L 121.4 190.6 L 122.2 190.3 L 123.1 190.0 L 124.0 189.7 L 124.8 189.4 L 125.7 189.1 L 126.6 188.8 L 127.4 188.5 L 128.3 188.1 L 129.2 187.8 L 130.0 187.4 L 130.9 187.1 L 131.7 186.7 L 132.6 186.4 L 133.5 186.0 L 134.3 185.6 L 135.2 185.2 L 136.1 184.8 L 136.9 184.4 L 137.8 184.0 L 138.7 183.6 L 139.5 183.2 L 140.4 182.8 L 141.3 182.3 L 142.1 181.9 L 143.0 181.4 L 143.9 180.9 L 144.7 180.4 L 145.6 179.9 L 146.4 179.4 L 147.3 178.9 L 148.2 178.4 L 149.0 177.9 L 149.9 177.3 L 150.8 176.8 L 151.6 176.2 L 152.5 175.6 L 153.4 175.1 L 154.2 174.5 L 155.1 173.8 L 156.0 173.2 L 156.8 172.6 L 157.7 171.9 L 158.6 171.3 L 159.4 170.6 L 160.3 169.9 L 161.2 169.2 L 162.0 168.5 L 162.9 167.7 L 163.8 167.0 L 164.6 166.2 L 165.5 165.5 L 166.3 164.7 L 167.2 163.9 L 168.1 163.0 L 168.9 162.2 L 169.8 161.3 L 170.7 160.4 L 171.5 159.6 L 172.4 158.6 L 173.3 157.7 L 174.1 156.8 L 175.0 155.8 L 175.9 154.8 L 176.7 153.8 L 177.6 152.8 L 178.5 151.7 L 179.3 150.6 L 180.2 149.5 L 181.0 148.4 L 181.9 147.3 L 182.8 146.1 L 183.6 145.0 L 184.5 143.7 L 185.4 142.5 L 186.2 141.3 L 187.1 140.0 L 188.0 138.7 L 188.8 137.3 L 189.7 136.0 L 190.6 134.6 L 191.4 133.2 L 192.3 131.7 L 193.2 130.2 L 194.0 128.7 L 194.9 127.2 L 195.8 125.6 L 196.6 124.0 L 197.5 122.4 L 198.3 120.7 L 199.2 119.0 L 200.1 117.3 L 200.9 115.5 L 201.8 113.7 L 202.7 111.9 L 203.5 110.0 L 204.4 108.1 L 205.3 106.2 L 206.1 104.2 L 207.0 102.1 L 207.9 100.1 L 208.7 97.9 L 209.6 95.8 L 210.5 93.6 L 211.3 91.3 L 212.2 89.1 L 213.1 86.7 L 213.9 84.3 L 214.8 81.9 L 215.7 79.4 L 216.5 76.9 L 217.4 74.3 L 218.2 71.7 L 219.1 69.0 L 220.0 66.2 L 220.8 63.4 L 221.7 60.6 L 222.6 57.7 L 223.4 54.7 L 224.3 51.7 L 225.2 48.6 L 226.0 45.4 L 226.9 42.2 L 227.8 38.9 L 228.6 35.6 L 229.5 32.1 L 230.4 28.7 L 231.2 25.1 L 232.1 21.5 L 232.9 17.8 L 233.8 14.0 L 234.7 10.1 L 235.5 6.2 L 236.4 2.2 L 237.3 -1.9 L 238.1 -6.1 L 239.0 -10.3 L 239.9 -14.7 L 240.7 -19.1 L 241.6 -23.6 L 242.5 -28.2 L 243.3 -32.9 L 244.2 -37.7 L 245.1 -42.6 L 245.9 -47.6 L 246.8 -52.7 L 247.7 -57.9 L 248.5 -63.2 L 249.4 -68.7 L 250.2 -74.2 L 251.1 -79.8 L 252.0 -85.6 L 252.8 -91.4 L 253.7 -97.4 L 254.6 -103.5 L 255.4 -109.8 L 256.3 -116.1 L 257.2 -122.6 L 258.0 -129.2 L 258.9 -135.9 L 259.8 -142.8 L 260.6 -149.8 L 261.5 -157.0 L 262.4 -164.3 L 263.2 -171.8 L 264.1 -179.4 L 265.0 -187.1 L 265.8 -195.1 L 266.7 -203.1 L 267.6 -211.4 L 268.4 -219.8 L 269.3 -228.4 L 270.1 -237.1 L 271.0 -246.0 L 271.9 -255.1 L 272.7 -264.4 L 273.6 -273.9 L 274.5 -283.6" fill="none" stroke="#4f46e5" stroke-width="2.5" clip-path="url(#clip-exp_ln)"/>
+    <text x="228.0" y="70.2" font-family="Arial" font-size="12" fill="#4f46e5" font-weight="bold">y = eˣ</text>
+    <path d="M 164.2 378.6 L 164.7 348.0 L 165.3 331.4 L 165.8 319.8 L 166.3 311.0 L 166.9 303.9 L 167.4 297.9 L 168.0 292.7 L 168.5 288.1 L 169.0 284.1 L 169.6 280.4 L 170.1 277.1 L 170.7 274.0 L 171.2 271.2 L 171.7 268.5 L 172.3 266.1 L 172.8 263.7 L 173.4 261.6 L 173.9 259.5 L 174.4 257.5 L 175.0 255.7 L 175.5 253.9 L 176.1 252.2 L 176.6 250.6 L 177.1 249.0 L 177.7 247.5 L 178.2 246.1 L 178.8 244.7 L 179.3 243.4 L 179.8 242.1 L 180.4 240.9 L 180.9 239.7 L 181.4 238.5 L 182.0 237.3 L 182.5 236.2 L 183.1 235.2 L 183.6 234.1 L 184.1 233.1 L 184.7 232.1 L 185.2 231.2 L 185.8 230.2 L 186.3 229.3 L 186.8 228.4 L 187.4 227.6 L 187.9 226.7 L 188.5 225.9 L 189.0 225.1 L 189.5 224.3 L 190.1 223.5 L 190.6 222.7 L 191.2 222.0 L 191.7 221.2 L 192.2 220.5 L 192.8 219.8 L 193.3 219.1 L 193.9 218.4 L 194.4 217.8 L 194.9 217.1 L 195.5 216.4 L 196.0 215.8 L 196.6 215.2 L 197.1 214.6 L 197.6 214.0 L 198.2 213.4 L 198.7 212.8 L 199.3 212.2 L 199.8 211.6 L 200.3 211.1 L 200.9 210.5 L 201.4 210.0 L 202.0 209.4 L 202.5 208.9 L 203.0 208.4 L 203.6 207.9 L 204.1 207.4 L 204.6 206.9 L 205.2 206.4 L 205.7 205.9 L 206.3 205.4 L 206.8 204.9 L 207.3 204.4 L 207.9 204.0 L 208.4 203.5 L 209.0 203.1 L 209.5 202.6 L 210.0 202.2 L 210.6 201.7 L 211.1 201.3 L 211.7 200.9 L 212.2 200.5 L 212.7 200.0 L 213.3 199.6 L 213.8 199.2 L 214.4 198.8 L 214.9 198.4 L 215.4 198.0 L 216.0 197.6 L 216.5 197.2 L 217.1 196.9 L 217.6 196.5 L 218.1 196.1 L 218.7 195.7 L 219.2 195.4 L 219.8 195.0 L 220.3 194.6 L 220.8 194.3 L 221.4 193.9 L 221.9 193.6 L 222.5 193.2 L 223.0 192.9 L 223.5 192.5 L 224.1 192.2 L 224.6 191.9 L 225.2 191.5 L 225.7 191.2 L 226.2 190.9 L 226.8 190.5 L 227.3 190.2 L 227.8 189.9 L 228.4 189.6 L 228.9 189.3 L 229.5 189.0 L 230.0 188.6 L 230.5 188.3 L 231.1 188.0 L 231.6 187.7 L 232.2 187.4 L 232.7 187.1 L 233.2 186.8 L 233.8 186.6 L 234.3 186.3 L 234.9 186.0 L 235.4 185.7 L 235.9 185.4 L 236.5 185.1 L 237.0 184.8 L 237.6 184.6 L 238.1 184.3 L 238.6 184.0 L 239.2 183.8 L 239.7 183.5 L 240.3 183.2 L 240.8 183.0 L 241.3 182.7 L 241.9 182.4 L 242.4 182.2 L 243.0 181.9 L 243.5 181.7 L 244.0 181.4 L 244.6 181.1 L 245.1 180.9 L 245.7 180.6 L 246.2 180.4 L 246.7 180.2 L 247.3 179.9 L 247.8 179.7 L 248.4 179.4 L 248.9 179.2 L 249.4 178.9 L 250.0 178.7 L 250.5 178.5 L 251.0 178.2 L 251.6 178.0 L 252.1 177.8 L 252.7 177.5 L 253.2 177.3 L 253.7 177.1 L 254.3 176.9 L 254.8 176.6 L 255.4 176.4 L 255.9 176.2 L 256.4 176.0 L 257.0 175.8 L 257.5 175.5 L 258.1 175.3 L 258.6 175.1 L 259.1 174.9 L 259.7 174.7 L 260.2 174.5 L 260.8 174.3 L 261.3 174.0 L 261.8 173.8 L 262.4 173.6 L 262.9 173.4 L 263.5 173.2 L 264.0 173.0 L 264.5 172.8 L 265.1 172.6 L 265.6 172.4 L 266.2 172.2 L 266.7 172.0 L 267.2 171.8 L 267.8 171.6 L 268.3 171.4 L 268.9 171.2 L 269.4 171.0 L 269.9 170.8 L 270.5 170.7 L 271.0 170.5 L 271.6 170.3 L 272.1 170.1 L 272.6 169.9 L 273.2 169.7 L 273.7 169.5 L 274.2 169.3 L 274.8 169.2 L 275.3 169.0 L 275.9 168.8 L 276.4 168.6 L 276.9 168.4 L 277.5 168.2 L 278.0 168.1 L 278.6 167.9 L 279.1 167.7 L 279.6 167.5 L 280.2 167.4 L 280.7 167.2 L 281.3 167.0 L 281.8 166.8 L 282.3 166.7 L 282.9 166.5 L 283.4 166.3 L 284.0 166.2 L 284.5 166.0 L 285.0 165.8 L 285.6 165.7 L 286.1 165.5 L 286.7 165.3 L 287.2 165.2 L 287.7 165.0 L 288.3 164.8 L 288.8 164.7 L 289.4 164.5 L 289.9 164.3 L 290.4 164.2 L 291.0 164.0 L 291.5 163.9 L 292.1 163.7 L 292.6 163.5 L 293.1 163.4 L 293.7 163.2 L 294.2 163.1 L 294.8 162.9 L 295.3 162.8 L 295.8 162.6 L 296.4 162.5 L 296.9 162.3 L 297.4 162.1 L 298.0 162.0 L 298.5 161.8 L 299.1 161.7 L 299.6 161.5 L 300.1 161.4 L 300.7 161.2 L 301.2 161.1 L 301.8 160.9 L 302.3 160.8 L 302.8 160.7 L 303.4 160.5 L 303.9 160.4 L 304.5 160.2 L 305.0 160.1 L 305.5 159.9 L 306.1 159.8 L 306.6 159.6 L 307.2 159.5 L 307.7 159.4 L 308.2 159.2 L 308.8 159.1 L 309.3 158.9 L 309.9 158.8 L 310.4 158.7 L 310.9 158.5 L 311.5 158.4 L 312.0 158.2 L 312.6 158.1 L 313.1 158.0 L 313.6 157.8 L 314.2 157.7 L 314.7 157.6 L 315.3 157.4 L 315.8 157.3 L 316.3 157.2 L 316.9 157.0 L 317.4 156.9 L 318.0 156.8 L 318.5 156.6 L 319.0 156.5 L 319.6 156.4 L 320.1 156.2 L 320.7 156.1 L 321.2 156.0 L 321.7 155.8 L 322.3 155.7 L 322.8 155.6 L 323.3 155.5 L 323.9 155.3 L 324.4 155.2 L 325.0 155.1 L 325.5 155.0 L 326.0 154.8 L 326.6 154.7 L 327.1 154.6 L 327.7 154.5 L 328.2 154.3 L 328.7 154.2 L 329.3 154.1 L 329.8 154.0 L 330.4 153.8 L 330.9 153.7 L 331.4 153.6 L 332.0 153.5 L 332.5 153.4 L 333.1 153.2 L 333.6 153.1 L 334.1 153.0 L 334.7 152.9 L 335.2 152.8 L 335.8 152.6 L 336.3 152.5 L 336.8 152.4 L 337.4 152.3 L 337.9 152.2 L 338.5 152.0 L 339.0 151.9 L 339.5 151.8 L 340.1 151.7 L 340.6 151.6 L 341.2 151.5 L 341.7 151.4 L 342.2 151.2 L 342.8 151.1 L 343.3 151.0 L 343.9 150.9 L 344.4 150.8 L 344.9 150.7 L 345.5 150.6 L 346.0 150.4 L 346.5 150.3 L 347.1 150.2 L 347.6 150.1 L 348.2 150.0 L 348.7 149.9 L 349.2 149.8 L 349.8 149.7 L 350.3 149.6 L 350.9 149.5 L 351.4 149.3 L 351.9 149.2 L 352.5 149.1 L 353.0 149.0 L 353.6 148.9 L 354.1 148.8 L 354.6 148.7 L 355.2 148.6 L 355.7 148.5 L 356.3 148.4 L 356.8 148.3 L 357.3 148.2 L 357.9 148.1 L 358.4 148.0 L 359.0 147.9 L 359.5 147.8 L 360.0 147.7 L 360.6 147.5 L 361.1 147.4 L 361.7 147.3 L 362.2 147.2 L 362.7 147.1 L 363.3 147.0 L 363.8 146.9 L 364.4 146.8 L 364.9 146.7 L 365.4 146.6 L 366.0 146.5 L 366.5 146.4 L 367.1 146.3 L 367.6 146.2 L 368.1 146.1 L 368.7 146.0 L 369.2 145.9 L 369.7 145.8 L 370.3 145.7 L 370.8 145.6 L 371.4 145.5 L 371.9 145.4 L 372.4 145.3 L 373.0 145.2 L 373.5 145.1 L 374.1 145.0 L 374.6 144.9 L 375.1 144.9 L 375.7 144.8 L 376.2 144.7 L 376.8 144.6 L 377.3 144.5 L 377.8 144.4 L 378.4 144.3 L 378.9 144.2 L 379.5 144.1 L 380.0 144.0" fill="none" stroke="#ef4444" stroke-width="2.5" clip-path="url(#clip-exp_ln)"/>
+    <text x="309.4" y="172.4" font-family="Arial" font-size="12" fill="#ef4444" font-weight="bold">y = ln x</text>
+    <path d="M 34.0 318.0 L 34.9 317.2 L 35.7 316.5 L 36.6 315.7 L 37.5 315.0 L 38.3 314.2 L 39.2 313.5 L 40.1 312.7 L 40.9 312.0 L 41.8 311.2 L 42.7 310.4 L 43.5 309.7 L 44.4 308.9 L 45.2 308.2 L 46.1 307.4 L 47.0 306.7 L 47.8 305.9 L 48.7 305.2 L 49.6 304.4 L 50.4 303.7 L 51.3 302.9 L 52.2 302.1 L 53.0 301.4 L 53.9 300.6 L 54.8 299.9 L 55.6 299.1 L 56.5 298.4 L 57.4 297.6 L 58.2 296.9 L 59.1 296.1 L 60.0 295.4 L 60.8 294.6 L 61.7 293.8 L 62.5 293.1 L 63.4 292.3 L 64.3 291.6 L 65.1 290.8 L 66.0 290.1 L 66.9 289.3 L 67.7 288.6 L 68.6 287.8 L 69.5 287.0 L 70.3 286.3 L 71.2 285.5 L 72.1 284.8 L 72.9 284.0 L 73.8 283.3 L 74.7 282.5 L 75.5 281.8 L 76.4 281.0 L 77.2 280.2 L 78.1 279.5 L 79.0 278.7 L 79.8 278.0 L 80.7 277.2 L 81.6 276.5 L 82.4 275.7 L 83.3 275.0 L 84.2 274.2 L 85.0 273.5 L 85.9 272.7 L 86.8 271.9 L 87.6 271.2 L 88.5 270.4 L 89.4 269.7 L 90.2 268.9 L 91.1 268.2 L 92.0 267.4 L 92.8 266.7 L 93.7 265.9 L 94.5 265.1 L 95.4 264.4 L 96.3 263.6 L 97.1 262.9 L 98.0 262.1 L 98.9 261.4 L 99.7 260.6 L 100.6 259.9 L 101.5 259.1 L 102.3 258.4 L 103.2 257.6 L 104.1 256.8 L 104.9 256.1 L 105.8 255.3 L 106.7 254.6 L 107.5 253.8 L 108.4 253.1 L 109.3 252.3 L 110.1 251.6 L 111.0 250.8 L 111.9 250.1 L 112.7 249.3 L 113.6 248.5 L 114.4 247.8 L 115.3 247.0 L 116.2 246.3 L 117.0 245.5 L 117.9 244.8 L 118.8 244.0 L 119.6 243.3 L 120.5 242.5 L 121.4 241.7 L 122.2 241.0 L 123.1 240.2 L 124.0 239.5 L 124.8 238.7 L 125.7 238.0 L 126.6 237.2 L 127.4 236.5 L 128.3 235.7 L 129.2 234.9 L 130.0 234.2 L 130.9 233.4 L 131.7 232.7 L 132.6 231.9 L 133.5 231.2 L 134.3 230.4 L 135.2 229.7 L 136.1 228.9 L 136.9 228.2 L 137.8 227.4 L 138.7 226.6 L 139.5 225.9 L 140.4 225.1 L 141.3 224.4 L 142.1 223.6 L 143.0 222.9 L 143.9 222.1 L 144.7 221.4 L 145.6 220.6 L 146.4 219.9 L 147.3 219.1 L 148.2 218.3 L 149.0 217.6 L 149.9 216.8 L 150.8 216.1 L 151.6 215.3 L 152.5 214.6 L 153.4 213.8 L 154.2 213.1 L 155.1 212.3 L 156.0 211.5 L 156.8 210.8 L 157.7 210.0 L 158.6 209.3 L 159.4 208.5 L 160.3 207.8 L 161.2 207.0 L 162.0 206.3 L 162.9 205.5 L 163.8 204.8 L 164.6 204.0 L 165.5 203.2 L 166.3 202.5 L 167.2 201.7 L 168.1 201.0 L 168.9 200.2 L 169.8 199.5 L 170.7 198.7 L 171.5 198.0 L 172.4 197.2 L 173.3 196.4 L 174.1 195.7 L 175.0 194.9 L 175.9 194.2 L 176.7 193.4 L 177.6 192.7 L 178.5 191.9 L 179.3 191.2 L 180.2 190.4 L 181.0 189.6 L 181.9 188.9 L 182.8 188.1 L 183.6 187.4 L 184.5 186.6 L 185.4 185.9 L 186.2 185.1 L 187.1 184.4 L 188.0 183.6 L 188.8 182.9 L 189.7 182.1 L 190.6 181.3 L 191.4 180.6 L 192.3 179.8 L 193.2 179.1 L 194.0 178.3 L 194.9 177.6 L 195.8 176.8 L 196.6 176.1 L 197.5 175.3 L 198.3 174.6 L 199.2 173.8 L 200.1 173.0 L 200.9 172.3 L 201.8 171.5 L 202.7 170.8 L 203.5 170.0 L 204.4 169.3 L 205.3 168.5 L 206.1 167.8 L 207.0 167.0 L 207.9 166.2 L 208.7 165.5 L 209.6 164.7 L 210.5 164.0 L 211.3 163.2 L 212.2 162.5 L 213.1 161.7 L 213.9 161.0 L 214.8 160.2 L 215.7 159.4 L 216.5 158.7 L 217.4 157.9 L 218.2 157.2 L 219.1 156.4 L 220.0 155.7 L 220.8 154.9 L 221.7 154.2 L 222.6 153.4 L 223.4 152.7 L 224.3 151.9 L 225.2 151.1 L 226.0 150.4 L 226.9 149.6 L 227.8 148.9 L 228.6 148.1 L 229.5 147.4 L 230.4 146.6 L 231.2 145.9 L 232.1 145.1 L 232.9 144.4 L 233.8 143.6 L 234.7 142.8 L 235.5 142.1 L 236.4 141.3 L 237.3 140.6 L 238.1 139.8 L 239.0 139.1 L 239.9 138.3 L 240.7 137.6 L 241.6 136.8 L 242.5 136.0 L 243.3 135.3 L 244.2 134.5 L 245.1 133.8 L 245.9 133.0 L 246.8 132.3 L 247.7 131.5 L 248.5 130.8 L 249.4 130.0 L 250.2 129.2 L 251.1 128.5 L 252.0 127.7 L 252.8 127.0 L 253.7 126.2 L 254.6 125.5 L 255.4 124.7 L 256.3 124.0 L 257.2 123.2 L 258.0 122.5 L 258.9 121.7 L 259.8 120.9 L 260.6 120.2 L 261.5 119.4 L 262.4 118.7 L 263.2 117.9 L 264.1 117.2 L 265.0 116.4 L 265.8 115.7 L 266.7 114.9 L 267.6 114.1 L 268.4 113.4 L 269.3 112.6 L 270.1 111.9 L 271.0 111.1 L 271.9 110.4 L 272.7 109.6 L 273.6 108.9 L 274.5 108.1 L 275.3 107.4 L 276.2 106.6 L 277.1 105.8 L 277.9 105.1 L 278.8 104.3 L 279.7 103.6 L 280.5 102.8 L 281.4 102.1 L 282.3 101.3 L 283.1 100.6 L 284.0 99.8 L 284.9 99.1 L 285.7 98.3 L 286.6 97.5 L 287.4 96.8 L 288.3 96.0 L 289.2 95.3 L 290.0 94.5 L 290.9 93.8 L 291.8 93.0 L 292.6 92.3 L 293.5 91.5 L 294.4 90.7 L 295.2 90.0 L 296.1 89.2 L 297.0 88.5 L 297.8 87.7 L 298.7 87.0 L 299.6 86.2 L 300.4 85.5 L 301.3 84.7 L 302.2 83.9 L 303.0 83.2 L 303.9 82.4 L 304.7 81.7 L 305.6 80.9 L 306.5 80.2 L 307.3 79.4 L 308.2 78.7 L 309.1 77.9 L 309.9 77.2 L 310.8 76.4 L 311.7 75.6 L 312.5 74.9 L 313.4 74.1 L 314.3 73.4 L 315.1 72.6 L 316.0 71.9 L 316.9 71.1 L 317.7 70.4 L 318.6 69.6 L 319.4 68.9 L 320.3 68.1 L 321.2 67.3 L 322.0 66.6 L 322.9 65.8 L 323.8 65.1 L 324.6 64.3 L 325.5 63.6 L 326.4 62.8 L 327.2 62.1 L 328.1 61.3 L 329.0 60.5 L 329.8 59.8 L 330.7 59.0 L 331.6 58.3 L 332.4 57.5 L 333.3 56.8 L 334.2 56.0 L 335.0 55.3 L 335.9 54.5 L 336.8 53.8 L 337.6 53.0 L 338.5 52.2 L 339.3 51.5 L 340.2 50.7 L 341.1 50.0 L 341.9 49.2 L 342.8 48.5 L 343.7 47.7 L 344.5 47.0 L 345.4 46.2 L 346.3 45.4 L 347.1 44.7 L 348.0 43.9 L 348.9 43.2 L 349.7 42.4 L 350.6 41.7 L 351.5 40.9 L 352.3 40.2 L 353.2 39.4 L 354.1 38.6 L 354.9 37.9 L 355.8 37.1 L 356.6 36.4 L 357.5 35.6 L 358.4 34.9 L 359.2 34.1 L 360.1 33.4 L 361.0 32.6 L 361.8 31.9 L 362.7 31.1 L 363.6 30.3 L 364.4 29.6 L 365.3 28.8 L 366.2 28.1 L 367.0 27.3 L 367.9 26.6 L 368.8 25.8 L 369.6 25.1 L 370.5 24.3 L 371.3 23.6 L 372.2 22.8 L 373.1 22.0 L 373.9 21.3 L 374.8 20.5 L 375.7 19.8 L 376.5 19.0 L 377.4 18.3 L 378.3 17.5 L 379.1 16.8 L 380.0 16.0" fill="none" stroke="#94a3b8" stroke-width="2.5" clip-path="url(#clip-exp_ln)" stroke-dasharray="5 4"/>
+    <text x="308.2" y="83.9" font-family="Arial" font-size="12" fill="#94a3b8" font-weight="bold">y = x</text>
+    <circle cx="163.8" cy="167.0" r="4.5" fill="#4f46e5"/>
+    <text x="119.8" y="165.0" font-family="Arial" font-size="11" fill="#4f46e5" font-weight="bold">(0, 1)</text>
+    <circle cx="207.0" cy="204.8" r="4.5" fill="#ef4444"/>
+    <text x="213.0" y="196.8" font-family="Arial" font-size="11" fill="#ef4444" font-weight="bold">(1, 0)</text>
+    <text x="200.0" y="354" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">y = ln x is the reflection of y = eˣ in the line y = x</text>
+    </svg>
+  </div>
+
+  <table>
+    <tr><th></th><th>$y = e^x$</th><th>$y = \ln x$</th></tr>
+    <tr><td>Domain (inputs)</td><td>all real $x$</td><td>$x > 0$ only</td></tr>
+    <tr><td>Range (outputs)</td><td>$y > 0$</td><td>all real $y$</td></tr>
+    <tr><td>Crosses an axis at</td><td>$(0, 1)$</td><td>$(1, 0)$</td></tr>
+    <tr><td>Asymptote</td><td>$y = 0$</td><td>$x = 0$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Inverse facts</div>
+    $e^{\ln x} = x$ &nbsp;(for $x > 0$) &nbsp;&nbsp;&nbsp; $\ln\left(e^x\right) = x$ &nbsp;(for all $x$) &nbsp;&nbsp;&nbsp; $\ln 1 = 0$ &nbsp;&nbsp;&nbsp; $\ln e = 1$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Using the inverse</div>
+    <div class="example-body">
+      <p>(a) Solve $e^x = 7$. &nbsp; (b) Solve $\ln x = 3$. &nbsp; Give exact answers and then decimals.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Take $\ln$ of both sides: $x = \ln 7 \approx 1.946$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Apply $e$ to both sides: $x = e^3 \approx 20.09$.</span></div>
+      <div class="tip">"Exact" means leave it as $\ln 7$ or $e^3$. Only round if the question asks for a decimal.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Sketching a translated log graph</div>
+    <div class="example-body">
+      <p>Sketch $y = \ln(x + 2)$, giving the asymptote and the intercepts.</p>
+      <div class="step-row"><span class="arrow">①</span><span>This is $y = \ln x$ translated $2$ units left, so the asymptote moves from $x = 0$ to $x = -2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x$-intercept: $\ln(x+2) = 0 \Rightarrow x + 2 = 1 \Rightarrow x = -1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y$-intercept: $y = \ln 2 \approx 0.693$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The curve exists only for $x > -2$, plunging down the asymptote on the left and rising ever more slowly on the right.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$y = a^x$</h4><p>Through $(0,1)$; always positive; asymptote $y=0$.</p></div>
+    <div class="ref-card"><h4>Growth or decay</h4><p>$a > 1$ grows; $0 < a < 1$ decays.</p></div>
+    <div class="ref-card"><h4>Reflection</h4><p>$a^{-x} = (1/a)^x$: reflect in the $y$-axis.</p></div>
+    <div class="ref-card"><h4>The number e</h4><p>$e \approx 2.71828$; gradient of $e^x$ is $e^x$.</p></div>
+    <div class="ref-card"><h4>Gradient rule</h4><p>$\dfrac{\mathrm{d}}{\mathrm{d}x}\left(Ae^{kx}\right) = Ake^{kx}$</p></div>
+    <div class="ref-card"><h4>Proportional rate</h4><p>$y = Ae^{kx}$ gives $\dfrac{\mathrm{d}y}{\mathrm{d}x} = ky$.</p></div>
+    <div class="ref-card"><h4>Natural log</h4><p>$\ln x = \log_e x$; inverse of $e^x$.</p></div>
+    <div class="ref-card"><h4>$y = \ln x$</h4><p>Only $x > 0$; through $(1,0)$; asymptote $x = 0$.</p></div>
+    <div class="ref-card"><h4>Undoing</h4><p>$e^{\ln x} = x$ and $\ln e^x = x$.</p></div>
+    <div class="ref-card"><h4>$y = A + Be^{kx}$</h4><p>Asymptote $y = A$; $y$-intercept $A + B$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Sketch $y = 4^x$. State the coordinates of the $y$-intercept and the equation of the asymptote, and find $y$ when $x = -\tfrac12$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A growth curve through $(0, 1)$ and $(1, 4)$, approaching the $x$-axis on the left.</p>
+          <p>$y$-intercept $(0, 1)$; asymptote $y = 0$.</p>
+          <p>$4^{-1/2} = \dfrac{1}{\sqrt 4} = \dfrac12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Write down the exact values of (a) $e^0$ &nbsp; (b) $\ln 1$ &nbsp; (c) $\ln e$ &nbsp; (d) $e^{\ln 5}$ &nbsp; (e) $\ln\left(e^{3}\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $1$ &nbsp; (b) $0$ &nbsp; (c) $1$ &nbsp; (d) $5$ &nbsp; (e) $3$</p>
+          <p>(d) and (e) use the fact that $e^x$ and $\ln x$ undo each other.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ for (a) $y = e^{5x}$ &nbsp; (b) $y = 3e^{-2x}$ &nbsp; (c) $y = e^{x/2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $5e^{5x}$</p>
+          <p>(b) $3 \times (-2)e^{-2x} = -6e^{-2x}$</p>
+          <p>(c) $k = \tfrac12$, so $\tfrac12 e^{x/2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the gradient of $y = 2e^{3x}$ at the point $(0, 2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 6e^{3x}$. At $x = 0$: $6e^0 = 6$.</p>
+          <p>(Check with $\frac{\mathrm{d}y}{\mathrm{d}x} = ky = 3 \times 2 = 6$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>The curve $y = e^{2x} - 4x$. (a) Find the gradient where $x = 0$. (b) Find the exact $x$-coordinate of the point where the gradient is zero.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = 2e^{2x} - 4$</p>
+          <p>(a) At $x = 0$: $2 - 4 = -2$.</p>
+          <p>(b) $2e^{2x} = 4 \Rightarrow e^{2x} = 2 \Rightarrow 2x = \ln 2 \Rightarrow x = \tfrac12\ln 2$ $(\approx 0.347)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Sketch $y = 3 - e^{-x}$, giving the equation of the asymptote and the exact coordinates of the points where the curve meets the axes.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>As $x \to \infty$, $e^{-x} \to 0$, so $y \to 3$: asymptote $y = 3$.</p>
+          <p>$x = 0$: $y = 3 - 1 = 2$, so $(0, 2)$.</p>
+          <p>$y = 0$: $e^{-x} = 3 \Rightarrow -x = \ln 3 \Rightarrow x = -\ln 3$, so $(-\ln 3,\, 0)$, about $(-1.10, 0)$.</p>
+          <p>The curve rises from very negative values on the left, crosses at $(-\ln 3, 0)$ and $(0, 2)$, and levels off below $y = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Sketch $y = \ln(x - 1)$, stating the equation of the asymptote and where it crosses the $x$-axis. Explain why it has no $y$-intercept.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$y = \ln x$ translated $1$ unit right: asymptote $x = 1$.</p>
+          <p>$\ln(x-1) = 0 \Rightarrow x - 1 = 1 \Rightarrow x = 2$: crosses at $(2, 0)$.</p>
+          <p>At $x = 0$ we would need $\ln(-1)$, which is undefined — the curve only exists for $x > 1$, so it never reaches the $y$-axis.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the exact coordinates of the point on $y = e^x$ where the gradient is $5$, and the equation of the tangent there.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Gradient $= e^x = 5 \Rightarrow x = \ln 5$, and $y = e^{\ln 5} = 5$. Point $(\ln 5,\, 5)$.</p>
+          <p>Tangent: $y - 5 = 5(x - \ln 5)$</p>
+          <p>$y = 5x + 5 - 5\ln 5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that the curve $y = e^{-x} + 2x$ has exactly one point where the gradient is zero, and find its exact coordinates.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\mathrm{d}y}{\mathrm{d}x} = -e^{-x} + 2$</p>
+          <p>Zero when $e^{-x} = 2 \Rightarrow -x = \ln 2 \Rightarrow x = -\ln 2$.</p>
+          <p>Since $\ln$ gives exactly one value, there is exactly one such point.</p>
+          <p>$y = e^{\ln 2} + 2(-\ln 2) = 2 - 2\ln 2$.</p>
+          <p>Point: $(-\ln 2,\; 2 - 2\ln 2)$, about $(-0.693,\; 0.614)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The number of bacteria in a culture after $t$ hours is modelled by $N = 500e^{0.2t}$.</p>
+      <p>(a) State the initial number of bacteria. &nbsp; (b) Find $N$ when $t = 5$. &nbsp; (c) Find the rate at which the population is increasing when $t = 5$. &nbsp; (d) Show that $\dfrac{\mathrm{d}N}{\mathrm{d}t} = 0.2N$ and explain what this means. &nbsp; (e) Find the time at which there are $2000$ bacteria.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $t = 0$: $N = 500e^0 = 500$.</p>
+          <p><strong>(b)</strong> $N = 500e^{1} \approx 1359$ bacteria.</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}N}{\mathrm{d}t} = 500 \times 0.2e^{0.2t} = 100e^{0.2t}$. At $t = 5$: $100e \approx 272$ bacteria per hour.</p>
+          <p><strong>(d)</strong> $\dfrac{\mathrm{d}N}{\mathrm{d}t} = 100e^{0.2t} = 0.2 \times 500e^{0.2t} = 0.2N$. The rate of growth is proportional to the size of the population: the more bacteria there are, the faster the number grows.</p>
+          <p><strong>(e)</strong> $500e^{0.2t} = 2000 \Rightarrow e^{0.2t} = 4 \Rightarrow 0.2t = \ln 4 \Rightarrow t = 5\ln 4 \approx 6.93$ hours.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exponential Functions and e &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Binomial Expansion &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔺 The Binomial Expansion</h1>
+  <p>A Level Maths Year 1 · Algebra and Functions</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – PASCAL'S TRIANGLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Expanding $(a+b)^n$ and Pascal's Triangle</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>binomial</strong> is an expression with two terms, such as $a + b$ or $2 - 3x$. Expanding $(a+b)^n$ by multiplying out $n$ brackets is slow. The <strong>binomial expansion</strong> writes the answer down directly for any positive integer $n$.
+  </div>
+
+  <p>Look at the first few powers:</p>
+
+  <table>
+    <tr><th>$n$</th><th>$(a+b)^n$</th><th>Coefficients</th></tr>
+    <tr><td>$0$</td><td>$1$</td><td>$1$</td></tr>
+    <tr><td>$1$</td><td>$a + b$</td><td>$1 \quad 1$</td></tr>
+    <tr><td>$2$</td><td>$a^2 + 2ab + b^2$</td><td>$1 \quad 2 \quad 1$</td></tr>
+    <tr><td>$3$</td><td>$a^3 + 3a^2b + 3ab^2 + b^3$</td><td>$1 \quad 3 \quad 3 \quad 1$</td></tr>
+    <tr><td>$4$</td><td>$a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$</td><td>$1 \quad 4 \quad 6 \quad 4 \quad 1$</td></tr>
+    <tr><td>$5$</td><td>$\ldots$</td><td>$1 \quad 5 \quad 10 \quad 10 \quad 5 \quad 1$</td></tr>
+    <tr><td>$6$</td><td>$\ldots$</td><td>$1 \quad 6 \quad 15 \quad 20 \quad 15 \quad 6 \quad 1$</td></tr>
+  </table>
+
+  <div class="formula-box">
+    <div class="label">Pascal's triangle</div>
+    Each row starts and ends with $1$; every other number is the <strong>sum of the two numbers above it</strong>
+  </div>
+
+  <div class="concept">
+    <strong>Three patterns in every expansion of $(a+b)^n$:</strong> there are $n + 1$ terms; the power of $a$ falls from $n$ to $0$ while the power of $b$ rises from $0$ to $n$; and in every term the two powers <strong>add up to $n$</strong>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Using Pascal's triangle</div>
+    <div class="example-body">
+      <p>Expand $(1 + x)^4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Row $4$ of Pascal's triangle: $1, 4, 6, 4, 1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>With $a = 1$, every power of $a$ is $1$, so only the powers of $x$ show.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$(1 + x)^4 = 1 + 4x + 6x^2 + 4x^3 + x^4$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FACTORIALS AND nCr
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Factorials and $^n\mathrm{C}_r$</div>
+<div class="section-body">
+
+  <p>For larger $n$, writing out Pascal's triangle is impractical. Instead each coefficient can be calculated directly.</p>
+
+  <div class="formula-box">
+    <div class="label">Factorial</div>
+    $n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1$, &nbsp; with $0! = 1$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The binomial coefficient</div>
+    $^n\mathrm{C}_r = \dbinom{n}{r} = \dfrac{n!}{r!\,(n-r)!}$
+  </div>
+
+  <div class="concept">
+    $\dbinom{n}{r}$ is the number in row $n$, position $r$ of Pascal's triangle — <strong>counting from $r = 0$</strong>. It also counts the number of ways of choosing $r$ objects from $n$, which is why it appears again in the binomial distribution in Statistics.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Calculating coefficients by hand</div>
+    <div class="example-body">
+      <p>Evaluate $5!$ and $\dbinom{7}{3}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dbinom{7}{3} = \dfrac{7!}{3!\,4!}$. Cancel the $4!$: $\dfrac{7 \times 6 \times 5}{3 \times 2 \times 1}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{210}{6} = 35$</span></div>
+      <div class="tip"><strong>Shortcut:</strong> $\dbinom{n}{r}$ is $r$ factors counting down from $n$, divided by $r!$. So $\dbinom{10}{2} = \dfrac{10 \times 9}{2} = 45$. Your calculator's $^n\mathrm{C}_r$ button gives the same answers.</div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Useful fact</th><th>Example</th></tr>
+    <tr><td>$\dbinom{n}{0} = \dbinom{n}{n} = 1$</td><td>Every row starts and ends with $1$</td></tr>
+    <tr><td>$\dbinom{n}{1} = n$</td><td>$\dbinom{8}{1} = 8$</td></tr>
+    <tr><td>$\dbinom{n}{2} = \dfrac{n(n-1)}{2}$</td><td>$\dbinom{6}{2} = 15$</td></tr>
+    <tr><td>$\dbinom{n}{r} = \dbinom{n}{n-r}$</td><td>$\dbinom{9}{2} = \dbinom{9}{7} = 36$ — the rows are symmetrical</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE BINOMIAL EXPANSION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Binomial Expansion</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">For a positive integer $n$</div>
+    $(a + b)^n = a^n + \dbinom{n}{1}a^{n-1}b + \dbinom{n}{2}a^{n-2}b^2 + \cdots + \dbinom{n}{r}a^{n-r}b^r + \cdots + b^n$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The special case $a = 1$</div>
+    $(1 + x)^n = 1 + nx + \dfrac{n(n-1)}{2!}x^2 + \dfrac{n(n-1)(n-2)}{3!}x^3 + \cdots + x^n$
+  </div>
+
+  <div class="warn">
+    <strong>Brackets round the whole term.</strong> In $(2 - 3x)^5$ the "$b$" is $-3x$, so $b^2 = (-3x)^2 = 9x^2$, not $-3x^2$. Losing the bracket — or the minus sign — is the single most common error in this topic.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A full expansion</div>
+    <div class="example-body">
+      <p>Expand $(2 - 3x)^5$ fully.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Coefficients from row 5: $1, 5, 10, 10, 5, 1$. Here $a = 2$ and $b = -3x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2^5 + 5(2^4)(-3x) + 10(2^3)(-3x)^2 + 10(2^2)(-3x)^3 + 5(2)(-3x)^4 + (-3x)^5$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 32 + 5(16)(-3x) + 10(8)(9x^2) + 10(4)(-27x^3) + 5(2)(81x^4) - 243x^5$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 32 - 240x + 720x^2 - 1080x^3 + 810x^4 - 243x^5$</span></div>
+      <div class="tip"><strong>Check:</strong> put $x = 1$. The left side is $(-1)^5 = -1$; the right side is $32 - 240 + 720 - 1080 + 810 - 243 = -1$ ✓. The signs alternate because $b$ is negative.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FINDING A SINGLE COEFFICIENT
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Finding a Particular Term or Coefficient</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The general term of $(a + b)^n$</div>
+    $\dbinom{n}{r}a^{n-r}b^r$ &nbsp;— the term containing $b^r$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — One coefficient</div>
+    <div class="example-body">
+      <p>Find the coefficient of $x^3$ in the expansion of $(3 + 2x)^7$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x^3$ comes from $b^3 = (2x)^3$, so $r = 3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Term: $\dbinom{7}{3}(3)^4(2x)^3 = 35 \times 81 \times 8x^3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Coefficient $= 22\,680$.</span></div>
+      <div class="warn">The <strong>coefficient</strong> is the number only — write $22\,680$, not $22\,680x^3$, if that is what is asked.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — An unknown in the bracket</div>
+    <div class="example-body">
+      <p>The coefficient of $x^2$ in the expansion of $(1 + kx)^8$ is $112$. Find the possible values of $k$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The $x^2$ term is $\dbinom{8}{2}(kx)^2 = 28k^2x^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$28k^2 = 112$, so $k^2 = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$k = 2$ or $k = -2$.</span></div>
+      <div class="tip">Both signs give the same $x^2$ coefficient because $k$ is squared. If the question says $k > 0$, reject $-2$ — and say so.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — The term independent of $x$</div>
+    <div class="example-body">
+      <p>Find the term independent of $x$ in the expansion of $\left(x + \dfrac{2}{x}\right)^6$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>General term: $\dbinom{6}{r}x^{6-r}\left(\dfrac{2}{x}\right)^r = \dbinom{6}{r}2^r x^{6-2r}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>"Independent of $x$" means the power of $x$ is $0$: $6 - 2r = 0$, so $r = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dbinom{6}{3}2^3 = 20 \times 8 = 160$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A product with another bracket</div>
+    <div class="example-body">
+      <p>Find the coefficient of $x^2$ in the expansion of $(1 + 2x)(1 - x)^6$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>You only need $(1 - x)^6$ up to $x^2$: $1 - 6x + 15x^2 + \cdots$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x^2$ terms come from $1 \times 15x^2$ and $2x \times (-6x)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Coefficient $= 15 - 12 = 3$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – APPROXIMATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using the Expansion for Approximations</div>
+<div class="section-body">
+
+  <div class="concept">
+    If $x$ is <strong>small</strong>, then $x^2$, $x^3, \ldots$ are much smaller still. So the first few terms of $(1 + x)^n$ already give an excellent approximation, and the rest can be ignored. The smaller $x$ is, the better the approximation.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Estimating a power</div>
+    <div class="example-body">
+      <p>(a) Find the first four terms, in ascending powers of $x$, of $\left(1 - \dfrac{x}{2}\right)^{10}$. &nbsp; (b) Use a suitable value of $x$ to estimate $0.99^{10}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$1 + 10\left(-\tfrac{x}{2}\right) + 45\left(-\tfrac{x}{2}\right)^2 + 120\left(-\tfrac{x}{2}\right)^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 1 - 5x + \tfrac{45}{4}x^2 - 15x^3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>We need $1 - \tfrac{x}{2} = 0.99$, so $x = 0.02$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$1 - 0.1 + 0.0045 - 0.00012 = 0.90438$</span></div>
+      <div class="tip">The true value is $0.904382\ldots$ — the approximation is correct to five decimal places. Always state the value of $x$ you substituted; it is usually worth a mark.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Looking ahead.</strong> In Year 2 the expansion is extended to <em>any</em> rational $n$, such as $(1+x)^{-1}$ or $\sqrt{1 + x}$. Those series never stop, and are only valid when $|x| < 1$. See <a href="../../alevel-year2/sequences-series/binomial-expansion.html">The General Binomial Expansion (Year 2)</a>.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Pascal's triangle</h4><p>Each entry is the sum of the two above it.</p></div>
+    <div class="ref-card"><h4>Factorial</h4><p>$n! = n(n-1)\cdots 1$; &nbsp;$0! = 1$.</p></div>
+    <div class="ref-card"><h4>$^n\mathrm{C}_r$</h4><p>$\dfrac{n!}{r!(n-r)!}$; row $n$, position $r$ (from $0$).</p></div>
+    <div class="ref-card"><h4>Number of terms</h4><p>$(a+b)^n$ has $n+1$ terms.</p></div>
+    <div class="ref-card"><h4>Powers</h4><p>In every term the powers of $a$ and $b$ add to $n$.</p></div>
+    <div class="ref-card"><h4>General term</h4><p>$\dbinom{n}{r}a^{n-r}b^r$</p></div>
+    <div class="ref-card"><h4>$(1+x)^n$</h4><p>$1 + nx + \dfrac{n(n-1)}{2}x^2 + \cdots$</p></div>
+    <div class="ref-card"><h4>Brackets</h4><p>Raise the whole of $(-3x)$ to the power, sign included.</p></div>
+    <div class="ref-card"><h4>Approximating</h4><p>Choose $x$ small; a few terms suffice.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Substitute $x = 1$ into both sides.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Use Pascal's triangle to expand $(1 + x)^5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Row 5: $1, 5, 10, 10, 5, 1$.</p>
+          <p>$(1 + x)^5 = 1 + 5x + 10x^2 + 10x^3 + 5x^4 + x^5$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Without a calculator, evaluate (a) $\dbinom{8}{3}$ &nbsp; (b) $\dbinom{10}{8}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) $\dfrac{8 \times 7 \times 6}{3 \times 2 \times 1} = \dfrac{336}{6} = 56$</p>
+          <p>(b) By symmetry $\dbinom{10}{8} = \dbinom{10}{2} = \dfrac{10 \times 9}{2} = 45$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Expand $(2 + x)^4$ fully.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Row 4: $1, 4, 6, 4, 1$.</p>
+          <p>$2^4 + 4(2^3)x + 6(2^2)x^2 + 4(2)x^3 + x^4$</p>
+          <p>$= 16 + 32x + 24x^2 + 8x^3 + x^4$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the first three terms, in ascending powers of $x$, of $(1 - 3x)^9$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 + 9(-3x) + \dbinom{9}{2}(-3x)^2$</p>
+          <p>$= 1 - 27x + 36(9x^2)$</p>
+          <p>$= 1 - 27x + 324x^2$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the coefficient of $x^4$ in the expansion of $(2x - 1)^7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Take $a = 2x$, $b = -1$. The $x^4$ term needs $a^4$, so the power of $b$ is $3$.</p>
+          <p>$\dbinom{7}{3}(2x)^4(-1)^3 = 35 \times 16x^4 \times (-1)$</p>
+          <p>Coefficient $= -560$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>The first three terms of $(1 + ax)^n$, in ascending powers of $x$, are $1 + 20x + 180x^2$. Find $a$ and $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Compare with $1 + n(ax) + \dfrac{n(n-1)}{2}(ax)^2$:</p>
+          <p>$na = 20$ &nbsp;and&nbsp; $\dfrac{n(n-1)a^2}{2} = 180$.</p>
+          <p>Write the second as $\dfrac{na \times (n-1)a}{2} = 180$, so $\dfrac{20(n-1)a}{2} = 180$ and $(n-1)a = 18$.</p>
+          <p>That is $na - a = 18$, so $20 - a = 18$ and $a = 2$. Then $n = 10$.</p>
+          <p>Check: $\dbinom{10}{2}(2)^2 = 45 \times 4 = 180$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>(a) Find the first three terms, in ascending powers of $x$, of $\left(1 + \dfrac{x}{4}\right)^8$. &nbsp; (b) Hence estimate $1.0025^8$, stating the value of $x$ you use.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $1 + 8\left(\tfrac{x}{4}\right) + 28\left(\tfrac{x}{4}\right)^2 = 1 + 2x + \tfrac{7}{4}x^2$</p>
+          <p><strong>(b)</strong> $1 + \tfrac{x}{4} = 1.0025$ gives $x = 0.01$.</p>
+          <p>$1 + 0.02 + \tfrac{7}{4}(0.0001) = 1.020175$</p>
+          <p>(The true value is $1.0201759\ldots$, so the estimate is accurate to six decimal places.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Find the term independent of $x$ in the expansion of $\left(x^2 + \dfrac{2}{x}\right)^6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>General term: $\dbinom{6}{r}\left(x^2\right)^{6-r}\left(\dfrac{2}{x}\right)^r = \dbinom{6}{r}2^r x^{12 - 2r - r} = \dbinom{6}{r}2^r x^{12 - 3r}$.</p>
+          <p>Independent of $x$: $12 - 3r = 0$, so $r = 4$.</p>
+          <p>$\dbinom{6}{4}2^4 = 15 \times 16 = 240$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the coefficient of $x^2$ in the expansion of $(2 - x)(1 + 3x)^5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(1 + 3x)^5 = 1 + 5(3x) + 10(3x)^2 + \cdots = 1 + 15x + 90x^2 + \cdots$</p>
+          <p>$x^2$ terms: $2 \times 90x^2$ and $(-x) \times 15x$.</p>
+          <p>Coefficient $= 180 - 15 = 165$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Expand $(2 + x)^5$ fully, in ascending powers of $x$.</p>
+      <p>(b) Hence show that $(2 + x)^5 - (2 - x)^5 = 160x + 80x^3 + 2x^5$.</p>
+      <p>(c) Hence find the exact value of $\left(2 + \sqrt{3}\right)^5 - \left(2 - \sqrt{3}\right)^5$.</p>
+      <p>(d) Use the first three terms of your expansion in (a) to estimate $2.01^5$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Row 5: $1, 5, 10, 10, 5, 1$.</p>
+          <p>$32 + 5(16)x + 10(8)x^2 + 10(4)x^3 + 5(2)x^4 + x^5 = 32 + 80x + 80x^2 + 40x^3 + 10x^4 + x^5$</p>
+          <p><strong>(b)</strong> Replacing $x$ by $-x$ changes the sign of the odd powers only:</p>
+          <p>$(2 - x)^5 = 32 - 80x + 80x^2 - 40x^3 + 10x^4 - x^5$</p>
+          <p>Subtracting, the even powers cancel and the odd powers double: $160x + 80x^3 + 2x^5$ ✓</p>
+          <p><strong>(c)</strong> Put $x = \sqrt{3}$: $\left(\sqrt{3}\right)^3 = 3\sqrt{3}$ and $\left(\sqrt{3}\right)^5 = 9\sqrt{3}$.</p>
+          <p>$160\sqrt{3} + 80(3\sqrt{3}) + 2(9\sqrt{3}) = 160\sqrt{3} + 240\sqrt{3} + 18\sqrt{3} = 418\sqrt{3}$</p>
+          <p><strong>(d)</strong> $x = 0.01$: $32 + 80(0.01) + 80(0.0001) = 32 + 0.8 + 0.008 = 32.808$</p>
+          <p>(The true value is $32.808040\ldots$)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The Binomial Expansion &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

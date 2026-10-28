@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Integrals &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📘 Standard Integrals</h1>
+  <p>A Level Maths Year 2 · Integration</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE STANDARD RESULTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Standard Results</div>
+<div class="section-body">
+
+  <p>In Year 1 you could only integrate powers of $x$ (see <a href="../../alevel-year1/integration/indefinite-integration.html">Indefinite Integration</a>). Every derivative you learned in <a href="../differentiation/standard-derivatives.html">Exponentials, Logs and Trig</a> now gives an integral, simply by reading it backwards.</p>
+
+  <table>
+    <tr><th>Function $\mathrm{f}(x)$</th><th>$\displaystyle\int \mathrm{f}(x)\,dx$</th><th>Because&hellip;</th></tr>
+    <tr><td>$x^n \;(n \neq -1)$</td><td>$\dfrac{x^{n+1}}{n+1} + c$</td><td>Year 1 result</td></tr>
+    <tr><td>$e^x$</td><td>$e^x + c$</td><td>$\dfrac{d}{dx}e^x = e^x$</td></tr>
+    <tr><td>$\dfrac{1}{x}$</td><td>$\ln|x| + c$</td><td>$\dfrac{d}{dx}\ln x = \dfrac{1}{x}$</td></tr>
+    <tr><td>$\cos x$</td><td>$\sin x + c$</td><td>$\dfrac{d}{dx}\sin x = \cos x$</td></tr>
+    <tr><td>$\sin x$</td><td>$-\cos x + c$</td><td>$\dfrac{d}{dx}\cos x = -\sin x$</td></tr>
+    <tr><td>$\sec^2 x$</td><td>$\tan x + c$</td><td>$\dfrac{d}{dx}\tan x = \sec^2 x$</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Why the modulus in $\ln|x|$?</strong> $\dfrac{1}{x}$ exists for negative $x$ too, but $\ln x$ does not. For $x &lt; 0$, $\dfrac{d}{dx}\ln(-x) = \dfrac{-1}{-x} = \dfrac{1}{x}$, so $\ln|x|$ covers both sides of the asymptote at once.
+  </div>
+
+  <div class="tip">
+    <strong>Also worth knowing:</strong> reading the other trig derivatives backwards gives $\int \operatorname{cosec}^2 x\,dx = -\cot x + c$, $\int \sec x \tan x\,dx = \sec x + c$ and $\int \operatorname{cosec} x \cot x\,dx = -\operatorname{cosec} x + c$. All trig integration is in <strong>radians</strong>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Sums and multiples</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \left(3e^{2x} + \frac{4}{x} - 5\cos x\right)dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Integrate term by term, keeping the constants as multipliers.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\int 3e^{2x}\,dx = \tfrac{3}{2}e^{2x}$ (the $2x$ is dealt with in Section 2).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\int \dfrac{4}{x}\,dx = 4\ln|x|$ and $\int -5\cos x\,dx = -5\sin x$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \tfrac{3}{2}e^{2x} + 4\ln|x| - 5\sin x + c$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – f(ax + b)
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Reverse Chain Rule: $\mathrm{f}(ax+b)$</div>
+<div class="section-body">
+
+  <p>Differentiating $\mathrm{F}(ax+b)$ by the chain rule gives $a\,\mathrm{F}'(ax+b)$ — an extra factor of $a$. So when integrating you must <strong>divide</strong> by $a$.</p>
+
+  <div class="formula-box">
+    <div class="label">Linear inside function</div>
+    If $\displaystyle\int \mathrm{f}(x)\,dx = \mathrm{F}(x) + c$ &nbsp;then&nbsp; $\displaystyle\int \mathrm{f}(ax+b)\,dx = \frac{1}{a}\,\mathrm{F}(ax+b) + c$
+  </div>
+
+  <table>
+    <tr><th>Integrand</th><th>Integral</th></tr>
+    <tr><td>$(ax+b)^n,\; n \neq -1$</td><td>$\dfrac{(ax+b)^{n+1}}{a(n+1)} + c$</td></tr>
+    <tr><td>$e^{ax+b}$</td><td>$\dfrac{1}{a}e^{ax+b} + c$</td></tr>
+    <tr><td>$\dfrac{1}{ax+b}$</td><td>$\dfrac{1}{a}\ln|ax+b| + c$</td></tr>
+    <tr><td>$\cos(ax+b)$</td><td>$\dfrac{1}{a}\sin(ax+b) + c$</td></tr>
+    <tr><td>$\sin(ax+b)$</td><td>$-\dfrac{1}{a}\cos(ax+b) + c$</td></tr>
+    <tr><td>$\sec^2(ax+b)$</td><td>$\dfrac{1}{a}\tan(ax+b) + c$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Only for a linear inside.</strong> $\int e^{x^2}\,dx$ is <em>not</em> $\dfrac{e^{x^2}}{2x}$. Dividing by the derivative of the inside only works when that derivative is a constant.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A power of a linear bracket</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int (2x+1)^5\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Raise the power: $(2x+1)^6$, divide by the new power $6$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide by $a = 2$ for the inside.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \dfrac{(2x+1)^6}{12} + c$</span></div>
+      <div class="tip"><strong>Check by differentiating:</strong> $\dfrac{6(2x+1)^5 \times 2}{12} = (2x+1)^5$ ✓. Do this every time — it takes seconds.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A reciprocal of a linear expression</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \frac{1}{3x-2}\,dx$, and evaluate $\displaystyle\int_2^5 \frac{3}{x-1}\,dx$ exactly.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int \frac{1}{3x-2}\,dx = \tfrac{1}{3}\ln|3x-2| + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int_2^5 \frac{3}{x-1}\,dx = \Big[3\ln|x-1|\Big]_2^5 = 3\ln 4 - 3\ln 1$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 3\ln 4 = 6\ln 2$</span></div>
+      <div class="warn">A definite integral of $\dfrac{1}{x-1}$ must not cross $x = 1$. The integrand is undefined there, so limits such as $x = 0$ to $x = 2$ are not allowed.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A definite trig integral</div>
+    <div class="example-body">
+      <p>Find the exact value of $\displaystyle\int_0^{\pi/6} \sin 3x\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int \sin 3x\,dx = -\tfrac{1}{3}\cos 3x$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\Big[-\tfrac{1}{3}\cos 3x\Big]_0^{\pi/6} = -\tfrac{1}{3}\cos\tfrac{\pi}{2} + \tfrac{1}{3}\cos 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 0 + \tfrac{1}{3} = \tfrac{1}{3}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – f'(x)/f(x)
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Recognising $\dfrac{\mathrm{f}'(x)}{\mathrm{f}(x)}$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Derivative over function</div>
+    $\displaystyle\int \frac{\mathrm{f}'(x)}{\mathrm{f}(x)}\,dx = \ln|\mathrm{f}(x)| + c$
+  </div>
+
+  <div class="concept">
+    <strong>Why it works:</strong> by the chain rule $\dfrac{d}{dx}\ln|\mathrm{f}(x)| = \dfrac{1}{\mathrm{f}(x)} \times \mathrm{f}'(x)$. So whenever the numerator is the derivative of the denominator — or a <strong>constant multiple</strong> of it — the answer is a logarithm.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Adjusting the constant</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \frac{x^2}{x^3 + 1}\,dx$ and $\displaystyle\int \tan x\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{d}{dx}(x^3+1) = 3x^2$. The numerator is $\tfrac{1}{3}$ of this.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int \frac{x^2}{x^3+1}\,dx = \tfrac{1}{3}\int\frac{3x^2}{x^3+1}\,dx = \tfrac{1}{3}\ln|x^3+1| + c$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tan x = \dfrac{\sin x}{\cos x}$, and $\dfrac{d}{dx}\cos x = -\sin x$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int \tan x\,dx = -\int\frac{-\sin x}{\cos x}\,dx = -\ln|\cos x| + c = \ln|\sec x| + c$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A definite log integral</div>
+    <div class="example-body">
+      <p>Show that $\displaystyle\int_0^1 \frac{x}{x^2+1}\,dx = \tfrac{1}{2}\ln 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{d}{dx}(x^2+1) = 2x$, so the integrand is $\tfrac{1}{2} \times \dfrac{2x}{x^2+1}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\Big[\tfrac{1}{2}\ln(x^2+1)\Big]_0^1 = \tfrac{1}{2}\ln 2 - \tfrac{1}{2}\ln 1 = \tfrac{1}{2}\ln 2$ ✓</span></div>
+      <div class="tip">$x^2+1 &gt; 0$ always, so the modulus signs can be dropped.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – f'(x)[f(x)]^n
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Recognising $\mathrm{f}'(x)\,[\mathrm{f}(x)]^n$</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Derivative times a power of the function</div>
+    $\displaystyle\int \mathrm{f}'(x)\,[\mathrm{f}(x)]^n\,dx = \frac{[\mathrm{f}(x)]^{n+1}}{n+1} + c, \quad n \neq -1$
+  </div>
+
+  <p>This is the chain rule reversed again: treat the bracket as a single "lump", raise its power by one and divide by the new power. It only works if the derivative of the inside is sitting outside (up to a constant).</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two recognitions</div>
+    <div class="example-body">
+      <p>Find (a) $\displaystyle\int x(x^2+3)^4\,dx$ &nbsp; (b) $\displaystyle\int \sin x\cos^3 x\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $\dfrac{d}{dx}(x^2+3) = 2x$, and we have $x$ — half of it.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Guess $(x^2+3)^5$: its derivative is $5(x^2+3)^4 \times 2x = 10x(x^2+3)^4$. Too big by $10$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int x(x^2+3)^4\,dx = \frac{(x^2+3)^5}{10} + c$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) $\cos^3 x = (\cos x)^3$ and $\dfrac{d}{dx}\cos x = -\sin x$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Guess $\cos^4 x$: derivative $-4\sin x\cos^3 x$. Adjust by $-\tfrac{1}{4}$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>$\displaystyle\int \sin x\cos^3 x\,dx = -\tfrac{1}{4}\cos^4 x + c$</span></div>
+      <div class="tip"><strong>Guess, differentiate, adjust.</strong> This "inspection" method is quicker than a formal substitution and is fully acceptable — but only a constant can be adjusted, never a variable.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – USING TRIG IDENTITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Using Trigonometric Identities</div>
+<div class="section-body">
+
+  <p>There is no standard result for $\sin^2 x$, $\cos^2 x$ or $\tan^2 x$. Rewrite them first using identities from <a href="../trigonometry/compound-angles.html">Compound and Double Angles</a>.</p>
+
+  <div class="formula-box">
+    <div class="label">Identities for integration</div>
+    $\sin^2 x \equiv \tfrac{1}{2}(1 - \cos 2x)$ &nbsp;&middot;&nbsp; $\cos^2 x \equiv \tfrac{1}{2}(1 + \cos 2x)$<br>
+    $\tan^2 x \equiv \sec^2 x - 1$ &nbsp;&middot;&nbsp; $\sin x\cos x \equiv \tfrac{1}{2}\sin 2x$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Squares of trig functions</div>
+    <div class="example-body">
+      <p>Find $\displaystyle\int \sin^2 x\,dx$ and $\displaystyle\int \cos^2 3x\,dx$, and evaluate $\displaystyle\int_0^{\pi/4}\tan^2 x\,dx$ exactly.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\displaystyle\int \tfrac{1}{2}(1 - \cos 2x)\,dx = \tfrac{1}{2}x - \tfrac{1}{4}\sin 2x + c$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos^2 3x = \tfrac{1}{2}(1 + \cos 6x)$ — the angle doubles to $6x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int \cos^2 3x\,dx = \tfrac{1}{2}x + \tfrac{1}{12}\sin 6x + c$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int_0^{\pi/4}(\sec^2 x - 1)\,dx = \Big[\tan x - x\Big]_0^{\pi/4}$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$= \left(1 - \tfrac{\pi}{4}\right) - 0 = 1 - \tfrac{\pi}{4}$</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>$\int \sin^2 x\,dx$ is not $\tfrac{1}{3}\sin^3 x$.</strong> Differentiating $\tfrac{1}{3}\sin^3 x$ gives $\sin^2 x\cos x$ — there is an extra $\cos x$. The "power of a function" rule needs the derivative of the inside to be present.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Exponential</h4><p>$\int e^{kx}\,dx = \tfrac{1}{k}e^{kx} + c$</p></div>
+    <div class="ref-card"><h4>Reciprocal</h4><p>$\int \tfrac{1}{x}\,dx = \ln|x| + c$</p></div>
+    <div class="ref-card"><h4>Trig</h4><p>$\int\cos kx = \tfrac{1}{k}\sin kx$; $\int \sin kx = -\tfrac{1}{k}\cos kx$</p></div>
+    <div class="ref-card"><h4>sec²</h4><p>$\int \sec^2 kx\,dx = \tfrac{1}{k}\tan kx + c$</p></div>
+    <div class="ref-card"><h4>Linear inside</h4><p>$\int \mathrm{f}(ax+b)\,dx = \tfrac{1}{a}\mathrm{F}(ax+b) + c$</p></div>
+    <div class="ref-card"><h4>f′/f</h4><p>$\int \tfrac{\mathrm{f}'}{\mathrm{f}}\,dx = \ln|\mathrm{f}(x)| + c$</p></div>
+    <div class="ref-card"><h4>f′fⁿ</h4><p>$\int \mathrm{f}'\mathrm{f}^n\,dx = \tfrac{\mathrm{f}^{n+1}}{n+1} + c$</p></div>
+    <div class="ref-card"><h4>sin² and cos²</h4><p>Use $\tfrac{1}{2}(1 \mp \cos 2x)$ first.</p></div>
+    <div class="ref-card"><h4>tan²</h4><p>Use $\sec^2 x - 1$, giving $\tan x - x$.</p></div>
+    <div class="ref-card"><h4>Always</h4><p>Radians; $+\,c$; check by differentiating.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(4e^x - \frac{3}{x} + 2\sin x\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\int 4e^x\,dx = 4e^x$, &nbsp;$\int -\tfrac{3}{x}\,dx = -3\ln|x|$, &nbsp;$\int 2\sin x\,dx = -2\cos x$.</p>
+          <p>$= 4e^x - 3\ln|x| - 2\cos x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \left(e^{3x-1} + \cos 4x\right)dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Both have a linear inside, so divide by its coefficient.</p>
+          <p>$= \tfrac{1}{3}e^{3x-1} + \tfrac{1}{4}\sin 4x + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the exact value of $\displaystyle\int_0^{\pi/8}\sec^2 2x\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\Big[\tfrac{1}{2}\tan 2x\Big]_0^{\pi/8} = \tfrac{1}{2}\tan\tfrac{\pi}{4} - \tfrac{1}{2}\tan 0 = \tfrac{1}{2}(1) - 0 = \tfrac{1}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Show that $\displaystyle\int_1^3 \frac{2}{2x+1}\,dx = \ln\tfrac{7}{3}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The numerator $2$ is exactly the derivative of $2x+1$, so $\displaystyle\int \frac{2}{2x+1}\,dx = \ln|2x+1|$.</p>
+          <p>$\Big[\ln(2x+1)\Big]_1^3 = \ln 7 - \ln 3 = \ln\tfrac{7}{3}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int \frac{x^2}{x^3+1}\,dx$ for $x &gt; -1$, then use the same idea to find $\displaystyle\int \frac{6x+3}{x^2+x+5}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{d}{dx}(x^3+1) = 3x^2$, so $\displaystyle\int \frac{x^2}{x^3+1}\,dx = \tfrac{1}{3}\ln(x^3+1) + c$.</p>
+          <p>$\dfrac{d}{dx}(x^2+x+5) = 2x+1$, and $6x + 3 = 3(2x+1)$.</p>
+          <p>$\displaystyle\int \frac{6x+3}{x^2+x+5}\,dx = 3\ln(x^2+x+5) + c$ (no modulus needed: $x^2+x+5 &gt; 0$ since its discriminant is $1 - 20 &lt; 0$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>By writing $\cot x = \dfrac{\cos x}{\sin x}$, show that $\displaystyle\int_{\pi/6}^{\pi/2}\cot x\,dx = \ln 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{d}{dx}\sin x = \cos x$, so $\displaystyle\int \cot x\,dx = \ln|\sin x| + c$.</p>
+          <p>$\Big[\ln\sin x\Big]_{\pi/6}^{\pi/2} = \ln 1 - \ln\tfrac{1}{2} = 0 + \ln 2 = \ln 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Find $\displaystyle\int x^2(x^3-1)^5\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The inside $x^3 - 1$ has derivative $3x^2$; we have $x^2$.</p>
+          <p>Guess $(x^3-1)^6$: derivative $6(x^3-1)^5 \times 3x^2 = 18x^2(x^3-1)^5$.</p>
+          <p>So $\displaystyle\int x^2(x^3-1)^5\,dx = \frac{(x^3-1)^6}{18} + c$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p><em>In this question you must show detailed reasoning.</em> Find the exact value of $\displaystyle\int_0^{\pi/2}\cos^2 x\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos^2 x = \tfrac{1}{2}(1 + \cos 2x)$</p>
+          <p>$\displaystyle\int_0^{\pi/2}\tfrac{1}{2}(1+\cos 2x)\,dx = \Big[\tfrac{1}{2}x + \tfrac{1}{4}\sin 2x\Big]_0^{\pi/2}$</p>
+          <p>$= \left(\tfrac{\pi}{4} + \tfrac{1}{4}\sin\pi\right) - 0 = \tfrac{\pi}{4}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Show that $\displaystyle\int_0^{\pi/4}(\sin x + \cos x)^2\,dx = \frac{\pi}{4} + \frac{1}{2}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(\sin x + \cos x)^2 = \sin^2 x + \cos^2 x + 2\sin x\cos x = 1 + \sin 2x$</p>
+          <p>$\displaystyle\int_0^{\pi/4}(1 + \sin 2x)\,dx = \Big[x - \tfrac{1}{2}\cos 2x\Big]_0^{\pi/4}$</p>
+          <p>$= \left(\tfrac{\pi}{4} - \tfrac{1}{2}\cos\tfrac{\pi}{2}\right) - \left(0 - \tfrac{1}{2}\right) = \tfrac{\pi}{4} + \tfrac{1}{2}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Water flows into a tank at a rate of $R = 6e^{-0.2t} + 2$ litres per minute, where $t$ is the time in minutes, for $0 \leqslant t \leqslant 10$. The tank is empty at $t = 0$.</p>
+      <p>(a) Explain why the volume of water in the tank after $T$ minutes is $\displaystyle\int_0^T R\,dt$. &nbsp; (b) Find the exact volume after $5$ minutes and give it to 3 significant figures. &nbsp; (c) Show that the volume after $10$ minutes is $50 - 30e^{-2}$ litres. &nbsp; (d) Describe what happens to the rate of flow if the model were continued for a long time.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $R = \dfrac{dV}{dt}$, so the volume is found by integrating the rate. The area under the rate–time graph from $0$ to $T$ is the total amount that has flowed in.</p>
+          <p><strong>(b)</strong> $\displaystyle\int (6e^{-0.2t} + 2)\,dt = \frac{6}{-0.2}e^{-0.2t} + 2t = -30e^{-0.2t} + 2t$</p>
+          <p>$\Big[-30e^{-0.2t} + 2t\Big]_0^5 = (-30e^{-1} + 10) - (-30) = 40 - 30e^{-1}$</p>
+          <p>$= 40 - \dfrac{30}{e} \approx 29.0$ litres.</p>
+          <p><strong>(c)</strong> $\Big[-30e^{-0.2t} + 2t\Big]_0^{10} = (-30e^{-2} + 20) + 30 = 50 - 30e^{-2}$ ✓ &nbsp;($\approx 45.9$ litres)</p>
+          <p><strong>(d)</strong> As $t \to \infty$, $e^{-0.2t} \to 0$, so $R \to 2$: the flow settles to a steady $2$ litres per minute.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Standard Integrals &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

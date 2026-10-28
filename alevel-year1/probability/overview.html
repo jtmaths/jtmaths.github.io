@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎲 Probability Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Probability</strong> is the mathematics of uncertainty. Statistics looks at data that have already happened; probability builds <strong>models</strong> of what could happen. The two meet in hypothesis testing, where a probability model is used to judge whether real data are surprising.</p>
+
+  <div class="concept">
+    Year 1 has two halves. First, the language and rules for combining events — Venn diagrams, tree diagrams, mutually exclusive and independent events. Second, <strong>random variables</strong>: a number decided by chance, described by a probability distribution. The most important one at AS is the <strong>binomial distribution</strong>, which counts successes in a fixed number of independent trials.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    Set notation $A \cap B$, $A \cup B$, $A'$ &middot; testing for independence<br>
+    Discrete random variables and their distributions<br>
+    The binomial distribution $\mathrm{B}(n, p)$ and its modelling assumptions
+  </div>
+
+  <div class="tip">
+    <strong>DfE content areas M · Probability and N · Statistical distributions.</strong> Your calculator will be expected to give binomial probabilities, both $\mathrm{P}(X = r)$ and the cumulative $\mathrm{P}(X \leqslant r)$. Learn exactly where these functions are on your model — and always write down the distribution and the probability you are finding, so method marks are available.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Event</strong></td><td>A set of possible outcomes.</td><td>"Roll an even number"</td></tr>
+    <tr><td><strong>$A'$</strong></td><td>Complement: $A$ does not happen.</td><td>"Roll an odd number"</td></tr>
+    <tr><td><strong>$A \cap B$</strong></td><td>Both $A$ and $B$.</td><td>Even <em>and</em> greater than $3$</td></tr>
+    <tr><td><strong>$A \cup B$</strong></td><td>$A$ or $B$ or both.</td><td>Even <em>or</em> greater than $3$</td></tr>
+    <tr><td><strong>Mutually exclusive</strong></td><td>Cannot happen together: $\mathrm{P}(A \cap B) = 0$.</td><td>Rolling a $2$ and rolling a $5$</td></tr>
+    <tr><td><strong>Independent</strong></td><td>One does not affect the other: $\mathrm{P}(A \cap B) = \mathrm{P}(A)\mathrm{P}(B)$.</td><td>Two separate coin tosses</td></tr>
+    <tr><td><strong>Random variable</strong></td><td>A numerical quantity determined by chance.</td><td>$X$ = number of heads</td></tr>
+    <tr><td><strong>$X \sim \mathrm{B}(n, p)$</strong></td><td>$X$ has a binomial distribution with $n$ trials and success probability $p$.</td><td>$\mathrm{B}(10, 0.5)$: heads in $10$ tosses</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — The addition rule</div>
+    $\mathrm{P}(A \cup B) = \mathrm{P}(A) + \mathrm{P}(B) - \mathrm{P}(A \cap B)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Testing independence</div>
+    Compare $\mathrm{P}(A \cap B)$ with $\mathrm{P}(A) \times \mathrm{P}(B)$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Tree diagrams</div>
+    Multiply along branches; add the paths you want
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — A probability distribution</div>
+    $\sum \mathrm{P}(X = x) = 1$ — use this to find unknown constants
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — The binomial distribution</div>
+    $\mathrm{P}(X = r) = \dbinom{n}{r} p^r (1-p)^{n-r}$; &nbsp; $\mathrm{P}(X \geqslant r) = 1 - \mathrm{P}(X \leqslant r - 1)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>At a café, each customer independently pays by card with probability $0.3$. Of the next $8$ customers, let $X$ be the number who pay by card. Find (a) $\mathrm{P}(X = 2)$, (b) $\mathrm{P}(X \geqslant 3)$, (c) the probability that the first two customers both pay by card.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Fixed $n = 8$, two outcomes, independent, constant $p$: $X \sim \mathrm{B}(8, 0.3)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(a) $\mathrm{P}(X = 2) = \dbinom82 (0.3)^2 (0.7)^6 = 28 \times 0.09 \times 0.117649 = 0.2965$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $\mathrm{P}(X \geqslant 3) = 1 - \mathrm{P}(X \leqslant 2) = 1 - 0.5518 = 0.4482$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(c) Independent events: $0.3 \times 0.3 = 0.09$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Probability Subtopics</div>
+<div class="section-body">
+
+  <p>Everything in DfE content areas M and N that is examined at AS, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">M</span><span><a href="probability.html">Probability and Venn Diagrams</a><span class="desc">Mutually exclusive and independent events, the addition rule, Venn diagrams and tree diagrams.</span></span></li>
+    <li><span class="code">N</span><span><a href="binomial-distribution.html">The Binomial Distribution</a><span class="desc">Discrete random variables, the discrete uniform distribution, $\mathrm{B}(n, p)$, cumulative probabilities and modelling assumptions.</span></span></li>
+  </ul>
+
+  <div class="tip">
+    The binomial distribution is the engine of <a href="../hypothesis-testing/overview.html">Hypothesis Testing</a> at AS, and Year 2 adds conditional probability and the normal distribution.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Confusing mutually exclusive with independent.</strong> Mutually exclusive means no overlap; independent means $\mathrm{P}(A \cap B) = \mathrm{P}(A)\mathrm{P}(B)$. Events with non-zero probabilities cannot be both.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting to subtract the overlap.</strong> $\mathrm{P}(A \cup B) = \mathrm{P}(A) + \mathrm{P}(B)$ only when $A$ and $B$ are mutually exclusive.
+  </div>
+
+  <div class="warn">
+    <strong>Missing the $\binom{n}{r}$.</strong> $(0.3)^2(0.7)^6$ is the probability of one particular order. There are $\binom82 = 28$ orders.
+  </div>
+
+  <div class="warn">
+    <strong>Off-by-one with inequalities.</strong> $\mathrm{P}(X \geqslant 3) = 1 - \mathrm{P}(X \leqslant 2)$, not $1 - \mathrm{P}(X \leqslant 3)$.
+  </div>
+
+  <div class="warn">
+    <strong>Generic assumptions.</strong> "The trials are independent" earns little; "whether one seed germinates does not affect whether another does" earns the mark.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Complement</h4><p>$\mathrm{P}(A') = 1 - \mathrm{P}(A)$</p></div>
+    <div class="ref-card"><h4>Addition rule</h4><p>Add, then subtract the overlap.</p></div>
+    <div class="ref-card"><h4>Mutually exclusive</h4><p>$\mathrm{P}(A \cap B) = 0$</p></div>
+    <div class="ref-card"><h4>Independent</h4><p>$\mathrm{P}(A \cap B) = \mathrm{P}(A)\mathrm{P}(B)$</p></div>
+    <div class="ref-card"><h4>Distribution</h4><p>Probabilities sum to $1$.</p></div>
+    <div class="ref-card"><h4>Uniform</h4><p>Each of $n$ values has probability $\tfrac1n$.</p></div>
+    <div class="ref-card"><h4>Binomial</h4><p>Fixed $n$, two outcomes, independent, constant $p$.</p></div>
+    <div class="ref-card"><h4>$\mathrm{P}(X \geqslant r)$</h4><p>$1 - \mathrm{P}(X \leqslant r - 1)$</p></div>
+    <div class="ref-card"><h4>At least one</h4><p>$1 - \mathrm{P}(\text{none})$</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Probability topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>$A$ and $B$ are mutually exclusive with $\mathrm{P}(A) = 0.3$ and $\mathrm{P}(B) = 0.5$. Find $\mathrm{P}(A \cup B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0.3 + 0.5 = 0.8$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>$A$ and $B$ are independent with $\mathrm{P}(A) = 0.4$ and $\mathrm{P}(B) = 0.5$. Find $\mathrm{P}(A \cap B)$ and $\mathrm{P}(A \cup B)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(A \cap B) = 0.2$; &nbsp; $\mathrm{P}(A \cup B) = 0.4 + 0.5 - 0.2 = 0.7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Of $30$ people, $12$ own a cat, $15$ own a dog and $5$ own both. Find the probability that a person chosen at random owns (a) a cat but not a dog, (b) neither.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Cat only $7$, dog only $10$, both $5$, so neither $= 30 - 22 = 8$.</p>
+          <p><strong>(a)</strong> $\dfrac{7}{30}$ &nbsp; <strong>(b)</strong> $\dfrac{8}{30} = \dfrac{4}{15}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A bag has $3$ red and $2$ blue counters. A counter is taken, replaced, and a second is taken. Find the probability of one of each colour.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>RB or BR: $2 \times \tfrac35 \times \tfrac25 = \dfrac{12}{25}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$\mathrm{P}(X = x) = \dfrac{x}{c}$ for $x = 1, 2, 3, 4$. Find $c$ and $\mathrm{P}(X \geqslant 3)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{1 + 2 + 3 + 4}{c} = 1$, so $c = 10$.</p>
+          <p>$\mathrm{P}(X \geqslant 3) = \dfrac{3 + 4}{10} = 0.7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A fair coin is tossed $6$ times. Find the probability of exactly $3$ heads.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$X \sim \mathrm{B}(6, 0.5)$: $\dbinom63 (0.5)^6 = \dfrac{20}{64} = 0.3125$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(10, 0.3)$. Find $\mathrm{P}(X &gt; 2)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 - \mathrm{P}(X \leqslant 2) = 1 - 0.3828 = 0.6172$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$10\%$ of a population is left-handed. In a random sample of $25$, find the probability that (a) at most $2$, (b) more than $3$ are left-handed.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$L \sim \mathrm{B}(25, 0.1)$.</p>
+          <p><strong>(a)</strong> $\mathrm{P}(L \leqslant 2) = 0.5371$</p>
+          <p><strong>(b)</strong> $\mathrm{P}(L &gt; 3) = 1 - \mathrm{P}(L \leqslant 3) = 1 - 0.7636 = 0.2364$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Explain whether $\mathrm{B}(n, p)$ is suitable for: (a) the number of sixes in $20$ rolls of a fair die; (b) the number of days it rains in a week in March.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Yes: $n = 20$ fixed, six or not six, rolls independent, $p = \tfrac16$ constant. $\mathrm{B}\left(20, \tfrac16\right)$.</p>
+          <p><strong>(b)</strong> Doubtful: weather on consecutive days is not independent (wet spells last several days), and the probability of rain may vary through the week.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A machine produces items of which $5\%$ are defective, independently. Items are packed in boxes of $20$.</p>
+      <p>(a) Find the probability that a box contains no defective items. &nbsp; (b) Find the probability that a box contains at least $2$ defective items. &nbsp; (c) A shop receives $10$ boxes. Find the probability that none of them contains at least $2$ defective items. &nbsp; (d) Give one reason why the binomial model might be unrealistic.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$D \sim \mathrm{B}(20, 0.05)$.</p>
+          <p><strong>(a)</strong> $\mathrm{P}(D = 0) = 0.95^{20} = 0.3585$</p>
+          <p><strong>(b)</strong> $\mathrm{P}(D = 1) = 20(0.05)(0.95)^{19} = 0.3774$, so $\mathrm{P}(D \leqslant 1) = 0.7358$ and $\mathrm{P}(D \geqslant 2) = 0.2642$.</p>
+          <p><strong>(c)</strong> Each box independently has probability $0.7358$ of fewer than $2$ defectives: $0.73584^{10} = 0.0465$.</p>
+          <p><strong>(d)</strong> Faults may come in runs — for example if the machine goes out of adjustment, several consecutive items will be defective — so items are not independent and $p$ may not be constant.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Probability Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

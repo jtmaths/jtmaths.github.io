@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Geometry &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔷 Vector Geometry</h1>
+  <p>A Level Maths Year 1 · Vectors</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – PARALLEL AND COLLINEAR
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Parallel Vectors and Collinear Points</div>
+<div class="section-body">
+
+  <p>Vectors turn geometry into algebra: to prove two lines are parallel, or three points lie on a line, or a point divides a line in a given ratio, you show that one vector is a multiple of another. This page completes Year 1 DfE content area <strong>J · Vectors</strong>, and applies it to forces and velocities.</p>
+
+  <div class="formula-box">
+    <div class="label">Parallel</div>
+    $\mathbf{a}$ is parallel to $\mathbf{b}$ &nbsp;$\iff$&nbsp; $\mathbf{a} = \lambda\mathbf{b}$ for some scalar $\lambda \neq 0$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Collinear</div>
+    $A$, $B$, $C$ are collinear &nbsp;$\iff$&nbsp; $\overrightarrow{AB} = \lambda\overrightarrow{BC}$ (parallel) <strong>and</strong> they share the point $B$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Proving three points are collinear</div>
+    <div class="example-body">
+      <p>Show that $A(1, 2)$, $B(4, 8)$ and $C(6, 12)$ are collinear, and find the ratio $AB : BC$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = 3\mathbf{i} + 6\mathbf{j}$, &nbsp;$\overrightarrow{BC} = 2\mathbf{i} + 4\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{AB} = \tfrac32\overrightarrow{BC}$, so $AB$ is parallel to $BC$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>They share the point $B$, so $A$, $B$, $C$ are collinear.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$AB : BC = \tfrac32 : 1 = 3 : 2$.</span></div>
+      <div class="warn">Writing only "$\overrightarrow{AB}$ is a multiple of $\overrightarrow{BC}$" is not enough for the final mark. The phrase "and they have the point $B$ in common" completes the proof.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – DIVIDING A LINE IN A RATIO
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Dividing a Line in a Given Ratio</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">$P$ on $AB$ with $AP : PB = m : n$</div>
+    $\overrightarrow{OP} = \mathbf{a} + \dfrac{m}{m+n}(\mathbf{b} - \mathbf{a}) = \dfrac{n\mathbf{a} + m\mathbf{b}}{m + n}$
+  </div>
+
+  <div class="tip">
+    <strong>Don't memorise — route-find.</strong> Get to $P$ by going to $A$ and then the right fraction of the way along $\overrightarrow{AB}$. For $AP : PB = 2 : 1$, $P$ is $\tfrac23$ of the way from $A$ to $B$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A point in a ratio</div>
+    <div class="example-body">
+      <p>$A(1, -1)$ and $B(7, 8)$. Find the coordinates of $P$ on $AB$ such that $AP : PB = 2 : 1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = 6\mathbf{i} + 9\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{OP} = \mathbf{a} + \tfrac23\overrightarrow{AB} = (\mathbf{i} - \mathbf{j}) + (4\mathbf{i} + 6\mathbf{j}) = 5\mathbf{i} + 5\mathbf{j}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$P(5, 5)$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – GEOMETRIC PROOF
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Proving Geometric Results with Vectors</div>
+<div class="section-body">
+
+  <ol class="steps">
+    <li><span>Choose two non-parallel "base" vectors (usually given, e.g. $\overrightarrow{OA} = \mathbf{a}$, $\overrightarrow{OB} = \mathbf{b}$).</span></li>
+    <li><span>Write every other vector you need as a route through known vectors, simplified to $p\mathbf{a} + q\mathbf{b}$.</span></li>
+    <li><span>Compare: a multiple means parallel; equal expressions mean the same point.</span></li>
+  </ol>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — The midpoint theorem</div>
+    <div class="example-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $M$ and $N$ are the midpoints of $OA$ and $OB$. Prove that $MN$ is parallel to $AB$ and half its length.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{AB} = \mathbf{b} - \mathbf{a}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\overrightarrow{MN} = \overrightarrow{MO} + \overrightarrow{ON} = -\tfrac12\mathbf{a} + \tfrac12\mathbf{b} = \tfrac12(\mathbf{b} - \mathbf{a})$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\overrightarrow{MN} = \tfrac12\overrightarrow{AB}$: so $MN \parallel AB$ and $MN = \tfrac12 AB$. &nbsp;■</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Where two lines cross</div>
+    <div class="example-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $P$ is the midpoint of $AB$, and $Q$ is on $OA$ with $OQ : QA = 2 : 1$. The lines $OP$ and $BQ$ meet at $X$. Find $\overrightarrow{OX}$ in terms of $\mathbf{a}$ and $\mathbf{b}$, and the ratio $OX : XP$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{OP} = \mathbf{a} + \tfrac12(\mathbf{b} - \mathbf{a}) = \tfrac12(\mathbf{a} + \mathbf{b})$. $X$ is on $OP$, so $\overrightarrow{OX} = \lambda \cdot \tfrac12(\mathbf{a} + \mathbf{b}) = \tfrac{\lambda}{2}\mathbf{a} + \tfrac{\lambda}{2}\mathbf{b}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$X$ is also on $BQ$: $\overrightarrow{OX} = \mathbf{b} + \mu\left(\tfrac23\mathbf{a} - \mathbf{b}\right) = \tfrac{2\mu}{3}\mathbf{a} + (1 - \mu)\mathbf{b}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{a}$ and $\mathbf{b}$ are not parallel, so compare coefficients: $\tfrac{\lambda}{2} = \tfrac{2\mu}{3}$ and $\tfrac{\lambda}{2} = 1 - \mu$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\tfrac{2\mu}{3} = 1 - \mu \;\Rightarrow\; \tfrac{5\mu}{3} = 1 \;\Rightarrow\; \mu = \tfrac35$, and $\lambda = 2\left(1 - \tfrac35\right) = \tfrac45$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$\overrightarrow{OX} = \tfrac25(\mathbf{a} + \mathbf{b})$, and since $\overrightarrow{OX} = \tfrac45\overrightarrow{OP}$, $OX : XP = 4 : 1$.</span></div>
+      <div class="tip"><strong>Why you may compare coefficients:</strong> if $p\mathbf{a} + q\mathbf{b} = r\mathbf{a} + s\mathbf{b}$ with $\mathbf{a}$, $\mathbf{b}$ non-zero and not parallel, then $p = r$ and $q = s$. Say this in your answer.</div>
+    </div>
+  </div>
+
+  <div class="svg-block">
+    <svg width="380" height="250" viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+      <polygon points="40,220 340,220 160,40" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+      <line x1="40" y1="220" x2="250" y2="130" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="160" y1="40" x2="240" y2="220" stroke="#7c3aed" stroke-width="2"/>
+      <circle cx="250" cy="130" r="4" fill="#7c3aed"/><circle cx="240" cy="220" r="4" fill="#7c3aed"/><circle cx="208" cy="148" r="5" fill="#ef4444"/>
+      <text x="22" y="236" font-weight="700">O</text><text x="346" y="236" font-weight="700">A</text><text x="154" y="32" font-weight="700">B</text>
+      <text x="258" y="128" font-weight="700">P</text><text x="234" y="240" font-weight="700">Q</text><text x="214" y="144" font-weight="700" fill="#b91c1c">X</text>
+      <text x="120" y="240" fill="#4f46e5">a</text><text x="78" y="120" fill="#4f46e5">b</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Diagonals of a parallelogram</div>
+    <div class="example-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OC} = \mathbf{c}$. Prove that its diagonals bisect each other.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\overrightarrow{OB} = \mathbf{a} + \mathbf{c}$, so the midpoint of $OB$ has position vector $\tfrac12(\mathbf{a} + \mathbf{c})$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Midpoint of $AC$: $\mathbf{a} + \tfrac12(\mathbf{c} - \mathbf{a}) = \tfrac12(\mathbf{a} + \mathbf{c})$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The same point, so each diagonal passes through the midpoint of the other. &nbsp;■</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – FORCES AND VELOCITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Vectors in Context: Forces and Velocities</div>
+<div class="section-body">
+
+  <div class="concept">
+    Forces and velocities are vectors, so they <strong>add as vectors</strong>. The <strong>resultant</strong> of several forces is their vector sum. A particle is in <strong>equilibrium</strong> when the resultant force is zero.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Resultant and equilibrium</div>
+    <div class="example-body">
+      <p>Forces $\mathbf{F}_1 = (3\mathbf{i} + 2\mathbf{j})$ N and $\mathbf{F}_2 = (-5\mathbf{i} + 4\mathbf{j})$ N act on a particle. (a) Find the magnitude of the resultant and the angle it makes with $\mathbf{i}$. (b) Find the third force needed for equilibrium.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{R} = \mathbf{F}_1 + \mathbf{F}_2 = -2\mathbf{i} + 6\mathbf{j}$ N</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$|\mathbf{R}| = \sqrt{4 + 36} = \sqrt{40} = 2\sqrt{10} \approx 6.32$ N</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathbf{R}$ points up and left: angle with $-\mathbf{i}$ is $\tan^{-1} 3 = 71.6°$, so the angle with $\mathbf{i}$ is $180° - 71.6° = 108.4°$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) For equilibrium $\mathbf{F}_3 = -\mathbf{R} = (2\mathbf{i} - 6\mathbf{j})$ N.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A boat and a current</div>
+    <div class="example-body">
+      <p>A boat steers due north at $5$ m s$^{-1}$ through the water, while a current flows due east at $1.2$ m s$^{-1}$. With $\mathbf{i}$ east and $\mathbf{j}$ north, find the resultant velocity, the speed, and the bearing on which the boat actually travels.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\mathbf{v} = 1.2\mathbf{i} + 5\mathbf{j}$ m s$^{-1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Speed $= \sqrt{1.44 + 25} = \sqrt{26.44} \approx 5.14$ m s$^{-1}$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Angle east of north: $\tan^{-1}\dfrac{1.2}{5} = 13.5°$, so bearing $013.5°$.</span></div>
+      <div class="warn"><strong>Velocity versus speed.</strong> Velocity is the vector $1.2\mathbf{i} + 5\mathbf{j}$; speed is its magnitude, $5.14$ m s$^{-1}$. Give the one the question asks for.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Parallel</h4><p>$\mathbf{a} = \lambda\mathbf{b}$</p></div>
+    <div class="ref-card"><h4>Collinear</h4><p>Parallel <em>and</em> a common point.</p></div>
+    <div class="ref-card"><h4>Ratio $m : n$</h4><p>$\mathbf{a} + \dfrac{m}{m+n}(\mathbf{b} - \mathbf{a})$</p></div>
+    <div class="ref-card"><h4>Midpoint</h4><p>$\tfrac12(\mathbf{a} + \mathbf{b})$</p></div>
+    <div class="ref-card"><h4>Routes</h4><p>$\overrightarrow{AB} = \overrightarrow{AO} + \overrightarrow{OB} = \mathbf{b} - \mathbf{a}$</p></div>
+    <div class="ref-card"><h4>Intersection</h4><p>Two expressions with $\lambda$, $\mu$; compare coefficients.</p></div>
+    <div class="ref-card"><h4>Comparing</h4><p>Allowed only for non-parallel $\mathbf{a}$, $\mathbf{b}$.</p></div>
+    <div class="ref-card"><h4>Resultant</h4><p>Vector sum of the forces.</p></div>
+    <div class="ref-card"><h4>Equilibrium</h4><p>Resultant $= \mathbf{0}$.</p></div>
+    <div class="ref-card"><h4>Speed</h4><p>Magnitude of velocity.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Show that $6\mathbf{i} - 9\mathbf{j}$ is parallel to $4\mathbf{i} - 6\mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$6\mathbf{i} - 9\mathbf{j} = \tfrac32(4\mathbf{i} - 6\mathbf{j})$, a scalar multiple, so they are parallel.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find $k$ such that $k\mathbf{i} + 6\mathbf{j}$ is parallel to $2\mathbf{i} - 3\mathbf{j}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$k\mathbf{i} + 6\mathbf{j} = \lambda(2\mathbf{i} - 3\mathbf{j})$. From $\mathbf{j}$: $\lambda = -2$.</p>
+          <p>$k = 2\lambda = -4$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Show that $A(-2, 1)$, $B(1, 3)$ and $C(7, 7)$ are collinear.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = 3\mathbf{i} + 2\mathbf{j}$, &nbsp;$\overrightarrow{BC} = 6\mathbf{i} + 4\mathbf{j} = 2\overrightarrow{AB}$.</p>
+          <p>So $AB \parallel BC$, and they share the point $B$: $A$, $B$, $C$ are collinear.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>$A(2, 3)$ and $B(10, -5)$. $P$ lies on $AB$ with $AP : PB = 3 : 1$. Find the coordinates of $P$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{AB} = 8\mathbf{i} - 8\mathbf{j}$; $P$ is $\tfrac34$ of the way along.</p>
+          <p>$\overrightarrow{OP} = (2\mathbf{i} + 3\mathbf{j}) + (6\mathbf{i} - 6\mathbf{j}) = 8\mathbf{i} - 3\mathbf{j}$, so $P(8, -3)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OC} = \mathbf{c}$. $M$ is the midpoint of $AB$. Find $\overrightarrow{OM}$ and $\overrightarrow{CM}$ in terms of $\mathbf{a}$ and $\mathbf{c}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>In a parallelogram $\overrightarrow{AB} = \overrightarrow{OC} = \mathbf{c}$.</p>
+          <p>$\overrightarrow{OM} = \mathbf{a} + \tfrac12\mathbf{c}$</p>
+          <p>$\overrightarrow{CM} = \overrightarrow{CO} + \overrightarrow{OM} = -\mathbf{c} + \mathbf{a} + \tfrac12\mathbf{c} = \mathbf{a} - \tfrac12\mathbf{c}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Forces $(2\mathbf{i} + 5\mathbf{j})$ N, $(4\mathbf{i} - 3\mathbf{j})$ N and $(p\mathbf{i} + q\mathbf{j})$ N act on a particle in equilibrium. Find $p$ and $q$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sum $= (6 + p)\mathbf{i} + (2 + q)\mathbf{j} = \mathbf{0}$.</p>
+          <p>$p = -6$, $q = -2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Forces $(5\mathbf{i} + 2\mathbf{j})$ N and $(7\mathbf{i} + 3\mathbf{j})$ N act on a particle. Find the magnitude of the resultant and the angle it makes with $\mathbf{i}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{R} = 12\mathbf{i} + 5\mathbf{j}$ N, so $|\mathbf{R}| = \sqrt{144 + 25} = 13$ N.</p>
+          <p>Angle $= \tan^{-1}\tfrac{5}{12} = 22.6°$ above $\mathbf{i}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>$OABC$ is a parallelogram with $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OC} = \mathbf{c}$. $D$ is the point on the diagonal $OB$ with $OD : DB = 1 : 2$, and $N$ is the midpoint of $OC$. Prove that $A$, $D$ and $N$ are collinear, and find the ratio $AD : DN$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{OB} = \mathbf{a} + \mathbf{c}$, so $\overrightarrow{OD} = \tfrac13(\mathbf{a} + \mathbf{c})$; and $\overrightarrow{ON} = \tfrac12\mathbf{c}$.</p>
+          <p>$\overrightarrow{AD} = \tfrac13\mathbf{a} + \tfrac13\mathbf{c} - \mathbf{a} = -\tfrac23\mathbf{a} + \tfrac13\mathbf{c}$</p>
+          <p>$\overrightarrow{AN} = \tfrac12\mathbf{c} - \mathbf{a}$</p>
+          <p>$\overrightarrow{AD} = \tfrac23\left(-\mathbf{a} + \tfrac12\mathbf{c}\right) = \tfrac23\overrightarrow{AN}$. The vectors are parallel and share the point $A$, so $A$, $D$, $N$ are collinear. &nbsp;■</p>
+          <p>$D$ is $\tfrac23$ of the way from $A$ to $N$, so $AD : DN = 2 : 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>In triangle $OAB$, $\overrightarrow{OA} = \mathbf{a}$ and $\overrightarrow{OB} = \mathbf{b}$. $C$ is the midpoint of $OA$ and $D$ is on $OB$ with $OD : DB = 1 : 2$. The lines $AD$ and $BC$ meet at $X$. Find $\overrightarrow{OX}$ in terms of $\mathbf{a}$ and $\mathbf{b}$, and the ratio $AX : XD$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\overrightarrow{OC} = \tfrac12\mathbf{a}$, $\overrightarrow{OD} = \tfrac13\mathbf{b}$.</p>
+          <p>On $AD$: $\overrightarrow{OX} = \mathbf{a} + \lambda\left(\tfrac13\mathbf{b} - \mathbf{a}\right) = (1 - \lambda)\mathbf{a} + \tfrac{\lambda}{3}\mathbf{b}$</p>
+          <p>On $BC$: $\overrightarrow{OX} = \mathbf{b} + \mu\left(\tfrac12\mathbf{a} - \mathbf{b}\right) = \tfrac{\mu}{2}\mathbf{a} + (1 - \mu)\mathbf{b}$</p>
+          <p>$\mathbf{a}$, $\mathbf{b}$ not parallel, so: $1 - \lambda = \tfrac{\mu}{2}$ and $\tfrac{\lambda}{3} = 1 - \mu$.</p>
+          <p>From the second, $\lambda = 3 - 3\mu$. Then $1 - 3 + 3\mu = \tfrac{\mu}{2}$, so $\tfrac{5\mu}{2} = 2$ and $\mu = \tfrac45$, $\lambda = \tfrac35$.</p>
+          <p>$\overrightarrow{OX} = \tfrac25\mathbf{a} + \tfrac15\mathbf{b}$.</p>
+          <p>$\overrightarrow{AX} = \tfrac35\overrightarrow{AD}$, so $AX : XD = 3 : 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A river is $60$ m wide with straight parallel banks and flows at $0.9$ m s$^{-1}$. A swimmer can swim at $1.5$ m s$^{-1}$ in still water. Take $\mathbf{i}$ in the direction of the current and $\mathbf{j}$ straight across the river.</p>
+      <p>(a) She aims straight across. Find her resultant velocity and speed. &nbsp; (b) How long does she take to cross, and how far downstream does she land? &nbsp; (c) Instead she wants to land directly opposite her start. Find the angle to the bank-perpendicular at which she must aim upstream, and the time this crossing takes. &nbsp; (d) State one modelling assumption.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\mathbf{v} = 0.9\mathbf{i} + 1.5\mathbf{j}$ m s$^{-1}$; speed $\sqrt{0.81 + 2.25} = \sqrt{3.06} \approx 1.75$ m s$^{-1}$.</p>
+          <p><strong>(b)</strong> Only the $\mathbf{j}$ component carries her across: time $= 60 \div 1.5 = 40$ s.</p>
+          <p>Downstream drift $= 0.9 \times 40 = 36$ m.</p>
+          <p><strong>(c)</strong> Her swimming velocity must be $-0.9\mathbf{i} + y\mathbf{j}$ so that the $\mathbf{i}$ components cancel, with $0.81 + y^2 = 2.25$, so $y = 1.2$.</p>
+          <p>Angle upstream from straight across: $\sin\alpha = \dfrac{0.9}{1.5} = 0.6$, so $\alpha = 36.9°$.</p>
+          <p>Resultant velocity $1.2\mathbf{j}$, so time $= 60 \div 1.2 = 50$ s.</p>
+          <p><strong>(d)</strong> For example: the current has the same speed everywhere across the river (in reality it is slower near the banks), or she swims at a constant speed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Vector Geometry &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

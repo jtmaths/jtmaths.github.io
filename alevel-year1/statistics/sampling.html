@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistical Sampling &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Statistical Sampling</h1>
+  <p>A Level Maths Year 1 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – POPULATIONS AND SAMPLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Populations and Samples</div>
+<div class="section-body">
+
+  <p>Every statistical investigation starts with a question about a group of people or things. Before you can collect any data, you have to decide <em>who</em> or <em>what</em> you are going to measure.</p>
+
+  <table>
+    <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Population</strong></td><td>The whole set of items you are interested in.</td><td>All $1200$ students at a school</td></tr>
+    <tr><td><strong>Census</strong></td><td>Data collected from <em>every</em> member of the population.</td><td>Asking every student</td></tr>
+    <tr><td><strong>Sample</strong></td><td>A subset of the population, used to draw conclusions about the whole.</td><td>$60$ of the students</td></tr>
+    <tr><td><strong>Sampling unit</strong></td><td>One individual member that could be chosen.</td><td>A single student</td></tr>
+    <tr><td><strong>Sampling frame</strong></td><td>A list of all the sampling units, from which the sample is actually chosen.</td><td>The school register</td></tr>
+    <tr><td><strong>Statistic</strong></td><td>A number calculated from the sample.</td><td>The mean height of the $60$</td></tr>
+  </table>
+
+  <div class="concept">
+    A sample is only useful if it is <strong>representative</strong> of the population — if the people in it are, as a group, like the people who are not in it. The sampling method is how you try to guarantee that.
+  </div>
+
+  <table>
+    <tr><th></th><th>Advantages</th><th>Disadvantages</th></tr>
+    <tr><td><strong>Census</strong></td><td>Completely accurate picture of the population (apart from measurement error); no sampling variation.</td><td>Time-consuming and expensive; difficult to process large amounts of data; impossible if testing destroys the item.</td></tr>
+    <tr><td><strong>Sample</strong></td><td>Cheaper and quicker; less data to process; the only option when testing is destructive.</td><td>Results vary from sample to sample; the sample may not be representative; small sub-groups may be missed.</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Census or sample?</div>
+    <div class="example-body">
+      <p>For each situation, say whether a census or a sample is more appropriate. (a) A manufacturer tests the lifetime of its light bulbs. (b) A teacher records the test marks of her class of $28$. (c) A council asks residents of a city of $300\,000$ about bin collections.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) <strong>Sample</strong> — testing lifetime destroys the bulb, so a census would leave nothing to sell.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) <strong>Census</strong> — the population is small and the data are already available.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) <strong>Sample</strong> — a census would be very expensive and slow, and a well-chosen sample of a few hundred gives a good picture.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – RANDOM SAMPLING METHODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Random Sampling Methods</div>
+<div class="section-body">
+
+  <p>In a <strong>random</strong> method, chance decides who is chosen, so the person choosing cannot influence the result. Random methods need a sampling frame.</p>
+
+  <div class="formula-box">
+    <div class="label">Simple random sampling</div>
+    Every sample of size $n$ has an equal chance of being chosen
+  </div>
+
+  <ul class="steps">
+    <li><span>Number every member of the sampling frame, e.g. $1$ to $N$.</span></li>
+    <li><span>Use a random number generator (calculator, computer or table) to pick numbers between $1$ and $N$.</span></li>
+    <li><span>Ignore repeats, and keep going until you have $n$ different numbers.</span></li>
+    <li><span>Select the members with those numbers. (Equivalently: names in a hat — the <em>lottery</em> method.)</span></li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">Systematic sampling</div>
+    Choose every $k$th member of an ordered list, where $k = \dfrac{N}{n}$, starting from a random member among the first $k$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Stratified sampling</div>
+    Split the population into groups (<strong>strata</strong>); sample each stratum in proportion to its size:<br>
+    number from a stratum $= \dfrac{\text{size of stratum}}{\text{size of population}} \times \text{sample size}$
+  </div>
+
+  <p>Within each stratum the members are then chosen by simple random sampling.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Simple random sampling</div>
+    <div class="example-body">
+      <p>Describe how to take a simple random sample of $30$ employees from a company of $450$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Obtain a list of all $450$ employees (the sampling frame) and number them $1$ to $450$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Use a calculator's random integer function to generate numbers from $1$ to $450$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Discard any repeats until $30$ different numbers have been obtained.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The employees with those numbers form the sample.</span></div>
+      <div class="tip">Full marks for "describe" usually need all three ideas: <strong>list and number</strong>, <strong>random numbers</strong>, <strong>ignore repeats</strong>.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Systematic sampling</div>
+    <div class="example-body">
+      <p>A quality controller wants a sample of $80$ from the $2400$ cans filled on a production line in a day. Describe a systematic sample.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Sampling interval $k = \dfrac{2400}{80} = 30$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Choose a random starting number from $1$ to $30$ — say $17$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Take cans $17, 47, 77, 107, \ldots$, i.e. every $30$th can, up to can $2387$.</span></div>
+      <div class="warn">If the list has a pattern that repeats every $30$ items (for example a fault on one filling nozzle out of $30$), a systematic sample could hit it every time or miss it completely.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Stratified sampling</div>
+    <div class="example-body">
+      <p>A sports club has $84$ junior, $156$ adult and $60$ senior members. A stratified sample of $25$ is required. How many of each type should be chosen?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total membership: $84 + 156 + 60 = 300$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Juniors: $\dfrac{84}{300} \times 25 = 7$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Adults: $\dfrac{156}{300} \times 25 = 13$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Seniors: $\dfrac{60}{300} \times 25 = 5$ &nbsp;(check: $7 + 13 + 5 = 25$ ✓)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Number the members of each group and select $7$, $13$ and $5$ of them by simple random sampling.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Stratified sampling with rounding</div>
+    <div class="example-body">
+      <p>A college has $412$ full-time, $270$ part-time and $118$ evening students. Find the numbers for a stratified sample of $50$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Total $= 800$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{412}{800} \times 50 = 25.75$, &nbsp;$\dfrac{270}{800} \times 50 = 16.875$, &nbsp;$\dfrac{118}{800} \times 50 = 7.375$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Round: $26$, $17$ and $7$. Check: $26 + 17 + 7 = 50$ ✓</span></div>
+      <div class="tip">Always check the rounded numbers still add up to the sample size. If they do not, adjust the stratum whose decimal part was closest to $0.5$.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Cluster sampling</strong> (named in some specifications): the population is split into naturally occurring groups (clusters), such as schools or streets; a random selection of whole clusters is taken and everyone in them — or a random sample from them — is surveyed. It is cheap when the population is spread out geographically, but clusters may differ from one another, so it is less precise than a simple random sample of the same size.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – NON-RANDOM METHODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Non-Random Sampling Methods</div>
+<div class="section-body">
+
+  <p>Sometimes no sampling frame exists, or there is no time to use one. Then non-random methods are used — they are quicker and cheaper, but the person collecting the data influences who is chosen.</p>
+
+  <div class="formula-box">
+    <div class="label">Quota sampling</div>
+    The interviewer is told how many people to find from each group (e.g. $10$ men under $30$), and chooses them personally until each quota is filled
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Opportunity (convenience) sampling</div>
+    The sample is whoever is available at the time and fits the criteria
+  </div>
+
+  <div class="concept">
+    <strong>Self-selected</strong> (volunteer) samples, such as online polls or phone-ins, are a form of opportunity sampling. The people who choose to respond often have strong views, so the results can be very unrepresentative.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Quota versus stratified</div>
+    <div class="example-body">
+      <p>A market researcher must interview $20$ women and $20$ men in a town centre. Name the method, and explain how it differs from stratified sampling.</p>
+      <div class="step-row"><span class="arrow">①</span><span>This is <strong>quota sampling</strong>: there are quotas for each group but no sampling frame.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>In stratified sampling the individuals within each group are chosen <em>at random</em> from a list. In quota sampling the interviewer chooses them.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the interviewer might, without meaning to, approach only people who look friendly or who are not in a hurry — a source of bias.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – COMPARING THE METHODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Advantages and Disadvantages</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Method</th><th>Advantages</th><th>Disadvantages</th></tr>
+    <tr><td><strong>Simple random</strong></td><td>Free of selection bias; every member equally likely to be chosen.</td><td>Needs a sampling frame; can be slow for a large population; may by chance under-represent a group.</td></tr>
+    <tr><td><strong>Systematic</strong></td><td>Simple and quick to use; spreads the sample evenly through the list.</td><td>Needs a sampling frame; biased if the list has a repeating pattern.</td></tr>
+    <tr><td><strong>Stratified</strong></td><td>Each group is represented in the right proportion; results can be compared between strata.</td><td>Needs a frame for each stratum; strata must be clearly defined and non-overlapping.</td></tr>
+    <tr><td><strong>Quota</strong></td><td>No sampling frame needed; quick and cheap; groups represented in proportion.</td><td>Not random — interviewer choice can introduce bias; non-responses are simply replaced, hiding a source of bias.</td></tr>
+    <tr><td><strong>Opportunity</strong></td><td>Easiest, quickest and cheapest.</td><td>Very unlikely to be representative; highly dependent on who happens to be there.</td></tr>
+    <tr><td><strong>Cluster</strong></td><td>Practical and cheap for a geographically spread population.</td><td>Clusters may not be typical of the population; less precise.</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Bias</strong> is a systematic tendency for a sample to over- or under-represent part of the population, so that conclusions are distorted in a consistent direction. A bigger sample does <em>not</em> cure bias — it just gives a more precise wrong answer. Random methods remove selection bias; larger random samples reduce the <em>random</em> variation between samples.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Spotting bias</div>
+    <div class="example-body">
+      <p>To estimate how much time students spend on social media, a student asks the first $30$ people who arrive at the school library one morning. Identify the sampling method and explain why the results may be biased.</p>
+      <div class="step-row"><span class="arrow">①</span><span>This is an <strong>opportunity sample</strong>.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Students who arrive early at a library are likely to be more studious than average, so they may spend less time on social media.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The sample is unlikely to be representative; the estimate is likely to be too <em>low</em>.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Improvement: obtain the school roll and take a simple random (or stratified by year group) sample.</span></div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>The large data set.</strong> Every exam board provides a large data set that you are expected to explore during the course, and some questions ask how you would sample from it. The same ideas apply: number the rows, then use random numbers (simple random) or every $k$th row (systematic). Familiarity with your board's data set can help you spot when an answer is unrealistic.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Population</h4><p>Everyone or everything of interest.</p></div>
+    <div class="ref-card"><h4>Sampling frame</h4><p>The list the sample is chosen from.</p></div>
+    <div class="ref-card"><h4>Census</h4><p>Accurate but costly; impossible if testing destroys.</p></div>
+    <div class="ref-card"><h4>Simple random</h4><p>Number, random numbers, ignore repeats.</p></div>
+    <div class="ref-card"><h4>Systematic</h4><p>Every $k$th, $k = N/n$, random start.</p></div>
+    <div class="ref-card"><h4>Stratified</h4><p>$\dfrac{\text{stratum}}{\text{population}} \times n$, then random within.</p></div>
+    <div class="ref-card"><h4>Quota</h4><p>Fill quotas; interviewer chooses; no frame.</p></div>
+    <div class="ref-card"><h4>Opportunity</h4><p>Whoever is available; quick but biased.</p></div>
+    <div class="ref-card"><h4>Bias</h4><p>Systematic distortion; not fixed by a bigger sample.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Explain the difference between a census and a sample, and give one advantage of each.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A census collects data from every member of the population; a sample collects data from only part of it.</p>
+          <p>Census: gives a complete, accurate picture of the population. Sample: cheaper and quicker, with less data to process.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A dentist wants to survey her patients about appointment times. Suggest a suitable sampling frame, and identify the sampling units.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Sampling frame: the practice's list of registered patients.</p>
+          <p>Sampling units: the individual patients.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A systematic sample of $60$ is to be taken from a list of $1200$ voters. Describe how this should be done.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Interval $k = \dfrac{1200}{60} = 20$.</p>
+          <p>Choose a random number $r$ from $1$ to $20$ (e.g. using a calculator), then select voters $r, r + 20, r + 40, \ldots$ until $60$ have been chosen.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A factory employs $180$ day-shift and $120$ night-shift workers. Find the numbers from each shift in a stratified sample of $25$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total $300$.</p>
+          <p>Day: $\dfrac{180}{300} \times 25 = 15$. &nbsp; Night: $\dfrac{120}{300} \times 25 = 10$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A newspaper website asks readers to vote online on whether a new road should be built. Explain why the result may not reflect the views of the town's population.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The sample is self-selected: only readers of that website who choose to vote are included.</p>
+          <p>People with strong opinions (often those opposed) are more likely to vote, and people who do not read the site are excluded entirely, so the sample is unlikely to be representative. One person might also vote several times.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Give one advantage and one disadvantage of quota sampling compared with stratified sampling.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Advantage: no sampling frame is needed, so it is quicker and cheaper.</p>
+          <p>Disadvantage: it is not random — the interviewer chooses who to ask, which can introduce bias.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A gardener has $96$ tomato plants in a greenhouse. Describe how to take a simple random sample of $12$ of them to measure.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Label the plants $1$ to $96$ (e.g. with tags), forming a sampling frame.</p>
+          <p>Use a random number generator to produce integers from $1$ to $96$, ignoring repeats, until $12$ different numbers are obtained.</p>
+          <p>Measure the plants with those labels.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A sixth form has $230$ students in Year 12, $190$ in Year 13 and $180$ on a one-year course. A stratified sample of $40$ is needed. How many should be chosen from each group?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total $600$.</p>
+          <p>$\dfrac{230}{600} \times 40 = 15.33\ldots$, &nbsp;$\dfrac{190}{600} \times 40 = 12.66\ldots$, &nbsp;$\dfrac{180}{600} \times 40 = 12$</p>
+          <p>Round to $15$, $13$ and $12$. Check: $15 + 13 + 12 = 40$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>To find out how often adults in a town exercise, a researcher stands outside a gym on a Saturday morning and questions the first $50$ adults who walk past. (a) Name the sampling method. (b) Explain why the results are likely to be biased, and state the likely direction of the bias. (c) Suggest an improved method.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Opportunity sampling.</p>
+          <p><strong>(b)</strong> People near a gym are more likely to be gym users, and Saturday morning excludes people who work then. The estimate of how often adults exercise is likely to be too <strong>high</strong>.</p>
+          <p><strong>(c)</strong> Use the electoral register as a sampling frame and take a simple random sample (or one stratified by age group), contacting the chosen people directly.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A council wants the views of the $6000$ adults living in four wards: A ($1800$), B ($1500$), C ($1650$) and D ($1050$).</p>
+      <p>(a) Give one reason why the council might not use a census. &nbsp; (b) Find the number from each ward in a stratified sample of $120$. &nbsp; (c) Describe how the adults from ward A would be selected. &nbsp; (d) Explain why stratifying by ward may give better results than a simple random sample of $120$. &nbsp; (e) Even with a well-designed method, give one reason why the results may still be biased.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Asking all $6000$ would be expensive and time-consuming, and processing that much data is difficult.</p>
+          <p><strong>(b)</strong> A: $\dfrac{1800}{6000} \times 120 = 36$; B: $30$; C: $33$; D: $21$. Check: $36 + 30 + 33 + 21 = 120$ ✓</p>
+          <p><strong>(c)</strong> Number the $1800$ adults on ward A's electoral list from $1$ to $1800$, generate random integers in that range, ignore repeats, and take the first $36$ different numbers.</p>
+          <p><strong>(d)</strong> Views may differ between wards (for example, one ward may be more affected by a decision). Stratifying guarantees each ward is represented in proportion; a simple random sample could, by chance, over-represent one ward.</p>
+          <p><strong>(e)</strong> Non-response: some selected adults will not reply, and those who do reply may differ from those who do not (for example, they may care more about the issue). Also, the electoral register may be incomplete or out of date.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Statistical Sampling &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

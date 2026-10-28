@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Statistics Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Statistics</strong> is the science of learning from data. Real questions — <em>Is this town getting warmer? Do students who revise longer score higher?</em> — are answered by collecting data, summarising it, and interpreting what it shows, while being honest about what it does not show.</p>
+
+  <div class="concept">
+    The whole of A Level statistics follows a cycle: <strong>plan</strong> (what question, what population?) → <strong>collect</strong> (how to sample?) → <strong>process and present</strong> (diagrams and summary measures) → <strong>interpret</strong> (in context, with limitations). Year 1 covers every stage; Year 2 adds the normal distribution and more hypothesis testing.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with GCSE</div>
+    Systematic, stratified, quota and opportunity sampling &middot; frequency density<br>
+    Variance and standard deviation &middot; interpolation for grouped data<br>
+    Formal outlier rules &middot; cleaning data &middot; a large data set
+  </div>
+
+  <div class="tip">
+    <strong>DfE content areas K · Statistical sampling and L · Data presentation and interpretation.</strong> Every board also gives you a large data set to explore with technology during the course. Expect questions that ask you to <em>interpret</em> and <em>criticise</em> — "in context" answers earn the marks, bare numbers rarely do. Calculators with statistics modes are expected; know how to get the mean and standard deviation from yours.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <table>
+    <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><strong>Population</strong></td><td>Everything or everyone of interest.</td><td>All adults in a town</td></tr>
+    <tr><td><strong>Sample</strong></td><td>A subset of the population.</td><td>$100$ of those adults</td></tr>
+    <tr><td><strong>Sampling frame</strong></td><td>The list the sample is chosen from.</td><td>The electoral register</td></tr>
+    <tr><td><strong>Qualitative</strong></td><td>Non-numerical data.</td><td>Favourite sport</td></tr>
+    <tr><td><strong>Discrete</strong></td><td>Numerical; only particular values.</td><td>Number of pets</td></tr>
+    <tr><td><strong>Continuous</strong></td><td>Numerical; any value in a range.</td><td>Time, mass</td></tr>
+    <tr><td><strong>Bivariate</strong></td><td>Two variables measured on each item.</td><td>Height and arm span</td></tr>
+    <tr><td><strong>Outlier</strong></td><td>A value far from the rest of the data.</td><td>A $95$ among values $20$–$64$</td></tr>
+    <tr><td><strong>Bias</strong></td><td>A systematic distortion in a sample or result.</td><td>Surveying only gym users about exercise</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Six Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Stratified sample sizes</div>
+    $\dfrac{\text{size of stratum}}{\text{size of population}} \times \text{sample size}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Frequency density</div>
+    $\text{frequency density} = \dfrac{\text{frequency}}{\text{class width}}$; area of bar $\propto$ frequency
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Interpolation for grouped data</div>
+    lower boundary $+ \dfrac{\text{position} - \text{c.f. before}}{\text{class frequency}} \times \text{class width}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Mean and standard deviation</div>
+    $\bar{x} = \dfrac{\sum fx}{\sum f}$, &nbsp; $\sigma = \sqrt{\dfrac{\sum fx^2}{\sum f} - \bar{x}^2}$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Outliers</div>
+    Beyond $Q_1 - 1.5\times\text{IQR}$ or $Q_3 + 1.5\times\text{IQR}$; or beyond $\bar{x} \pm 2\sigma$ (or $3\sigma$)
+  </div>
+
+  <div class="formula-box">
+    <div class="label">6 — Regression line $y = a + bx$</div>
+    $b$: change in $y$ per unit of $x$ &nbsp;·&nbsp; interpolate, don't extrapolate &nbsp;·&nbsp; correlation $\neq$ causation
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>For $16$ values, $\sum x = 192$ and $\sum x^2 = 2560$. The largest value is $22$. (a) Find the mean and standard deviation. (b) Is $22$ an outlier using $\bar{x} \pm 2\sigma$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\bar{x} = \dfrac{192}{16} = 12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sigma^2 = \dfrac{2560}{16} - 12^2 = 160 - 144 = 16$, so $\sigma = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Upper limit $12 + 2(4) = 20$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$22 &gt; 20$, so $22$ is an outlier. Before removing it, check whether it is an error or a genuine value.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Statistics Subtopics</div>
+<div class="section-body">
+
+  <p>Everything in DfE content areas K and L, and the page that covers it.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">K</span><span><a href="sampling.html">Statistical Sampling</a><span class="desc">Populations, samples and sampling frames; random and non-random sampling methods; their advantages, disadvantages and sources of bias.</span></span></li>
+    <li><span class="code">L</span><span><a href="data-presentation.html">Presenting Data</a><span class="desc">Histograms with frequency density, cumulative frequency, box plots and scatter diagrams; comparing distributions.</span></span></li>
+    <li><span class="code">L</span><span><a href="measures.html">Measures of Location and Spread</a><span class="desc">Mean, median, mode, quartiles and percentiles; interpolation; variance and standard deviation; choosing measures.</span></span></li>
+    <li><span class="code">L</span><span><a href="bivariate-data.html">Correlation and Outliers</a><span class="desc">Scatter diagrams and regression lines, correlation and causation, outliers and cleaning data.</span></span></li>
+  </ul>
+
+  <div class="tip">
+    Statistics continues in <a href="../probability/overview.html">Probability and Distributions</a> and <a href="../hypothesis-testing/overview.html">Hypothesis Testing</a>, where a sample is used to make a formal decision about a population.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Plotting frequency on a histogram.</strong> With unequal classes the vertical axis must be frequency density. It is the area that shows frequency.
+  </div>
+
+  <div class="warn">
+    <strong>Confusing quota and stratified sampling.</strong> Both fill groups in proportion, but only stratified sampling chooses randomly within each group.
+  </div>
+
+  <div class="warn">
+    <strong>$(\sum fx)^2$ instead of $\sum fx^2$.</strong> Square each $x$ first, then multiply by its frequency, then add.
+  </div>
+
+  <div class="warn">
+    <strong>Comparisons without context.</strong> "B has a higher median" is not enough; "on average, group B scored higher" is.
+  </div>
+
+  <div class="warn">
+    <strong>Claiming causation.</strong> Strong correlation never proves that one variable causes the other.
+  </div>
+
+  <div class="warn">
+    <strong>Deleting every outlier.</strong> Only errors should be removed. Genuine extreme values are real data.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Random methods</h4><p>Simple random, systematic, stratified (need a frame).</p></div>
+    <div class="ref-card"><h4>Non-random</h4><p>Quota, opportunity (no frame).</p></div>
+    <div class="ref-card"><h4>Histogram</h4><p>Frequency density $=$ frequency $\div$ width.</p></div>
+    <div class="ref-card"><h4>Grouped median</h4><p>Interpolate at $\tfrac{n}{2}$.</p></div>
+    <div class="ref-card"><h4>Variance</h4><p>Mean of squares $-$ square of mean.</p></div>
+    <div class="ref-card"><h4>Skewed data</h4><p>Median and IQR.</p></div>
+    <div class="ref-card"><h4>Symmetric data</h4><p>Mean and standard deviation.</p></div>
+    <div class="ref-card"><h4>Outlier rules</h4><p>$1.5 \times$ IQR beyond quartiles; or $2\sigma$/$3\sigma$ from mean.</p></div>
+    <div class="ref-card"><h4>Extrapolation</h4><p>Outside the data — unreliable.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Statistics topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Classify each variable: (a) number of siblings; (b) time to run $100$ m; (c) eye colour.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>(a) Quantitative, discrete. (b) Quantitative, continuous. (c) Qualitative.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Describe how to take a systematic sample of $50$ from a numbered list of $1000$ customers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Interval $k = \dfrac{1000}{50} = 20$. Choose a random start $r$ from $1$ to $20$, then take customers $r, r + 20, r + 40, \ldots$ up to $50$ customers.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A school has $360$ students in Year 12 and $240$ in Year 13. Find the numbers from each year in a stratified sample of $40$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Total $600$. Year 12: $\dfrac{360}{600} \times 40 = 24$. Year 13: $\dfrac{240}{600} \times 40 = 16$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Find the mean, median and mode of $3, 7, 8, 8, 10, 12, 15$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sum x = 63$, so $\bar{x} = 9$. Median (4th value) $= 8$. Mode $= 8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>For $10$ values, $\sum x = 120$ and $\sum x^2 = 1650$. Find the mean and standard deviation.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\bar{x} = 12$. $\sigma^2 = 165 - 144 = 21$, so $\sigma = \sqrt{21} = 4.58$ (3 s.f.).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>For the data $4, 6, 7, 8, 9, 10, 11, 12, 13, 30$, find the quartiles and decide whether $30$ is an outlier using the $1.5 \times \text{IQR}$ rule.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Median $= \dfrac{9 + 10}{2} = 9.5$. Lower half $4, 6, 7, 8, 9$ gives $Q_1 = 7$; upper half $10, 11, 12, 13, 30$ gives $Q_3 = 12$.</p>
+          <p>IQR $= 5$; upper fence $12 + 7.5 = 19.5$. Since $30 &gt; 19.5$, it is an outlier.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>In a grouped frequency table, the class $10 \leqslant t &lt; 20$ has frequency $30$ and $20 \leqslant t &lt; 40$ has frequency $24$. Find the frequency densities, and explain why the second bar is shorter even though its frequency is similar.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$30 \div 10 = 3$ and $24 \div 20 = 1.2$.</p>
+          <p>The second class is twice as wide, so its values are spread more thinly; area, not height, represents frequency.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>For cars aged $1$ to $8$ years, the regression line of value $y$ (£1000s) on age $x$ (years) is $y = 18.4 - 1.6x$. (a) Interpret $-1.6$. (b) Explain why the line should not be used for a $15$-year-old car.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> For each extra year of age, a car's value falls by about £$1600$.</p>
+          <p><strong>(b)</strong> $15$ years is outside the data range: extrapolation. Indeed the line gives $18.4 - 24 = -5.6$, a negative value, which is impossible.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Daily maximum temperatures in June: Town A mean $15.2\,^\circ$C, standard deviation $3.1\,^\circ$C; Town B mean $12.8\,^\circ$C, standard deviation $5.4\,^\circ$C. Compare the two towns.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Town A had the higher mean, so on average it was warmer.</p>
+          <p>Town A had the smaller standard deviation, so its temperatures were more consistent; Town B's varied more from day to day.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The number of books $x$ read last month by $40$ students is shown.</p>
+      <table>
+        <tr><th>$x$</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td></tr>
+        <tr><th>$f$</th><td>$4$</td><td>$10$</td><td>$12$</td><td>$8$</td><td>$4$</td><td>$2$</td></tr>
+      </table>
+      <p>(a) Find the mean and standard deviation. &nbsp; (b) Find the median and interquartile range. &nbsp; (c) Is $x = 5$ an outlier using (i) $\bar{x} \pm 2\sigma$; (ii) the $1.5 \times \text{IQR}$ rule? &nbsp; (d) The students were the members of a school reading club. Explain why the results should not be used to estimate the number of books read by all students in the school.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\sum fx = 0 + 10 + 24 + 24 + 16 + 10 = 84$, so $\bar{x} = 2.1$.</p>
+          <p>$\sum fx^2 = 0 + 10 + 48 + 72 + 64 + 50 = 244$, so $\sigma^2 = \dfrac{244}{40} - 2.1^2 = 6.1 - 4.41 = 1.69$ and $\sigma = 1.3$.</p>
+          <p><strong>(b)</strong> Cumulative frequencies: $4, 14, 26, 34, 38, 40$.</p>
+          <p>Median: $20$th and $21$st values are both $2$, so median $= 2$.</p>
+          <p>$Q_1$: $10$th and $11$th values are both $1$. $Q_3$: $30$th and $31$st values are both $3$. IQR $= 2$.</p>
+          <p><strong>(c)(i)</strong> $2.1 + 2(1.3) = 4.7$; $5 &gt; 4.7$, so $5$ is an outlier by this rule.</p>
+          <p><strong>(ii)</strong> $Q_3 + 1.5 \times 2 = 6$; $5 &lt; 6$, so $5$ is <em>not</em> an outlier by this rule. Different rules can give different conclusions.</p>
+          <p><strong>(d)</strong> Reading-club members are not representative of all students — they are likely to read more than average — so the sample is biased and would overestimate the school's mean.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Statistics Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

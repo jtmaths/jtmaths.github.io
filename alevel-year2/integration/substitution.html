@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration by Substitution &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔄 Integration by Substitution</h1>
+  <p>A Level Maths Year 2 · Integration</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Idea Behind Substitution</div>
+<div class="section-body">
+
+  <p>Substitution is the chain rule run backwards, done formally. You replace an awkward part of the integrand with a new variable $u$, so that the whole integral becomes a standard one in $u$.</p>
+
+  <div class="concept">
+    If $u = \mathrm{g}(x)$ then $\dfrac{du}{dx} = \mathrm{g}'(x)$, which we use in the form $dx = \dfrac{du}{\mathrm{g}'(x)}$. <strong>Every</strong> part of the integral — the integrand, the $dx$ and (for a definite integral) the limits — must be rewritten in terms of $u$ before you integrate.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The method</div>
+    ① Choose $u$ &nbsp;&middot;&nbsp; ② Find $\dfrac{du}{dx}$ and replace $dx$ &nbsp;&middot;&nbsp; ③ Rewrite everything in $u$<br>
+    ④ Integrate &nbsp;&middot;&nbsp; ⑤ Substitute back (or use $u$-limits)
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A substitution you could also spot</div>
+    <div class="example-body">
+      <p>Use the substitution $u = x^3 + 2$ to find $\displaystyle\int 6x^2(x^3+2)^4\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{du}{dx} = 3x^2$, so $dx = \dfrac{du}{3x^2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int 6x^2 u^4 \cdot \frac{du}{3x^2} = \int 2u^4\,du$ — the $x^2$ cancels.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \tfrac{2}{5}u^5 + c$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \tfrac{2}{5}(x^3+2)^5 + c$</span></div>
+      <div class="tip">If every $x$ does not disappear at step ②, either the substitution is wrong or you need to express the leftover $x$ in terms of $u$ (Example 2).</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Expressing the leftover $x$ in terms of $u$</div>
+    <div class="example-body">
+      <p>Use the substitution $u = x + 2$ to find $\displaystyle\int x\sqrt{x+2}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{du}{dx} = 1$ so $dx = du$, and $x = u - 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int (u-2)u^{1/2}\,du = \int \left(u^{3/2} - 2u^{1/2}\right)du$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \tfrac{2}{5}u^{5/2} - \tfrac{4}{3}u^{3/2} + c$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \tfrac{2}{5}(x+2)^{5/2} - \tfrac{4}{3}(x+2)^{3/2} + c$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – CHOOSING A SUBSTITUTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Choosing a Substitution</div>
+<div class="section-body">
+
+  <p>In most exam questions the substitution is given. When it is not, these patterns are the usual choices.</p>
+
+  <table>
+    <tr><th>Integrand contains&hellip;</th><th>Try</th><th>Example</th></tr>
+    <tr><td>A bracket or root of a linear expression, times $x$</td><td>$u = $ the linear expression</td><td>$\int x\sqrt{x+2}\,dx$, &nbsp;$u = x+2$</td></tr>
+    <tr><td>A function and (a multiple of) its derivative</td><td>$u = $ the function</td><td>$\int x e^{x^2}\,dx$, &nbsp;$u = x^2$</td></tr>
+    <tr><td>$\sqrt{x}$ inside a fraction</td><td>$u = \sqrt{x}$ or $u = 1 + \sqrt{x}$</td><td>$\int \dfrac{1}{1+\sqrt{x}}\,dx$</td></tr>
+    <tr><td>$e^x$ in a fraction</td><td>$u = e^x$ or $u = 1 + e^x$</td><td>$\int \dfrac{e^x}{(1+e^x)^2}\,dx$</td></tr>
+    <tr><td>$\ln x$ together with $\dfrac{1}{x}$</td><td>$u = \ln x$</td><td>$\int \dfrac{(\ln x)^2}{x}\,dx$</td></tr>
+    <tr><td>$\sqrt{a^2 - x^2}$</td><td>$x = a\sin\theta$</td><td>$\int \sqrt{1-x^2}\,dx$</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — An exponential substitution</div>
+    <div class="example-body">
+      <p>Use $u = 1 + e^x$ to find $\displaystyle\int \frac{e^x}{(1+e^x)^2}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{du}{dx} = e^x$, so $e^x\,dx = du$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int \frac{1}{u^2}\,du = -\frac{1}{u} + c$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= -\dfrac{1}{1+e^x} + c$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Odd powers of sine</div>
+    <div class="example-body">
+      <p>Using $u = \cos x$, find $\displaystyle\int \sin^3 x\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Split off one $\sin x$: $\sin^3 x = (1 - \cos^2 x)\sin x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\dfrac{du}{dx} = -\sin x$, so $\sin x\,dx = -du$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int (1-u^2)(-1)\,du = -u + \tfrac{1}{3}u^3 + c$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= -\cos x + \tfrac{1}{3}\cos^3 x + c$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – DEFINITE INTEGRALS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Definite Integrals: Changing the Limits</div>
+<div class="section-body">
+
+  <div class="concept">
+    The limits on a $dx$ integral are <strong>$x$-values</strong>. Once the integral is in terms of $u$, the limits must be <strong>$u$-values</strong>. Convert them using the substitution, and then you never need to go back to $x$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Changing limits</div>
+    <div class="example-body">
+      <p>Use $u = x + 1$ to evaluate $\displaystyle\int_0^3 \frac{x}{\sqrt{x+1}}\,dx$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$dx = du$, $x = u - 1$. Limits: $x = 0 \Rightarrow u = 1$; $x = 3 \Rightarrow u = 4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\displaystyle\int_1^4 \frac{u-1}{u^{1/2}}\,du = \int_1^4\left(u^{1/2} - u^{-1/2}\right)du$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= \Big[\tfrac{2}{3}u^{3/2} - 2u^{1/2}\Big]_1^4 = \left(\tfrac{16}{3} - 4\right) - \left(\tfrac{2}{3} - 2\right)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \tfrac{4}{3} + \tfrac{4}{3} = \tfrac{8}{3}$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A root substitution</div>
+    <div class="example-body">
+      <p>Use $u = 1 + \sqrt{x}$ to show that $\displaystyle\int_0^4 \frac{1}{1+\sqrt{x}}\,dx = 4 - 2\ln 3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sqrt{x} = u - 1$, so $x = (u-1)^2$ and $dx = 2(u-1)\,du$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Limits: $x = 0 \Rightarrow u = 1$; $x = 4 \Rightarrow u = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int_1^3 \frac{2(u-1)}{u}\,du = \int_1^3\left(2 - \frac{2}{u}\right)du$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= \Big[2u - 2\ln u\Big]_1^3 = (6 - 2\ln 3) - (2 - 0) = 4 - 2\ln 3$ ✓</span></div>
+      <div class="tip">Writing $x$ in terms of $u$ and differentiating <em>that</em> is often easier than differentiating $u$ with respect to $x$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A logarithmic substitution</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\int_1^e \frac{(\ln x)^2}{x}\,dx$ using $u = \ln x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{du}{dx} = \dfrac{1}{x}$, so $\dfrac{1}{x}\,dx = du$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Limits: $x = 1 \Rightarrow u = 0$; $x = e \Rightarrow u = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\displaystyle\int_0^1 u^2\,du = \Big[\tfrac{1}{3}u^3\Big]_0^1 = \tfrac{1}{3}$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TRIG SUBSTITUTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Trigonometric Substitutions</div>
+<div class="section-body">
+
+  <p>Sometimes $x$ itself is replaced by a function, such as $x = \sin\theta$. The aim is to use $1 - \sin^2\theta = \cos^2\theta$ to remove a square root.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — The area of a quarter circle</div>
+    <div class="example-body">
+      <p>Use $x = \sin\theta$ to show that $\displaystyle\int_0^1\sqrt{1-x^2}\,dx = \frac{\pi}{4}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{dx}{d\theta} = \cos\theta$, so $dx = \cos\theta\,d\theta$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Limits: $x = 0 \Rightarrow \theta = 0$; $x = 1 \Rightarrow \theta = \tfrac{\pi}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sqrt{1 - \sin^2\theta} = \sqrt{\cos^2\theta} = \cos\theta$ (positive for $0 \leqslant \theta \leqslant \tfrac{\pi}{2}$).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\displaystyle\int_0^{\pi/2}\cos^2\theta\,d\theta = \Big[\tfrac{1}{2}\theta + \tfrac{1}{4}\sin 2\theta\Big]_0^{\pi/2} = \tfrac{\pi}{4}$ ✓</span></div>
+      <div class="tip">This is a quarter of the unit circle $x^2 + y^2 = 1$, whose area is $\tfrac{1}{4}\pi(1)^2$ — a reassuring check.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Three classic slips:</strong> forgetting to replace $dx$ (writing $\int \ldots\,du$ with no $\dfrac{du}{dx}$ factor); keeping the old $x$-limits; and substituting back into $x$ <em>and</em> using $u$-limits — do one or the other.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Replace dx</h4><p>$dx = \dfrac{du}{du/dx}$, or differentiate $x$ in terms of $u$.</p></div>
+    <div class="ref-card"><h4>Everything in u</h4><p>No $x$ may remain before you integrate.</p></div>
+    <div class="ref-card"><h4>Leftover x</h4><p>Rearrange the substitution: e.g. $x = u - 2$.</p></div>
+    <div class="ref-card"><h4>Limits</h4><p>Convert to $u$-limits; then no need to go back.</p></div>
+    <div class="ref-card"><h4>Indefinite</h4><p>Substitute back to $x$ and add $+\,c$.</p></div>
+    <div class="ref-card"><h4>Function + derivative</h4><p>Let $u$ be the function.</p></div>
+    <div class="ref-card"><h4>√(a² − x²)</h4><p>$x = a\sin\theta$, then $\cos^2\theta$ identity.</p></div>
+    <div class="ref-card"><h4>Odd power of sin</h4><p>Save one $\sin x$; let $u = \cos x$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Use the substitution $u = x^2 - 3$ to find $\displaystyle\int 2x(x^2-3)^6\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{du}{dx} = 2x$, so $2x\,dx = du$.</p>
+          <p>$\displaystyle\int u^6\,du = \tfrac{1}{7}u^7 + c = \tfrac{1}{7}(x^2-3)^7 + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Use the substitution $u = x - 1$ to find $\displaystyle\int x(x-1)^5\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$dx = du$ and $x = u + 1$.</p>
+          <p>$\displaystyle\int (u+1)u^5\,du = \int (u^6 + u^5)\,du = \tfrac{1}{7}u^7 + \tfrac{1}{6}u^6 + c$</p>
+          <p>$= \tfrac{1}{7}(x-1)^7 + \tfrac{1}{6}(x-1)^6 + c$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Use the substitution $u = x^2$ to find the exact value of $\displaystyle\int_0^1 x e^{x^2}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$du = 2x\,dx$, so $x\,dx = \tfrac{1}{2}du$. Limits: $u = 0$ to $u = 1$.</p>
+          <p>$\displaystyle\int_0^1 \tfrac{1}{2}e^u\,du = \Big[\tfrac{1}{2}e^u\Big]_0^1 = \tfrac{1}{2}(e - 1)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Use the substitution $u = x - 1$ to evaluate $\displaystyle\int_2^5 \frac{x}{\sqrt{x-1}}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$dx = du$, $x = u + 1$. Limits: $x = 2 \Rightarrow u = 1$; $x = 5 \Rightarrow u = 4$.</p>
+          <p>$\displaystyle\int_1^4 \left(u^{1/2} + u^{-1/2}\right)du = \Big[\tfrac{2}{3}u^{3/2} + 2u^{1/2}\Big]_1^4$</p>
+          <p>$= \left(\tfrac{16}{3} + 4\right) - \left(\tfrac{2}{3} + 2\right) = \tfrac{14}{3} + 2 = \tfrac{20}{3}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Use the substitution $u = \sin x$ to find the exact value of $\displaystyle\int_0^{\pi/2}\cos x\,e^{\sin x}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$du = \cos x\,dx$. Limits: $x = 0 \Rightarrow u = 0$; $x = \tfrac{\pi}{2} \Rightarrow u = 1$.</p>
+          <p>$\displaystyle\int_0^1 e^u\,du = e - 1$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Use the substitution $u = \cos x$ to show that $\displaystyle\int_0^{\pi/3}\sin x\cos^2 x\,dx = \frac{7}{24}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$du = -\sin x\,dx$. Limits: $x = 0 \Rightarrow u = 1$; $x = \tfrac{\pi}{3} \Rightarrow u = \tfrac{1}{2}$.</p>
+          <p>$\displaystyle\int_1^{1/2} -u^2\,du = \int_{1/2}^1 u^2\,du$ (swapping the limits removes the minus sign).</p>
+          <p>$= \Big[\tfrac{1}{3}u^3\Big]_{1/2}^1 = \tfrac{1}{3}\left(1 - \tfrac{1}{8}\right) = \tfrac{7}{24}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Use the substitution $u = \sqrt{x}$ to show that $\displaystyle\int_1^9 \frac{1}{x + \sqrt{x}}\,dx = 2\ln 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x = u^2$, so $dx = 2u\,du$. Limits: $u = 1$ to $u = 3$.</p>
+          <p>$\displaystyle\int_1^3 \frac{2u}{u^2 + u}\,du = \int_1^3 \frac{2}{u + 1}\,du$</p>
+          <p>$= \Big[2\ln(u+1)\Big]_1^3 = 2\ln 4 - 2\ln 2 = 2\ln 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Use the substitution $x = 2\sin\theta$ to find the exact value of $\displaystyle\int_0^{\sqrt{3}}\sqrt{4 - x^2}\,dx$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$dx = 2\cos\theta\,d\theta$. Limits: $x = 0 \Rightarrow \theta = 0$; $x = \sqrt{3} \Rightarrow \sin\theta = \tfrac{\sqrt{3}}{2}$, $\theta = \tfrac{\pi}{3}$.</p>
+          <p>$\sqrt{4 - 4\sin^2\theta} = 2\cos\theta$, so the integrand becomes $2\cos\theta \times 2\cos\theta = 4\cos^2\theta$.</p>
+          <p>$\displaystyle\int_0^{\pi/3}4\cos^2\theta\,d\theta = \int_0^{\pi/3}2(1 + \cos 2\theta)\,d\theta = \Big[2\theta + \sin 2\theta\Big]_0^{\pi/3}$</p>
+          <p>$= \dfrac{2\pi}{3} + \sin\dfrac{2\pi}{3} = \dfrac{2\pi}{3} + \dfrac{\sqrt{3}}{2}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Use the substitution $u = e^x + 1$ to show that $\displaystyle\int_0^{\ln 3}\frac{e^{2x}}{e^x + 1}\,dx = 2 - \ln 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$du = e^x\,dx$, and $e^{2x} = e^x \cdot e^x = (u - 1)e^x$.</p>
+          <p>Limits: $x = 0 \Rightarrow u = 2$; $x = \ln 3 \Rightarrow u = 4$.</p>
+          <p>$\displaystyle\int_2^4 \frac{u-1}{u}\,du = \int_2^4\left(1 - \frac{1}{u}\right)du = \Big[u - \ln u\Big]_2^4$</p>
+          <p>$= (4 - \ln 4) - (2 - \ln 2) = 2 - \ln 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The curve $C$ has equation $y = \dfrac{x^3}{\sqrt{1 + x^2}}$.</p>
+      <p>(a) Show that the substitution $u = 1 + x^2$ transforms $\displaystyle\int_0^{\sqrt{3}}\frac{x^3}{\sqrt{1+x^2}}\,dx$ into $\displaystyle\frac{1}{2}\int_1^4\frac{u-1}{\sqrt{u}}\,du$. &nbsp; (b) Hence find the exact area of the region bounded by $C$, the $x$-axis and the line $x = \sqrt{3}$. &nbsp; (c) A student claims that $\displaystyle\int_{-\sqrt{3}}^{\sqrt{3}}\frac{x^3}{\sqrt{1+x^2}}\,dx$ gives the total area between $C$ and the $x$-axis for $-\sqrt{3} \leqslant x \leqslant \sqrt{3}$. Explain why the student is wrong and state the correct total area.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $du = 2x\,dx$, so $x\,dx = \tfrac{1}{2}du$. Write $x^3\,dx = x^2 \cdot x\,dx = (u - 1)\cdot\tfrac{1}{2}du$.</p>
+          <p>Limits: $x = 0 \Rightarrow u = 1$; $x = \sqrt{3} \Rightarrow u = 4$. So the integral is $\tfrac{1}{2}\displaystyle\int_1^4 \frac{u-1}{\sqrt{u}}\,du$ ✓</p>
+          <p><strong>(b)</strong> $\tfrac{1}{2}\displaystyle\int_1^4\left(u^{1/2} - u^{-1/2}\right)du = \tfrac{1}{2}\Big[\tfrac{2}{3}u^{3/2} - 2u^{1/2}\Big]_1^4$</p>
+          <p>$= \tfrac{1}{2}\left[\left(\tfrac{16}{3} - 4\right) - \left(\tfrac{2}{3} - 2\right)\right] = \tfrac{1}{2} \times \tfrac{8}{3} = \tfrac{4}{3}$</p>
+          <p>The curve is above the axis for $x &gt; 0$, so the area is $\tfrac{4}{3}$.</p>
+          <p><strong>(c)</strong> Replacing $x$ by $-x$ changes the sign of $y$, so the curve has rotational symmetry about the origin. The region for $-\sqrt{3} \leqslant x \leqslant 0$ lies <em>below</em> the axis and its integral is $-\tfrac{4}{3}$; the two parts cancel to give $0$.</p>
+          <p>The total area is $\tfrac{4}{3} + \tfrac{4}{3} = \tfrac{8}{3}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Integration by Substitution &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

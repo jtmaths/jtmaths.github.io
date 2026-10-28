@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The R cos(x + a) Form &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌊 The R cos(x + a) Form</h1>
+  <p>A Level Maths Year 2 · Trigonometry</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Two Waves Make One</div>
+<div class="section-body">
+
+  <div class="concept">
+    Any expression $a\cos\theta + b\sin\theta$ is a single sine wave in disguise — stretched to amplitude $R$ and shifted by an angle $\alpha$. Writing it as $R\cos(\theta \pm \alpha)$ or $R\sin(\theta \pm \alpha)$ turns a hard equation with two trig functions into an easy one with one.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The four forms (with $R > 0$ and $\alpha$ acute)</div>
+    $R\sin(\theta + \alpha) = R\sin\theta\cos\alpha + R\cos\theta\sin\alpha$<br>
+    $R\sin(\theta - \alpha) = R\sin\theta\cos\alpha - R\cos\theta\sin\alpha$<br>
+    $R\cos(\theta + \alpha) = R\cos\theta\cos\alpha - R\sin\theta\sin\alpha$<br>
+    $R\cos(\theta - \alpha) = R\cos\theta\cos\alpha + R\sin\theta\sin\alpha$
+  </div>
+
+  <div class="tip">
+    <strong>Choosing the form.</strong> Match the signs. $3\sin\theta + 4\cos\theta$ (both $+$, $\sin$ first) suits $R\sin(\theta + \alpha)$. $\cos\theta - \sqrt3\sin\theta$ suits $R\cos(\theta + \alpha)$, because $\cos(\theta + \alpha)$ has a minus. With the right choice, both $R\cos\alpha$ and $R\sin\alpha$ come out positive and $\alpha$ is acute.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – FINDING R AND ALPHA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Finding $R$ and $\alpha$</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Expand the chosen form using the compound angle formula.</li>
+    <li>Compare coefficients of $\sin\theta$ and $\cos\theta$ to get $R\cos\alpha$ and $R\sin\alpha$.</li>
+    <li>Square and add: $R = \sqrt{a^2 + b^2}$.</li>
+    <li>Divide: $\tan\alpha = \dfrac{R\sin\alpha}{R\cos\alpha}$.</li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">The key results</div>
+    $R = \sqrt{a^2 + b^2} \qquad\qquad \tan\alpha = \dfrac{R\sin\alpha}{R\cos\alpha}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — $R\sin(x + \alpha)$ in degrees</div>
+    <div class="example-body">
+      <p>Express $3\sin x + 4\cos x$ in the form $R\sin(x + \alpha)$, where $R > 0$ and $0^\circ < \alpha < 90^\circ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R\sin(x + \alpha) = R\sin x\cos\alpha + R\cos x\sin\alpha$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Compare: $R\cos\alpha = 3$ and $R\sin\alpha = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$R = \sqrt{3^2 + 4^2} = 5$. &nbsp;$\tan\alpha = \tfrac43 \Rightarrow \alpha = 53.13^\circ$ (2 d.p.).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3\sin x + 4\cos x \equiv 5\sin(x + 53.13^\circ)$.</span></div>
+      <div class="warn">$\tan\alpha = \dfrac{R\sin\alpha}{R\cos\alpha}$, so here it is $\tfrac43$, <em>not</em> $\tfrac34$. Write down which coefficient matches $\sin\alpha$ before dividing.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — An exact form in radians</div>
+    <div class="example-body">
+      <p>Express $\sqrt3\cos\theta + \sin\theta$ in the form $R\cos(\theta - \alpha)$, with $0 < \alpha < \tfrac{\pi}{2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R\cos(\theta - \alpha) = R\cos\theta\cos\alpha + R\sin\theta\sin\alpha$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$R\cos\alpha = \sqrt3$, &nbsp;$R\sin\alpha = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$R = \sqrt{3 + 1} = 2$; &nbsp;$\tan\alpha = \tfrac{1}{\sqrt3} \Rightarrow \alpha = \tfrac{\pi}{6}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\sqrt3\cos\theta + \sin\theta \equiv 2\cos\left(\theta - \tfrac{\pi}{6}\right)$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – MAXIMUM AND MINIMUM VALUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Maximum and Minimum Values</div>
+<div class="section-body">
+
+  <div class="concept">
+    $\sin$ and $\cos$ always lie between $-1$ and $1$. So $R\sin(\theta + \alpha)$ has <strong>maximum $R$</strong> and <strong>minimum $-R$</strong>, and you find where they happen by setting the bracket to the angle where $\sin$ (or $\cos$) is $\pm1$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Maximum, minimum and where they occur</div>
+    <div class="example-body">
+      <p>Using Worked Example 1, find the maximum and minimum values of $3\sin x + 4\cos x$, and the values of $x$ between $0^\circ$ and $360^\circ$ where they occur.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5\sin(x + 53.13^\circ)$ has maximum $5$ when $x + 53.13^\circ = 90^\circ$, i.e. $x = 36.87^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Minimum $-5$ when $x + 53.13^\circ = 270^\circ$, i.e. $x = 216.87^\circ$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A reciprocal</div>
+    <div class="example-body">
+      <p>Find the greatest and least values of $\dfrac{10}{15 + 3\cos x - 4\sin x}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3\cos x - 4\sin x = R\cos(x + \alpha)$ with $R\cos\alpha = 3$, $R\sin\alpha = 4$: $\;R = 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The denominator $15 + 5\cos(x + \alpha)$ ranges from $10$ to $20$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The fraction is greatest when the denominator is <em>least</em>: $\tfrac{10}{10} = 1$. Least value: $\tfrac{10}{20} = \tfrac12$.</span></div>
+      <div class="warn">A small denominator gives a large fraction. Swapping maximum and minimum here is a very common slip.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – SOLVING EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Solving Equations</div>
+<div class="section-body">
+
+  <p>To solve $a\cos\theta + b\sin\theta = c$: write the left side as a single function, then solve as in Year 1 — remembering to <strong>shift the interval</strong> by $\alpha$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Solving in degrees</div>
+    <div class="example-body">
+      <p>Solve $3\sin x + 4\cos x = 2$ for $0^\circ \leqslant x \leqslant 360^\circ$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5\sin(x + 53.13^\circ) = 2 \Rightarrow \sin(x + 53.13^\circ) = 0.4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>New interval: $53.13^\circ \leqslant x + 53.13^\circ \leqslant 413.13^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\arcsin 0.4 = 23.58^\circ$ (too small), so use $180^\circ - 23.58^\circ = 156.42^\circ$ and $360^\circ + 23.58^\circ = 383.58^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Subtract $53.13^\circ$: $x = 103.3^\circ$ or $x = 330.4^\circ$ (1 d.p.).</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Exact solutions in radians</div>
+    <div class="example-body">
+      <p>Solve $\cos\theta - \sqrt3\sin\theta = 1$ for $0 \leqslant \theta \leqslant 2\pi$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R\cos(\theta + \alpha) = R\cos\theta\cos\alpha - R\sin\theta\sin\alpha$: &nbsp;$R\cos\alpha = 1$, $R\sin\alpha = \sqrt3$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$R = 2$, $\tan\alpha = \sqrt3 \Rightarrow \alpha = \tfrac{\pi}{3}$. Equation: $2\cos\left(\theta + \tfrac{\pi}{3}\right) = 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\cos\left(\theta + \tfrac{\pi}{3}\right) = \tfrac12$ with $\tfrac{\pi}{3} \leqslant \theta + \tfrac{\pi}{3} \leqslant \tfrac{7\pi}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\theta + \tfrac{\pi}{3} = \tfrac{\pi}{3}, \tfrac{5\pi}{3}, \tfrac{7\pi}{3}$, so $\theta = 0, \tfrac{4\pi}{3}, 2\pi$.</span></div>
+      <div class="tip">Check $\theta = 0$: $\cos 0 - \sqrt3\sin 0 = 1$ ✓. Solutions at the ends of the interval are easy to miss.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — With a double angle</div>
+    <div class="example-body">
+      <p>Show that $6\sin x\cos x + 8\cos^2 x$ can be written as $3\sin 2x + 4\cos 2x + 4$, and hence find its range.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$6\sin x\cos x = 3\sin 2x$ and $8\cos^2 x = 4(1 + \cos 2x) = 4\cos 2x + 4$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3\sin 2x + 4\cos 2x = 5\sin(2x + 53.13^\circ)$, which ranges from $-5$ to $5$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the expression ranges from $-1$ to $9$: &nbsp;$-1 \leqslant 6\sin x\cos x + 8\cos^2 x \leqslant 9$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Amplitude</h4><p>$R = \sqrt{a^2 + b^2}$</p></div>
+    <div class="ref-card"><h4>Angle</h4><p>$\tan\alpha = \dfrac{R\sin\alpha}{R\cos\alpha}$</p></div>
+    <div class="ref-card"><h4>Choosing the form</h4><p>Match signs so $\alpha$ is acute.</p></div>
+    <div class="ref-card"><h4>Max / min</h4><p>$\pm R$, when the bracket gives $\sin$ or $\cos = \pm1$.</p></div>
+    <div class="ref-card"><h4>Reciprocals</h4><p>Least denominator gives the greatest value.</p></div>
+    <div class="ref-card"><h4>Equations</h4><p>Shift the interval by $\alpha$ before solving.</p></div>
+    <div class="ref-card"><h4>Double angles</h4><p>$a\cos 2x + b\sin 2x$ works the same way.</p></div>
+    <div class="ref-card"><h4>Accuracy</h4><p>Keep $\alpha$ to $2$ d.p. (degrees) or $3$–$4$ s.f. (radians).</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Express $4\sin x - 3\cos x$ in the form $R\sin(x - \alpha)$, with $R > 0$ and $0^\circ < \alpha < 90^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\sin(x - \alpha) = R\sin x\cos\alpha - R\cos x\sin\alpha$: &nbsp;$R\cos\alpha = 4$, $R\sin\alpha = 3$.</p>
+          <p>$R = 5$, $\tan\alpha = \tfrac34 \Rightarrow \alpha = 36.87^\circ$. &nbsp;$4\sin x - 3\cos x \equiv 5\sin(x - 36.87^\circ)$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Show that $\sin x + \cos x \equiv \sqrt2\sin\left(x + \tfrac{\pi}{4}\right)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\cos\alpha = 1$, $R\sin\alpha = 1$: $R = \sqrt2$, $\tan\alpha = 1 \Rightarrow \alpha = \tfrac{\pi}{4}$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the maximum value of $7\cos\theta + 24\sin\theta$ and the smallest positive value of $\theta$ (in degrees) at which it occurs.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\cos(\theta - \alpha)$: $R\cos\alpha = 7$, $R\sin\alpha = 24$, $R = 25$, $\tan\alpha = \tfrac{24}{7} \Rightarrow \alpha = 73.74^\circ$.</p>
+          <p>Maximum $25$ when $\theta - \alpha = 0$, i.e. $\theta = 73.7^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $\sin x + \cos x = 1$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sqrt2\sin\left(x + \tfrac{\pi}{4}\right) = 1 \Rightarrow \sin\left(x + \tfrac{\pi}{4}\right) = \tfrac{\sqrt2}{2}$, with $\tfrac{\pi}{4} \leqslant x + \tfrac{\pi}{4} \leqslant \tfrac{9\pi}{4}$.</p>
+          <p>$x + \tfrac{\pi}{4} = \tfrac{\pi}{4}, \tfrac{3\pi}{4}, \tfrac{9\pi}{4}$, so $x = 0, \tfrac{\pi}{2}, 2\pi$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $2\cos\theta + 5\sin\theta = 3$ for $0^\circ \leqslant \theta \leqslant 360^\circ$, to $1$ decimal place.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\cos(\theta - \alpha)$: $R\cos\alpha = 2$, $R\sin\alpha = 5$, $R = \sqrt{29}$, $\alpha = \arctan\tfrac52 = 68.20^\circ$.</p>
+          <p>$\cos(\theta - 68.20^\circ) = \tfrac{3}{\sqrt{29}}$, with $-68.20^\circ \leqslant \theta - 68.20^\circ \leqslant 291.80^\circ$.</p>
+          <p>$\arccos\tfrac{3}{\sqrt{29}} = 56.15^\circ$, so $\theta - 68.20^\circ = 56.15^\circ$ or $-56.15^\circ$.</p>
+          <p>$\theta = 124.3^\circ$ or $12.1^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Express $5\cos x - 12\sin x$ in the form $R\cos(x + \alpha)$ with $0 < \alpha < \tfrac{\pi}{2}$, and hence state the greatest and least values of $\dfrac{1}{20 + 5\cos x - 12\sin x}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\cos\alpha = 5$, $R\sin\alpha = 12$: $R = 13$, $\alpha = \arctan\tfrac{12}{5} = 1.176$ rad (4 s.f.).</p>
+          <p>The denominator $20 + 13\cos(x + 1.176)$ ranges from $7$ to $33$.</p>
+          <p>Greatest value $\tfrac17$, least value $\tfrac{1}{33}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Write $\sqrt3\sin x - \cos x$ in the form $R\sin(x - \alpha)$, and hence solve $\sqrt3\sin x - \cos x = \sqrt2$ for $0 \leqslant x \leqslant 2\pi$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$R\cos\alpha = \sqrt3$, $R\sin\alpha = 1$: $R = 2$, $\alpha = \tfrac{\pi}{6}$.</p>
+          <p>$\sin\left(x - \tfrac{\pi}{6}\right) = \tfrac{\sqrt2}{2}$, with $-\tfrac{\pi}{6} \leqslant x - \tfrac{\pi}{6} \leqslant \tfrac{11\pi}{6}$.</p>
+          <p>$x - \tfrac{\pi}{6} = \tfrac{\pi}{4}$ or $\tfrac{3\pi}{4}$, so $x = \tfrac{5\pi}{12}$ or $\tfrac{11\pi}{12}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Solve $3\cos 2x + 4\sin 2x = 2.5$ for $0 \leqslant x \leqslant \pi$, to $3$ significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5\cos(2x - \alpha)$ with $\alpha = \arctan\tfrac43 = 0.9273$.</p>
+          <p>$\cos(2x - 0.9273) = 0.5$, with $-0.9273 \leqslant 2x - 0.9273 \leqslant 2\pi - 0.9273 = 5.356$.</p>
+          <p>$2x - 0.9273 = \tfrac{\pi}{3} = 1.0472$ or $2\pi - \tfrac{\pi}{3} = 5.2360$ ($-1.0472$ is outside the interval).</p>
+          <p>$2x = 1.9745$ or $6.1633$, so $x = 0.987$ or $3.08$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the range of $\mathrm{f}(x) = 2\sin x + 2\sqrt3\cos x - 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2\sin x + 2\sqrt3\cos x$: $R = \sqrt{4 + 12} = 4$.</p>
+          <p>So $\mathrm{f}(x) = 4\sin(x + \alpha) - 1$ (with $\alpha = \tfrac{\pi}{3}$), which ranges from $-5$ to $3$: &nbsp;$-5 \leqslant \mathrm{f}(x) \leqslant 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>The temperature $T$ °C of a sample in a laboratory is modelled by $T = 20 + 3\cos\left(\dfrac{\pi t}{12}\right) + 4\sin\left(\dfrac{\pi t}{12}\right)$, where $t$ is the time in hours after midnight, $0 \leqslant t \leqslant 24$.</p>
+      <p>(a) Write $3\cos\left(\frac{\pi t}{12}\right) + 4\sin\left(\frac{\pi t}{12}\right)$ in the form $R\cos\left(\frac{\pi t}{12} - \alpha\right)$. &nbsp; (b) Find the maximum and minimum temperatures and the times at which they occur. &nbsp; (c) Find the times at which the temperature is $22$ °C.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $R\cos\alpha = 3$, $R\sin\alpha = 4$: $R = 5$, $\alpha = \arctan\tfrac43 = 0.9273$ rad. &nbsp;$T = 20 + 5\cos\left(\tfrac{\pi t}{12} - 0.9273\right)$.</p>
+          <p><strong>(b)</strong> Maximum $25$ °C when $\tfrac{\pi t}{12} = 0.9273$, i.e. $t = \dfrac{12 \times 0.9273}{\pi} = 3.54$ h (about 03:33).</p>
+          <p>Minimum $15$ °C when $\tfrac{\pi t}{12} - 0.9273 = \pi$, i.e. $t = 15.54$ h (about 15:33).</p>
+          <p><strong>(c)</strong> $5\cos\left(\tfrac{\pi t}{12} - 0.9273\right) = 2 \Rightarrow \cos(\ldots) = 0.4$, with $-0.9273 \leqslant \tfrac{\pi t}{12} - 0.9273 \leqslant 5.356$.</p>
+          <p>$\arccos 0.4 = 1.1593$. Solutions in the interval: $1.1593$ and $2\pi - 1.1593 = 5.1239$ ($-1.1593$ is outside).</p>
+          <p>$t = \dfrac{12(1.1593 + 0.9273)}{\pi} = 7.97$ h and $t = \dfrac{12(5.1239 + 0.9273)}{\pi} = 23.11$ h — about 07:58 and 23:07.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The R cos(x + a) Form &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choosing a Distribution &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Choosing a Distribution</h1>
+  <p>A Level Maths Year 2 · Statistics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHICH DISTRIBUTION?
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Binomial or Normal?</div>
+<div class="section-body">
+
+  <p>By the end of the course you have two distributions to choose from. The DfE content (area N) asks you to <strong>select an appropriate probability distribution</strong> for a context, with appropriate reasoning — so the choice itself earns marks.</p>
+
+  <table>
+    <tr><th></th><th>Binomial $\mathrm{B}(n,\,p)$</th><th>Normal $\mathrm{N}(\mu,\,\sigma^2)$</th></tr>
+    <tr><td><strong>Type</strong></td><td>Discrete — counts $0, 1, \ldots, n$</td><td>Continuous — measurements</td></tr>
+    <tr><td><strong>Conditions</strong></td><td>Fixed number of trials $n$; each trial success/failure; trials independent; constant $p$</td><td>Symmetrical, bell-shaped data clustered about the mean</td></tr>
+    <tr><td><strong>Mean</strong></td><td>$np$</td><td>$\mu$</td></tr>
+    <tr><td><strong>Variance</strong></td><td>$np(1-p)$</td><td>$\sigma^2$</td></tr>
+    <tr><td><strong>Typical context</strong></td><td>Number of defective items in a sample; number of correct guesses</td><td>Heights, masses, times, measurement errors</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Choosing a model</div>
+    <div class="example-body">
+      <p>Suggest a suitable distribution for each variable, or explain why neither is suitable.</p>
+      <p>(a) The number of faulty bulbs in a box of $24$. (b) The volume of drink in a $330$ ml can. (c) The number of rolls of a die until the first six. (d) The time a customer waits in a queue.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Binomial $\mathrm{B}(24,\,p)$ — fixed $n$, each bulb faulty or not; assume bulbs are independent with the same $p$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) Normal — a continuous measurement, likely to vary symmetrically about the target.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(c) Neither: the number of trials is not fixed, so it is not binomial (and it is discrete, so not normal).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(d) Probably neither: waiting times are continuous but usually strongly <em>positively skewed</em> (many short waits, a few very long ones), and cannot be negative.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – NORMAL APPROXIMATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Normal Approximation to the Binomial</div>
+<div class="section-body">
+
+  <p>When $n$ is large, binomial probabilities are tedious to calculate and the bar chart of $\mathrm{B}(n,\,p)$ looks very like a normal curve. We can then approximate it by a normal distribution with the <strong>same mean and variance</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">Normal approximation</div>
+    If $X \sim \mathrm{B}(n,\,p)$ with $n$ large and $p$ close to $\tfrac12$, then<br>
+    $X \approx Y$ where $Y \sim \mathrm{N}\big(np,\ np(1-p)\big)$<br>
+    Rule of thumb: &nbsp; $np > 5$ &nbsp;and&nbsp; $nq > 5$, where $q = 1 - p$
+  </div>
+
+  <div class="concept">
+    <strong>Why $p$ near $\tfrac12$?</strong> $\mathrm{B}(n,\,p)$ is symmetrical only when $p = \tfrac12$. If $p$ is near $0$ or $1$ the distribution is skewed and you need a larger $n$ before the bell shape appears. The conditions $np > 5$ and $nq > 5$ make sure the mean is far enough from both ends ($0$ and $n$).
+  </div>
+
+  <div class="tip">
+    <strong>Why bother, with a calculator?</strong> Modern calculators give exact binomial probabilities, so the approximation is now mainly examined to show you understand the link between the distributions and can apply a continuity correction. Use the exact binomial whenever a question does not ask for an approximation.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CONTINUITY CORRECTION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Continuity Correction</div>
+<div class="section-body">
+
+  <p>A binomial variable takes whole-number values; a normal variable is continuous. Each integer $k$ is represented by the interval from $k - 0.5$ to $k + 0.5$. Think of each binomial bar as having width $1$, centred on $k$.</p>
+
+  <table>
+    <tr><th>Binomial $X$</th><th>Integers included</th><th>Normal $Y$</th></tr>
+    <tr><td>$\mathrm{P}(X \leqslant 20)$</td><td>$\ldots, 19, 20$</td><td>$\mathrm{P}(Y < 20.5)$</td></tr>
+    <tr><td>$\mathrm{P}(X < 20)$</td><td>$\ldots, 18, 19$</td><td>$\mathrm{P}(Y < 19.5)$</td></tr>
+    <tr><td>$\mathrm{P}(X \geqslant 20)$</td><td>$20, 21, \ldots$</td><td>$\mathrm{P}(Y > 19.5)$</td></tr>
+    <tr><td>$\mathrm{P}(X > 20)$</td><td>$21, 22, \ldots$</td><td>$\mathrm{P}(Y > 20.5)$</td></tr>
+    <tr><td>$\mathrm{P}(X = 20)$</td><td>$20$</td><td>$\mathrm{P}(19.5 < Y < 20.5)$</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>The safe method:</strong> first list the integers you want, then go half a unit beyond the outermost ones. Do not try to memorise "add" or "subtract" rules.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Approximation compared with the exact value</div>
+    <div class="example-body">
+      <p>$X \sim \mathrm{B}(60,\ 0.4)$. Use a normal approximation to find (a) $\mathrm{P}(X \leqslant 20)$, (b) $\mathrm{P}(X = 25)$, (c) $\mathrm{P}(20 < X < 30)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Check: $np = 24 > 5$, $nq = 36 > 5$ ✓</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\mu = 24$, $\sigma^2 = 60 \times 0.4 \times 0.6 = 14.4$, so $Y \sim \mathrm{N}(24,\ 14.4)$ and $\sigma = 3.795$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(a) $\mathrm{P}(Y < 20.5) = \Phi\!\left(\dfrac{20.5 - 24}{3.795}\right) = \Phi(-0.922) = 0.178$ &nbsp;(exact: $0.179$)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(b) $\mathrm{P}(24.5 < Y < 25.5) = 0.101$ &nbsp;(exact: $0.100$)</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>(c) $20 < X < 30$ means $21, \ldots, 29$, so $\mathrm{P}(20.5 < Y < 29.5) = 0.748$ &nbsp;(exact: $0.747$)</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A larger sample</div>
+    <div class="example-body">
+      <p>$30\%$ of customers at a café order a cake. Use a suitable approximation to find the probability that, of $200$ customers, at least $70$ order a cake.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$X \sim \mathrm{B}(200,\ 0.3)$: $np = 60$, $nq = 140$, both $> 5$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$Y \sim \mathrm{N}(60,\ 42)$, $\sigma = 6.481$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(X \geqslant 70) \approx \mathrm{P}(Y > 69.5) = 1 - \Phi\!\left(\dfrac{9.5}{6.481}\right) = 1 - \Phi(1.466) = 0.0713$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>(The exact binomial value is $0.0728$.)</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Variance, not standard deviation.</strong> $\mathrm{N}(24,\ 14.4)$ has $\sigma = \sqrt{14.4}$. Writing $\mathrm{N}(24,\ 3.79)$ is wrong unless you clearly mean $\mathrm{N}(24,\ 3.79^2)$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – CHECKING A MODEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Checking a Model Against Data</div>
+<div class="section-body">
+
+  <p>A model is only useful if it describes reality. Ways to judge a model:</p>
+
+  <ul class="steps">
+    <li><span><strong>Compare frequencies:</strong> calculate the frequencies the model predicts and set them beside the observed ones.</span></li>
+    <li><span><strong>Compare mean and variance:</strong> for a binomial model the variance $np(1-p)$ must be <em>less</em> than the mean $np$. If the data's variance is much larger, the binomial is a poor fit.</span></li>
+    <li><span><strong>Normal checks:</strong> is the data roughly symmetrical? Is about $68\%$ within $1$ s.d. and $95\%$ within $2$ s.d. of the mean? Does the model give a meaningful probability to impossible values (e.g. negative times)?</span></li>
+    <li><span><strong>Question the assumptions:</strong> are trials really independent? Is $p$ really constant?</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Testing a binomial model</div>
+    <div class="example-body">
+      <p>A supplier claims $70\%$ of its seeds germinate. A gardener plants $6$ seeds in each of $80$ trays and counts how many germinate.</p>
+      <table>
+        <tr><th>Germinated</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+        <tr><th>Trays</th><td>0</td><td>1</td><td>3</td><td>9</td><td>22</td><td>28</td><td>17</td></tr>
+      </table>
+      <p>Compare the data with $\mathrm{B}(6,\ 0.7)$ and with a binomial model using the observed proportion.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Expected frequencies under $\mathrm{B}(6,\ 0.7)$ are $80 \times \mathrm{P}(X = k)$: &nbsp; $0.1,\ 0.8,\ 4.8,\ 14.8,\ 25.9,\ 24.2,\ 9.4$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Observed values are lower at $2$–$4$ and higher at $5$–$6$ (notably $17$ against $9.4$): more seeds germinate than the claim suggests.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Observed proportion: $\dfrac{1(1) + 2(3) + 3(9) + 4(22) + 5(28) + 6(17)}{480} = \dfrac{364}{480} = 0.758$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Under $\mathrm{B}(6,\ 0.758)$ the expected frequencies are $0.0,\ 0.3,\ 2.4,\ 9.8,\ 23.2,\ 29.1,\ 15.2$ — very close to the observed values.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>A binomial model is a good fit, but with $p \approx 0.76$ rather than the claimed $0.7$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Is a normal model sensible?</div>
+    <div class="example-body">
+      <p>The times customers spend waiting on a helpline have mean $4.2$ minutes and standard deviation $3.8$ minutes. Comment on modelling the waiting time by $\mathrm{N}(4.2,\ 3.8^2)$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Under this model, $\mathrm{P}(T < 0) = \Phi\!\left(\dfrac{0 - 4.2}{3.8}\right) = \Phi(-1.105) = 0.135$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>That is a $13.5\%$ chance of a negative waiting time, which is impossible.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The mean is only about $1.1$ standard deviations above $0$, which suggests the data are positively skewed. A normal model is not appropriate.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Binomial</h4><p>Discrete count; fixed $n$, independent trials, constant $p$.</p></div>
+    <div class="ref-card"><h4>Normal</h4><p>Continuous, symmetrical, bell-shaped.</p></div>
+    <div class="ref-card"><h4>Approximation</h4><p>$\mathrm{B}(n,p) \approx \mathrm{N}\big(np,\ np(1-p)\big)$</p></div>
+    <div class="ref-card"><h4>Conditions</h4><p>$n$ large, $p$ near $\tfrac12$; $np > 5$ and $nq > 5$.</p></div>
+    <div class="ref-card"><h4>Continuity correction</h4><p>Integer $k$ becomes the interval $k \pm 0.5$.</p></div>
+    <div class="ref-card"><h4>$\leqslant k$ / $\geqslant k$</h4><p>$Y < k + 0.5$ &nbsp;/&nbsp; $Y > k - 0.5$</p></div>
+    <div class="ref-card"><h4>$&lt; k$ / $&gt; k$</h4><p>$Y < k - 0.5$ &nbsp;/&nbsp; $Y > k + 0.5$</p></div>
+    <div class="ref-card"><h4>Binomial check</h4><p>Variance should be less than mean; compare expected and observed frequencies.</p></div>
+    <div class="ref-card"><h4>Normal check</h4><p>Symmetry; $68\%$ / $95\%$ rule; no impossible values.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions, from routine to exam-style. Give answers to $3$ significant figures unless told otherwise.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>State, with a reason, whether a binomial or normal model is more suitable for: (a) the number of left-handed students in a class of $30$; (b) the lengths of leaves from an oak tree.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Binomial $\mathrm{B}(30,\,p)$: a count from a fixed number of people, each left-handed or not, assumed independent with constant $p$.</p>
+          <p><strong>(b)</strong> Normal: length is a continuous measurement likely to be symmetrical about a mean.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>For which of these is a normal approximation suitable? (a) $\mathrm{B}(40,\ 0.1)$ &nbsp; (b) $\mathrm{B}(40,\ 0.45)$ &nbsp; (c) $\mathrm{B}(500,\ 0.02)$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $np = 4 < 5$: not suitable — the distribution is too skewed.</p>
+          <p><strong>(b)</strong> $np = 18$, $nq = 22$: suitable.</p>
+          <p><strong>(c)</strong> $np = 10$, $nq = 490$: the rule of thumb is satisfied, so it is acceptable, though $p$ is far from $\tfrac12$ and the approximation will be less accurate in the tails.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(n,\,p)$ is approximated by $Y$. Write the continuity-corrected version of (a) $\mathrm{P}(X < 15)$, (b) $\mathrm{P}(X \geqslant 15)$, (c) $\mathrm{P}(X = 15)$, (d) $\mathrm{P}(12 \leqslant X < 18)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $X \leqslant 14$: $\mathrm{P}(Y < 14.5)$</p>
+          <p><strong>(b)</strong> $X = 15, 16, \ldots$: $\mathrm{P}(Y > 14.5)$</p>
+          <p><strong>(c)</strong> $\mathrm{P}(14.5 < Y < 15.5)$</p>
+          <p><strong>(d)</strong> $X = 12, \ldots, 17$: $\mathrm{P}(11.5 < Y < 17.5)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A fair coin is tossed $50$ times. Use a normal approximation to find the probability of at least $30$ heads.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$X \sim \mathrm{B}(50,\ 0.5)$; $\mu = 25$, $\sigma^2 = 12.5$, $\sigma = 3.536$.</p>
+          <p>$\mathrm{P}(X \geqslant 30) \approx \mathrm{P}(Y > 29.5) = 1 - \Phi(1.273) = 0.102$</p>
+          <p>(Exact: $0.101$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(100,\ 0.35)$. Use a normal approximation to find $\mathrm{P}(30 \leqslant X \leqslant 40)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mu = 35$, $\sigma^2 = 22.75$, $\sigma = 4.770$.</p>
+          <p>$\mathrm{P}(29.5 < Y < 40.5) = \Phi(1.153) - \Phi(-1.153) = 0.751$</p>
+          <p>(Exact: $0.751$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(80,\ 0.6)$. Use a normal approximation to estimate $\mathrm{P}(X = 50)$, and compare with the exact value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mu = 48$, $\sigma^2 = 19.2$, $\sigma = 4.382$.</p>
+          <p>$\mathrm{P}(49.5 < Y < 50.5) = \Phi(0.571) - \Phi(0.342) = 0.0819$</p>
+          <p>Exact: $\binom{80}{50}(0.6)^{50}(0.4)^{30} = 0.0827$ — the approximation is good.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The number of cracked eggs in each of $50$ boxes of $10$ eggs is recorded.</p>
+      <table>
+        <tr><th>Cracked</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+        <tr><th>Boxes</th><td>22</td><td>8</td><td>5</td><td>4</td><td>3</td><td>3</td><td>2</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+      </table>
+      <p>The mean is $1.86$ and the variance is $5.60$. Explain why $\mathrm{B}(10,\,p)$ is not a good model.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Estimate $p = 1.86 / 10 = 0.186$. A binomial with this $p$ has variance $10 \times 0.186 \times 0.814 = 1.51$, far less than the observed $5.60$.</p>
+          <p>Also $\mathrm{B}(10,\ 0.186)$ predicts about $50 \times 0.814^{10} = 6.4$ boxes with no cracks, against $22$ observed.</p>
+          <p>The eggs in a box are not independent: if a box is dropped, several eggs crack together. So the binomial assumption of independent trials fails.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>The masses of $200$ apples have mean $152$ g and standard deviation $11$ g. $136$ of the apples are between $141$ g and $163$ g, and $191$ are between $130$ g and $174$ g. Does a normal model seem reasonable?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$141$ to $163$ is $\mu \pm \sigma$: $\dfrac{136}{200} = 68\%$, matching the expected $68.3\%$.</p>
+          <p>$130$ to $174$ is $\mu \pm 2\sigma$: $\dfrac{191}{200} = 95.5\%$, matching the expected $95.4\%$.</p>
+          <p>A normal model $\mathrm{N}(152,\ 11^2)$ seems reasonable (a histogram would confirm symmetry).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>An airline sells $200$ tickets for a flight with $190$ seats. Each passenger independently turns up with probability $0.92$. (a) Use a normal approximation to find the probability that more than $190$ passengers turn up. (b) The exact binomial probability is $0.0374$. Explain why the approximation is not very accurate here.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $X \sim \mathrm{B}(200,\ 0.92)$: $np = 184$, $nq = 16$, $\sigma^2 = 14.72$, $\sigma = 3.837$.</p>
+          <p>$\mathrm{P}(X > 190) \approx \mathrm{P}(Y > 190.5) = 1 - \Phi(1.694) = 0.0451$</p>
+          <p><strong>(b)</strong> $p = 0.92$ is far from $\tfrac12$, so the binomial is negatively skewed (it cannot exceed $200$, only $16$ above the mean). The symmetrical normal curve overestimates the upper tail.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A multiple-choice test has $40$ questions, each with $4$ options. A student guesses every answer at random. Let $X$ be the number correct.</p>
+      <p>(a) State the distribution of $X$ and give its mean and variance. (b) Explain why a normal approximation is suitable. (c) Use it to estimate $\mathrm{P}(X \geqslant 15)$. (d) The examiner wants the probability of passing by guessing to be less than $5\%$. Using the approximation, find the smallest suitable pass mark, and check it with the exact binomial distribution.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $X \sim \mathrm{B}(40,\ 0.25)$; mean $10$, variance $40 \times 0.25 \times 0.75 = 7.5$.</p>
+          <p><strong>(b)</strong> $np = 10 > 5$ and $nq = 30 > 5$.</p>
+          <p><strong>(c)</strong> $Y \sim \mathrm{N}(10,\ 7.5)$, $\sigma = 2.739$. $\mathrm{P}(Y > 14.5) = 1 - \Phi(1.643) = 0.0502$.</p>
+          <p><strong>(d)</strong> Need $\mathrm{P}(X \geqslant k) < 0.05$. From (c), $k = 15$ gives $0.0502$ — just too big.</p>
+          <p>$k = 16$: $\mathrm{P}(Y > 15.5) = 1 - \Phi(2.008) = 0.0223 < 0.05$ ✓. The pass mark should be $16$.</p>
+          <p>Exact check: $\mathrm{P}(X \geqslant 15) = 0.0544$ and $\mathrm{P}(X \geqslant 16) = 0.0262$, so $16$ is confirmed.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Choosing a Distribution &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

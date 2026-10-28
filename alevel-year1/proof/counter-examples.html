@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disproof by Counter-example &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>❌ Disproof by Counter-example</h1>
+  <p>A Level Maths Year 1 · Proof</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – WHAT A COUNTER-EXAMPLE IS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> What a Counter-example Is</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>counter-example</strong> is a single case that satisfies all the conditions of a statement but for which the conclusion is false. One counter-example is enough to prove that a general statement is <strong>false</strong>.
+  </div>
+
+  <p>Proving and disproving are not equally hard. To prove "for all $n$, …" you need a general argument that works for every $n$. To <em>disprove</em> it, you need just <em>one</em> value of $n$ where it fails.</p>
+
+  <div class="formula-box">
+    <div class="label">The logic of disproof</div>
+    Claim: "For every $x$ in a set, $P(x)$ is true."<br>
+    Disproof: "Here is one particular $x$ in the set for which $P(x)$ is false."
+  </div>
+
+  <table>
+    <tr><th></th><th>To show it is true</th><th>To show it is false</th></tr>
+    <tr><td><strong>"For all …"</strong></td><td>A general proof (deduction or exhaustion)</td><td>One counter-example</td></tr>
+    <tr><td><strong>"There exists …"</strong></td><td>One example</td><td>A general proof that no case works</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Examples that work prove nothing.</strong> Showing that a claim holds for $n = 1, 2, 3, \dots, 100$ does not prove it. The statement "$n^2 + n + 41$ is prime" is true for $n = 1$ to $39$ — and false for $n = 40$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHERE TO LOOK
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Where to Look for a Counter-example</div>
+<div class="section-body">
+
+  <p>Many false claims are written by someone who only pictured positive whole numbers bigger than $1$. The values below break such claims surprisingly often — try them first.</p>
+
+  <table>
+    <tr><th>Try…</th><th>Because…</th><th>Breaks the claim…</th></tr>
+    <tr><td>$0$</td><td>multiplying by it, or dividing by it, behaves unusually</td><td>"$x^2 &gt; 0$ for all real $x$"</td></tr>
+    <tr><td>$1$</td><td>$1^n = 1$, and $1$ is neither prime nor composite</td><td>"$x^2 &gt; x$ for all $x &gt; 0$"</td></tr>
+    <tr><td>Negative numbers</td><td>squaring changes the order; inequalities reverse</td><td>"If $a &gt; b$ then $a^2 &gt; b^2$"</td></tr>
+    <tr><td>Fractions between $0$ and $1$</td><td>powers make them <em>smaller</em></td><td>"$x^3 \geqslant x$ for all $x &gt; 0$"</td></tr>
+    <tr><td>$2$</td><td>the only even prime</td><td>"All primes are odd"</td></tr>
+    <tr><td>Squares, multiples of the constant</td><td>they make a formula factorise</td><td>"$n^2 - n + 11$ is always prime"</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Look at the structure.</strong> A formula like $n^2 + n + c$ will be a multiple of $c$ when $n = c$ (since $c^2 + c + c = c(c + 2)$). Spotting <em>why</em> a claim might fail is faster than trying random numbers.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A fraction breaks an inequality</div>
+    <div class="example-body">
+      <p>Disprove the statement "$x^2 &gt; x$ for all real numbers $x$."</p>
+      <div class="step-row"><span class="arrow">①</span><span>Try a number between $0$ and $1$: let $x = \tfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x^2 = \tfrac14$, and $\tfrac14 &lt; \tfrac12$, so $x^2 &gt; x$ is false.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \tfrac12$ is a counter-example, so the statement is false. $\blacksquare$</span></div>
+      <div class="tip">$x = 1$ (where $x^2 = x$) and $x = 0$ are also counter-examples, because the statement uses the <em>strict</em> inequality $&gt;$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — The even prime</div>
+    <div class="example-body">
+      <p>Disprove "If $p$ is prime, then $p + 1$ is even."</p>
+      <div class="step-row"><span class="arrow">①</span><span>The claim is really "every prime is odd". The only even prime is $2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$p = 2$ is prime and $p + 1 = 3$ is odd.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So $p = 2$ is a counter-example and the statement is false. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Negative numbers and squaring</div>
+    <div class="example-body">
+      <p>Disprove "For all real $a$ and $b$, if $a &gt; b$ then $a^2 &gt; b^2$."</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take $a = 1$, $b = -2$. Then $a &gt; b$ ✓.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a^2 = 1$ and $b^2 = 4$, so $a^2 &lt; b^2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>The conditions hold but the conclusion fails, so the statement is false. $\blacksquare$</span></div>
+      <div class="warn">Make sure your counter-example satisfies the <strong>conditions</strong>. $a = -3$, $b = 2$ does not count — it fails the condition $a &gt; b$, so it tells you nothing about the claim.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A pattern that eventually fails</div>
+    <div class="example-body">
+      <p>Disprove "$n^2 - n + 11$ is prime for every positive integer $n$."</p>
+      <div class="step-row"><span class="arrow">①</span><span>Spot the structure: when $n = 11$ every term contains a factor of $11$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$11^2 - 11 + 11 = 121 = 11 \times 11$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$121$ is not prime, so $n = 11$ is a counter-example. $\blacksquare$</span></div>
+      <div class="tip">Checking $n = 1, 2, \dots, 10$ gives $11, 13, 17, 23, 31, 41, 53, 67, 83, 101$ — all prime. A pattern that holds for ten cases can still be false.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A famous false conjecture</div>
+    <div class="example-body">
+      <p>Disprove "If $n$ is prime, then $2^n - 1$ is prime."</p>
+      <div class="step-row"><span class="arrow">①</span><span>The small cases work: $n = 2, 3, 5, 7$ give $3, 7, 31, 127$, all prime.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Try $n = 11$, which is prime: $2^{11} - 1 = 2047$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2047 = 23 \times 89$, which is not prime.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n = 11$ is a counter-example, so the statement is false. $\blacksquare$</span></div>
+      <div class="tip">A calculator is fine for finding the factors, but your written answer must <strong>show</strong> them: "$2047 = 23 \times 89$". Just writing "not prime" is not enough.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Counter-examples in algebra</div>
+    <div class="example-body">
+      <p>Disprove "$\sqrt{a + b} = \sqrt{a} + \sqrt{b}$ for all positive $a$ and $b$."</p>
+      <div class="step-row"><span class="arrow">①</span><span>Choose square numbers so the arithmetic is easy: $a = 9$, $b = 16$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt{9 + 16} = \sqrt{25} = 5$, but $\sqrt{9} + \sqrt{16} = 3 + 4 = 7$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$5 \neq 7$, so the statement is false. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – WRITING IT UP
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Writing Up a Disproof</div>
+<div class="section-body">
+
+  <ol class="steps">
+    <li><span><strong>State the counter-example clearly.</strong> "Let $n = 11$."</span></li>
+    <li><span><strong>Check it meets the conditions.</strong> "$11$ is prime."</span></li>
+    <li><span><strong>Show the calculation</strong> that makes the conclusion fail. "$2^{11} - 1 = 2047 = 23 \times 89$."</span></li>
+    <li><span><strong>Conclude.</strong> "So $2^{11} - 1$ is not prime, and the statement is false."</span></li>
+  </ol>
+
+  <div class="formula-box">
+    <div class="label">A model answer</div>
+    "When $n = 11$: $11$ is prime, but $2^{11} - 1 = 2047 = 23 \times 89$ is not prime.<br>
+    Hence $n = 11$ is a counter-example and the statement is false."
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Disprove, then repair</div>
+    <div class="example-body">
+      <p>(a) Disprove "$x^3 &gt; x$ for all real $x$." &nbsp; (b) Prove that $x^3 &gt; x$ for all $x &gt; 1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $x = -2$: $x^3 = -8$ and $-8 &lt; -2$. So the statement is false.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $x^3 - x = x\left(x^2 - 1\right) = x(x - 1)(x + 1)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>If $x &gt; 1$ then $x &gt; 0$, $x - 1 &gt; 0$ and $x + 1 &gt; 0$, so the product is positive.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So $x^3 - x &gt; 0$, i.e. $x^3 &gt; x$, for all $x &gt; 1$. $\blacksquare$</span></div>
+      <div class="tip">Restricting the set of values is a common way to turn a false statement into a true one. The counter-example tells you which values to exclude.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – PROVE OR DISPROVE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Prove or Disprove?</div>
+<div class="section-body">
+
+  <p>Some questions do not tell you whether a statement is true. Test a few cases — especially the awkward ones — before deciding which way to go.</p>
+
+  <div class="concept">
+    <strong>Strategy.</strong> Try the "usual suspects" first. If one of them fails, you have a counter-example. If they all work and you can see a reason why, write a general proof.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Two similar-looking claims</div>
+    <div class="example-body">
+      <p>Prove or disprove each statement. &nbsp; (a) The sum of any three consecutive even numbers is a multiple of $6$. &nbsp; (b) The product of any three consecutive positive integers is a multiple of $4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) Let the numbers be $2n$, $2n + 2$, $2n + 4$ with $n \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Sum $= 6n + 6 = 6(n + 1)$, a multiple of $6$. <strong>True</strong>, proved.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) Try $1 \times 2 \times 3 = 6$, which is not a multiple of $4$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So the statement is <strong>false</strong>, with counter-example $1, 2, 3$.</span></div>
+      <div class="tip">For (b), $2 \times 3 \times 4 = 24$ <em>is</em> a multiple of $4$. That example does not help either way — but $1 \times 2 \times 3$ settles it. Keep looking until you find a failure or a reason.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Irrational numbers</div>
+    <div class="example-body">
+      <p>Disprove "The sum of two irrational numbers is always irrational."</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\sqrt{2}$ is irrational, and so is $-\sqrt{2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt{2} + \left(-\sqrt{2}\right) = 0$, and $0 = \tfrac01$ is rational.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>So the statement is false. $\blacksquare$</span></div>
+      <div class="tip">$\left(3 + \sqrt{2}\right) + \left(3 - \sqrt{2}\right) = 6$ is another counter-example. A counter-example need not be the simplest one — but simple ones are easiest to check.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>One is enough</h4><p>A single counter-example disproves a "for all" statement.</p></div>
+    <div class="ref-card"><h4>Not a proof</h4><p>Any number of examples that work prove nothing.</p></div>
+    <div class="ref-card"><h4>Usual suspects</h4><p>$0$, $1$, negatives, fractions, $2$.</p></div>
+    <div class="ref-card"><h4>Conditions</h4><p>Your example must satisfy every condition of the claim.</p></div>
+    <div class="ref-card"><h4>Show it</h4><p>Write the calculation and the factors — don't just say "fails".</p></div>
+    <div class="ref-card"><h4>Conclude</h4><p>"Hence … is a counter-example, so the statement is false."</p></div>
+    <div class="ref-card"><h4>Structure</h4><p>$n^2 + n + c$ is divisible by $c$ when $n = c$.</p></div>
+    <div class="ref-card"><h4>Repair</h4><p>Restrict the set of values to exclude the counter-example, then prove.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Disprove the statement "every odd number is prime."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$9$ is odd, but $9 = 3 \times 3$ is not prime.</p>
+          <p>So $9$ is a counter-example and the statement is false. ($1$ also works, since $1$ is not prime.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Disprove "$\sqrt{x^2} = x$ for all real $x$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $x = -3$. Then $\sqrt{x^2} = \sqrt{9} = 3$, but $x = -3$.</p>
+          <p>$3 \neq -3$, so $x = -3$ is a counter-example and the statement is false. (In fact $\sqrt{x^2} = |x|$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Disprove "$\dfrac{1}{x} &lt; x$ for all real $x \neq 0$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $x = \tfrac12$. Then $\dfrac1x = 2$, and $2 &gt; \tfrac12$.</p>
+          <p>So $\dfrac1x &lt; x$ is false when $x = \tfrac12$, and the statement is false.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Disprove "If $a^2 &gt; b^2$, then $a &gt; b$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $a = -3$, $b = 1$. Then $a^2 = 9 &gt; 1 = b^2$, so the condition holds.</p>
+          <p>But $a = -3 &lt; 1 = b$, so the conclusion fails. The statement is false.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Show that "$n^2 + 3n + 1$ is prime for every positive integer $n$" is false.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n = 1, 2, 3, 4, 5$ give $5, 11, 19, 29, 41$ — all prime.</p>
+          <p>$n = 6$: $36 + 18 + 1 = 55 = 5 \times 11$, which is not prime.</p>
+          <p>So $n = 6$ is a counter-example and the statement is false.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Disprove "$2^n + 1$ is prime for every positive integer $n$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$n = 1$: $3$, prime. $n = 2$: $5$, prime.</p>
+          <p>$n = 3$: $2^3 + 1 = 9 = 3 \times 3$, not prime.</p>
+          <p>So $n = 3$ is a counter-example and the statement is false.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A student says: "The sum of two prime numbers is never prime, because adding two odd numbers gives an even number." Find a counter-example, and explain the flaw in the student's reasoning.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2 + 3 = 5$, and $5$ is prime. So the statement is false.</p>
+          <p>The flaw: the student assumed every prime is odd. The prime $2$ is even, so "odd + odd" does not cover every pair of primes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Disprove "$(a + b)^2 = a^2 + b^2$ for all real $a$ and $b$." Then find all pairs $(a, b)$ for which it <em>is</em> true.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $a = b = 1$: $(1 + 1)^2 = 4$, but $1^2 + 1^2 = 2$. So the statement is false.</p>
+          <p>In general $(a+b)^2 = a^2 + 2ab + b^2$, so the equation holds exactly when $2ab = 0$.</p>
+          <p>It is true precisely when $a = 0$ or $b = 0$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Prove or disprove each statement. &nbsp; (a) The sum of any three consecutive integers is a multiple of $6$. &nbsp; (b) The product of any two consecutive integers is even.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> False. $2 + 3 + 4 = 9$, which is not a multiple of $6$. (The sum is always $3(n+1)$, a multiple of $3$, but only a multiple of $6$ when $n + 1$ is even.)</p>
+          <p><strong>(b)</strong> True. Let the integers be $n$ and $n + 1$.</p>
+          <p>If $n$ is even, $n = 2k$ and $n(n+1) = 2k(n+1)$ is even.</p>
+          <p>If $n$ is odd, $n + 1 = 2k$ is even, and $n(n+1) = 2kn$ is even.</p>
+          <p>Every integer is even or odd, so the product is always even.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A student claims that $x^2 \geqslant 4x - 3$ for all real values of $x$.</p>
+      <p>(a) Find a counter-example to the claim. &nbsp; (b) Find the complete set of values of $x$ for which the claim fails. &nbsp; (c) Prove that $x^2 \geqslant 4x - 4$ for all real $x$, and state when equality holds.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $x = 2$: $x^2 = 4$ and $4x - 3 = 5$. Since $4 &lt; 5$, the claim fails at $x = 2$.</p>
+          <p><strong>(b)</strong> The claim fails when $x^2 &lt; 4x - 3$, i.e. $x^2 - 4x + 3 &lt; 0$.</p>
+          <p>$(x - 1)(x - 3) &lt; 0$. The parabola opens upwards with roots $1$ and $3$, so it is negative between them.</p>
+          <p>The claim fails exactly for $1 &lt; x &lt; 3$, i.e. $\{x : 1 &lt; x &lt; 3\}$.</p>
+          <p><strong>(c)</strong> $x^2 - (4x - 4) = x^2 - 4x + 4 = (x - 2)^2 \geqslant 0$ for all real $x$.</p>
+          <p>So $x^2 \geqslant 4x - 4$ for all real $x$, with equality only when $x = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Disproof by Counter-example &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The General Binomial Expansion &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧮 The General Binomial Expansion</h1>
+  <p>A Level Maths Year 2 · Sequences and Series</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – FROM YEAR 1 TO ANY RATIONAL POWER
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Extending the Binomial Expansion</div>
+<div class="section-body">
+
+  <p>In Year 1 you expanded $(a + b)^n$ for a <strong>positive whole number</strong> $n$, using $^nC_r$ or Pascal's triangle (see <a href="../../alevel-year1/algebra/binomial-expansion.html">The Binomial Expansion</a>). That expansion always stops after $n + 1$ terms. Now $n$ can be <strong>negative</strong> or a <strong>fraction</strong>.</p>
+
+  <div class="formula-box">
+    <div class="label">The general binomial expansion — for any rational $n$, valid for $|x| < 1$</div>
+    $(1 + x)^n = 1 + nx + \dfrac{n(n-1)}{2!}x^2 + \dfrac{n(n-1)(n-2)}{3!}x^3 + \cdots$
+  </div>
+
+  <div class="concept">
+    <strong>Two big differences from Year 1.</strong><br>
+    1. When $n$ is not a positive integer, no factor $(n - k)$ is ever zero, so the expansion <strong>never stops</strong>: it is an infinite series.<br>
+    2. An infinite series only adds up to the right answer if it converges, so the expansion is <strong>only valid for $|x| < 1$</strong>.
+  </div>
+
+  <div class="tip">
+    <strong>Building each coefficient.</strong> Each new coefficient is the previous one times the next factor, divided by the next whole number: $1$, then $\times\dfrac{n}{1}$, then $\times\dfrac{n-1}{2}$, then $\times\dfrac{n-2}{3}$, and so on.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A negative power</div>
+    <div class="example-body">
+      <p>Expand $(1 + x)^{-1}$ in ascending powers of $x$ up to $x^3$, and state the range of validity.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$n = -1$: &nbsp;$1 + (-1)x + \dfrac{(-1)(-2)}{2}x^2 + \dfrac{(-1)(-2)(-3)}{6}x^3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 1 - x + x^2 - x^3 + \cdots$ &nbsp;for $|x| < 1$.</span></div>
+      <div class="tip">This is the geometric series $1 + r + r^2 + \cdots$ with $r = -x$, which has sum $\dfrac{1}{1 - (-x)} = \dfrac{1}{1+x}$. The validity condition $|x| < 1$ is exactly the convergence condition $|r| < 1$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – (1 + bx)^n
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Expanding $(1 + bx)^n$</div>
+<div class="section-body">
+
+  <p>Replace every $x$ in the formula by $bx$, in a bracket. The expansion is valid when $|bx| < 1$, i.e. $|x| < \dfrac{1}{|b|}$.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A fractional power</div>
+    <div class="example-body">
+      <p>Expand $\sqrt{1 - 2x}$ up to the term in $x^3$, and state the values of $x$ for which it is valid.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(1 - 2x)^{1/2}$, with $n = \tfrac12$ and "$x$" $= -2x$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$1 + \tfrac12(-2x) + \dfrac{\frac12\left(-\frac12\right)}{2}(-2x)^2 + \dfrac{\frac12\left(-\frac12\right)\left(-\frac32\right)}{6}(-2x)^3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 1 - x + \left(-\tfrac18\right)(4x^2) + \left(\tfrac{1}{16}\right)(-8x^3)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$= 1 - x - \tfrac12 x^2 - \tfrac12 x^3 + \cdots$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Valid for $|-2x| < 1$, i.e. $|x| < \tfrac12$.</span></div>
+      <div class="warn"><strong>Bracket the whole term.</strong> $(-2x)^2 = 4x^2$ and $(-2x)^3 = -8x^3$. Writing $-2x^2$ is the most common error in these questions.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding unknowns</div>
+    <div class="example-body">
+      <p>In the expansion of $(1 + ax)^n$ the coefficient of $x$ is $-6$ and the coefficient of $x^2$ is $27$. Find $a$ and $n$, and the coefficient of $x^3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$na = -6$ and $\dfrac{n(n-1)}{2}a^2 = 27$, so $n(n-1)a^2 = 54$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Squaring the first: $n^2a^2 = 36$. Divide: $\dfrac{n - 1}{n} = \dfrac{54}{36} = \dfrac32$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2n - 2 = 3n \Rightarrow n = -2$, and then $a = -6 \div -2 = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Coefficient of $x^3$: $\dfrac{(-2)(-3)(-4)}{6} \times 3^3 = -4 \times 27 = -108$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – (a + bx)^n
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Expanding $(a + bx)^n$</div>
+<div class="section-body">
+
+  <p>The formula needs a $1$ at the front of the bracket. So <strong>take out a factor of $a$ first</strong> — remembering that it comes out raised to the power $n$.</p>
+
+  <div class="formula-box">
+    <div class="label">Take out the factor first</div>
+    $(a + bx)^n = a^n\left(1 + \dfrac{b}{a}x\right)^n$, &nbsp;valid for $\left|\dfrac{bx}{a}\right| < 1$, i.e. $|x| < \left|\dfrac{a}{b}\right|$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A bracket not starting with 1</div>
+    <div class="example-body">
+      <p>Find the first four terms of the expansion of $\dfrac{1}{(2 + 3x)^2}$, and state the range of validity.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(2 + 3x)^{-2} = 2^{-2}\left(1 + \tfrac32 x\right)^{-2} = \tfrac14\left(1 + \tfrac32 x\right)^{-2}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Coefficients for $n = -2$: $1,\; -2,\; \dfrac{(-2)(-3)}{2} = 3,\; \dfrac{(-2)(-3)(-4)}{6} = -4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\left(1 + \tfrac32 x\right)^{-2} = 1 - 3x + 3\cdot\tfrac94 x^2 - 4\cdot\tfrac{27}{8}x^3 = 1 - 3x + \tfrac{27}{4}x^2 - \tfrac{27}{2}x^3$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Multiply by $\tfrac14$: $\;\tfrac14 - \tfrac34 x + \tfrac{27}{16}x^2 - \tfrac{27}{8}x^3 + \cdots$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Valid for $\left|\tfrac32 x\right| < 1$, i.e. $|x| < \tfrac23$.</span></div>
+      <div class="warn">The factor is $2^{-2} = \tfrac14$, not $2$. Forgetting to raise $a$ to the power $n$ loses most of the marks.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – APPROXIMATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Approximations</div>
+<div class="section-body">
+
+  <p>When $|x|$ is small, the powers $x^2, x^3, \ldots$ are tiny, so the first few terms give an excellent approximation. Choose a value of $x$ that is <strong>inside the range of validity</strong> and as small as possible.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Approximating $\sqrt{2}$</div>
+    <div class="example-body">
+      <p>Use the expansion of $\sqrt{1 - 2x}$ from Worked Example 2, with $x = 0.01$, to find an approximation for $\sqrt{2}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x = 0.01$ is inside $|x| < \tfrac12$ ✓. &nbsp;$\sqrt{1 - 0.02} = \sqrt{0.98}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\sqrt{0.98} \approx 1 - 0.01 - 0.00005 - 0.0000005 = 0.9899495$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\sqrt{0.98} = \sqrt{\dfrac{98}{100}} = \dfrac{7\sqrt2}{10}$, so $\sqrt2 = \dfrac{10}{7}\sqrt{0.98}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\sqrt2 \approx \dfrac{10}{7} \times 0.9899495 = 1.4142136$ (to 7 d.p.)</span></div>
+      <div class="tip">The true value is $1.41421356\ldots$ — four terms with $x = 0.01$ give $7$ correct decimal places.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Outside the range the answer is nonsense.</strong> Putting $x = 1$ into $1 - x - \tfrac12x^2 - \tfrac12x^3$ to estimate $\sqrt{-1}$ gives $-1$, which is meaningless. Always check validity before substituting.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRODUCTS, QUOTIENTS AND PARTIAL FRACTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Products and Partial Fractions</div>
+<div class="section-body">
+
+  <p>Expand each bracket separately, then multiply out, keeping only the powers you need. For a sum of fractions, use <a href="../algebra/partial-fractions.html">partial fractions</a> first.</p>
+
+  <div class="formula-box">
+    <div class="label">Validity of a combined expansion</div>
+    Valid only where <strong>every</strong> separate expansion is valid — take the narrower range
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — A quotient</div>
+    <div class="example-body">
+      <p>Expand $\dfrac{1 + x}{1 - 2x}$ up to $x^3$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(1 - 2x)^{-1} = 1 + 2x + 4x^2 + 8x^3 + \cdots$ for $|x| < \tfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(1 + x)(1 + 2x + 4x^2 + 8x^3) = 1 + 2x + 4x^2 + 8x^3 + x + 2x^2 + 4x^3 + \cdots$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 1 + 3x + 6x^2 + 12x^3 + \cdots$ &nbsp;for $|x| < \tfrac12$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Using partial fractions</div>
+    <div class="example-body">
+      <p>(a) Express $\dfrac{4 - 5x}{(1 + x)(2 - x)}$ in partial fractions. (b) Hence expand it up to $x^3$ and state the range of validity.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$4 - 5x \equiv A(2 - x) + B(1 + x)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x = -1$: $9 = 3A$, $A = 3$. &nbsp;$x = 2$: $-6 = 3B$, $B = -2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{4 - 5x}{(1 + x)(2 - x)} \equiv \dfrac{3}{1 + x} - \dfrac{2}{2 - x}$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$3(1 + x)^{-1} = 3 - 3x + 3x^2 - 3x^3 + \cdots$ &nbsp;for $|x| < 1$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$2(2 - x)^{-1} = 2 \cdot \tfrac12\left(1 - \tfrac{x}{2}\right)^{-1} = 1 + \tfrac12 x + \tfrac14 x^2 + \tfrac18 x^3 + \cdots$ &nbsp;for $|x| < 2$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>Subtract: $2 - \tfrac72 x + \tfrac{11}{4}x^2 - \tfrac{25}{8}x^3 + \cdots$</span></div>
+      <div class="step-row"><span class="arrow">⑦</span><span>Valid where both are valid: $|x| < 1$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>General expansion</h4><p>$(1+x)^n = 1 + nx + \tfrac{n(n-1)}{2!}x^2 + \cdots$</p></div>
+    <div class="ref-card"><h4>Validity</h4><p>$(1+bx)^n$: valid for $|bx| < 1$.</p></div>
+    <div class="ref-card"><h4>Positive integer $n$</h4><p>Finite, valid for all $x$.</p></div>
+    <div class="ref-card"><h4>$(a+bx)^n$</h4><p>Take out $a^n$: $a^n(1 + \tfrac{b}{a}x)^n$.</p></div>
+    <div class="ref-card"><h4>Brackets</h4><p>$(-2x)^2 = 4x^2$, $(-2x)^3 = -8x^3$.</p></div>
+    <div class="ref-card"><h4>$(1+x)^{-1}$</h4><p>$1 - x + x^2 - x^3 + \cdots$</p></div>
+    <div class="ref-card"><h4>$(1-x)^{-1}$</h4><p>$1 + x + x^2 + x^3 + \cdots$</p></div>
+    <div class="ref-card"><h4>Combined</h4><p>Take the narrowest range of validity.</p></div>
+    <div class="ref-card"><h4>Approximating</h4><p>Pick a small $x$ inside the valid range.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Expand $(1 + x)^{-3}$ up to $x^3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 + (-3)x + \dfrac{(-3)(-4)}{2}x^2 + \dfrac{(-3)(-4)(-5)}{6}x^3$</p>
+          <p>$= 1 - 3x + 6x^2 - 10x^3 + \cdots$, valid for $|x| < 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Expand $\sqrt{1 + 4x}$ up to $x^3$, stating the range of validity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 + \tfrac12(4x) + \left(-\tfrac18\right)(4x)^2 + \tfrac{1}{16}(4x)^3$</p>
+          <p>$= 1 + 2x - 2x^2 + 4x^3 + \cdots$, valid for $|4x| < 1$, i.e. $|x| < \tfrac14$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the first three terms of the expansion of $\dfrac{1}{(2 - x)^2}$ and of the term in $x^3$, and state the range of validity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(2 - x)^{-2} = \tfrac14\left(1 - \tfrac{x}{2}\right)^{-2}$.</p>
+          <p>$\left(1 - \tfrac{x}{2}\right)^{-2} = 1 - 2\left(-\tfrac{x}{2}\right) + 3\left(\tfrac{x^2}{4}\right) - 4\left(-\tfrac{x^3}{8}\right) = 1 + x + \tfrac34x^2 + \tfrac12x^3$</p>
+          <p>So $\dfrac{1}{(2-x)^2} = \tfrac14 + \tfrac14x + \tfrac{3}{16}x^2 + \tfrac18x^3 + \cdots$, valid for $|x| < 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>State, with a reason, the range of $x$ for which each expansion is valid: (a) $(3 - 2x)^{-1/2}$ &nbsp; (b) $(1 + 5x)^{4}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(3 - 2x)^{-1/2} = 3^{-1/2}\left(1 - \tfrac23x\right)^{-1/2}$, valid for $\left|\tfrac23x\right| < 1$, i.e. $|x| < \tfrac32$.</p>
+          <p><strong>(b)</strong> The power $4$ is a positive integer, so the expansion has only five terms and is exact: valid for <strong>all</strong> $x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Expand $\sqrt[3]{8 - x}$ up to $x^2$. Use your answer with a suitable value of $x$ to estimate $\sqrt[3]{7.9}$ to $6$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(8 - x)^{1/3} = 8^{1/3}\left(1 - \tfrac{x}{8}\right)^{1/3} = 2\left[1 + \tfrac13\left(-\tfrac{x}{8}\right) + \dfrac{\frac13\left(-\frac23\right)}{2}\left(-\tfrac{x}{8}\right)^2\right]$</p>
+          <p>$= 2\left[1 - \tfrac{x}{24} - \tfrac{x^2}{576}\right] = 2 - \tfrac{x}{12} - \tfrac{x^2}{288} + \cdots$, valid for $|x| < 8$.</p>
+          <p>$x = 0.1$: $2 - 0.0083333 - 0.0000347 = 1.991632$ (6 d.p.).</p>
+          <p>(Calculator: $1.9916317\ldots$ — correct to $6$ d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>In the expansion of $(1 + kx)^{-1/2}$, the coefficient of $x^2$ is $24$ and the coefficient of $x$ is positive. Find $k$, the coefficient of $x$, and the range of validity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Coefficient of $x^2$: $\dfrac{\left(-\frac12\right)\left(-\frac32\right)}{2}k^2 = \tfrac38k^2 = 24$, so $k^2 = 64$ and $k = \pm 8$.</p>
+          <p>Coefficient of $x$: $-\tfrac12k$. This is positive only if $k = -8$, giving coefficient $4$.</p>
+          <p>$(1 - 8x)^{-1/2}$ is valid for $|8x| < 1$, i.e. $|x| < \tfrac18$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Show that $\sqrt{\dfrac{1 + x}{1 - x}} \approx 1 + x + \tfrac12x^2$ for small $x$. By substituting $x = 0.1$, find an approximation for $\sqrt{11}$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(1 + x)^{1/2} = 1 + \tfrac12x - \tfrac18x^2 + \cdots$ and $(1 - x)^{-1/2} = 1 + \tfrac12x + \tfrac38x^2 + \cdots$</p>
+          <p>Product: $1 + \tfrac12x + \tfrac38x^2 + \tfrac12x + \tfrac14x^2 - \tfrac18x^2 = 1 + x + \tfrac12x^2$ ✓ (valid for $|x| < 1$).</p>
+          <p>$x = 0.1$: $\sqrt{\dfrac{1.1}{0.9}} = \sqrt{\dfrac{11}{9}} = \dfrac{\sqrt{11}}{3} \approx 1 + 0.1 + 0.005 = 1.105$.</p>
+          <p>$\sqrt{11} \approx 3.315$ (true value $3.3166\ldots$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Expand $(1 + x)(1 - x)^{-1}$ up to $x^3$, and hence write down the coefficient of $x^r$ for $r \geqslant 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(1 - x)^{-1} = 1 + x + x^2 + x^3 + \cdots$</p>
+          <p>$(1 + x)(1 + x + x^2 + x^3) = 1 + 2x + 2x^2 + 2x^3 + \cdots$, valid for $|x| < 1$.</p>
+          <p>Every power $x^r$ with $r \geqslant 1$ arises from $1 \cdot x^r + x \cdot x^{r-1}$, so its coefficient is $2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>(a) Express $\dfrac{1 + 5x}{(1 - x)(1 + 2x)}$ in partial fractions. (b) Hence find its expansion up to $x^3$, and state the range of validity.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $1 + 5x \equiv A(1 + 2x) + B(1 - x)$.</p>
+          <p>$x = 1$: $6 = 3A$, $A = 2$. &nbsp;$x = -\tfrac12$: $-\tfrac32 = \tfrac32B$, $B = -1$.</p>
+          <p>$\dfrac{2}{1 - x} - \dfrac{1}{1 + 2x}$</p>
+          <p><strong>(b)</strong> $2(1 - x)^{-1} = 2 + 2x + 2x^2 + 2x^3$ for $|x| < 1$.</p>
+          <p>$(1 + 2x)^{-1} = 1 - 2x + 4x^2 - 8x^3$ for $|x| < \tfrac12$.</p>
+          <p>Subtract: $1 + 4x - 2x^2 + 10x^3 + \cdots$, valid for $|x| < \tfrac12$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Show that $\dfrac{1}{\sqrt{4 - x}} = \dfrac12 + \dfrac{x}{16} + \dfrac{3x^2}{256} + \cdots$ and state the range of validity.</p>
+      <p>(b) Hence show that $\dfrac{2 + x}{\sqrt{4 - x}} \approx 1 + \dfrac58x + \dfrac{11}{128}x^2$.</p>
+      <p>(c) By substituting $x = 0.04$, show that $\dfrac{3.4}{\sqrt{11}} \approx 1.0251375$, and hence find an approximation for $\sqrt{11}$, giving your answer to $6$ decimal places.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $(4 - x)^{-1/2} = 4^{-1/2}\left(1 - \tfrac{x}{4}\right)^{-1/2} = \tfrac12\left[1 + \left(-\tfrac12\right)\left(-\tfrac{x}{4}\right) + \dfrac{\left(-\frac12\right)\left(-\frac32\right)}{2}\left(-\tfrac{x}{4}\right)^2\right]$</p>
+          <p>$= \tfrac12\left[1 + \tfrac{x}{8} + \tfrac38\cdot\tfrac{x^2}{16}\right] = \tfrac12 + \tfrac{x}{16} + \tfrac{3x^2}{256}$ ✓, valid for $|x| < 4$.</p>
+          <p><strong>(b)</strong> $(2 + x)\left(\tfrac12 + \tfrac{x}{16} + \tfrac{3x^2}{256}\right) = 1 + \tfrac{x}{8} + \tfrac{3x^2}{128} + \tfrac{x}{2} + \tfrac{x^2}{16} + \cdots$</p>
+          <p>$= 1 + \tfrac58x + \left(\tfrac{3}{128} + \tfrac{8}{128}\right)x^2 = 1 + \tfrac58x + \tfrac{11}{128}x^2$ ✓</p>
+          <p><strong>(c)</strong> $x = 0.04$ is within $|x| < 4$. LHS $= \dfrac{2.04}{\sqrt{3.96}}$, and $\sqrt{3.96} = \dfrac{\sqrt{396}}{10} = \dfrac{6\sqrt{11}}{10}$, so LHS $= \dfrac{2.04 \times 10}{6\sqrt{11}} = \dfrac{3.4}{\sqrt{11}}$.</p>
+          <p>RHS $= 1 + 0.025 + \dfrac{11 \times 0.0016}{128} = 1 + 0.025 + 0.0001375 = 1.0251375$ ✓</p>
+          <p>$\sqrt{11} \approx \dfrac{3.4}{1.0251375} = 3.316628$ (6 d.p.). The true value is $3.316625\ldots$, so the error is only about $3 \times 10^{-6}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  The General Binomial Expansion &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

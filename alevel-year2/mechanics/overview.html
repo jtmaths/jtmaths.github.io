@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanics Overview &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚙️ Mechanics Overview</h1>
+  <p>A Level Maths Year 2 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>Year 1 mechanics (see the <a href="../../alevel-year1/mechanics/overview.html">Year 1 Mechanics Overview</a>) dealt with <strong>particles moving in straight lines</strong>: suvat, motion graphs, variable acceleration with calculus, and $F = ma$ along one direction. Year 2 keeps every one of those tools and lifts the restrictions.</p>
+
+  <div class="concept">
+    Year 2 mechanics is about <strong>two dimensions</strong> and <strong>extended bodies</strong>. Forces act at angles, so you <em>resolve</em>. Surfaces are rough, so you model <em>friction</em>. Objects can turn, so you take <em>moments</em>. And motion is no longer along a line, so position, velocity and acceleration become <em>vectors</em>.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">What is new compared with Year 1</div>
+    Moments and rigid bodies &middot; resolving forces at angles &middot; inclined planes<br>
+    Friction $F \leqslant \mu R$ &middot; ladders &middot; projectiles<br>
+    suvat and calculus with $\mathbf{i}$, $\mathbf{j}$ vectors &middot; $\mathbf{F} = m\mathbf{a}$ in vector form
+  </div>
+
+  <table>
+    <tr><th>DfE content area</th><th>Year 1</th><th>Year 2 adds</th></tr>
+    <tr><td><strong>Q · Kinematics</strong></td><td>suvat in 1-D; $v = \dfrac{\mathrm{d}s}{\mathrm{d}t}$, $a = \dfrac{\mathrm{d}v}{\mathrm{d}t}$</td><td>Vector suvat and calculus; projectiles</td></tr>
+    <tr><td><strong>R · Forces and Newton's laws</strong></td><td>$F = ma$ along a line; connected particles</td><td>Resolving; equilibrium; inclined planes; friction</td></tr>
+    <tr><td><strong>S · Moments</strong></td><td>—</td><td>Moments; rigid bodies in equilibrium; ladders</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Use $g = 9.8$ m s$^{-2}$</strong> unless told otherwise, and give final answers to 2 or 3 significant figures — answers that depend on $g = 9.8$ should not be given to more accuracy than that.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <p>Mechanics questions are full of modelling words. Each one tells you something precise about what to include or ignore.</p>
+
+  <table>
+    <tr><th>Word</th><th>Meaning in the model</th></tr>
+    <tr><td><strong>Rigid body / rod</strong></td><td>Has size but does not bend; forces at different points cause turning.</td></tr>
+    <tr><td><strong>Uniform</strong></td><td>Weight acts at the geometric centre (the midpoint of a rod).</td></tr>
+    <tr><td><strong>Light</strong></td><td>Mass is negligible — no weight.</td></tr>
+    <tr><td><strong>Smooth</strong></td><td>No friction.</td></tr>
+    <tr><td><strong>Rough</strong></td><td>Friction acts, with $F \leqslant \mu R$.</td></tr>
+    <tr><td><strong>Limiting equilibrium</strong></td><td>At rest, but on the point of moving: $F = \mu R$.</td></tr>
+    <tr><td><strong>On the point of tilting</strong></td><td>The reaction at the support being lifted off is zero.</td></tr>
+    <tr><td><strong>Moment</strong></td><td>Turning effect: force $\times$ perpendicular distance (N m).</td></tr>
+    <tr><td><strong>Resolve</strong></td><td>Find the component of a force in a given direction.</td></tr>
+    <tr><td><strong>Line of greatest slope</strong></td><td>The direction straight up or down an inclined plane.</td></tr>
+    <tr><td><strong>Projectile</strong></td><td>A particle moving freely under gravity alone (no air resistance).</td></tr>
+    <tr><td><strong>Trajectory</strong></td><td>The path of a projectile — a parabola.</td></tr>
+  </table>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CORE TECHNIQUES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Five Core Techniques</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">1 — Moments (S)</div>
+    $M = Fd$, $d$ the perpendicular distance. In equilibrium: clockwise moments $=$ anticlockwise moments about any point
+  </div>
+
+  <div class="formula-box">
+    <div class="label">2 — Resolving (R)</div>
+    $F$ at $\theta$ to a direction has component $F\cos\theta$ along it and $F\sin\theta$ perpendicular to it
+  </div>
+
+  <div class="formula-box">
+    <div class="label">3 — Friction (R)</div>
+    $F \leqslant \mu R$, with equality when moving or in limiting equilibrium
+  </div>
+
+  <div class="formula-box">
+    <div class="label">4 — Projectiles (Q)</div>
+    Horizontal: $x = (u\cos\theta)t$ &nbsp;&nbsp; Vertical: $y = (u\sin\theta)t - \tfrac12gt^2$
+  </div>
+
+  <div class="formula-box">
+    <div class="label">5 — Vectors and calculus (Q, R)</div>
+    $\mathbf{v} = \dot{\mathbf{r}}$, $\mathbf{a} = \dot{\mathbf{v}}$ &nbsp;&nbsp; constant $\mathbf{a}$: $\mathbf{v} = \mathbf{u} + \mathbf{a}t$, $\mathbf{r} = \mathbf{r}_0 + \mathbf{u}t + \tfrac12\mathbf{a}t^2$ &nbsp;&nbsp; $\mathbf{F} = m\mathbf{a}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Several techniques in one question</div>
+    <div class="example-body">
+      <p>A particle of mass $2$ kg is released from rest on a rough plane inclined at $30^\circ$, with $\mu = 0.4$. Show that it slides, and find its speed after it has moved $2$ m.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Resolve</strong> perpendicular: $R = 2g\cos 30^\circ = 16.97$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span><strong>Friction</strong>: $F_{\max} = 0.4 \times 16.97 = 6.79$ N.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Component of weight down the slope: $2g\sin 30^\circ = 9.8$ N $> 6.79$ N, so it slides.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$F = ma$ down the slope: $9.8 - 6.79 = 2a \Rightarrow a = 1.505$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span><strong>suvat</strong>: $v^2 = 0 + 2(1.505)(2) = 6.02$, so $v = 2.45$ m s$^{-1}$.</span></div>
+      <div class="tip">Equivalently: a particle slides on a rough slope when $\tan\alpha > \mu$. Here $\tan 30^\circ = 0.577 > 0.4$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Mechanics Subtopics</div>
+<div class="section-body">
+
+  <p>The Year 2 mechanics content, and the page that covers it. The code is the DfE content area.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">S</span><span><a href="moments.html">Moments</a><span class="desc">The moment of a force, equilibrium of rigid bodies, beams on supports, tilting and non-uniform rods.</span></span></li>
+    <li><span class="code">R</span><span><a href="resolving-forces.html">Resolving Forces and Inclined Planes</a><span class="desc">Components and resultants, equilibrium of a particle, smooth slopes and pulleys.</span></span></li>
+    <li><span class="code">R<br>S</span><span><a href="friction.html">Friction</a><span class="desc">$F \leqslant \mu R$ on horizontal and inclined planes, connected particles, and ladders.</span></span></li>
+    <li><span class="code">Q</span><span><a href="projectiles.html">Projectiles</a><span class="desc">Time of flight, range, maximum height, the trajectory equation and projection from a height.</span></span></li>
+    <li><span class="code">Q<br>R</span><span><a href="kinematics-vectors.html">Kinematics with Calculus and Vectors</a><span class="desc">Vector suvat, differentiating and integrating $\mathbf{i}$, $\mathbf{j}$ components, and $\mathbf{F} = m\mathbf{a}$.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Assuming $R = mg$.</strong> On a slope $R = mg\cos\alpha$, and any force pulling at an angle changes $R$ further. Always find $R$ by resolving perpendicular to the surface.
+  </div>
+
+  <div class="warn">
+    <strong>Assuming friction is always $\mu R$.</strong> $\mu R$ is the <em>maximum</em>. If the body is at rest and not about to move, friction is whatever balances the other forces.
+  </div>
+
+  <div class="warn">
+    <strong>Using a distance that is not perpendicular.</strong> A moment uses the perpendicular distance to the line of action. For a ladder at angle $\theta$, a horizontal force at the top has moment arm $L\sin\theta$ about the foot, not $L$.
+  </div>
+
+  <div class="warn">
+    <strong>Mixing horizontal and vertical in projectiles.</strong> Gravity only affects the vertical motion. The horizontal velocity stays at $u\cos\theta$ throughout the flight.
+  </div>
+
+  <div class="warn">
+    <strong>Using level-ground formulae from a height.</strong> $R = \dfrac{u^2\sin2\theta}{g}$ is only valid when launch and landing heights are equal.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting the vector constant of integration.</strong> When integrating $\mathbf{a}$ or $\mathbf{v}$, the constant is $c_1\mathbf{i} + c_2\mathbf{j}$, found from the initial conditions.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Moment</h4><p>$Fd$, perpendicular distance, N m.</p></div>
+    <div class="ref-card"><h4>Rigid body equilibrium</h4><p>Resultant force $0$ and resultant moment $0$.</p></div>
+    <div class="ref-card"><h4>About to tilt</h4><p>Reaction at the other support $= 0$.</p></div>
+    <div class="ref-card"><h4>Slope</h4><p>$mg\sin\alpha$ down, $mg\cos\alpha$ into the plane.</p></div>
+    <div class="ref-card"><h4>Friction</h4><p>$F \leqslant \mu R$; about to slip on a slope: $\mu = \tan\alpha$.</p></div>
+    <div class="ref-card"><h4>Ladder (smooth wall)</h4><p>$\mu \geqslant \dfrac{1}{2\tan\theta}$ for a uniform ladder alone.</p></div>
+    <div class="ref-card"><h4>Projectile range</h4><p>$\dfrac{u^2\sin2\theta}{g}$ on level ground.</p></div>
+    <div class="ref-card"><h4>Trajectory</h4><p>$y = x\tan\theta - \dfrac{gx^2}{2u^2\cos^2\theta}$.</p></div>
+    <div class="ref-card"><h4>Vectors</h4><p>Speed $= |\mathbf{v}|$; calculus on each component.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole of Year 2 mechanics. Use $g = 9.8$ m s$^{-2}$ and give answers to 3 significant figures where they are not exact.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the moment about a hinge of a $15$ N force acting perpendicular to a door at $0.8$ m from the hinge.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$M = 15 \times 0.8 = 12$ N m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Resolve a $25$ N force acting at $30^\circ$ above the horizontal into horizontal and vertical components.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Horizontal $25\cos 30^\circ = 21.7$ N; vertical $25\sin 30^\circ = 12.5$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A $5$ kg box on rough horizontal ground ($\mu = 0.2$) is pushed by a horizontal force of $20$ N. Find its acceleration.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$F_{\max} = 0.2 \times 5g = 9.8$ N $< 20$ N, so it moves.</p>
+          <p>$20 - 9.8 = 5a \Rightarrow a = 2.04$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A uniform rod $AB$ of length $3$ m and mass $10$ kg rests on supports at $A$ and $B$. A $5$ kg mass is placed $1$ m from $A$. Find the reactions.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Moments about $A$: $3R_B = 10g(1.5) + 5g(1) = 20g \Rightarrow R_B = \dfrac{20g}{3} = 65.3$ N.</p>
+          <p>$R_A = 15g - \dfrac{20g}{3} = \dfrac{25g}{3} = 81.7$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Find the acceleration of a particle sliding down a smooth plane inclined at $20^\circ$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = g\sin 20^\circ = 3.35$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A ball is thrown horizontally at $10$ m s$^{-1}$ from a point $45$ m above level ground. Find the time of flight and the horizontal distance travelled.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$45 = 4.9t^2 \Rightarrow t = 3.03$ s.</p>
+          <p>$x = 10 \times 3.030 = 30.3$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A particle has initial velocity $(2\mathbf{i} + 3\mathbf{j})$ m s$^{-1}$ and constant acceleration $(\mathbf{i} - 2\mathbf{j})$ m s$^{-2}$. Find its velocity after $2$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{v} = (2\mathbf{i} + 3\mathbf{j}) + 2(\mathbf{i} - 2\mathbf{j}) = 4\mathbf{i} - \mathbf{j}$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A particle has position $\mathbf{r} = t^3\,\mathbf{i} + (2t^2 - t)\,\mathbf{j}$. Find its speed and direction of motion when $t = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathbf{v} = 3t^2\,\mathbf{i} + (4t - 1)\mathbf{j}$. At $t = 1$: $\mathbf{v} = 3\mathbf{i} + 3\mathbf{j}$.</p>
+          <p>Speed $= 3\sqrt2 = 4.24$ m s$^{-1}$, moving at $45^\circ$ to $\mathbf{i}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A uniform ladder rests against a smooth vertical wall with its foot on rough horizontal ground, making $65^\circ$ with the ground. Find the least possible value of $\mu$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the ladder have length $2a$ and weight $W$. Resolving: $R = W$, $F = S$.</p>
+          <p>Moments about the foot: $S \times 2a\sin 65^\circ = W \times a\cos 65^\circ \Rightarrow S = \dfrac{W}{2\tan 65^\circ}$.</p>
+          <p>$F \leqslant \mu R \Rightarrow \mu \geqslant \dfrac{1}{2\tan 65^\circ} = 0.233$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A ball is kicked from level ground at $24.5$ m s$^{-1}$ at $30^\circ$ above the horizontal.</p>
+      <p>(a) Find the time of flight. &nbsp; (b) Find the range. &nbsp; (c) Find the greatest height. &nbsp; (d) Find the length of time for which the ball is at least $5$ m above the ground.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$u_x = 24.5\cos 30^\circ = 21.22$, $u_y = 24.5\sin 30^\circ = 12.25$.</p>
+          <p><strong>(a)</strong> $0 = 12.25t - 4.9t^2 \Rightarrow t = \dfrac{12.25}{4.9} = 2.5$ s.</p>
+          <p><strong>(b)</strong> $21.22 \times 2.5 = 53.0$ m.</p>
+          <p><strong>(c)</strong> $H = \dfrac{12.25^2}{2 \times 9.8} = 7.66$ m.</p>
+          <p><strong>(d)</strong> $5 = 12.25t - 4.9t^2 \Rightarrow 4.9t^2 - 12.25t + 5 = 0$.</p>
+          <p>$t = \dfrac{12.25 \pm \sqrt{150.06 - 98}}{9.8} = \dfrac{12.25 \pm 7.215}{9.8}$, so $t = 0.514$ s or $1.99$ s.</p>
+          <p>Time at least $5$ m up $= 1.986 - 0.514 = 1.47$ s.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Mechanics Overview &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

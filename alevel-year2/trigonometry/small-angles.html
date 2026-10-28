@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Small Angle Approximations &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔬 Small Angle Approximations</h1>
+  <p>A Level Maths Year 2 · Trigonometry</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE THREE APPROXIMATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Three Approximations</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Small angle approximations — $\theta$ in radians, $\theta$ close to $0$</div>
+    $\sin\theta \approx \theta \qquad\qquad \tan\theta \approx \theta \qquad\qquad \cos\theta \approx 1 - \dfrac{\theta^2}{2}$
+  </div>
+
+  <div class="concept">
+    Near the origin the graphs of $y = \sin x$ and $y = \tan x$ both have gradient $1$, so they hug the line $y = x$. The graph of $y = \cos x$ has a maximum at $(0, 1)$, so it looks like an upside-down parabola there: $y = 1 - \tfrac12 x^2$.
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="240" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="12">
+      <line x1="50" y1="210" x2="425" y2="210" stroke="#333" stroke-width="1.5"/>
+      <line x1="50" y1="215" x2="50" y2="10" stroke="#333" stroke-width="1.5"/>
+      <line x1="170" y1="210" x2="170" y2="214" stroke="#333"/><text x="170" y="228" text-anchor="middle">0.5</text>
+      <line x1="290" y1="210" x2="290" y2="214" stroke="#333"/><text x="290" y="228" text-anchor="middle">1</text>
+      <line x1="46" y1="130" x2="50" y2="130" stroke="#333"/><text x="42" y="134" text-anchor="end">0.5</text>
+      <line x1="46" y1="50" x2="50" y2="50" stroke="#333"/><text x="42" y="54" text-anchor="end">1</text>
+      <text x="420" y="228" text-anchor="end">θ (radians)</text>
+      <line x1="50" y1="210" x2="338" y2="18" stroke="#888" stroke-width="1.8" stroke-dasharray="6,4"/>
+      <path d="M50.0,210.0 L62.0,202.0 L74.0,194.0 L86.0,186.1 L98.0,178.2 L110.0,170.4 L122.0,162.7 L134.0,155.1 L146.0,147.7 L158.0,140.4 L170.0,133.3 L182.0,126.4 L194.0,119.7 L206.0,113.2 L218.0,106.9 L230.0,100.9 L242.0,95.2 L254.0,89.8 L266.0,84.7 L278.0,79.9 L290.0,75.4 L302.0,71.2 L314.0,67.4 L326.0,64.0 L338.0,60.9 L350.0,58.2 L362.0,55.8 L374.0,53.9 L386.0,52.3 L398.0,51.2 L410.0,50.4" fill="none" stroke="#4f46e5" stroke-width="2.5"/>
+      <path d="M50.0,210.0 L62.0,202.0 L74.0,193.9 L86.0,185.8 L98.0,177.6 L110.0,169.1 L122.0,160.5 L134.0,151.6 L146.0,142.4 L158.0,132.7 L170.0,122.6 L182.0,111.9 L194.0,100.5 L206.0,88.4 L218.0,75.2 L230.0,60.9 L242.0,45.3 L254.0,27.9" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <text x="345" y="22" fill="#555">y = θ</text>
+      <text x="360" y="72" fill="#4f46e5">y = sin θ</text>
+      <text x="258" y="24" fill="#dc2626">y = tan θ</text>
+    </svg>
+    <p style="font-size:.85rem;color:#555">For $\theta$ up to about $0.2$ the three graphs are almost indistinguishable; by $\theta = 0.5$ they have clearly separated.</p>
+  </div>
+
+  <table>
+    <tr><th>$\theta$ (rad)</th><th>$\sin\theta$</th><th>$\tan\theta$</th><th>$\cos\theta$</th><th>$1 - \tfrac12\theta^2$</th></tr>
+    <tr><td>$0.05$</td><td>$0.04998$</td><td>$0.05004$</td><td>$0.998750$</td><td>$0.99875$</td></tr>
+    <tr><td>$0.1$</td><td>$0.09983$</td><td>$0.10033$</td><td>$0.995004$</td><td>$0.995$</td></tr>
+    <tr><td>$0.2$</td><td>$0.19867$</td><td>$0.20271$</td><td>$0.980067$</td><td>$0.98$</td></tr>
+    <tr><td>$0.5$</td><td>$0.47943$</td><td>$0.54630$</td><td>$0.877583$</td><td>$0.875$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Radians only.</strong> $\sin 3^\circ \approx 3$ is absurd. Convert first: $3^\circ = \dfrac{3\pi}{180} = 0.05236$ rad, and $\sin 3^\circ = 0.05234$ — the approximation works only in radians.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – WHY THEY WORK
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Why They Work</div>
+<div class="section-body">
+
+  <p>Take a sector of a unit circle with a small angle $\theta$. Compare three areas: the triangle inside the sector, the sector, and the right-angled triangle formed by the tangent at one end.</p>
+
+  <div class="formula-box">
+    <div class="label">Comparing areas in a unit circle ($0 < \theta < \tfrac{\pi}{2}$)</div>
+    $\tfrac12\sin\theta \;<\; \tfrac12\theta \;<\; \tfrac12\tan\theta$
+  </div>
+
+  <p>As $\theta \to 0$, $\cos\theta \to 1$, so $\tan\theta = \dfrac{\sin\theta}{\cos\theta}$ and $\sin\theta$ get closer together — and $\theta$ is trapped between them. Hence $\sin\theta \approx \theta \approx \tan\theta$.</p>
+
+  <p>For cosine, use the double angle formula $\cos\theta = 1 - 2\sin^2\dfrac{\theta}{2}$ (see <a href="compound-angles.html">Compound and Double Angles</a>):</p>
+
+  <div class="formula-box">
+    <div class="label">Deriving the cosine approximation</div>
+    $\cos\theta = 1 - 2\sin^2\dfrac{\theta}{2} \approx 1 - 2\left(\dfrac{\theta}{2}\right)^2 = 1 - \dfrac{\theta^2}{2}$
+  </div>
+
+  <div class="tip">
+    <strong>Order matters.</strong> The approximations are accurate to second order in $\theta$. That is why $\cos\theta \approx 1$ is not good enough when the $1$s cancel — as in $1 - \cos\theta$ — and you must keep the $-\tfrac12\theta^2$.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – USING THE APPROXIMATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Using the Approximations</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Replace every $\sin(k\theta)$ by $k\theta$, every $\tan(k\theta)$ by $k\theta$, and every $\cos(k\theta)$ by $1 - \tfrac12(k\theta)^2$.</li>
+    <li>Expand and simplify, ignoring powers higher than the question needs.</li>
+    <li>If $\theta$ appears in both numerator and denominator, cancel it.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A multiple angle</div>
+    <div class="example-body">
+      <p>Find an approximation for $\cos 3\theta$ when $\theta$ is small.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$3\theta$ is also small, so $\cos 3\theta \approx 1 - \dfrac{(3\theta)^2}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= 1 - \dfrac{9\theta^2}{2}$.</span></div>
+      <div class="warn">The square applies to $3\theta$, giving $9\theta^2$ — not $3\theta^2$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Simplifying a quotient</div>
+    <div class="example-body">
+      <p>Show that, for small $\theta$, $\dfrac{1 - \cos 4\theta}{\theta\sin 2\theta} \approx 4$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Numerator: $1 - \left(1 - \dfrac{16\theta^2}{2}\right) = 8\theta^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Denominator: $\theta \times 2\theta = 2\theta^2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\dfrac{8\theta^2}{2\theta^2} = 4$. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — A limit</div>
+    <div class="example-body">
+      <p>Find the value that $\dfrac{\sin\theta\tan\theta}{1 - \cos\theta}$ approaches as $\theta \to 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Numerator $\approx \theta \times \theta = \theta^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Denominator $\approx 1 - \left(1 - \tfrac12\theta^2\right) = \tfrac12\theta^2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Ratio $\approx \dfrac{\theta^2}{\frac12\theta^2} = 2$. The expression approaches $2$.</span></div>
+      <div class="tip">Check on a calculator in radians: at $\theta = 0.01$ the expression is $2.00005\ldots$</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Solving an equation approximately</div>
+    <div class="example-body">
+      <p>Given that $\theta$ is small, use the small angle approximations to find an approximate solution of $2\cos\theta + 3\sin\theta = 2.1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$2\left(1 - \tfrac12\theta^2\right) + 3\theta = 2.1 \Rightarrow 2 - \theta^2 + 3\theta = 2.1$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\theta^2 - 3\theta + 0.1 = 0 \Rightarrow \theta = \dfrac{3 \pm \sqrt{8.6}}{2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Only the small root is consistent with "$\theta$ small": $\theta = \dfrac{3 - \sqrt{8.6}}{2} = 0.0337$ (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The other root, $2.97$, is not small, so the approximations are not valid there — reject it.</span></div>
+      <div class="tip">A numerical solver gives $0.033719\ldots$ — the approximation is correct to $4$ decimal places.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — An angle in degrees</div>
+    <div class="example-body">
+      <p>Use a small angle approximation to estimate $\cos 5^\circ$ to $4$ d.p.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$5^\circ = \dfrac{5\pi}{180} = \dfrac{\pi}{36} = 0.087266$ rad.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$\cos 5^\circ \approx 1 - \tfrac12(0.087266)^2 = 1 - 0.003808 = 0.9962$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Calculator: $\cos 5^\circ = 0.99619\ldots$, which also rounds to $0.9962$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Sine</h4><p>$\sin\theta \approx \theta$</p></div>
+    <div class="ref-card"><h4>Tangent</h4><p>$\tan\theta \approx \theta$</p></div>
+    <div class="ref-card"><h4>Cosine</h4><p>$\cos\theta \approx 1 - \tfrac12\theta^2$</p></div>
+    <div class="ref-card"><h4>Units</h4><p>Radians only; convert degrees first.</p></div>
+    <div class="ref-card"><h4>Multiples</h4><p>$\sin k\theta \approx k\theta$, &nbsp;$\cos k\theta \approx 1 - \tfrac12k^2\theta^2$</p></div>
+    <div class="ref-card"><h4>$1 - \cos\theta$</h4><p>$\approx \tfrac12\theta^2$ — keep the squared term.</p></div>
+    <div class="ref-card"><h4>Equations</h4><p>Keep only the root that is actually small.</p></div>
+    <div class="ref-card"><h4>Accuracy</h4><p>Excellent for $|\theta| \lesssim 0.2$; poor by $0.5$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Use the small angle approximations to estimate $\sin 0.03$, $\tan 0.03$ and $\cos 0.03$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin 0.03 \approx 0.03$, &nbsp;$\tan 0.03 \approx 0.03$.</p>
+          <p>$\cos 0.03 \approx 1 - \tfrac12(0.0009) = 0.99955$ (calculator: $0.9995500\ldots$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find a small angle approximation for $\cos 2\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\cos 2\theta \approx 1 - \tfrac12(2\theta)^2 = 1 - 2\theta^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>For small $\theta$, find an approximation for $\sin 2\theta\tan 3\theta$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\sin 2\theta\tan 3\theta \approx 2\theta \times 3\theta = 6\theta^2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Show that, for small $\theta$, $\dfrac{1 - \cos 2\theta}{\theta^2} \approx 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$1 - \cos 2\theta \approx 1 - (1 - 2\theta^2) = 2\theta^2$, so the expression $\approx \dfrac{2\theta^2}{\theta^2} = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Show that, for small $\theta$, $\dfrac{1 - \cos 4\theta}{2\theta\sin 3\theta} \approx \dfrac43$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Numerator: $1 - \left(1 - \tfrac12(16\theta^2)\right) = 8\theta^2$.</p>
+          <p>Denominator: $2\theta \times 3\theta = 6\theta^2$.</p>
+          <p>Ratio $\approx \dfrac{8\theta^2}{6\theta^2} = \dfrac43$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Find a quadratic approximation for $3\sin\theta + \cos 2\theta$ and use it to estimate the value when $\theta = 0.1$. Compare with the true value.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$3\theta + 1 - 2\theta^2$.</p>
+          <p>At $\theta = 0.1$: $0.3 + 1 - 0.02 = 1.28$.</p>
+          <p>True value: $3\sin 0.1 + \cos 0.2 = 0.29950 + 0.98007 = 1.27957$. The error is about $0.0004$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A student uses $\sin\theta \approx \theta$ to estimate $\sin 30^\circ$. Find the percentage error and comment.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$30^\circ = \dfrac{\pi}{6} = 0.5236$ rad, so the estimate is $0.5236$ against a true value of $0.5$.</p>
+          <p>Percentage error $= \dfrac{0.5236 - 0.5}{0.5} \times 100 = 4.7\%$.</p>
+          <p>$0.52$ rad is not small, so the approximation is poor. It should only be used for angles close to zero.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Given that $\theta$ is small, find an approximate solution of $5\sin\theta + \cos\theta = 1.2$, giving your answer to $3$ significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$5\theta + 1 - \tfrac12\theta^2 = 1.2 \Rightarrow \tfrac12\theta^2 - 5\theta + 0.2 = 0 \Rightarrow \theta^2 - 10\theta + 0.4 = 0$.</p>
+          <p>$\theta = \dfrac{10 \pm \sqrt{100 - 1.6}}{2} = \dfrac{10 \pm \sqrt{98.4}}{2}$.</p>
+          <p>The small root is $\theta = \dfrac{10 - \sqrt{98.4}}{2} = 0.0402$ (3 s.f.). The other root, about $9.96$, is not small and is rejected.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Find the limit of $\dfrac{\tan 5\theta}{\sin 2\theta}$ as $\theta \to 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{\tan 5\theta}{\sin 2\theta} \approx \dfrac{5\theta}{2\theta} = \dfrac52$.</p>
+          <p>The limit is $\dfrac52$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>This question shows that $\dfrac{\mathrm{d}}{\mathrm{d}x}(\sin x) = \cos x$, with $x$ in radians.</p>
+      <p>(a) Use $\sin(A + B) = \sin A\cos B + \cos A\sin B$ to show that $\dfrac{\sin(x + h) - \sin x}{h} = \sin x\left(\dfrac{\cos h - 1}{h}\right) + \cos x\left(\dfrac{\sin h}{h}\right)$.</p>
+      <p>(b) Use small angle approximations to find the limits of $\dfrac{\cos h - 1}{h}$ and $\dfrac{\sin h}{h}$ as $h \to 0$.</p>
+      <p>(c) Hence find the derivative of $\sin x$ from first principles, and explain why the result needs $x$ in radians.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\sin(x + h) - \sin x = \sin x\cos h + \cos x\sin h - \sin x = \sin x(\cos h - 1) + \cos x\sin h$. Divide by $h$ ✓</p>
+          <p><strong>(b)</strong> $\dfrac{\cos h - 1}{h} \approx \dfrac{-\frac12h^2}{h} = -\tfrac12h \to 0$. &nbsp;$\dfrac{\sin h}{h} \approx \dfrac{h}{h} = 1$.</p>
+          <p><strong>(c)</strong> $\dfrac{\mathrm{d}}{\mathrm{d}x}(\sin x) = \displaystyle\lim_{h \to 0}\left[\sin x \cdot \dfrac{\cos h - 1}{h} + \cos x \cdot \dfrac{\sin h}{h}\right] = \sin x \times 0 + \cos x \times 1 = \cos x$.</p>
+          <p>The step $\sin h \approx h$ is only true in radians. In degrees, $\dfrac{\sin h^\circ}{h} \to \dfrac{\pi}{180}$, and the derivative would be $\dfrac{\pi}{180}\cos x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Small Angle Approximations &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

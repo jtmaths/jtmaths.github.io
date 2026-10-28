@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponential and Log Equations &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧮 Exponential and Log Equations</h1>
+  <p>A Level Maths Year 1 · Exponentials and Logarithms</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – SOLVING a^x = b
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Solving $a^x = b$</div>
+<div class="section-body">
+
+  <div class="concept">
+    When the unknown is in the index, <strong>take logarithms of both sides</strong>. The power law $\log\left(a^x\right) = x\log a$ brings the unknown down to where you can reach it. DfE content area F asks you to solve equations of the form $a^x = b$ in this way.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The key step</div>
+    $a^x = b \;\Rightarrow\; x\ln a = \ln b \;\Rightarrow\; x = \dfrac{\ln b}{\ln a}$
+  </div>
+
+  <div class="tip">
+    <strong>Any base of logarithm works</strong> — $\ln$ or $\log_{10}$ give the same answer. Use $\ln$ whenever $e$ appears in the question, because $\ln e^{k} = k$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A basic exponential equation</div>
+    <div class="example-body">
+      <p>Solve $3^x = 20$, giving your answer to 3 significant figures.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take $\ln$: $\ln 3^x = \ln 20$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Power law: $x\ln 3 = \ln 20$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \dfrac{\ln 20}{\ln 3} = 2.73$ (3 s.f.)</span></div>
+      <div class="tip"><strong>Sense check:</strong> $3^2 = 9$ and $3^3 = 27$, so the answer must lie between $2$ and $3$, closer to $3$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — An expression in the index</div>
+    <div class="example-body">
+      <p>Solve (a) $5^{2x-1} = 40$ &nbsp; (b) $e^{0.3t} = 5$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $(2x - 1)\ln 5 = \ln 40$, so $2x - 1 = \dfrac{\ln 40}{\ln 5} = 2.2920\ldots$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$2x = 3.2920\ldots$, so $x = 1.65$ (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $\ln$ undoes $e$ directly: $0.3t = \ln 5$, so $t = \dfrac{\ln 5}{0.3} = 5.36$ (3 s.f.)</span></div>
+      <div class="warn">Bracket the whole index: $(2x-1)\ln 5$, not $2x - 1\ln 5$. Keep full calculator values until the last line.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – UNKNOWN ON BOTH SIDES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Different Bases on Each Side</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Take logs of both sides and use the power law on each.</li>
+    <li>Expand the brackets.</li>
+    <li>Collect the $x$ terms on one side and factorise out $x$.</li>
+    <li>Divide. Leave the answer in terms of logs if an exact answer is wanted.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Exact answer with different bases</div>
+    <div class="example-body">
+      <p>Solve $2^{x+1} = 3^x$, giving $x$ exactly and to 3 significant figures.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$(x + 1)\ln 2 = x\ln 3$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x\ln 2 + \ln 2 = x\ln 3$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\ln 2 = x\ln 3 - x\ln 2 = x(\ln 3 - \ln 2)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = \dfrac{\ln 2}{\ln 3 - \ln 2} = \dfrac{\ln 2}{\ln 1.5} \approx 1.71$</span></div>
+      <div class="tip">Check: $2^{2.71} \approx 6.54$ and $3^{1.71} \approx 6.54$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – HIDDEN QUADRATICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Equations That Are Quadratics in Disguise</div>
+<div class="section-body">
+
+  <div class="concept">
+    Because $e^{2x} = \left(e^x\right)^2$ and $2^{2x} = \left(2^x\right)^2$, an equation with terms in $e^{2x}$, $e^x$ and a constant is really a <strong>quadratic in $e^x$</strong>. Substitute $y = e^x$ (or $y = 2^x$), solve the quadratic, then undo the substitution.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Rewriting the terms</div>
+    $a^{2x} = \left(a^x\right)^2 \qquad a^{x+1} = a \times a^x \qquad a^{2x+1} = a\left(a^x\right)^2 \qquad a^{-x} = \dfrac{1}{a^x}$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A quadratic in $e^x$</div>
+    <div class="example-body">
+      <p>Solve $e^{2x} - 5e^x + 6 = 0$, giving exact answers.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $y = e^x$: $y^2 - 5y + 6 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(y - 2)(y - 3) = 0$, so $y = 2$ or $y = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$e^x = 2 \Rightarrow x = \ln 2$; &nbsp; $e^x = 3 \Rightarrow x = \ln 3$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — A quadratic in $2^x$</div>
+    <div class="example-body">
+      <p>Solve $2^{2x} - 6 \times 2^x + 8 = 0$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $y = 2^x$: $y^2 - 6y + 8 = 0$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$(y - 2)(y - 4) = 0$, so $y = 2$ or $y = 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$2^x = 2 \Rightarrow x = 1$; &nbsp; $2^x = 4 \Rightarrow x = 2$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Rejecting an impossible root</div>
+    <div class="example-body">
+      <p>Solve $e^x - 2 = 15e^{-x}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Multiply through by $e^x$ (never zero): $e^{2x} - 2e^x = 15$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $y = e^x$: $y^2 - 2y - 15 = 0$, so $(y - 5)(y + 3) = 0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$y = 5$ or $y = -3$. But $e^x > 0$ for all $x$, so $e^x = -3$ has no solution.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$e^x = 5 \Rightarrow x = \ln 5$.</span></div>
+      <div class="warn"><strong>Always say why you reject a root.</strong> "$e^x = -3$ is impossible since $e^x > 0$" earns the final mark; silently dropping it may not.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – LOG EQUATIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Equations Involving Logarithms</div>
+<div class="section-body">
+
+  <ul class="steps">
+    <li>Use the laws to combine everything into <strong>one log on each side</strong> (or one log and a number).</li>
+    <li>Remove the logs: $\log_a P = \log_a Q \Rightarrow P = Q$, or $\log_a P = c \Rightarrow P = a^c$.</li>
+    <li>Solve the resulting equation.</li>
+    <li><strong>Check every answer in the original equation</strong> — the log of a negative number or zero is undefined.</li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two logs equal to a number</div>
+    <div class="example-body">
+      <p>Solve $\log_2 x + \log_2(x + 3) = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Combine: $\log_2\left(x(x+3)\right) = 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Index form: $x(x + 3) = 2^2 = 4$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 + 3x - 4 = 0 \Rightarrow (x + 4)(x - 1) = 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x = -4$ would need $\log_2(-4)$, which is undefined. Reject it.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$x = 1$. Check: $\log_2 1 + \log_2 4 = 0 + 2 = 2$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A log on each side</div>
+    <div class="example-body">
+      <p>Solve $\ln x + \ln(x + 2) = \ln 15$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\ln\left(x(x+2)\right) = \ln 15$, so $x^2 + 2x = 15$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x^2 + 2x - 15 = 0 \Rightarrow (x + 5)(x - 3) = 0$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = -5$ makes $\ln x$ undefined, so $x = 3$ only.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Both roots valid</div>
+    <div class="example-body">
+      <p>Solve $2\log_3 x - \log_3(x - 2) = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Power law: $\log_3 x^2 - \log_3(x-2) = 2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Division law: $\log_3\left(\dfrac{x^2}{x-2}\right) = 2$, so $\dfrac{x^2}{x - 2} = 9$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x^2 = 9x - 18 \Rightarrow x^2 - 9x + 18 = 0 \Rightarrow (x - 3)(x - 6) = 0$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Both $x = 3$ and $x = 6$ satisfy $x > 2$, so both are valid.</span></div>
+      <div class="tip">Check $x = 6$: $2\log_3 6 - \log_3 4 = \log_3 \dfrac{36}{4} = \log_3 9 = 2$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Exponential Inequalities</div>
+<div class="section-body">
+
+  <p>Inequalities such as "after how many years will the value fall below …" are solved the same way, with one danger.</p>
+
+  <div class="warn">
+    <strong>The log of a number between $0$ and $1$ is negative.</strong> If you divide by $\ln 0.8$ (which is about $-0.223$), the inequality sign <em>reverses</em>.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Decay below a threshold</div>
+    <div class="example-body">
+      <p>Find the smallest integer $n$ for which $0.8^n < 0.1$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take $\ln$ (an increasing function, so the sign is kept): $n\ln 0.8 < \ln 0.1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide by $\ln 0.8 < 0$ and reverse: $n > \dfrac{\ln 0.1}{\ln 0.8} = 10.32\ldots$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Smallest integer: $n = 11$.</span></div>
+      <div class="tip">Check: $0.8^{10} \approx 0.107$ (not yet below $0.1$) and $0.8^{11} \approx 0.0859$ ✓</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$a^x = b$</h4><p>$x = \dfrac{\ln b}{\ln a}$</p></div>
+    <div class="ref-card"><h4>$e^{kx} = b$</h4><p>$x = \dfrac{\ln b}{k}$</p></div>
+    <div class="ref-card"><h4>Both sides</h4><p>Take logs, expand, collect $x$, factorise.</p></div>
+    <div class="ref-card"><h4>Hidden quadratic</h4><p>$e^{2x} = \left(e^x\right)^2$; let $y = e^x$.</p></div>
+    <div class="ref-card"><h4>Reject</h4><p>$e^x$ and $a^x$ are never zero or negative.</p></div>
+    <div class="ref-card"><h4>Log equations</h4><p>Combine to one log, then switch to index form.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Every argument of a log must be positive.</p></div>
+    <div class="ref-card"><h4>Inequalities</h4><p>Dividing by $\ln$ of a number less than 1 flips the sign.</p></div>
+    <div class="ref-card"><h4>Exact answers</h4><p>Leave as $\ln 5$, $\dfrac{\ln 2}{\ln 1.5}$, etc.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Solve $4^x = 50$, giving your answer to 3 significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$x\ln 4 = \ln 50$, so $x = \dfrac{\ln 50}{\ln 4} = 2.82$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Solve $3e^{2x} = 24$, giving an exact answer in the form $k\ln 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$e^{2x} = 8 \Rightarrow 2x = \ln 8 = 3\ln 2$</p>
+          <p>$x = \tfrac32\ln 2$ $(\approx 1.04)$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Solve $7^{x-2} = 3^x$, giving your answer to 3 significant figures.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(x - 2)\ln 7 = x\ln 3$</p>
+          <p>$x\ln 7 - 2\ln 7 = x\ln 3$</p>
+          <p>$x(\ln 7 - \ln 3) = 2\ln 7$</p>
+          <p>$x = \dfrac{2\ln 7}{\ln 7 - \ln 3} = 4.59$ (3 s.f.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Solve $e^{2x} - 7e^x + 12 = 0$, giving exact answers.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $y = e^x$: $y^2 - 7y + 12 = 0 \Rightarrow (y-3)(y-4) = 0$.</p>
+          <p>$e^x = 3 \Rightarrow x = \ln 3$; &nbsp; $e^x = 4 \Rightarrow x = \ln 4 = 2\ln 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Solve $3^{2x} - 4 \times 3^x + 3 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $y = 3^x$: $y^2 - 4y + 3 = 0 \Rightarrow (y - 1)(y - 3) = 0$.</p>
+          <p>$3^x = 1 \Rightarrow x = 0$; &nbsp; $3^x = 3 \Rightarrow x = 1$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Solve $\log_3(x + 4) + \log_3(x - 4) = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\log_3\left((x+4)(x-4)\right) = 2 \Rightarrow x^2 - 16 = 9 \Rightarrow x^2 = 25$.</p>
+          <p>$x = 5$ or $x = -5$. But $x = -5$ gives $\log_3(-1)$, undefined.</p>
+          <p>$x = 5$. Check: $\log_3 9 + \log_3 1 = 2 + 0 = 2$ ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Solve $2\ln x = \ln(x + 6)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\ln x^2 = \ln(x+6) \Rightarrow x^2 = x + 6 \Rightarrow x^2 - x - 6 = 0$.</p>
+          <p>$(x - 3)(x + 2) = 0$. Reject $x = -2$ since $\ln(-2)$ is undefined.</p>
+          <p>$x = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>£$2000$ is invested at $5\%$ compound interest per year. Find the number of complete years after which the investment is first worth more than £$4000$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Need $2000 \times 1.05^n > 4000$, i.e. $1.05^n > 2$.</p>
+          <p>$n\ln 1.05 > \ln 2$. Since $\ln 1.05 > 0$ the sign stays: $n > \dfrac{\ln 2}{\ln 1.05} = 14.2\ldots$</p>
+          <p>So after $15$ years. (Check: $1.05^{14} \approx 1.980$, $1.05^{15} \approx 2.079$ ✓)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p><em>In this question you must show detailed reasoning.</em> Solve $2^{2x+1} - 9 \times 2^x + 4 = 0$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$2^{2x+1} = 2 \times \left(2^x\right)^2$. Let $y = 2^x$: $2y^2 - 9y + 4 = 0$.</p>
+          <p>$(2y - 1)(y - 4) = 0$, so $y = \tfrac12$ or $y = 4$.</p>
+          <p>$2^x = \tfrac12 = 2^{-1} \Rightarrow x = -1$; &nbsp; $2^x = 4 = 2^2 \Rightarrow x = 2$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Two investments are worth £$A$ and £$B$ after $t$ years, where $A = 1000 \times 1.04^t$ and $B = 800 \times 1.06^t$.</p>
+      <p>(a) State the initial value of each investment and its annual percentage growth. &nbsp; (b) Show that $B > A$ when $\left(\dfrac{53}{52}\right)^t > 1.25$. &nbsp; (c) Hence find the number of complete years after which $B$ is first worth more than $A$. &nbsp; (d) Give one reason why the model may not be realistic over a long period.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $A$: £$1000$, growing by $4\%$ a year. $B$: £$800$, growing by $6\%$ a year.</p>
+          <p><strong>(b)</strong> $800 \times 1.06^t > 1000 \times 1.04^t \Rightarrow \dfrac{1.06^t}{1.04^t} > \dfrac{1000}{800} \Rightarrow \left(\dfrac{1.06}{1.04}\right)^t > 1.25$, and $\dfrac{1.06}{1.04} = \dfrac{106}{104} = \dfrac{53}{52}$.</p>
+          <p><strong>(c)</strong> $t\ln\dfrac{53}{52} > \ln 1.25$. As $\ln\frac{53}{52} > 0$: $t > \dfrac{\ln 1.25}{\ln (53/52)} = 11.7\ldots$</p>
+          <p>So after $12$ complete years. (At $t = 11$: $A \approx 1539$, $B \approx 1519$. At $t = 12$: $A \approx 1601$, $B \approx 1610$ ✓)</p>
+          <p><strong>(d)</strong> Interest rates are unlikely to stay fixed for many years; money may be withdrawn or added.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Exponential and Log Equations &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

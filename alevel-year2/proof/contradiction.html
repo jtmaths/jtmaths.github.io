@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof by Contradiction &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚔️ Proof by Contradiction</h1>
+  <p>A Level Maths Year 2 · Proof</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE METHOD
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Method</div>
+<div class="section-body">
+
+  <div class="concept">
+    A statement is either true or false. If assuming it is <strong>false</strong> leads, by correct logic, to something impossible, then it cannot be false — so it must be <strong>true</strong>. That is <strong>proof by contradiction</strong>.
+  </div>
+
+  <ol class="steps">
+    <li><span><strong>Assume</strong> the statement is false. Write down its negation clearly: "Assume, for contradiction, that…"</span></li>
+    <li><span><strong>Deduce</strong> consequences from that assumption using correct algebra and known facts.</span></li>
+    <li><span><strong>Contradict</strong>: reach something impossible — a number that is both even and odd, an integer equal to a fraction, a fraction not in lowest terms when you said it was.</span></li>
+    <li><span><strong>Conclude</strong>: "This is a contradiction, so the assumption was false and the statement is true."</span></li>
+  </ol>
+
+  <div class="tip">
+    <strong>The contradiction can be with anything you know is true</strong> — with the assumption itself, with a definition, or with an earlier result. Say exactly what has been contradicted.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – NEGATION
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Writing the Negation</div>
+<div class="section-body">
+
+  <p>The first line is worth a mark on its own, and getting it wrong wrecks the proof. The negation must be true in <em>exactly</em> the cases where the statement is false.</p>
+
+  <table>
+    <tr><th>Statement</th><th>Assume, for contradiction…</th></tr>
+    <tr><td>$\sqrt{2}$ is irrational</td><td>$\sqrt{2}$ is rational, so $\sqrt{2} = \dfrac{a}{b}$ with $a, b$ integers with no common factor</td></tr>
+    <tr><td>There are infinitely many primes</td><td>There are finitely many primes, $p_1, p_2, \ldots, p_n$</td></tr>
+    <tr><td>There is no greatest even number</td><td>There is a greatest even number, $N$</td></tr>
+    <tr><td>If $n^2$ is even then $n$ is even</td><td>$n^2$ is even <strong>and</strong> $n$ is odd</td></tr>
+    <tr><td>There are no integers $a, b$ with $a^2 - 4b = 2$</td><td>There are integers $a, b$ with $a^2 - 4b = 2$</td></tr>
+    <tr><td>For all $x > 0$, $x + \dfrac{1}{x} \geqslant 2$</td><td>There is some $x > 0$ with $x + \dfrac{1}{x} < 2$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Negating "if P then Q".</strong> The negation is "P is true and Q is false" — not "if P then not Q". To disprove "if $n^2$ is even then $n$ is even" you would need one $n$ with $n^2$ even and $n$ odd.
+  </div>
+
+  <div class="warn">
+    <strong>"For all" becomes "there exists".</strong> The opposite of "every $x$ satisfies…" is "at least one $x$ does not". You only need to assume one bad case exists.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – PARITY ARGUMENTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Even and Odd Arguments</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — If $n^2$ is even, then $n$ is even</div>
+    <div class="example-body">
+      <p>Prove that for any integer $n$, if $n^2$ is even then $n$ is even.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong>, for contradiction, that $n^2$ is even and $n$ is odd.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Since $n$ is odd, $n = 2k + 1$ for some integer $k$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$, which is odd.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>This contradicts $n^2$ being even.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So if $n^2$ is even, $n$ must be even. $\blacksquare$</span></div>
+      <div class="tip">This result is the key lemma in the proof that $\sqrt{2}$ is irrational. Learn it, and its "multiple of $3$" cousin below.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — No greatest even number</div>
+    <div class="example-body">
+      <p>Prove that there is no greatest even number.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> there is a greatest even number, $N$. So $N = 2k$ for some integer $k$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Consider $N + 2 = 2k + 2 = 2(k+1)$. This is even.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>And $N + 2 > N$, contradicting the assumption that $N$ is the greatest even number.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So there is no greatest even number. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — $a^2 - 4b \neq 2$</div>
+    <div class="example-body">
+      <p>Prove that there are no integers $a$ and $b$ for which $a^2 - 4b = 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> there are integers $a, b$ with $a^2 - 4b = 2$. Then $a^2 = 4b + 2 = 2(2b + 1)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>So $a^2$ is even, and by Worked Example 1, $a$ is even: $a = 2m$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Substitute: $4m^2 - 4b = 2$, so $2m^2 - 2b = 1$, i.e. $2(m^2 - b) = 1$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>The left side is even and the right side is odd — a contradiction.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>So no such integers exist. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — A difference of two squares</div>
+    <div class="example-body">
+      <p>Prove that there are no positive integers $x$ and $y$ with $x^2 - y^2 = 10$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> positive integers $x, y$ satisfy $x^2 - y^2 = 10$, so $(x - y)(x + y) = 10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x + y$ and $x - y$ differ by $2y$, which is even, so they are both even or both odd.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Both odd: their product is odd, but $10$ is even. Contradiction.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Both even: their product is a multiple of $4$, but $10$ is not. Contradiction.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Either way we have a contradiction, so no such integers exist. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – IRRATIONALITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Proving a Number Is Irrational</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">The standard opening</div>
+    Assume $\sqrt{2} = \dfrac{a}{b}$ where $a, b$ are integers, $b \neq 0$, and the fraction is in its <strong>simplest form</strong>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — $\sqrt{2}$ is irrational</div>
+    <div class="example-body">
+      <p>Prove that $\sqrt{2}$ is irrational.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> $\sqrt{2}$ is rational: $\sqrt{2} = \dfrac{a}{b}$ with $a, b$ integers having no common factor.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Square: $2 = \dfrac{a^2}{b^2}$, so $a^2 = 2b^2$. Hence $a^2$ is even, so $a$ is even.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Write $a = 2c$. Then $4c^2 = 2b^2$, so $b^2 = 2c^2$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>So $b^2$ is even, and therefore $b$ is even.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Now $a$ and $b$ are both even, so they share the factor $2$. This contradicts "no common factor".</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>So $\sqrt{2}$ is irrational. $\blacksquare$</span></div>
+      <div class="warn">Step ② relies on "$a^2$ even $\Rightarrow$ $a$ even". It is <em>not</em> obvious — it is Worked Example 1. In an exam, either quote it as a known result or prove it in a line.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <strong>The same proof for $\sqrt{3}$.</strong> Replace "even" with "a multiple of $3$". The lemma you need is: <em>if $n^2$ is a multiple of $3$, then $n$ is a multiple of $3$.</em> Proof: if $n = 3k+1$ then $n^2 = 3(3k^2 + 2k) + 1$; if $n = 3k + 2$ then $n^2 = 3(3k^2 + 4k + 1) + 1$. Neither is a multiple of $3$, so $n$ must be $3k$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — $\log_2 3$ is irrational</div>
+    <div class="example-body">
+      <p>Prove that $\log_2 3$ is irrational.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> $\log_2 3 = \dfrac{p}{q}$ with $p, q$ integers. Since $\log_2 3 > 0$ we may take $p, q > 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Then $2^{p/q} = 3$, so raising to the power $q$: $2^p = 3^q$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$p \geqslant 1$, so $2^p$ is even. $3^q$ is a product of odd numbers, so it is odd.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>An even number cannot equal an odd number — a contradiction. So $\log_2 3$ is irrational. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Rational plus irrational</div>
+    <div class="example-body">
+      <p>Given that $\sqrt{2}$ is irrational, prove that $3 + 5\sqrt{2}$ is irrational.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> $3 + 5\sqrt{2} = \dfrac{a}{b}$ with $a, b$ integers, $b \neq 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Rearrange: $\sqrt{2} = \dfrac{1}{5}\left(\dfrac{a}{b} - 3\right) = \dfrac{a - 3b}{5b}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$a - 3b$ and $5b$ are integers and $5b \neq 0$, so $\sqrt{2}$ would be rational.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>This contradicts $\sqrt{2}$ being irrational, so $3 + 5\sqrt{2}$ is irrational. $\blacksquare$</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – INFINITELY MANY PRIMES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Infinitely Many Primes</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Euclid's proof</div>
+    <div class="example-body">
+      <p>Prove that there are infinitely many prime numbers.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> there are finitely many primes, and list them all: $p_1, p_2, \ldots, p_n$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $N = p_1 p_2 \cdots p_n + 1$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Dividing $N$ by any $p_i$ leaves remainder $1$, so no prime on the list divides $N$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$N > 1$, so either $N$ is prime, or it has a prime factor. Either way there is a prime not on the list.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>This contradicts the list containing every prime. So there are infinitely many primes. $\blacksquare$</span></div>
+      <div class="warn"><strong>$N$ is not necessarily prime.</strong> $2 \times 3 \times 5 \times 7 \times 11 \times 13 + 1 = 30\,031 = 59 \times 509$. The argument only needs a prime factor <em>outside</em> the list, and $59$ and $509$ are not in $\{2, 3, 5, 7, 11, 13\}$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – INEQUALITIES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Contradiction with Inequalities</div>
+<div class="section-body">
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — $x + \frac{1}{x} \geqslant 2$</div>
+    <div class="example-body">
+      <p>Prove that for all positive real numbers $x$, $x + \dfrac{1}{x} \geqslant 2$.</p>
+      <div class="step-row"><span class="arrow">①</span><span><strong>Assume</strong> there is some $x > 0$ with $x + \dfrac{1}{x} < 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply by $x$ (positive, so the inequality is kept): $x^2 + 1 < 2x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Rearrange: $x^2 - 2x + 1 < 0$, i.e. $(x - 1)^2 < 0$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>A real square cannot be negative — a contradiction. So $x + \dfrac{1}{x} \geqslant 2$ for all $x > 0$. $\blacksquare$</span></div>
+      <div class="tip">Multiplying by $x$ is only safe because $x > 0$. Always say why the inequality sign does not change.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Structure</h4><p>Assume false $\to$ deduce $\to$ contradiction $\to$ conclude.</p></div>
+    <div class="ref-card"><h4>Rational</h4><p>$\dfrac{a}{b}$, integers, $b \neq 0$, <strong>simplest form</strong>.</p></div>
+    <div class="ref-card"><h4>Key lemma</h4><p>$n^2$ even $\Rightarrow n$ even.</p></div>
+    <div class="ref-card"><h4>Multiples of 3</h4><p>$3 \mid n^2 \Rightarrow 3 \mid n$ (check $3k\pm1$).</p></div>
+    <div class="ref-card"><h4>Primes</h4><p>Product of all of them, plus $1$.</p></div>
+    <div class="ref-card"><h4>Logs</h4><p>$2^p = 3^q$: even $=$ odd, impossible.</p></div>
+    <div class="ref-card"><h4>Negating "if P then Q"</h4><p>P and not Q.</p></div>
+    <div class="ref-card"><h4>Parity clash</h4><p>Even $=$ odd, or integer $=$ fraction.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Write the opening assumption for a proof by contradiction of each statement. &nbsp; (a) "$\sqrt{5}$ is irrational." &nbsp; (b) "If $n^3$ is odd then $n$ is odd." &nbsp; (c) "There is no largest multiple of $7$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Assume $\sqrt{5}$ is rational, so $\sqrt{5} = \dfrac{a}{b}$ with $a, b$ integers, $b \neq 0$, having no common factor.</p>
+          <p><strong>(b)</strong> Assume $n^3$ is odd and $n$ is even.</p>
+          <p><strong>(c)</strong> Assume there is a largest multiple of $7$, $M = 7k$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Prove by contradiction that there is no greatest odd number.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> there is a greatest odd number, $N = 2k + 1$.</p>
+          <p>Then $N + 2 = 2(k+1) + 1$ is odd and greater than $N$.</p>
+          <p>This contradicts $N$ being the greatest, so there is no greatest odd number. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Prove that if $n^2$ is odd, then $n$ is odd.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> $n^2$ is odd and $n$ is even, so $n = 2k$.</p>
+          <p>Then $n^2 = 4k^2 = 2(2k^2)$, which is even.</p>
+          <p>This contradicts $n^2$ being odd, so $n$ is odd. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Prove that there are no integers $a$ and $b$ such that $10a + 15b = 7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> integers $a, b$ satisfy $10a + 15b = 7$.</p>
+          <p>Then $5(2a + 3b) = 7$, so $2a + 3b = \dfrac{7}{5}$.</p>
+          <p>The left side is an integer but $\tfrac{7}{5}$ is not — a contradiction. So no such integers exist. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Prove that $\sqrt{3}$ is irrational. You may use the result that if $n^2$ is a multiple of $3$ then $n$ is a multiple of $3$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> $\sqrt{3} = \dfrac{a}{b}$ with $a, b$ integers, $b \neq 0$, and no common factor.</p>
+          <p>Then $a^2 = 3b^2$, so $a^2$ is a multiple of $3$, and hence so is $a$. Write $a = 3c$.</p>
+          <p>$9c^2 = 3b^2 \Rightarrow b^2 = 3c^2$, so $b^2$, and hence $b$, is a multiple of $3$.</p>
+          <p>So $3$ is a common factor of $a$ and $b$ — a contradiction. Hence $\sqrt{3}$ is irrational. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Prove that there are no positive integers $x$ and $y$ with $x^2 - y^2 = 1$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> positive integers $x, y$ satisfy $(x - y)(x + y) = 1$.</p>
+          <p>$x + y$ is a positive integer, so $x - y$ must be positive too, and the only way two positive integers multiply to $1$ is $x + y = 1$ and $x - y = 1$.</p>
+          <p>Adding: $2x = 2$, so $x = 1$ and $y = 0$. But $y$ was positive — a contradiction.</p>
+          <p>So there are no such positive integers. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>Given that $q$ is a non-zero rational number and $r$ is irrational, prove that $qr$ is irrational.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Write $q = \dfrac{a}{b}$ with $a, b$ non-zero integers.</p>
+          <p><strong>Assume</strong> $qr$ is rational: $qr = \dfrac{c}{d}$ with $c, d$ integers, $d \neq 0$.</p>
+          <p>Then $r = \dfrac{c}{d} \div \dfrac{a}{b} = \dfrac{bc}{ad}$, and $ad \neq 0$, so $r$ is rational.</p>
+          <p>This contradicts $r$ being irrational. So $qr$ is irrational. $\blacksquare$</p>
+          <p>(Note that $q \neq 0$ is needed: $0 \times \sqrt{2} = 0$ is rational.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Prove that $\log_3 10$ is irrational.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> $\log_3 10 = \dfrac{p}{q}$ with $p, q$ integers. As $\log_3 10 > 0$, take $p, q > 0$.</p>
+          <p>Then $3^{p/q} = 10$, so $3^p = 10^q$.</p>
+          <p>$3^p$ is odd, but $10^q$ (with $q \geqslant 1$) is even — a contradiction.</p>
+          <p>So $\log_3 10$ is irrational. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Prove by contradiction that for all real $x > 0$, $\;x + \dfrac{9}{x} \geqslant 6$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>Assume</strong> some $x > 0$ has $x + \dfrac{9}{x} < 6$.</p>
+          <p>Multiply by $x > 0$ (sign unchanged): $x^2 + 9 < 6x$, so $x^2 - 6x + 9 < 0$.</p>
+          <p>That is $(x - 3)^2 < 0$, impossible for real $x$ — a contradiction.</p>
+          <p>So $x + \dfrac{9}{x} \geqslant 6$ for all $x > 0$, with equality when $x = 3$. $\blacksquare$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Prove that if $n$ is not a multiple of $3$ then $n^2$ leaves remainder $1$ when divided by $3$. &nbsp; (b) Hence prove by contradiction that there are no integers $a$ and $b$ with $a^2 = 3b + 2$. &nbsp; (c) Prove that $\sqrt{6}$ is irrational. &nbsp; (d) A student says: "$\sqrt{2}$ and $\sqrt{3}$ are irrational, and the product of two irrationals is irrational, so $\sqrt{6}$ is irrational." Show that the student's general rule is false.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $n = 3k + 1 \Rightarrow n^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1$.</p>
+          <p>$n = 3k + 2 \Rightarrow n^2 = 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1$. Both leave remainder $1$. $\blacksquare$</p>
+          <p><strong>(b)</strong> <strong>Assume</strong> $a^2 = 3b + 2$. Then $a^2$ leaves remainder $2$ on division by $3$.</p>
+          <p>If $a$ is a multiple of $3$, $a^2$ leaves remainder $0$; if not, by (a) it leaves remainder $1$. Never $2$ — a contradiction. $\blacksquare$</p>
+          <p><strong>(c)</strong> <strong>Assume</strong> $\sqrt{6} = \dfrac{a}{b}$ in simplest form. Then $a^2 = 6b^2$, so $a^2$ is even and $a$ is even: $a = 2c$.</p>
+          <p>$4c^2 = 6b^2 \Rightarrow b^2 = 2c^2$, so $b^2$ is even and $b$ is even.</p>
+          <p>Then $2$ is a common factor of $a$ and $b$ — a contradiction. So $\sqrt{6}$ is irrational. $\blacksquare$</p>
+          <p><strong>(d)</strong> Counter-example: $\sqrt{2}$ is irrational but $\sqrt{2} \times \sqrt{2} = 2$ is rational. So "the product of two irrationals is irrational" is false, and the student's argument is not valid (even though the conclusion happens to be true).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Proof by Contradiction &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

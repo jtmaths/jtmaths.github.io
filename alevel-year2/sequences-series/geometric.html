@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometric Sequences and Series &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✖️ Geometric Sequences and Series</h1>
+  <p>A Level Maths Year 2 · Sequences and Series</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – GEOMETRIC SEQUENCES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> Geometric Sequences</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>geometric sequence</strong> (or geometric progression, GP) is <em>multiplied</em> by the same number every time. That number is the <strong>common ratio</strong> $r$, found by dividing any term by the one before it.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The $n$th term of a geometric sequence</div>
+    $u_n = ar^{n-1}$
+  </div>
+
+  <table>
+    <tr><th>Sequence</th><th>$a$</th><th>$r$</th><th>Behaviour</th></tr>
+    <tr><td>$3, 6, 12, 24, \ldots$</td><td>$3$</td><td>$2$</td><td>Grows without limit</td></tr>
+    <tr><td>$80, 40, 20, 10, \ldots$</td><td>$80$</td><td>$\tfrac12$</td><td>Decreases towards $0$</td></tr>
+    <tr><td>$2, -6, 18, -54, \ldots$</td><td>$2$</td><td>$-3$</td><td>Alternates in sign, growing in size</td></tr>
+    <tr><td>$5, 5, 5, \ldots$</td><td>$5$</td><td>$1$</td><td>Constant</td></tr>
+  </table>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — The $n$th term</div>
+    <div class="example-body">
+      <p>Find the $10$th term of $3, 6, 12, \ldots$</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 3$, $r = 6 \div 3 = 2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$u_{10} = 3 \times 2^{9} = 3 \times 512 = 1536$.</span></div>
+      <div class="warn">The power is $n - 1 = 9$, not $10$. The first term has $r^0$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Two terms given</div>
+    <div class="example-body">
+      <p>The $3$rd term of a geometric sequence is $18$ and the $6$th term is $486$. Find $a$ and $r$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$ar^2 = 18$ and $ar^5 = 486$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Divide: $r^3 = 27$, so $r = 3$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$a = 18 \div 9 = 2$.</span></div>
+      <div class="tip">With a geometric sequence you <strong>divide</strong> the equations to eliminate $a$. With an arithmetic one you subtract.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Three consecutive terms</div>
+    <div class="example-body">
+      <p>$x$, $x + 8$ and $9x$ are consecutive terms of a geometric sequence. Find the possible values of $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The ratios are equal: $\dfrac{x+8}{x} = \dfrac{9x}{x+8}$, so $(x + 8)^2 = 9x^2$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x + 8 = \pm 3x$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x + 8 = 3x \Rightarrow x = 4$, giving $4, 12, 36$ with $r = 3$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x + 8 = -3x \Rightarrow x = -2$, giving $-2, 6, -18$ with $r = -3$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE SUM FORMULA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Geometric Series and the Sum Formula</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Sum of the first $n$ terms of a geometric series ($r \neq 1$)</div>
+    $S_n = \dfrac{a(1 - r^n)}{1 - r} \qquad\text{or equivalently}\qquad S_n = \dfrac{a(r^n - 1)}{r - 1}$
+  </div>
+
+  <p>Both forms are identical (multiply top and bottom by $-1$). Use the second when $r > 1$ so that both brackets are positive.</p>
+
+  <div class="example">
+    <div class="example-header">Proof — The sum of a geometric series</div>
+    <div class="example-body">
+      <div class="step-row"><span class="arrow">①</span><span>$S_n = a + ar + ar^2 + \cdots + ar^{n-1}$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Multiply by $r$: $rS_n = ar + ar^2 + \cdots + ar^{n-1} + ar^n$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Subtract: almost every term cancels, leaving $S_n - rS_n = a - ar^n$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$S_n(1 - r) = a(1 - r^n)$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$S_n = \dfrac{a(1 - r^n)}{1 - r}$ for $r \neq 1$. $\blacksquare$</span></div>
+      <div class="tip">Dividing by $1 - r$ is why the formula needs $r \neq 1$. When $r = 1$ every term is $a$ and $S_n = na$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Using the sum formula</div>
+    <div class="example-body">
+      <p>Find the sum of the first $10$ terms of $5 + 10 + 20 + \cdots$</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 5$, $r = 2$, $n = 10$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S_{10} = \dfrac{5(2^{10} - 1)}{2 - 1} = 5 \times 1023 = 5115$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Sigma notation</div>
+    <div class="example-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{8} 3 \times 2^{r}$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>The first term ($r = 1$) is $6$ and each term doubles: $a = 6$, ratio $2$, $8$ terms.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S_8 = \dfrac{6(2^8 - 1)}{2 - 1} = 6 \times 255 = 1530$.</span></div>
+      <div class="warn">Do not confuse the sigma variable $r$ with the common ratio. Here the ratio is $2$ and the first term is $3 \times 2^1$, not $3$.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – SUM TO INFINITY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Convergence and the Sum to Infinity</div>
+<div class="section-body">
+
+  <div class="concept">
+    If $|r| < 1$ then $r^n \to 0$ as $n \to \infty$. The sum $S_n = \dfrac{a(1 - r^n)}{1 - r}$ therefore gets closer and closer to $\dfrac{a}{1-r}$. The series is <strong>convergent</strong>. If $|r| \geqslant 1$ the terms do not shrink and the series is <strong>divergent</strong> — there is no sum to infinity.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">Sum to infinity — valid only when $|r| < 1$, i.e. $-1 < r < 1$</div>
+    $S_\infty = \dfrac{a}{1 - r}$
+  </div>
+
+  <div class="svg-block">
+    <svg width="440" height="220" viewBox="0 0 440 220" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="12">
+      <line x1="50" y1="190" x2="420" y2="190" stroke="#333" stroke-width="1.5"/>
+      <line x1="50" y1="190" x2="50" y2="15" stroke="#333" stroke-width="1.5"/>
+      <text x="415" y="207" text-anchor="end">n</text>
+      <text x="40" y="20" text-anchor="end">Sₙ</text>
+      <line x1="50" y1="30" x2="420" y2="30" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <text x="44" y="34" text-anchor="end">2</text>
+      <text x="44" y="114" text-anchor="end">1</text>
+      <line x1="46" y1="110" x2="50" y2="110" stroke="#333"/>
+      <text x="300" y="24" fill="#6d28d9">S∞ = 2</text>
+      <g fill="#4f46e5">
+        <rect x="62" y="110" width="22" height="80"/>
+        <rect x="102" y="70" width="22" height="120"/>
+        <rect x="142" y="50" width="22" height="140"/>
+        <rect x="182" y="40" width="22" height="150"/>
+        <rect x="222" y="35" width="22" height="155"/>
+        <rect x="262" y="32.5" width="22" height="157.5"/>
+        <rect x="302" y="31.25" width="22" height="158.75"/>
+        <rect x="342" y="30.625" width="22" height="159.375"/>
+      </g>
+      <g text-anchor="middle">
+        <text x="73" y="204">1</text><text x="113" y="204">2</text><text x="153" y="204">3</text><text x="193" y="204">4</text>
+        <text x="233" y="204">5</text><text x="273" y="204">6</text><text x="313" y="204">7</text><text x="353" y="204">8</text>
+      </g>
+    </svg>
+    <p style="font-size:.85rem;color:#555">Partial sums of $1 + \tfrac12 + \tfrac14 + \cdots$ approach, but never reach, $S_\infty = 2$.</p>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding a sum to infinity</div>
+    <div class="example-body">
+      <p>Find the sum to infinity of $24 + 12 + 6 + 3 + \cdots$</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 24$, $r = \tfrac12$. Since $|r| < 1$ the sum to infinity exists.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$S_\infty = \dfrac{24}{1 - \frac12} = 48$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Working backwards</div>
+    <div class="example-body">
+      <p>A geometric series has sum to infinity equal to four times its first term. Find the common ratio.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$\dfrac{a}{1 - r} = 4a$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$a \neq 0$, so divide by $a$: $1 = 4(1 - r)$, giving $r = \tfrac34$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$|r| < 1$, so the sum to infinity does exist ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A condition for convergence</div>
+    <div class="example-body">
+      <p>The series $1 + 2x + 4x^2 + 8x^3 + \cdots$ is convergent. (a) Find the set of possible values of $x$. (b) Given that the sum to infinity is $3$, find $x$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) The common ratio is $2x$. Convergence needs $|2x| < 1$, so $-\tfrac12 < x < \tfrac12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) $\dfrac{1}{1 - 2x} = 3 \Rightarrow 1 - 2x = \tfrac13 \Rightarrow x = \tfrac13$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\tfrac13$ lies in the interval from (a) ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – USING LOGS TO FIND n
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Using Logarithms to Find $n$</div>
+<div class="section-body">
+
+  <p>When $n$ is the unknown, it sits in a power. Rearrange to the form $r^n \gtrless k$ and take logarithms of both sides.</p>
+
+  <div class="warn">
+    <strong>The sign trap.</strong> If $0 < r < 1$ then $\ln r$ is <em>negative</em>, so dividing by it <strong>reverses</strong> the inequality. For example $0.8^n < 0.1 \Rightarrow n \ln 0.8 < \ln 0.1 \Rightarrow n > \dfrac{\ln 0.1}{\ln 0.8}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — The least $n$ for a sum</div>
+    <div class="example-body">
+      <p>Find the least value of $n$ for which the sum of the first $n$ terms of $3 + 3.3 + 3.63 + \cdots$ exceeds $100$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$a = 3$, $r = 1.1$: &nbsp;$S_n = \dfrac{3(1.1^n - 1)}{0.1} = 30(1.1^n - 1)$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$30(1.1^n - 1) > 100 \Rightarrow 1.1^n > \tfrac{13}{3}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n \ln 1.1 > \ln\tfrac{13}{3} \Rightarrow n > \dfrac{\ln(13/3)}{\ln 1.1} = 15.38\ldots$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Least $n = 16$. Check: $S_{15} \approx 95.3$, $S_{16} \approx 107.8$ ✓</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – MODELLING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Modelling: Savings and Depreciation</div>
+<div class="section-body">
+
+  <div class="concept">
+    A <strong>percentage change</strong> each period is a geometric model. An increase of $p\%$ gives $r = 1 + \tfrac{p}{100}$; a decrease of $p\%$ gives $r = 1 - \tfrac{p}{100}$.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — Depreciation</div>
+    <div class="example-body">
+      <p>A car costs £$18\,000$ and loses $15\%$ of its value each year. (a) Find its value after $5$ years. (b) After how many complete years is it first worth less than £$5000$?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Value after $n$ years: $V = 18\,000 \times 0.85^n$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(a) $18\,000 \times 0.85^5 = $ £$7986.70$ (nearest penny).</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>(b) $18\,000 \times 0.85^n < 5000 \Rightarrow 0.85^n < \tfrac{5}{18}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$n > \dfrac{\ln(5/18)}{\ln 0.85} = 7.88\ldots$ (inequality reversed, as $\ln 0.85 < 0$).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>After $8$ years. Check: $V_7 \approx $ £$5770$, $V_8 \approx $ £$4905$ ✓</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 11 — Regular savings</div>
+    <div class="example-body">
+      <p>At the start of each year Leah pays £$500$ into an account paying $3\%$ compound interest per year. How much is in the account at the end of $10$ years?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The first £$500$ earns interest for $10$ years: worth $500 \times 1.03^{10}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The last £$500$ earns interest for $1$ year: worth $500 \times 1.03$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Total $= 500(1.03) + 500(1.03)^2 + \cdots + 500(1.03)^{10}$ — a GP with $a = 515$, $r = 1.03$, $n = 10$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$S_{10} = \dfrac{515(1.03^{10} - 1)}{0.03} = $ £$5903.90$ (nearest penny).</span></div>
+      <div class="tip">Write out the first and last terms in words before using the formula. Most errors in savings questions come from being one year out at one end.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$n$th term</h4><p>$u_n = ar^{n-1}$</p></div>
+    <div class="ref-card"><h4>Common ratio</h4><p>$r = u_{n+1} \div u_n$</p></div>
+    <div class="ref-card"><h4>Sum</h4><p>$S_n = \dfrac{a(1-r^n)}{1-r}$, &nbsp;$r \neq 1$</p></div>
+    <div class="ref-card"><h4>Proof</h4><p>Write $S_n$ and $rS_n$, then subtract.</p></div>
+    <div class="ref-card"><h4>Sum to infinity</h4><p>$S_\infty = \dfrac{a}{1-r}$ only if $|r| < 1$.</p></div>
+    <div class="ref-card"><h4>Consecutive terms</h4><p>$(\text{middle})^2 = \text{first} \times \text{third}$</p></div>
+    <div class="ref-card"><h4>Two terms given</h4><p>Divide to eliminate $a$.</p></div>
+    <div class="ref-card"><h4>Finding $n$</h4><p>Take logs; reverse the inequality if dividing by $\ln r < 0$.</p></div>
+    <div class="ref-card"><h4>Percentages</h4><p>$+p\%$: $r = 1 + \tfrac{p}{100}$; &nbsp;$-p\%$: $r = 1 - \tfrac{p}{100}$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>Find the $8$th term of $2, -6, 18, \ldots$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = 2$, $r = -3$: $u_8 = 2 \times (-3)^7 = 2 \times (-2187) = -4374$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Find the sum of the first $8$ terms of $1 + 3 + 9 + \cdots$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$S_8 = \dfrac{1(3^8 - 1)}{3 - 1} = \dfrac{6560}{2} = 3280$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Find the sum to infinity of $81 - 27 + 9 - 3 + \cdots$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$a = 81$, $r = -\tfrac13$, and $|r| < 1$.</p>
+          <p>$S_\infty = \dfrac{81}{1 + \frac13} = \dfrac{81}{\frac43} = \dfrac{243}{4} = 60.75$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>The $2$nd term of a geometric sequence is $12$ and the $5$th term is $324$. Find the sum of the first $6$ terms.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$ar = 12$, $ar^4 = 324$. Divide: $r^3 = 27$, $r = 3$, $a = 4$.</p>
+          <p>$S_6 = \dfrac{4(3^6 - 1)}{2} = 2 \times 728 = 1456$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Evaluate $\displaystyle\sum_{r=1}^{10} 3(2^r)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>First term $6$, ratio $2$, $10$ terms.</p>
+          <p>$S_{10} = \dfrac{6(2^{10} - 1)}{1} = 6 \times 1023 = 6138$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A geometric series has second term $6$ and sum to infinity $27$. Find the two possible values of the common ratio and the corresponding first terms.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$ar = 6$ and $\dfrac{a}{1-r} = 27$, so $a = 27(1 - r)$.</p>
+          <p>Substitute: $27r(1 - r) = 6 \Rightarrow 27r^2 - 27r + 6 = 0 \Rightarrow 9r^2 - 9r + 2 = 0$.</p>
+          <p>$(3r - 1)(3r - 2) = 0$, so $r = \tfrac13$ or $r = \tfrac23$ (both satisfy $|r| < 1$).</p>
+          <p>$r = \tfrac13$: $a = 18$. &nbsp; $r = \tfrac23$: $a = 9$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>The series $1 + \dfrac{x-1}{3} + \left(\dfrac{x-1}{3}\right)^2 + \cdots$ is convergent. Find the range of possible values of $x$, and the sum to infinity when $x = 2$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Need $\left|\dfrac{x-1}{3}\right| < 1$, so $-3 < x - 1 < 3$, giving $-2 < x < 4$.</p>
+          <p>When $x = 2$, $r = \tfrac13$: $S_\infty = \dfrac{1}{1 - \frac13} = \dfrac32$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A geometric series has first term $a$ and common ratio $0.8$. Find the least $n$ such that $S_n$ is within $0.1\%$ of $S_\infty$, i.e. $S_n > 0.999\,S_\infty$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\dfrac{S_n}{S_\infty} = \dfrac{a(1 - 0.8^n)/0.2}{a/0.2} = 1 - 0.8^n$.</p>
+          <p>$1 - 0.8^n > 0.999 \Rightarrow 0.8^n < 0.001$.</p>
+          <p>$n > \dfrac{\ln 0.001}{\ln 0.8} = 30.96\ldots$ (reversed since $\ln 0.8 < 0$), so $n = 31$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A ball is dropped from a height of $10$ m. After each bounce it rises to $\tfrac34$ of the height it fell from. (a) Find the height it reaches after the $5$th bounce. (b) Find the total distance it travels before coming to rest, assuming it bounces indefinitely.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $10 \times 0.75^5 = 2.37$ m (3 s.f.).</p>
+          <p><strong>(b)</strong> It falls $10$ m, then each bounce goes up and down the same distance.</p>
+          <p>The rebound heights $7.5, 5.625, \ldots$ form a GP with $a = 7.5$, $r = 0.75$, so their sum is $\dfrac{7.5}{0.25} = 30$ m.</p>
+          <p>Total $= 10 + 2 \times 30 = 70$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>Ali saves £$100$ in the first month, and each month saves $2\%$ more than the month before.</p>
+      <p>(a) How much does Ali save in month $12$? &nbsp; (b) Find his total savings over the first $12$ months. &nbsp; (c) Show that the total after $n$ months exceeds £$5000$ when $1.02^n > 2$, and hence find the first month in which the total exceeds £$5000$. &nbsp; (d) Give one reason why the model may not be realistic in the long term.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $u_{12} = 100 \times 1.02^{11} = $ £$124.34$.</p>
+          <p><strong>(b)</strong> $S_{12} = \dfrac{100(1.02^{12} - 1)}{0.02} = $ £$1341.21$.</p>
+          <p><strong>(c)</strong> $\dfrac{100(1.02^n - 1)}{0.02} > 5000 \Rightarrow 5000(1.02^n - 1) > 5000 \Rightarrow 1.02^n > 2$ ✓</p>
+          <p>$n > \dfrac{\ln 2}{\ln 1.02} = 35.003\ldots$, so $n = 36$.</p>
+          <p>Check: $S_{35} \approx $ £$4999.45$ — just short — and $S_{36} \approx $ £$5199.44$ ✓. The first month is month $36$.</p>
+          <p><strong>(d)</strong> The monthly amount grows exponentially without limit, but Ali's income is unlikely to grow at $2\%$ a month for ever.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Geometric Sequences and Series &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

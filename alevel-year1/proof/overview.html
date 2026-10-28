@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔍 Proof Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p>A <strong>proof</strong> is a chain of logical steps that starts from things you already know to be true and ends at the statement you want to establish. Once a result is proved, it is true <em>for ever</em> and <em>in every case</em> — no amount of checking examples can do that.</p>
+
+  <div class="concept">
+    At GCSE you were mostly asked to <em>show</em> that a number or an expression came out right. At A Level you are asked to <strong>prove</strong> that something is <em>always</em> true — for every integer, every real number, every triangle. Checking ten cases, or ten thousand, is <strong>not</strong> a proof.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The shape of every proof</div>
+    Assumptions (what you are given, and known facts)<br>
+    $\Downarrow$ &nbsp; a sequence of valid logical steps &nbsp; $\Downarrow$<br>
+    Conclusion (exactly the statement you were asked to prove)
+  </div>
+
+  <p>In the first year of A Level you meet three methods (DfE content area A · Proof):</p>
+
+  <table>
+    <tr><th>Method</th><th>What you do</th><th>Typical use</th></tr>
+    <tr><td><strong>Proof by deduction</strong></td><td>Start from general facts and argue step by step to the result, usually with algebra.</td><td>"Prove that the sum of any two odd numbers is even."</td></tr>
+    <tr><td><strong>Proof by exhaustion</strong></td><td>Split the situation into a finite number of cases and check <em>every</em> one.</td><td>"Prove that every square number leaves remainder 0 or 1 when divided by 3."</td></tr>
+    <tr><td><strong>Disproof by counter-example</strong></td><td>Find <em>one</em> case where a claim fails.</td><td>"Show that '$n^2 + n + 41$ is always prime' is false."</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Proof by contradiction</strong> (for example, proving that $\sqrt{2}$ is irrational) is the fourth method, and belongs to the second year of the course. You do not need it yet.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <p>The subject content expects you to understand and use the standard notation of logic and sets. These symbols appear in exam questions and you should use them in your own proofs.</p>
+
+  <table>
+    <tr><th>Symbol</th><th>Read as</th><th>Example</th></tr>
+    <tr><td>$\Rightarrow$</td><td>"implies" — if the left is true, the right must be true</td><td>$x = 3 \Rightarrow x^2 = 9$</td></tr>
+    <tr><td>$\Leftarrow$</td><td>"is implied by" — if the right is true, the left must be true</td><td>$x^2 = 9 \Leftarrow x = -3$</td></tr>
+    <tr><td>$\Leftrightarrow$</td><td>"if and only if" — each implies the other</td><td>$2x + 1 = 7 \Leftrightarrow x = 3$</td></tr>
+    <tr><td>$\therefore$</td><td>"therefore"</td><td>$n = 2k$ $\therefore$ $n$ is even</td></tr>
+    <tr><td>$\in$, $\notin$</td><td>"is a member of", "is not a member of"</td><td>$5 \in \mathbb{Z}$, &nbsp;$\tfrac12 \notin \mathbb{Z}$</td></tr>
+    <tr><td>$\mathbb{N}$</td><td>the natural numbers $\{1, 2, 3, \dots\}$</td><td>$7 \in \mathbb{N}$</td></tr>
+    <tr><td>$\mathbb{Z}$</td><td>the integers $\{\dots, -2, -1, 0, 1, 2, \dots\}$</td><td>$-4 \in \mathbb{Z}$</td></tr>
+    <tr><td>$\mathbb{Q}$</td><td>the rational numbers — anything that can be written $\dfrac{p}{q}$ with $p, q \in \mathbb{Z}$, $q \neq 0$</td><td>$0.75 = \tfrac34 \in \mathbb{Q}$</td></tr>
+    <tr><td>$\mathbb{R}$</td><td>the real numbers — every point on the number line</td><td>$\sqrt{2} \in \mathbb{R}$, &nbsp;$\pi \in \mathbb{R}$</td></tr>
+    <tr><td>$\equiv$</td><td>"is identically equal to" — true for every value</td><td>$(x+1)^2 \equiv x^2 + 2x + 1$</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Is $0$ a natural number?</strong> Books disagree. Most UK A Level texts take $\mathbb{N} = \{1, 2, 3, \dots\}$, but some include $0$. If it matters to your proof, say which you mean — for example "for all integers $n \geqslant 1$".
+  </div>
+
+  <div class="concept">
+    <strong>The sets sit inside each other:</strong> $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. Every natural number is an integer, every integer is rational ($5 = \tfrac51$), and every rational number is real. Numbers such as $\sqrt{2}$ and $\pi$ are real but <strong>irrational</strong>.
+  </div>
+
+  <h3 style="margin:16px 0 8px;color:#3730a3;">Implication goes one way</h3>
+
+  <p>"$A \Rightarrow B$" does <em>not</em> mean "$B \Rightarrow A$". The reverse statement is called the <strong>converse</strong>, and it may be false.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Choosing the right arrow</div>
+    <div class="example-body">
+      <p>Write $\Rightarrow$, $\Leftarrow$ or $\Leftrightarrow$ between each pair of statements.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$x = 4 \quad \square \quad x^2 = 16$. &nbsp;If $x = 4$ then certainly $x^2 = 16$; but $x^2 = 16$ could mean $x = -4$. So $x = 4 \Rightarrow x^2 = 16$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$x^3 = 8 \quad \square \quad x = 2$. &nbsp;For real $x$ the cube root is unique, so each implies the other: $x^3 = 8 \Leftrightarrow x = 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$n$ is a multiple of $4$ $\quad \square \quad$ $n$ is even. &nbsp;Every multiple of $4$ is even, but $6$ is even and not a multiple of $4$. So "$n$ is a multiple of $4$" $\Rightarrow$ "$n$ is even".</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$(x-1)(x-5) = 0 \quad \square \quad x = 1 \text{ or } x = 5$. &nbsp;Both directions hold: $\Leftrightarrow$.</span></div>
+      <div class="tip"><strong>Test each direction separately.</strong> To reject an arrow, find one value that makes the left true and the right false.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE STRUCTURE OF A PROOF
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Writing a Proof Properly</div>
+<div class="section-body">
+
+  <p>Examiners mark proofs on <em>completeness</em> and <em>clarity</em>, not just on whether the algebra is right. A good proof follows the same pattern every time.</p>
+
+  <ol class="steps">
+    <li><span><strong>State your assumptions.</strong> Define every letter: "Let $n$ be any integer." "Let the two odd numbers be $2m+1$ and $2n+1$, where $m, n \in \mathbb{Z}$."</span></li>
+    <li><span><strong>Work in logical steps.</strong> Each line must follow from the ones before. Use $\Rightarrow$ or words such as "so" and "therefore" to link them.</span></li>
+    <li><span><strong>Use general letters, not numbers.</strong> A proof about "any odd number" must work for $2n + 1$, not just for $7$.</span></li>
+    <li><span><strong>Reach the exact statement you were asked to prove.</strong> If you need to show something is a multiple of $3$, your last line must be of the form $3 \times (\text{an integer})$.</span></li>
+    <li><span><strong>Write a concluding sentence.</strong> For example: "Therefore the sum of any two odd numbers is even." Many mark schemes give the final mark only for this.</span></li>
+  </ol>
+
+  <div class="formula-box">
+    <div class="label">Standard forms for integers ($n \in \mathbb{Z}$)</div>
+    Even: $2n$ &nbsp;&middot;&nbsp; Odd: $2n + 1$ &nbsp;&middot;&nbsp; Multiple of $k$: $kn$<br>
+    Consecutive integers: $n,\; n+1,\; n+2$ &nbsp;&middot;&nbsp; Consecutive odd numbers: $2n+1,\; 2n+3$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — A complete proof by deduction</div>
+    <div class="example-body">
+      <p>Prove that the sum of any two odd numbers is even.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let the two odd numbers be $2m + 1$ and $2n + 1$, where $m, n \in \mathbb{Z}$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Their sum is $(2m + 1) + (2n + 1) = 2m + 2n + 2$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 2(m + n + 1)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$m + n + 1$ is an integer, so the sum is $2 \times$ an integer.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Therefore the sum of any two odd numbers is even. $\blacksquare$</span></div>
+      <div class="warn">Using $2n + 1$ for <em>both</em> numbers would only prove that an odd number added to <em>itself</em> is even. Two different numbers need two different letters.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Proving an identity</div>
+    <div class="example-body">
+      <p>Prove that $(n + 3)^2 - (n - 3)^2 \equiv 12n$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Start with the left-hand side only: $(n+3)^2 - (n-3)^2$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$= \left(n^2 + 6n + 9\right) - \left(n^2 - 6n + 9\right)$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$= 12n$, which is the right-hand side. $\blacksquare$</span></div>
+      <div class="tip"><strong>Work on one side.</strong> To prove an identity, start from one side (usually the more complicated) and transform it into the other. Do <em>not</em> write the identity down and "do the same to both sides" — that assumes what you are trying to prove.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Proof Subtopics</div>
+<div class="section-body">
+
+  <p>Content area A in the first year, and the page that covers each part.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">A</span><span><a href="deduction-exhaustion.html">Proof by Deduction and Exhaustion</a><span class="desc">Algebraic proofs with odd, even and consecutive integers; completing the square to prove an expression is positive; proving identities; checking every case.</span></span></li>
+    <li><span class="code">A</span><span><a href="counter-examples.html">Disproof by Counter-example</a><span class="desc">Showing that a general statement is false by finding a single case where it fails.</span></span></li>
+  </ul>
+
+  <div class="tip">
+    Proof is not only a topic of its own. Questions in any area — algebra, trigonometry, calculus — may say "prove" or "show that". The skills on these pages are used throughout the whole course.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Proof by example.</strong> "$3 + 5 = 8$, $7 + 9 = 16$, so the sum of two odd numbers is even" is <em>not</em> a proof. Examples can suggest a result and can <em>disprove</em> one, but they can never prove a general statement.
+  </div>
+
+  <div class="warn">
+    <strong>Assuming what you want to prove.</strong> Starting with the statement and working until you reach "$0 = 0$" proves nothing unless every step is reversible — and it is very easy to lose marks this way. Start from what you know.
+  </div>
+
+  <div class="warn">
+    <strong>Mixing up $\Rightarrow$ and $\Leftrightarrow$.</strong> $x = -2 \Rightarrow x^2 = 4$ is true, but $x^2 = 4 \Rightarrow x = -2$ is false. Only use $\Leftrightarrow$ when both directions really hold.
+  </div>
+
+  <div class="warn">
+    <strong>Dividing by something that might be zero.</strong> From $x^2 = 3x$, dividing by $x$ gives $x = 3$ and loses the solution $x = 0$. Factorise instead: $x(x - 3) = 0$.
+  </div>
+
+  <div class="warn">
+    <strong>Missing out the conclusion.</strong> Reaching $2(m + n + 1)$ is not the end. Say that $m + n + 1$ is an integer, and state clearly what this proves.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>$A \Rightarrow B$</h4><p>If $A$ is true then $B$ is true. Says nothing about the converse.</p></div>
+    <div class="ref-card"><h4>$A \Leftrightarrow B$</h4><p>$A$ and $B$ are either both true or both false.</p></div>
+    <div class="ref-card"><h4>Number sets</h4><p>$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$</p></div>
+    <div class="ref-card"><h4>Even / odd</h4><p>$2n$ and $2n+1$ for $n \in \mathbb{Z}$.</p></div>
+    <div class="ref-card"><h4>Deduction</h4><p>General algebra from known facts to the result.</p></div>
+    <div class="ref-card"><h4>Exhaustion</h4><p>Finitely many cases — check every one.</p></div>
+    <div class="ref-card"><h4>Counter-example</h4><p>One failure is enough to disprove a claim.</p></div>
+    <div class="ref-card"><h4>Identity</h4><p>Start from one side; transform it into the other.</p></div>
+    <div class="ref-card"><h4>Finish</h4><p>End with a sentence stating what has been proved.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole Proof topic. Work each one through before opening the solution.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>For each number, list every set from $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$ that it belongs to: &nbsp; (a) $-6$ &nbsp; (b) $0.\dot{3}$ &nbsp; (c) $\sqrt{5}$ &nbsp; (d) $\sqrt{49}$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $-6 \in \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ (negative, so not in $\mathbb{N}$).</p>
+          <p><strong>(b)</strong> $0.\dot{3} = \tfrac13$, so $0.\dot{3} \in \mathbb{Q}, \mathbb{R}$.</p>
+          <p><strong>(c)</strong> $\sqrt{5}$ is irrational: $\sqrt{5} \in \mathbb{R}$ only.</p>
+          <p><strong>(d)</strong> $\sqrt{49} = 7$, so it belongs to all four: $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>Write $\Rightarrow$, $\Leftarrow$ or $\Leftrightarrow$ in each box. &nbsp; (a) $x &gt; 5 \;\square\; x &gt; 2$ &nbsp; (b) $x^2 - 7x + 10 = 0 \;\square\; x = 2 \text{ or } x = 5$ &nbsp; (c) $x = -3 \;\square\; x^2 = 9$</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $\Rightarrow$. Any number bigger than $5$ is bigger than $2$, but $x = 3$ satisfies $x &gt; 2$ and not $x &gt; 5$.</p>
+          <p><strong>(b)</strong> $\Leftrightarrow$, since $x^2 - 7x + 10 = (x-2)(x-5)$.</p>
+          <p><strong>(c)</strong> $\Rightarrow$. $x = -3$ gives $x^2 = 9$, but $x^2 = 9$ could mean $x = 3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>Write down the converse of "If $n$ is a multiple of $6$, then $n$ is a multiple of $3$." Is the converse true?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Converse: "If $n$ is a multiple of $3$, then $n$ is a multiple of $6$."</p>
+          <p>This is <strong>false</strong>: $n = 9$ is a multiple of $3$ but not of $6$. (The original statement is true: $n = 6k = 3(2k)$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Prove that the product of any two odd numbers is odd.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the numbers be $2m + 1$ and $2n + 1$ with $m, n \in \mathbb{Z}$.</p>
+          <p>$(2m+1)(2n+1) = 4mn + 2m + 2n + 1 = 2(2mn + m + n) + 1$</p>
+          <p>$2mn + m + n$ is an integer, so the product has the form $2k + 1$ with $k \in \mathbb{Z}$.</p>
+          <p>Therefore the product of any two odd numbers is odd.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>Prove that $(2n + 1)^2 - (2n - 1)^2$ is a multiple of $8$ for every integer $n$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$(2n+1)^2 - (2n-1)^2 = \left(4n^2 + 4n + 1\right) - \left(4n^2 - 4n + 1\right) = 8n$</p>
+          <p>$n$ is an integer, so $8n$ is a multiple of $8$.</p>
+          <p>Therefore the difference of the squares of any two consecutive odd numbers is a multiple of $8$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Prove that $x^2 - 6x + 10 &gt; 0$ for all real values of $x$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Complete the square: $x^2 - 6x + 10 \equiv (x - 3)^2 - 9 + 10 = (x-3)^2 + 1$.</p>
+          <p>For all real $x$, $(x - 3)^2 \geqslant 0$, so $(x - 3)^2 + 1 \geqslant 1 &gt; 0$.</p>
+          <p>Therefore $x^2 - 6x + 10 &gt; 0$ for all real $x$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A student writes: "$x^2 = 5x \;\Rightarrow\; x = 5$. So the only solution of $x^2 = 5x$ is $x = 5$." Explain the error and give the correct conclusion.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The student has divided both sides by $x$, which is only valid if $x \neq 0$. The case $x = 0$ has been lost.</p>
+          <p>Correctly: $x^2 - 5x = 0 \Leftrightarrow x(x - 5) = 0 \Leftrightarrow x = 0 \text{ or } x = 5$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Prove by exhaustion that no square number ends in the digit $7$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The last digit of $n^2$ depends only on the last digit of $n$. There are ten cases:</p>
+          <table>
+            <tr><th>Last digit of $n$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+            <tr><th>Last digit of $n^2$</th><td>0</td><td>1</td><td>4</td><td>9</td><td>6</td><td>5</td><td>6</td><td>9</td><td>4</td><td>1</td></tr>
+          </table>
+          <p>In every case the last digit is $0, 1, 4, 5, 6$ or $9$ — never $7$.</p>
+          <p>Since every integer falls into exactly one of these cases, no square number ends in $7$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>Disprove the statement "$n^2 + n + 41$ is prime for every positive integer $n$."</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Try $n = 40$: $40^2 + 40 + 41 = 1600 + 40 + 41 = 1681 = 41^2$.</p>
+          <p>$1681 = 41 \times 41$ is not prime, so $n = 40$ is a counter-example and the statement is false.</p>
+          <p>(The formula does give primes for $n = 1, 2, \dots, 39$ — a famous warning that many examples do not make a proof. $n = 41$ also works as a counter-example: $41^2 + 41 + 41 = 41 \times 43$.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>(a) Prove that the sum of any three consecutive integers is a multiple of $3$.</p>
+      <p>(b) Prove that the sum of any four consecutive integers is <em>never</em> a multiple of $4$.</p>
+      <p>(c) A student claims that "the sum of any $k$ consecutive integers is a multiple of $k$." Disprove this claim.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let the integers be $n, n+1, n+2$ with $n \in \mathbb{Z}$.</p>
+          <p>Sum $= 3n + 3 = 3(n + 1)$, and $n + 1 \in \mathbb{Z}$, so the sum is a multiple of $3$.</p>
+          <p><strong>(b)</strong> Let the integers be $n, n+1, n+2, n+3$.</p>
+          <p>Sum $= 4n + 6 = 4(n + 1) + 2$.</p>
+          <p>This is $2$ more than a multiple of $4$, so it always leaves remainder $2$ when divided by $4$. Therefore it is never a multiple of $4$.</p>
+          <p><strong>(c)</strong> Part (b) already shows the claim fails for $k = 4$: for example $1 + 2 + 3 + 4 = 10$, which is not a multiple of $4$.</p>
+          <p>A simpler counter-example is $k = 2$: $1 + 2 = 3$, which is not a multiple of $2$. One counter-example is enough, so the claim is false.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Proof Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

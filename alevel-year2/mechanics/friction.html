@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friction &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧱 Friction</h1>
+  <p>A Level Maths Year 2 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE FRICTION MODEL
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Friction Model</div>
+<div class="section-body">
+
+  <p>So far surfaces have been <strong>smooth</strong>. A <strong>rough</strong> surface exerts a frictional force along the surface, opposing motion or the tendency to move. DfE content area <strong>R · Forces and Newton's laws</strong> uses the simple model below.</p>
+
+  <div class="formula-box">
+    <div class="label">The friction model</div>
+    $F \leqslant \mu R$<br>
+    $R$ = normal reaction, &nbsp; $\mu$ = coefficient of friction ($\mu \geqslant 0$)
+  </div>
+
+  <table>
+    <tr><th>Situation</th><th>Friction</th></tr>
+    <tr><td>At rest, not about to move</td><td>$F < \mu R$ — just big enough to stop motion. Find it by resolving.</td></tr>
+    <tr><td>At rest, <strong>on the point of moving</strong> (limiting equilibrium)</td><td>$F = \mu R$</td></tr>
+    <tr><td><strong>Moving</strong></td><td>$F = \mu R$, opposing the direction of motion</td></tr>
+  </table>
+
+  <div class="concept">
+    <strong>Friction is not always $\mu R$.</strong> $\mu R$ is the <em>maximum</em> friction available. A book resting on a level table with nothing pushing it has zero friction, however rough the table.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — Does it move?</div>
+    <div class="example-body">
+      <p>A box of mass $10$ kg rests on rough horizontal ground, $\mu = 0.3$. A horizontal force of $20$ N is applied. Does the box move? Find the friction force.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R = 10g = 98$ N, so $F_{\max} = 0.3 \times 98 = 29.4$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$20 < 29.4$, so the box stays at rest.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Resolving horizontally, the friction is exactly $20$ N — not $29.4$ N.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — Accelerating on a rough floor</div>
+    <div class="example-body">
+      <p>The same box is now pulled with a horizontal force of $50$ N. Find its acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$50 > 29.4$, so it moves and $F = 29.4$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$50 - 29.4 = 10a$, so $a = 2.06$ m s$^{-2}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Pulling at an angle</div>
+    <div class="example-body">
+      <p>A crate of mass $8$ kg is pulled along rough horizontal ground ($\mu = 0.4$) by a rope at $30^\circ$ above the horizontal with tension $40$ N. Find the acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Vertical: $R + 40\sin 30^\circ = 8g$, so $R = 78.4 - 20 = 58.4$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Moving, so $F = 0.4 \times 58.4 = 23.36$ N.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Horizontal: $40\cos 30^\circ - 23.36 = 8a \Rightarrow 34.64 - 23.36 = 8a$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$a = 1.41$ m s$^{-2}$.</span></div>
+      <div class="warn">The upward pull <strong>reduces</strong> $R$, so it reduces friction. Using $R = mg$ here is the most common error in friction questions.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – ROUGH INCLINED PLANES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Rough Inclined Planes</div>
+<div class="section-body">
+
+  <p>Resolve parallel and perpendicular to the plane as in <a href="resolving-forces.html">Resolving Forces</a>, then add friction along the slope, <strong>opposite</strong> to the motion or the way the particle would move.</p>
+
+  <div class="formula-box">
+    <div class="label">Particle on a rough plane inclined at $\alpha$, no other forces</div>
+    $R = mg\cos\alpha$ &nbsp;&nbsp; $F_{\max} = \mu mg\cos\alpha$<br>
+    on the point of slipping: $mg\sin\alpha = \mu mg\cos\alpha \;\Rightarrow\; \mu = \tan\alpha$<br>
+    sliding down: $a = g(\sin\alpha - \mu\cos\alpha)$ &nbsp;&nbsp; sliding up: deceleration $g(\sin\alpha + \mu\cos\alpha)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — About to slip</div>
+    <div class="example-body">
+      <p>A particle rests on a rough plane inclined at $25^\circ$ and is on the point of slipping. Find $\mu$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Parallel: $F = mg\sin 25^\circ$. Perpendicular: $R = mg\cos 25^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Limiting, so $F = \mu R$: $\mu = \tan 25^\circ = 0.466$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — Sliding down</div>
+    <div class="example-body">
+      <p>A $3$ kg particle slides down a rough plane inclined at $30^\circ$ with $\mu = 0.2$. Find its acceleration.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R = 3g\cos 30^\circ$; friction $0.2 \times 3g\cos 30^\circ$ acts <strong>up</strong> the slope.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$3g\sin 30^\circ - 0.2(3g\cos 30^\circ) = 3a$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$a = 9.8(0.5 - 0.1732) = 3.20$ m s$^{-2}$.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Projected up a rough slope</div>
+    <div class="example-body">
+      <p>A $2$ kg particle is projected up a rough plane inclined at $20^\circ$ ($\mu = 0.25$) with speed $8$ m s$^{-1}$. How far up does it travel? Does it then slide back?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Moving up, so friction acts <strong>down</strong> the slope, together with $mg\sin 20^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Deceleration $= g(\sin 20^\circ + 0.25\cos 20^\circ) = 5.654$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$0 = 8^2 - 2(5.654)s \Rightarrow s = 5.66$ m.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>At rest, it slips back if $mg\sin 20^\circ > \mu mg\cos 20^\circ$, i.e. if $\tan 20^\circ > \mu$. Since $0.364 > 0.25$, it does slide back down.</span></div>
+      <div class="warn">On the way back down friction <strong>changes direction</strong>, so the acceleration changes too. Never reuse the "up" acceleration for the "down" journey.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — A range of forces for equilibrium</div>
+    <div class="example-body">
+      <p>A $5$ kg particle rests on a rough plane inclined at $30^\circ$ ($\mu = 0.3$). A force $P$ acts up the line of greatest slope. Find the range of $P$ for which the particle stays at rest.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R = 5g\cos 30^\circ = 42.44$ N, so $F_{\max} = 12.73$ N. Component of weight down the slope $= 5g\sin 30^\circ = 24.5$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>About to slide <strong>down</strong> (friction up): $P + 12.73 = 24.5 \Rightarrow P = 11.8$ N.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>About to slide <strong>up</strong> (friction down): $P = 24.5 + 12.73 = 37.2$ N.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Equilibrium for $11.8 \leqslant P \leqslant 37.2$ N.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – CONNECTED PARTICLES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Connected Particles on Rough Surfaces</div>
+<div class="section-body">
+
+  <div class="concept">
+    Decide the direction of motion <strong>first</strong>, by comparing the driving forces with the maximum friction available. Friction then acts against that direction on every rough contact.
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — Rough table and a hanging mass</div>
+    <div class="example-body">
+      <p>Particle $A$ ($4$ kg) is on a rough horizontal table ($\mu = 0.25$), connected by a light inextensible string over a smooth pulley at the edge to particle $B$ ($2$ kg) hanging freely. Find the acceleration and tension.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R_A = 4g$, so $F_{\max} = 0.25 \times 4g = 9.8$ N. $B$'s weight $2g = 19.6$ N $> 9.8$ N, so the system moves.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$B$: $2g - T = 2a$. &nbsp; $A$: $T - 9.8 = 4a$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add: $19.6 - 9.8 = 6a \Rightarrow a = 1.63$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$T = 2(g - a) = 16.3$ N.</span></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 9 — Rough slope and a hanging mass</div>
+    <div class="example-body">
+      <p>Particle $A$ ($5$ kg) is on a rough plane inclined at $30^\circ$ ($\mu = 0.2$), connected over a smooth pulley at the top to particle $B$ ($4$ kg) hanging freely. Find the acceleration and tension.</p>
+      <div class="step-row"><span class="arrow">①</span><span>$R_A = 5g\cos 30^\circ = 42.44$ N, so $F = 0.2 \times 42.44 = 8.49$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Pulling up the slope: $4g = 39.2$ N. Resisting: $5g\sin 30^\circ + F_{\max} = 24.5 + 8.49 = 32.99$ N. So $A$ moves up and friction acts down the slope.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$B$: $4g - T = 4a$. &nbsp; $A$: $T - 24.5 - 8.49 = 5a$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Add: $39.2 - 32.99 = 9a \Rightarrow a = 0.690$ m s$^{-2}$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$T = 4(g - a) = 36.4$ N.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – LADDERS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> Ladders: Friction with Moments</div>
+<div class="section-body">
+
+  <p>A ladder leaning against a wall is the classic problem combining friction with <a href="moments.html">moments</a>. The standard model: a uniform rod, resting on <strong>rough</strong> horizontal ground against a <strong>smooth</strong> vertical wall.</p>
+
+  <div class="svg-block">
+    <svg width="440" height="250" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="fa1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+        <marker id="fa2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+        <marker id="fa3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker>
+      </defs>
+      <rect x="360" y="10" width="24" height="210" fill="#e2e8f0" stroke="#475569"/>
+      <line x1="60" y1="220" x2="384" y2="220" stroke="#475569" stroke-width="2"/>
+      <line x1="260" y1="220" x2="360" y2="46.8" stroke="#4338ca" stroke-width="6" stroke-linecap="round"/>
+      <line x1="260" y1="220" x2="260" y2="140" stroke="#16a34a" stroke-width="3" marker-end="url(#fa1)"/>
+      <text x="244" y="134" font-family="Arial" font-size="14" fill="#15803d" font-weight="bold">R</text>
+      <line x1="360" y1="46.8" x2="290" y2="46.8" stroke="#16a34a" stroke-width="3" marker-end="url(#fa1)"/>
+      <text x="268" y="51" font-family="Arial" font-size="14" fill="#15803d" font-weight="bold">S</text>
+      <line x1="260" y1="234" x2="318" y2="234" stroke="#d97706" stroke-width="3" marker-end="url(#fa3)"/>
+      <text x="324" y="239" font-family="Arial" font-size="14" fill="#b45309" font-weight="bold">F</text>
+      <line x1="310" y1="133.4" x2="310" y2="203" stroke="#dc2626" stroke-width="3" marker-end="url(#fa2)"/>
+      <text x="316" y="196" font-family="Arial" font-size="14" fill="#b91c1c" font-weight="bold">W</text>
+      <path d="M 290 220 A 30 30 0 0 0 275 194" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="292" y="212" font-family="Arial" font-size="13" fill="#6d28d9">θ</text>
+      <text x="250" y="248" font-family="Arial" font-size="13" fill="#1e1e2e">A</text>
+      <text x="340" y="40" font-family="Arial" font-size="13" fill="#1e1e2e">B</text>
+      <text x="70" y="212" font-family="Arial" font-size="12" fill="#475569">rough ground</text>
+      <text x="392" y="120" font-family="Arial" font-size="12" fill="#475569">smooth</text>
+      <text x="398" y="135" font-family="Arial" font-size="12" fill="#475569">wall</text>
+    </svg>
+  </div>
+
+  <ul class="steps">
+    <li><span><strong>Resolve vertically:</strong> $R = $ total weight (the smooth wall has no vertical force).</span></li>
+    <li><span><strong>Resolve horizontally:</strong> $F = S$.</span></li>
+    <li><span><strong>Take moments about the foot $A$:</strong> this removes both $R$ and $F$, leaving $S$ and the weights.</span></li>
+    <li><span><strong>Use $F \leqslant \mu R$</strong> (with $=$ if limiting).</span></li>
+  </ul>
+
+  <div class="example">
+    <div class="example-header">Worked Example 10 — The least coefficient of friction</div>
+    <div class="example-body">
+      <p>A uniform ladder of length $5$ m and mass $20$ kg rests against a smooth vertical wall, at $60^\circ$ to rough horizontal ground. Find the least value of $\mu$ for which the ladder can rest in equilibrium.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Vertical: $R = 20g = 196$ N. Horizontal: $F = S$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Moments about $A$: $S$ has perpendicular distance $5\sin 60^\circ$; the weight has $2.5\cos 60^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$S \times 5\sin 60^\circ = 20g \times 2.5\cos 60^\circ \Rightarrow S = \dfrac{245}{4.330} = 56.6$ N.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$F = 56.6$ N and $F \leqslant \mu R$: $\mu \geqslant \dfrac{56.6}{196} = 0.289$.</span></div>
+      <div class="tip"><strong>In general</strong>, for a uniform ladder at angle $\theta$ to the ground with a smooth wall, $\mu \geqslant \dfrac{1}{2\tan\theta}$. Check: $\dfrac{1}{2\tan 60^\circ} = 0.289$ ✓. The length and mass cancel — but in an exam, derive it rather than quoting it.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 11 — How far up can she climb?</div>
+    <div class="example-body">
+      <p>The same ladder now stands on ground with $\mu = 0.35$. A woman of mass $70$ kg climbs it. How far up the ladder can she go before it slips?</p>
+      <div class="step-row"><span class="arrow">①</span><span>Vertical: $R = 90g = 882$ N. Limiting: $F = 0.35 \times 882 = 308.7$ N $= S$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let her be $d$ m from $A$. Moments about $A$:</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$S \times 5\sin 60^\circ = 20g \times 2.5\cos 60^\circ + 70g \times d\cos 60^\circ$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$1336.7 = 245 + 343d \Rightarrow d = 3.18$ m.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>She can climb $3.18$ m along the ladder (out of $5$ m) before it slips.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Friction direction at the foot.</strong> The foot tends to slide <em>away</em> from the wall, so friction at the foot acts <em>towards</em> the wall. If the wall is also rough, friction at the top acts <em>upwards</em> and the vertical equation gains an extra term.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Model</h4><p>$F \leqslant \mu R$.</p></div>
+    <div class="ref-card"><h4>Limiting or moving</h4><p>$F = \mu R$.</p></div>
+    <div class="ref-card"><h4>Direction</h4><p>Opposes motion, or the tendency to move.</p></div>
+    <div class="ref-card"><h4>Find $R$ first</h4><p>Resolve perpendicular, including any angled pulls.</p></div>
+    <div class="ref-card"><h4>About to slip on slope</h4><p>$\mu = \tan\alpha$.</p></div>
+    <div class="ref-card"><h4>Down a rough slope</h4><p>$a = g(\sin\alpha - \mu\cos\alpha)$.</p></div>
+    <div class="ref-card"><h4>Up a rough slope</h4><p>Deceleration $g(\sin\alpha + \mu\cos\alpha)$.</p></div>
+    <div class="ref-card"><h4>Range of $P$</h4><p>Two limiting cases: friction up, then down.</p></div>
+    <div class="ref-card"><h4>Ladder</h4><p>Resolve twice, moments about the foot.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Use $g = 9.8$ m s$^{-2}$ and give answers to 3 significant figures where they are not exact.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A $15$ kg box rests on rough horizontal ground ($\mu = 0.4$) and is pulled by a horizontal force of $50$ N. Does it move? State the friction force.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$F_{\max} = 0.4 \times 15g = 58.8$ N. Since $50 < 58.8$ it does not move.</p>
+          <p>Friction $= 50$ N (equal to the pull).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A sledge of mass $12$ kg is pulled across rough horizontal snow ($\mu = 0.3$) by a horizontal force of $70$ N. Find its acceleration.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$F = 0.3 \times 12g = 35.28$ N.</p>
+          <p>$70 - 35.28 = 12a \Rightarrow a = 2.89$ m s$^{-2}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A particle is on the point of slipping down a rough plane inclined at $18^\circ$. Find $\mu$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$mg\sin 18^\circ = \mu mg\cos 18^\circ$, so $\mu = \tan 18^\circ = 0.325$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A particle is released from rest on a rough plane inclined at $40^\circ$, with $\mu = 0.5$. Find its speed after $2$ s.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tan 40^\circ = 0.839 > 0.5$, so it slides.</p>
+          <p>$a = g(\sin 40^\circ - 0.5\cos 40^\circ) = 9.8(0.6428 - 0.3830) = 2.546$ m s$^{-2}$.</p>
+          <p>$v = 0 + 2.546 \times 2 = 5.09$ m s$^{-1}$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A puck slides across rough horizontal ice with initial speed $12$ m s$^{-1}$ and stops after $20$ m. Find $\mu$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$0 = 12^2 + 2a(20) \Rightarrow a = -3.6$ m s$^{-2}$.</p>
+          <p>Friction is the only horizontal force: $\mu mg = 3.6m \Rightarrow \mu = \dfrac{3.6}{9.8} = 0.367$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A box of mass $6$ kg is pulled at constant speed across rough horizontal ground ($\mu = 0.35$) by a rope at $25^\circ$ above the horizontal. Find the tension.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Constant speed, so forces balance. Vertical: $R = 6g - T\sin 25^\circ$.</p>
+          <p>Horizontal: $T\cos 25^\circ = 0.35(6g - T\sin 25^\circ)$</p>
+          <p>$T(\cos 25^\circ + 0.35\sin 25^\circ) = 20.58 \Rightarrow T = \dfrac{20.58}{1.0542} = 19.5$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A $4$ kg particle is held at rest on a rough plane inclined at $30^\circ$ ($\mu = 0.25$) by a <strong>horizontal</strong> force $P$. Find the range of possible values of $P$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Perpendicular: $R = 4g\cos 30^\circ + P\sin 30^\circ$. Up the slope, $P$ contributes $P\cos 30^\circ$.</p>
+          <p><strong>About to slide down</strong> (friction up): $P\cos 30^\circ + 0.25(4g\cos 30^\circ + P\sin 30^\circ) = 4g\sin 30^\circ$</p>
+          <p>$P(\cos 30^\circ + 0.25\sin 30^\circ) = 4g(\sin 30^\circ - 0.25\cos 30^\circ) \Rightarrow P = \dfrac{11.11}{0.9910} = 11.2$ N.</p>
+          <p><strong>About to slide up</strong> (friction down): $P\cos 30^\circ = 4g\sin 30^\circ + 0.25(4g\cos 30^\circ + P\sin 30^\circ)$</p>
+          <p>$P(\cos 30^\circ - 0.25\sin 30^\circ) = 4g(\sin 30^\circ + 0.25\cos 30^\circ) \Rightarrow P = \dfrac{28.09}{0.7410} = 37.9$ N.</p>
+          <p>So $11.2 \leqslant P \leqslant 37.9$ N.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>Particle $A$ ($3$ kg) is on a rough horizontal table, joined by a light inextensible string over a smooth pulley at the edge to particle $B$ ($2$ kg) hanging freely. The system accelerates at $2$ m s$^{-2}$. Find the tension and $\mu$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$B$: $2g - T = 2 \times 2 \Rightarrow T = 19.6 - 4 = 15.6$ N.</p>
+          <p>$A$: $T - \mu(3g) = 3 \times 2 \Rightarrow 15.6 - 29.4\mu = 6$.</p>
+          <p>$\mu = \dfrac{9.6}{29.4} = 0.327$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A uniform ladder rests against a smooth vertical wall with its foot on rough horizontal ground, $\mu = 0.4$. Find the smallest angle the ladder can make with the ground.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let the ladder have length $2a$, weight $W$, angle $\theta$. $R = W$, $F = S$.</p>
+          <p>Moments about the foot: $S \times 2a\sin\theta = W \times a\cos\theta \Rightarrow S = \dfrac{W}{2\tan\theta}$.</p>
+          <p>$F \leqslant \mu R$: $\dfrac{W}{2\tan\theta} \leqslant 0.4W \Rightarrow \tan\theta \geqslant 1.25$.</p>
+          <p>Smallest angle $\theta = \tan^{-1}1.25 = 51.3^\circ$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A uniform ladder $AB$ of length $6$ m and mass $15$ kg has its foot $A$ on rough horizontal ground and its top $B$ against a smooth vertical wall. The ladder makes angle $\theta$ with the ground, where $\tan\theta = \tfrac43$. A man of mass $75$ kg stands on the ladder at $C$, where $AC = 4.5$ m, and the ladder is on the point of slipping.</p>
+      <p>(a) Find the normal reaction at the ground. &nbsp; (b) Find the reaction at the wall. &nbsp; (c) Find $\mu$. &nbsp; (d) State two modelling assumptions. &nbsp; (e) Explain why a second person standing on the bottom rung makes the ladder safer.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\tan\theta = \tfrac43 \Rightarrow \sin\theta = 0.8$, $\cos\theta = 0.6$.</p>
+          <p><strong>(a)</strong> $R = 15g + 75g = 90g = 882$ N.</p>
+          <p><strong>(b)</strong> Moments about $A$: $S \times 6\sin\theta = 15g \times 3\cos\theta + 75g \times 4.5\cos\theta$</p>
+          <p>$4.8S = 15g(1.8) + 75g(2.7) = 229.5g \Rightarrow S = 47.8125g = 469$ N.</p>
+          <p><strong>(c)</strong> Limiting: $F = \mu R$ and $F = S$, so $\mu = \dfrac{47.8125g}{90g} = 0.531$.</p>
+          <p><strong>(d)</strong> The ladder is a uniform rigid rod; the man is a particle; the wall is smooth; the ladder is in a vertical plane perpendicular to the wall.</p>
+          <p><strong>(e)</strong> A person at $A$ increases $R$ (and so the maximum friction $\mu R$) but their weight acts through $A$, so it adds nothing to the moment that $S$ must balance. More friction is available for the same required $F$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Friction &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

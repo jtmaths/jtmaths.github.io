@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moments &ndash; A Level Maths Year 2</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Moments</h1>
+  <p>A Level Maths Year 2 · Mechanics</p>
+  <div class="badge">Level 3 &middot; Ages 17&ndash;18</div><br>
+  <a class="backlink" href="overview.html">&larr; Back to topic overview</a>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE MOMENT OF A FORCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Moment of a Force</div>
+<div class="section-body">
+
+  <p>In Year 1 every object was a <strong>particle</strong>: all its mass sat at a single point, so forces could only make it slide. A real door, beam or ladder can also <em>turn</em>. DfE content area <strong>S · Moments</strong> asks you to measure that turning effect and use it to solve problems about rigid bodies.</p>
+
+  <div class="formula-box">
+    <div class="label">Moment of a force about a point</div>
+    Moment $=$ force $\times$ <strong>perpendicular</strong> distance from the point to the line of action of the force<br>
+    $M = Fd$ &nbsp;&nbsp; measured in newton metres (N m)
+  </div>
+
+  <div class="concept">
+    <strong>Direction matters.</strong> A moment is either <strong>clockwise</strong> or <strong>anticlockwise</strong>. Choose one sense to be positive at the start of a question, and state it. A force whose line of action passes through the point has <strong>zero</strong> moment about that point — this is the key to choosing a clever point to take moments about.
+  </div>
+
+  <p>If the force is not perpendicular to the rod, either use the perpendicular component of the force, or the perpendicular distance — both give the same answer.</p>
+
+  <div class="formula-box">
+    <div class="label">Force at an angle $\theta$ to a rod, applied at distance $d$ from the pivot</div>
+    $M = (F\sin\theta) \times d \;=\; F \times (d\sin\theta)$
+  </div>
+
+  <div class="svg-block">
+    <svg width="460" height="200" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ma1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/></marker></defs>
+      <rect x="60" y="140" width="320" height="10" fill="#c7d2fe" stroke="#4338ca"/>
+      <circle cx="60" cy="145" r="6" fill="#1e1e2e"/>
+      <text x="40" y="172" font-family="Arial" font-size="13" fill="#1e1e2e">pivot O</text>
+      <line x1="380" y1="140" x2="440" y2="40" stroke="#4f46e5" stroke-width="3" marker-end="url(#ma1)"/>
+      <text x="420" y="34" font-family="Arial" font-size="14" fill="#4338ca" font-weight="bold">F</text>
+      <path d="M 350 140 A 30 30 0 0 1 395 115" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="398" y="132" font-family="Arial" font-size="13" fill="#6d28d9">θ</text>
+      <line x1="380" y1="140" x2="380" y2="40" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="345" y="80" font-family="Arial" font-size="12" fill="#475569">F sin θ</text>
+      <line x1="60" y1="185" x2="380" y2="185" stroke="#475569" stroke-width="1"/>
+      <line x1="60" y1="180" x2="60" y2="190" stroke="#475569"/><line x1="380" y1="180" x2="380" y2="190" stroke="#475569"/>
+      <text x="215" y="198" font-family="Arial" font-size="13" fill="#475569">d</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 1 — A single force</div>
+    <div class="example-body">
+      <p>(a) A force of $20$ N acts perpendicular to a spanner at $0.6$ m from the nut. (b) A force of $30$ N acts on a rod at $1.5$ m from a pivot, at $40^\circ$ to the rod. Find each moment.</p>
+      <div class="step-row"><span class="arrow">①</span><span>(a) $M = 20 \times 0.6 = 12$ N m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>(b) The perpendicular component is $30\sin 40^\circ$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$M = 30\sin 40^\circ \times 1.5 = 28.9$ N m (3 s.f.).</span></div>
+      <div class="tip"><strong>Sanity check:</strong> a force at an angle always has a <em>smaller</em> moment than the same force applied perpendicularly — here $28.9 < 30 \times 1.5 = 45$.</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 2 — The resultant moment of several forces</div>
+    <div class="example-body">
+      <p>A light rod $AB$ of length $4$ m has an upward force of $10$ N at $A$, a downward force of $15$ N at $1$ m from $A$ and a downward force of $8$ N at $B$. Find the resultant moment about $A$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Take clockwise as positive (with $A$ on the left).</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>The $10$ N force acts <em>through</em> $A$, so its moment is $0$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$15 \times 1 + 8 \times 4 = 15 + 32 = 47$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Resultant moment $= 47$ N m clockwise about $A$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – EQUILIBRIUM OF A RIGID BODY
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> Equilibrium of a Rigid Body</div>
+<div class="section-body">
+
+  <div class="formula-box">
+    <div class="label">Conditions for a rigid body to be in equilibrium</div>
+    ① the resultant <strong>force</strong> is zero (resolve in two directions)<br>
+    ② the resultant <strong>moment</strong> about <em>any</em> point is zero<br>
+    i.e. total clockwise moments $=$ total anticlockwise moments
+  </div>
+
+  <table>
+    <tr><th>Model word</th><th>What it means for the calculation</th></tr>
+    <tr><td><strong>Rigid body / rod / beam</strong></td><td>Has length and does not bend. Forces at different points create moments.</td></tr>
+    <tr><td><strong>Uniform</strong></td><td>Mass evenly spread, so the weight acts at the <strong>midpoint</strong>.</td></tr>
+    <tr><td><strong>Non-uniform</strong></td><td>The weight acts at the <strong>centre of mass</strong>, which you usually have to find.</td></tr>
+    <tr><td><strong>Light</strong></td><td>Mass ignored — no weight to include.</td></tr>
+    <tr><td><strong>Particle</strong> (a person, a load)</td><td>Its weight acts at a single point on the beam.</td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>Choose the point wisely.</strong> Take moments about a point where an unknown force acts. That force then has no moment, and you have one fewer unknown in the equation.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – BEAMS ON SUPPORTS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> Beams on Supports</div>
+<div class="section-body">
+
+  <p>A beam resting on supports (or hanging from vertical strings) has only vertical forces acting on it, so you get one equation from resolving vertically and one from each point you take moments about.</p>
+
+  <div class="svg-block">
+    <svg width="500" height="230" viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mb1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+        <marker id="mb2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+      </defs>
+      <rect x="40" y="120" width="420" height="12" fill="#c7d2fe" stroke="#4338ca"/>
+      <polygon points="110,132 98,158 122,158" fill="#475569"/>
+      <polygon points="320,132 308,158 332,158" fill="#475569"/>
+      <line x1="110" y1="120" x2="110" y2="62" stroke="#16a34a" stroke-width="3" marker-end="url(#mb1)"/>
+      <line x1="320" y1="120" x2="320" y2="62" stroke="#16a34a" stroke-width="3" marker-end="url(#mb1)"/>
+      <text x="96" y="52" font-family="Arial" font-size="14" fill="#15803d" font-weight="bold">R<tspan font-size="10" dy="3">C</tspan></text>
+      <text x="306" y="52" font-family="Arial" font-size="14" fill="#15803d" font-weight="bold">R<tspan font-size="10" dy="3">D</tspan></text>
+      <line x1="250" y1="132" x2="250" y2="196" stroke="#dc2626" stroke-width="3" marker-end="url(#mb2)"/>
+      <line x1="285" y1="132" x2="285" y2="196" stroke="#dc2626" stroke-width="3" marker-end="url(#mb2)"/>
+      <text x="222" y="214" font-family="Arial" font-size="13" fill="#b91c1c">20g</text>
+      <text x="282" y="214" font-family="Arial" font-size="13" fill="#b91c1c">30g</text>
+      <text x="30" y="112" font-family="Arial" font-size="14" fill="#1e1e2e" font-weight="bold">A</text>
+      <text x="462" y="112" font-family="Arial" font-size="14" fill="#1e1e2e" font-weight="bold">B</text>
+      <text x="104" y="174" font-family="Arial" font-size="13" fill="#1e1e2e">C</text>
+      <text x="314" y="174" font-family="Arial" font-size="13" fill="#1e1e2e">D</text>
+      <text x="62" y="148" font-family="Arial" font-size="11" fill="#475569">1 m</text>
+      <text x="400" y="148" font-family="Arial" font-size="11" fill="#475569">2 m</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 3 — Finding two reactions</div>
+    <div class="example-body">
+      <p>A uniform plank $AB$ of length $6$ m and mass $20$ kg rests horizontally on supports at $C$ and $D$, where $AC = 1$ m and $DB = 2$ m. A child of mass $30$ kg stands on the plank $3.5$ m from $A$. Find the reaction at each support.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Weight of plank $20g$ at the midpoint, $3$ m from $A$. $D$ is $4$ m from $A$, so $CD = 3$ m.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Moments about $C$ (removes $R_C$): $R_D \times 3 = 20g \times 2 + 30g \times 2.5 = 115g$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$R_D = \dfrac{115g}{3} = 375.7\ldots = 376$ N (3 s.f.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Resolve vertically: $R_C + R_D = 50g = 490$, so $R_C = 490 - 375.7 = 114$ N (3 s.f.).</span></div>
+      <div class="tip"><strong>Check</strong> by taking moments about $D$: $R_C \times 3 = 20g \times 1 + 30g \times 0.5 = 35g$, so $R_C = 35g/3 = 114$ N ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 4 — Unequal reactions</div>
+    <div class="example-body">
+      <p>A uniform rod $AB$ of length $4$ m and mass $12$ kg rests on supports at $A$ and $B$. A particle of mass $m$ kg is placed $1$ m from $A$. The reaction at $A$ is twice the reaction at $B$. Find $m$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $R_B = R$, so $R_A = 2R$. Resolve: $3R = (12 + m)g$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Moments about $A$: $R \times 4 = 12g \times 2 + mg \times 1 = (24 + m)g$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>From ① $R = \dfrac{(12+m)g}{3}$; from ② $R = \dfrac{(24+m)g}{4}$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$4(12 + m) = 3(24 + m) \Rightarrow 48 + 4m = 72 + 3m \Rightarrow m = 24$ kg.</span></div>
+      <div class="tip">Notice $g$ cancelled. Leave $g$ as a letter until the end — it often disappears.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – TILTING
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> On the Point of Tilting</div>
+<div class="section-body">
+
+  <div class="concept">
+    When a beam is <strong>about to tip</strong> (or "on the point of turning") about one support, it is just losing contact with the other support. So the reaction at the <strong>other</strong> support is <strong>zero</strong>. Then take moments about the support it is tipping about.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">About to tilt about $D$</div>
+    $R_C = 0$ &nbsp;&nbsp; and &nbsp;&nbsp; moments about $D$ balance
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 5 — How far can the child walk?</div>
+    <div class="example-body">
+      <p>Using the plank in Worked Example 3, the child walks towards $B$. How far from $A$ can the child stand before the plank tips?</p>
+      <div class="step-row"><span class="arrow">①</span><span>The plank would tip about $D$, so on the point of tipping $R_C = 0$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let the child be $x$ m from $A$, with $x > 4$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Moments about $D$: plank weight anticlockwise, child clockwise: $20g \times (4 - 3) = 30g \times (x - 4)$</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$x - 4 = \dfrac{20}{30} = \dfrac{2}{3}$, so $x = 4.67$ m (3 s.f.).</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>The child can stand up to $4.67$ m from $A$, i.e. $\tfrac{2}{3}$ m beyond $D$.</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>Do not set both reactions to zero.</strong> Only the support that the beam is lifting off has zero reaction. The other support is carrying the whole load.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – NON-UNIFORM RODS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Non-Uniform Rods</div>
+<div class="section-body">
+
+  <p>For a non-uniform rod, the weight acts at an unknown distance $x$ from one end. That distance is just another unknown in your moments equation.</p>
+
+  <div class="example">
+    <div class="example-header">Worked Example 6 — Finding the centre of mass</div>
+    <div class="example-body">
+      <p>A non-uniform rod $AB$ of length $3$ m and mass $8$ kg hangs horizontally from two vertical strings at $A$ and $B$. The tension at $A$ is three times the tension at $B$. Find the distance of the centre of mass from $A$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $T_B = T$, $T_A = 3T$. Resolve: $4T = 8g$, so $T = 2g = 19.6$ N and $T_A = 58.8$ N.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let the centre of mass be $x$ m from $A$. Moments about $A$: $8g \times x = T_B \times 3 = 6g$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$x = \dfrac{6}{8} = 0.75$ m from $A$.</span></div>
+      <div class="tip"><strong>Check:</strong> the bigger tension is at $A$, so the centre of mass should be nearer $A$ — and $0.75 < 1.5$ ✓</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 7 — Two tilting conditions</div>
+    <div class="example-body">
+      <p>A non-uniform rod $AB$ of length $4$ m and mass $M$ kg rests on supports at $C$ and $D$, where $AC = DB = 1$ m. When a $12$ kg mass is hung at $A$ the rod is about to tip about $C$. When instead an $8$ kg mass is hung at $B$ the rod is about to tip about $D$. Find $M$ and the distance $x$ of the centre of mass from $A$.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Tipping about $C$ ($R_D = 0$), moments about $C$: $12g \times 1 = Mg(x - 1)$, so $M(x - 1) = 12$.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Tipping about $D$ ($R_C = 0$), moments about $D$ (which is $3$ m from $A$): $8g \times 1 = Mg(3 - x)$, so $M(3 - x) = 8$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Add: $M(x - 1 + 3 - x) = 20$, so $2M = 20$ and $M = 10$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Then $x - 1 = 1.2$, so $x = 2.2$ m from $A$.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – FORCES AT AN ANGLE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Rods with Forces at an Angle</div>
+<div class="section-body">
+
+  <p>When a rod is held by a hinge and an angled string, the hinge exerts a force with <strong>both</strong> a horizontal and a vertical component. Take moments about the hinge to find the tension first, then resolve to find the hinge force.</p>
+
+  <div class="svg-block">
+    <svg width="360" height="220" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mc1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/></marker>
+        <marker id="mc2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+        <marker id="mc3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+      </defs>
+      <rect x="30" y="10" width="20" height="200" fill="#e2e8f0" stroke="#475569"/>
+      <rect x="50" y="150" width="240" height="8" fill="#c7d2fe" stroke="#4338ca"/>
+      <circle cx="50" cy="154" r="5" fill="#1e1e2e"/>
+      <line x1="290" y1="154" x2="50" y2="15.4" stroke="#475569" stroke-width="1.5"/>
+      <line x1="290" y1="154" x2="203.4" y2="104" stroke="#4f46e5" stroke-width="3" marker-end="url(#mc1)"/>
+      <text x="196" y="96" font-family="Arial" font-size="14" fill="#4338ca" font-weight="bold">T</text>
+      <path d="M 250 154 A 40 40 0 0 1 255.4 134" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="226" y="148" font-family="Arial" font-size="12" fill="#6d28d9">30°</text>
+      <line x1="170" y1="158" x2="170" y2="205" stroke="#dc2626" stroke-width="3" marker-end="url(#mc2)"/>
+      <text x="178" y="200" font-family="Arial" font-size="13" fill="#b91c1c">50 N</text>
+      <line x1="50" y1="154" x2="100" y2="154" stroke="#16a34a" stroke-width="3" marker-end="url(#mc3)"/>
+      <line x1="56" y1="150" x2="56" y2="112" stroke="#16a34a" stroke-width="3" marker-end="url(#mc3)"/>
+      <text x="80" y="176" font-family="Arial" font-size="13" fill="#15803d">H</text>
+      <text x="62" y="118" font-family="Arial" font-size="13" fill="#15803d">V</text>
+      <text x="40" y="180" font-family="Arial" font-size="14" fill="#1e1e2e" font-weight="bold">A</text>
+      <text x="292" y="176" font-family="Arial" font-size="14" fill="#1e1e2e" font-weight="bold">B</text>
+    </svg>
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example 8 — A hinged rod held by a string</div>
+    <div class="example-body">
+      <p>A uniform rod $AB$ of length $2$ m and weight $50$ N is freely hinged to a vertical wall at $A$. It is held horizontal by a light string attached at $B$ and fixed to the wall above $A$. The string makes $30^\circ$ with the rod. Find the tension and the force exerted by the hinge.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Moments about $A$ (removes both hinge components): $T\sin 30^\circ \times 2 = 50 \times 1$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$T = \dfrac{50}{2 \times 0.5} = 50$ N</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Resolve horizontally: $H = T\cos 30^\circ = 43.3$ N (away from the wall).</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>Resolve vertically: $V + T\sin 30^\circ = 50$, so $V = 25$ N.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>Magnitude $\sqrt{43.3^2 + 25^2} = 50$ N, at $\tan^{-1}\!\left(\tfrac{25}{43.3}\right) = 30^\circ$ above the horizontal.</span></div>
+      <div class="tip">The hinge force does <strong>not</strong> have to act along the rod. Always give it two unknown components and let the equations decide.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Moment</h4><p>Force $\times$ perpendicular distance, in N m.</p></div>
+    <div class="ref-card"><h4>Angled force</h4><p>$M = Fd\sin\theta$, $\theta$ the angle to the rod.</p></div>
+    <div class="ref-card"><h4>Equilibrium</h4><p>Resultant force $= 0$ and resultant moment $= 0$.</p></div>
+    <div class="ref-card"><h4>Uniform</h4><p>Weight acts at the midpoint.</p></div>
+    <div class="ref-card"><h4>Non-uniform</h4><p>Weight at an unknown centre of mass $x$ from one end.</p></div>
+    <div class="ref-card"><h4>Best point</h4><p>Take moments where an unknown force acts.</p></div>
+    <div class="ref-card"><h4>About to tip about $D$</h4><p>The reaction at the other support is $0$.</p></div>
+    <div class="ref-card"><h4>Hinge</h4><p>Two unknown components, $H$ and $V$.</p></div>
+    <div class="ref-card"><h4>Check</h4><p>Take moments about a second point.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 8 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">8</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Use $g = 9.8$ m s$^{-2}$ and give answers to 3 significant figures where they are not exact.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A force of $25$ N acts perpendicular to a door at $0.4$ m from the hinge. Find its moment about the hinge.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$M = 25 \times 0.4 = 10$ N m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>A force of $40$ N is applied to the end of a spanner of length $0.25$ m, at $60^\circ$ to the spanner. Find the moment about the nut.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Perpendicular component $= 40\sin 60^\circ$.</p>
+          <p>$M = 40\sin 60^\circ \times 0.25 = 10\sin 60^\circ = 5\sqrt{3} = 8.66$ N m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>A uniform see-saw is pivoted at its centre. A child of mass $25$ kg sits $1.6$ m from the pivot. How far from the pivot, on the other side, must a child of mass $32$ kg sit for the see-saw to balance?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The see-saw's own weight acts through the pivot, so has no moment.</p>
+          <p>$25g \times 1.6 = 32g \times d \Rightarrow d = \dfrac{40}{32} = 1.25$ m.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>A uniform beam $AB$ of length $8$ m and weight $600$ N rests on supports at $A$ and $B$. A load of $400$ N is placed $2$ m from $A$. Find the reactions at $A$ and $B$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Moments about $A$: $R_B \times 8 = 600 \times 4 + 400 \times 2 = 3200$, so $R_B = 400$ N.</p>
+          <p>Resolve: $R_A + R_B = 1000$, so $R_A = 600$ N.</p>
+          <p>Check (moments about $B$): $R_A \times 8 = 600 \times 4 + 400 \times 6 = 4800$, so $R_A = 600$ N ✓</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>A uniform plank $AB$ of length $6$ m and mass $30$ kg rests on supports $C$ and $D$ with $AC = DB = 1.5$ m. A man of mass $75$ kg walks from the middle towards $B$. How far beyond $D$ can he walk before the plank tips?</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>On the point of tipping about $D$, $R_C = 0$.</p>
+          <p>$D$ is $1.5$ m from the centre of the plank. Let the man be $d$ m beyond $D$.</p>
+          <p>Moments about $D$: $30g \times 1.5 = 75g \times d \Rightarrow d = \dfrac{45}{75} = 0.6$ m.</p>
+          <p>He can walk $0.6$ m beyond $D$ (i.e. to $0.9$ m from $B$).</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>A non-uniform rod $AB$ of length $2.4$ m and mass $6$ kg hangs horizontally from vertical strings at $A$ and $B$. The tension at $B$ is $20$ N. Find the tension at $A$ and the distance of the centre of mass from $A$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Resolve: $T_A + 20 = 6g = 58.8$, so $T_A = 38.8$ N.</p>
+          <p>Moments about $A$: $6g \times x = 20 \times 2.4 = 48$.</p>
+          <p>$x = \dfrac{48}{58.8} = 0.816$ m from $A$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>A uniform beam $AB$ of length $4$ m and mass $20$ kg rests on supports at $A$ and $B$. A particle of mass $m$ kg is placed $0.5$ m from $B$. The reaction at $B$ is $150$ N. Find $m$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>The particle is $3.5$ m from $A$. Moments about $A$:</p>
+          <p>$150 \times 4 = 20g \times 2 + mg \times 3.5$</p>
+          <p>$600 = 392 + 34.3m \Rightarrow m = \dfrac{208}{34.3} = 6.06$ kg.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A uniform rod $AB$ of length $1.2$ m and mass $5$ kg is hinged to a vertical wall at $A$ and held horizontal by a light string attached at $B$, making $40^\circ$ with the rod. Find the tension and the horizontal and vertical components of the hinge force.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Moments about $A$: $T\sin 40^\circ \times 1.2 = 5g \times 0.6 = 29.4$</p>
+          <p>$T = \dfrac{29.4}{1.2\sin 40^\circ} = 38.1$ N.</p>
+          <p>Horizontal: $H = T\cos 40^\circ = 29.2$ N (away from the wall).</p>
+          <p>Vertical: $V = 5g - T\sin 40^\circ = 49 - 24.5 = 24.5$ N upwards.</p>
+          <p>(Neat check: $T\sin 40^\circ = 24.5 = \tfrac12 \times 49$, because the weight acts at the midpoint, so the string and hinge share the vertical load equally.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A non-uniform plank $AB$ of length $5$ m and mass $20$ kg has its centre of mass $2$ m from $A$. It rests on supports at $C$ and $D$ where $AC = 0.5$ m and $DB = 1$ m. Find the largest mass that can be placed (a) at $B$, (b) at $A$, without the plank tipping.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$D$ is $4$ m from $A$.</p>
+          <p><strong>(a)</strong> Tipping about $D$, $R_C = 0$. Moments about $D$: $m g \times 1 = 20g \times (4 - 2)$, so $m = 40$ kg.</p>
+          <p><strong>(b)</strong> Tipping about $C$, $R_D = 0$. Moments about $C$: $m g \times 0.5 = 20g \times (2 - 0.5)$, so $m = 60$ kg.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A uniform beam $AB$ of length $6$ m and mass $50$ kg rests horizontally on supports at $C$ and $D$, where $AC = 1$ m and $DB = 1.5$ m. A man of mass $80$ kg stands on the beam at $E$, where $AE = x$ m.</p>
+      <p>(a) Show that the reaction at $C$ is $R_C = \dfrac{(435 - 80x)g}{3.5}$. &nbsp; (b) Given that the reaction at $D$ is twice the reaction at $C$, find $x$. &nbsp; (c) Find the range of positions on the beam where the man can stand without the beam tipping. &nbsp; (d) State two modelling assumptions you have made.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> $D$ is $4.5$ m from $A$; the beam's weight acts $3$ m from $A$, i.e. $1.5$ m from $D$; $CD = 3.5$ m.</p>
+          <p>Moments about $D$: $R_C \times 3.5 = 50g \times 1.5 + 80g(4.5 - x) = 75g + 360g - 80gx$</p>
+          <p>$R_C = \dfrac{(435 - 80x)g}{3.5}$ as required.</p>
+          <p><strong>(b)</strong> Resolve: $R_C + R_D = 130g$. With $R_D = 2R_C$: $3R_C = 130g$, so $R_C = \dfrac{130g}{3}$.</p>
+          <p>$\dfrac{435 - 80x}{3.5} = \dfrac{130}{3} \Rightarrow 435 - 80x = 151.67 \Rightarrow x = 3.54$ m.</p>
+          <p><strong>(c)</strong> Need $R_C \geqslant 0$: $435 - 80x \geqslant 0 \Rightarrow x \leqslant 5.4375$.</p>
+          <p>Need $R_D \geqslant 0$. Moments about $C$: $R_D \times 3.5 = 50g \times 2 + 80g(x - 1) = (20 + 80x)g$, which is positive for every $x \geqslant 0$.</p>
+          <p>So the man can stand anywhere with $0 \leqslant x \leqslant 5.44$ m (3 s.f.) — he cannot reach the last $0.56$ m by $B$.</p>
+          <p><strong>(d)</strong> The man is modelled as a particle (his weight acts at a single point); the beam is a uniform rigid rod (it does not bend). Either is acceptable, as is "the supports are points".</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Moments &middot; A Level Maths Year 2 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>

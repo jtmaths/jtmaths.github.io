@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hypothesis Testing Overview &ndash; A Level Maths Year 1</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        tags: 'none'
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.65; color: #1e1e2e; background: #f6f5ff; padding: 0 0 60px; }
+    header { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; padding: 40px 24px 32px; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    header p  { font-size: 1.05rem; opacity: .9; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.4); border-radius: 20px; padding: 3px 14px; font-size: .85rem; margin-top: 10px; }
+    main { max-width: 860px; margin: 0 auto; padding: 28px 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; background: #4f46e5; color: #fff; border-radius: 10px 10px 0 0; padding: 13px 20px; font-size: 1.2rem; font-weight: 700; margin-top: 36px; }
+    .section-title .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .section-body { background: #fff; border: 1px solid #c7d2fe; border-top: none; border-radius: 0 0 10px 10px; padding: 22px 24px; }
+    .concept { background: #eef2ff; border-left: 4px solid #4f46e5; border-radius: 6px; padding: 14px 18px; margin: 14px 0; }
+    .concept strong { color: #3730a3; }
+    .formula-box { background: #f5f3ff; border: 2px solid #7c3aed; border-radius: 8px; padding: 14px 20px; margin: 16px 0; text-align: center; font-size: 1.1rem; }
+    .formula-box .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6d28d9; font-weight: 700; margin-bottom: 6px; }
+    .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+    .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+    .steps li::before { content: counter(step); background: #4f46e5; color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .example { background: #faf5ff; border: 1px solid #ddd6fe; border-radius: 8px; margin: 18px 0; overflow: hidden; }
+    .example-header { background: #7c3aed; color: #fff; padding: 8px 16px; font-weight: 700; font-size: .95rem; }
+    .example-body { padding: 16px 20px; }
+    .example-body p { margin-bottom: 8px; }
+    .step-row { display: flex; gap: 10px; background: #ede9fe; border-radius: 6px; padding: 8px 12px; margin: 6px 0; align-items: flex-start; }
+    .step-row .arrow { color: #6d28d9; font-weight: 800; flex-shrink: 0; }
+    .tip { background: #fefce8; border-left: 4px solid #eab308; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .tip strong { color: #92400e; }
+    .warn { background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: .95rem; }
+    .warn strong { color: #b91c1c; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #4f46e5; color: #fff; padding: 9px 14px; text-align: left; font-size: .9rem; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e0e7ff; font-size: .95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f5f3ff; }
+    .svg-block { text-align: center; margin: 18px 0; }
+    .svg-block svg { max-width: 100%; }
+    .question { background: #fff; border: 1px solid #c7d2fe; border-radius: 8px; margin: 12px 0; overflow: hidden; }
+    .question-header { background: #eef2ff; padding: 10px 16px; font-weight: 700; color: #3730a3; font-size: .95rem; }
+    .question-body { padding: 10px 16px; }
+    details summary { cursor: pointer; color: #4f46e5; font-weight: 600; padding: 8px 0 4px; font-size: .9rem; user-select: none; }
+    details summary:hover { color: #3730a3; }
+    .solution { background: #f0fdf4; border-left: 3px solid #22c55e; border-radius: 4px; padding: 12px 14px; margin-top: 8px; font-size: .93rem; }
+    .solution p { margin-bottom: 6px; }
+    .ref-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .ref-card { flex: 1; min-width: 180px; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 13px 15px; }
+    .ref-card h4 { color: #4f46e5; font-size: .95rem; margin-bottom: 6px; }
+    .ref-card p  { font-size: .88rem; line-height: 1.5; }
+    .topic-list { list-style: none; margin: 10px 0; }
+    .topic-list li { display: flex; gap: 12px; align-items: flex-start; background: #fafafe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
+    .topic-list .code { background: #4f46e5; color: #fff; border-radius: 6px; font-size: .78rem; font-weight: 800; padding: 2px 8px; flex-shrink: 0; margin-top: 3px; min-width: 34px; text-align: center; }
+    .topic-list a { color: #4338ca; font-weight: 700; text-decoration: none; }
+    .topic-list a:hover { text-decoration: underline; }
+    .topic-list .desc { display: block; font-size: .88rem; color: #444; }
+    .backlink { display:inline-block; margin-top:6px; font-size:.85rem; color:#e0e7ff; text-decoration:none; }
+    .backlink:hover { text-decoration:underline; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } .ref-grid { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚖️ Hypothesis Testing Overview</h1>
+  <p>A Level Maths Year 1 · Overview of the whole topic</p>
+  <div class="badge">Level 3 &middot; Ages 16&ndash;17</div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 – THE BIG IDEA
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">1</span> The Big Idea</div>
+<div class="section-body">
+
+  <p><strong>Hypothesis testing</strong> (DfE content area O · Statistical hypothesis testing) is how a statistician decides whether a piece of sample evidence is strong enough to doubt a claim about a population. At AS level the claim is always about a <strong>probability</strong> $p$, and the evidence is a count that follows a binomial distribution.</p>
+
+  <div class="concept">
+    Start by <strong>assuming the claim is true</strong>. Work out how likely the observed result (or something even more extreme) would be under that assumption. If it would be <strong>very unlikely</strong>, you have evidence against the claim. If it would not be particularly unusual, you have no reason to doubt it.
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The logic in one line</div>
+    If $\mathrm{P}(\text{result this extreme} \mid H_0 \text{ true}) \leqslant$ significance level, reject $H_0$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — Is the coin biased?</div>
+    <div class="example-body">
+      <p>Sam suspects a coin is biased towards heads. She throws it $20$ times and gets $15$ heads. Test at the $5\%$ significance level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $p$ = probability that the coin shows heads. $H_0: p = 0.5$, &nbsp;$H_1: p > 0.5$</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>Let $X$ = number of heads in $20$ throws. Under $H_0$, $X \sim \mathrm{B}(20,\,0.5)$.</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>$\mathrm{P}(X \geqslant 15) = 1 - \mathrm{P}(X \leqslant 14) = 0.0207$ (to 4 d.p.)</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$0.0207 < 0.05$, so the result is significant: reject $H_0$.</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>There is sufficient evidence at the $5\%$ level to suggest that the coin is biased towards heads.</span></div>
+      <div class="tip">Notice the word <strong>suggest</strong>. Fifteen heads does not <em>prove</em> bias — a fair coin does this about $2\%$ of the time. The test only tells you the evidence is strong enough to doubt fairness.</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Calculators are allowed</strong>, and you are expected to use the binomial cumulative distribution function on yours. Always write down the probability statement (for example $\mathrm{P}(X \geqslant 15)$) and the distribution before you type anything in — those lines earn the method marks.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 – THE LANGUAGE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">2</span> The Language You Need</div>
+<div class="section-body">
+
+  <p>The vocabulary of hypothesis testing is examinable in its own right. Questions regularly ask you to "state", "define" or "explain" these terms.</p>
+
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td><strong>Null hypothesis $H_0$</strong></td><td>The claim you assume to be true; always gives an exact value, e.g. $p = 0.3$.</td></tr>
+    <tr><td><strong>Alternative hypothesis $H_1$</strong></td><td>What you suspect instead: $p &gt; 0.3$, $p &lt; 0.3$ or $p \neq 0.3$.</td></tr>
+    <tr><td><strong>Significance level</strong></td><td>The threshold probability for "very unlikely", e.g. $5\%$.</td></tr>
+    <tr><td><strong>Test statistic</strong></td><td>The quantity calculated from the sample, e.g. $X$ = number of successes.</td></tr>
+    <tr><td><strong>One-tailed test</strong></td><td>$H_1$ looks in one direction only ($&gt;$ or $&lt;$).</td></tr>
+    <tr><td><strong>Two-tailed test</strong></td><td>$H_1$ is $p \neq \ldots$; extreme results in either direction count.</td></tr>
+    <tr><td><strong>Critical region</strong></td><td>The set of values of the test statistic that lead to rejecting $H_0$.</td></tr>
+    <tr><td><strong>Critical value</strong></td><td>The first value inside the critical region.</td></tr>
+    <tr><td><strong>Acceptance region</strong></td><td>The values that do not lead to rejecting $H_0$.</td></tr>
+    <tr><td><strong>p-value</strong></td><td>The probability, under $H_0$, of a result at least as extreme as the one observed.</td></tr>
+    <tr><td><strong>Actual significance level</strong></td><td>The true probability of the critical region; the probability of wrongly rejecting $H_0$.</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>Hypotheses are about the population, not the sample.</strong> Write $H_0: p = 0.5$, where $p$ is the probability for the whole population. Never write $H_0: X = 10$ — $X$ is your sample result.
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 – THE CORE PROCEDURE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">3</span> The Core Procedure</div>
+<div class="section-body">
+
+  <p>Every binomial hypothesis test follows the same six steps. Learn them as a checklist.</p>
+
+  <ul class="steps">
+    <li><span><strong>Define the parameter</strong> in words: "Let $p$ be the probability that …".</span></li>
+    <li><span><strong>State the hypotheses</strong> $H_0$ and $H_1$ in terms of $p$.</span></li>
+    <li><span><strong>State the distribution</strong> of the test statistic under $H_0$: $X \sim \mathrm{B}(n,\,p)$.</span></li>
+    <li><span><strong>Calculate</strong> the p-value, or find the critical region.</span></li>
+    <li><span><strong>Compare</strong> with the significance level (halved in each tail for a two-tailed test).</span></li>
+    <li><span><strong>Conclude in context</strong>, using non-assertive language.</span></li>
+  </ul>
+
+  <div class="formula-box">
+    <div class="label">Two ways to reach the decision</div>
+    <strong>p-value:</strong> reject $H_0$ if $\mathrm{P}(\text{observed or more extreme}) \leqslant \alpha$<br>
+    <strong>Critical region:</strong> reject $H_0$ if the observed value lies in the critical region
+  </div>
+
+  <div class="formula-box">
+    <div class="label">The calculator identity you need for upper tails</div>
+    $\mathrm{P}(X \geqslant k) = 1 - \mathrm{P}(X \leqslant k - 1)$
+  </div>
+
+  <div class="example">
+    <div class="example-header">Worked Example — A lower-tail test</div>
+    <div class="example-body">
+      <p>A drug company claims that $60\%$ of patients recover within a week when given its treatment. A doctor believes the true proportion is lower. Of $25$ patients, $10$ recover within a week. Test the doctor's belief at the $5\%$ level.</p>
+      <div class="step-row"><span class="arrow">①</span><span>Let $p$ = probability that a patient recovers within a week.</span></div>
+      <div class="step-row"><span class="arrow">②</span><span>$H_0: p = 0.6$, &nbsp;$H_1: p &lt; 0.6$</span></div>
+      <div class="step-row"><span class="arrow">③</span><span>Under $H_0$, $X \sim \mathrm{B}(25,\,0.6)$.</span></div>
+      <div class="step-row"><span class="arrow">④</span><span>$\mathrm{P}(X \leqslant 10) = 0.0344$</span></div>
+      <div class="step-row"><span class="arrow">⑤</span><span>$0.0344 &lt; 0.05$, so reject $H_0$.</span></div>
+      <div class="step-row"><span class="arrow">⑥</span><span>There is sufficient evidence at the $5\%$ level to suggest that fewer than $60\%$ of patients recover within a week.</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 – THE SUBTOPICS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">4</span> The Hypothesis Testing Subtopics</div>
+<div class="section-body">
+
+  <p>DfE content area O at AS level, and the page that covers each part. You will need the binomial distribution from <a href="../probability/binomial-distribution.html">The Binomial Distribution</a> throughout.</p>
+
+  <ul class="topic-list">
+    <li><span class="code">O</span><span><a href="language.html">The Language of Hypothesis Testing</a><span class="desc">Null and alternative hypotheses, significance level, critical regions, p-values and how to write a conclusion.</span></span></li>
+    <li><span class="code">O</span><span><a href="binomial-tests.html">Binomial Hypothesis Tests</a><span class="desc">One- and two-tailed tests for a proportion, by p-value and by critical region.</span></span></li>
+  </ul>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 – COMMON MISTAKES
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">5</span> Common Mistakes to Avoid</div>
+<div class="section-body">
+
+  <div class="warn">
+    <strong>Using $\mathrm{P}(X = x)$ instead of a tail probability.</strong> The p-value is the probability of the observed value <em>or anything more extreme</em>. For $15$ heads you need $\mathrm{P}(X \geqslant 15)$, not $\mathrm{P}(X = 15)$.
+  </div>
+
+  <div class="warn">
+    <strong>Getting the upper tail wrong on a calculator.</strong> $\mathrm{P}(X \geqslant 15) = 1 - \mathrm{P}(X \leqslant 14)$, <em>not</em> $1 - \mathrm{P}(X \leqslant 15)$.
+  </div>
+
+  <div class="warn">
+    <strong>Forgetting to halve for a two-tailed test.</strong> At the $5\%$ level with $H_1: p \neq 0.4$, each tail gets $2.5\%$.
+  </div>
+
+  <div class="warn">
+    <strong>Over-confident conclusions.</strong> Never write "this proves the coin is biased" or "we accept $H_0$". Write "there is sufficient evidence to suggest…" or "there is insufficient evidence to suggest…".
+  </div>
+
+  <div class="warn">
+    <strong>Conclusions with no context.</strong> "Reject $H_0$" on its own scores only part of the marks. Say what it means for the coin, the drug, the seeds…
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 – QUICK REFERENCE
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">6</span> Quick Reference</div>
+<div class="section-body">
+  <div class="ref-grid">
+    <div class="ref-card"><h4>Hypotheses</h4><p>$H_0: p = p_0$; &nbsp;$H_1: p &gt; p_0$, $p &lt; p_0$ or $p \neq p_0$.</p></div>
+    <div class="ref-card"><h4>Test statistic</h4><p>$X \sim \mathrm{B}(n,\,p_0)$ under $H_0$.</p></div>
+    <div class="ref-card"><h4>Upper tail</h4><p>$\mathrm{P}(X \geqslant k) = 1 - \mathrm{P}(X \leqslant k-1)$.</p></div>
+    <div class="ref-card"><h4>p-value decision</h4><p>p-value $\leqslant \alpha$ $\Rightarrow$ reject $H_0$.</p></div>
+    <div class="ref-card"><h4>Critical region</h4><p>Largest region with probability $\leqslant \alpha$ (per tail).</p></div>
+    <div class="ref-card"><h4>Two-tailed</h4><p>Put $\tfrac{\alpha}{2}$ in each tail.</p></div>
+    <div class="ref-card"><h4>Actual significance level</h4><p>$\mathrm{P}(X \in \text{critical region} \mid H_0)$.</p></div>
+    <div class="ref-card"><h4>Conclusion</h4><p>"Sufficient / insufficient evidence to suggest…" + context.</p></div>
+    <div class="ref-card"><h4>Which tail? (two-tailed)</h4><p>Compare the observed value with the mean $np_0$.</p></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 – PRACTICE QUESTIONS
+══════════════════════════════════════════════════ -->
+<div class="section-title"><span class="num">7</span> Practice Questions</div>
+<div class="section-body">
+
+  <p>Ten questions drawing on the whole topic. Use the binomial functions on your calculator, and give probabilities to 4 decimal places.</p>
+
+  <div class="question">
+    <div class="question-header">Question 1</div>
+    <div class="question-body">
+      <p>A die is thrown repeatedly to test whether it shows a six <em>less</em> often than a fair die. Define a suitable parameter and write down the null and alternative hypotheses.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ be the probability that the die shows a six on any throw.</p>
+          <p>$H_0: p = \tfrac{1}{6}$, &nbsp;$H_1: p &lt; \tfrac{1}{6}$</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 2</div>
+    <div class="question-body">
+      <p>For each situation, state whether the test should be one-tailed or two-tailed. (a) A teacher wants to know whether a new revision method <em>improves</em> the pass rate of $70\%$. (b) A quality controller wants to know whether the proportion of faulty items has <em>changed</em> from $4\%$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> One-tailed: the teacher is only interested in an increase. $H_1: p &gt; 0.7$.</p>
+          <p><strong>(b)</strong> Two-tailed: "changed" could mean up or down. $H_1: p \neq 0.04$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 3</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(12,\,0.5)$. Find $\mathrm{P}(X \geqslant 10)$.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(X \geqslant 10) = 1 - \mathrm{P}(X \leqslant 9)$</p>
+          <p>$= 1 - 0.9807 = 0.0193$ (to 4 d.p.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 4</div>
+    <div class="question-body">
+      <p>Explain why a conclusion should never say "we accept $H_0$" or "this proves $H_1$".</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>A hypothesis test works with probabilities from a single sample. An unusual result can happen by chance even when $H_0$ is true, and an ordinary result can happen even when $H_0$ is false.</p>
+          <p>So the test can only say whether there is <em>sufficient evidence</em> to doubt $H_0$. It never proves either hypothesis. Failing to reject $H_0$ means only that there is insufficient evidence against it.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 5</div>
+    <div class="question-body">
+      <p>It is claimed that $20\%$ of customers buy a dessert. A manager thinks the proportion is higher. In a sample of $15$ customers, $6$ buy a dessert. Test the manager's belief at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ = probability that a customer buys a dessert. $H_0: p = 0.2$, &nbsp;$H_1: p &gt; 0.2$.</p>
+          <p>Under $H_0$, $X \sim \mathrm{B}(15,\,0.2)$.</p>
+          <p>$\mathrm{P}(X \geqslant 6) = 1 - \mathrm{P}(X \leqslant 5) = 0.0611$</p>
+          <p>$0.0611 &gt; 0.05$, so do not reject $H_0$.</p>
+          <p>There is insufficient evidence at the $5\%$ level to suggest that more than $20\%$ of customers buy a dessert.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 6</div>
+    <div class="question-body">
+      <p>Historically $15\%$ of a company's parcels arrive late. After a change of courier, $1$ parcel out of a random sample of $30$ arrives late. Test at the $5\%$ level whether the proportion of late parcels has decreased.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Let $p$ = probability that a parcel arrives late. $H_0: p = 0.15$, &nbsp;$H_1: p &lt; 0.15$.</p>
+          <p>Under $H_0$, $X \sim \mathrm{B}(30,\,0.15)$.</p>
+          <p>$\mathrm{P}(X \leqslant 1) = 0.0480$</p>
+          <p>$0.0480 &lt; 0.05$, so reject $H_0$.</p>
+          <p>There is sufficient evidence at the $5\%$ level to suggest that the proportion of late parcels has decreased. (Only just — at the $1\%$ level the conclusion would be different.)</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 7</div>
+    <div class="question-body">
+      <p>$X \sim \mathrm{B}(10,\,0.5)$. Find the critical region for a test of $H_0: p = 0.5$ against $H_1: p &gt; 0.5$ at the $5\%$ level, and state the actual significance level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>$\mathrm{P}(X \geqslant 9) = 1 - \mathrm{P}(X \leqslant 8) = 0.0107$ — below $0.05$.</p>
+          <p>$\mathrm{P}(X \geqslant 8) = 1 - \mathrm{P}(X \leqslant 7) = 0.0547$ — above $0.05$.</p>
+          <p>Critical region: $X \geqslant 9$. Actual significance level $= 0.0107$, i.e. $1.07\%$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 8</div>
+    <div class="question-body">
+      <p>A coin is thrown $20$ times to test $H_0: p = 0.5$ against $H_1: p \neq 0.5$, where $p$ is the probability of heads. It shows $5$ heads. Carry out the test at the $5\%$ level.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p>Under $H_0$, $X \sim \mathrm{B}(20,\,0.5)$, with mean $10$. The observed $5$ is below the mean, so use the lower tail.</p>
+          <p>$\mathrm{P}(X \leqslant 5) = 0.0207$</p>
+          <p>Two-tailed, so compare with $0.025$: $0.0207 &lt; 0.025$, reject $H_0$.</p>
+          <p>There is sufficient evidence at the $5\%$ level to suggest that the coin is biased.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 9</div>
+    <div class="question-body">
+      <p>A test of $H_0: p = 0.3$ against $H_1: p &gt; 0.3$ uses a sample of $20$ and has critical region $X \geqslant 10$. (a) Find the actual significance level. (b) The observed value is $9$. State the conclusion.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Under $H_0$, $X \sim \mathrm{B}(20,\,0.3)$. $\mathrm{P}(X \geqslant 10) = 1 - \mathrm{P}(X \leqslant 9) = 1 - 0.9520 = 0.0480$, i.e. $4.80\%$.</p>
+          <p><strong>(b)</strong> $9$ is not in the critical region, so do not reject $H_0$. There is insufficient evidence to suggest that $p$ is greater than $0.3$.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="question-header">Question 10</div>
+    <div class="question-body">
+      <p>A seed merchant claims that $40\%$ of a type of bulb produce red flowers. A gardener plants $20$ bulbs to test whether the claim is wrong in either direction.</p>
+      <p>(a) Write down suitable hypotheses. &nbsp; (b) Find the critical region at the $5\%$ level. &nbsp; (c) State the actual significance level. &nbsp; (d) $13$ of the bulbs produce red flowers. Complete the test.</p>
+      <details><summary>▶ Show solution</summary>
+        <div class="solution">
+          <p><strong>(a)</strong> Let $p$ = probability that a bulb produces a red flower. $H_0: p = 0.4$, &nbsp;$H_1: p \neq 0.4$.</p>
+          <p><strong>(b)</strong> Under $H_0$, $X \sim \mathrm{B}(20,\,0.4)$. Each tail may have at most $0.025$.</p>
+          <p>Lower tail: $\mathrm{P}(X \leqslant 3) = 0.0160$ ✓, &nbsp;$\mathrm{P}(X \leqslant 4) = 0.0510$ ✗. So $X \leqslant 3$.</p>
+          <p>Upper tail: $\mathrm{P}(X \geqslant 13) = 1 - \mathrm{P}(X \leqslant 12) = 0.0210$ ✓, &nbsp;$\mathrm{P}(X \geqslant 12) = 0.0565$ ✗. So $X \geqslant 13$.</p>
+          <p>Critical region: $X \leqslant 3$ or $X \geqslant 13$.</p>
+          <p><strong>(c)</strong> Actual significance level $= 0.0160 + 0.0210 = 0.0370$, i.e. $3.70\%$.</p>
+          <p><strong>(d)</strong> $13$ lies in the critical region, so reject $H_0$. There is sufficient evidence at the $5\%$ level to suggest that the merchant's claim of $40\%$ is wrong.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</div><!-- /practice questions -->
+
+<div style="text-align:center;margin-top:40px;color:#888;font-size:.85rem;">
+  Hypothesis Testing Overview &middot; A Level Maths Year 1 &middot; Created with MathJax
+</div>
+
+</main>
+</body>
+</html>
